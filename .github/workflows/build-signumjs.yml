@@ -1,0 +1,24 @@
+name: Build SignumJS
+
+on: [ push, pull_request ]
+
+jobs:
+  build-signumjs:
+    name: Test and Build SignumJS
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Run SignumJS Tests
+        run: |
+          npm ci
+          npm t
+
+      - name: Build/Bundle SignumJS
+        run: npm run build
+
+
