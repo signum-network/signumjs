@@ -1,4 +1,4 @@
-<img src="./assets/burstjs.png" alt="burstjs" width="600" align="middle" />
+<img src="./docstheme/default/assets/images/signumjs.png" alt="signumjs" height="128" align="middle" />
 
 > The Signum Network SDK for Javascript (written in Typescript)
 
