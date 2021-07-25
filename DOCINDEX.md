@@ -1,4 +1,4 @@
-<img src="./docstheme/default/assets/images/signumjs.png" alt="signumjs" height="128" align="middle" />
+<img src="./assets/images/signumjs.png" alt="signumjs" height="128" align="middle" />
 
 > The Signum Network SDK for Javascript (written in Typescript)
 
