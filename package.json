@@ -41,7 +41,7 @@
     "babel-preset-env": "^1.7.0",
     "codecov": "^3.8.1",
     "custom-tslint-formatters": "^2.4.0",
-    "husky": "^4.3.0",
+    "husky": "^7.0.1",
     "jest": "^24.1.0",
     "jsdoc-babel": "^0.5.0",
     "jsdoc-to-markdown": "^5.0.2",
@@ -62,7 +62,7 @@
     "publish": "npm run build && lerna publish --force-publish --tag-version-prefix='signumjs-'",
     "readme": "lerna exec 'npm run readme'",
     "test": "jest",
-    "test:ci": "jest --coverage && codecov",
+    "test:ci": "jest --coverage",
     "test:e2e": "jest --config jest.config.e2e.js --runInBand --detectOpenHandles --forceExit",
     "test:watch": "jest --watch",
     "tsc": "lerna run tsc"
