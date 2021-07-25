@@ -1,9 +1,9 @@
 {
-  "name": "signumjs - The Signum Network Reference Library",
+  "name": "signumjs - The Javascript SDK for Signum Network",
   "mode": "modules",
   "hideGenerator": true,
   "inputFiles": ["./packages/**/*.ts"],
-  "out": "../docs",
+  "out": "./docs",
   "theme": "docstheme/default",
   "excludeExternals": true,
   "excludeNotExported": true,
