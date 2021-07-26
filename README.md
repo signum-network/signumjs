@@ -222,9 +222,15 @@ npm run build
    | Keep in mind that these tests are slow as they run against true servers. And therefore, it cannot be guaranteed
    that all E2E tests always work
 
-## Automatic Deployment
+## Publish
 
-When pushed to `main` a new release will be cut and published to _npmjs_ (and also to jsdelivr)
+To publish all packages (using lerna and same version strategy) just run 
+
+```bash
+npm run publish
+```
+
+> Note: Only with a valid npm token
 
 ## Documentation
 
