@@ -200,7 +200,7 @@ api.account.getAccountBalance('13036514135565182944')
 
 Contributors are warmly welcome. To start your local build just hit
 
-```
+```bash
 npm install
 ```
 
@@ -210,6 +210,10 @@ That's it!
 
 The SDK is using [Lerna](https://lerna.js.org/) to manage all subpackages in a developer friendlier way:
 
+```bash
+npm run build
+```
+
 ## Running Tests
 
 1. Single test run `npm run test`
@@ -218,8 +222,12 @@ The SDK is using [Lerna](https://lerna.js.org/) to manage all subpackages in a d
    | Keep in mind that these tests are slow as they run against true servers. And therefore, it cannot be guaranteed
    that all E2E tests always work
 
+## Automatic Deployment
+
+When pushed to `main` a new release will be cut and published to _npmjs_ (and also to jsdelivr)
+
 ## Documentation
 
 - [SignumJS Online Documentation](https://signum-network.github.io/signumjs/)
-- To generate esdocs: `npm run doc`
+- To re-generate docs: `npm run doc`
 - To update the README.md files: `lerna run readme`

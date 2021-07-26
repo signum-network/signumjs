@@ -59,18 +59,13 @@
     "doc": "typedoc --options tsdoc.json --listInvalidSymbolLinks",
     "lint": "tslint -p tsconfig.json -t stylish -s node_modules/custom-tslint-formatters/formatters -t grouped",
     "postinstall": "npm run bootstrap",
-    "publish": "npm run build && lerna publish --force-publish --tag-version-prefix='signumjs-'",
+    "publish": "npm run build && lerna publish --force-publish",
     "readme": "lerna exec 'npm run readme'",
     "test": "jest",
     "test:ci": "jest --coverage",
     "test:e2e": "jest --config jest.config.e2e.js --runInBand --detectOpenHandles --forceExit",
     "test:watch": "jest --watch",
     "tsc": "lerna run tsc"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "../pre-push.sh"
-    }
   },
   "dependencies": {
     "axios": "^0.21.1"
