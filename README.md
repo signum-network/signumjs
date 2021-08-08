@@ -4,7 +4,7 @@
 
 ![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Build](https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/burst-apps-team/phoenix/actions?query=workflow%3A%22Build+BurstJS%22)
+[![Build](https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/signum-network/phoenix/actions?query=workflow%3A%22Build+BurstJS%22)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
 
 `@signumjs` is a modern SDK written in Typescript providing common functionalities for _browsers_ and _nodejs_ to
