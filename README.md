@@ -107,7 +107,7 @@ console.log(sig$crypto.hashSHA256("test"))
 
 ```js
 // using util
-const value = sig$util.Value.fromSigna("1000")
+const value = sig$util.Amount.fromSigna("1000")
 ```
 
 ```ts
