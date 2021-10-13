@@ -1,3 +1,4 @@
+import {ApiVersion} from './apiVersion';
 import {TransactionType} from './transactionType';
 import {TransactionArbitrarySubtype} from './transactionArbitrarySubtype';
 import {TransactionAssetSubtype} from './transactionAssetSubtype';
@@ -31,8 +32,8 @@ enum AddressPrefix {
     TestNet = 'TS',
 }
 
-
 export {
+    ApiVersion,
     AddressPrefix,
     DefaultDeadline,
     DefaultApiEndpoint,
