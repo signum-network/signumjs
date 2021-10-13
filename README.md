@@ -2,12 +2,12 @@
 
 > The Signum Network SDK for Javascript (written in Typescript)
 
-![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![Build](https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/signum-network/phoenix/actions?query=workflow%3A%22Build+SignumJS%22)
-[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=alert_status)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
+![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
 
 `@signumjs` is a modern SDK written in Typescript providing common functionalities for _browsers_ and _nodejs_ to
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
