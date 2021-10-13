@@ -6,6 +6,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=alert_status)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=coverage)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 ![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
 
