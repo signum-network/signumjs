@@ -2,8 +2,6 @@
  * Original work Copyright (c) 2019 Burst Apps Team
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionList} from '../../../typings/transactionList';
-import {GetAccountTransactionsArgs} from '../../../typings/args';
 import {SubscriptionList} from '../../../typings/subscriptionList';
 
 /**

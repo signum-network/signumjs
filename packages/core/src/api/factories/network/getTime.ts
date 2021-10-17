@@ -12,5 +12,5 @@ import {ChainTimestamp} from '../../../typings/chainTimestamp';
  * @module core.api.factories
  */
 export const getTime = (service: ChainService): () => Promise<ChainTimestamp> =>
-    async (): Promise<ChainTimestamp> => await service.query('getTime');
+    async (): Promise<ChainTimestamp> => service.query('getTime');
 

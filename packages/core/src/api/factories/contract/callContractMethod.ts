@@ -39,6 +39,6 @@ export const callContractMethod = (service: ChainService):
             senderPublicKey: args.senderPublicKey,
         };
 
-        return await sendAmountToSingleRecipient(service)(parameters);
+        return sendAmountToSingleRecipient(service)(parameters);
 
     };

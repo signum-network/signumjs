@@ -4,9 +4,7 @@
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
 import {TransactionResponse} from '../../../typings/transactionResponse';
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
 import {convertNumberToNQTString} from '@signumjs/util';
-import {broadcastTransaction} from '../transaction/broadcastTransaction';
 import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 
 /**

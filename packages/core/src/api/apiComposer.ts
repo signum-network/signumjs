@@ -2,9 +2,9 @@
  * Copyright (c) 2019 Burst Apps Team
  */
 
-import {Api} from '../typings/api';
 import {ChainService} from '../service';
 import {
+    Api,
     AccountApi,
     AliasApi,
     AssetApi,

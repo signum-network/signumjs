@@ -11,12 +11,15 @@ import {Logger} from './logger';
  */
 export class VoidLogger implements Logger {
     debug(msg: string): void {
+        // This is intentional no op
     }
 
     error(msg: string): void {
+        // This is intentional no op
     }
 
     log(msg: string): void {
+        // This is intentional no op
     }
 }
 

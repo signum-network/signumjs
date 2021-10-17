@@ -5,7 +5,6 @@
 import {convertHexStringToDecString, convertHexStringToString} from '@signumjs/util';
 import {Contract} from './typings/contract';
 import {getContractDatablock} from './getContractDatablock';
-import {CodePageSize} from './constants';
 import {countCodePages} from './countCodePages';
 
 /**

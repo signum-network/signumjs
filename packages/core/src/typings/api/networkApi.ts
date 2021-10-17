@@ -4,7 +4,6 @@ import {SuggestedFees} from '../suggestedFees';
 import {Peer} from '../peer';
 import {PeerAddressList} from '../peerAddressList';
 import {ChainTimestamp} from '../chainTimestamp';
-import {TransactionList} from '../transactionList';
 import {MiningInfo} from '../miningInfo';
 
 /**

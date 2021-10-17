@@ -22,8 +22,8 @@ export const generateSendTransactionQRCode = (service: ChainService):
         receiverId: string,
         amountNQT: number = 0,
         feeSuggestionType: string = 'standard',
-        feeNQT: number,
-        immutable: boolean
+        feeNQT: number = undefined,
+        immutable: boolean = undefined
     ): Promise<ArrayBufferLike> =>
         service.query('generateSendTransactionQRCode', {
             receiverId,

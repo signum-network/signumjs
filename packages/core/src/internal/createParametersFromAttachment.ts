@@ -14,20 +14,18 @@ import {Attachment, AttachmentEncryptedMessage, AttachmentMessage} from '../typi
  */
 export const createParametersFromAttachment = (attachment: Attachment, params: any) => {
     if (attachment instanceof AttachmentEncryptedMessage) {
-        const em = <AttachmentEncryptedMessage>attachment;
         return {
-            encryptedMessageData: em.data,
-            encryptedMessageNonce: em.nonce,
-            messageToEncryptIsText: String(em.isText),
+            encryptedMessageData: attachment.data,
+            encryptedMessageNonce: attachment.nonce,
+            messageToEncryptIsText: String(attachment.isText),
             ...params
         };
     }
 
     if (attachment instanceof AttachmentMessage) {
-        const m = <AttachmentMessage>attachment;
         return {
-            message: m.message,
-            messageIsText: String(m.messageIsText),
+            message: attachment.message,
+            messageIsText: String(attachment.messageIsText),
             ...params
         };
     }

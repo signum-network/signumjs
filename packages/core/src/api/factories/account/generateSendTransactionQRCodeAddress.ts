@@ -22,8 +22,8 @@ export const generateSendTransactionQRCodeAddress = (service: ChainService):
         receiverId: string,
         amountNQT: number = 0,
         feeSuggestionType: string = 'standard',
-        feeNQT: number,
-        immutable
+        feeNQT: number = undefined,
+        immutable: boolean = undefined
     ): Promise<string> =>
         Promise.resolve(
             service.toApiEndpoint('generateSendTransactionQRCode', {

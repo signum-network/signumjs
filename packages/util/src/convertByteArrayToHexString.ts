@@ -13,9 +13,9 @@
  */
 export const convertByteArrayToHexString = (bytes: Uint8Array, uppercase = false): string => {
     const hex = [];
-    for (let i = 0; i < bytes.length; i++) {
-        hex.push((bytes[i] >>> 4).toString(16));
-        hex.push((bytes[i] & 0xF).toString(16));
+    for (const byte of bytes) {
+        hex.push((byte >>> 4).toString(16));
+        hex.push((byte & 0xF).toString(16));
     }
     return uppercase ? hex.join('').toUpperCase() : hex.join('');
 };
