@@ -9,6 +9,8 @@ import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {SendAmountArgs} from '../../../typings/args/sendAmountArgs';
 
+const SmartContractPublickey = '0000000000000000000000000000000000000000000000000000000000000000';
+
 /**
  * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
  *
@@ -19,11 +21,16 @@ export const sendAmountToSingleRecipient = (service: ChainService):
     (args: SendAmountArgs) => Promise<TransactionId> =>
     async (args: SendAmountArgs): Promise<TransactionId> => {
 
-         let parameters = {
+        let recipientPublicKey = args.recipientPublicKey || undefined;
+        if (args.recipientPublicKey && args.recipientPublicKey === SmartContractPublickey) {
+            recipientPublicKey = undefined;
+        }
+
+        let parameters = {
             amountNQT: args.amountPlanck,
             publicKey: args.senderPublicKey,
             recipient: args.recipientId,
-            recipientPublicKey: args.recipientPublicKey || undefined,
+            recipientPublicKey,
             feeNQT: args.feePlanck,
             deadline: args.deadline || DefaultDeadline
         };
