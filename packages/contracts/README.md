@@ -44,4 +44,4 @@ Just import the package using the HTML `<script>` tag.
 
 See more here:
 
-[@signumjs/contracts Online Documentation](https://burst-apps-team.github.io/phoenix/modules/contracts.html)
+[@signumjs/contracts Online Documentation](https://signum-network.github.io/signumjs/modules/contracts.html)

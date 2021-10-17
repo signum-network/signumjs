@@ -98,4 +98,4 @@ monitor.onFulFilled(() => {
 
 See more here:
 
-[@signumjs/monitor Online Documentation](https://burst-apps-team.github.io/phoenix/modules/monitor.html)
+[@signumjs/monitor Online Documentation](https://signum-network.github.io/signumjs/modules/monitor.html)

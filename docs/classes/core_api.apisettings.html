@@ -131,13 +131,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Api<wbr>Settings<span class="tsd-signature-symbol">(</span>nodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, apiVersion<span class="tsd-signature-symbol">?: </span><a href="../enums/core.apiversion.html" class="tsd-signature-type">ApiVersion</a>, reliableNodeHosts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, httpClientOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="core_api.apisettings.html" class="tsd-signature-type">ApiSettings</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Api<wbr>Settings<span class="tsd-signature-symbol">(</span>nodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reliableNodeHosts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, httpClientOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span>, apiVersion<span class="tsd-signature-symbol">?: </span><a href="../enums/core.apiversion.html" class="tsd-signature-type">ApiVersion</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="core_api.apisettings.html" class="tsd-signature-type">ApiSettings</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/2190d69/packages/core/src/api/composeApi.ts#L82">core/src/api/composeApi.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/api/composeApi.ts#L82">core/src/api/composeApi.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -149,14 +149,6 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>The url of the peer/node</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> apiVersion: <a href="../enums/core.apiversion.html" class="tsd-signature-type">ApiVersion</a><span class="tsd-signature-symbol"> = ApiVersion.V1</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>For future usage.</p>
 										</div>
 									</div>
 								</li>
@@ -173,7 +165,15 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> httpClientOptions: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>Optional http options, like additional header.
+											<p>Optional http options, like additional header.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> apiVersion: <a href="../enums/core.apiversion.html" class="tsd-signature-type">ApiVersion</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>For future usage.
 												The default implementation uses axios. In case of a custom client pass your own options.
 											see <a href="https://github.com/axios/axios#request-config">Axios Configuration</a></p>
 										</div>
@@ -189,16 +189,18 @@
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="apiversion" class="tsd-anchor"></a>
-					<h3>api<wbr>Version</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> api<wbr>Version</h3>
 					<div class="tsd-signature tsd-kind-icon">api<wbr>Version<span class="tsd-signature-symbol">:</span> <a href="../enums/core.apiversion.html" class="tsd-signature-type">ApiVersion</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/2190d69/packages/core/src/api/composeApi.ts#L94">core/src/api/composeApi.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/api/composeApi.ts#L96">core/src/api/composeApi.ts:96</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>For future usage.</p>
+							<p>For future usage.
+								The default implementation uses axios. In case of a custom client pass your own options.
+							see <a href="https://github.com/axios/axios#request-config">Axios Configuration</a></p>
 						</div>
 					</div>
 				</section>
@@ -208,14 +210,12 @@
 					<div class="tsd-signature tsd-kind-icon">http<wbr>Client<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/2190d69/packages/core/src/api/composeApi.ts#L96">core/src/api/composeApi.ts:96</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/api/composeApi.ts#L95">core/src/api/composeApi.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional http options, like additional header.
-								The default implementation uses axios. In case of a custom client pass your own options.
-							see <a href="https://github.com/axios/axios#request-config">Axios Configuration</a></p>
+							<p>Optional http options, like additional header.</p>
 						</div>
 					</div>
 				</section>
@@ -225,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">node<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/2190d69/packages/core/src/api/composeApi.ts#L93">core/src/api/composeApi.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/api/composeApi.ts#L93">core/src/api/composeApi.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -240,7 +240,7 @@
 					<div class="tsd-signature tsd-kind-icon">reliable<wbr>Node<wbr>Hosts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/2190d69/packages/core/src/api/composeApi.ts#L95">core/src/api/composeApi.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/api/composeApi.ts#L94">core/src/api/composeApi.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">

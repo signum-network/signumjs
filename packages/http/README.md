@@ -57,4 +57,4 @@ client.get('/todos/1').then(console.log)
 
 See more here:
 
-[@signumjs/http Online Documentation](https://burst-apps-team.github.io/phoenix/modules/http.html)
+[@signumjs/http Online Documentation](https://signum-network.github.io/signumjs/modules/http.html)

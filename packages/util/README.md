@@ -49,4 +49,4 @@ console.log(value.toString())
 
 See more here:
 
-[@signumjs/util Online Documentation](https://burst-apps-team.github.io/phoenix/modules/util.html)
+[@signumjs/util Online Documentation](https://signum-network.github.io/signumjs/modules/util.html)
