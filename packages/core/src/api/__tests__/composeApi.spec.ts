@@ -6,12 +6,13 @@ describe('composeApi', () => {
     it('should compose with no errors', async () => {
         const api = composeApi(new ApiSettings(
             'nodeHost',
-            ApiVersion.V1,
+            [],
             {
                 headers: {
                     'X-Test': 'some test'
                 }
-            }
+            },
+            ApiVersion.V1,
         ));
 
         expect(api.asset).toBeDefined();
