@@ -15,6 +15,7 @@ import {
 } from './factories/block';
 import {
     getBlockchainStatus,
+    getMiningInfo,
     getPeer,
     getPeers,
     getServerStatus,
@@ -130,6 +131,7 @@ export function composeApi(settings: ApiSettings): Api {
         })
         .withNetworkApi({
             getBlockchainStatus,
+            getMiningInfo,
             getServerStatus,
             getSuggestedFees,
             getPeers,

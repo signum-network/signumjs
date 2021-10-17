@@ -3,7 +3,7 @@ import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
 import {getServerStatus} from '../factories/network/getServerStatus';
 import {getTime} from '../factories/network/getTime';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {getSuggestedFees} from '../factories/network';
+import {getMiningInfo, getSuggestedFees} from '../factories/network';
 import {FeeQuantPlanck} from '@signumjs/util';
 
 describe('Network Api', () => {
@@ -42,8 +42,22 @@ describe('Network Api', () => {
         });
     });
 
+    describe('getMiningInfo', () => {
+        it('should getMiningInfo', async () => {
+
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                height: 100,
+                lastBlockReward: '110'
+            }).build();
+            const service = createChainService(httpMock, 'relPath');
+            const miningInfo = await getMiningInfo(service)();
+            expect(miningInfo.height).toBe(100);
+            expect(miningInfo.lastBlockReward).toBe('110');
+        });
+    });
+
     describe('getServerStatus', () => {
-        it('should getNetworkState', async () => {
+        it('should getServerStatus', async () => {
 
             httpMock = HttpMockBuilder.create().onGetReply(200, {
                 application: 'BRS',
