@@ -22,7 +22,7 @@ export const sendAmountToSingleRecipient = (service: ChainService):
     async (args: SendAmountArgs): Promise<TransactionId> => {
 
         let recipientPublicKey = args.recipientPublicKey || undefined;
-        if (args.recipientPublicKey && args.recipientPublicKey === SmartContractPublickey) {
+        if (recipientPublicKey && recipientPublicKey === SmartContractPublickey) {
             recipientPublicKey = undefined;
         }
 
