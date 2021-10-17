@@ -8,7 +8,7 @@ import {ChainTimestamp} from '../../../typings/chainTimestamp';
 /**
  * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
  *
- * See details at [[NetworkApi.getSuggestedFees]]
+ * See details at [[NetworkApi.getTime]]
  * @module core.api.factories
  */
 export const getTime = (service: ChainService): () => Promise<ChainTimestamp> =>
