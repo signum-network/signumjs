@@ -3,11 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
-import {DefaultDeadline} from '../../../constants';
-import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
-import {IssueAssetArgs, PlaceOrderArgs} from '../../../typings/args';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
+import {PlaceOrderArgs} from '../../../typings/args';
 import {placeOrder} from './placeOrder';
 
 /**

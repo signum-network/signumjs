@@ -1,7 +1,6 @@
 import {TransactionId} from '../transactionId';
 import {Transaction} from '../transaction';
 import {MultioutRecipientAmount} from '../multioutRecipientAmount';
-import {Attachment} from '../attachment';
 import {Subscription} from '../subscription';
 import {UnconfirmedTransactionList} from '../unconfirmedTransactionList';
 import {

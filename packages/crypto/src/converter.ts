@@ -122,7 +122,7 @@ export class Converter {
         }
 
         if (opt_startIndex && length) {
-            let index = Converter.checkBytesToIntInput(bytes, parseInt(length.toString(), 10), parseInt(opt_startIndex.toString(), 10));
+            Converter.checkBytesToIntInput(bytes, parseInt(length.toString(), 10), parseInt(opt_startIndex.toString(), 10));
 
             bytes = bytes.slice(opt_startIndex, opt_startIndex + length);
         }

@@ -1,8 +1,7 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
  */
-import {ChainService} from '../service';
-import {ChainServiceSettings} from '../service';
+import {ChainService, ChainServiceSettings} from '../service';
 import {Api} from '../typings/api';
 import {ApiVersion} from '../constants/apiVersion';
 import {ApiComposer} from './apiComposer';

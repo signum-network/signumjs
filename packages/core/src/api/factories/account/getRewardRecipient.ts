@@ -17,6 +17,6 @@ export const getRewardRecipient = (service: ChainService):
             account: accountId
         };
 
-        return await service.query<RewardRecipient>('getRewardRecipient', parameters);
+        return service.query<RewardRecipient>('getRewardRecipient', parameters);
 
     };

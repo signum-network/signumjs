@@ -135,7 +135,7 @@ export class ChainService {
             return shouldRetry;
         };
 
-        return await asyncRetry({
+        return asyncRetry({
             asyncFn: requestFn,
             onFailureAsync
         });

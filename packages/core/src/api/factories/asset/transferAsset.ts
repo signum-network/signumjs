@@ -6,7 +6,6 @@ import {TransactionId} from '../../../typings/transactionId';
 import {TransactionResponse} from '../../../typings/transactionResponse';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
-import {IssueAssetArgs} from '../../../typings/args';
 import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 import {TransferAssetArgs} from '../../../typings/args/transferAssetArgs';
 

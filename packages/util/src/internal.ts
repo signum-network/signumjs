@@ -9,9 +9,6 @@
  */
 
 
-// Internal helper functions and structures
-import BigNumber from 'bignumber.js';
-
 export const AddressPrefix = 'S';
 export const LegacyAddressPrefix = 'BURST';
 export const initialCodeword = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
