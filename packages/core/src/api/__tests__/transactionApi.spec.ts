@@ -411,15 +411,13 @@ describe('TransactionApi', () => {
         it('should not send recipientPublicKey, if recipient is a Smart Contract', async () => {
 
             httpMock = HttpMockBuilder.create()
-                // tslint:disable:max-line-length
-                .onPostReply(200, mockBroadcastResponse,
-                    'relPath?requestType=sendMoney&message=message&messageIsText=true&amountNQT=2000&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000&deadline=1440')
+                .onPostReply(200, mockBroadcastResponse, 'relPath?requestType=sendMoney&amountNQT=2000&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000&deadline=1440')
                 .onPostReply(200, mockTransaction.transaction,
                     'relPath?requestType=broadcastTransaction&transactionBytes=signedTransactionBytes')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
-            const {transaction} = await sendAmountToSingleRecipient(service)({
+            const response = await sendAmountToSingleRecipient(service)({
                     amountPlanck: '2000',
                     feePlanck: '1000',
                     recipientId: 'recipientId',
@@ -429,7 +427,7 @@ describe('TransactionApi', () => {
                 }
             );
 
-            expect(transaction).toBeDefined();
+            expect(response).toBeDefined();
         });
 
     });
