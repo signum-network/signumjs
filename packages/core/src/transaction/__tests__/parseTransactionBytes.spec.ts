@@ -1,7 +1,4 @@
-import {convertHexStringToByteArray, convertNumberToNQTString} from '@signumjs/util';
-import {getRecipientsAmount} from '../getRecipientsAmount';
 import {parseTransactionBytes} from '../parseTransactionBytes';
-
 
 describe('parseTransactionBytes', () => {
 
@@ -16,12 +13,6 @@ describe('parseTransactionBytes', () => {
         expect(transaction.amountNQT).toBe('100000000');
         expect(transaction.feeNQT).toBe('73500000');
         expect(transaction.deadline).toBe(1440);
-    });
-    it('throws error on invalid transaction bytes', () => {
-        const t = parseTransactionBytes('00107250880da00572');
-        expect(() => {
-            const t = parseTransactionBytes('00107250880da00572');
-        }).toThrow("Invalid Transaction Bytes")
     });
 
 });

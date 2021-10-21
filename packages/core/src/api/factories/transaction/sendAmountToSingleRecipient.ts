@@ -41,6 +41,8 @@ export const sendAmountToSingleRecipient = (service: ChainService):
 
         const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMoney', parameters);
 
+
+
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderPublicKey,
             senderPrivateKey: args.senderPrivateKey,
