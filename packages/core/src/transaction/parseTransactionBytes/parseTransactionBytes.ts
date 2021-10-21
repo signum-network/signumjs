@@ -1,4 +1,4 @@
-import {Transaction} from '../typings/transaction';
+import {Transaction} from '../../typings/transaction';
 import {convertHexEndianess, convertHexStringToDecString} from '@signumjs/util';
 const _be = (hex: string) => hex.length > 2 ? convertHexEndianess(hex) : hex;
 const hexToNumber = (hex: string): number => parseInt(convertHexStringToDecString(_be(hex)), 10);

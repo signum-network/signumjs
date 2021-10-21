@@ -1,5 +1,5 @@
 import {Transaction} from '../typings/transaction';
-import {parseTransactionBytes} from './parseTransactionBytes';
+import {parseTransactionBytes} from './parseTransactionBytes/parseTransactionBytes';
 
 /**
  * Verifies if an unsigned Transaction matches another Transaction
@@ -10,17 +10,12 @@ import {parseTransactionBytes} from './parseTransactionBytes';
 export const verifyUnsignedTransaction = (transaction: Transaction, unsignedTransactionBytes: string): void => {
     try {
         const unsignedTransaction = parseTransactionBytes(unsignedTransactionBytes);
-        if (!(
-            transaction.subtype === unsignedTransaction.subtype
-            && transaction.type === unsignedTransaction.type
-            && transaction.deadline === unsignedTransaction.deadline
-            && transaction.recipient === unsignedTransaction.recipient
-            && transaction.feeNQT === unsignedTransaction.feeNQT
-            && transaction.amountNQT === unsignedTransaction.amountNQT
-            && transaction.senderPublicKey === unsignedTransaction.senderPublicKey
-            /* attachment check missing yet */
-        )) {
-            throw new Error();
+
+        for (const prop in transaction) {
+            if (prop !== undefined &&
+                transaction[prop] !== unsignedTransaction[prop]) {
+                throw new Error();
+            }
         }
 
     } catch (e) {
