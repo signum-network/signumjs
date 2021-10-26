@@ -1,5 +1,5 @@
-import {Transaction} from '../typings/transaction';
-import {parseTransactionBytes} from './parseTransactionBytes/parseTransactionBytes';
+import {Transaction} from '../../typings/transaction';
+import {parseTransactionBytes} from './parseTransactionBytes';
 
 /**
  * Verifies if an unsigned Transaction matches another Transaction

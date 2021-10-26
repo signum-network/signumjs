@@ -1,5 +1,5 @@
 import {verifyUnsignedTransaction} from '../verifyUnsignedTransaction';
-import {Transaction} from '../../typings/transaction';
+import {Transaction} from '../../../typings/transaction';
 
 describe('verifyUnsignedTransaction', () => {
 
