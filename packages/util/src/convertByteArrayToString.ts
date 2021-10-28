@@ -24,7 +24,12 @@ export const convertByteArrayToString = (byteArray: Uint8Array, startIndex: numb
         bytes = byteArray.slice(startIndex, startIndex + len);
     }
 
-    return decodeURIComponent(escape(String.fromCharCode.apply(null, Array.from(bytes))));
+    const escapedUTF8 = escape(String.fromCharCode.apply(null, Array.from(bytes)));
+    try {
+        return decodeURIComponent(escapedUTF8)
+    } catch (e) {
+        throw new Error('Error decoding utf-8 data');
+    }
 };
 
 
