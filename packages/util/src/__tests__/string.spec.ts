@@ -40,6 +40,12 @@ describe('String Conversions', () => {
             }
         });
 
+        test('should not convertByteArrayToString() with invalid utf-8 data', () => {
+            expect(() => {
+                convertByteArrayToString(TestBytes, 14)
+            }).toThrowError('Error decoding utf-8 data');
+        });
+
     });
 
     describe('convertBase36ToString', () => {
