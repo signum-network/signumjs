@@ -103,7 +103,7 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=400000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=29400000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
 
 
             const service = createChainService(httpMock, 'relPath');
