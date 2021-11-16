@@ -1,31 +1,30 @@
 /**
- * Copyright (c) 2019 Burst Apps Team
+ * Copyright (c) 2021 Signum Network
  */
-import {calculateMinimumCreationFee} from '@signumjs/contracts';
 import {ChainService} from '../../../service';
-import {PublishContractArgs} from '../../../typings/args';
 import {signAndBroadcastTransaction} from '../transaction';
 import {TransactionId} from '../../../typings/transactionId';
 import {TransactionResponse} from '../../../typings/transactionResponse';
 import {DefaultDeadline} from '../../../constants';
+import {PublishContractByReferenceArgs} from '../../../typings/args';
 
 
 /**
  * Use with [[ApiComposer]] and belongs to [[ContractApi]].
  *
- * See details at [[ContractApi.publishContract]]
+ * See details at [[ContractApi.publishContractByReference]]
  * @module core.api.factories
  */
-export const publishContract = (service: ChainService):
-    (args: PublishContractArgs) => Promise<TransactionId> =>
-    async (args: PublishContractArgs): Promise<TransactionId> => {
+export const publishContractByReference = (service: ChainService):
+    (args: PublishContractByReferenceArgs) => Promise<TransactionId> =>
+    async (args: PublishContractByReferenceArgs): Promise<TransactionId> => {
 
         const parameters = {
-            code: args.codeHex,
             deadline: args.deadline || DefaultDeadline,
             description: args.description,
-            feeNQT: calculateMinimumCreationFee(args.codeHex).getPlanck(),
+            feeNQT: args.feePlanck,
             minActivationAmountNQT: args.activationAmountPlanck,
+            referencedTransactionFullHash: args.referencedTransaction,
             name: args.name,
             publicKey: args.senderPublicKey,
             cspages: 1,

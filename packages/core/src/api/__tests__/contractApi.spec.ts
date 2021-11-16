@@ -2,6 +2,7 @@ import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {getContract, getContractsByAccount, publishContract} from '../factories/contract';
 import {signAndBroadcastTransaction} from '../factories/transaction';
+import {publishContractByReference} from '../factories/contract/publishContractByReference';
 
 describe('Contract Api', () => {
 
@@ -83,7 +84,8 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse).build();
+                .onPostReply(200, testResponse, "relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=400000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true").build();
+
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContract(service)({
@@ -93,7 +95,40 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-                isCIP20Active: false
+            });
+            expect(transaction).toEqual('transactionId');
+        });
+    });
+
+
+    describe('publishContractByReference', () => {
+
+        beforeEach(() => {
+            jest.resetAllMocks();
+        });
+
+
+        it('should publish contract', async () => {
+
+            // @ts-ignore
+            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+
+            const testResponse = {
+                unsignedTransactionBytes: 'unsignedHexMessage'
+            };
+
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&deadline=1440&description=description&feeNQT=feePlanck&minActivationAmountNQT=20000000&referencedTransactionFullHash=referencedTransactionId&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await publishContractByReference(service)({
+                activationAmountPlanck: '20000000',
+                referencedTransaction: 'referencedTransactionId',
+                feePlanck: 'feePlanck',
+                description: 'description',
+                name: 'testContract',
+                senderPublicKey: 'publickey',
+                senderPrivateKey: 'privateKey',
             });
             expect(transaction).toEqual('transactionId');
         });
