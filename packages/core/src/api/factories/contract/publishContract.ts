@@ -24,7 +24,7 @@ export const publishContract = (service: ChainService):
             code: args.codeHex,
             deadline: args.deadline || DefaultDeadline,
             description: args.description,
-            feeNQT: calculateMinimumCreationFee(args.codeHex, args.isCIP20Active).getPlanck(),
+            feeNQT: calculateMinimumCreationFee(args.codeHex).getPlanck(),
             minActivationAmountNQT: args.activationAmountPlanck,
             name: args.name,
             publicKey: args.senderPublicKey,

@@ -8,7 +8,7 @@ import {Attachment} from '../attachment';
  */
 export interface IssueAssetArgs {
     /**
-     * The amount to be split (_quantity_), must be at least 1000 BURST
+     * The amount to be split (_quantity_), must be at least 110.25 SIGNA
      */
     amountPlanck: string;
     /**

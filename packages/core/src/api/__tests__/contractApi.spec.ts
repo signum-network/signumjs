@@ -1,6 +1,6 @@
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {getContract, getContractsByAccount, publishContract} from '../factories/contract';
+import {publishContractByReference, getAllContractIds, getContract, getContractsByAccount, publishContract} from '../factories/contract';
 import {signAndBroadcastTransaction} from '../factories/transaction';
 
 describe('Contract Api', () => {
@@ -57,11 +57,31 @@ describe('Contract Api', () => {
         };
 
         it('should getContractsByAccount', async () => {
-            httpMock = HttpMockBuilder.create().onGetReply(200, testContracts).build();
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, testContracts, "relPath?requestType=getAccountATs&account=1234&machineCodeHashId=machinCodeHash")
+                .build();
             const service = createChainService(httpMock, 'relPath');
-            const contracts = await getContractsByAccount(service)('1234');
+            const contracts = await getContractsByAccount(service)({ accountId: '1234', machineCodeHash: 'machinCodeHash'});
             expect(contracts.ats).toHaveLength(1);
             expect(contracts.ats[0]).toEqual(testContract);
+        });
+    });
+
+    describe('getAllContractIds', () => {
+
+        const testContracts = {
+            atIds: [testContract],
+            requestProcessingTime: 1
+        };
+
+        it('should getAllContractIds', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, testContracts, "relPath?requestType=getATIds&machineCodeHashId=machinCodeHash")
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contracts = await getAllContractIds(service)({ machineCodeHash: 'machinCodeHash'});
+            expect(contracts.atIds).toHaveLength(1);
+            expect(contracts.atIds[0]).toEqual(testContract);
         });
     });
 
@@ -83,7 +103,8 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse).build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=29400000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
+
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContract(service)({
@@ -93,7 +114,40 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-                isCIP20Active: false
+            });
+            expect(transaction).toEqual('transactionId');
+        });
+    });
+
+
+    describe('publishContractByReference', () => {
+
+        beforeEach(() => {
+            jest.resetAllMocks();
+        });
+
+
+        it('should publish contract', async () => {
+
+            // @ts-ignore
+            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+
+            const testResponse = {
+                unsignedTransactionBytes: 'unsignedHexMessage'
+            };
+
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&deadline=1440&description=description&feeNQT=feePlanck&minActivationAmountNQT=20000000&referencedTransactionFullHash=referencedTransactionId&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await publishContractByReference(service)({
+                activationAmountPlanck: '20000000',
+                referencedTransaction: 'referencedTransactionId',
+                feePlanck: 'feePlanck',
+                description: 'description',
+                name: 'testContract',
+                senderPublicKey: 'publickey',
+                senderPrivateKey: 'privateKey',
             });
             expect(transaction).toEqual('transactionId');
         });
