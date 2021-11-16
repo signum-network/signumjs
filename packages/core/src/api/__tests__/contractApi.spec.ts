@@ -1,8 +1,7 @@
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {getContract, getContractsByAccount, publishContract} from '../factories/contract';
+import {publishContractByReference, getAllContractIds, getContract, getContractsByAccount, publishContract} from '../factories/contract';
 import {signAndBroadcastTransaction} from '../factories/transaction';
-import {publishContractByReference} from '../factories/contract/publishContractByReference';
 
 describe('Contract Api', () => {
 
@@ -58,11 +57,31 @@ describe('Contract Api', () => {
         };
 
         it('should getContractsByAccount', async () => {
-            httpMock = HttpMockBuilder.create().onGetReply(200, testContracts).build();
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, testContracts, "relPath?requestType=getAccountATs&account=1234&machineCodeHashId=machinCodeHash")
+                .build();
             const service = createChainService(httpMock, 'relPath');
-            const contracts = await getContractsByAccount(service)('1234');
+            const contracts = await getContractsByAccount(service)({ accountId: '1234', machineCodeHash: 'machinCodeHash'});
             expect(contracts.ats).toHaveLength(1);
             expect(contracts.ats[0]).toEqual(testContract);
+        });
+    });
+
+    describe('getAllContractIds', () => {
+
+        const testContracts = {
+            atIds: [testContract],
+            requestProcessingTime: 1
+        };
+
+        it('should getAllContractIds', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, testContracts, "relPath?requestType=getATIds&machineCodeHashId=machinCodeHash")
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contracts = await getAllContractIds(service)({ machineCodeHash: 'machinCodeHash'});
+            expect(contracts.atIds).toHaveLength(1);
+            expect(contracts.atIds[0]).toEqual(testContract);
         });
     });
 
@@ -84,7 +103,7 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, "relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=400000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true").build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=400000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
 
 
             const service = createChainService(httpMock, 'relPath');

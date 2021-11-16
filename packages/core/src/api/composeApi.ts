@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified (c) 2021 Signum Network
  */
 import {ChainService, ChainServiceSettings} from '../service';
 import {Api} from '../typings/api';
@@ -48,7 +49,8 @@ import {
     getAllContractIds,
     getContract,
     getContractsByAccount,
-    publishContract
+    publishContract,
+    publishContractByReference
 } from './factories/contract';
 import {
     broadcastTransaction,
@@ -82,8 +84,8 @@ import {AxiosRequestConfig} from 'axios';
 export class ApiSettings {
     /**
      * @param nodeHost {string} The url of the peer/node
-     * @param reliableNodeHosts A list of node/peer hosts that can be chosen of, usually a list of reliable/trusted nodes. This is necessary for the automatic
-     * node selection.
+     * @param reliableNodeHosts A list of node/peer hosts that can be chosen of,
+     * usually a list of reliable/trusted nodes. This is necessary for the automatic node selection.
      * @param httpClientOptions {any | AxiosRequestSettings}   Optional http options, like additional header.
      * @param apiVersion {ApiVersion} For future usage.
      * The default implementation uses axios. In case of a custom client pass your own options.
@@ -180,6 +182,7 @@ export function composeApi(settings: ApiSettings): Api {
             getContractsByAccount,
             getAllContractIds,
             publishContract,
+            publishContractByReference,
             callContractMethod,
         }).withAssetApi({
             getAsset,

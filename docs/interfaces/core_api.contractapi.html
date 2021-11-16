@@ -116,6 +116,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontractsbyaccount" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#publishcontract" class="tsd-kind-icon">publish<wbr>Contract</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#publishcontractbyreference" class="tsd-kind-icon">publish<wbr>Contract<wbr>ByReference</a></li>
 							</ul>
 						</section>
 					</div>
@@ -129,7 +130,7 @@
 					<div class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/typings/api/contractApi.ts#L50">core/src/typings/api/contractApi.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L61">core/src/typings/api/contractApi.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -173,14 +174,17 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/typings/api/contractApi.ts#L35">core/src/typings/api/contractApi.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L38">core/src/typings/api/contractApi.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Get all contract Ids of the blockchain</p>
+							<p>Get all contract Ids of the blockchain, or filtered by the argument</p>
 						</div>
 						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
 							<dt>returns</dt>
 							<dd><p>The list of contract ids</p>
 							</dd>
@@ -191,14 +195,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractidlist.html" class="tsd-signature-type">ContractIdList</a><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.getallcontractidsargs.html" class="tsd-signature-type">GetAllContractIdsArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractidlist.html" class="tsd-signature-type">ContractIdList</a><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>id: <span class="tsd-signature-type">string</span></h5>
+												<h5>args: <a href="core.getallcontractidsargs.html" class="tsd-signature-type">GetAllContractIdsArgs</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractidlist.html" class="tsd-signature-type">ContractIdList</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -214,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/typings/api/contractApi.ts#L21">core/src/typings/api/contractApi.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L23">core/src/typings/api/contractApi.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -258,16 +262,16 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/typings/api/contractApi.ts#L28">core/src/typings/api/contractApi.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L30">core/src/typings/api/contractApi.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Get all contracts of given account</p>
+							<p>Get all contracts of given account, or filtered by the arguments</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The account id (not RS address)</p>
+							<dd><p>The argument object</p>
 							</dd>
 							<dt>returns</dt>
 							<dd><p>A list of contracts</p>
@@ -279,14 +283,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractlist.html" class="tsd-signature-type">ContractList</a><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.getcontractsbyaccountargs.html" class="tsd-signature-type">GetContractsByAccountArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractlist.html" class="tsd-signature-type">ContractList</a><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>accountId: <span class="tsd-signature-type">string</span></h5>
+												<h5>args: <a href="core.getcontractsbyaccountargs.html" class="tsd-signature-type">GetContractsByAccountArgs</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractlist.html" class="tsd-signature-type">ContractList</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -302,7 +306,7 @@
 					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/acec400/packages/core/src/typings/api/contractApi.ts#L43">core/src/typings/api/contractApi.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L46">core/src/typings/api/contractApi.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -331,6 +335,51 @@
 										<ul class="tsd-parameters">
 											<li>
 												<h5>args: <a href="core.publishcontractargs.html" class="tsd-signature-type">PublishContractArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="publishcontractbyreference" class="tsd-anchor"></a>
+					<h3>publish<wbr>Contract<wbr>ByReference</h3>
+					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c6a1ecf/packages/core/src/typings/api/contractApi.ts#L54">core/src/typings/api/contractApi.ts:54</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Publishes a smart contract to the blockchain using the code base of an already existant contract.
+							This reduces payload in the chain, allowing to deploy many contracts per block and very cheap</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The transaction id in case of success</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.publishcontractbyreferenceargs.html" class="tsd-signature-type">PublishContractByReferenceArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.publishcontractbyreferenceargs.html" class="tsd-signature-type">PublishContractByReferenceArgs</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -416,6 +465,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.contractapi.html#publishcontract" class="tsd-kind-icon">publish<wbr>Contract</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.contractapi.html#publishcontractbyreference" class="tsd-kind-icon">publish<wbr>Contract<wbr>ByReference</a>
 							</li>
 						</ul>
 					</li>
