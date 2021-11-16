@@ -32,5 +32,6 @@ export interface Transaction {
     readonly height?: number;
     readonly recipient?: string;
     readonly recipientRS?: string;
+    readonly referencedTransactionFullHash?: string;
 }
 

@@ -8,6 +8,7 @@ import {DefaultDeadline} from '../../../constants';
 import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {SendAmountArgs} from '../../../typings/args/sendAmountArgs';
+import {verifyUnsignedTransaction} from '../../../transaction';
 
 const SmartContractPublickey = '0000000000000000000000000000000000000000000000000000000000000000';
 
@@ -40,6 +41,9 @@ export const sendAmountToSingleRecipient = (service: ChainService):
         }
 
         const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMoney', parameters);
+
+        // FIXME: activate transaction verification
+        // verifyUnsignedTransaction(parameters, unsignedHexMessage);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderPublicKey,

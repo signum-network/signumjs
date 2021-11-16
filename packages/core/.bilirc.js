@@ -49,6 +49,7 @@ module.exports = {
           'convertHexStringToString',
           'convertBase36StringToHexString',
           'convertHexStringToBase36String',
+          'convertHexEndianess',
         ]
       },
     }

@@ -7,6 +7,7 @@ import {TransactionResponse} from '../../../typings/transactionResponse';
 import {MultioutRecipientAmount} from '../../../typings/multioutRecipientAmount';
 import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
 import {DefaultDeadline} from '../../../constants';
+import {verifyUnsignedTransaction} from '../../../transaction';
 
 function mountRecipientsString(recipientAmounts: MultioutRecipientAmount[]): string {
     return recipientAmounts.map( ({amountNQT, recipient}) => `${recipient}:${amountNQT}`).join(';');

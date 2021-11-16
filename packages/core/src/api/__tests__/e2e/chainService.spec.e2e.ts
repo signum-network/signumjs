@@ -5,7 +5,7 @@ const environment = loadEnvironment();
 
 jest.setTimeout(environment.timeout);
 
-describe('[E2E] Burst Service', () => {
+describe('[E2E] ChainService', () => {
 
     it('should selectBestNode and reconfigure accordingly', async () => {
         const service = new ChainService({
@@ -20,7 +20,7 @@ describe('[E2E] Burst Service', () => {
         // @ts-ignore
         expect(service.settings.httpClient._clientImpl.defaults.baseURL).toBe(environment.testNetHost);
 
-        const bestHost =  await service.selectBestHost(true);
+        const bestHost = await service.selectBestHost(true);
         expect(bestHost).toBe('https://brazil.signum.network');
         expect(service.settings.nodeHost).toBe(bestHost);
         // @ts-ignore
@@ -38,10 +38,10 @@ describe('[E2E] Burst Service', () => {
                 'https://invalid2.signum.network',
             ]
         });
-        try{
+        try {
             await service.selectBestHost(true);
             expect('Expected exception').toBeFalsy();
-        }catch (e){
+        } catch (e) {
             // @ts-ignore
             expect(service.settings.httpClient._clientImpl.defaults.baseURL).toBe(environment.testNetHost);
             expect(service.settings.nodeHost).toBe(environment.testNetHost);
