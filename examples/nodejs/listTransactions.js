@@ -1,7 +1,7 @@
 const {Address} = require("@signumjs/core");
 const {Amount, ChainTime} = require("@signumjs/util");
 
-const {api, askAccount, handleApiError} = require('./helper');
+const {api, askAccount, handleError} = require('./helper');
 
 async function listTransactions(account) {
 
@@ -41,7 +41,7 @@ async function listTransactions(account) {
     } catch (e) {
         // If the API returns an exception,
         // the return error object is of type HttpError
-        handleApiError(e);
+        handleError(e);
     }
 }
 

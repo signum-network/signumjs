@@ -4,8 +4,9 @@ const {
     TransactionArbitrarySubtype, Address
 } = require('@signumjs/core');
 const {ChainTime} = require('@signumjs/util')
-const {api, askAccount, handleApiError, getAccountId} = require('./helper');
+const {api, askAccount, handleError } = require('./helper');
 
+// here we check for a certain attachment type, and get the text message if not encrypted
 const getMessageText = transaction =>
     isAttachmentVersion(transaction, 'EncryptedMessage')
         ? '<encrypted>'
@@ -33,7 +34,7 @@ async function listMessages(account) {
         })
 
     } catch (e) {
-        handleApiError(e)
+        handleError(e)
     }
 }
 

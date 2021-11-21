@@ -1,9 +1,9 @@
 const api = require('./api');
 const askAccount = require('./askAccount');
-const handleApiError = require('./handleApiError');
+const handleError = require('./handleApiError');
 
 module.exports = {
     api,
     askAccount,
-    handleApiError,
+    handleError,
 };
