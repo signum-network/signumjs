@@ -4,15 +4,14 @@ const {Amount, ChainTime} = require("@signumjs/util");
 const {api, askAccount, handleError} = require('./helper');
 
 async function listTransactions(account) {
-
-    // we check if incoming account is either a Signum Address, or Numeric Id
-    // eventually, we convert to Numeric Id
-    const accountId = Address.create(account).getNumericId()
-
     // All API calls are asynchronous
     // The recommended pattern is using async/await
     // This makes exception handling easy using try/catch
     try {
+
+        // we check if incoming account is either a Signum Address, or Numeric Id
+        // eventually, we convert to Numeric Id
+        const accountId = Address.create(account).getNumericId()
 
         // Now, we call the getAccountTransactions method,
         // but we want only the 100 most recent transactions, including multi-out
