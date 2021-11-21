@@ -1,9 +1,10 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Copyright (c) 2021 Signum Network
  */
 
 /**
- * The contract interface returned from BRS API [[ContractApi.getContract]]
+ * The contract interface returned from Signum Node API [[ContractApi.getContract]]
  * @module contracts
  */
 export interface Contract {
@@ -15,6 +16,7 @@ export interface Contract {
     name: string;
     description: string;
     machineCode: string;
+    machineCodeHashId: string;
     machineData: string;
     balanceNQT: string;
     prevBalanceNQT: string;
