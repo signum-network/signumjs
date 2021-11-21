@@ -14,6 +14,11 @@
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
 technology.
 
+----------------------------
+
+Best way to start is with the extensive (still under construction) [Online Documentation](https://signum-network.gitbook.io/signumjs/)
+
+----------------------------
 ## Packages
 
 The SDK is separated in the following packages
@@ -233,9 +238,3 @@ npm run publish
 ```
 
 > Note: Only with a valid npm token
-
-## Documentation
-
-- [SignumJS Online Documentation](https://signum-network.github.io/signumjs/)
-- To re-generate docs: `npm run doc`
-- To update the README.md files: `lerna run readme`
