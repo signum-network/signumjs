@@ -1,0 +1,32 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "SignumJS examples for NodeJS",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/signum-network/signumjs.git"
+  },
+  "keywords": [
+    "signumjs",
+    "sdk",
+    "signum",
+    "blockchain",
+    "web3"
+  ],
+  "author": "ohager",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/signum-network/signumjs/issues"
+  },
+  "homepage": "https://github.com/signum-network/signumjs#readme",
+  "dependencies": {
+    "@signumjs/contracts": "^1.0.0-rc.8",
+    "@signumjs/core": "^1.0.0-rc.8",
+    "@signumjs/crypto": "^1.0.0-rc.8",
+    "@signumjs/http": "^1.0.0-rc.8",
+    "@signumjs/monitor": "^1.0.0-rc.8",
+    "@signumjs/util": "^1.0.0-rc.8",
+    "inquirer": "^8.2.0"
+  }
+}
