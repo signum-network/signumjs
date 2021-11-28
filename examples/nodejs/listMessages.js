@@ -20,6 +20,7 @@ async function listMessages(account) {
         const {transactions} = await api.account.getAccountTransactions(
             {
                 accountId,
+                lastIndex: 20, // getting only the most recent 20
                 type: TransactionType.Arbitrary,
                 subtype: TransactionArbitrarySubtype.Message
             }
