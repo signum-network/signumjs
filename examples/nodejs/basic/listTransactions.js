@@ -1,7 +1,7 @@
 const {Address} = require("@signumjs/core");
 const {Amount, ChainTime} = require("@signumjs/util");
 
-const {api, askAccount, handleError} = require('./helper');
+const {api, askAccount, handleError} = require('../helper');
 
 async function listTransactions(account) {
     // All API calls are asynchronous

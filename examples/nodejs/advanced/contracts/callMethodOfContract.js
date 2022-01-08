@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 const {Address} = require("@signumjs/core");
-const {Amount, ChainTime, FeeQuantPlanck} = require("@signumjs/util");
-const {provideLedger, handleError} = require('../../helper');
 const {generateMasterKeys} = require("@signumjs/crypto");
+const {Amount, FeeQuantPlanck} = require("@signumjs/util");
+const {provideLedger, handleError, confirmTransaction} = require('../../helper');
 
 const LedgerHostUrls = {
     'TestNet': 'https://europe3.testnet.signum.network',
@@ -12,6 +12,8 @@ const LedgerHostUrls = {
 /**
  * This is an example of mapping between the hashes (generated on compilation with Blocktalk)
  * and more readable names. Of course, this depends on each contract
+ *
+ * Using constants is a good practice.
  */
 const ContractMethods = {
     TransferRoyalties: '7174296962751784077',
@@ -77,33 +79,30 @@ function askForCallingParameters() {
         ])
 }
 
-function confirm(params) {
-
-    console.info("These are your parameters", JSON.stringify(params))
-
-    return inquirer.prompt([{
-        type: 'input',
-        name: 'passphrase',
-        message: 'Please enter your passphrase and confirm the method call (Hit Enter to Abort)',
-        default: null
-    }])
-}
 
 
+/**
+ * This advanced example shows how to interact with smart contracts, i.e. how to call methods
+ */
 async function callMethodOfContract(params) {
     try {
 
         const {ledger: ledgerChoice, contract, amount, method, arg1, arg2, arg3, arg4} = params;
+
+        // here we instantiate the ledger api
         const ledger = provideLedger(LedgerHostUrls[ledgerChoice])
+
+        // this way we not only convert the contracts address to its id, but this method also asserts
+        // that we have a formally valid address. It's not guaranteed that the address really exists in the chain
         const contractId = Address.create(contract).getNumericId()
 
-        const {passphrase} = await confirm();
-        if (!passphrase) {
-            console.info('Aborted');
-            process.exit(-1);
-            return
-        }
+        // asking for the passphrase
+        const {passphrase} = await confirmTransaction(params);
 
+        // as the args are strings we convert them to supported
+        // data types, i.e. number (long), boolean or string
+        // Attention: contracts arguments must be numeric in any case,
+        // passing a text string will cause issues
         const getMethodArg = (arg) => {
             const loarg = arg.toLowerCase()
             if (loarg === 'true' || loarg === 'false') {
@@ -116,12 +115,14 @@ async function callMethodOfContract(params) {
         }
 
         let methodArgs = [];
+        // at maximum four long args can be passed to the contracts method
         [arg1, arg2, arg3, arg4].forEach(a => {
             if (a) {
                 methodArgs.push(getMethodArg(a))
             }
         })
 
+        // standard pattern: derive the keys from the passphrase
         const senderKeys = generateMasterKeys(passphrase);
         const args = {
             contractId,
@@ -133,12 +134,9 @@ async function callMethodOfContract(params) {
             methodArgs,
         }
 
-        console.log('calls', args)
-
-        // const {transaction} = await ledger.contract.callContractMethod(args)
-        //
-        // console.info('Call successful - tx id:', transaction)
-        return Promise.resolve()
+        // finally, we call the contracts method
+        const {transaction} = await ledger.contract.callContractMethod(args)
+        console.info('Call successful - tx id:', transaction)
     } catch (e) {
         // If the API returns an exception,
         // the return error object is of type HttpError

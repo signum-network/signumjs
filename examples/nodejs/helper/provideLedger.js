@@ -1,6 +1,6 @@
 const {composeApi} = require("@signumjs/core");
 
-// this is not recommended, but it may happen that the SSL cert of a peer is not
+// this is not recommended in production, but it may happen that the SSL cert of a peer is not
 // completely valid
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
