@@ -6,7 +6,6 @@ const {provideLedger, handleError, confirmTransaction} = require('../helper');
 
 // these are our possible networks
 const LedgerHostUrls = {
-    // 'TestNet': 'https://europe3.testnet.signum.network',
     'TestNet': 'http://localhost:6876',
     'MainNet': 'https://europe.signum.network',
 }
@@ -48,9 +47,6 @@ function askForParameters() {
  * This example shows how to send some amount of SIGNA to another account
  */
 async function sendSigna(args) {
-    // All API calls are asynchronous
-    // The recommended pattern is using async/await
-    // This makes exception handling easy using try/catch
     try {
         const {ledgerType, recipient, amount, feeType} = args
 
@@ -79,8 +75,9 @@ async function sendSigna(args) {
         // we assume that the feeType is either ['Minimum', 'Cheap', 'Standard', 'Priority']
         const selectedFeePlanck = suggestedFees[feeType.toLowerCase()]
 
-        // Now, we call the getAccountTransactions method,
-        // but we want only the 100 most recent transactions, including multi-out
+        // Now, we execute the transaction
+        // within the method the local signing flow is being executed, i.e.
+        // the private key is used only locally for signinh, but never sent over the network
         const {transaction} = await ledger.transaction.sendAmountToSingleRecipient(
             {
                 recipientId,
