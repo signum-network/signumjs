@@ -132,10 +132,10 @@ async function callMethodOfContract(params) {
             methodHash: ContractMethods[method],
             methodArgs,
         }
+        const {transaction} = await ledger.contract.callContractMethod(args)
 
         console.log('calls', args)
 
-        // const {transaction} = await ledger.contract.callContractMethod(args)
         //
         // console.info('Call successful - tx id:', transaction)
         return Promise.resolve()
