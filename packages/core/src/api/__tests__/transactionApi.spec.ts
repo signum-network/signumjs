@@ -106,18 +106,15 @@ describe('TransactionApi', () => {
             const recipients = ['recipient_1', 'recipient_2'];
 
             service = createChainService(httpMock, 'relPath');
-            const status = await sendSameAmountToMultipleRecipients(service)(
-                '2000',
-                '1000',
-                recipients,
-                'senderPublicKey',
-                'senderPrivateKey',
-            );
+            const status = await sendSameAmountToMultipleRecipients(service)({
+                feePlanck: '1000',
+                amountPlanck: '2000',
+                senderPublicKey: 'senderPublicKey',
+                senderPrivateKey: 'senderPrivateKey',
+                recipientIds: recipients
+            });
 
             expect(status).toBe('transactionId');
-            // expect(generateSignature).toBeCalledTimes(1);
-            // expect(verifySignature).toBeCalledTimes(1);
-            // expect(generateSignedTransactionBytes).toBeCalledTimes(1);
         });
 
 
@@ -131,13 +128,13 @@ describe('TransactionApi', () => {
             service = createChainService(httpMock, 'relPath');
 
             try {
-                await sendSameAmountToMultipleRecipients(service)(
-                    '2000',
-                    '1000',
-                    recipients,
-                    'senderPublicKey',
-                    'senderPrivateKey',
-                );
+                await sendSameAmountToMultipleRecipients(service)({
+                    feePlanck: '1000',
+                    amountPlanck: '2000',
+                    senderPublicKey: 'senderPublicKey',
+                    senderPrivateKey: 'senderPrivateKey',
+                    recipientIds: recipients
+                });
                 expect(false).toBe('Expected exception');
             } catch (e) {
                 expect(e.message).toContain('No recipients given');
@@ -187,7 +184,7 @@ describe('TransactionApi', () => {
                     'relPath?requestType=broadcastTransaction&transactionBytes=signedTransactionBytes')
                 .build();
 
-            const recipients: MultioutRecipientAmount[] = [
+            const recipientAmounts: MultioutRecipientAmount[] = [
                 {
                     recipient: 'recipient_1',
                     amountNQT: '2000',
@@ -200,10 +197,12 @@ describe('TransactionApi', () => {
 
             service = createChainService(httpMock, 'relPath');
             const status = await sendAmountToMultipleRecipients(service)(
-                recipients,
-                '1000',
-                'senderPublicKey',
-                'senderPrivateKey',
+                {
+                    feePlanck: '1000',
+                    recipientAmounts,
+                    senderPublicKey: 'senderPublicKey',
+                    senderPrivateKey: 'senderPrivateKey'
+                }
             );
 
             expect(status).toBe('transactionId');
@@ -218,15 +217,16 @@ describe('TransactionApi', () => {
                 .onPostReply(200, mockBroadcastResponse)
                 .build();
 
-            const recipients = [];
+            const recipientAmounts = [];
             service = createChainService(httpMock, 'relPath');
 
             try {
-                await sendAmountToMultipleRecipients(service)(
-                    recipients,
-                    '1000',
-                    'senderPublicKey',
-                    'senderPrivateKey',
+                await sendAmountToMultipleRecipients(service)({
+                        feePlanck: '1000',
+                        recipientAmounts,
+                        senderPublicKey: 'senderPublicKey',
+                        senderPrivateKey: 'senderPrivateKey'
+                    }
                 );
                 expect(false).toBe('Expected exception');
             } catch (e) {

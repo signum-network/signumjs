@@ -22,7 +22,7 @@ export const sendAmountToMultipleRecipients = (service: ChainService) =>
     (args: SendAmountToMultipleRecipientsArgs) =>
         signIfPrivateKey(service, args, async (a: SendAmountToMultipleRecipientsArgs) => {
 
-                const {recipientAmounts, deadline, feePlanck, senderPublicKey} = a;
+                const {recipientAmounts, deadline = 1440, feePlanck, senderPublicKey} = a;
 
                 if (recipientAmounts.length === 0) {
                     throw new Error('No recipients given. Send ignored');
