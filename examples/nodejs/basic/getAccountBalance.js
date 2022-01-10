@@ -1,7 +1,7 @@
 const {Address} = require("@signumjs/core");
 const {Amount} = require("@signumjs/util");
 
-const {api, askAccount, handleError} = require('./helper');
+const {api, askAccount, handleError} = require('../helper');
 
 async function getBalance(account) {
     // All API calls are asynchronous
