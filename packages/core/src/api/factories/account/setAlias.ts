@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {convertNumberToNQTString} from '@signumjs/util';
 import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 
@@ -38,7 +38,7 @@ export const setAlias = (service: ChainService): (
             feeNQT: convertNumberToNQTString(parseFloat(feeNQT)),
             publicKey: senderPublicKey
         };
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('setAlias', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('setAlias', parameters);
         return signAndBroadcastTransaction(service)({
             senderPrivateKey,
             senderPublicKey,

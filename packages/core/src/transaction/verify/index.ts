@@ -1,1 +1,1 @@
-export {parseTransactionBytes} from './parseTransactionBytes';
+export {verifyUnsignedTransaction} from './verifyUnsignedTransaction';

@@ -1,8 +1,7 @@
 /* globals window */
-import {WalletPayArgs, Wallet} from './typings';
-import {isNodeJS} from './isNodeJS';
-import {Amount, createDeeplink, FeeQuantPlanck} from '@signumjs/util';
-import {assertAddress} from './assertAddress';
+import {createDeeplink} from '@signumjs/util';
+import {Wallet} from '../typings';
+import {isNodeJS} from '../isNodeJS';
 
 /**
  * The options for the Deeplinkable Wallet
@@ -30,7 +29,7 @@ interface DeeplinkableWalletOpts {
  *
  * @module wallets
  */
-export class DeeplinkableWallet implements Wallet {
+export class GenericDeeplinkableWallet implements Wallet {
     public readonly redirectProxy: string;
     private readonly openInBrowser: boolean;
 
@@ -42,7 +41,7 @@ export class DeeplinkableWallet implements Wallet {
         }
     }
 
-    private eventuallyOpenInBrowser(url: string): Promise<string> {
+    protected eventuallyOpenInBrowser(url: string): Promise<string> {
         if (this.openInBrowser) {
             // @ts-ignore
             window.open(url, 'SignumJS Deeplinking', 'noopener noreferrer');
@@ -51,7 +50,7 @@ export class DeeplinkableWallet implements Wallet {
     }
 
 
-    private mountDeeplink(action: string, payload: object) : string {
+    protected mountDeeplink(action: string, payload: object) : string {
         const link = createDeeplink({
             action,
             payload
@@ -61,33 +60,5 @@ export class DeeplinkableWallet implements Wallet {
 
     confirm(unsignedTransaction: string): Promise<string> {
         return this.eventuallyOpenInBrowser(this.mountDeeplink('confirm', {unsignedTransaction}));
-    }
-
-    pay(args: WalletPayArgs): Promise<string> {
-        const {
-            amount = '0',
-            encrypt = false,
-            fee = FeeQuantPlanck / 1e8,
-            message,
-            hexMessage,
-            to,
-            deadline = 1440,
-            readonly = false
-        } = args;
-
-        assertAddress(to);
-
-        const payload = {
-            recipient: to,
-            amountPlanck: Amount.fromSigna(amount).getPlanck(),
-            feePlanck: Amount.fromSigna(fee).getPlanck(),
-            message: message || hexMessage,
-            messageIsText: hexMessage === undefined,
-            immutable: readonly,
-            deadline,
-            encrypt
-        };
-
-        return this.eventuallyOpenInBrowser(this.mountDeeplink('pay', payload));
     }
 }

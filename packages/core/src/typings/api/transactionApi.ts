@@ -36,6 +36,14 @@ export interface TransactionApi {
     getTransaction: (transactionId: string) => Promise<Transaction>;
 
     /**
+     * Parses a transaction byte sequence to its JSON representation
+     *
+     * @param transactionHexBytes The transaction byte sequence in hexadecimal format
+     * @return The Transaction Id
+     */
+    parseTransactionBytes: (transactionHexBytes: string) => Promise<TransactionId>;
+
+    /**
      * Sends a multi-out request to the blockchain with _same_ value for all recipients
      *
      * @param amountPlanck The amount to be sent as Planck value
@@ -119,8 +127,8 @@ export interface TransactionApi {
     /**
      * Signs and broadcasts a transaction
      *
-     * Usually, you don't need this, as all sending methods in BurstJS sign and broadcast.
-     * As not all BRS API functions are implemented yet in BurstJS this method is handy for those,
+     * Usually, you don't need this, as all sending methods in SignumJS sign and broadcast.
+     * As not all BRS API functions are implemented yet in SignumJS this method is handy for those,
      * i.e. all direct calls to [[ChainService.send]]
      *
      * @param unsignedTransaction The unsigned Transaction Object (returned by [[ChainService.send]])

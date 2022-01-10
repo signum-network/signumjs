@@ -6,7 +6,7 @@ import {ChainService} from '../../../service';
 import {PublishContractArgs} from '../../../typings/args';
 import {signAndBroadcastTransaction} from '../transaction';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 
 
@@ -34,7 +34,7 @@ export const publishContract = (service: ChainService):
             broadcast: true,
         };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('createATProgram', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('createATProgram', parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderPublicKey,

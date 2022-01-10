@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {encryptMessage} from '@signumjs/crypto';
 import {SendEncryptedMessageArgs} from '../../../typings/args/sendEncryptedMessageArgs';
@@ -38,7 +38,7 @@ export const sendEncryptedMessage = (service: ChainService):
             recipientPublicKey: args.recipientPublicKey || undefined,
         };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMessage', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('sendMessage', parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderKeys.publicKey,

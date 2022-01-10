@@ -44,7 +44,7 @@ export * from './typings/suggestedFees';
 export * from './typings/transaction';
 export * from './typings/transactionId';
 export * from './typings/transactionList';
-export * from './typings/transactionResponse';
+export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
 
 

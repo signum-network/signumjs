@@ -42,8 +42,10 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
+    "@signumjs/core": "^1.0.0-rc.8",
+    "@signumjs/crypto": "^1.0.0-rc.8",
     "@types/jest": "^24.0.23",
+    "@types/node": "^17.0.8",
     "bili": "^4.8.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
@@ -67,5 +69,9 @@
   "gitHead": "56895a005233449585f1914d7ff244e132b35a39",
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@signumjs/core": "^1.0.0-rc.8",
+    "@signumjs/crypto": "^1.0.0-rc.8"
   }
 }

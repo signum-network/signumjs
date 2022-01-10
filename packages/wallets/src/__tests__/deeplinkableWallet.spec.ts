@@ -1,4 +1,4 @@
-import {DeeplinkableWallet} from '../DeeplinkableWallet';
+import {DeeplinkableWallet} from '../EasyDeeplinkableWallet';
 import {Amount, parseDeeplink} from '@signumjs/util';
 
 describe('DeeplinkableWallet', () => {

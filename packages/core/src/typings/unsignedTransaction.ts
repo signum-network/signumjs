@@ -1,22 +1,22 @@
 
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2022 Signum Network
  */
 
 /**
- * Transaction Response
+ * Unsigned Transaction
+ *
+ * This is being returned from transaction methods, if no private key was given
  *
  * @module core
  * */
-export interface TransactionResponse {
-    readonly fullHash: string;
-    readonly transaction: string;
+export interface UnsignedTransaction {
     readonly signatureHash: string;
     readonly unsignedTransactionBytes: string;
     readonly transactionJSON: object;
     readonly broadcasted: boolean;
     readonly requestProcessingTime: number;
-    readonly transactionBytes: string;
 }
 
 

@@ -28,5 +28,6 @@ module.exports = {
                 ]
             },
         },
-    }
+    },
+    externals: ['@signumjs/core']
 };

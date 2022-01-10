@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {SetAccountInfoArgs} from '../../../typings/args/setAccountInfoArgs';
@@ -26,7 +26,7 @@ export const setAccountInfo = (service: ChainService):
             feeNQT: args.feePlanck,
             publicKey: args.senderPublicKey
         };
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('setAccountInfo', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('setAccountInfo', parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPrivateKey: args.senderPrivateKey,

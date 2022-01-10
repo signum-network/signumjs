@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {generateSignature} from '@signumjs/crypto';
 import {verifySignature} from '@signumjs/crypto';
 import {generateSignedTransactionBytes} from '@signumjs/crypto';
@@ -40,7 +40,7 @@ export const setAlias = (service: ChainService): (
             feeNQT: convertNumberToNQTString(parseFloat(feeNQT)),
             publicKey: senderPublicKey
         };
-        const {unsignedTransactionBytes} = await service.send<TransactionResponse>('setAlias', parameters);
+        const {unsignedTransactionBytes} = await service.send<UnsignedTransaction>('setAlias', parameters);
         const signature = generateSignature(unsignedTransactionBytes, senderPrivateKey);
         if (!verifySignature(signature, unsignedTransactionBytes, senderPublicKey)) {
             throw new Error('The signed message could not be verified! Transaction not broadcasted!');

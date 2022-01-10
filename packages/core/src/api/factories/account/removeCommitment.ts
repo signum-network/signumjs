@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {signAndBroadcastTransaction} from '../transaction';
 import {CommitmentArgs} from '../../../typings/args/commitmentArgs';
@@ -24,7 +24,7 @@ export const removeCommitment = (service: ChainService):
             deadline: args.deadline || DefaultDeadline
         };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('removeCommitment', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('removeCommitment', parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderPublicKey,

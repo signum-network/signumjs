@@ -1,8 +1,21 @@
-import {WalletPayArgs} from './args';
 
 /**
  * Generic Wallet interface
- * @see [[WalletProvider]]
+ *
+ * This is the most generic wallet interface, for generic wallet operations
+ *
+ * @example
+ *
+ * ```js
+ *  const api = composeApi({nodeHost: 'http://localhost:8125' })
+ *  const {privateSignKey} = generateMasterKeys(secret)
+ *  const wallet = new MyWallet(api, privateSignKey);
+ *  const {transaction} = await wallet.pay({
+ *      // your args here
+ *  })
+ * ```
+ *
+ * @see [[EasyWallet]] for a slightly more comfortable interface for most common operations
  * @module wallets
  */
 export interface Wallet {
@@ -15,12 +28,4 @@ export interface Wallet {
      */
     confirm(unsignedTransactionBytes: string): Promise<string|void>;
 
-    /**
-     * Requests a simple payment
-     * @param args The payment args
-     * @return
-     */
-    pay(args: WalletPayArgs): Promise<string|void>;
-
-    // TODO: more common actions like message, callContractMethod etc
 }

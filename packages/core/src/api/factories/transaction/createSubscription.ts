@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
@@ -33,7 +33,7 @@ export const createSubscription = (service: ChainService):
             parameters = createParametersFromAttachment(args.attachment, parameters);
         }
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMoneySubscription', parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('sendMoneySubscription', parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey: args.senderPublicKey,

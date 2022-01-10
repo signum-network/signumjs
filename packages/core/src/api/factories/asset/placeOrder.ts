@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {PlaceOrderArgs} from '../../../typings/args';
@@ -39,7 +39,7 @@ export const placeOrder = (service: ChainService):
         }
 
         const method = args.type === 'ask' ? 'placeAskOrder' : 'placeBidOrder';
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>(method, parameters);
+        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>(method, parameters);
 
         return signAndBroadcastTransaction(service)({
             senderPublicKey,

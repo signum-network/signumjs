@@ -1,9 +1,9 @@
 /**
  * Copyright (c) 2022 Signum Network
- *
+ * @see [[EasyWallet.pay]]
  * @module wallets
  */
-export interface WalletPayArgs {
+export interface EasyWalletPayArgs {
     /**
      * The recipients address/account Id
      */

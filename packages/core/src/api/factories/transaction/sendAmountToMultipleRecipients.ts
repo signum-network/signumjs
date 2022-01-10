@@ -1,15 +1,15 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified Work (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {MultioutRecipientAmount} from '../../../typings/multioutRecipientAmount';
-import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
-import {DefaultDeadline} from '../../../constants';
+import {SendAmountToMultipleRecipientsArgs} from '../../../typings/args/sendAmountToMultipleRecipientsArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 function mountRecipientsString(recipientAmounts: MultioutRecipientAmount[]): string {
-    return recipientAmounts.map( ({amountNQT, recipient}) => `${recipient}:${amountNQT}`).join(';');
+    return recipientAmounts.map(({amountNQT, recipient}) => `${recipient}:${amountNQT}`).join(';');
 }
 
 /**
@@ -18,40 +18,23 @@ function mountRecipientsString(recipientAmounts: MultioutRecipientAmount[]): str
  * See details at [[TransactionApi.sendAmountToMultipleRecipients]]
  * @module core.api.factories
  */
-export const sendAmountToMultipleRecipients = (service: ChainService):
-    (
-        recipientAmounts: MultioutRecipientAmount[],
-        feePlanck: string,
-        senderPublicKey: string,
-        senderPrivateKey: string,
-        deadline?: number
-    ) => Promise<TransactionId> =>
-    async (
-        recipientAmounts: MultioutRecipientAmount[],
-        feePlanck: string,
-        senderPublicKey: string,
-        senderPrivateKey: string,
-        deadline = DefaultDeadline
-    ): Promise<TransactionId> => {
+export const sendAmountToMultipleRecipients = (service: ChainService) =>
+    (args: SendAmountToMultipleRecipientsArgs) =>
+        signIfPrivateKey(service, args, async (a: SendAmountToMultipleRecipientsArgs) => {
 
-        if (recipientAmounts.length === 0) {
-            throw new Error('No recipients given. Send ignored');
-        }
+                const {recipientAmounts, deadline, feePlanck, senderPublicKey} = a;
 
-        const parameters = {
-            publicKey: senderPublicKey,
-            recipients: mountRecipientsString(recipientAmounts),
-            feeNQT: feePlanck,
-            deadline
-        };
+                if (recipientAmounts.length === 0) {
+                    throw new Error('No recipients given. Send ignored');
+                }
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>(
-            'sendMoneyMulti', parameters);
+                const parameters = {
+                    publicKey: senderPublicKey,
+                    recipients: mountRecipientsString(recipientAmounts),
+                    feeNQT: feePlanck,
+                    deadline
+                };
 
-        return signAndBroadcastTransaction(service)({
-            unsignedHexMessage,
-            senderPublicKey,
-            senderPrivateKey
-        });
-
-    };
+                return service.send<UnsignedTransaction>('sendMoneyMulti', parameters);
+            }
+        );

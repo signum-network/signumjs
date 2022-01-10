@@ -15,7 +15,7 @@ import {UnsignedTransactionArgs} from '../../../typings/args/unsignedTransaction
  * See details at [[TransactionApi.signAndBroadcastTransaction]]
  * @module core.api.factories
  */
-export let signAndBroadcastTransaction = (burstService: ChainService):
+export const signAndBroadcastTransaction = (chainService: ChainService):
     (unsignedTransaction: UnsignedTransactionArgs) => Promise<TransactionId> =>
     async (unsignedTransaction): Promise<TransactionId> => {
 
@@ -27,6 +27,6 @@ export let signAndBroadcastTransaction = (burstService: ChainService):
         }
 
         const signedMessage = generateSignedTransactionBytes(unsignedHexMessage, signature);
-        return broadcastTransaction(burstService)(signedMessage);
+        return broadcastTransaction(chainService)(signedMessage);
     };
 

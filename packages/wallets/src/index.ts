@@ -4,4 +4,4 @@
  * @moduledefinition wallets
  * */
 export * from './typings';
-export * from './DeeplinkableWallet';
+export * from './deeplinkable';

@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2021 Signum Network
+ * Modified (c) 2021,2022 Signum Network
  */
 import {ChainService, ChainServiceSettings} from '../service';
 import {Api} from '../typings/api';
@@ -62,7 +62,8 @@ import {
     sendSameAmountToMultipleRecipients,
     getSubscription,
     getUnconfirmedTransactions,
-    signAndBroadcastTransaction
+    signAndBroadcastTransaction,
+    parseTransactionBytes
 } from './factories/transaction';
 import {
     cancelAskOrder,
@@ -150,6 +151,7 @@ export function composeApi(settings: ApiSettings): Api {
             getSubscription,
             getUnconfirmedTransactions,
             signAndBroadcastTransaction,
+            parseTransactionBytes,
         })
         .withMessageApi({
             sendMessage,

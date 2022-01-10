@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Rebranding
 - Removed all deprecated functions
 - Several Renamed Functions and classes
+- Added support for external signing
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
 - New Functions:
   - `getMiningInfo`

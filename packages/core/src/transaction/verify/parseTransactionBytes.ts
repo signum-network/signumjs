@@ -6,6 +6,8 @@ const _be = (hex: string) => hex.length > 2 ? convertHexEndianess(hex) : hex;
 const hexToNumber = (hex: string): number => parseInt(convertHexStringToDecString(_be(hex)), 10);
 const hexToDecStr = (hex: string): string => convertHexStringToDecString(_be(hex));
 
+// STILL WIP - this is a bigger work to do
+
 /**
  * Parses a bytewise representation of a transactions
  * @param hexString The hexadecimal format of the byte representation of a transaction
