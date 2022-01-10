@@ -7,6 +7,7 @@ import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {MultioutRecipientAmount} from '../../../typings/multioutRecipientAmount';
 import {SendAmountToMultipleRecipientsArgs} from '../../../typings/args/sendAmountToMultipleRecipientsArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
+import {DefaultDeadline} from '../../../constants';
 
 function mountRecipientsString(recipientAmounts: MultioutRecipientAmount[]): string {
     return recipientAmounts.map(({amountNQT, recipient}) => `${recipient}:${amountNQT}`).join(';');
@@ -22,7 +23,7 @@ export const sendAmountToMultipleRecipients = (service: ChainService) =>
     (args: SendAmountToMultipleRecipientsArgs) =>
         signIfPrivateKey(service, args, async (a: SendAmountToMultipleRecipientsArgs) => {
 
-                const {recipientAmounts, deadline = 1440, feePlanck, senderPublicKey} = a;
+                const {recipientAmounts, deadline = DefaultDeadline, feePlanck, senderPublicKey} = a;
 
                 if (recipientAmounts.length === 0) {
                     throw new Error('No recipients given. Send ignored');

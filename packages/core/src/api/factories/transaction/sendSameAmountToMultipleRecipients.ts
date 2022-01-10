@@ -6,6 +6,7 @@ import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {SendSameAmountToMultipleRecipientsArgs} from '../../../typings/args/sendSameAmountToMultipleRecipientsArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
+import {DefaultDeadline} from '../../../constants';
 
 
 /**
@@ -19,7 +20,7 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
         signIfPrivateKey(service, args,
             async (a: SendSameAmountToMultipleRecipientsArgs) => {
 
-                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = 1440} = a;
+                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = DefaultDeadline} = a;
 
                 if (recipientIds.length === 0) {
                     throw new Error('No recipients given. Send ignored');

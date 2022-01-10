@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
 import {CallContractMethodArgs, SendAmountArgs} from '../../../typings/args';
@@ -7,6 +8,7 @@ import {TransactionId} from '../../../typings/transactionId';
 import {AttachmentMessage} from '../../../typings/attachment';
 import {sendAmountToSingleRecipient} from '../transaction';
 import {generateMethodCall} from '@signumjs/contracts';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 
 
 /**
@@ -15,9 +17,8 @@ import {generateMethodCall} from '@signumjs/contracts';
  * See details at [[ContractApi.callContractMethod]]
  * @module core.api.factories
  */
-export const callContractMethod = (service: ChainService):
-    (args: CallContractMethodArgs) => Promise<TransactionId> =>
-    async (args: CallContractMethodArgs): Promise<TransactionId> => {
+export const callContractMethod = (service: ChainService) =>
+    async (args: CallContractMethodArgs): Promise<TransactionId | UnsignedTransaction> => {
 
         const callMessage = generateMethodCall({
             methodHash: args.methodHash,

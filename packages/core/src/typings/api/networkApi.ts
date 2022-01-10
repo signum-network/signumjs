@@ -5,6 +5,7 @@ import {Peer} from '../peer';
 import {PeerAddressList} from '../peerAddressList';
 import {ChainTimestamp} from '../chainTimestamp';
 import {MiningInfo} from '../miningInfo';
+import {NetworkInfo} from '../networkInfo';
 
 /**
  * Network API
@@ -19,6 +20,13 @@ export interface NetworkApi {
      * @return {BlockchainStatus} The Blockchain Status
      */
     getBlockchainStatus: () => Promise<BlockchainStatus>;
+
+
+    /**
+     * Get detailed information about the Networks constants/settings.
+     * @return {MiningInfo} The Mining Information
+     */
+    getNetworkInfo: () => Promise<NetworkInfo>;
 
     /**
      * Get the mining information.
