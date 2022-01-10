@@ -6,6 +6,7 @@ import {createChainService} from '../../__tests__/helpers/createChainService';
 import {sendMessage} from '../factories/message';
 import {sendEncryptedMessage} from '../factories/message/sendEncryptedMessage';
 import {FeeQuantPlanck} from '@signumjs/util';
+import {UnsignedTransaction} from '../../typings/unsignedTransaction';
 
 describe('Message Api', () => {
     describe('sendMessage', () => {
@@ -47,15 +48,31 @@ describe('Message Api', () => {
 
             expect(signAndBroadcastTransaction).toBeCalledTimes(1);
             expect(service.send).toBeCalledWith('sendMessage', {
-                'broadcast': true,
-                'deadline': 1440,
-                'feeNQT': '735000',
-                'message': 'Message Text',
-                'messageIsText': true,
-                'publicKey': 'senderPublicKey',
-                'recipient': 'recipientId',
-                'recipientPublicKey': 'recipientPublicKey',
+                broadcast: true,
+                deadline: 1440,
+                feeNQT: '735000',
+                message: 'Message Text',
+                messageIsText: true,
+                publicKey: 'senderPublicKey',
+                recipient: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
             });
+        });
+
+        it('should return unsigned bytes when sendMessage called without private key', async () => {
+            // @ts-ignore
+            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
+
+            const unsignedTx = await sendMessage(service)({
+                message: 'Message Text',
+                feePlanck: '' + FeeQuantPlanck,
+                recipientId: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as UnsignedTransaction;
+
+            expect(signAndBroadcastTransaction).not.toBeCalled();
+            expect(unsignedTx.unsignedTransactionBytes).toBe('unsignedTransactionBytes');
         });
 
         it('should sendEncryptedMessage', async () => {
@@ -81,24 +98,62 @@ describe('Message Api', () => {
                 feePlanck: '' + FeeQuantPlanck,
                 recipientId: 'recipientId',
                 recipientPublicKey: 'recipientPublicKey',
-                senderKeys: {
-                    signPrivateKey: 'signPrivateKey',
-                    publicKey: 'publicKey',
-                    agreementPrivateKey: 'agreementPrivateKey'
-                }
+                senderPrivateKey: 'senderPrivateKey',
+                senderAgreementKey: 'senderAgreementKey',
+                senderPublicKey: 'senderPublicKey'
             });
 
             expect(signAndBroadcastTransaction).toBeCalledTimes(1);
             expect(service.send).toBeCalledWith('sendMessage', {
-                'deadline': 1440,
-                'encryptedMessageData': 'encryptedMessage',
-                'encryptedMessageNonce': 'nonce',
-                'feeNQT': '735000',
-                'messageToEncryptIsText': true,
-                'publicKey': 'publicKey',
-                'recipient': 'recipientId',
-                'recipientPublicKey': 'recipientPublicKey',
+                deadline: 1440,
+                encryptedMessageData: 'encryptedMessage',
+                encryptedMessageNonce: 'nonce',
+                feeNQT: '735000',
+                messageToEncryptIsText: true,
+                recipient: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
+                publicKey: 'senderPublicKey'
             });
+        });
+
+
+        it('should return unsigneBytes when sendEncryptedMessage is called without private key', async () => {
+
+            // @ts-ignore
+            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
+
+
+            // @ts-ignore
+            encryptMessage = jest.fn(
+                () =>
+                    ({
+                        data: 'encryptedMessage',
+                        nonce: 'nonce'
+                    })
+            );
+
+            const unsignedTx = await sendEncryptedMessage(service)({
+                message: 'Message Text',
+                feePlanck: '' + FeeQuantPlanck,
+                recipientId: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
+                senderAgreementKey: 'senderAgreementKey',
+                senderPublicKey: 'senderPublicKey'
+            }) as UnsignedTransaction;
+
+            expect(signAndBroadcastTransaction).not.toBeCalled();
+            expect(service.send).toBeCalledWith('sendMessage', {
+                deadline: 1440,
+                encryptedMessageData: 'encryptedMessage',
+                encryptedMessageNonce: 'nonce',
+                feeNQT: '735000',
+                messageToEncryptIsText: true,
+                recipient: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
+                publicKey: 'senderPublicKey'
+            });
+
+            expect(unsignedTx.unsignedTransactionBytes).toBe('unsignedTransactionBytes');
         });
 
     });
