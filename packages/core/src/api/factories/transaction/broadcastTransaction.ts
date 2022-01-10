@@ -4,7 +4,6 @@
  * Modified work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {TransactionId} from '../../../typings/transactionId';
 
 /**

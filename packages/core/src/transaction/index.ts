@@ -2,6 +2,3 @@ export * from './isMultiOutSameTransaction';
 export * from './isMultiOutTransaction';
 export * from './getRecipientAmountsFromMultiOutPayment';
 export * from './getRecipientsAmount';
-// Still in progress
-// export * from './verify';
-
