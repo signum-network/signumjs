@@ -3,12 +3,6 @@ import {Attachment} from '../attachment';
 /**
  * The base argument object for common transactions
  *
- * @param feePlanck The fee as Planck value
- * @param senderPublicKey The senders public key for sending an _unsigned_ message
- * @param senderPrivateKey The senders private key to _sign_ the message
- * @param attachment An _optional_ attachment
- * @param deadline The _optional_ transactions deadline in minutes until it's being removed from mempool.
- * This may happen on low fees. Defaults to 1440 (maximum)
  * @module core
  */
 export interface DefaultSendArgs {
@@ -25,7 +19,7 @@ export interface DefaultSendArgs {
      * The senders private key, i.e. the [[crypto.Keys.signPrivateKey]]
      * If the private key is not given, then the transaction method will return the unsigned byte string.
      * The transaction won't be processed until the unsigned bytes are being signed and broadcasted using
-     * [[]]
+     * [[api.transaction.signAndBroadcastTransaction]]
      */
     senderPrivateKey?: string;
     /**

@@ -1,7 +1,8 @@
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {publishContractByReference, getAllContractIds, getContract, getContractsByAccount, publishContract} from '../factories/contract';
-import {signAndBroadcastTransaction} from '../factories/transaction';
+import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
+import {TransactionId} from '../../typings/transactionId';
 
 describe('Contract Api', () => {
 
@@ -114,7 +115,8 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-            });
+                feePlanck: ''
+            }) as TransactionId;
             expect(transaction).toEqual('transactionId');
         });
     });

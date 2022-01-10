@@ -1,12 +1,11 @@
 /**
- * Copyright (c) 2021 Signum Network
+ * Copyright (c) 2021,2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {signAndBroadcastTransaction} from '../transaction';
-import {TransactionId} from '../../../typings/transactionId';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {PublishContractByReferenceArgs} from '../../../typings/args';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 
 /**
@@ -15,29 +14,23 @@ import {PublishContractByReferenceArgs} from '../../../typings/args';
  * See details at [[ContractApi.publishContractByReference]]
  * @module core.api.factories
  */
-export const publishContractByReference = (service: ChainService):
-    (args: PublishContractByReferenceArgs) => Promise<TransactionId> =>
-    async (args: PublishContractByReferenceArgs): Promise<TransactionId> => {
+export const publishContractByReference = (service: ChainService) =>
+    (args: PublishContractByReferenceArgs) =>
+        signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {
 
-        const parameters = {
-            deadline: args.deadline || DefaultDeadline,
-            description: args.description,
-            feeNQT: args.feePlanck,
-            minActivationAmountNQT: args.activationAmountPlanck,
-            referencedTransactionFullHash: args.referencedTransaction,
-            name: args.name,
-            publicKey: args.senderPublicKey,
-            cspages: 1,
-            dpages: 1,
-            uspages: 1,
-            broadcast: true,
-        };
+            const parameters = {
+                deadline: a.deadline || DefaultDeadline,
+                description: a.description,
+                feeNQT: a.feePlanck,
+                minActivationAmountNQT: a.activationAmountPlanck,
+                referencedTransactionFullHash: a.referencedTransaction,
+                name: a.name,
+                publicKey: a.senderPublicKey,
+                cspages: 1,
+                dpages: 1,
+                uspages: 1,
+                broadcast: true,
+            };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('createATProgram', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderPublicKey,
-            senderPrivateKey: args.senderPrivateKey,
-            unsignedHexMessage
+            return service.send<UnsignedTransaction>('createATProgram', parameters);
         });
-    };
