@@ -17,7 +17,7 @@ import {Alias, AliasList} from '../..';
 import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {Amount, convertNumberToNQTString} from '@signumjs/util';
-import {signAndBroadcastTransaction} from '../factories/transaction';
+import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 
 describe('AccountApi', () => {
 
@@ -379,7 +379,7 @@ describe('AccountApi', () => {
 
         it('should setRewardRecipient', async () => {
             const status = await setRewardRecipient(service)({
-                feePlanck: convertNumberToNQTString(123),
+                feePlanck: Amount.fromSigna(123).getPlanck(),
                 recipientId: 'recipient',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
@@ -398,7 +398,7 @@ describe('AccountApi', () => {
             try {
                 await setRewardRecipient(service)(
                     {
-                        feePlanck: convertNumberToNQTString(123),
+                        feePlanck: Amount.fromSigna(123).getPlanck(),
                         recipientId: 'recipient',
                         senderPrivateKey: 'senderPrivateKey',
                         senderPublicKey: 'senderPublicKey',

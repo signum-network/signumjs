@@ -144,7 +144,7 @@ describe('Contract Api', () => {
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContractByReference(service)({
                 activationAmountPlanck: '20000000',
-                referencedTransaction: 'referencedTransactionId',
+                referencedTransactionHash: 'referencedTransactionId',
                 feePlanck: 'feePlanck',
                 description: 'description',
                 name: 'testContract',

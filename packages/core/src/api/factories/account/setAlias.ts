@@ -1,11 +1,12 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
-import {convertNumberToNQTString} from '@signumjs/util';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
+import {SetAliasArgs} from '../../../typings/args/setAliasArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
+import {DefaultDeadline} from '../../../constants';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AccountApi]].
@@ -14,36 +15,15 @@ import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransa
  *
  * @module core.api.factories
  */
-export const setAlias = (service: ChainService): (
-    aliasName: string,
-    aliasURI: string,
-    feeNQT: string,
-    senderPublicKey: string,
-    senderPrivateKey: string,
-    deadline: number,
-) => Promise<TransactionId> =>
-    async (
-        aliasName: string,
-        aliasURI: string,
-        feeNQT: string,
-        senderPublicKey: string,
-        senderPrivateKey: string,
-        deadline: number,
-    ): Promise<TransactionId> => {
-
-        const parameters = {
-            aliasName,
-            aliasURI,
-            deadline: deadline,
-            feeNQT: convertNumberToNQTString(parseFloat(feeNQT)),
-            publicKey: senderPublicKey
-        };
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('setAlias', parameters);
-        return signAndBroadcastTransaction(service)({
-            senderPrivateKey,
-            senderPublicKey,
-            unsignedHexMessage
+export const setAlias = (service: ChainService) =>
+    (args: SetAliasArgs) =>
+        signIfPrivateKey(service, args, async (a: SetAliasArgs) => {
+            const parameters = {
+                aliasName: a.aliasName,
+                aliasURI: a.aliasURI,
+                deadline: a.deadline || DefaultDeadline,
+                feeNQT: a.feePlanck,
+                publicKey: a.senderPublicKey
+            };
+            return service.send<UnsignedTransaction>('setAlias', parameters);
         });
-
-
-    };

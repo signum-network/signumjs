@@ -3,16 +3,20 @@ All notable changes to this project will be documented in this file.
 
 ## 1.0.0 (TBR)
 
+This version is a major breakthrough with a lots of significant and breaking changes.
+
 ### Breaking changes
 
 - Rebranding
 - Removed all deprecated functions
 - Several Renamed Functions and classes
 - Added support for external signing
+  - Attention: sendEncryptedMessage changed its interface
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
 - New Functions:
   - `getMiningInfo`
   - `publishContractByReference`
+  - `getNetworkInfo`
 - Minor bug fixes
 
 ----------------------------------------------------

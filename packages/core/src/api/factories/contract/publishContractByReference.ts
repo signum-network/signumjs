@@ -23,7 +23,7 @@ export const publishContractByReference = (service: ChainService) =>
                 description: a.description,
                 feeNQT: a.feePlanck,
                 minActivationAmountNQT: a.activationAmountPlanck,
-                referencedTransactionFullHash: a.referencedTransaction,
+                referencedTransactionFullHash: a.referencedTransactionHash,
                 name: a.name,
                 publicKey: a.senderPublicKey,
                 cspages: 1,

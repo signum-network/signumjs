@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2021 Burst Apps Team
+ * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {SetAccountInfoArgs} from '../../../typings/args/setAccountInfoArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AccountApi]].
@@ -14,23 +14,17 @@ import {SetAccountInfoArgs} from '../../../typings/args/setAccountInfoArgs';
  * See details at [[AccountApi.setAccountInfo]]
  * @module core.api.factories
  */
-export const setAccountInfo = (service: ChainService):
-    (args: SetAccountInfoArgs) => Promise<TransactionId> =>
-    async (args: SetAccountInfoArgs): Promise<TransactionId> => {
+export const setAccountInfo = (service: ChainService) =>
+    (args: SetAccountInfoArgs) =>
+        signIfPrivateKey(service, args, async (a: SetAccountInfoArgs) => {
 
+            const parameters = {
+                name: a.name,
+                description: a.description,
+                deadline: DefaultDeadline,
+                feeNQT: a.feePlanck,
+                publicKey: a.senderPublicKey
+            };
+            return service.send<UnsignedTransaction>('setAccountInfo', parameters);
 
-        const parameters = {
-            name: args.name,
-            description: args.description,
-            deadline: DefaultDeadline,
-            feeNQT: args.feePlanck,
-            publicKey: args.senderPublicKey
-        };
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('setAccountInfo', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPrivateKey: args.senderPrivateKey,
-            senderPublicKey: args.senderPublicKey,
-            unsignedHexMessage
         });
-    };
