@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2020 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 import {CancelOrderArgs} from '../../../typings/args';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 interface GenericCancelOrderArgs extends CancelOrderArgs {
     type: 'bid' | 'ask';
@@ -19,30 +19,21 @@ interface GenericCancelOrderArgs extends CancelOrderArgs {
  * See details at [[AssetApi.cancelAskOrder]] [[AssetApi.cancelBidOrder]]
  * @module core.api.factories
  */
-export const cancelOrder = (service: ChainService):
-    (args: GenericCancelOrderArgs) => Promise<TransactionId> =>
-    async (args: GenericCancelOrderArgs): Promise<TransactionId> => {
-
-        const {senderPrivateKey, senderPublicKey} = args;
+export const cancelOrder = (service: ChainService) =>
+    (args: GenericCancelOrderArgs) => signIfPrivateKey(service, args, async (a: GenericCancelOrderArgs) => {
 
         let parameters = {
-            order: args.order,
-            publicKey: senderPublicKey,
-            feeNQT: args.feePlanck,
-            deadline: args.deadline || DefaultDeadline,
+            order: a.order,
+            publicKey: a.senderPublicKey,
+            feeNQT: a.feePlanck,
+            deadline: a.deadline || DefaultDeadline,
         };
 
-        if (args.attachment) {
-            parameters = createParametersFromAttachment(args.attachment, parameters);
+        if (a.attachment) {
+            parameters = createParametersFromAttachment(a.attachment, parameters);
         }
 
-        const method = args.type === 'ask' ? 'cancelAskOrder' : 'cancelBidOrder';
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>(method, parameters);
+        const method = a.type === 'ask' ? 'cancelAskOrder' : 'cancelBidOrder';
+        return service.send<UnsignedTransaction>(method, parameters);
 
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey,
-            senderPrivateKey,
-            unsignedHexMessage
-        });
-
-    };
+    });

@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2020 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {PlaceOrderArgs} from '../../../typings/args';
 import {placeOrder} from './placeOrder';
 
@@ -14,13 +14,9 @@ import {placeOrder} from './placeOrder';
  * @module core.api.factories
  *
  */
-export const placeBidOrder = (service: ChainService):
-    (args: PlaceOrderArgs) => Promise<TransactionId> =>
-    async (args: PlaceOrderArgs): Promise<TransactionId> => {
-
-        return placeOrder(service)({
+export const placeBidOrder = (service: ChainService) =>
+    async (args: PlaceOrderArgs) =>
+        placeOrder(service)({
             type: 'bid',
             ...args,
         });
-
-    };

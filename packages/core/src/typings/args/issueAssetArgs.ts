@@ -1,4 +1,4 @@
-import {Attachment} from '../attachment';
+import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
@@ -6,11 +6,7 @@ import {Attachment} from '../attachment';
  *
  * @module core
  */
-export interface IssueAssetArgs {
-    /**
-     * The amount to be split (_quantity_), must be at least 110.25 SIGNA
-     */
-    amountPlanck: string;
+export interface IssueAssetArgs extends DefaultSendArgs {
     /**
      * The decimals supported for this asset.
      * Example:
@@ -27,24 +23,8 @@ export interface IssueAssetArgs {
      */
     name: string;
     /**
-     * The amount of assets to be issued
+     * The amount of assets to be issued (take the decimals into consideration)
+     * If you set decimals to 4 and want to have 100 full assets, you need to set this value to 1000000
      */
     quantity: string | number;
-    /**
-     * The senders public key,  i.e. the [[crypto.Keys.publicKey]]
-     */
-    senderPublicKey: string;
-    /**
-     * The senders private key, i.e. the [[crypto.Keys.signPrivateKey]]
-     */
-    senderPrivateKey: string;
-    /**
-     * An optional attachment
-     */
-    attachment?: Attachment;
-    /**
-     * The deadline when after how many minutes the transaction will be discarded, if it was not
-     * processed, e.g. due to very low fee
-     */
-    deadline?: number;
 }

@@ -12,7 +12,8 @@ export interface TransferAssetArgs extends DefaultSendArgs {
      */
     asset: string;
     /**
-     * he amount of assets to be transferred
+     * The amount of assets to be transferred (take the decimals into consideration)
+     * If you set decimals to 4 and want to have 100 full assets, you need to set this value to 1000000
      */
     quantity: string | number;
     /**

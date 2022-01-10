@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2020 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {CancelOrderArgs} from '../../../typings/args';
 import {cancelOrder} from './cancelOrder';
 
@@ -14,13 +14,9 @@ import {cancelOrder} from './cancelOrder';
  * @module core.api.factories
  *
  */
-export const cancelAskOrder = (service: ChainService):
-    (args: CancelOrderArgs) => Promise<TransactionId> =>
-    async (args: CancelOrderArgs): Promise<TransactionId> => {
-
-        return cancelOrder(service)({
+export const cancelAskOrder = (service: ChainService) =>
+    async (args: CancelOrderArgs) =>
+        cancelOrder(service)({
             type: 'ask',
             ...args,
         });
-
-    };

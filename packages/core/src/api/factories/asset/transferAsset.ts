@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2020 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
 import {TransferAssetArgs} from '../../../typings/args/transferAssetArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  *
@@ -17,32 +17,22 @@ import {TransferAssetArgs} from '../../../typings/args/transferAssetArgs';
  * @module core.api.factories
  *
  */
-export const transferAsset = (service: ChainService):
-    (args: TransferAssetArgs) => Promise<TransactionId> =>
-    async (args: TransferAssetArgs): Promise<TransactionId> => {
+export const transferAsset = (service: ChainService) =>
+    (args: TransferAssetArgs) => signIfPrivateKey(service, args, async (a: TransferAssetArgs) => {
+            let parameters = {
+                asset: a.asset,
+                quantityQNT: a.quantity,
+                publicKey: a.senderPublicKey,
+                recipient: a.recipientId,
+                recipientPublicKey: a.recipientPublicKey || undefined,
+                feeNQT: a.feePlanck,
+                deadline: a.deadline || DefaultDeadline
+            };
 
-        const {senderPrivateKey, senderPublicKey} = args;
+            if (a.attachment) {
+                parameters = createParametersFromAttachment(a.attachment, parameters);
+            }
 
-        let parameters = {
-            asset: args.asset,
-            quantityQNT: args.quantity,
-            publicKey: args.senderPublicKey,
-            recipient: args.recipientId,
-            recipientPublicKey: args.recipientPublicKey || undefined,
-            feeNQT: args.feePlanck,
-            deadline: args.deadline || DefaultDeadline
-        };
-
-        if (args.attachment) {
-            parameters = createParametersFromAttachment(args.attachment, parameters);
+            return service.send<UnsignedTransaction>('transferAsset', parameters);
         }
-
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<UnsignedTransaction>('transferAsset', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey,
-            senderPrivateKey,
-            unsignedHexMessage
-        });
-
-    };
+    );

@@ -41,7 +41,7 @@ describe(`[E2E] Asset Api`, () => {
         const response = await issueAsset(service)({
             senderPublicKey: senderKeys.publicKey,
             senderPrivateKey: senderKeys.signPrivateKey,
-            amountPlanck: Amount.fromSigna(112).getPlanck(),
+            feePlanck: Amount.fromSigna(112).getPlanck(),
             quantity: 50 * 1000,
             decimals: 4,
             name: 'SignumJS',

@@ -4,6 +4,7 @@ import {getAsset} from '../factories/asset/getAsset';
 import {cancelAskOrder, cancelBidOrder, placeAskOrder, placeBidOrder, transferAsset} from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
+import {TransactionId} from '../../typings/transactionId';
 
 describe('Asset Api', () => {
 
@@ -81,7 +82,7 @@ describe('Asset Api', () => {
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey'
-            });
+            }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
         });
