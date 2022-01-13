@@ -5,18 +5,20 @@ All notable changes to this project will be documented in this file.
 
 This version is a major breakthrough with a lots of significant and breaking changes.
 
-### Breaking changes
-
 - Rebranding
 - Removed all deprecated functions
 - Several Renamed Functions and classes
+- Improved consistency of functions
+- Improved documentation
 - Added support for external signing
-  - Attention: sendEncryptedMessage changed its interface
+  - Attention: `sendEncryptedMessage` changed its interface
+- Multiouts with duplicate id checks now, i.e. automatic dedupe for same multiout
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
-- New Functions:
+- New Functions/Classes:
   - `getMiningInfo`
   - `publishContractByReference`
   - `getNetworkInfo`
+  - `LedgerClientFactory`
 - Minor bug fixes
 
 ----------------------------------------------------

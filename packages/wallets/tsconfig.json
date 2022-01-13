@@ -5,7 +5,11 @@
             "node",
             "axios",
             "jest"
-        ]
+        ],
+      "lib": [
+        "ESNext",
+        "dom"
+      ]
     },
     "typeRoots": [ 
         "typings", 

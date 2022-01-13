@@ -2,9 +2,8 @@
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {EasyWallet, EasyWalletPayArgs} from '../typings';
 import {assertAddress} from '../assertAddress';
-import {GenericDeeplinkableWallet} from './GenericDeeplinkableWallet';
+import {GenericDeeplinkableWallet} from './genericDeeplinkableWallet';
 import {DeeplinkableWalletOptions} from './deepLinkableOptions';
-import {Address, Api} from '@signumjs/core';
 
 
 /**
@@ -13,10 +12,11 @@ import {Address, Api} from '@signumjs/core';
  * The call of one its methods in nodejs just returns the generated urls, while in browser (also mobile) environments
  * it tries to open the deep link and though the wallet if installed on the system.
  *
+ * @see https://github.com/signum-network/CIPs/blob/master/cip-0022.md
  * @module wallets
  */
 export class DeeplinkableWallet extends GenericDeeplinkableWallet implements EasyWallet {
-    constructor(api: Api, sender: Address, options?: DeeplinkableWalletOptions) {
+    constructor(options?: DeeplinkableWalletOptions) {
         super(options);
     }
 

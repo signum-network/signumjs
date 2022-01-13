@@ -15,6 +15,7 @@ export * from './address';
 export * from './api';
 export * from './attachment';
 export * from './constants';
+export * from './ledgerClient';
 export * from './service';
 export * from './transaction';
 export * from './typings/account';
