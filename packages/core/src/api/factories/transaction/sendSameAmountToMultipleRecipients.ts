@@ -20,7 +20,12 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
         signIfPrivateKey(service, args,
             async (a: SendSameAmountToMultipleRecipientsArgs) => {
 
-                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = DefaultDeadline} = a;
+                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = DefaultDeadline, dedupe = false} = a;
+
+                const uniqueRecipients = new Set<string>(recipientIds);
+                if (!dedupe && recipientIds.length !== uniqueRecipients.size) {
+                    throw new Error('Duplicate Recipients found');
+                }
 
                 if (recipientIds.length === 0) {
                     throw new Error('No recipients given. Send ignored');
@@ -28,7 +33,7 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
 
                 const parameters = {
                     publicKey: senderPublicKey,
-                    recipients: recipientIds.join(';'),
+                    recipients: Array.from(uniqueRecipients).join(';'),
                     feeNQT: feePlanck,
                     amountNQT: amountPlanck,
                     deadline,

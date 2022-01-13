@@ -83,7 +83,7 @@ describe('DeeplinkableWallet', () => {
         });
         it('should use an custom redirect proxy', async () => {
             const wallet = new DeeplinkableWallet({
-                redirectProxy: 'https://redirect.io?url='
+                redirectProxy: 'https://redirect.io?url=',
             });
             const link = await wallet.pay({
                 to: '16107620026796983538'
