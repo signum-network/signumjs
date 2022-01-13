@@ -4,6 +4,7 @@ import {EasyWallet, EasyWalletPayArgs} from '../typings';
 import {assertAddress} from '../assertAddress';
 import {GenericDeeplinkableWallet} from './GenericDeeplinkableWallet';
 import {DeeplinkableWalletOptions} from './deepLinkableOptions';
+import {Address, Api} from '@signumjs/core';
 
 
 /**
@@ -15,7 +16,7 @@ import {DeeplinkableWalletOptions} from './deepLinkableOptions';
  * @module wallets
  */
 export class DeeplinkableWallet extends GenericDeeplinkableWallet implements EasyWallet {
-    constructor(options?: DeeplinkableWalletOptions) {
+    constructor(api: Api, sender: Address, options?: DeeplinkableWalletOptions) {
         super(options);
     }
 

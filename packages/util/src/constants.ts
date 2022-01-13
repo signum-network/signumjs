@@ -5,12 +5,6 @@
 export const CurrencySymbol = 'Ꞩ';
 
 /**
- * Symbol/Character for Planck (the smallest possible unit)
- * @module util
- * */
-export const CurrencyPlanckSymbol = 'ꞩ';
-
-/**
  * The smallest possible fee
  * @module util
  */
