@@ -6,6 +6,8 @@ import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 interface GenericExtensionWalletConnectArgs {
     onTimeout?: () => void;
     timeoutMillies?: number;
+    accountId: string;
+    appName: string;
 }
 
 /**
@@ -23,13 +25,23 @@ export class GenericExtensionWallet implements Wallet {
     constructor(private adapter: ExtensionAdapter = ExtensionAdapterFactory.createBrowserAdapter()) {
     }
 
-    async connect(args: GenericExtensionWalletConnectArgs): Promise<boolean> {
+    async connect(args: GenericExtensionWalletConnectArgs): Promise<string> {
         const isAvailable = await this.adapter.isWalletAvailable();
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+
+            const requestPermission = async () => {
+                return this.adapter.requestPermission({
+                    appMeta: {
+                        name: args.appName
+                    },
+                    force: false,
+                });
+            };
 
             const {timeoutMillies = 10_000, onTimeout} = args;
             if (isAvailable) {
-                return resolve(true);
+                const permission = await requestPermission();
+                return resolve(permission.pkh);
             }
 
             const timeoutHandler = setTimeout(() => {
@@ -39,10 +51,11 @@ export class GenericExtensionWallet implements Wallet {
                     reject('Connection timed out');
                 }
             }, timeoutMillies);
-            this.adapter.onAvailabilityChange((available) => {
+            this.adapter.onAvailabilityChange(async (available) => {
                 if (available) {
                     clearTimeout(timeoutHandler);
-                    resolve(true);
+                    const permission = await requestPermission();
+                    resolve(permission.pkh);
                 }
             });
         });

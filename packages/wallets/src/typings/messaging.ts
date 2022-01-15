@@ -133,7 +133,7 @@ export interface PageMessage {
 }
 
 export enum PageMessageType {
-    Request = '_PAGE_REQUEST',
+    Request = 'PAGE_REQUEST',
     Response = '_PAGE_RESPONSE',
     ErrorResponse = '_PAGE_ERROR_RESPONSE',
 }

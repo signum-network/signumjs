@@ -5,3 +5,4 @@
  * */
 export * from './typings';
 export * from './deeplinkable';
+export * from './extension';

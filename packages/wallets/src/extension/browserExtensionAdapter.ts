@@ -27,7 +27,6 @@ function permissionsAreEqual(
 
 export class BrowserExtensionAdapter implements ExtensionAdapter {
 
-
     private send(msg: PageMessage) {
         window.postMessage(msg, '*');
     }
@@ -141,8 +140,19 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
     }
 
-    requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
-        return Promise.resolve(undefined);
+    async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
+        const res = await this.request({
+            type: ExtensionMessageType.PermissionRequest,
+            network: 'hangzhounet', // FIXME: this is not correct
+            force: args.force,
+            appMeta: args.appMeta,
+        });
+        this.assertResponse(res.type === ExtensionMessageType.PermissionResponse);
+        return {
+            rpc: res.rpc,
+            pkh: res.pkh,
+            publicKey: res.publicKey,
+        };
     }
 
     requestSign(args: RequestSignArgs): Promise<TransactionId> {

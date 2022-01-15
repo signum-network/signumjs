@@ -1,4 +1,4 @@
-import {ExtensionDAppMetadata} from '../typings/messaging';
+import {ExtensionDAppMetadata} from '../messaging';
 
 export interface RequestPermissionArgs {
     appMeta: ExtensionDAppMetadata;
