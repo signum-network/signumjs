@@ -4,4 +4,5 @@
 export * from './args';
 export * from './wallet';
 export * from './easyWallet';
+export * from './walletConnection';
 

@@ -6,6 +6,7 @@
 import {Wallet} from '../typings';
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
+import {WalletConnection} from '../typings';
 
 interface GenericExtensionWalletConnectArgs {
     /**
@@ -35,7 +36,8 @@ export class GenericExtensionWallet implements Wallet {
 
     /**
      * Instantiates the extension wallet proxy.
-     * @param adapter The adapter according your environment. See [[ExtensionAdapterFactory]]. It uses the default [[ExtensionAdapterFactory]] to determine the correct adapter.
+     * @param adapter The adapter according your environment. See [[ExtensionAdapterFactory]].
+     * It uses the default [[ExtensionAdapterFactory]] to determine the correct adapter.
      */
     constructor(private adapter: ExtensionAdapter = ExtensionAdapterFactory.getAdapter()) {
     }
@@ -45,7 +47,7 @@ export class GenericExtensionWallet implements Wallet {
      * @param args The argument object
      * @throws Errors on timeout (if no explicit timeout handler was set), or on Permission issues
      */
-    async connect(args: GenericExtensionWalletConnectArgs): Promise<string> {
+    async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
         const isAvailable = await this.adapter.isWalletAvailable();
         return new Promise(async (resolve, reject) => {
 
@@ -60,8 +62,12 @@ export class GenericExtensionWallet implements Wallet {
 
             const {timeoutMillies = 10_000, onTimeout} = args;
             if (isAvailable) {
-                const permission = await requestPermission();
-                return resolve(permission.pkh);
+                const {rpc, pkh, publicKey} = await requestPermission();
+                return resolve({
+                    nodeHost: rpc,
+                    accountId: pkh,
+                    publicKey
+                });
             }
 
             const timeoutHandler = setTimeout(() => {
@@ -74,8 +80,12 @@ export class GenericExtensionWallet implements Wallet {
             this.adapter.onAvailabilityChange(async (available) => {
                 if (available) {
                     clearTimeout(timeoutHandler);
-                    const permission = await requestPermission();
-                    resolve(permission.pkh);
+                    const {publicKey, rpc, pkh} = await requestPermission();
+                    resolve({
+                        nodeHost: rpc,
+                        accountId: pkh,
+                        publicKey
+                    });
                 }
             });
         });
