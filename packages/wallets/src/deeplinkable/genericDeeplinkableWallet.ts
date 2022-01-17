@@ -55,7 +55,7 @@ export class GenericDeeplinkableWallet implements Wallet {
     }
 
 
-    protected mountDeeplink(action: string, payload: object) : string {
+    protected mountDeeplink(action: string, payload: object): string {
         const link = createDeeplink({
             action,
             payload
