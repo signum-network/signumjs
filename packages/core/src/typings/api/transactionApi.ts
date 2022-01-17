@@ -64,13 +64,13 @@ export interface TransactionApi {
 
 
     /**
-     * Sends burst to another account/recipient
+     * Sends an amount to another account/recipient
      *
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     sendAmountToSingleRecipient:
-        (args: SendAmountArgs) => Promise<TransactionId>;
+        (args: SendAmountArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Gets a subscription
