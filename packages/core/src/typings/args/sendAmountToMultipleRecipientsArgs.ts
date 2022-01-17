@@ -10,5 +10,4 @@ import {MultioutRecipientAmount} from '../multioutRecipientAmount';
  */
 export interface SendAmountToMultipleRecipientsArgs extends DefaultSendArgs {
     recipientAmounts: MultioutRecipientAmount[];
-    dedupe?: boolean;
 }

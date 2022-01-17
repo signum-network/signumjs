@@ -1,5 +1,7 @@
 import {TransactionId} from '../transactionId';
 import {Alias} from '../alias';
+import {UnsignedTransaction} from '../unsignedTransaction';
+import {SetAliasArgs} from '../args/setAliasArgs';
 
 /**
  * Alias API
@@ -30,28 +32,11 @@ export interface AliasApi {
     ) => Promise<Alias>;
 
     /**
-     * Registers an Alias with the Burst blockchain
-     *
-     * The transaction will be broadcasted in two steps.
-     * 1. Send the setAlias call with public key to the network
-     * 2. Take the returned unsigned message and sign it, i.e. the private key won't be transmitted.
-     *
-     * @param aliasName The alias name
-     * @param aliasURI The alias URI
-     * @param feeNQT The fee to pay
-     * @param name The name of the account
-     * @param senderPublicKey The senders public key for sending an _unsigned_ message
-     * @param senderPrivateKey The senders private key to _sign_ the message
-     * @param deadline The deadline, in minutes, for the transaction to be confirmed
-     * @return The Transaction ID
+     * Registers an Alias
+     **
+     * @param args The args
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    setAlias: (
-        aliasName: string,
-        aliasURI: string,
-        feeNQT: string,
-        senderPublicKey: string,
-        senderPrivateKey: string,
-        deadline?: number,
-    ) => Promise<TransactionId>;
+    setAlias: (args: SetAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 }

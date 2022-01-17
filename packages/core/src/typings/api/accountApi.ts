@@ -11,6 +11,7 @@ import {RewardRecipient} from '../rewardRecipient';
 import {GetAccountArgs} from '../args/getAccountArgs';
 import {BlockList} from '../blockList';
 import {SetAccountInfoArgs} from '../args/setAccountInfoArgs';
+import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**
  * Account API
@@ -122,7 +123,7 @@ export interface AccountApi {
      * @param senderPublicKey The senders public key for sending an _unsigned_ message
      * @param senderPrivateKey The senders private key to _sign_ the message
      * @param deadline The deadline, in minutes, for the transaction to be confirmed
-     * @return The Transaction ID
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     setAlias: (
         aliasName: string,
@@ -131,16 +132,16 @@ export interface AccountApi {
         senderPublicKey: string,
         senderPrivateKey: string,
         deadline?: number,
-    ) => Promise<TransactionId>;
+    ) => Promise<TransactionId | UnsignedTransaction>;
 
 
     /**
      * Sets account information for an account
      * @param {SetAccountInfoArgs} args The arguments
-
-     * @return The Transaction ID
+     *
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    setAccountInfo: (args: SetAccountInfoArgs) => Promise<TransactionId>;
+    setAccountInfo: (args: SetAccountInfoArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Assigns a reward recipient for an account
@@ -148,9 +149,9 @@ export interface AccountApi {
      * This function is usually used to bind an account to a mining pool.
      *
      * @param {SetRewardRecipientArgs} args The arguments
-     * @return The Transaction ID
-     */
-    setRewardRecipient: (args: SetRewardRecipientArgs) => Promise<TransactionId>;
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     **/
+    setRewardRecipient: (args: SetRewardRecipientArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 
     /**
@@ -186,10 +187,10 @@ export interface AccountApi {
      * to improve their mining power through additionally locked amount
      *
      * @param {CommitmentArgs} args The args
-     * @return The Transaction Id
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      * @see [[AccountApi.removeCommitment]]
      */
-    addCommitment: (args: CommitmentArgs) => Promise<TransactionId>;
+    addCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Removes/Reduces a miners commitment
@@ -198,8 +199,8 @@ export interface AccountApi {
      * to improve their mining power through additionally locked amount
      *
      * @param {CommitmentArgs} args The args
-     * @return The Transaction Id
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      * @see [[AccountApi.addCommitment]]
      */
-    removeCommitment: (args: CommitmentArgs) => Promise<TransactionId>;
+    removeCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 }

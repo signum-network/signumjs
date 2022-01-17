@@ -1,5 +1,4 @@
-import {ExtensionPermission, ExtensionRequest, ExtensionResponse} from '../typings/messaging';
-import {TransactionId} from '@signumjs/core';
+import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
 
 /**
@@ -22,7 +21,7 @@ export interface ExtensionAdapter {
     // See if we need this?
     requestTransaction(args: RequestTransactionArgs): Promise<any>;
 
-    requestSign(args: RequestSignArgs): Promise<TransactionId>;
+    requestSign(args: RequestSignArgs): Promise<ExtensionSigned>;
 
     request(message: ExtensionRequest): Promise<ExtensionResponse>;
 

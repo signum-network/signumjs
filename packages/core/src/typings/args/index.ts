@@ -11,6 +11,8 @@ export * from './placeOrderArgs';
 export * from './publishContractArgs';
 export * from './publishContractByReferenceArgs';
 export * from './sendAmountArgs';
+export * from './sendAmountToMultipleRecipientsArgs';
+export * from './sendSameAmountToMultipleRecipientsArgs';
 export * from './sendEncryptedMessageArgs';
 export * from './sendMessageArgs';
 export * from './setAccountInfoArgs';

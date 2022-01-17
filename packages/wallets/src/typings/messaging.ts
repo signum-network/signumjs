@@ -119,6 +119,12 @@ export type ExtensionPermission = {
     publicKey: string;
 } | null;
 
+
+export type ExtensionSigned = {
+    transactionId: string;
+    fullHash: string;
+}
+
 export type ExtensionNetwork =
     | 'mainnet'
     | 'testnet'

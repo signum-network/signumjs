@@ -9,7 +9,7 @@ import {
     ExtensionMessageType,
     ExtensionPermission,
     ExtensionRequest,
-    ExtensionResponse,
+    ExtensionResponse, ExtensionSigned, ExtensionSignResponse,
     PageMessage,
     PageMessageType
 } from '../typings/messaging';
@@ -166,7 +166,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         };
     }
 
-    async requestSign(args: RequestSignArgs): Promise<TransactionId> {
+    async requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
         const res = await this.request({
             type: ExtensionMessageType.SignRequest,
             sourcePkh: args.accountId,
@@ -174,7 +174,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
         this.assertResponse(res.type === ExtensionMessageType.SignResponse);
         return {
-            transaction: res.transactionId,
+            transactionId: res.transactionId,
             fullHash: res.fullHash
         };
     }

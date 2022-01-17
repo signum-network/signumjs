@@ -2,7 +2,8 @@ import {Asset} from '../asset';
 import {AssetList} from '../assetList';
 import {CancelOrderArgs, IssueAssetArgs, PlaceOrderArgs} from '../args';
 import {TransactionId} from '../transactionId';
-import {TransferAssetArgs} from "../args/transferAssetArgs";
+import {TransferAssetArgs} from '../args/transferAssetArgs';
+import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**
  * Asset API
@@ -37,43 +38,43 @@ export interface AssetApi {
     /**
      * Issues assets
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    issueAsset: (args: IssueAssetArgs) => Promise<TransactionId>;
+    issueAsset: (args: IssueAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Transfer assets
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    transferAsset: (args: TransferAssetArgs) => Promise<TransactionId>;
+    transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Place Ask Order
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    placeAskOrder: (args: PlaceOrderArgs) => Promise<TransactionId>;
+    placeAskOrder: (args: PlaceOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Place Ask Order
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    placeBidOrder: (args: PlaceOrderArgs) => Promise<TransactionId>;
+    placeBidOrder: (args: PlaceOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Cancel Ask Order
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @returnThe Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    cancelAskOrder: (args: CancelOrderArgs) => Promise<TransactionId>;
+    cancelAskOrder: (args: CancelOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Cancel Bid Order
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    cancelBidOrder: (args: CancelOrderArgs) => Promise<TransactionId>;
+    cancelBidOrder: (args: CancelOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 }

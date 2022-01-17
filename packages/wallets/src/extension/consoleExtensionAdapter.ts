@@ -1,7 +1,6 @@
 import {ExtensionAdapter} from './extensionAdapter';
-import {ExtensionPermission, ExtensionRequest, ExtensionResponse} from '../typings/messaging';
+import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
-import {TransactionId} from '@signumjs/core';
 
 /**
  * The extension client for console
@@ -40,7 +39,7 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return ConsoleExtensionAdapter.notImplemented();
     }
 
-    requestSign(args: RequestSignArgs): Promise<TransactionId> {
+    requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
         return ConsoleExtensionAdapter.notImplemented();
     }
 
