@@ -1,4 +1,8 @@
-import {TransactionId} from '@signumjs/core';
+/**
+ * Original work Copyright (c) 2020 Madfish Solutions
+ * Modified work Copyright (c) 2022 Signum Network
+ */
+
 import {v4 as uuid} from 'uuid';
 import {ExtensionAdapter} from './extensionAdapter';
 import {
@@ -11,7 +15,7 @@ import {
 } from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
 import {createError} from './errors';
-
+import {TransactionId} from '@signumjs/core';
 
 
 // TODO: check how our implementation works
@@ -25,6 +29,13 @@ function permissionsAreEqual(
     return aPerm.pkh === bPerm?.pkh && aPerm.rpc === bPerm?.rpc;
 }
 
+/**
+ * Extension Adapter for Browser based wallet access, to use with [[GenericExtensionWallet]]
+ *
+ * Use this adapter, if you want to use the [[GenericExtensionWallet]] in the browser.
+ *
+ * @module wallets
+ */
 export class BrowserExtensionAdapter implements ExtensionAdapter {
 
     private send(msg: PageMessage) {
@@ -61,7 +72,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
                 payload: 'PING',
             });
             window.addEventListener('message', handleMessage);
-            const t = setTimeout(() => done(false), 1_000);
+            const t = setTimeout(() => done(false), 2_000);
         });
     }
 
@@ -143,7 +154,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.PermissionRequest,
-            network: 'hangzhounet', // FIXME: this is not correct
+            network: args.network || 'mainnet',
             force: args.force,
             appMeta: args.appMeta,
         });
@@ -155,8 +166,17 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         };
     }
 
-    requestSign(args: RequestSignArgs): Promise<TransactionId> {
-        return Promise.resolve(undefined);
+    async requestSign(args: RequestSignArgs): Promise<TransactionId> {
+        const res = await this.request({
+            type: ExtensionMessageType.SignRequest,
+            sourcePkh: args.accountId,
+            payload: args.unsignedTransaction,
+        });
+        this.assertResponse(res.type === ExtensionMessageType.SignResponse);
+        return {
+            transaction: res.transactionId,
+            fullHash: res.fullHash
+        };
     }
 
     requestTransaction(args: RequestTransactionArgs): Promise<any> {

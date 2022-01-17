@@ -1,3 +1,7 @@
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+
 /* globals window */
 import {createDeeplink} from '@signumjs/util';
 import {Wallet} from '../typings';
@@ -5,6 +9,7 @@ import {isNodeJS} from '../isNodeJS';
 
 /**
  * The options for the Deeplinkable Wallet
+ * @module wallets
  */
 interface DeeplinkableWalletOpts {
     /**

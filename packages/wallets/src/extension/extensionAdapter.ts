@@ -2,6 +2,12 @@ import {ExtensionPermission, ExtensionRequest, ExtensionResponse} from '../typin
 import {TransactionId} from '@signumjs/core';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
 
+/**
+ *
+ * Interface for extension adapters
+ *
+ * @internal
+ */
 export interface ExtensionAdapter {
     isWalletAvailable(): Promise<boolean>;
 

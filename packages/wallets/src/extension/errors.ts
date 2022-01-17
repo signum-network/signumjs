@@ -20,6 +20,15 @@ export class InvalidParamsWalletError extends ExtensionWalletError {
     message = 'Some of the parameters you provided are invalid';
 }
 
+export class OperationWalletError extends ExtensionWalletError {
+    name = 'OperationWalletError';
+
+    constructor(message: string) {
+        super();
+        this.message = message;
+    }
+}
+
 export function createError(payload: any) {
     switch (true) {
         case payload === ExtensionErrorType.NotGranted:
@@ -31,14 +40,11 @@ export function createError(payload: any) {
         case payload === ExtensionErrorType.InvalidParams:
             return new InvalidParamsWalletError();
 
-        // case Array.isArray(payload) &&
-        // payload[0] === ExtensionErrorType.TezosOperation &&
-        // Array.isArray(payload[1]) &&
-        // payload[1].length > 0:
-        //     return new TezosOperationError(payload[1]);
-
-        // case typeof payload === 'string' && payload.startsWith('__tezos__'):
-        //     return new Error(payload.replace('__tezos__', ''));
+        case Array.isArray(payload) &&
+        payload[0] === ExtensionErrorType.Operation &&
+        Array.isArray(payload[1]) &&
+        payload[1].length > 0:
+            return new OperationWalletError(payload[1]);
 
         default:
             return new ExtensionWalletError();

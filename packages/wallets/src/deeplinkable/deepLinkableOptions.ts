@@ -1,5 +1,10 @@
 /**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+
+/**
  * The options for the Deeplinkable Wallet
+ * @module wallets
  */
 export interface DeeplinkableWalletOptions {
     /**

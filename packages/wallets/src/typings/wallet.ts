@@ -1,3 +1,6 @@
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
 
 /**
  * Generic Wallet interface

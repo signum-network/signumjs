@@ -1,3 +1,7 @@
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+
 /* globals window */
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {EasyWallet, EasyWalletPayArgs} from '../typings';

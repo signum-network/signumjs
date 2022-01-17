@@ -1,3 +1,9 @@
+/**
+ * Original work Copyright (c) 2020 Madfish Solutions
+ * Modified work Copyright (c) 2022 Signum Network
+ */
+
+
 export type ExtensionMessage = ExtensionRequest | ExtensionResponse;
 
 export type ExtensionRequest =
@@ -79,7 +85,8 @@ export interface ExtensionSignRequest extends ExtensionMessageBase {
 
 export interface ExtensionSignResponse extends ExtensionMessageBase {
     type: ExtensionMessageType.SignResponse;
-    signature: string;
+    transactionId: string;
+    fullHash: string;
 }
 
 export interface ExtensionBroadcastRequest extends ExtensionMessageBase {
@@ -99,7 +106,7 @@ export enum ExtensionErrorType {
     NotGranted = 'NOT_GRANTED',
     NotFound = 'NOT_FOUND',
     InvalidParams = 'INVALID_PARAMS',
-    TezosOperation = 'TEZOS_OPERATION',
+    Operation = 'OPERATION',
 }
 
 /**
@@ -114,12 +121,7 @@ export type ExtensionPermission = {
 
 export type ExtensionNetwork =
     | 'mainnet'
-    | 'hangzhounet'
-    | 'idiazabalnet'
-    | 'granadanet'
-    | 'edo2net'
-    | 'florencenet'
-    | 'sandbox'
+    | 'testnet'
     | { name: string; rpc: string };
 
 export interface ExtensionDAppMetadata {
@@ -133,7 +135,7 @@ export interface PageMessage {
 }
 
 export enum PageMessageType {
-    Request = 'PAGE_REQUEST',
-    Response = '_PAGE_RESPONSE',
-    ErrorResponse = '_PAGE_ERROR_RESPONSE',
+    Request = 'SIGNUM_PAGE_REQUEST',
+    Response = 'SIGNUM_PAGE_RESPONSE',
+    ErrorResponse = 'SIGNUM_PAGE_ERROR_RESPONSE',
 }

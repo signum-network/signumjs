@@ -1,10 +1,8 @@
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+
 import {EasyWalletPayArgs} from './args';
-import {Wallet} from './wallet';
-
-// peer dependencies
-import {Api} from '@signumjs/core';
-import {Keys} from '@signumjs/crypto';
-
 
 /**
  * A more specific Wallet interface for easier usage.
