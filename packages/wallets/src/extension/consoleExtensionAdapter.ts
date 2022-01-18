@@ -1,6 +1,6 @@
-import {ExtensionAdapter} from './extensionAdapter';
+import {ExtensionAdapter, ExtensionAdapterListener} from './extensionAdapter';
 import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
-import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
+import {RequestPermissionArgs, RequestSignArgs} from '../typings';
 
 /**
  * The extension client for console
@@ -15,20 +15,20 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return Promise.reject('Not implemented');
     }
 
+    onAvailabilityChange(callback: (available: boolean, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+        throw new Error('Not implemented');
+    }
+
+    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+        throw new Error('Not implemented');
+    }
+
     getCurrentPermission(): Promise<ExtensionPermission> {
         return ConsoleExtensionAdapter.notImplemented();
     }
 
     isWalletAvailable(): Promise<boolean> {
         return Promise.resolve(false);
-    }
-
-    onAvailabilityChange(callback: (available: boolean) => void) {
-        return ConsoleExtensionAdapter.notImplemented();
-    }
-
-    onPermissionChange(callback: (permission: ExtensionPermission) => void) {
-        return ConsoleExtensionAdapter.notImplemented();
     }
 
     request(payload: ExtensionRequest): Promise<ExtensionResponse> {
@@ -41,10 +41,6 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
 
     requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
         return ConsoleExtensionAdapter.notImplemented();
-    }
-
-    requestTransaction(args: RequestTransactionArgs): Promise<any> {
-        return Promise.resolve(undefined);
     }
 
 }

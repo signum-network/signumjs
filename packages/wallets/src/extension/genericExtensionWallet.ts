@@ -12,6 +12,20 @@ interface GenericExtensionWalletConnectArgs {
      * The name of the app to be connected.
      */
     appName: string;
+
+    /**
+     * Determines the nodeHost to be connected to
+     */
+    nodeHost: {
+        /**
+         *  The name used qithin the wallet
+         */
+        name: string;
+        /**
+         * The nodes url
+         */
+        url: string
+    };
     /**
      * Optional timeout handler, that will be called, if connection to the wallet was timed out.
      * If not given, an exception will be thrown on timeout instead
@@ -19,6 +33,7 @@ interface GenericExtensionWalletConnectArgs {
     onTimeout?: () => void;
     /**
      * Optional timeout limit in milliseconds. Default: 10_000 Millies
+     * If set to -1, no retrial is executed
      */
     timeoutMillies?: number;
 }
@@ -72,6 +87,31 @@ export class GenericExtensionWallet implements Wallet {
         }
     }
 
+    private async fetchPermission(networkRpc: string, networkName: string, appName: string) {
+        try {
+            const {rpc, pkh, publicKey} = await this.adapter.requestPermission({
+                network: {
+                    rpc: networkRpc,
+                    name: networkName
+                },
+                appMeta: {
+                    name: appName
+                },
+                force: false,
+            });
+
+            this._connection = {
+                nodeHost: rpc,
+                accountId: pkh,
+                publicKey
+            };
+            return this._connection;
+        } catch (e) {
+            console.error(e);
+            return null;
+        }
+    }
+
     /**
      * @return the current connection, iff exists
      */
@@ -86,46 +126,37 @@ export class GenericExtensionWallet implements Wallet {
      */
     async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
         const isAvailable = await this.adapter.isWalletAvailable();
-        return new Promise(async (resolve, reject) => {
-            const requestPermission = async () => {
-                return this.adapter.requestPermission({
-                    appMeta: {
-                        name: args.appName
-                    },
-                    force: false,
+        const {timeoutMillies = 10_000, onTimeout, appName, nodeHost} = args;
+        let permission = null;
+        if (isAvailable) {
+            permission = await this.fetchPermission(nodeHost.url, nodeHost.name, appName);
+        }
+        return permission || new Promise(async (resolve, reject) => {
+                let timeoutHandler = null;
+                if (timeoutMillies === -1 && !permission) {
+                    return reject('Wallet not reachable');
+                }
+                const listener = this.adapter.onAvailabilityChange(async (available) => {
+                    if (!available) {
+                        return;
+                    }
+                    permission = permission = await this.fetchPermission(nodeHost.url, nodeHost.name, appName);
+                    if (permission) {
+                        clearTimeout(timeoutHandler);
+                        listener.unsubscribe();
+                        resolve(permission);
+                    }
                 });
-            };
-
-            const {timeoutMillies = 10_000, onTimeout} = args;
-            if (isAvailable) {
-                const {rpc, pkh, publicKey} = await requestPermission();
-                this._connection = {
-                    nodeHost: rpc,
-                    accountId: pkh,
-                    publicKey
-                };
-                return resolve(this._connection);
+                timeoutHandler = setTimeout(() => {
+                    listener.unsubscribe();
+                    if (onTimeout) {
+                        onTimeout();
+                    } else {
+                        reject('Connection timed out');
+                    }
+                }, timeoutMillies);
             }
-
-            const timeoutHandler = setTimeout(() => {
-                if (onTimeout) {
-                    onTimeout();
-                } else {
-                    reject('Connection timed out');
-                }
-            }, timeoutMillies);
-            this.adapter.onAvailabilityChange(async (available) => {
-                if (available) {
-                    clearTimeout(timeoutHandler);
-                    const {publicKey, rpc, pkh} = await requestPermission();
-                    resolve({
-                        nodeHost: rpc,
-                        accountId: pkh,
-                        publicKey
-                    });
-                }
-            });
-        });
+        );
     }
 
     async confirm(unsignedTransaction: string): Promise<ConfirmedTransaction> {

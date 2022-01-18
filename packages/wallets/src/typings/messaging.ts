@@ -3,22 +3,17 @@
  * Modified work Copyright (c) 2022 Signum Network
  */
 
-
 export type ExtensionMessage = ExtensionRequest | ExtensionResponse;
 
 export type ExtensionRequest =
     | ExtensionGetCurrentPermissionRequest
     | ExtensionPermissionRequest
-    | ExtensionOperationRequest
-    | ExtensionSignRequest
-    | ExtensionBroadcastRequest;
+    | ExtensionSignRequest;
 
 export type ExtensionResponse =
     | ExtensionGetCurrentPermissionResponse
     | ExtensionPermissionResponse
-    | ExtensionOperationResponse
-    | ExtensionSignResponse
-    | ExtensionBroadcastResponse;
+    | ExtensionSignResponse;
 
 export interface ExtensionMessageBase {
     type: ExtensionMessageType;
@@ -66,17 +61,6 @@ export interface ExtensionPermissionResponse extends ExtensionMessageBase {
     rpc: string;
 }
 
-export interface ExtensionOperationRequest extends ExtensionMessageBase {
-    type: ExtensionMessageType.OperationRequest;
-    sourcePkh: string;
-    opParams: any[];
-}
-
-export interface ExtensionOperationResponse extends ExtensionMessageBase {
-    type: ExtensionMessageType.OperationResponse;
-    opHash: string;
-}
-
 export interface ExtensionSignRequest extends ExtensionMessageBase {
     type: ExtensionMessageType.SignRequest;
     sourcePkh: string;
@@ -89,29 +73,12 @@ export interface ExtensionSignResponse extends ExtensionMessageBase {
     fullHash: string;
 }
 
-export interface ExtensionBroadcastRequest extends ExtensionMessageBase {
-    type: ExtensionMessageType.BroadcastRequest;
-    signedOpBytes: string;
-}
-
-export interface ExtensionBroadcastResponse extends ExtensionMessageBase {
-    type: ExtensionMessageType.BroadcastResponse;
-    opHash: string;
-}
-
-/**
- * Errors
- */
 export enum ExtensionErrorType {
     NotGranted = 'NOT_GRANTED',
     NotFound = 'NOT_FOUND',
     InvalidParams = 'INVALID_PARAMS',
     Operation = 'OPERATION',
 }
-
-/**
- * Misc
- */
 
 export type ExtensionPermission = {
     rpc: string;
@@ -123,12 +90,13 @@ export type ExtensionPermission = {
 export type ExtensionSigned = {
     transactionId: string;
     fullHash: string;
-}
+} | null;
 
-export type ExtensionNetwork =
-    | 'mainnet'
-    | 'testnet'
-    | { name: string; rpc: string };
+
+export interface ExtensionNetwork {
+    name: string;
+    rpc: string;
+}
 
 export interface ExtensionDAppMetadata {
     name: string;

@@ -4,18 +4,17 @@
  */
 
 import {v4 as uuid} from 'uuid';
-import {ExtensionAdapter} from './extensionAdapter';
+import {ExtensionAdapter, ExtensionAdapterListener} from './extensionAdapter';
 import {
     ExtensionMessageType,
     ExtensionPermission,
     ExtensionRequest,
-    ExtensionResponse, ExtensionSigned, ExtensionSignResponse,
+    ExtensionResponse, ExtensionSigned,
     PageMessage,
     PageMessageType
 } from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
 import {createError} from './errors';
-import {TransactionId} from '@signumjs/core';
 
 
 // TODO: check how our implementation works
@@ -72,29 +71,30 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
                 payload: 'PING',
             });
             window.addEventListener('message', handleMessage);
-            const t = setTimeout(() => done(false), 2_000);
+            const t = setTimeout(() => done(false), 1_000);
         });
     }
 
-    onAvailabilityChange(callback: (available: boolean) => void) {
+    onAvailabilityChange(callback: (available: boolean, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
         let t: any;
         let currentStatus = false;
         const check = async (attempt = 0) => {
             const initial = attempt < 5;
             const available = await this.isWalletAvailable();
             if (currentStatus !== available) {
-                callback(available);
+                callback(available, {unsubscribe: () => clearTimeout(t)});
                 currentStatus = available;
             }
             t = setTimeout(
                 check,
-                available ? 10_000 : !initial ? 5_000 : 0,
+                available ? 10_000 : !initial ? 2_000 : 0,
                 initial ? attempt + 1 : attempt
             );
         };
         check();
-        return () => clearTimeout(t);
-
+        return {
+            unsubscribe: () => clearTimeout(t)
+        };
     }
 
     async getCurrentPermission(): Promise<ExtensionPermission> {
@@ -107,14 +107,14 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         return res.permission;
     }
 
-    onPermissionChange(callback: (permission: ExtensionPermission) => void) {
+    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
         let t: any;
         let currentPerm: ExtensionPermission = null;
         const check = async () => {
             try {
                 const perm = await this.getCurrentPermission();
                 if (!permissionsAreEqual(perm, currentPerm)) {
-                    callback(perm);
+                    callback(perm, {unsubscribe: () => clearTimeout(t)});
                     currentPerm = perm;
                 }
             } catch {
@@ -123,7 +123,9 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
             t = setTimeout(check, 10_000);
         };
         check();
-        return () => clearTimeout(t);
+        return {
+            unsubscribe: () => clearTimeout(t)
+        };
     }
 
     request(payload: ExtensionRequest): Promise<ExtensionResponse> {
@@ -154,7 +156,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.PermissionRequest,
-            network: args.network || 'mainnet',
+            network: args.network,
             force: args.force,
             appMeta: args.appMeta,
         });
