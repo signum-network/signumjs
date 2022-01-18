@@ -4,7 +4,7 @@
  */
 
 import {v4 as uuid} from 'uuid';
-import {ExtensionAdapter, ExtensionAdapterListener} from './extensionAdapter';
+import {ExtensionAdapter} from './extensionAdapter';
 import {
     ExtensionMessageType,
     ExtensionPermission,
@@ -15,6 +15,7 @@ import {
 } from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
 import {createError} from './errors';
+import {ExtensionListener} from './extensionListener';
 
 
 // TODO: check how our implementation works
@@ -75,14 +76,14 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
     }
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener {
         let t: any;
         let currentStatus = false;
         const check = async (attempt = 0) => {
             const initial = attempt < 5;
             const available = await this.isWalletAvailable();
             if (currentStatus !== available) {
-                callback(available, {unsubscribe: () => clearTimeout(t)});
+                callback(available, {unlisten: () => clearTimeout(t)});
                 currentStatus = available;
             }
             t = setTimeout(
@@ -93,7 +94,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         };
         check();
         return {
-            unsubscribe: () => clearTimeout(t)
+            unlisten: () => clearTimeout(t)
         };
     }
 
@@ -107,14 +108,14 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         return res.permission;
     }
 
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener {
         let t: any;
         let currentPerm: ExtensionPermission = null;
         const check = async () => {
             try {
                 const perm = await this.getCurrentPermission();
                 if (!permissionsAreEqual(perm, currentPerm)) {
-                    callback(perm, {unsubscribe: () => clearTimeout(t)});
+                    callback(perm, {unlisten: () => clearTimeout(t)});
                     currentPerm = perm;
                 }
             } catch {
@@ -124,7 +125,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         };
         check();
         return {
-            unsubscribe: () => clearTimeout(t)
+            unlisten: () => clearTimeout(t)
         };
     }
 

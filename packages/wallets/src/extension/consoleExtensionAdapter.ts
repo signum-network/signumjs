@@ -1,6 +1,7 @@
-import {ExtensionAdapter, ExtensionAdapterListener} from './extensionAdapter';
+import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs} from '../typings';
+import {ExtensionListener} from './extensionListener';
 
 /**
  * The extension client for console
@@ -15,11 +16,11 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return Promise.reject('Not implemented');
     }
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener {
         throw new Error('Not implemented');
     }
 
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener {
+    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener {
         throw new Error('Not implemented');
     }
 

@@ -1,12 +1,7 @@
 import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
 import {RequestPermissionArgs, RequestSignArgs} from '../typings';
+import {ExtensionListener} from './extensionListener';
 
-/**
- * @internal
- */
-export interface ExtensionAdapterListener {
-    unsubscribe: () => void;
-}
 /**
  *
  * Interface for extension adapters
@@ -16,9 +11,9 @@ export interface ExtensionAdapterListener {
 export interface ExtensionAdapter {
     isWalletAvailable(): Promise<boolean>;
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener;
+    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener;
 
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionAdapterListener) => void): ExtensionAdapterListener;
+    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener;
 
     getCurrentPermission(): Promise<ExtensionPermission>;
 

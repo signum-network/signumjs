@@ -3,9 +3,10 @@
  */
 
 /* globals window */
-import {ConfirmedTransaction, Wallet, WalletConnection} from '../typings';
+import {ConfirmedTransaction, Wallet} from '../typings';
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
+import {WalletConnection} from './walletConnection';
 
 interface GenericExtensionWalletConnectArgs {
     /**
@@ -100,11 +101,7 @@ export class GenericExtensionWallet implements Wallet {
                 force: false,
             });
 
-            this._connection = {
-                nodeHost: rpc,
-                accountId: pkh,
-                publicKey
-            };
+            this._connection = new WalletConnection(pkh, publicKey, rpc, this.adapter);
             return this._connection;
         } catch (e) {
             console.error(e);
@@ -143,12 +140,12 @@ export class GenericExtensionWallet implements Wallet {
                     permission = permission = await this.fetchPermission(nodeHost.url, nodeHost.name, appName);
                     if (permission) {
                         clearTimeout(timeoutHandler);
-                        listener.unsubscribe();
+                        listener.unlisten();
                         resolve(permission);
                     }
                 });
                 timeoutHandler = setTimeout(() => {
-                    listener.unsubscribe();
+                    listener.unlisten();
                     if (onTimeout) {
                         onTimeout();
                     } else {
