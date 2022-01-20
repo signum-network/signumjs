@@ -3,7 +3,6 @@
         "outDir": "./out",
         "types": [
             "node",
-            "axios",
             "jest"
         ],
       "lib": [

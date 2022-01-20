@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/util",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.8",
   "description": "Useful utilities and tools for building Signum Network applications",
   "keywords": [
     "signum",
@@ -58,7 +58,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "56895a005233449585f1914d7ff244e132b35a39",
+  "gitHead": "63e378093293cc1ab8a00e1accf3d8df291e2e1d",
   "dependencies": {
     "bignumber.js": "^9.0.0",
     "js-base64": "^3.6.0"

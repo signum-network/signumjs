@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/crypto",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.8",
   "description": "Cryptographic functions for building Signum Network apps.",
   "keywords": [
     "signum",
@@ -65,7 +65,7 @@
       "pre-push": "npm test"
     }
   },
-  "gitHead": "56895a005233449585f1914d7ff244e132b35a39",
+  "gitHead": "63e378093293cc1ab8a00e1accf3d8df291e2e1d",
   "publishConfig": {
     "access": "public"
   }
