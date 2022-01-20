@@ -10,5 +10,5 @@ import {DefaultSendArgs} from './defaultSendArgs';
  */
 export interface SetAliasArgs extends DefaultSendArgs {
     aliasName: string;
-    aliasURI: string;
+    aliasURI?: string;
 }
