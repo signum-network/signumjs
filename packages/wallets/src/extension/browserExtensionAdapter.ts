@@ -157,7 +157,10 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.PermissionRequest,
-            network: args.network,
+            network: {
+                rpc: args.network,
+                name: '' // unused
+            },
             force: args.force,
             appMeta: args.appMeta,
         });

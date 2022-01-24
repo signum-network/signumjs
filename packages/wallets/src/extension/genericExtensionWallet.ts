@@ -7,6 +7,7 @@ import {ConfirmedTransaction, Wallet} from '../typings';
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
+import {NotGrantedWalletError} from './errors';
 
 interface GenericExtensionWalletConnectArgs {
     /**
@@ -15,18 +16,9 @@ interface GenericExtensionWalletConnectArgs {
     appName: string;
 
     /**
-     * Determines the nodeHost to be connected to
+     * Determines the node (via URL) to be connected to
      */
-    nodeHost: {
-        /**
-         *  The name used qithin the wallet
-         */
-        name: string;
-        /**
-         * The nodes url
-         */
-        url: string
-    };
+    nodeHost: string;
     /**
      * Optional timeout handler, that will be called, if connection to the wallet was timed out.
      * If not given, an exception will be thrown on timeout instead
@@ -88,13 +80,10 @@ export class GenericExtensionWallet implements Wallet {
         }
     }
 
-    private async fetchPermission(networkRpc: string, networkName: string, appName: string) {
+    private async fetchPermission(networkRpc: string, appName: string) {
         try {
             const {rpc, pkh, publicKey} = await this.adapter.requestPermission({
-                network: {
-                    rpc: networkRpc,
-                    name: networkName
-                },
+                network: networkRpc,
                 appMeta: {
                     name: appName
                 },
@@ -105,7 +94,7 @@ export class GenericExtensionWallet implements Wallet {
             return this._connection;
         } catch (e) {
             console.error(e);
-            return null;
+            throw e;
         }
     }
 
@@ -126,7 +115,7 @@ export class GenericExtensionWallet implements Wallet {
         const {timeoutMillies = 10_000, onTimeout, appName, nodeHost} = args;
         let permission = null;
         if (isAvailable) {
-            permission = await this.fetchPermission(nodeHost.url, nodeHost.name, appName);
+            permission = await this.fetchPermission(nodeHost, appName);
         }
         return permission || new Promise(async (resolve, reject) => {
                 let timeoutHandler = null;
@@ -137,11 +126,15 @@ export class GenericExtensionWallet implements Wallet {
                     if (!available) {
                         return;
                     }
-                    permission = permission = await this.fetchPermission(nodeHost.url, nodeHost.name, appName);
-                    if (permission) {
-                        clearTimeout(timeoutHandler);
-                        listener.unlisten();
-                        resolve(permission);
+                    try {
+                        permission = permission = await this.fetchPermission(nodeHost, appName);
+                        if (permission) {
+                            clearTimeout(timeoutHandler);
+                            listener.unlisten();
+                            resolve(permission);
+                        }
+                    } catch (e) {
+                        reject(e);
                     }
                 });
                 timeoutHandler = setTimeout(() => {

@@ -2,6 +2,6 @@ import {ExtensionDAppMetadata, ExtensionNetwork} from '../messaging';
 
 export interface RequestPermissionArgs {
     appMeta: ExtensionDAppMetadata;
-    network?: ExtensionNetwork;
+    network: string;
     force: boolean;
 }
