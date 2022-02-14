@@ -113,6 +113,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getblockchainstatus" class="tsd-kind-icon">get<wbr>Blockchain<wbr>Status</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getmininginfo" class="tsd-kind-icon">get<wbr>Mining<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getnetworkinfo" class="tsd-kind-icon">get<wbr>Network<wbr>Info</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getpeer" class="tsd-kind-icon">get<wbr>Peer</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getpeers" class="tsd-kind-icon">get<wbr>Peers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.networkapi.html#getserverstatus" class="tsd-kind-icon">get<wbr>Server<wbr>Status</a></li>
@@ -131,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Blockchain<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L21">core/src/typings/api/networkApi.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L22">core/src/typings/api/networkApi.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Mining<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L27">core/src/typings/api/networkApi.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L35">core/src/typings/api/networkApi.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,12 +197,47 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getnetworkinfo" class="tsd-anchor"></a>
+					<h3>get<wbr>Network<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Network<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L29">core/src/typings/api/networkApi.ts:29</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get detailed information about the Networks constants/settings.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>returns</dt>
+							<dd><p>The Mining Information</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.networkinfo.html" class="tsd-signature-type">NetworkInfo</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.networkinfo.html" class="tsd-signature-type">NetworkInfo</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getpeer" class="tsd-anchor"></a>
 					<h3>get<wbr>Peer</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Peer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L47">core/src/typings/api/networkApi.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L55">core/src/typings/api/networkApi.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,7 +281,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Peers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L54">core/src/typings/api/networkApi.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L62">core/src/typings/api/networkApi.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -289,7 +325,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Server<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L34">core/src/typings/api/networkApi.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L42">core/src/typings/api/networkApi.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -325,7 +361,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Suggested<wbr>Fees<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L40">core/src/typings/api/networkApi.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L48">core/src/typings/api/networkApi.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -360,7 +396,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/networkApi.ts#L60">core/src/typings/api/networkApi.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/networkApi.ts#L68">core/src/typings/api/networkApi.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -421,6 +457,9 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/wallets.html">wallets</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
@@ -462,6 +501,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.networkapi.html#getmininginfo" class="tsd-kind-icon">get<wbr>Mining<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.networkapi.html#getnetworkinfo" class="tsd-kind-icon">get<wbr>Network<wbr>Info</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.networkapi.html#getpeer" class="tsd-kind-icon">get<wbr>Peer</a>

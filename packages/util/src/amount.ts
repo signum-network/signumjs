@@ -278,7 +278,7 @@ export class Amount {
 
     /**
      * Gets a string representation in form `Ꞩ 100`
-     * @param format The format object, Default: [[AmountFormat.DotDecimal]]
+     * @param format The format object, Default: [[AmountFormats.DotDecimal]]
      * @return The formatted string
      */
     public toString(format: AmountFormat = AmountFormats.DotDecimal): string {

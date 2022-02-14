@@ -5,12 +5,9 @@ import {Balance} from '../balance';
 import {AliasList} from '../aliasList';
 import {Account} from '../account';
 import {TransactionId} from '../transactionId';
-import {CommitmentArgs, GetAccountBlocksArgs, GetAccountTransactionsArgs} from '../args';
-import {SetRewardRecipientArgs} from '../args/setRewardRecipientArgs';
+import {CommitmentArgs, GetAccountBlocksArgs, GetAccountTransactionsArgs, SetRewardRecipientArgs, GetAccountArgs, SetAccountInfoArgs} from '../args';
 import {RewardRecipient} from '../rewardRecipient';
-import {GetAccountArgs} from '../args/getAccountArgs';
 import {BlockList} from '../blockList';
-import {SetAccountInfoArgs} from '../args/setAccountInfoArgs';
 import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**

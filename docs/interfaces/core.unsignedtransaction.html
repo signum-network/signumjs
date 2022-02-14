@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PublishContractByReferenceArgs
+	<title>UnsignedTransaction
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.publishcontractbyreferenceargs.html">PublishContractByReferenceArgs</a>
+					<a href="core.unsignedtransaction.html">UnsignedTransaction</a>
 				</li>
 			</ul>
-			<h1>Interface PublishContractByReferenceArgs</h1>
+			<h1>Interface UnsignedTransaction</h1>
 		</div>
 	</div>
 </header>
@@ -91,44 +91,16 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.contractapi.html#publishcontractbyreference">ContractApi.publishContractByReference</a></p>
+						<p>Unsigned Transaction</p>
 					</div>
-					<dl class="tsd-comment-tags">
-						<dt>param</dt>
-						<dd><p>The amount in planck needed to execute the contract</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The fee in Planck to pay for deployment. As this does not depend on payload size, the common fee regime applies.</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>Reference, i.e. Transaction Id, to the already deployed contract</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>Optional deadline in minutes, default is 1440</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The description of your contract (max. 1000 chars)</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The name for the contract</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The senders private key to sign the transaction</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The senders public key</p>
-						</dd>
-						<dt>see</dt>
-						<dd><p>Consider publishing by reference also, which is way cheaper: <a href="core_api.contractapi.html#publishcontract">ContractApi.publishContract</a></p>
-						</dd>
-					</dl>
+					<p>This is being returned from transaction methods, if no private key was given</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PublishContractByReferenceArgs</span>
+						<span class="target">UnsignedTransaction</span>
 					</li>
 				</ul>
 			</section>
@@ -139,14 +111,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#activationamountplanck" class="tsd-kind-icon">activation<wbr>Amount<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#referencedtransaction" class="tsd-kind-icon">referenced<wbr>Transaction</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractbyreferenceargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.unsignedtransaction.html#broadcasted" class="tsd-kind-icon">broadcasted</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.unsignedtransaction.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.unsignedtransaction.html#signaturehash" class="tsd-kind-icon">signature<wbr>Hash</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.unsignedtransaction.html#transactionjson" class="tsd-kind-icon">transactionJSON</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.unsignedtransaction.html#unsignedtransactionbytes" class="tsd-kind-icon">unsigned<wbr>Transaction<wbr>Bytes</a></li>
 							</ul>
 						</section>
 					</div>
@@ -155,82 +124,52 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="activationamountplanck" class="tsd-anchor"></a>
-					<h3>activation<wbr>Amount<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">activation<wbr>Amount<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="broadcasted" class="tsd-anchor"></a>
+					<h3>broadcasted</h3>
+					<div class="tsd-signature tsd-kind-icon">broadcasted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L17">core/src/typings/args/publishContractByReferenceArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/unsignedTransaction.ts#L18">core/src/typings/unsignedTransaction.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="deadline" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deadline</h3>
-					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="requestprocessingtime" class="tsd-anchor"></a>
+					<h3>request<wbr>Processing<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">request<wbr>Processing<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L19">core/src/typings/args/publishContractByReferenceArgs.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/unsignedTransaction.ts#L19">core/src/typings/unsignedTransaction.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="description" class="tsd-anchor"></a>
-					<h3>description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="signaturehash" class="tsd-anchor"></a>
+					<h3>signature<wbr>Hash</h3>
+					<div class="tsd-signature tsd-kind-icon">signature<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L20">core/src/typings/args/publishContractByReferenceArgs.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/unsignedTransaction.ts#L15">core/src/typings/unsignedTransaction.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="feeplanck" class="tsd-anchor"></a>
-					<h3>fee<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="transactionjson" class="tsd-anchor"></a>
+					<h3>transactionJSON</h3>
+					<div class="tsd-signature tsd-kind-icon">transactionJSON<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L18">core/src/typings/args/publishContractByReferenceArgs.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/unsignedTransaction.ts#L17">core/src/typings/unsignedTransaction.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="unsignedtransactionbytes" class="tsd-anchor"></a>
+					<h3>unsigned<wbr>Transaction<wbr>Bytes</h3>
+					<div class="tsd-signature tsd-kind-icon">unsigned<wbr>Transaction<wbr>Bytes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L21">core/src/typings/args/publishContractByReferenceArgs.ts:21</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="referencedtransaction" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> referenced<wbr>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">referenced<wbr>Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L24">core/src/typings/args/publishContractByReferenceArgs.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="senderprivatekey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Private<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L23">core/src/typings/args/publishContractByReferenceArgs.ts:23</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="senderpublickey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Public<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/args/publishContractByReferenceArgs.ts#L22">core/src/typings/args/publishContractByReferenceArgs.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/unsignedTransaction.ts#L16">core/src/typings/unsignedTransaction.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -266,6 +205,9 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/wallets.html">wallets</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
@@ -273,31 +215,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.publishcontractbyreferenceargs.html" class="tsd-kind-icon">Publish<wbr>Contract<wbr>ByReference<wbr>Args</a>
+						<a href="core.unsignedtransaction.html" class="tsd-kind-icon">Unsigned<wbr>Transaction</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#activationamountplanck" class="tsd-kind-icon">activation<wbr>Amount<wbr>Planck</a>
+								<a href="core.unsignedtransaction.html#broadcasted" class="tsd-kind-icon">broadcasted</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#deadline" class="tsd-kind-icon">deadline</a>
+								<a href="core.unsignedtransaction.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#description" class="tsd-kind-icon">description</a>
+								<a href="core.unsignedtransaction.html#signaturehash" class="tsd-kind-icon">signature<wbr>Hash</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
+								<a href="core.unsignedtransaction.html#transactionjson" class="tsd-kind-icon">transactionJSON</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#referencedtransaction" class="tsd-kind-icon">referenced<wbr>Transaction</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.publishcontractbyreferenceargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
+								<a href="core.unsignedtransaction.html#unsignedtransactionbytes" class="tsd-kind-icon">unsigned<wbr>Transaction<wbr>Bytes</a>
 							</li>
 						</ul>
 					</li>

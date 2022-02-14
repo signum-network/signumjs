@@ -127,7 +127,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ById<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/aliasApi.ts#L18">core/src/typings/api/aliasApi.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/aliasApi.ts#L20">core/src/typings/api/aliasApi.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ByName<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/aliasApi.ts#L28">core/src/typings/api/aliasApi.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/aliasApi.ts#L30">core/src/typings/api/aliasApi.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,42 +215,20 @@
 					<div class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/typings/api/aliasApi.ts#L48">core/src/typings/api/aliasApi.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/api/aliasApi.ts#L40">core/src/typings/api/aliasApi.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Registers an Alias with the Burst blockchain</p>
+							<p>Registers an Alias
+							*</p>
 						</div>
-						<p>The transaction will be broadcasted in two steps.</p>
-						<ol>
-							<li>Send the setAlias call with public key to the network</li>
-							<li>Take the returned unsigned message and sign it, i.e. the private key won&#39;t be transmitted.</li>
-						</ol>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The alias name</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The alias URI</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The fee to pay</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The name of the account</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The senders public key for sending an <em>unsigned</em> message</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The senders private key to <em>sign</em> the message</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The deadline, in minutes, for the transaction to be confirmed</p>
+							<dd><p>The args</p>
 							</dd>
 							<dt>returns</dt>
-							<dd><p>The Transaction ID</p>
+							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
 							</dd>
 						</dl>
 					</div>
@@ -259,32 +237,17 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, aliasURI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, feeNQT<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPublicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPrivateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deadline<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.setaliasargs.html" class="tsd-signature-type">SetAliasArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>aliasURI: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>feeNQT: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>senderPublicKey: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>senderPrivateKey: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> deadline: <span class="tsd-signature-type">number</span></h5>
+												<h5>args: <a href="core.setaliasargs.html" class="tsd-signature-type">SetAliasArgs</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -322,6 +285,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/wallets.html">wallets</a>
 					</li>
 				</ul>
 			</nav>

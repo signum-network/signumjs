@@ -1,6 +1,8 @@
 /**
  * The Wallets package provides tools to interact with wallets remotely.
  *
+ * WIP: This documentation is still under construction. Comprehensive examples will be provided soon
+ *
  * @moduledefinition wallets
  * */
 export * from './typings';

@@ -19,7 +19,7 @@ export interface DefaultSendArgs {
      * The senders private key, i.e. the [[crypto.Keys.signPrivateKey]]
      * If the private key is not given, then the transaction method will return the unsigned byte string.
      * The transaction won't be processed until the unsigned bytes are being signed and broadcasted using
-     * [[api.transaction.signAndBroadcastTransaction]]
+     * [[TransactionApi.signAndBroadcastTransaction]]
      */
     senderPrivateKey?: string;
     /**

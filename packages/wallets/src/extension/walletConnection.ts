@@ -8,9 +8,9 @@ import {ExtensionListener} from './extensionListener';
 export type ConnectionStatus = 'connected' | 'disconnected';
 
 /**
- * Wallet Connection object returned from [[GenericWalletExtension.connect]]
+ * Wallet Connection object returned from [[GenericExtensionWallet.connect]]
  * You can use this information for preparing transactions and send them back to the wallet
- * for confirmation with [[GenericWalletExtension.confirm]]
+ * for confirmation with [[GenericExtensionWallet.confirm]]
  * @module wallets
  */
 export class WalletConnection {

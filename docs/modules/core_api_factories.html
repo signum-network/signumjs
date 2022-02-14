@@ -136,6 +136,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getcontractsbyaccount" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getmininginfo" class="tsd-kind-icon">get<wbr>Mining<wbr>Info</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getnetworkinfo" class="tsd-kind-icon">get<wbr>Network<wbr>Info</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getpeer" class="tsd-kind-icon">get<wbr>Peer</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getpeers" class="tsd-kind-icon">get<wbr>Peers</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getrewardrecipient" class="tsd-kind-icon">get<wbr>Reward<wbr>Recipient</a></li>
@@ -148,6 +149,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getunconfirmedaccounttransactions" class="tsd-kind-icon">get<wbr>Unconfirmed<wbr>Account<wbr>Transactions</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#getunconfirmedtransactions" class="tsd-kind-icon">get<wbr>Unconfirmed<wbr>Transactions</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#issueasset" class="tsd-kind-icon">issue<wbr>Asset</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#parsetransactionbytes" class="tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#placeaskorder" class="tsd-kind-icon">place<wbr>Ask<wbr>Order</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#placebidorder" class="tsd-kind-icon">place<wbr>Bid<wbr>Order</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_api_factories.html#publishcontract" class="tsd-kind-icon">publish<wbr>Contract</a></li>
@@ -175,13 +177,13 @@
 					<a name="addcommitment" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> add<wbr>Commitment</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Commitment<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Commitment<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/addCommitment.ts#L17">core/src/api/factories/account/addCommitment.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/addCommitment.ts#L16">core/src/api/factories/account/addCommitment.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -196,25 +198,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.commitmentargs.html" class="tsd-signature-type">CommitmentArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.commitmentargs.html" class="tsd-signature-type">CommitmentArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -228,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/broadcastTransaction.ts#L14">core/src/api/factories/transaction/broadcastTransaction.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/broadcastTransaction.ts#L15">core/src/api/factories/transaction/broadcastTransaction.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,13 +253,13 @@
 					<a name="callcontractmethod" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> call<wbr>Contract<wbr>Method</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/callContractMethod.ts#L18">core/src/api/factories/contract/callContractMethod.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/callContractMethod.ts#L20">core/src/api/factories/contract/callContractMethod.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -290,25 +274,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.callcontractmethodargs.html" class="tsd-signature-type">CallContractMethodArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.callcontractmethodargs.html" class="tsd-signature-type">CallContractMethodArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -316,13 +282,13 @@
 					<a name="cancelaskorder" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> cancel<wbr>Ask<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/cancelAskOrder.ts#L17">core/src/api/factories/asset/cancelAskOrder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/cancelAskOrder.ts#L17">core/src/api/factories/asset/cancelAskOrder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -337,25 +303,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.cancelorderargs.html" class="tsd-signature-type">CancelOrderArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.cancelorderargs.html" class="tsd-signature-type">CancelOrderArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -363,13 +311,13 @@
 					<a name="cancelbidorder" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> cancel<wbr>Bid<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/cancelBidOrder.ts#L17">core/src/api/factories/asset/cancelBidOrder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/cancelBidOrder.ts#L17">core/src/api/factories/asset/cancelBidOrder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -384,25 +332,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.cancelorderargs.html" class="tsd-signature-type">CancelOrderArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.cancelorderargs.html" class="tsd-signature-type">CancelOrderArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -410,13 +340,13 @@
 					<a name="cancelsubscription" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> cancel<wbr>Subscription</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Subscription<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Subscription<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/cancelSubscription.ts#L18">core/src/api/factories/transaction/cancelSubscription.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/cancelSubscription.ts#L18">core/src/api/factories/transaction/cancelSubscription.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -431,25 +361,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.cancelsubscriptionargs.html" class="tsd-signature-type">CancelSubscriptionArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.cancelsubscriptionargs.html" class="tsd-signature-type">CancelSubscriptionArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -457,13 +369,13 @@
 					<a name="createsubscription" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> create<wbr>Subscription</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Subscription<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Subscription<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/createSubscription.ts#L18">core/src/api/factories/transaction/createSubscription.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/createSubscription.ts#L18">core/src/api/factories/transaction/createSubscription.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -478,25 +390,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.createsubscriptionargs.html" class="tsd-signature-type">CreateSubscriptionArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.createsubscriptionargs.html" class="tsd-signature-type">CreateSubscriptionArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -510,7 +404,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/generateSendTransactionQRCode.ts#L13">core/src/api/factories/account/generateSendTransactionQRCode.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/generateSendTransactionQRCode.ts#L13">core/src/api/factories/account/generateSendTransactionQRCode.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -569,7 +463,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/generateSendTransactionQRCodeAddress.ts#L13">core/src/api/factories/account/generateSendTransactionQRCodeAddress.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/generateSendTransactionQRCodeAddress.ts#L13">core/src/api/factories/account/generateSendTransactionQRCodeAddress.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -628,7 +522,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccount.ts#L15">core/src/api/factories/account/getAccount.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccount.ts#L15">core/src/api/factories/account/getAccount.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -675,7 +569,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccountBalance.ts#L14">core/src/api/factories/account/getAccountBalance.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccountBalance.ts#L14">core/src/api/factories/account/getAccountBalance.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -722,7 +616,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccountBlockIds.ts#L14">core/src/api/factories/account/getAccountBlockIds.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccountBlockIds.ts#L14">core/src/api/factories/account/getAccountBlockIds.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -769,7 +663,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccountBlocks.ts#L14">core/src/api/factories/account/getAccountBlocks.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccountBlocks.ts#L14">core/src/api/factories/account/getAccountBlocks.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -816,7 +710,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccountSubscriptions.ts#L13">core/src/api/factories/account/getAccountSubscriptions.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccountSubscriptions.ts#L13">core/src/api/factories/account/getAccountSubscriptions.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -863,7 +757,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAccountTransactions.ts#L14">core/src/api/factories/account/getAccountTransactions.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAccountTransactions.ts#L14">core/src/api/factories/account/getAccountTransactions.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -910,7 +804,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/alias/getAliasById.ts#L13">core/src/api/factories/alias/getAliasById.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/alias/getAliasById.ts#L13">core/src/api/factories/alias/getAliasById.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -957,7 +851,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/alias/getAliasByName.ts#L13">core/src/api/factories/alias/getAliasByName.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/alias/getAliasByName.ts#L13">core/src/api/factories/alias/getAliasByName.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1004,7 +898,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getAliases.ts#L13">core/src/api/factories/account/getAliases.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getAliases.ts#L13">core/src/api/factories/account/getAliases.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1051,7 +945,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/getAllAssets.ts#L13">core/src/api/factories/asset/getAllAssets.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/getAllAssets.ts#L13">core/src/api/factories/asset/getAllAssets.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1101,7 +995,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/getAllContractIds.ts#L14">core/src/api/factories/contract/getAllContractIds.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/getAllContractIds.ts#L14">core/src/api/factories/contract/getAllContractIds.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1148,7 +1042,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/getAsset.ts#L13">core/src/api/factories/asset/getAsset.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/getAsset.ts#L13">core/src/api/factories/asset/getAsset.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1195,7 +1089,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/block/getBlockByHeight.ts#L14">core/src/api/factories/block/getBlockByHeight.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/block/getBlockByHeight.ts#L14">core/src/api/factories/block/getBlockByHeight.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1245,7 +1139,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/block/getBlockById.ts#L15">core/src/api/factories/block/getBlockById.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/block/getBlockById.ts#L15">core/src/api/factories/block/getBlockById.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1295,7 +1189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/block/getBlockByTimestamp.ts#L13">core/src/api/factories/block/getBlockByTimestamp.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/block/getBlockByTimestamp.ts#L13">core/src/api/factories/block/getBlockByTimestamp.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1345,7 +1239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/block/getBlockId.ts#L14">core/src/api/factories/block/getBlockId.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/block/getBlockId.ts#L14">core/src/api/factories/block/getBlockId.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1392,7 +1286,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getBlockchainStatus.ts#L15">core/src/api/factories/network/getBlockchainStatus.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getBlockchainStatus.ts#L15">core/src/api/factories/network/getBlockchainStatus.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1433,7 +1327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/block/getBlocks.ts#L14">core/src/api/factories/block/getBlocks.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/block/getBlocks.ts#L14">core/src/api/factories/block/getBlocks.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1486,7 +1380,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/getContract.ts#L13">core/src/api/factories/contract/getContract.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/getContract.ts#L13">core/src/api/factories/contract/getContract.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1533,7 +1427,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/getContractsByAccount.ts#L15">core/src/api/factories/contract/getContractsByAccount.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/getContractsByAccount.ts#L15">core/src/api/factories/contract/getContractsByAccount.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1580,7 +1474,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getMiningInfo.ts#L14">core/src/api/factories/network/getMiningInfo.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getMiningInfo.ts#L14">core/src/api/factories/network/getMiningInfo.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1588,6 +1482,47 @@
 									<p>Use with <a href="../classes/core_api.apicomposer.html">ApiComposer</a> and belongs to <a href="../interfaces/core_api.networkapi.html">NetworkApi</a>.</p>
 								</div>
 								<p>See details at <a href="../interfaces/core_api.networkapi.html#getmininginfo">NetworkApi.getMiningInfo</a></p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.mininginfo.html" class="tsd-signature-type">MiningInfo</a><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.mininginfo.html" class="tsd-signature-type">MiningInfo</a><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="getnetworkinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Network<wbr>Info</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Network<wbr>Info<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getNetworkInfo.ts#L14">core/src/api/factories/network/getNetworkInfo.ts:14</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use with <a href="../classes/core_api.apicomposer.html">ApiComposer</a> and belongs to <a href="../interfaces/core_api.networkapi.html">NetworkApi</a>.</p>
+								</div>
+								<p>See details at <a href="../interfaces/core_api.networkapi.html#getnetworkinfo">NetworkApi.getNetworkInfo</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1621,7 +1556,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getPeer.ts#L13">core/src/api/factories/network/getPeer.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getPeer.ts#L13">core/src/api/factories/network/getPeer.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1668,7 +1603,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getPeers.ts#L13">core/src/api/factories/network/getPeers.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getPeers.ts#L13">core/src/api/factories/network/getPeers.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1715,7 +1650,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getRewardRecipient.ts#L13">core/src/api/factories/account/getRewardRecipient.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getRewardRecipient.ts#L13">core/src/api/factories/account/getRewardRecipient.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1762,7 +1697,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getServerStatus.ts#L14">core/src/api/factories/network/getServerStatus.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getServerStatus.ts#L14">core/src/api/factories/network/getServerStatus.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1803,7 +1738,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/getSubscription.ts#L14">core/src/api/factories/transaction/getSubscription.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/getSubscription.ts#L14">core/src/api/factories/transaction/getSubscription.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1850,7 +1785,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getSubscriptionsToAccount.ts#L15">core/src/api/factories/account/getSubscriptionsToAccount.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getSubscriptionsToAccount.ts#L15">core/src/api/factories/account/getSubscriptionsToAccount.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1897,7 +1832,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getSuggestedFees.ts#L14">core/src/api/factories/network/getSuggestedFees.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getSuggestedFees.ts#L14">core/src/api/factories/network/getSuggestedFees.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1938,7 +1873,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/network/getTime.ts#L14">core/src/api/factories/network/getTime.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/network/getTime.ts#L14">core/src/api/factories/network/getTime.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1979,7 +1914,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/getTransaction.ts#L14">core/src/api/factories/transaction/getTransaction.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/getTransaction.ts#L14">core/src/api/factories/transaction/getTransaction.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2026,7 +1961,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/getUnconfirmedAccountTransactions.ts#L13">core/src/api/factories/account/getUnconfirmedAccountTransactions.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/getUnconfirmedAccountTransactions.ts#L13">core/src/api/factories/account/getUnconfirmedAccountTransactions.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2076,7 +2011,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/getUnconfirmedTransactions.ts#L13">core/src/api/factories/transaction/getUnconfirmedTransactions.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/getUnconfirmedTransactions.ts#L13">core/src/api/factories/transaction/getUnconfirmedTransactions.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2111,13 +2046,13 @@
 					<a name="issueasset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> issue<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">issue<wbr>Asset<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">issue<wbr>Asset<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/issueAsset.ts#L20">core/src/api/factories/asset/issueAsset.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/issueAsset.ts#L20">core/src/api/factories/asset/issueAsset.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2132,21 +2067,50 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="parsetransactionbytes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> parse<wbr>Transaction<wbr>Bytes</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/parseTransactionBytes.ts#L13">core/src/api/factories/transaction/parseTransactionBytes.ts:13</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use with <a href="../classes/core_api.apicomposer.html">ApiComposer</a> and belongs to <a href="../interfaces/core_api.transactionapi.html">TransactionApi</a>.</p>
+								</div>
+								<p>See details at <a href="../interfaces/core_api.transactionapi.html#parsetransactionbytes">TransactionApi.parseTransactionBytes</a></p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter-siganture">
 									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.issueassetargs.html" class="tsd-signature-type">IssueAssetArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>transactionHexBytes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&gt;</span></li>
 									</ul>
 									<ul class="tsd-descriptions">
 										<li class="tsd-description">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameters">
 												<li>
-													<h5>args: <a href="../interfaces/core.issueassetargs.html" class="tsd-signature-type">IssueAssetArgs</a></h5>
+													<h5>transactionHexBytes: <span class="tsd-signature-type">string</span></h5>
 												</li>
 											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
 										</li>
 									</ul>
 								</li>
@@ -2158,13 +2122,13 @@
 					<a name="placeaskorder" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> place<wbr>Ask<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">place<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">place<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/placeAskOrder.ts#L17">core/src/api/factories/asset/placeAskOrder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/placeAskOrder.ts#L17">core/src/api/factories/asset/placeAskOrder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2179,25 +2143,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.placeorderargs.html" class="tsd-signature-type">PlaceOrderArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.placeorderargs.html" class="tsd-signature-type">PlaceOrderArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2205,13 +2151,13 @@
 					<a name="placebidorder" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> place<wbr>Bid<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">place<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">place<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/placeBidOrder.ts#L17">core/src/api/factories/asset/placeBidOrder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/placeBidOrder.ts#L17">core/src/api/factories/asset/placeBidOrder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2226,25 +2172,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.placeorderargs.html" class="tsd-signature-type">PlaceOrderArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.placeorderargs.html" class="tsd-signature-type">PlaceOrderArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2252,13 +2180,13 @@
 					<a name="publishcontract" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> publish<wbr>Contract</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/publishContract.ts#L19">core/src/api/factories/contract/publishContract.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/publishContract.ts#L19">core/src/api/factories/contract/publishContract.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2273,25 +2201,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.publishcontractargs.html" class="tsd-signature-type">PublishContractArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.publishcontractargs.html" class="tsd-signature-type">PublishContractArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2299,13 +2209,13 @@
 					<a name="publishcontractbyreference" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> publish<wbr>Contract<wbr>ByReference</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/contract/publishContractByReference.ts#L18">core/src/api/factories/contract/publishContractByReference.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/contract/publishContractByReference.ts#L17">core/src/api/factories/contract/publishContractByReference.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2320,25 +2230,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.publishcontractbyreferenceargs.html" class="tsd-signature-type">PublishContractByReferenceArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.publishcontractbyreferenceargs.html" class="tsd-signature-type">PublishContractByReferenceArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2346,13 +2238,13 @@
 					<a name="removecommitment" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> remove<wbr>Commitment</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Commitment<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Commitment<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/removeCommitment.ts#L17">core/src/api/factories/account/removeCommitment.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/removeCommitment.ts#L17">core/src/api/factories/account/removeCommitment.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2367,25 +2259,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.commitmentargs.html" class="tsd-signature-type">CommitmentArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.commitmentargs.html" class="tsd-signature-type">CommitmentArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2393,13 +2267,13 @@
 					<a name="sendamounttomultiplerecipients" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>Amount<wbr>ToMultiple<wbr>Recipients</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/sendAmountToMultipleRecipients.ts#L22">core/src/api/factories/transaction/sendAmountToMultipleRecipients.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/sendAmountToMultipleRecipients.ts#L32">core/src/api/factories/transaction/sendAmountToMultipleRecipients.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2414,37 +2288,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>recipientAmounts<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.multioutrecipientamount.html" class="tsd-signature-type">MultioutRecipientAmount</a><span class="tsd-signature-symbol">[]</span>, feePlanck<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPublicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPrivateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deadline<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>recipientAmounts: <a href="../interfaces/core.multioutrecipientamount.html" class="tsd-signature-type">MultioutRecipientAmount</a><span class="tsd-signature-symbol">[]</span></h5>
-												</li>
-												<li>
-													<h5>feePlanck: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPublicKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPrivateKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5><span class="tsd-flag ts-flagOptional">Optional</span> deadline: <span class="tsd-signature-type">number</span></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2452,13 +2296,13 @@
 					<a name="sendamounttosinglerecipient" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>Amount<wbr>ToSingle<wbr>Recipient</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToSingle<wbr>Recipient<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToSingle<wbr>Recipient<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/sendAmountToSingleRecipient.ts#L21">core/src/api/factories/transaction/sendAmountToSingleRecipient.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/sendAmountToSingleRecipient.ts#L19">core/src/api/factories/transaction/sendAmountToSingleRecipient.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2473,25 +2317,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.sendamountargs.html" class="tsd-signature-type">SendAmountArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.sendamountargs.html" class="tsd-signature-type">SendAmountArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2499,13 +2325,13 @@
 					<a name="sendencryptedmessage" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>Encrypted<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Encrypted<wbr>Message<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Encrypted<wbr>Message<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/message/sendEncryptedMessage.ts#L20">core/src/api/factories/message/sendEncryptedMessage.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/message/sendEncryptedMessage.ts#L19">core/src/api/factories/message/sendEncryptedMessage.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2520,25 +2346,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.sendencryptedmessageargs.html" class="tsd-signature-type">SendEncryptedMessageArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.sendencryptedmessageargs.html" class="tsd-signature-type">SendEncryptedMessageArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2546,13 +2354,13 @@
 					<a name="sendmessage" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Message<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Message<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/message/sendMessage.ts#L17">core/src/api/factories/message/sendMessage.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/message/sendMessage.ts#L17">core/src/api/factories/message/sendMessage.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2567,25 +2375,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.sendmessageargs.html" class="tsd-signature-type">SendMessageArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.sendmessageargs.html" class="tsd-signature-type">SendMessageArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2593,13 +2383,13 @@
 					<a name="sendsameamounttomultiplerecipients" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/sendSameAmountToMultipleRecipients.ts#L17">core/src/api/factories/transaction/sendSameAmountToMultipleRecipients.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/sendSameAmountToMultipleRecipients.ts#L18">core/src/api/factories/transaction/sendSameAmountToMultipleRecipients.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2614,40 +2404,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>amountPlanck<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, feePlanck<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, recipientIds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, senderPublicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPrivateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deadline<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>amountPlanck: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>feePlanck: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>recipientIds: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-												</li>
-												<li>
-													<h5>senderPublicKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPrivateKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5><span class="tsd-flag ts-flagOptional">Optional</span> deadline: <span class="tsd-signature-type">number</span></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2655,13 +2412,13 @@
 					<a name="setaccountinfo" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Account<wbr>Info</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Info<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Info<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/setAccountInfo.ts#L17">core/src/api/factories/account/setAccountInfo.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/setAccountInfo.ts#L17">core/src/api/factories/account/setAccountInfo.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2676,25 +2433,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.setaccountinfoargs.html" class="tsd-signature-type">SetAccountInfoArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.setaccountinfoargs.html" class="tsd-signature-type">SetAccountInfoArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2702,13 +2441,13 @@
 					<a name="setalias" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Alias</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/setAlias.ts#L17">core/src/api/factories/account/setAlias.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/setAlias.ts#L18">core/src/api/factories/account/setAlias.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2723,40 +2462,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, aliasURI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, feeNQT<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPublicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPrivateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deadline<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>aliasURI: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>feeNQT: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPublicKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPrivateKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>deadline: <span class="tsd-signature-type">number</span></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2764,13 +2470,13 @@
 					<a name="setalias-1" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Alias</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/alias/setAlias.ts#L19">core/src/api/factories/alias/setAlias.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/alias/setAlias.ts#L17">core/src/api/factories/alias/setAlias.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2785,40 +2491,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, aliasURI<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, feeNQT<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPublicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, senderPrivateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, deadline<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>aliasURI: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>feeNQT: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPublicKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>senderPrivateKey: <span class="tsd-signature-type">string</span></h5>
-												</li>
-												<li>
-													<h5>deadline: <span class="tsd-signature-type">number</span></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2826,13 +2499,13 @@
 					<a name="setrewardrecipient" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Reward<wbr>Recipient</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Reward<wbr>Recipient<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Reward<wbr>Recipient<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/account/setRewardRecipient.ts#L17">core/src/api/factories/account/setRewardRecipient.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/account/setRewardRecipient.ts#L17">core/src/api/factories/account/setRewardRecipient.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2847,39 +2520,21 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.setrewardrecipientargs.html" class="tsd-signature-type">SetRewardRecipientArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.setrewardrecipientargs.html" class="tsd-signature-type">SetRewardRecipientArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="signandbroadcasttransaction" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> sign<wbr>And<wbr>Broadcast<wbr>Transaction</h3>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sign<wbr>And<wbr>Broadcast<wbr>Transaction</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">sign<wbr>And<wbr>Broadcast<wbr>Transaction<span class="tsd-signature-symbol">(</span>burstService<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">sign<wbr>And<wbr>Broadcast<wbr>Transaction<span class="tsd-signature-symbol">(</span>chainService<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/transaction/signAndBroadcastTransaction.ts#L18">core/src/api/factories/transaction/signAndBroadcastTransaction.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/transaction/signAndBroadcastTransaction.ts#L18">core/src/api/factories/transaction/signAndBroadcastTransaction.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2891,7 +2546,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>burstService: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
+									<h5>chainService: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
@@ -2920,13 +2575,13 @@
 					<a name="transferasset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> transfer<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">transfer<wbr>Asset<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">transfer<wbr>Asset<span class="tsd-signature-symbol">(</span>service<span class="tsd-signature-symbol">: </span><a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bc1e4b7/packages/core/src/api/factories/asset/transferAsset.ts#L20">core/src/api/factories/asset/transferAsset.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/api/factories/asset/transferAsset.ts#L20">core/src/api/factories/asset/transferAsset.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2941,25 +2596,7 @@
 									<h5>service: <a href="../classes/core.chainservice.html" class="tsd-signature-type">ChainService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transferassetargs.html" class="tsd-signature-type">TransferAssetArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></li>
-									</ul>
-									<ul class="tsd-descriptions">
-										<li class="tsd-description">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameters">
-												<li>
-													<h5>args: <a href="../interfaces/core.transferassetargs.html" class="tsd-signature-type">TransferAssetArgs</a></h5>
-												</li>
-											</ul>
-											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol">&gt;</span></h4>
-										</li>
-									</ul>
-								</li>
-							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -2994,6 +2631,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="util.html">util</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="wallets.html">wallets</a>
 					</li>
 				</ul>
 			</nav>
@@ -3090,6 +2730,9 @@
 						<a href="core_api_factories.html#getmininginfo" class="tsd-kind-icon">get<wbr>Mining<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="core_api_factories.html#getnetworkinfo" class="tsd-kind-icon">get<wbr>Network<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="core_api_factories.html#getpeer" class="tsd-kind-icon">get<wbr>Peer</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
@@ -3124,6 +2767,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="core_api_factories.html#issueasset" class="tsd-kind-icon">issue<wbr>Asset</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="core_api_factories.html#parsetransactionbytes" class="tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="core_api_factories.html#placeaskorder" class="tsd-kind-icon">place<wbr>Ask<wbr>Order</a>
