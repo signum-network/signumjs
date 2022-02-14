@@ -1,4 +1,4 @@
-import {Amount, AmountFormat} from '../amount';
+import {Amount, AmountFormat, AmountFormats} from '../amount';
 
 describe('Amount', () => {
     describe('fromSigna', () => {
@@ -29,6 +29,11 @@ describe('Amount', () => {
             expect(Amount.fromPlanck(0).getPlanck()).toEqual('0');
             expect(Amount.fromSigna('1').getPlanck()).toEqual('100000000');
         });
+        it('Should return no fractional planck ', () => {
+            expect(Amount.fromPlanck('1.01').getPlanck()).toEqual('1');
+            expect(Amount.fromSigna('1.00000000003340501').getPlanck()).toEqual('100000000');
+            expect(Amount.fromSigna('100.00000000003340501').getPlanck()).toEqual('10000000000');
+        });
     });
     describe('setPlanck', () => {
         it('Should set value correctly', () => {
@@ -48,6 +53,10 @@ describe('Amount', () => {
             expect(Amount.fromSigna('1').getSigna()).toEqual('1');
             expect(Amount.fromSigna('0').getSigna()).toEqual('0');
             expect(Amount.fromPlanck('1').getSigna()).toEqual('0.00000001');
+        });
+        it('Should not consider fractional planck', () => {
+            expect(Amount.fromPlanck('1.023').getSigna()).toEqual('0.00000001');
+            expect(Amount.fromPlanck('1.00030030023').getSigna()).toEqual('0.00000001');
         });
     });
     describe('setSigna', () => {
@@ -77,14 +86,14 @@ describe('Amount', () => {
         });
     });
     describe('toString', () => {
-        it('Return String as Planck', () => {
-            const amount = Amount.fromSigna('10');
-            expect(amount.toString(AmountFormat.PLANCK)).toEqual('ꞩ 1000000000');
+        it('Return String as Dot Decimal', () => {
+            expect(Amount.fromSigna(1000.12).toString()).toEqual('Ꞩ 1,000.12');
+            expect(Amount.fromSigna('10').toString(AmountFormats.DotDecimal)).toEqual('Ꞩ 10');
+            expect(Amount.fromSigna(1_000_000.23).toString(AmountFormats.DotDecimal)).toEqual('Ꞩ 1,000,000.23');
         });
-        it('Return String as BURST', () => {
-            const amount = Amount.fromSigna('10');
-            expect(amount.toString()).toEqual('Ꞩ 10');
-            expect(amount.toString(AmountFormat.SIGNA)).toEqual('Ꞩ 10');
+        it('Return String as Comma Decimal', () => {
+            expect(Amount.fromSigna('10').toString(AmountFormats.CommaDecimal)).toEqual('Ꞩ 10');
+            expect(Amount.fromSigna(1_000_000.23).toString(AmountFormats.CommaDecimal)).toEqual('Ꞩ 1.000.000,23');
         });
     });
     describe('equals', () => {

@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified (c) 2022 Signum Network
  */
 import {calculateMinimumCreationFee} from '@signumjs/contracts';
 import {ChainService} from '../../../service';
 import {PublishContractArgs} from '../../../typings/args';
-import {signAndBroadcastTransaction} from '../transaction';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 
 /**
@@ -16,29 +16,22 @@ import {DefaultDeadline} from '../../../constants';
  * See details at [[ContractApi.publishContract]]
  * @module core.api.factories
  */
-export const publishContract = (service: ChainService):
-    (args: PublishContractArgs) => Promise<TransactionId> =>
-    async (args: PublishContractArgs): Promise<TransactionId> => {
+export const publishContract = (service: ChainService) =>
+    (args: PublishContractArgs) => signIfPrivateKey(service, args, async (a: PublishContractArgs) => {
 
         const parameters = {
-            code: args.codeHex,
-            deadline: args.deadline || DefaultDeadline,
-            description: args.description,
-            feeNQT: calculateMinimumCreationFee(args.codeHex).getPlanck(),
-            minActivationAmountNQT: args.activationAmountPlanck,
-            name: args.name,
-            publicKey: args.senderPublicKey,
+            code: a.codeHex,
+            deadline: a.deadline || DefaultDeadline,
+            description: a.description,
+            feeNQT: a.feePlanck || calculateMinimumCreationFee(a.codeHex).getPlanck(),
+            minActivationAmountNQT: a.activationAmountPlanck,
+            name: a.name,
+            publicKey: a.senderPublicKey,
             cspages: 1,
             dpages: 1,
             uspages: 1,
             broadcast: true,
         };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('createATProgram', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderPublicKey,
-            senderPrivateKey: args.senderPrivateKey,
-            unsignedHexMessage
-        });
-    };
+        return service.send<UnsignedTransaction>('createATProgram', parameters);
+    });

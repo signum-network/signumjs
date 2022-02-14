@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2020 Burst Apps Team
+ * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {SetRewardRecipientArgs} from '../../../typings/args/setRewardRecipientArgs';
 import {DefaultDeadline} from '../../../constants';
-import {signAndBroadcastTransaction} from '../transaction';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AccountApi]].
@@ -14,22 +14,15 @@ import {signAndBroadcastTransaction} from '../transaction';
  * See details at [[AccountApi.setRewardRecipient]]
  * @module core.api.factories
  */
-export const setRewardRecipient = (service: ChainService):
-    (args: SetRewardRecipientArgs) => Promise<TransactionId> =>
-    async (args: SetRewardRecipientArgs): Promise<TransactionId> => {
-        const parameters = {
-            publicKey: args.senderPublicKey,
-            recipient: args.recipientId,
-            feeNQT: args.feePlanck,
-            deadline: args.deadline || DefaultDeadline
-        };
-
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('setRewardRecipient', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderPublicKey,
-            senderPrivateKey: args.senderPrivateKey,
-            unsignedHexMessage
-        });
-
-    };
+export const setRewardRecipient = (service: ChainService) =>
+    (args: SetRewardRecipientArgs) =>
+        signIfPrivateKey(service, args, async (a: SetRewardRecipientArgs) => {
+                const parameters = {
+                    publicKey: a.senderPublicKey,
+                    recipient: a.recipientId,
+                    feeNQT: a.feePlanck,
+                    deadline: a.deadline || DefaultDeadline
+                };
+                return service.send<UnsignedTransaction>('setRewardRecipient', parameters);
+            }
+        );

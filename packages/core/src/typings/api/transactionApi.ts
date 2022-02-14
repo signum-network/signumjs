@@ -1,14 +1,16 @@
 import {TransactionId} from '../transactionId';
 import {Transaction} from '../transaction';
-import {MultioutRecipientAmount} from '../multioutRecipientAmount';
 import {Subscription} from '../subscription';
 import {UnconfirmedTransactionList} from '../unconfirmedTransactionList';
 import {
     CancelSubscriptionArgs,
     CreateSubscriptionArgs,
     SendAmountArgs,
+    SendAmountToMultipleRecipientsArgs,
+    SendSameAmountToMultipleRecipientsArgs,
     UnsignedTransactionArgs
 } from '../args';
+import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**
  * Transaction API
@@ -23,7 +25,7 @@ export interface TransactionApi {
      * Broadcasts a transaction to the network/blockchain
      *
      * @param signedTransactionPayload The _signed_ transaction payload encoded in base64
-     * @return The Transaction Id
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     broadcastTransaction: (signedTransactionPayload: string) => Promise<TransactionId>;
 
@@ -36,52 +38,39 @@ export interface TransactionApi {
     getTransaction: (transactionId: string) => Promise<Transaction>;
 
     /**
+     * Parses a transaction byte sequence to its JSON representation
+     *
+     * @param transactionHexBytes The transaction byte sequence in hexadecimal format
+     * @return The parsed Transaction object
+     */
+    parseTransactionBytes: (transactionHexBytes: string) => Promise<Transaction>;
+
+    /**
      * Sends a multi-out request to the blockchain with _same_ value for all recipients
      *
-     * @param amountPlanck The amount to be sent as Planck value
-     * @param feePlanck The fee to be paid as Planck value
-     * @param recipientIds List of account IDs for the recipients
-     * @param senderPublicKey The senders public key for sending an _unsigned_ message
-     * @param senderPrivateKey The senders private key to _sign_ the message
-     * @return The Transaction Id
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    sendSameAmountToMultipleRecipients: (
-        amountPlanck: string,
-        feePlanck: string,
-        recipientIds: string[],
-        senderPublicKey: string,
-        senderPrivateKey: string,
-    ) => Promise<TransactionId>;
+    sendSameAmountToMultipleRecipients: (args: SendSameAmountToMultipleRecipientsArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Sends a multi-out request to the blockchain with _arbitrary_ value for each recipient
      *
-     * @return The Transaction Id
-     */
-    /**
-     *
-     * @param recipientAmounts A list of recipient Ids and their respective amounts to be sent
-     * @param feePlanck The fee to be paid as Planck value
-     * @param senderPublicKey The senders public key for sending an _unsigned_ message
-     * @param senderPrivateKey The senders private key to _sign_ the message
-     * @return The Transaction Id
-     */
-    sendAmountToMultipleRecipients: (
-        recipientAmounts: MultioutRecipientAmount[],
-        feePlanck: string,
-        senderPublicKey: string,
-        senderPrivateKey: string,
-    ) => Promise<TransactionId>;
-
-
-    /**
-     * Sends burst to another account/recipient
      *
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    sendAmountToMultipleRecipients: (args: SendAmountToMultipleRecipientsArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+
+    /**
+     * Sends an amount to another account/recipient
+     *
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     sendAmountToSingleRecipient:
-        (args: SendAmountArgs) => Promise<TransactionId>;
+        (args: SendAmountArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Gets a subscription
@@ -96,19 +85,19 @@ export interface TransactionApi {
      * Create a subscription
      *
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     createSubscription:
-        (args: CreateSubscriptionArgs) => Promise<TransactionId>;
+        (args: CreateSubscriptionArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Cancels a subscription
      *
      * @param args The argument object
-     * @return The Transaction Id (as promise)
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     cancelSubscription:
-        (args: CancelSubscriptionArgs) => Promise<TransactionId>;
+        (args: CancelSubscriptionArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Get the all current unconfirmed transactions
@@ -119,8 +108,8 @@ export interface TransactionApi {
     /**
      * Signs and broadcasts a transaction
      *
-     * Usually, you don't need this, as all sending methods in BurstJS sign and broadcast.
-     * As not all BRS API functions are implemented yet in BurstJS this method is handy for those,
+     * Usually, you don't need this, as all sending methods in SignumJS sign and broadcast.
+     * As not all BRS API functions are implemented yet in SignumJS this method is handy for those,
      * i.e. all direct calls to [[ChainService.send]]
      *
      * @param unsignedTransaction The unsigned Transaction Object (returned by [[ChainService.send]])

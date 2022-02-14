@@ -1,21 +1,100 @@
 /**
  * Original work Copyright (c) 2020 Burst Apps Team
+ * Modified work Copyright (c) 2022 Signum Network
  */
 import BigNumber from 'bignumber.js';
-import {CurrencyPlanckSymbol, CurrencySymbol} from './constants';
+import {CurrencySymbol} from './constants';
 
 BigNumber.config({
-    EXPONENTIAL_AT: [-9, 20]
+    EXPONENTIAL_AT: [-9, 20],
+    DECIMAL_PLACES: 8 // TODO: should be better configurable
 });
 
 /**
- * Enum to determine the representation format of [BurstValue] string
+ * Structure to determine the representation format of [Amount] string
  * @module util
  */
-export enum AmountFormat {
-    PLANCK,
-    SIGNA,
+export interface AmountFormat {
+    /**
+     * string to prepend, Default: CurrencySymbol
+     */
+    prefix: string;
+    /**
+     * Decimal separator, Default: '.'
+     */
+    decimalSeparator: string;
+    /**
+     * grouping separator of the integer part, Default: ','
+     */
+    groupSeparator: string;
+    /**
+     * Primary grouping size of the integer part, Default: 3
+     */
+    groupSize: number;
+    /**
+     * Secondary grouping size of the integer part, Default 0
+     */
+    secondaryGroupSize: number;
+    /**
+     * Grouping separator of the fraction part, Default: ''
+     */
+    fractionGroupSeparator: string;
+    /**
+     * Grouping size of the fraction part, Default: 0
+     */
+    fractionGroupSize: number;
+    /**
+     * String to append, Default: ''
+     */
+    suffix: string;
 }
+
+
+/**
+ * Amount formatting preset for dot decimal formatting 'Ꞩ 1,000,000.123456'
+ * @module util
+ */
+export const FormatDotDecimal: AmountFormat = {
+    prefix: CurrencySymbol + ' ',
+    decimalSeparator: '.',
+    groupSeparator: ',',
+    groupSize: 3,
+    secondaryGroupSize: 0,
+    fractionGroupSeparator: '',
+    fractionGroupSize: 0,
+    suffix: ''
+};
+
+/**
+ * Amount formatting preset for comma decimal formatting 'Ꞩ 1.000.000,123456'
+ * @module util
+ */
+const FormatCommaDecimal: AmountFormat = {
+    prefix: CurrencySymbol + ' ',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    groupSize: 3,
+    secondaryGroupSize: 0,
+    fractionGroupSeparator: '',
+    fractionGroupSize: 0,
+    suffix: ''
+};
+
+/**
+ * Amount formatting presets, see [[Amount.toString]]
+ * @module util
+ */
+export const AmountFormats = {
+    /**
+     * 1,000,000.123456
+     */
+    DotDecimal: FormatDotDecimal,
+    /**
+     * 1.000.000,123456
+     */
+    CommaDecimal: FormatCommaDecimal
+};
+
 
 function assureValidValue(v: string): void {
     if (!(v && /^-?\d*(\.\d+)?$/.test(v))) {
@@ -80,7 +159,7 @@ export class Amount {
      * @return Gets Planck representation
      */
     getPlanck(): string {
-        return this._planck.toString();
+        return this._planck.toFixed(0);
     }
 
     /**
@@ -157,7 +236,7 @@ export class Amount {
     /**
      * Adds two values
      * @param amount The other value to be added
-     * @return the _mutated_ BurstValue object
+     * @return the _mutated_ Amount object
      */
     public add(amount: Amount): Amount {
         this._planck = this._planck.plus(amount._planck);
@@ -167,7 +246,7 @@ export class Amount {
     /**
      * Subtracts from value
      * @param amount The other value to be subtracted
-     * @return the _mutated_ BurstValue object
+     * @return the _mutated_ Amount object
      */
     public subtract(amount: Amount): Amount {
         this._planck = this._planck.minus(amount._planck);
@@ -175,9 +254,9 @@ export class Amount {
     }
 
     /**
-     * Multiplies with a _numeric_ value (not BurstValue)
+     * Multiplies with a _numeric_ value (not Amount)
      * @param value A numeric value to be multiplied with
-     * @return the _mutated_ BurstValue object
+     * @return the _mutated_ Amount object
      */
     public multiply(value: number): Amount {
         this._planck = this._planck.multipliedBy(value);
@@ -185,9 +264,9 @@ export class Amount {
     }
 
     /**
-     * Divides by a _numeric_ value (not BurstValue)
+     * Divides by a _numeric_ value (not Amount)
      * @param value A numeric value to be divided by
-     * @return the _mutated_ BurstValue object
+     * @return the _mutated_ Amount object
      */
     public divide(value: number): Amount {
         if (value === 0) {
@@ -198,17 +277,17 @@ export class Amount {
     }
 
     /**
-     * Gets a string representation in form `Ꞩ 100` for SIGNA or `ꞩ 10000000000` for Planck
-     * @param format The format
-     * @return The converted string accordingly the param in SIGNA or Planck
+     * Gets a string representation in form `Ꞩ 100`
+     * @param format The format object, Default: [[AmountFormat.DotDecimal]]
+     * @return The formatted string
      */
-    public toString(format: AmountFormat = AmountFormat.SIGNA): string {
-        return format === AmountFormat.SIGNA ? `${CurrencySymbol} ${this.getSigna()}` : `${CurrencyPlanckSymbol} ${this._planck}`;
+    public toString(format: AmountFormat = AmountFormats.DotDecimal): string {
+        return this._planck.dividedBy(1E8).toFormat(format);
     }
 
     /**
-     * Clones/Copies the current BurstValue to a new object
-     * @return new BurstValue instance
+     * Clones/Copies the current Amount to a new object
+     * @return new Amount instance
      */
     public clone(): Amount {
         return Amount.fromPlanck(this.getPlanck());

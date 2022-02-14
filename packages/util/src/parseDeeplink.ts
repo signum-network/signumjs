@@ -1,5 +1,6 @@
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2022 Signum Network
  */
 
 import {DeeplinkParts, EncoderFormat} from './typings';
@@ -8,9 +9,9 @@ import {convertBase64StringToString} from './convertBase64StringToString';
 
 const MandatoryPattern = /^signum.?(.+)?:\/\/(v.+?)\??/i;
 /**
- * Parses a deeplink according the [CIP22 spec](https://github.com/burst-apps-team/CIPs/blob/master/cip-0022.md)
+ * Parses a deeplink according the [CIP22 spec](https://github.com/signum-network/CIPs/blob/master/cip-0022.md)
  *
- * `burst[.domain]://v1?action=[action]&payload=[encodedData]`
+ * `signum[.domain]://v1?action=[action]&payload=[encodedData]`
  *
  * @see [[createDeeplink]] as inverse function
  * @param {string} deeplink The deeplink to be parsed

@@ -52,7 +52,7 @@ describe('[E2E] Contract Api', () => {
                 activationAmountPlanck: convertNumberToNQTString(10),
                 senderPublicKey: senderKeys.publicKey,
                 senderPrivateKey: senderKeys.signPrivateKey,
-                description: '[E2E] burstjs publishContract Test',
+                description: '[E2E] SignumJS publishContract Test',
                 name: 'Echo',
                 isCIP20Active: true,
             }

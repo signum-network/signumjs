@@ -1,19 +1,18 @@
 import {loadEnvironment} from './helpers/environment';
 import {ChainService} from '../../../service/chainService';
-import {decryptMessage, generateMasterKeys, getAccountIdFromPublicKey} from '@signumjs/crypto';
-import {sendTextMessage} from '../../factories/message/sendTextMessage';
-import {sendEncryptedTextMessage} from '../../factories/message/sendEncryptedTextMessage';
+import {decryptMessage, generateMasterKeys, getAccountIdFromPublicKey, Keys} from '@signumjs/crypto';
 import {getTransaction} from '../../factories/transaction/getTransaction';
 import {isAttachmentVersion} from '../../../attachment';
-import {sendMessage} from '../../factories/message';
+import {sendEncryptedMessage, sendMessage} from '../../factories/message';
 import {FeeQuantPlanck} from '@signumjs/util';
+import {TransactionId} from '../../../typings/transactionId';
 
 
 describe('[E2E] Message Api', () => {
 
     let environment;
     let service;
-    let senderKeys;
+    let senderKeys: Keys;
     let recipientKeys;
     let recipientId;
 
@@ -31,21 +30,6 @@ describe('[E2E] Message Api', () => {
     });
 
 
-    it('should sendTextMessage', async () => {
-
-        const transactionId = await sendTextMessage(service)(
-            '[E2E] sendTextMessage TEST',
-            recipientId,
-            senderKeys.publicKey,
-            senderKeys.signPrivateKey,
-            1440,
-            0.05
-        );
-
-        expect(transactionId).not.toBeUndefined();
-
-    });
-
     it('should sendMessage with recipientPublicKey', async () => {
 
         const transactionId = await sendMessage(service)({
@@ -56,7 +40,7 @@ describe('[E2E] Message Api', () => {
             recipientId,
             recipientPublicKey: recipientKeys.publicKey,
             deadline: 1440,
-        });
+        }) as TransactionId;
 
         expect(transactionId).not.toBeUndefined();
 
@@ -76,7 +60,7 @@ describe('[E2E] Message Api', () => {
             recipientPublicKey: recipientKeys.publicKey,
             deadline: 1440,
             messageIsText: false
-        });
+        }) as TransactionId;
 
         expect(transactionId).not.toBeUndefined();
 
@@ -87,14 +71,15 @@ describe('[E2E] Message Api', () => {
 
 
     it('should sendEncryptedTextMessage', async () => {
-        const transactionId = await sendEncryptedTextMessage(service)(
-            '[E2E] sendEncryptedTextMessage TEST (encrypted)',
+        const transactionId = await sendEncryptedMessage(service)({
+            message : '[E2E] sendEncryptedTextMessage TEST (encrypted)',
             recipientId,
-            recipientKeys.publicKey,
-            senderKeys,
-            1440,
-            0.05
-        );
+            recipientPublicKey: recipientKeys.publicKey,
+            senderAgreementKey: senderKeys.agreementPrivateKey,
+            senderPublicKey: senderKeys.publicKey,
+            senderPrivateKey: senderKeys.signPrivateKey,
+            feePlanck: String(FeeQuantPlanck),
+        }) as TransactionId;
 
         expect(transactionId).not.toBeUndefined();
 

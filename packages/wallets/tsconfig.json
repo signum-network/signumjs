@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "outDir": "./out",
+        "types": [
+            "node",
+            "jest"
+        ],
+      "lib": [
+        "ESNext",
+        "dom"
+      ]
+    },
+    "typeRoots": [ 
+        "typings", 
+        "node_modules/@types"
+    ],
+    "include": [
+        "./src",
+        "README.md"
+    ],
+  "autogenerate-readme": {
+    "srcFiles": [
+      "./src/**/*.ts"
+    ],
+    "template": "./README.md.hbs"
+  },
+    "extends": "../../tsconfig.json"
+}

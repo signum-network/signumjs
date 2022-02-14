@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/contracts",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.10",
   "description": "Smart Contracts package for Signum Network",
   "keywords": [
     "signum",
@@ -54,14 +54,14 @@
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@signumjs/util": "^1.0.0-rc.8"
+    "@signumjs/util": "^1.0.0-rc.10"
   },
   "husky": {
     "hooks": {
       "pre-push": "npm test"
     }
   },
-  "gitHead": "56895a005233449585f1914d7ff244e132b35a39",
+  "gitHead": "63e378093293cc1ab8a00e1accf3d8df291e2e1d",
   "publishConfig": {
     "access": "public"
   }

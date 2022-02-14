@@ -1,6 +1,7 @@
 /**
  * Original work Copyright (c) 2018 PoC-Consortium
  * Modified work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
@@ -14,4 +15,4 @@ import {TransactionId} from '../../../typings/transactionId';
 export const broadcastTransaction = (service: ChainService):
     (signedTransactionPayload: string) => Promise<TransactionId> =>
     (signedTransactionPayload: string): Promise<TransactionId> =>
-        service.send('broadcastTransaction', {transactionBytes: signedTransactionPayload});
+        service.send<TransactionId>('broadcastTransaction', {transactionBytes: signedTransactionPayload});

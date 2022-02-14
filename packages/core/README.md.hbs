@@ -42,11 +42,36 @@ const api = composeApi(apiSettings);
 })()
 ```
 
+#### Alternative Example
+
+This example is the same as the above but using the alternative LedgerClientFactory
+
+```js
+import {LedgerClientFactory} from '@signumjs/core'
+import {Amount} from '@signumjs/util'
+
+const ledger = LedgerClientFactory.create({
+    nodeHost: 'http://localhost:6876'
+});
+
+// this self-executing file makes turns this file into a starting point of your app
+
+(async () => {
+    try{
+        const {balanceNQT} = await ledger.account.getAccountBalance('13036514135565182944')
+        console.log(`Account Balance: ${Amount.fromPlanck(balanceNQT).toString()}`)
+    }
+    catch(e){ // e is of type HttpError (as part of @signumjs/http)
+        console.error(`Whooops, something went wrong: ${e.message}`)
+    }
+})()
+```
+
 
 ### Using in classic `<script>`
 
 Each package is available as bundled standalone library using IIFE.
-This way _burstJS_ can be used also within `<script>`-Tags.
+This way _signumJS_ can be used also within `<script>`-Tags.
 This might be useful for Wordpress and/or other PHP applications.
 
 Just import the package using the HTML `<script>` tag.

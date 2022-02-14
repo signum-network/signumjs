@@ -106,18 +106,61 @@ describe('TransactionApi', () => {
             const recipients = ['recipient_1', 'recipient_2'];
 
             service = createChainService(httpMock, 'relPath');
-            const status = await sendSameAmountToMultipleRecipients(service)(
-                '2000',
-                '1000',
-                recipients,
-                'senderPublicKey',
-                'senderPrivateKey',
-            );
+            const status = await sendSameAmountToMultipleRecipients(service)({
+                feePlanck: '1000',
+                amountPlanck: '2000',
+                senderPublicKey: 'senderPublicKey',
+                senderPrivateKey: 'senderPrivateKey',
+                recipientIds: recipients
+            });
 
             expect(status).toBe('transactionId');
-            // expect(generateSignature).toBeCalledTimes(1);
-            // expect(verifySignature).toBeCalledTimes(1);
-            // expect(generateSignedTransactionBytes).toBeCalledTimes(1);
+        });
+
+        it('should throw error if found duplicates per default dedupe=false setting', async () => {
+            httpMock = HttpMockBuilder.create().build();
+            const recipients = ['recipient_1', 'recipient_2', 'recipient_2'];
+
+            service = createChainService(httpMock, 'relPath');
+            let hasThrown = false;
+            try {
+                await sendSameAmountToMultipleRecipients(service)({
+                    feePlanck: '1000',
+                    amountPlanck: '2000',
+                    senderPublicKey: 'senderPublicKey',
+                    senderPrivateKey: 'senderPrivateKey',
+                    recipientIds: recipients,
+                });
+            } catch (e) {
+                hasThrown = e.message === 'Duplicate Recipients found';
+            }
+
+            expect(hasThrown).toBeTruthy();
+        });
+
+
+        it('should remove duplicates from multiple recipients and execute transaction', async () => {
+            httpMock = HttpMockBuilder.create()
+                // tslint:disable:max-line-length
+                .onPostReply(200, mockBroadcastResponse,
+                    'relPath?requestType=sendMoneyMultiSame&publicKey=senderPublicKey&recipients=recipient_1%3Brecipient_2&feeNQT=1000&amountNQT=2000&deadline=1440')
+                .onPostReply(200, mockTransaction.transaction,
+                    'relPath?requestType=broadcastTransaction&transactionBytes=signedTransactionBytes')
+                .build();
+
+            const recipients = ['recipient_1', 'recipient_2', 'recipient_2'];
+
+            service = createChainService(httpMock, 'relPath');
+            const status = await sendSameAmountToMultipleRecipients(service)({
+                feePlanck: '1000',
+                amountPlanck: '2000',
+                senderPublicKey: 'senderPublicKey',
+                senderPrivateKey: 'senderPrivateKey',
+                recipientIds: recipients,
+                dedupe: true
+            });
+
+            expect(status).toBe('transactionId');
         });
 
 
@@ -131,13 +174,13 @@ describe('TransactionApi', () => {
             service = createChainService(httpMock, 'relPath');
 
             try {
-                await sendSameAmountToMultipleRecipients(service)(
-                    '2000',
-                    '1000',
-                    recipients,
-                    'senderPublicKey',
-                    'senderPrivateKey',
-                );
+                await sendSameAmountToMultipleRecipients(service)({
+                    feePlanck: '1000',
+                    amountPlanck: '2000',
+                    senderPublicKey: 'senderPublicKey',
+                    senderPrivateKey: 'senderPrivateKey',
+                    recipientIds: recipients
+                });
                 expect(false).toBe('Expected exception');
             } catch (e) {
                 expect(e.message).toContain('No recipients given');
@@ -187,7 +230,7 @@ describe('TransactionApi', () => {
                     'relPath?requestType=broadcastTransaction&transactionBytes=signedTransactionBytes')
                 .build();
 
-            const recipients: MultioutRecipientAmount[] = [
+            const recipientAmounts: MultioutRecipientAmount[] = [
                 {
                     recipient: 'recipient_1',
                     amountNQT: '2000',
@@ -200,10 +243,12 @@ describe('TransactionApi', () => {
 
             service = createChainService(httpMock, 'relPath');
             const status = await sendAmountToMultipleRecipients(service)(
-                recipients,
-                '1000',
-                'senderPublicKey',
-                'senderPrivateKey',
+                {
+                    feePlanck: '1000',
+                    recipientAmounts,
+                    senderPublicKey: 'senderPublicKey',
+                    senderPrivateKey: 'senderPrivateKey'
+                }
             );
 
             expect(status).toBe('transactionId');
@@ -212,21 +257,57 @@ describe('TransactionApi', () => {
             expect(generateSignedTransactionBytes).toBeCalledTimes(1);
         });
 
+
+        it('should throw error when having duplicate recipients for default dedupe setting', async () => {
+            httpMock = HttpMockBuilder.create().build();
+            const recipientAmounts: MultioutRecipientAmount[] = [
+                {
+                    recipient: 'recipient_1',
+                    amountNQT: '2000',
+                },
+                {
+                    recipient: 'recipient_2',
+                    amountNQT: '4000',
+                },
+                {
+                    recipient: 'recipient_1',
+                    amountNQT: '1000',
+                }
+            ];
+
+            service = createChainService(httpMock, 'relPath');
+            let hasThrown = false;
+            try {
+                await sendAmountToMultipleRecipients(service)(
+                    {
+                        feePlanck: '1000',
+                        recipientAmounts,
+                        senderPublicKey: 'senderPublicKey',
+                        senderPrivateKey: 'senderPrivateKey'
+                    }
+                );
+            } catch (e) {
+                hasThrown = e.message === 'Duplicate Recipients found';
+            }
+            expect(hasThrown).toBeTruthy();
+        });
+
         it('should not send arbitrary amounts to multiple recipients, if recipients are empty', async () => {
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, mockBroadcastResponse)
                 .build();
 
-            const recipients = [];
+            const recipientAmounts = [];
             service = createChainService(httpMock, 'relPath');
 
             try {
-                await sendAmountToMultipleRecipients(service)(
-                    recipients,
-                    '1000',
-                    'senderPublicKey',
-                    'senderPrivateKey',
+                await sendAmountToMultipleRecipients(service)({
+                        feePlanck: '1000',
+                        recipientAmounts,
+                        senderPublicKey: 'senderPublicKey',
+                        senderPrivateKey: 'senderPrivateKey'
+                    }
                 );
                 expect(false).toBe('Expected exception');
             } catch (e) {

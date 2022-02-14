@@ -3,7 +3,7 @@ import {ChainService} from '../../../service/chainService';
 import {cancelBidOrder, getAllAssets, getAsset, placeBidOrder} from '../../factories/asset';
 import {issueAsset} from '../../factories/asset/issueAsset';
 import {generateMasterKeys, getAccountIdFromPublicKey} from '@signumjs/crypto';
-import {BurstValue, FeeQuantPlanck} from '@signumjs/util';
+import {Amount, FeeQuantPlanck} from '@signumjs/util';
 
 
 describe(`[E2E] Asset Api`, () => {
@@ -41,11 +41,11 @@ describe(`[E2E] Asset Api`, () => {
         const response = await issueAsset(service)({
             senderPublicKey: senderKeys.publicKey,
             senderPrivateKey: senderKeys.signPrivateKey,
-            amountPlanck: BurstValue.fromBurst(1000).getPlanck(),
+            feePlanck: Amount.fromSigna(112).getPlanck(),
             quantity: 50 * 1000,
             decimals: 4,
-            name: 'BurstJS',
-            description: '[E2E] BurstJS Test Asset'
+            name: 'SignumJS',
+            description: '[E2E] SignumJS Test Asset'
         });
         expect(response.transaction).toBeDefined();
     });
@@ -54,7 +54,7 @@ describe(`[E2E] Asset Api`, () => {
         const response = await placeBidOrder(service)({
             senderPublicKey: senderKeys.publicKey,
             senderPrivateKey: senderKeys.signPrivateKey,
-            pricePlanck: BurstValue.fromBurst(1).getPlanck(),
+            pricePlanck: Amount.fromSigna(1).getPlanck(),
             feePlanck: FeeQuantPlanck + '',
             quantity: 1,
             asset: '8485879651352780597',

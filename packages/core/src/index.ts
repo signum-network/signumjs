@@ -15,6 +15,7 @@ export * from './address';
 export * from './api';
 export * from './attachment';
 export * from './constants';
+export * from './ledgerClient';
 export * from './service';
 export * from './transaction';
 export * from './typings/account';
@@ -44,7 +45,7 @@ export * from './typings/suggestedFees';
 export * from './typings/transaction';
 export * from './typings/transactionId';
 export * from './typings/transactionList';
-export * from './typings/transactionResponse';
+export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
 
 

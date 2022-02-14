@@ -1,10 +1,11 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified Work (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
-import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
+import {SendSameAmountToMultipleRecipientsArgs} from '../../../typings/args/sendSameAmountToMultipleRecipientsArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {DefaultDeadline} from '../../../constants';
 
 
@@ -14,42 +15,29 @@ import {DefaultDeadline} from '../../../constants';
  * See details at [[TransactionApi.sendSameAmountToMultipleRecipients]]
  * @module core.api.factories
  */
-export const sendSameAmountToMultipleRecipients = (service: ChainService):
-    (amountPlanck: string,
-     feePlanck: string,
-     recipientIds: string[],
-     senderPublicKey: string,
-     senderPrivateKey: string,
-     deadline?: number
-    ) => Promise<TransactionId> =>
-    async (
-        amountPlanck: string,
-        feePlanck: string,
-        recipientIds: string[],
-        senderPublicKey: string,
-        senderPrivateKey: string,
-        deadline = DefaultDeadline
-    ): Promise<TransactionId> => {
+export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
+    (args: SendSameAmountToMultipleRecipientsArgs) =>
+        signIfPrivateKey(service, args,
+            async (a: SendSameAmountToMultipleRecipientsArgs) => {
 
-        if (recipientIds.length === 0) {
-            throw new Error('No recipients given. Send ignored');
-        }
+                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = DefaultDeadline, dedupe = false} = a;
 
-        const parameters = {
-            publicKey: senderPublicKey,
-            recipients: recipientIds.join(';'),
-            feeNQT: feePlanck,
-            amountNQT: amountPlanck,
-            deadline,
-        };
+                const uniqueRecipients = new Set<string>(recipientIds);
+                if (!dedupe && recipientIds.length !== uniqueRecipients.size) {
+                    throw new Error('Duplicate Recipients found');
+                }
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>(
-            'sendMoneyMultiSame', parameters);
+                if (recipientIds.length === 0) {
+                    throw new Error('No recipients given. Send ignored');
+                }
 
-        return signAndBroadcastTransaction(service)({
-            unsignedHexMessage,
-            senderPublicKey,
-            senderPrivateKey
-        });
+                const parameters = {
+                    publicKey: senderPublicKey,
+                    recipients: Array.from(uniqueRecipients).join(';'),
+                    feeNQT: feePlanck,
+                    amountNQT: amountPlanck,
+                    deadline,
+                };
 
-    };
+                return service.send<UnsignedTransaction>('sendMoneyMultiSame', parameters);
+            });

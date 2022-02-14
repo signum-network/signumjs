@@ -1,7 +1,8 @@
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {publishContractByReference, getAllContractIds, getContract, getContractsByAccount, publishContract} from '../factories/contract';
-import {signAndBroadcastTransaction} from '../factories/transaction';
+import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
+import {TransactionId} from '../../typings/transactionId';
 
 describe('Contract Api', () => {
 
@@ -58,7 +59,7 @@ describe('Contract Api', () => {
 
         it('should getContractsByAccount', async () => {
             httpMock = HttpMockBuilder.create()
-                .onGetReply(200, testContracts, "relPath?requestType=getAccountATs&account=1234&machineCodeHashId=machinCodeHash")
+                .onGetReply(200, testContracts, 'relPath?requestType=getAccountATs&account=1234&machineCodeHashId=machinCodeHash')
                 .build();
             const service = createChainService(httpMock, 'relPath');
             const contracts = await getContractsByAccount(service)({ accountId: '1234', machineCodeHash: 'machinCodeHash'});
@@ -76,7 +77,7 @@ describe('Contract Api', () => {
 
         it('should getAllContractIds', async () => {
             httpMock = HttpMockBuilder.create()
-                .onGetReply(200, testContracts, "relPath?requestType=getATIds&machineCodeHashId=machinCodeHash")
+                .onGetReply(200, testContracts, 'relPath?requestType=getATIds&machineCodeHashId=machinCodeHash')
                 .build();
             const service = createChainService(httpMock, 'relPath');
             const contracts = await getAllContractIds(service)({ machineCodeHash: 'machinCodeHash'});
@@ -114,7 +115,8 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-            });
+                feePlanck: ''
+            }) as TransactionId;
             expect(transaction).toEqual('transactionId');
         });
     });
@@ -142,7 +144,7 @@ describe('Contract Api', () => {
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContractByReference(service)({
                 activationAmountPlanck: '20000000',
-                referencedTransaction: 'referencedTransactionId',
+                referencedTransactionHash: 'referencedTransactionId',
                 feePlanck: 'feePlanck',
                 description: 'description',
                 name: 'testContract',

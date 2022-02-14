@@ -65,8 +65,5 @@
     "test:e2e": "jest --config jest.config.e2e.js --runInBand --detectOpenHandles --forceExit",
     "test:watch": "jest --watch",
     "tsc": "lerna run tsc"
-  },
-  "dependencies": {
-    "axios": "^0.21.1"
   }
 }

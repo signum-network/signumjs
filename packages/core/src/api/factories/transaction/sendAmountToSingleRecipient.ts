@@ -2,13 +2,11 @@
  * Copyright (c) 2019 Burst Apps Team
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
-import {signAndBroadcastTransaction} from './signAndBroadcastTransaction';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {SendAmountArgs} from '../../../typings/args/sendAmountArgs';
-import {verifyUnsignedTransaction} from '../../../transaction';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 const SmartContractPublickey = '0000000000000000000000000000000000000000000000000000000000000000';
 
@@ -18,37 +16,30 @@ const SmartContractPublickey = '000000000000000000000000000000000000000000000000
  * See details at [[TransactionApi.sendAmountToSingleRecipient]]
  * @module core.api.factories
  */
-export const sendAmountToSingleRecipient = (service: ChainService):
-    (args: SendAmountArgs) => Promise<TransactionId> =>
-    async (args: SendAmountArgs): Promise<TransactionId> => {
+export const sendAmountToSingleRecipient = (service: ChainService) =>
+    (args: SendAmountArgs) =>
+    signIfPrivateKey(
+        service,
+        args,
+        async (a: SendAmountArgs) => {
 
-        let recipientPublicKey = args.recipientPublicKey || undefined;
+        let recipientPublicKey = a.recipientPublicKey || undefined;
         if (recipientPublicKey && recipientPublicKey === SmartContractPublickey) {
             recipientPublicKey = undefined;
         }
 
         let parameters = {
-            amountNQT: args.amountPlanck,
-            publicKey: args.senderPublicKey,
-            recipient: args.recipientId,
+            amountNQT: a.amountPlanck,
+            publicKey: a.senderPublicKey,
+            recipient: a.recipientId,
             recipientPublicKey,
-            feeNQT: args.feePlanck,
-            deadline: args.deadline || DefaultDeadline
+            feeNQT: a.feePlanck,
+            deadline: a.deadline || DefaultDeadline
         };
 
-        if (args.attachment) {
-            parameters = createParametersFromAttachment(args.attachment, parameters);
+        if (a.attachment) {
+            parameters = createParametersFromAttachment(a.attachment, parameters);
         }
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMoney', parameters);
-
-        // FIXME: activate transaction verification
-        // verifyUnsignedTransaction(parameters, unsignedHexMessage);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderPublicKey,
-            senderPrivateKey: args.senderPrivateKey,
-            unsignedHexMessage
-        });
-
-    };
+        return service.send<UnsignedTransaction>('sendMoney', parameters);
+    });

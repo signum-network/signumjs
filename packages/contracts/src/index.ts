@@ -1,6 +1,6 @@
 /**
  * The Contracts package provides functions and messages
- * to interact with Bursts Smart Contracts, i.e. generate method calls
+ * to interact with Signum Smart Contracts, i.e. generate method calls
  * and inspect contract data
  *
  * @moduledefinition contracts

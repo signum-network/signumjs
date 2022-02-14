@@ -2,12 +2,11 @@
  * Copyright (c) 2019 Burst Apps Team
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {encryptMessage} from '@signumjs/crypto';
 import {SendEncryptedMessageArgs} from '../../../typings/args/sendEncryptedMessageArgs';
-import {signAndBroadcastTransaction} from '../transaction/signAndBroadcastTransaction';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 const MAX_MESSAGE_LENGTH = 1024;
 
@@ -17,33 +16,27 @@ const MAX_MESSAGE_LENGTH = 1024;
  * See details at [[MessageApi.sendEncryptedMessage]]
  * @module core.api.factories
  */
-export const sendEncryptedMessage = (service: ChainService):
-    (args: SendEncryptedMessageArgs) => Promise<TransactionId> =>
-    async (args: SendEncryptedMessageArgs): Promise<TransactionId> => {
+export const sendEncryptedMessage = (service: ChainService) =>
+    (args: SendEncryptedMessageArgs) =>
+        signIfPrivateKey(service, args, async (a: SendEncryptedMessageArgs) => {
 
-        const encryptedMessage = encryptMessage(args.message, args.recipientPublicKey, args.senderKeys.agreementPrivateKey);
+                const encryptedMessage = encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
 
-        if (encryptedMessage.data.length > MAX_MESSAGE_LENGTH) {
-            throw new Error(`The encrypted message exceeds allowed limit of ${MAX_MESSAGE_LENGTH} bytes`);
-        }
+                if (encryptedMessage.data.length > MAX_MESSAGE_LENGTH) {
+                    throw new Error(`The encrypted message exceeds allowed limit of ${MAX_MESSAGE_LENGTH} bytes`);
+                }
 
-        const parameters = {
-            deadline: args.deadline || DefaultDeadline,
-            encryptedMessageData: encryptedMessage.data,
-            encryptedMessageNonce: encryptedMessage.nonce,
-            feeNQT: args.feePlanck,
-            messageToEncryptIsText: true,
-            publicKey: args.senderKeys.publicKey,
-            recipient: args.recipientId,
-            recipientPublicKey: args.recipientPublicKey || undefined,
-        };
+                const parameters = {
+                    deadline: a.deadline || DefaultDeadline,
+                    encryptedMessageData: encryptedMessage.data,
+                    encryptedMessageNonce: encryptedMessage.nonce,
+                    feeNQT: a.feePlanck,
+                    messageToEncryptIsText: a.messageIsText === undefined ? true : a.messageIsText,
+                    publicKey: a.senderPublicKey,
+                    recipient: a.recipientId,
+                    recipientPublicKey: a.recipientPublicKey || undefined,
+                };
 
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('sendMessage', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderKeys.publicKey,
-            senderPrivateKey: args.senderKeys.signPrivateKey,
-            unsignedHexMessage
-        });
-
-    };
+                return service.send<UnsignedTransaction>('sendMessage', parameters);
+            }
+        );

@@ -6,6 +6,7 @@ import {TransactionId} from '../transactionId';
 import {CallContractMethodArgs} from '../args/callContractMethodArgs';
 import {GetAllContractIdsArgs} from '../args/getAllContractIdsArgs';
 import {GetContractsByAccountArgs} from '../args/getContractsByAccountArgs';
+import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**
  * Contract API
@@ -41,23 +42,23 @@ export interface ContractApi {
     /**
      * Publishes a smart contract to the blockchain
      * @param args {PublishContractArgs} The argument object
-     * @return {TransactionId} The transaction id in case of success
+     * @return  The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    publishContract: (args: PublishContractArgs) => Promise<TransactionId>;
+    publishContract: (args: PublishContractArgs) => Promise<TransactionId | UnsignedTransaction>;
 
    /**
      * Publishes a smart contract to the blockchain using the code base of an already existant contract.
      * This reduces payload in the chain, allowing to deploy many contracts per block and very cheap
      * @param args {PublishContractArgs} The argument object
-     * @return {TransactionId} The transaction id in case of success
+     * @return  The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    publishContractByReference: (args: PublishContractByReferenceArgs) => Promise<TransactionId>;
+    publishContractByReference: (args: PublishContractByReferenceArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Calls a public method of smart contract
      * @param args {CallContractMethodArgs} The argument object
-     * @return {TransactionId} The transaction id in case of success
+     * @return  The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
-    callContractMethod: (args: CallContractMethodArgs) => Promise<TransactionId>;
+    callContractMethod: (args: CallContractMethodArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 }

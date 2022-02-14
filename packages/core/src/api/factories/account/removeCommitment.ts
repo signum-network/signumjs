@@ -1,12 +1,12 @@
 /**
  * Copyright (c) 2021 Burst Apps Team
+ * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {TransactionId} from '../../../typings/transactionId';
-import {TransactionResponse} from '../../../typings/transactionResponse';
+import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
-import {signAndBroadcastTransaction} from '../transaction';
 import {CommitmentArgs} from '../../../typings/args/commitmentArgs';
+import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AccountApi]].
@@ -14,22 +14,14 @@ import {CommitmentArgs} from '../../../typings/args/commitmentArgs';
  * See details at [[AccountApi.removeCommitment]]
  * @module core.api.factories
  */
-export const removeCommitment = (service: ChainService):
-    (args: CommitmentArgs) => Promise<TransactionId> =>
-    async (args: CommitmentArgs): Promise<TransactionId> => {
-        const parameters = {
-            amountNQT: args.amountPlanck,
-            publicKey: args.senderPublicKey,
-            feeNQT: args.feePlanck,
-            deadline: args.deadline || DefaultDeadline
-        };
-
-        const {unsignedTransactionBytes: unsignedHexMessage} = await service.send<TransactionResponse>('removeCommitment', parameters);
-
-        return signAndBroadcastTransaction(service)({
-            senderPublicKey: args.senderPublicKey,
-            senderPrivateKey: args.senderPrivateKey,
-            unsignedHexMessage
+export const removeCommitment = (service: ChainService) =>
+    (args: CommitmentArgs) =>
+        signIfPrivateKey(service, args, async (a: CommitmentArgs) => {
+            const parameters = {
+                amountNQT: a.amountPlanck,
+                publicKey: a.senderPublicKey,
+                feeNQT: a.feePlanck,
+                deadline: a.deadline || DefaultDeadline
+            };
+            return service.send<UnsignedTransaction>('removeCommitment', parameters);
         });
-
-    };
