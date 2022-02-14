@@ -8,6 +8,7 @@ import {DefaultSendArgs} from './defaultSendArgs';
  * @param description {string} The description of your contract (max. 1000 chars)
  * @param name {string} The name for the contract
  * @param feePlanck {string} is optional here, as it may be calculated dynamically for contracts. You can pass empty string
+ * @param data {string} is optional here, the initial data for the contract (must be according to your data stack in your contract and in BE hex code)
  * @module core
  *
  * @see Consider publishing by reference also, which is way cheaper: [[ContractApi.publishContractByReference]]
@@ -19,9 +20,8 @@ export interface PublishContractArgs extends DefaultSendArgs {
     deadline?: number;
     description: string;
     name: string;
+    data?: string;
     // TODO: once supported need to consider this, too
     // cpages: string;
-    // data: string;
-    // dpages: number;
     // uspages: string;
 }

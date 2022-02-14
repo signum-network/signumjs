@@ -18,6 +18,12 @@ export const publishContractByReference = (service: ChainService) =>
     (args: PublishContractByReferenceArgs) =>
         signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {
 
+            if(a.data){
+
+            }
+
+
+
             const parameters = {
                 deadline: a.deadline || DefaultDeadline,
                 description: a.description,

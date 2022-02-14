@@ -19,6 +19,10 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 export const publishContract = (service: ChainService) =>
     (args: PublishContractArgs) => signIfPrivateKey(service, args, async (a: PublishContractArgs) => {
 
+        if(a.data){
+
+        }
+
         const parameters = {
             code: a.codeHex,
             deadline: a.deadline || DefaultDeadline,
@@ -27,6 +31,7 @@ export const publishContract = (service: ChainService) =>
             minActivationAmountNQT: a.activationAmountPlanck,
             name: a.name,
             publicKey: a.senderPublicKey,
+            data: a.data || undefined,
             cspages: 1,
             dpages: 1,
             uspages: 1,

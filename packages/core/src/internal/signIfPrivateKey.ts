@@ -1,3 +1,6 @@
+/** @ignore */
+/** @internal */
+
 import {UnsignedTransaction} from '../typings/unsignedTransaction';
 import {TransactionId} from '../typings/transactionId';
 import {signAndBroadcastTransaction} from '../api/factories/transaction/signAndBroadcastTransaction';
