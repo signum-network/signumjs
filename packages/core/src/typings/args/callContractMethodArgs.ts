@@ -1,4 +1,4 @@
-import {MethodArgument} from '@signumjs/contracts';
+import {ContractData} from '@signumjs/contracts';
 
 /**
  * The argument object for [[ContractApi.callContractMethod]]
@@ -10,7 +10,7 @@ export interface CallContractMethodArgs {
     contractId: string;
     deadline?: number;
     feePlanck: string;
-    methodArgs?: MethodArgument[];
+    methodArgs?: ContractData[];
     methodHash: string;
     senderPrivateKey: string;
     senderPublicKey: string;

@@ -8,6 +8,7 @@ import {PublishContractArgs} from '../../../typings/args';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
+import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
 
 
 /**
@@ -19,16 +20,23 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 export const publishContract = (service: ChainService) =>
     (args: PublishContractArgs) => signIfPrivateKey(service, args, async (a: PublishContractArgs) => {
 
+        const {dataHex, dataPageCount} = generateDataStack(a.data || []);
+        const feeNQT = a.feePlanck || calculateMinimumCreationFee({
+            dataHex,
+            codeHex: a.codeHex
+        }).getPlanck();
+
         const parameters = {
             code: a.codeHex,
             deadline: a.deadline || DefaultDeadline,
             description: a.description,
-            feeNQT: a.feePlanck || calculateMinimumCreationFee(a.codeHex).getPlanck(),
+            feeNQT,
             minActivationAmountNQT: a.activationAmountPlanck,
             name: a.name,
             publicKey: a.senderPublicKey,
+            data: dataHex || undefined,
+            dpages: dataPageCount || 1,
             cspages: 1,
-            dpages: 1,
             uspages: 1,
             broadcast: true,
         };
