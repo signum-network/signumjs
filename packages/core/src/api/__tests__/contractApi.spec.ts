@@ -104,7 +104,7 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=22050000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&cspages=1&uspages=1&broadcast=true').build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=29400000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&cspages=1&uspages=1&broadcast=true').build();
 
 
             const service = createChainService(httpMock, 'relPath');
@@ -150,7 +150,7 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-            });
+            }) as TransactionId;
             expect(transaction).toEqual('transactionId');
         });
     });

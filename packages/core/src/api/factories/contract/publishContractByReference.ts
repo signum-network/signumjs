@@ -7,6 +7,7 @@ import {DefaultDeadline} from '../../../constants';
 import {PublishContractByReferenceArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
+import {calculateMinimumCreationFee} from '@signumjs/contracts';
 
 
 /**
@@ -20,11 +21,14 @@ export const publishContractByReference = (service: ChainService) =>
         signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {
 
             const {dataHex} = generateDataStack(a.data || []);
+            const feeNQT = a.feePlanck || calculateMinimumCreationFee({
+                dataHex,
+            }).getPlanck();
 
             const parameters = {
                 deadline: a.deadline || DefaultDeadline,
                 description: a.description,
-                feeNQT: a.feePlanck,
+                feeNQT,
                 minActivationAmountNQT: a.activationAmountPlanck,
                 referencedTransactionFullHash: a.referencedTransactionHash,
                 name: a.name,

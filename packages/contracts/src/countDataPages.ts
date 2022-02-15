@@ -11,5 +11,5 @@
  * @module contracts
  */
 export function countDataPages(dataHex: string ): number {
-    return Math.ceil((dataHex.length / 16) / 32);
+    return Math.max(Math.ceil((dataHex.length / 16) / 32), 1);
 }

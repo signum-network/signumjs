@@ -5,15 +5,15 @@ describe('calculateMinimumCreationFee', () => {
 
         expect(calculateMinimumCreationFee({
             codeHex: 'xx'.repeat(513)
-        }).getSigna()).toBe('0.3675');
+        }).getSigna()).toBe('0.441');
 
         expect(calculateMinimumCreationFee({
             codeHex: 'xx'.repeat(300)
-        }).getSigna()).toBe('0.294');
+        }).getSigna()).toBe('0.3675');
 
         expect(calculateMinimumCreationFee({
             codeHex: 'xx'.repeat(1)
-        }).getSigna()).toBe('0.2205');
+        }).getSigna()).toBe('0.294');
     });
 
     it('calculates minimum contract fee in planck - data only', () => {

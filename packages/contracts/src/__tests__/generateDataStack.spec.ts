@@ -39,6 +39,6 @@ describe('generateDataStack', () => {
 
         const stack = generateDataStack(args);
         expect(stack.dataHex).toBe('');
-        expect(stack.dataPageCount).toBe(0);
+        expect(stack.dataPageCount).toBe(1);
     });
 });
