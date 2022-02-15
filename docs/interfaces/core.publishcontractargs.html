@@ -110,7 +110,14 @@
 						<dd><p>The name for the contract</p>
 						</dd>
 						<dt>param</dt>
-						<dd><p>is optional here, as it may be calculated dynamically for contracts. You can pass empty string</p>
+						<dd><p>is optional here, as it may be calculated dynamically for contracts. For automatic calculation pass an empty string</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>is optional here, the initial data for the contract (must be according to your data stack in your contract and in BE hex code)</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>is optional here, the number of pages to store contracts data. If not given, it&#39;s set to 1 or calculated from the eventually passed initial <code>data</code>.
+							You can roughly say that if each data page holds 32 variables, i.e. the number of data pages is <em>(variableCount/32) + 1</em></p>
 						</dd>
 						<dt>see</dt>
 						<dd><p>Consider publishing by reference also, which is way cheaper: <a href="core_api.contractapi.html#publishcontractbyreference">ContractApi.publishContractByReference</a></p>
@@ -141,6 +148,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractargs.html#activationamountplanck" class="tsd-kind-icon">activation<wbr>Amount<wbr>Planck</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.publishcontractargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractargs.html#codehex" class="tsd-kind-icon">code<wbr>Hex</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractargs.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractargs.html#datapages" class="tsd-kind-icon">data<wbr>Pages</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="core.publishcontractargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.publishcontractargs.html#description" class="tsd-kind-icon">description</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.publishcontractargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
@@ -160,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">activation<wbr>Amount<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/publishContractArgs.ts#L17">core/src/typings/args/publishContractArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L21">core/src/typings/args/publishContractArgs.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +180,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -182,11 +191,31 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="codehex" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> code<wbr>Hex</h3>
+					<h3>code<wbr>Hex</h3>
 					<div class="tsd-signature tsd-kind-icon">code<wbr>Hex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/publishContractArgs.ts#L18">core/src/typings/args/publishContractArgs.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L22">core/src/typings/args/publishContractArgs.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="data" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="../modules/contracts.html#contractdata" class="tsd-signature-type">ContractData</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L26">core/src/typings/args/publishContractArgs.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="datapages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data<wbr>Pages</h3>
+					<div class="tsd-signature tsd-kind-icon">data<wbr>Pages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L27">core/src/typings/args/publishContractArgs.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +226,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/publishContractArgs.ts#L19">core/src/typings/args/publishContractArgs.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L23">core/src/typings/args/publishContractArgs.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +236,7 @@
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/publishContractArgs.ts#L20">core/src/typings/args/publishContractArgs.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L24">core/src/typings/args/publishContractArgs.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -218,7 +247,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -238,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/publishContractArgs.ts#L21">core/src/typings/args/publishContractArgs.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/publishContractArgs.ts#L25">core/src/typings/args/publishContractArgs.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -249,7 +278,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,7 +297,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5d91161/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -329,6 +358,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.publishcontractargs.html#codehex" class="tsd-kind-icon">code<wbr>Hex</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.publishcontractargs.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.publishcontractargs.html#datapages" class="tsd-kind-icon">data<wbr>Pages</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="core.publishcontractargs.html#deadline" class="tsd-kind-icon">deadline</a>
