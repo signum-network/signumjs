@@ -3,7 +3,7 @@
  * Modified Work (c) 2022 Signum Network
  */
 
-import {ContractData} from '../ContractData';
+import {ContractData} from '../contractData';
 
 /**
  * The argument object for [[generateMethodCall]]

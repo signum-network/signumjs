@@ -1,4 +1,4 @@
-import {ContractData} from '../typings/ContractData';
+import {ContractData} from '../typings/contractData';
 
 /**
  * @internal
@@ -11,5 +11,6 @@ export const convertContractData = (value: ContractData): string => {
     if (typeof (value) === 'number') {
         return `${value}`;
     }
+
     return value;
 };

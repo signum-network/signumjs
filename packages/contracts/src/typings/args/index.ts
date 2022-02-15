@@ -3,4 +3,5 @@
  */
 
 export * from './generateMethodCallArgs';
+export * from './calculateMinimumCreationFeeArgs';
 

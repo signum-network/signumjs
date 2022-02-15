@@ -6,11 +6,11 @@
  *
  * The argument object for [[calculateMinimumCreationFee]]
  *
- * @param hexCode The contracts code in hex form
- * @param hexData The contracts initial data stack in hex form
+ * @param codeHex The contracts code in hex form
+ * @param dataHex The contracts initial data stack in hex form
  * @module contracts
  */
-interface CalculateMinimumCreationFeeArgs {
-    hexCode?: string;
-    hexData?: string;
+export interface CalculateMinimumCreationFeeArgs {
+    codeHex?: string;
+    dataHex?: string;
 }

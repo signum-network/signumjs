@@ -11,11 +11,12 @@
  * @see To deploy a new non-existing contract you need to use [[ContractApi.publishContract]]
  */
 import {DefaultSendArgs} from './defaultSendArgs';
+import {ContractData} from '@signumjs/contracts';
 
 export interface PublishContractByReferenceArgs extends DefaultSendArgs {
     activationAmountPlanck: string;
     description: string;
     name: string;
     referencedTransactionHash: string;
-    data?: string;
+    data?: ContractData[];
 }

@@ -6,7 +6,7 @@
  */
 
 import {convertDecStringToHexString, convertHexEndianess} from '@signumjs/util';
-import {ContractData} from './typings/ContractData';
+import {ContractData} from './typings/contractData';
 import {convertContractData} from './internal/convertContractData';
 import {countDataPages} from './countDataPages';
 

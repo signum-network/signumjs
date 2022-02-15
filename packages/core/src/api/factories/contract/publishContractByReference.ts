@@ -6,6 +6,7 @@ import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {PublishContractByReferenceArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
+import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
 
 
 /**
@@ -18,11 +19,7 @@ export const publishContractByReference = (service: ChainService) =>
     (args: PublishContractByReferenceArgs) =>
         signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {
 
-            if(a.data){
-
-            }
-
-
+            const {dataHex} = generateDataStack(a.data || []);
 
             const parameters = {
                 deadline: a.deadline || DefaultDeadline,
@@ -32,6 +29,8 @@ export const publishContractByReference = (service: ChainService) =>
                 referencedTransactionFullHash: a.referencedTransactionHash,
                 name: a.name,
                 publicKey: a.senderPublicKey,
+                data: dataHex || undefined,
+                // set to fixed values as they will be pulled by the original contract
                 cspages: 1,
                 dpages: 1,
                 uspages: 1,
