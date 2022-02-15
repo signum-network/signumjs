@@ -3,7 +3,7 @@ import {ChainService} from '../../../service/chainService';
 import {getContractsByAccount} from '../../factories/contract/getContractsByAccount';
 import {getContract} from '../../factories/contract/getContract';
 import {getAllContractIds, publishContract, publishContractByReference} from '../../factories/contract';
-import {Amount, convertNumberToNQTString} from '@signumjs/util';
+import {Amount} from '@signumjs/util';
 import {generateMasterKeys, getAccountIdFromPublicKey} from '@signumjs/crypto';
 import {TransactionId} from '../../../typings/transactionId';
 
