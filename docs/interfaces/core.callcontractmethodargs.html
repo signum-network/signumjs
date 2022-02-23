@@ -99,7 +99,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CallContractMethodArgs</span>
+						<a href="core.defaultsendargs.html" class="tsd-signature-type">DefaultSendArgs</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">CallContractMethodArgs</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -111,13 +116,14 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#amountplanck" class="tsd-kind-icon">amount<wbr>Planck</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.callcontractmethodargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#contractid" class="tsd-kind-icon">contract<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.callcontractmethodargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.callcontractmethodargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#methodargs" class="tsd-kind-icon">method<wbr>Args</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#methodhash" class="tsd-kind-icon">method<wbr>Hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.callcontractmethodargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.callcontractmethodargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.callcontractmethodargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -131,9 +137,25 @@
 					<div class="tsd-signature tsd-kind-icon">amount<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L9">core/src/typings/args/callContractMethodArgs.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/callContractMethodArgs.ts#L10">core/src/typings/args/callContractMethodArgs.ts:10</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="attachment" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attachment</h3>
+					<div class="tsd-signature tsd-kind-icon">attachment<span class="tsd-signature-symbol">:</span> <a href="../classes/core.attachment.html" class="tsd-signature-type">Attachment</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An optional attachment</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="contractid" class="tsd-anchor"></a>
@@ -141,29 +163,47 @@
 					<div class="tsd-signature tsd-kind-icon">contract<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L10">core/src/typings/args/callContractMethodArgs.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/callContractMethodArgs.ts#L11">core/src/typings/args/callContractMethodArgs.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="deadline" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deadline</h3>
 					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L11">core/src/typings/args/callContractMethodArgs.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The deadline when after how many minutes the transaction will be discarded, if it was not
+							processed, e.g. due to very low fee</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="feeplanck" class="tsd-anchor"></a>
 					<h3>fee<wbr>Planck</h3>
 					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L12">core/src/typings/args/callContractMethodArgs.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The fee expressed in Planck</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>note</dt>
+							<dd><p>It&#39;s recommended to use <a href="../classes/util.amount.html">util.Amount</a></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="methodargs" class="tsd-anchor"></a>
@@ -171,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">method<wbr>Args<span class="tsd-signature-symbol">:</span> <a href="../modules/contracts.html#contractdata" class="tsd-signature-type">ContractData</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L13">core/src/typings/args/callContractMethodArgs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/callContractMethodArgs.ts#L12">core/src/typings/args/callContractMethodArgs.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,29 +221,44 @@
 					<div class="tsd-signature tsd-kind-icon">method<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L14">core/src/typings/args/callContractMethodArgs.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/callContractMethodArgs.ts#L13">core/src/typings/args/callContractMethodArgs.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="senderprivatekey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Private<wbr>Key</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sender<wbr>Private<wbr>Key</h3>
 					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L15">core/src/typings/args/callContractMethodArgs.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The senders private key, i.e. the <a href="crypto.keys.html#signprivatekey">crypto.Keys.signPrivateKey</a>
+								If the private key is not given, then the transaction method will return the unsigned byte string.
+								The transaction won&#39;t be processed until the unsigned bytes are being signed and broadcasted using
+							<a href="core_api.transactionapi.html#signandbroadcasttransaction">TransactionApi.signAndBroadcastTransaction</a></p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="senderpublickey" class="tsd-anchor"></a>
 					<h3>sender<wbr>Public<wbr>Key</h3>
 					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/typings/args/callContractMethodArgs.ts#L16">core/src/typings/args/callContractMethodArgs.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The senders public key,  i.e. the <a href="crypto.keys.html#publickey">crypto.Keys.publicKey</a></p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -252,13 +307,16 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.callcontractmethodargs.html#amountplanck" class="tsd-kind-icon">amount<wbr>Planck</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.callcontractmethodargs.html#attachment" class="tsd-kind-icon">attachment</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.callcontractmethodargs.html#contractid" class="tsd-kind-icon">contract<wbr>Id</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.callcontractmethodargs.html#deadline" class="tsd-kind-icon">deadline</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.callcontractmethodargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -267,10 +325,10 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.callcontractmethodargs.html#methodhash" class="tsd-kind-icon">method<wbr>Hash</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.callcontractmethodargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.callcontractmethodargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
 							</li>
 						</ul>

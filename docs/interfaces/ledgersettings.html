@@ -107,6 +107,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ledgersettings.html#httpclient" class="tsd-kind-icon">http<wbr>Client</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ledgersettings.html#httpoptions" class="tsd-kind-icon">http<wbr>Options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ledgersettings.html#nodehost" class="tsd-kind-icon">node<wbr>Host</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ledgersettings.html#reliablenodehosts" class="tsd-kind-icon">reliable<wbr>Node<wbr>Hosts</a></li>
 							</ul>
@@ -117,12 +119,43 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="httpclient" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> http<wbr>Client</h3>
+					<div class="tsd-signature tsd-kind-icon">http<wbr>Client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Http</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/ledgerClient/ledgerClientFactory.ts#L28">core/src/ledgerClient/ledgerClientFactory.ts:28</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A custom http client implementation. Default is based on axios</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="httpoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> http<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">http<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/ledgerClient/ledgerClientFactory.ts#L33">core/src/ledgerClient/ledgerClientFactory.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Additional global options for the http client. Default client is axios, see its options here:
+							see <a href="https://github.com/axios/axios#request-config">Axios Configuration</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="nodehost" class="tsd-anchor"></a>
 					<h3>node<wbr>Host</h3>
 					<div class="tsd-signature tsd-kind-icon">node<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/ledgerClient/ledgerClientFactory.ts#L17">core/src/ledgerClient/ledgerClientFactory.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/ledgerClient/ledgerClientFactory.ts#L19">core/src/ledgerClient/ledgerClientFactory.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">reliable<wbr>Node<wbr>Hosts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/9958ab1/packages/core/src/ledgerClient/ledgerClientFactory.ts#L22">core/src/ledgerClient/ledgerClientFactory.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/core/src/ledgerClient/ledgerClientFactory.ts#L24">core/src/ledgerClient/ledgerClientFactory.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -191,6 +224,12 @@
 					<li class="current tsd-kind-interface">
 						<a href="ledgersettings.html" class="tsd-kind-icon">Ledger<wbr>Settings</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ledgersettings.html#httpclient" class="tsd-kind-icon">http<wbr>Client</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ledgersettings.html#httpoptions" class="tsd-kind-icon">http<wbr>Options</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="ledgersettings.html#nodehost" class="tsd-kind-icon">node<wbr>Host</a>
 							</li>
