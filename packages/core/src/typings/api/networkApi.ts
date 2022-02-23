@@ -24,7 +24,7 @@ export interface NetworkApi {
 
     /**
      * Get detailed information about the Networks constants/settings.
-     * @return {MiningInfo} The Mining Information
+     * @return {NetworkInfo} The Network Information
      */
     getNetworkInfo: () => Promise<NetworkInfo>;
 

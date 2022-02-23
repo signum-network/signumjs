@@ -3,6 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {MiningInfo} from '../../../typings/miningInfo';
+import {NetworkInfo} from '../../../typings/networkInfo';
 
 
 /**
@@ -11,5 +12,5 @@ import {MiningInfo} from '../../../typings/miningInfo';
  * See details at [[NetworkApi.getNetworkInfo]]
  * @module core.api.factories
  */
-export const getNetworkInfo = (service: ChainService): () => Promise<MiningInfo> =>
-    (): Promise<MiningInfo> => service.query('getConstants');
+export const getNetworkInfo = (service: ChainService): () => Promise<NetworkInfo> =>
+    (): Promise<NetworkInfo> => service.query('getConstants');

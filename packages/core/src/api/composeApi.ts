@@ -76,6 +76,8 @@ import {
     transferAsset,
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
+import {Http} from '@signumjs/http';
+import {getNetworkInfo} from './factories/network/getNetworkInfo';
 
 /**
  * Settings for API used in [[composeApi]]
@@ -88,6 +90,7 @@ export class ApiSettings {
      * @param reliableNodeHosts A list of node/peer hosts that can be chosen of,
      * usually a list of reliable/trusted nodes. This is necessary for the automatic node selection.
      * @param httpClientOptions {any | AxiosRequestSettings}   Optional http options, like additional header.
+     * @param httpClient {Http} It's possible to add a custom Http client adapter. Default is an Axios based implementation
      * @param apiVersion {ApiVersion} For future usage.
      * The default implementation uses axios. In case of a custom client pass your own options.
      * see [Axios Configuration](https://github.com/axios/axios#request-config)
@@ -96,6 +99,7 @@ export class ApiSettings {
         public nodeHost: string,
         public reliableNodeHosts?: string[],
         public httpClientOptions?: any | AxiosRequestConfig,
+        public httpClient?: Http,
         public apiVersion?: ApiVersion,
     ) {
     }
@@ -139,6 +143,7 @@ export function composeApi(settings: ApiSettings): Api {
             getPeers,
             getPeer,
             getTime,
+            getNetworkInfo
         })
         .withTransactionApi({
             broadcastTransaction,

@@ -1,5 +1,7 @@
 import {Api} from '../typings/api';
 import {composeApi} from '../api';
+import {Http} from '@signumjs/http';
+import {AxiosRequestConfig} from 'axios';
 
 /**
  * Alias for [[Api]]
@@ -20,6 +22,15 @@ export interface LedgerSettings {
      * request issues.
      */
     reliableNodeHosts?: string[];
+    /**
+     * A custom http client implementation. Default is based on axios
+     */
+    httpClient?: Http;
+    /**
+     * Additional global options for the http client. Default client is axios, see its options here:
+     * see [Axios Configuration](https://github.com/axios/axios#request-config)
+     */
+    httpOptions?: any | AxiosRequestConfig;
 }
 
 /**
