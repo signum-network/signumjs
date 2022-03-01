@@ -4,36 +4,39 @@
 
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionListener} from './extensionListener';
+import {
+    ExtensionNotification,
+    ExtensionNotificationNetworkChanged,
+    ExtensionNotificationType
+} from '../typings/messaging';
 
-export type ConnectionStatus = 'connected' | 'disconnected';
+type NotificationCallback<T> = (data: T) => void;
+
+export interface ExtensionNotificationHandler {
+    onNetworkChange?: NotificationCallback<Omit<ExtensionNotificationNetworkChanged, 'type'>>;
+    onPermissionRemoved?: NotificationCallback<void>;
+}
 
 /**
  * Wallet Connection object returned from [[GenericExtensionWallet.connect]]
- * You can use this information for preparing transactions and send them back to the wallet
- * for confirmation with [[GenericExtensionWallet.confirm]]
+ * You can use this to listen to events in the wallet, i.e. network changes, or permission removals
  * @module wallets
  */
 export class WalletConnection {
-    private _status: ConnectionStatus;
-    private availabilityListener: ExtensionListener;
+    private notificationListener: ExtensionListener;
 
     /**
      * @param accountId The connected account
      * @param publicKey The accounts public key
-     * @param nodeHost The currently chosen host for that account in the wallet
+     * @param nodeHosts The available nodeHosts for given network.
      * @param adapter the extension adapter with its internal implementation
      */
     constructor(
         public readonly accountId: string,
         public readonly publicKey: string,
-        public readonly nodeHost: string,
+        public readonly nodeHosts: string[],
         private adapter: ExtensionAdapter,
     ) {
-        this._status = 'connected';
-    }
-
-    get connectionStatus(): ConnectionStatus {
-        return this._status;
     }
 
     /**
@@ -41,27 +44,28 @@ export class WalletConnection {
      *
      * Only one listener instance is allowed, previous listener will be removed/overwritten
      *
-     * @param callback
+     * @param notificationHandler The object with the event handler
      * @return The listener instance, needed to unlisten
      */
-    listen(callback: (connection: WalletConnection) => void): ExtensionListener {
-        if (this.availabilityListener) {
-            this.availabilityListener.unlisten();
-        }
-        this.availabilityListener = this.adapter.onAvailabilityChange((available) => {
-            const newStatus = available ? 'connected' : 'disconnected';
-            if (newStatus !== this._status) {
-                this._status = newStatus;
-                callback(this);
+    listen(notificationHandler: ExtensionNotificationHandler): ExtensionListener {
+        this.notificationListener = this.adapter.onNotification( (msg: ExtensionNotification) => {
+            const  {onPermissionRemoved, onNetworkChange } = notificationHandler;
+            const call = (fn, args = undefined) => fn && fn(args);
+            switch (msg.type) {
+                case ExtensionNotificationType.NetworkChanged:
+                    call(onNetworkChange, {
+                        networkName: msg.networkHost,
+                        networkHost: msg.networkHost
+                    });
+                    break;
+                case ExtensionNotificationType.PermissionRemoved: {
+                    call(onPermissionRemoved);
+                    break;
+                }
             }
+
         });
 
-        // TODO: add permission listener
-        return {
-            unlisten: () => {
-                this.availabilityListener.unlisten();
-
-            }
-        };
+        return this.notificationListener;
     }
 }

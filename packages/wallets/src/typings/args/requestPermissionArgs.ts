@@ -1,4 +1,4 @@
-import {ExtensionDAppMetadata, ExtensionNetwork} from '../messaging';
+import {ExtensionDAppMetadata} from '../messaging';
 
 export interface RequestPermissionArgs {
     appMeta: ExtensionDAppMetadata;

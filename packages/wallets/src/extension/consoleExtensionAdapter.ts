@@ -16,11 +16,7 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return Promise.reject('Not implemented');
     }
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener {
-        throw new Error('Not implemented');
-    }
-
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener {
+    onNotification(callback: (message: any, listener: ExtensionListener) => void): ExtensionListener {
         throw new Error('Not implemented');
     }
 

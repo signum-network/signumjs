@@ -11,9 +11,7 @@ import {ExtensionListener} from './extensionListener';
 export interface ExtensionAdapter {
     isWalletAvailable(): Promise<boolean>;
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener;
-
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener;
+    onNotification(callback: (message: any) => void): ExtensionListener;
 
     getCurrentPermission(): Promise<ExtensionPermission>;
 

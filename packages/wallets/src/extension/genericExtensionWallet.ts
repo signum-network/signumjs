@@ -7,7 +7,11 @@ import {ConfirmedTransaction, Wallet} from '../typings';
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
-import {NotGrantedWalletError} from './errors';
+
+export enum NetworkName {
+    SignumMainnet = 'Signum',
+    SignumTestnet = 'Signum-TESTNET'
+}
 
 interface GenericExtensionWalletConnectArgs {
     /**
@@ -16,19 +20,11 @@ interface GenericExtensionWalletConnectArgs {
     appName: string;
 
     /**
-     * Determines the node (via URL) to be connected to
+     * The name of the network to be used.
+     * The network name is available with `getNetworkInfo`.
+     * For original Signum Network it is `Signum` and `Signum-TESTNET` respectively.
      */
-    nodeHost: string;
-    /**
-     * Optional timeout handler, that will be called, if connection to the wallet was timed out.
-     * If not given, an exception will be thrown on timeout instead
-     */
-    onTimeout?: () => void;
-    /**
-     * Optional timeout limit in milliseconds. Default: 10_000 Millies
-     * If set to -1, no retrial is executed
-     */
-    timeoutMillies?: number;
+    networkName: string | NetworkName;
 }
 
 /**
@@ -39,7 +35,7 @@ interface GenericExtensionWalletConnectArgs {
  * ```js
  *  const wallet = new GenericExtensionWallet()
  *  wallet
- *  .connect({appName: 'MySuperDApp'})
+ *  .connect({appName: 'MySuperDApp', networkName: NetworkName.SignumMainnet})
  *  .then( connection => {
  *      console.log('Successfully connected', connection)
  *      const ledger = LedgerClientFactory.createClient({ nodeHost: connection.nodeHost });
@@ -80,17 +76,17 @@ export class GenericExtensionWallet implements Wallet {
         }
     }
 
-    private async fetchPermission(networkRpc: string, appName: string) {
+    private async fetchPermission(network: string, appName: string) {
         try {
-            const {rpc, pkh, publicKey} = await this.adapter.requestPermission({
-                network: networkRpc,
+            const {nodeHosts, accountId, publicKey} = await this.adapter.requestPermission({
+                network: network,
                 appMeta: {
                     name: appName
                 },
                 force: false,
             });
 
-            this._connection = new WalletConnection(pkh, publicKey, rpc, this.adapter);
+            this._connection = new WalletConnection(accountId, publicKey, nodeHosts, this.adapter);
             return this._connection;
         } catch (e) {
             console.error(e);
@@ -112,41 +108,12 @@ export class GenericExtensionWallet implements Wallet {
      */
     async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
         const isAvailable = await this.adapter.isWalletAvailable();
-        const {timeoutMillies = 10_000, onTimeout, appName, nodeHost} = args;
+        const {appName, networkName} = args;
         let permission = null;
         if (isAvailable) {
-            permission = await this.fetchPermission(nodeHost, appName);
+            permission = await this.fetchPermission(networkName, appName);
         }
-        return permission || new Promise(async (resolve, reject) => {
-                let timeoutHandler = null;
-                if (timeoutMillies === -1 && !permission) {
-                    return reject('Wallet not reachable');
-                }
-                const listener = this.adapter.onAvailabilityChange(async (available) => {
-                    if (!available) {
-                        return;
-                    }
-                    try {
-                        permission = permission = await this.fetchPermission(nodeHost, appName);
-                        if (permission) {
-                            clearTimeout(timeoutHandler);
-                            listener.unlisten();
-                            resolve(permission);
-                        }
-                    } catch (e) {
-                        reject(e);
-                    }
-                });
-                timeoutHandler = setTimeout(() => {
-                    listener.unlisten();
-                    if (onTimeout) {
-                        onTimeout();
-                    } else {
-                        reject('Connection timed out');
-                    }
-                }, timeoutMillies);
-            }
-        );
+        return permission;
     }
 
     async confirm(unsignedTransaction: string): Promise<ConfirmedTransaction> {

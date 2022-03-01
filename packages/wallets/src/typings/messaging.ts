@@ -15,26 +15,23 @@ export type ExtensionResponse =
     | ExtensionPermissionResponse
     | ExtensionSignResponse;
 
+
 export interface ExtensionMessageBase {
     type: ExtensionMessageType;
 }
+
+/**
+ * Request/Response Messages
+ */
 
 export enum ExtensionMessageType {
     GetCurrentPermissionRequest = 'GET_CURRENT_PERMISSION_REQUEST',
     GetCurrentPermissionResponse = 'GET_CURRENT_PERMISSION_RESPONSE',
     PermissionRequest = 'PERMISSION_REQUEST',
     PermissionResponse = 'PERMISSION_RESPONSE',
-    OperationRequest = 'OPERATION_REQUEST',
-    OperationResponse = 'OPERATION_RESPONSE',
     SignRequest = 'SIGN_REQUEST',
     SignResponse = 'SIGN_RESPONSE',
-    BroadcastRequest = 'BROADCAST_REQUEST',
-    BroadcastResponse = 'BROADCAST_RESPONSE',
 }
-
-/**
- * Messages
- */
 
 export interface ExtensionGetCurrentPermissionRequest
     extends ExtensionMessageBase {
@@ -49,16 +46,16 @@ export interface ExtensionGetCurrentPermissionResponse
 
 export interface ExtensionPermissionRequest extends ExtensionMessageBase {
     type: ExtensionMessageType.PermissionRequest;
-    network: ExtensionNetwork;
+    network: string;
     appMeta: ExtensionDAppMetadata;
     force?: boolean;
 }
 
 export interface ExtensionPermissionResponse extends ExtensionMessageBase {
     type: ExtensionMessageType.PermissionResponse;
-    pkh: string;
+    accountId: string;
     publicKey: string;
-    rpc: string;
+    nodeHosts: string[];
 }
 
 export interface ExtensionSignRequest extends ExtensionMessageBase {
@@ -81,8 +78,8 @@ export enum ExtensionErrorType {
 }
 
 export type ExtensionPermission = {
-    rpc: string;
-    pkh: string;
+    nodeHosts: string[];
+    accountId: string;
     publicKey: string;
 } | null;
 
@@ -91,12 +88,6 @@ export type ExtensionSigned = {
     transactionId: string;
     fullHash: string;
 } | null;
-
-
-export interface ExtensionNetwork {
-    name: string;
-    rpc: string;
-}
 
 export interface ExtensionDAppMetadata {
     name: string;
@@ -113,3 +104,32 @@ export enum PageMessageType {
     Response = 'SIGNUM_PAGE_RESPONSE',
     ErrorResponse = 'SIGNUM_PAGE_ERROR_RESPONSE',
 }
+
+
+// Wallet Notifications
+
+export enum ExtensionNotificationType {
+    NetworkChanged= 'XT_DAPP_NETWORK_CHANGED',
+    PermissionRemoved= 'XT_DAPP_PERMISSION_REMOVED'
+}
+
+export interface ExtensionNotificationBase {
+    type: ExtensionNotificationType;
+}
+
+export type ExtensionNotification =
+    | ExtensionNotificationNetworkChanged
+    | ExtensionNotificationPermissionRemoved;
+
+export interface ExtensionNotificationNetworkChanged
+    extends ExtensionNotificationBase {
+    type: ExtensionNotificationType.NetworkChanged;
+    networkName: string;
+    networkHost: string;
+}
+
+export interface ExtensionNotificationPermissionRemoved
+    extends ExtensionNotificationBase {
+    type: ExtensionNotificationType.PermissionRemoved;
+}
+

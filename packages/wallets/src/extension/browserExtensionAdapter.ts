@@ -7,9 +7,12 @@ import {v4 as uuid} from 'uuid';
 import {ExtensionAdapter} from './extensionAdapter';
 import {
     ExtensionMessageType,
+    ExtensionNotification,
+    ExtensionNotificationType,
     ExtensionPermission,
     ExtensionRequest,
-    ExtensionResponse, ExtensionSigned,
+    ExtensionResponse,
+    ExtensionSigned,
     PageMessage,
     PageMessageType
 } from '../typings/messaging';
@@ -17,17 +20,6 @@ import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '..
 import {createError} from './errors';
 import {ExtensionListener} from './extensionListener';
 
-
-// TODO: check how our implementation works
-function permissionsAreEqual(
-    aPerm: ExtensionPermission,
-    bPerm: ExtensionPermission
-) {
-    if (aPerm === null) {
-        return bPerm === null;
-    }
-    return aPerm.pkh === bPerm?.pkh && aPerm.rpc === bPerm?.rpc;
-}
 
 /**
  * Extension Adapter for Browser based wallet access, to use with [[GenericExtensionWallet]]
@@ -76,26 +68,17 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
     }
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener {
-        let t: any;
-        let currentStatus = false;
-        const check = async (attempt = 0) => {
-            const initial = attempt < 5;
-            const available = await this.isWalletAvailable();
-            if (currentStatus !== available) {
-                callback(available, {unlisten: () => clearTimeout(t)});
-                currentStatus = available;
-            }
-            t = setTimeout(
-                check,
-                available ? 10_000 : !initial ? 2_000 : 0,
-                initial ? attempt + 1 : attempt
-            );
+    public onNotification(callback: (message: ExtensionNotification) => void): ExtensionListener {
+        let listener: ExtensionListener;
+        function handleMessage(evt: MessageEvent) {
+            callback(evt.data);
+        }
+
+        window.addEventListener('message', handleMessage);
+        listener = {
+            unlisten: () => { window.removeEventListener('message', handleMessage); }
         };
-        check();
-        return {
-            unlisten: () => clearTimeout(t)
-        };
+        return listener;
     }
 
     async getCurrentPermission(): Promise<ExtensionPermission> {
@@ -108,26 +91,6 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         return res.permission;
     }
 
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener {
-        let t: any;
-        let currentPerm: ExtensionPermission = null;
-        const check = async () => {
-            try {
-                const perm = await this.getCurrentPermission();
-                if (!permissionsAreEqual(perm, currentPerm)) {
-                    callback(perm, {unlisten: () => clearTimeout(t)});
-                    currentPerm = perm;
-                }
-            } catch {
-            }
-
-            t = setTimeout(check, 10_000);
-        };
-        check();
-        return {
-            unlisten: () => clearTimeout(t)
-        };
-    }
 
     request(payload: ExtensionRequest): Promise<ExtensionResponse> {
         return new Promise<ExtensionResponse>((resolve, reject) => {
@@ -157,17 +120,14 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.PermissionRequest,
-            network: {
-                rpc: args.network,
-                name: '' // unused
-            },
+            network: args.network,
             force: args.force,
             appMeta: args.appMeta,
         });
         this.assertResponse(res.type === ExtensionMessageType.PermissionResponse);
         return {
-            rpc: res.rpc,
-            pkh: res.pkh,
+            nodeHosts: res.nodeHosts,
+            accountId: res.accountId,
             publicKey: res.publicKey,
         };
     }
