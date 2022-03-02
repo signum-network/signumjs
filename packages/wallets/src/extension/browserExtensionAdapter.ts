@@ -81,7 +81,14 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     public onNotification(callback: (message: ExtensionNotification) => void): ExtensionListener {
         let listener: ExtensionListener;
         function handleMessage(evt: MessageEvent) {
-            callback(evt.data);
+            if (
+                evt.source === window
+                && evt.origin === location.origin
+                && typeof(evt.data.type) === 'string'
+                && evt.data.type.startsWith('XT_DAPP_')
+            ) {
+                callback(evt.data);
+            }
         }
 
         window.addEventListener('message', handleMessage);
