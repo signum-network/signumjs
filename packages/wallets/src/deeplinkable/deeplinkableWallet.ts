@@ -11,12 +11,11 @@ import {DeeplinkableWalletOptions} from './deepLinkableOptions';
 
 
 /**
- * This wallet (proxy) allows interacting with CIP22 compatible deep linkable wallets.
+ * This wallet (proxy) allows interacting with [SIP22](https://github.com/signum-network/SIPs/blob/master/SIP/sip-22.md) compatible deep linkable wallets.
  *
  * The call of one its methods in nodejs just returns the generated urls, while in browser (also mobile) environments
  * it tries to open the deep link and though the wallet if installed on the system.
  *
- * @see https://github.com/signum-network/CIPs/blob/master/cip-0022.md
  * @module wallets
  */
 export class DeeplinkableWallet extends GenericDeeplinkableWallet implements EasyWallet {

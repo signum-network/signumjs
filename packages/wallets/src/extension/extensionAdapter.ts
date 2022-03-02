@@ -1,6 +1,10 @@
-import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
-import {RequestPermissionArgs, RequestSignArgs} from '../typings';
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+
 import {ExtensionListener} from './extensionListener';
+import {ExtensionPermission, ExtensionRequestArgs, ExtensionResponse, ExtensionSigned} from './messaging';
+import {RequestPermissionArgs, RequestSignArgs} from './args';
 
 /**
  *
@@ -9,11 +13,9 @@ import {ExtensionListener} from './extensionListener';
  * @internal
  */
 export interface ExtensionAdapter {
-    isWalletAvailable(): Promise<boolean>;
+    assertWalletAvailable(): Promise<void>;
 
-    onAvailabilityChange(callback: (available: boolean, listener: ExtensionListener) => void): ExtensionListener;
-
-    onPermissionChange(callback: (permission: ExtensionPermission, listener: ExtensionListener) => void): ExtensionListener;
+    onNotification(callback: (message: any) => void): ExtensionListener;
 
     getCurrentPermission(): Promise<ExtensionPermission>;
 
@@ -21,6 +23,6 @@ export interface ExtensionAdapter {
 
     requestSign(args: RequestSignArgs): Promise<ExtensionSigned>;
 
-    request(message: ExtensionRequest): Promise<ExtensionResponse>;
+    request(message: ExtensionRequestArgs): Promise<ExtensionResponse>;
 
 }

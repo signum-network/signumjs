@@ -19,7 +19,7 @@ interface DeeplinkableWalletOpts {
      */
     openInBrowser?: boolean;
     /**
-     * Browser do not support custom URI protocols, i.e. `signum://`, so they need
+     * Browsers do not support custom URI protocols, i.e. `signum://`, so they need
      * a redirect proxy instead. Here you can customize your proxy, but its default is
      * set to https://burst-balance-alert.vercel.app/api/redirect?url=
      */

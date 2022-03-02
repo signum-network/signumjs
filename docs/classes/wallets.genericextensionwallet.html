@@ -97,10 +97,10 @@
 						<dt>example</dt>
 						<dd><pre><code class="language-js"> <span class="hljs-keyword">const</span> wallet = <span class="hljs-keyword">new</span> GenericExtensionWallet()
  wallet
- .connect({<span class="hljs-attr">appName</span>: <span class="hljs-string">'MySuperDApp'</span>})
+ .connect({<span class="hljs-attr">appName</span>: <span class="hljs-string">'MySuperDApp'</span>, <span class="hljs-attr">networkName</span>: NetworkName.SignumMainnet})
  .then( <span class="hljs-function"><span class="hljs-params">connection</span> =&gt;</span> {
      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Successfully connected'</span>, connection)
-     <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.createClient({ <span class="hljs-attr">nodeHost</span>: connection.nodeHost });
+     <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.createClient({ <span class="hljs-attr">nodeHost</span>: connection.currentNodeHost });
      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Sending some money...'</span>)
      <span class="hljs-keyword">return</span> ledger.transaction.sendAmountToSingleRecipient({
          <span class="hljs-attr">senderPublicKey</span>: connection.publicKey,
@@ -174,7 +174,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/genericExtensionWallet.ts#L67">wallets/src/extension/genericExtensionWallet.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/genericExtensionWallet.ts#L61">wallets/src/extension/genericExtensionWallet.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -188,8 +188,8 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> adapter: <span class="tsd-signature-type">ExtensionAdapter</span><span class="tsd-signature-symbol"> = ExtensionAdapterFactory.getAdapter()</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>The adapter according your environment. See <a href="wallets.extensionadapterfactory.html">ExtensionAdapterFactory</a>.
-											It uses the default <a href="wallets.extensionadapterfactory.html">ExtensionAdapterFactory</a> to determine the correct adapter.</p>
+											<p>The adapter according your environment. See [[ExtensionAdapterFactory]].
+											It uses the default [[ExtensionAdapterFactory]] to determine the correct adapter.</p>
 										</div>
 									</div>
 								</li>
@@ -211,7 +211,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/genericExtensionWallet.ts#L104">wallets/src/extension/genericExtensionWallet.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/genericExtensionWallet.ts#L102">wallets/src/extension/genericExtensionWallet.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,16 +238,41 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/wallets.wallet.html">Wallet</a>.<a href="../interfaces/wallets.wallet.html#confirm">confirm</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/genericExtensionWallet.ts#L152">wallets/src/extension/genericExtensionWallet.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/genericExtensionWallet.ts#L141">wallets/src/extension/genericExtensionWallet.ts:141</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Requests a confirmation, i.e. cryptographic signing, of a transaction.</p>
+								</div>
+								<p>The unsignedTransaction byte sequence is being returned by any of the SignumJS operations as long as no private key is
+								passed as parameter to the operation</p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-ts"><span class="hljs-keyword">const</span> { unsignedTransactionBytes } = <span class="hljs-keyword">await</span> ledger.transaction.sendAmountToSingleRecipient({
+         senderPublicKey: connection.publicKey, <span class="hljs-comment">// only public key is passed!</span>
+         recipientId: Address.fromReedSolomonAddress(<span class="hljs-string">'TS-K37B-9V85-FB95-793HN'</span>).getNumericId(),
+         feePlanck: <span class="hljs-built_in">String</span>(FeeQuantPlanck),
+         amountPlanck: Amount.fromSigna(<span class="hljs-number">1</span>).getPlanck()
+     })
+<span class="hljs-keyword">const</span> { transactionId, fullHash } = <span class="hljs-keyword">await</span> wallet.confirm(unsignedTransactionBytes)</code></pre>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>Error if signing failed for some reason, i.e. rejected operation or invalid transaction data</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>unsignedTransaction: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The hexadecimal byte string of an unsigned transaction.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/wallets.confirmedtransaction.html" class="tsd-signature-type">ConfirmedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The confirmed transaction, in case of success</p>
 						</li>
 					</ul>
 				</section>
@@ -261,7 +286,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/genericExtensionWallet.ts#L113">wallets/src/extension/genericExtensionWallet.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/genericExtensionWallet.ts#L111">wallets/src/extension/genericExtensionWallet.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -270,7 +295,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>Errors on timeout (if no explicit timeout handler was set), or on Permission issues</p>
+									<dd><p>Errors on wrong networks or permission issues</p>
 									</dd>
 								</dl>
 							</div>
@@ -336,7 +361,7 @@
 						<a href="wallets.deeplinkablewallet.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.extensionadapterfactory.html" class="tsd-kind-icon">Extension<wbr>Adapter<wbr>Factory</a>
+						<a href="wallets.extensionwalleterror.html" class="tsd-kind-icon">Extension<wbr>Wallet<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="wallets.genericdeeplinkablewallet.html" class="tsd-kind-icon">Generic<wbr>Deeplinkable<wbr>Wallet</a>
@@ -363,6 +388,18 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.invalidnetworkerror.html" class="tsd-kind-icon">Invalid<wbr>Network<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.invalidparamswalleterror.html" class="tsd-kind-icon">Invalid<wbr>Params<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.notfoundwalleterror.html" class="tsd-kind-icon">Not<wbr>Found<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.notgrantedwalleterror.html" class="tsd-kind-icon">Not<wbr>Granted<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="wallets.walletconnection.html" class="tsd-kind-icon">Wallet<wbr>Connection</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
@@ -381,7 +418,31 @@
 						<a href="../interfaces/wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationhandler.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationnetworkchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Network<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationpermissionremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Permission<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-kind-icon">Request<wbr>Permission<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/wallets.wallet.html" class="tsd-kind-icon">Wallet</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionnotification" class="tsd-kind-icon">Extension<wbr>Notification</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
 					</li>
 				</ul>
 			</nav>
