@@ -110,7 +110,8 @@ export enum PageMessageType {
 
 export enum ExtensionNotificationType {
     NetworkChanged= 'XT_DAPP_NETWORK_CHANGED',
-    PermissionRemoved= 'XT_DAPP_PERMISSION_REMOVED'
+    PermissionRemoved= 'XT_DAPP_PERMISSION_REMOVED',
+    AccountRemoved= 'XT_DAPP_ACCOUNT_REMOVED'
 }
 
 export interface ExtensionNotificationBase {
@@ -119,7 +120,8 @@ export interface ExtensionNotificationBase {
 
 export type ExtensionNotification =
     | ExtensionNotificationNetworkChanged
-    | ExtensionNotificationPermissionRemoved;
+    | ExtensionNotificationPermissionRemoved
+    | ExtensionNotificationAccountRemoved;
 
 export interface ExtensionNotificationNetworkChanged
     extends ExtensionNotificationBase {
@@ -131,5 +133,12 @@ export interface ExtensionNotificationNetworkChanged
 export interface ExtensionNotificationPermissionRemoved
     extends ExtensionNotificationBase {
     type: ExtensionNotificationType.PermissionRemoved;
+    url: string;
+}
+
+export interface ExtensionNotificationAccountRemoved
+    extends ExtensionNotificationBase {
+    type: ExtensionNotificationType.AccountRemoved;
+    accountId: string;
 }
 

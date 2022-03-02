@@ -6,7 +6,9 @@ import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionListener} from './extensionListener';
 import {
     ExtensionNotification,
+    ExtensionNotificationAccountRemoved,
     ExtensionNotificationNetworkChanged,
+    ExtensionNotificationPermissionRemoved,
     ExtensionNotificationType
 } from '../typings/messaging';
 
@@ -14,7 +16,8 @@ type NotificationCallback<T> = (data: T) => void;
 
 export interface ExtensionNotificationHandler {
     onNetworkChange?: NotificationCallback<Omit<ExtensionNotificationNetworkChanged, 'type'>>;
-    onPermissionRemoved?: NotificationCallback<void>;
+    onPermissionRemoved?: NotificationCallback<Omit<ExtensionNotificationPermissionRemoved, 'type'>>;
+    onAccountRemoved?: NotificationCallback<Omit<ExtensionNotificationAccountRemoved, 'type'>>;
 }
 
 /**
@@ -49,17 +52,25 @@ export class WalletConnection {
      */
     listen(notificationHandler: ExtensionNotificationHandler): ExtensionListener {
         this.notificationListener = this.adapter.onNotification( (msg: ExtensionNotification) => {
-            const  {onPermissionRemoved, onNetworkChange } = notificationHandler;
+            const  {onPermissionRemoved, onNetworkChange, onAccountRemoved } = notificationHandler;
             const call = (fn, args = undefined) => fn && fn(args);
             switch (msg.type) {
                 case ExtensionNotificationType.NetworkChanged:
                     call(onNetworkChange, {
-                        networkName: msg.networkHost,
+                        networkName: msg.networkName,
                         networkHost: msg.networkHost
                     });
                     break;
                 case ExtensionNotificationType.PermissionRemoved: {
-                    call(onPermissionRemoved);
+                    if (window.location.origin === msg.url) {
+                        call(onPermissionRemoved, {url: msg.url});
+                    }
+                    break;
+                }
+                case ExtensionNotificationType.AccountRemoved: {
+                    if (this.accountId === msg.accountId) {
+                        call(onAccountRemoved, {accountId: msg.accountId});
+                    }
                     break;
                 }
             }
