@@ -24,7 +24,7 @@ export class NotGrantedWalletError extends ExtensionWalletError {
  */
 export class NotFoundWalletError extends ExtensionWalletError {
     name = 'NotFoundWalletError';
-    message = 'Account Not Found. Try connect again';
+    message = 'Could not found a compatible wallet';
 }
 
 /**
@@ -51,21 +51,20 @@ export class InvalidNetworkError extends ExtensionWalletError {
  * @ignore
  */
 export function createError(payload: any) {
-    switch (true) {
-        case payload === ExtensionErrorType.NotGranted:
+    switch (payload) {
+        case ExtensionErrorType.NotGranted:
             return new NotGrantedWalletError();
 
-        case payload === ExtensionErrorType.NotFound:
+        case ExtensionErrorType.NotFound:
             return new NotFoundWalletError();
 
-        case payload === ExtensionErrorType.InvalidParams:
+        case ExtensionErrorType.InvalidParams:
             return new InvalidParamsWalletError();
 
-        case payload === ExtensionErrorType.InvalidNetwork:
-            return new InvalidParamsWalletError();
+        case ExtensionErrorType.InvalidNetwork:
+            return new InvalidNetworkError();
 
-
-             default:
+        default:
             return new ExtensionWalletError();
     }
 }

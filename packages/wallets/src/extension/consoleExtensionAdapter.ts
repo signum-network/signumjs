@@ -24,8 +24,8 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return ConsoleExtensionAdapter.notImplemented();
     }
 
-    isWalletAvailable(): Promise<boolean> {
-        return Promise.resolve(false);
+    assertWalletAvailable(): Promise<void> {
+        return ConsoleExtensionAdapter.notImplemented();
     }
 
     request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {

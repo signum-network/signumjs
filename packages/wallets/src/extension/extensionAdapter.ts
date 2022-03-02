@@ -13,7 +13,7 @@ import {RequestPermissionArgs, RequestSignArgs} from './args';
  * @internal
  */
 export interface ExtensionAdapter {
-    isWalletAvailable(): Promise<boolean>;
+    assertWalletAvailable(): Promise<void>;
 
     onNotification(callback: (message: any) => void): ExtensionListener;
 

@@ -74,7 +74,7 @@ export class GenericExtensionWallet implements Wallet {
         }
     }
 
-    private async fetchPermission(network: string, appName: string) {
+    private async fetchPermission(network: string, appName: string): Promise<WalletConnection> {
         try {
             const {availableNodeHosts, accountId, publicKey, currentNodeHost} = await this.adapter.requestPermission({
                 network: network,
@@ -83,13 +83,12 @@ export class GenericExtensionWallet implements Wallet {
                 },
             });
 
-            this._connection = new WalletConnection(
+            return new WalletConnection(
                 accountId,
                 publicKey,
                 availableNodeHosts,
                 currentNodeHost,
                 this.adapter);
-            return this._connection;
         } catch (e) {
             console.error(e);
             throw e;
@@ -104,18 +103,17 @@ export class GenericExtensionWallet implements Wallet {
     }
 
     /**
-     * Tries to connect to the extension wallet.
+     * Tries to connect to the extension wallet. Each recurring call tries overwrites current connection
      * @param args The argument object
-     * @throws Errors on wrong networks or permission issues
+     * @return The connection if successful, or null, if not available
+     * @throws Errors on unavailability, wrong networks or permission issues
      */
     async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
-        const isAvailable = await this.adapter.isWalletAvailable();
+        this._connection = null;
+        await this.adapter.assertWalletAvailable();
         const {appName, networkName} = args;
-        let permission = null;
-        if (isAvailable) {
-            permission = await this.fetchPermission(networkName, appName);
-        }
-        return permission;
+        this._connection = await this.fetchPermission(networkName, appName);
+        return this._connection;
     }
 
     /**

@@ -6,6 +6,7 @@
 import {v4 as uuid} from 'uuid';
 import {ExtensionAdapter} from './extensionAdapter';
 import {
+    ExtensionErrorType,
     ExtensionMessageType,
     ExtensionNotification,
     ExtensionPermission, ExtensionRequestArgs,
@@ -38,11 +39,11 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     }
 
     /**
-     * Checks, whether a compatible extension wallet is available
-     * @return true, if is available
+     * Asserts that a compatible extension wallet is available
+     * @throws Exception if no wallet was found
      */
-    async isWalletAvailable(): Promise<boolean> {
-        return new Promise<boolean>((resolve) => {
+    async assertWalletAvailable(): Promise<void> {
+        return new Promise((resolve, reject) => {
             const handleMessage = (evt: MessageEvent) => {
                 if (
                     evt.source === window &&
@@ -54,16 +55,20 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
             };
 
             const done = (result: boolean) => {
-                resolve(result);
                 window.removeEventListener('message', handleMessage);
                 clearTimeout(t);
+                if (result) {
+                    resolve();
+                } else {
+                    reject(createError(ExtensionErrorType.NotFound));
+                }
             };
 
+            window.addEventListener('message', handleMessage);
             BrowserExtensionAdapter.send({
                 type: PageMessageType.Request,
                 payload: 'PING',
             });
-            window.addEventListener('message', handleMessage);
             const t = setTimeout(() => done(false), 1_000);
         });
     }
