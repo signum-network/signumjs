@@ -1,34 +1,55 @@
-import {ExtensionErrorType} from '../typings/messaging';
+import {ExtensionErrorType} from './messaging';
 
+/**
+ * A generic and unknown/unexpected error with the extension
+ * @module wallets
+ */
 export class ExtensionWalletError implements Error {
     name = 'ExtensionWalletError';
     message = 'An unknown error occured. Please try again or report it';
 }
 
+/**
+ * Error for rejected permissions, or similar permission errors
+ * @module wallets
+ */
 export class NotGrantedWalletError extends ExtensionWalletError {
     name = 'NotGrantedWalletError';
     message = 'Permission Not Granted';
 }
 
+/**
+ * Error if no compatible extension wallet was found
+ * @module wallets
+ */
 export class NotFoundWalletError extends ExtensionWalletError {
     name = 'NotFoundWalletError';
     message = 'Account Not Found. Try connect again';
 }
 
+/**
+ * Error if request parameters do not match expectation of the wallet
+ * @module wallets
+ */
 export class InvalidParamsWalletError extends ExtensionWalletError {
     name = 'InvalidParamsWalletError';
     message = 'Some of the parameters you provided are invalid';
 }
 
-export class OperationWalletError extends ExtensionWalletError {
-    name = 'OperationWalletError';
-
-    constructor(message: string) {
-        super();
-        this.message = message;
-    }
+/**
+ * Error if the network is not allowed for the requesting application, i.e. requested network does not exist, or the currently selected node is not
+ * of requested network.
+ * @module wallets
+ */
+export class InvalidNetworkError extends ExtensionWalletError {
+    name = 'InvalidNetworkError';
+    message = 'The selected network/node of the wallet does not match the applications required network. Please select another network/node in your wallet';
 }
 
+/**
+ * @internal
+ * @ignore
+ */
 export function createError(payload: any) {
     switch (true) {
         case payload === ExtensionErrorType.NotGranted:
@@ -40,13 +61,11 @@ export function createError(payload: any) {
         case payload === ExtensionErrorType.InvalidParams:
             return new InvalidParamsWalletError();
 
-        case Array.isArray(payload) &&
-        payload[0] === ExtensionErrorType.Operation &&
-        Array.isArray(payload[1]) &&
-        payload[1].length > 0:
-            return new OperationWalletError(payload[1]);
+        case payload === ExtensionErrorType.InvalidNetwork:
+            return new InvalidParamsWalletError();
 
-        default:
+
+             default:
             return new ExtensionWalletError();
     }
 }

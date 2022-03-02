@@ -8,11 +8,9 @@ import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
 
-export enum NetworkName {
-    SignumMainnet = 'Signum',
-    SignumTestnet = 'Signum-TESTNET'
-}
-
+/**
+ * Connection parameters for [[GenericExtensionWallet.connect]]
+ */
 interface GenericExtensionWalletConnectArgs {
     /**
      * The name of the app to be connected.
@@ -24,7 +22,7 @@ interface GenericExtensionWalletConnectArgs {
      * The network name is available with `getNetworkInfo`.
      * For original Signum Network it is `Signum` and `Signum-TESTNET` respectively.
      */
-    networkName: string | NetworkName;
+    networkName: string | 'Signum' | 'Signum-TESTNET';
 }
 
 /**
@@ -38,7 +36,7 @@ interface GenericExtensionWalletConnectArgs {
  *  .connect({appName: 'MySuperDApp', networkName: NetworkName.SignumMainnet})
  *  .then( connection => {
  *      console.log('Successfully connected', connection)
- *      const ledger = LedgerClientFactory.createClient({ nodeHost: connection.nodeHost });
+ *      const ledger = LedgerClientFactory.createClient({ nodeHost: connection.currentNodeHost });
  *      console.log('Sending some money...')
  *      return ledger.transaction.sendAmountToSingleRecipient({
  *          senderPublicKey: connection.publicKey,
@@ -78,15 +76,19 @@ export class GenericExtensionWallet implements Wallet {
 
     private async fetchPermission(network: string, appName: string) {
         try {
-            const {nodeHosts, accountId, publicKey} = await this.adapter.requestPermission({
+            const {availableNodeHosts, accountId, publicKey, currentNodeHost} = await this.adapter.requestPermission({
                 network: network,
                 appMeta: {
                     name: appName
                 },
-                force: false,
             });
 
-            this._connection = new WalletConnection(accountId, publicKey, nodeHosts, this.adapter);
+            this._connection = new WalletConnection(
+                accountId,
+                publicKey,
+                availableNodeHosts,
+                currentNodeHost,
+                this.adapter);
             return this._connection;
         } catch (e) {
             console.error(e);
@@ -104,7 +106,7 @@ export class GenericExtensionWallet implements Wallet {
     /**
      * Tries to connect to the extension wallet.
      * @param args The argument object
-     * @throws Errors on timeout (if no explicit timeout handler was set), or on Permission issues
+     * @throws Errors on wrong networks or permission issues
      */
     async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
         const isAvailable = await this.adapter.isWalletAvailable();
@@ -116,6 +118,26 @@ export class GenericExtensionWallet implements Wallet {
         return permission;
     }
 
+    /**
+     * Requests a confirmation, i.e. cryptographic signing, of a transaction.
+     *
+     * The unsignedTransaction byte sequence is being returned by any of the SignumJS operations as long as no private key is
+     * passed as parameter to the operation
+     *
+     * @example
+     * ```ts
+     * const { unsignedTransactionBytes } = await ledger.transaction.sendAmountToSingleRecipient({
+     *          senderPublicKey: connection.publicKey, // only public key is passed!
+     *          recipientId: Address.fromReedSolomonAddress('TS-K37B-9V85-FB95-793HN').getNumericId(),
+     *          feePlanck: String(FeeQuantPlanck),
+     *          amountPlanck: Amount.fromSigna(1).getPlanck()
+     *      })
+     * const { transactionId, fullHash } = await wallet.confirm(unsignedTransactionBytes)
+     * ```
+     * @param unsignedTransaction The hexadecimal byte string of an unsigned transaction.
+     * @return The confirmed transaction, in case of success
+     * @throws Error if signing failed for some reason, i.e. rejected operation or invalid transaction data
+     */
     async confirm(unsignedTransaction: string): Promise<ConfirmedTransaction> {
         this.assertConnection();
         const result = await this.adapter.requestSign({

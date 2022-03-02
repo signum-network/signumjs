@@ -6,19 +6,10 @@ import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionListener} from './extensionListener';
 import {
     ExtensionNotification,
-    ExtensionNotificationAccountRemoved,
-    ExtensionNotificationNetworkChanged,
-    ExtensionNotificationPermissionRemoved,
     ExtensionNotificationType
-} from '../typings/messaging';
+} from './messaging';
+import {ExtensionNotificationHandler} from './extensionNotificationHandler';
 
-type NotificationCallback<T> = (data: T) => void;
-
-export interface ExtensionNotificationHandler {
-    onNetworkChange?: NotificationCallback<Omit<ExtensionNotificationNetworkChanged, 'type'>>;
-    onPermissionRemoved?: NotificationCallback<Omit<ExtensionNotificationPermissionRemoved, 'type'>>;
-    onAccountRemoved?: NotificationCallback<Omit<ExtensionNotificationAccountRemoved, 'type'>>;
-}
 
 /**
  * Wallet Connection object returned from [[GenericExtensionWallet.connect]]
@@ -31,13 +22,15 @@ export class WalletConnection {
     /**
      * @param accountId The connected account
      * @param publicKey The accounts public key
-     * @param nodeHosts The available nodeHosts for given network.
+     * @param availableNodeHosts The available nodeHosts for given network, which are registered in the wallet.
+     * @param currentNodeHost The currently selected nodeHost in the wallet
      * @param adapter the extension adapter with its internal implementation
      */
     constructor(
         public readonly accountId: string,
         public readonly publicKey: string,
-        public readonly nodeHosts: string[],
+        public readonly availableNodeHosts: string[],
+        public readonly currentNodeHost: string,
         private adapter: ExtensionAdapter,
     ) {
     }

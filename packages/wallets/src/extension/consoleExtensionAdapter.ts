@@ -1,7 +1,7 @@
 import {ExtensionAdapter} from './extensionAdapter';
-import {ExtensionPermission, ExtensionRequest, ExtensionResponse, ExtensionSigned} from '../typings/messaging';
-import {RequestPermissionArgs, RequestSignArgs} from '../typings';
 import {ExtensionListener} from './extensionListener';
+import {ExtensionPermission, ExtensionRequestArgs, ExtensionResponse, ExtensionSigned} from './messaging';
+import {RequestPermissionArgs, RequestSignArgs} from './args';
 
 /**
  * The extension client for console
@@ -28,7 +28,7 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return Promise.resolve(false);
     }
 
-    request(payload: ExtensionRequest): Promise<ExtensionResponse> {
+    request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
         return ConsoleExtensionAdapter.notImplemented();
     }
 

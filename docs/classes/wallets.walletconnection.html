@@ -92,8 +92,7 @@
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Wallet Connection object returned from <a href="wallets.genericextensionwallet.html#connect">GenericExtensionWallet.connect</a>
-							You can use this information for preparing transactions and send them back to the wallet
-						for confirmation with <a href="wallets.genericextensionwallet.html#confirm">GenericExtensionWallet.confirm</a></p>
+						You can use this to listen to events in the wallet, i.e. network changes, or permission removals</p>
 					</div>
 				</div>
 			</section>
@@ -119,14 +118,9 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#accountid" class="tsd-kind-icon">account<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#nodehost" class="tsd-kind-icon">node<wbr>Host</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#availablenodehosts" class="tsd-kind-icon">available<wbr>Node<wbr>Hosts</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#currentnodehost" class="tsd-kind-icon">current<wbr>Node<wbr>Host</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#publickey" class="tsd-kind-icon">public<wbr>Key</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Accessors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="wallets.walletconnection.html#connectionstatus" class="tsd-kind-icon">connection<wbr>Status</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -144,13 +138,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Wallet<wbr>Connection<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, publicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, nodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, adapter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionAdapter</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Wallet<wbr>Connection<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, publicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, availableNodeHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, currentNodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, adapter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionAdapter</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L18">wallets/src/extension/walletConnection.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L20">wallets/src/extension/walletConnection.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,10 +168,18 @@
 									</div>
 								</li>
 								<li>
-									<h5>nodeHost: <span class="tsd-signature-type">string</span></h5>
+									<h5>availableNodeHosts: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>The currently chosen host for that account in the wallet</p>
+											<p>The available nodeHosts for given network, which are registered in the wallet.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>currentNodeHost: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The currently selected nodeHost in the wallet</p>
 										</div>
 									</div>
 								</li>
@@ -203,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L27">wallets/src/extension/walletConnection.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L30">wallets/src/extension/walletConnection.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,17 +215,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="nodehost" class="tsd-anchor"></a>
-					<h3>node<wbr>Host</h3>
-					<div class="tsd-signature tsd-kind-icon">node<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="availablenodehosts" class="tsd-anchor"></a>
+					<h3>available<wbr>Node<wbr>Hosts</h3>
+					<div class="tsd-signature tsd-kind-icon">available<wbr>Node<wbr>Hosts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L29">wallets/src/extension/walletConnection.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L32">wallets/src/extension/walletConnection.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The currently chosen host for that account in the wallet</p>
+							<p>The available nodeHosts for given network, which are registered in the wallet.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="currentnodehost" class="tsd-anchor"></a>
+					<h3>current<wbr>Node<wbr>Host</h3>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Node<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L33">wallets/src/extension/walletConnection.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The currently selected nodeHost in the wallet</p>
 						</div>
 					</div>
 				</section>
@@ -233,7 +250,7 @@
 					<div class="tsd-signature tsd-kind-icon">public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L28">wallets/src/extension/walletConnection.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L31">wallets/src/extension/walletConnection.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -244,38 +261,18 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="connectionstatus" class="tsd-anchor"></a>
-					<h3>connection<wbr>Status</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> connectionStatus<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../globals.html#connectionstatus" class="tsd-signature-type">ConnectionStatus</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L35">wallets/src/extension/walletConnection.ts:35</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../globals.html#connectionstatus" class="tsd-signature-type">ConnectionStatus</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="listen" class="tsd-anchor"></a>
 					<h3>listen</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/wallets.extensionlistener.html" class="tsd-signature-type">ExtensionListener</a></li>
+						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span>notificationHandler<span class="tsd-signature-symbol">: </span><a href="../interfaces/wallets.extensionnotificationhandler.html" class="tsd-signature-type">ExtensionNotificationHandler</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/wallets.extensionlistener.html" class="tsd-signature-type">ExtensionListener</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a4d23ec/packages/wallets/src/extension/walletConnection.ts#L47">wallets/src/extension/walletConnection.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/walletConnection.ts#L46">wallets/src/extension/walletConnection.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,25 +284,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>callback: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>connection<span class="tsd-signature-symbol">: </span><a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>connection: <a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
+									<h5>notificationHandler: <a href="../interfaces/wallets.extensionnotificationhandler.html" class="tsd-signature-type">ExtensionNotificationHandler</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The object with the event handler</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/wallets.extensionlistener.html" class="tsd-signature-type">ExtensionListener</a></h4>
@@ -362,13 +344,25 @@
 						<a href="wallets.deeplinkablewallet.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.extensionadapterfactory.html" class="tsd-kind-icon">Extension<wbr>Adapter<wbr>Factory</a>
+						<a href="wallets.extensionwalleterror.html" class="tsd-kind-icon">Extension<wbr>Wallet<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="wallets.genericdeeplinkablewallet.html" class="tsd-kind-icon">Generic<wbr>Deeplinkable<wbr>Wallet</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="wallets.genericextensionwallet.html" class="tsd-kind-icon">Generic<wbr>Extension<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.invalidnetworkerror.html" class="tsd-kind-icon">Invalid<wbr>Network<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.invalidparamswalleterror.html" class="tsd-kind-icon">Invalid<wbr>Params<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.notfoundwalleterror.html" class="tsd-kind-icon">Not<wbr>Found<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="wallets.notgrantedwalleterror.html" class="tsd-kind-icon">Not<wbr>Granted<wbr>Wallet<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -382,13 +376,13 @@
 								<a href="wallets.walletconnection.html#accountid" class="tsd-kind-icon">account<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="wallets.walletconnection.html#nodehost" class="tsd-kind-icon">node<wbr>Host</a>
+								<a href="wallets.walletconnection.html#availablenodehosts" class="tsd-kind-icon">available<wbr>Node<wbr>Hosts</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="wallets.walletconnection.html#currentnodehost" class="tsd-kind-icon">current<wbr>Node<wbr>Host</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="wallets.walletconnection.html#publickey" class="tsd-kind-icon">public<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="wallets.walletconnection.html#connectionstatus" class="tsd-kind-icon">connection<wbr>Status</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.walletconnection.html#listen" class="tsd-kind-icon">listen</a>
@@ -413,7 +407,31 @@
 						<a href="../interfaces/wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationhandler.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationnetworkchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Network<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationpermissionremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Permission<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-kind-icon">Request<wbr>Permission<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/wallets.wallet.html" class="tsd-kind-icon">Wallet</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionnotification" class="tsd-kind-icon">Extension<wbr>Notification</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
 					</li>
 				</ul>
 			</nav>

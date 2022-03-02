@@ -7,5 +7,8 @@
  * @module wallets
  */
 export interface ExtensionListener {
+    /**
+     * Unsubscribe from the internal event messaging
+     */
     unlisten: () => void;
 }

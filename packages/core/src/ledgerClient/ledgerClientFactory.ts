@@ -5,12 +5,14 @@ import {AxiosRequestConfig} from 'axios';
 
 /**
  * Alias for [[Api]]
+ * @module core
  */
 export declare type Ledger = Api;
 
 
 /**
  * The LedgerSettings to use for [[LedgerClientFactory]]
+ * @module core
  */
 export interface LedgerSettings {
     /**

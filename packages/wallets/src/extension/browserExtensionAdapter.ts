@@ -8,39 +8,39 @@ import {ExtensionAdapter} from './extensionAdapter';
 import {
     ExtensionMessageType,
     ExtensionNotification,
-    ExtensionNotificationType,
-    ExtensionPermission,
-    ExtensionRequest,
+    ExtensionPermission, ExtensionRequestArgs,
     ExtensionResponse,
     ExtensionSigned,
     PageMessage,
     PageMessageType
-} from '../typings/messaging';
-import {RequestPermissionArgs, RequestSignArgs, RequestTransactionArgs} from '../typings';
+} from './messaging';
 import {createError} from './errors';
 import {ExtensionListener} from './extensionListener';
+import {RequestPermissionArgs, RequestSignArgs} from './args';
 
 
 /**
  * Extension Adapter for Browser based wallet access, to use with [[GenericExtensionWallet]]
  *
- * Use this adapter, if you want to use the [[GenericExtensionWallet]] in the browser.
- *
+ * @note This adapter is automatically chosen in browser environments - Usually, you won't use this adapter directly.
  * @module wallets
  */
 export class BrowserExtensionAdapter implements ExtensionAdapter {
 
-    private send(msg: PageMessage) {
+    private static send(msg: PageMessage) {
         window.postMessage(msg, '*');
     }
 
-    private assertResponse(condition: boolean): asserts condition {
+    private static assertResponse(condition: boolean): asserts condition {
         if (!condition) {
             throw new Error('Invalid response received');
         }
     }
 
-
+    /**
+     * Checks, whether a compatible extension wallet is available
+     * @return true, if is available
+     */
     async isWalletAvailable(): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
             const handleMessage = (evt: MessageEvent) => {
@@ -59,7 +59,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
                 clearTimeout(t);
             };
 
-            this.send({
+            BrowserExtensionAdapter.send({
                 type: PageMessageType.Request,
                 payload: 'PING',
             });
@@ -68,6 +68,11 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
     }
 
+    /**
+     * Informs about extension wallet events, like network/node changes, permission and/or account removals
+     * @param callback The callback object with the event handler
+     * @return The listener object, that can/should be used to unsubscribe if not needed anymore
+     */
     public onNotification(callback: (message: ExtensionNotification) => void): ExtensionListener {
         let listener: ExtensionListener;
         function handleMessage(evt: MessageEvent) {
@@ -81,18 +86,28 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         return listener;
     }
 
+    /**
+     * Gets the current permission
+     * @return The extensions permission object
+     */
     async getCurrentPermission(): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.GetCurrentPermissionRequest,
         });
-        this.assertResponse(
+        BrowserExtensionAdapter.assertResponse(
             res.type === ExtensionMessageType.GetCurrentPermissionResponse
         );
         return res.permission;
     }
 
 
-    request(payload: ExtensionRequest): Promise<ExtensionResponse> {
+    /**
+     * Generic request method, to request various operations
+     * @param payload The payload object for the respective operation
+     * @return The response from the wallet in case of success
+     * @throws An error object in case of failures, see also [[ExtensionWalletError]]
+     */
+    request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
         return new Promise<ExtensionResponse>((resolve, reject) => {
             const reqId = uuid();
             const handleMessage = (evt: MessageEvent) => {
@@ -107,7 +122,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
                     window.removeEventListener('message', handleMessage);
                 }
             };
-            this.send({
+            BrowserExtensionAdapter.send({
                 type: PageMessageType.Request,
                 payload,
                 reqId,
@@ -117,16 +132,22 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
         });
     }
 
+    /**
+     * Requests the permission of a compatible wallet.
+     * A permission is based on _one_ network, e.g. Signum, Signum-TESTNET, etc. and the url of the requesting application.
+     * The wallet should have selected a node of the required network, otherwise permission request fails with [[InvalidNetworkError]]
+     * @param args The argument object
+     */
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
         const res = await this.request({
             type: ExtensionMessageType.PermissionRequest,
             network: args.network,
-            force: args.force,
             appMeta: args.appMeta,
         });
-        this.assertResponse(res.type === ExtensionMessageType.PermissionResponse);
+        BrowserExtensionAdapter.assertResponse(res.type === ExtensionMessageType.PermissionResponse);
         return {
-            nodeHosts: res.nodeHosts,
+            currentNodeHost: res.currentNodeHost,
+            availableNodeHosts: res.availableNodeHosts,
             accountId: res.accountId,
             publicKey: res.publicKey,
         };
@@ -138,15 +159,11 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
             sourcePkh: args.accountId,
             payload: args.unsignedTransaction,
         });
-        this.assertResponse(res.type === ExtensionMessageType.SignResponse);
+        BrowserExtensionAdapter.assertResponse(res.type === ExtensionMessageType.SignResponse);
         return {
             transactionId: res.transactionId,
             fullHash: res.fullHash
         };
-    }
-
-    requestTransaction(args: RequestTransactionArgs): Promise<any> {
-        return Promise.resolve(undefined);
     }
 
 }
