@@ -45,15 +45,19 @@ export class WalletConnection {
      */
     listen(notificationHandler: ExtensionNotificationHandler): ExtensionListener {
         this.notificationListener = this.adapter.onNotification( (msg: ExtensionNotification) => {
-            const  {onPermissionRemoved, onNetworkChange, onAccountRemoved } = notificationHandler;
+            const  {onPermissionRemoved, onNetworkChanged, onAccountRemoved, onAccountChanged } = notificationHandler;
             const call = (fn, args = undefined) => fn && fn(args);
             switch (msg.type) {
                 case ExtensionNotificationType.NetworkChanged:
-                    call(onNetworkChange, {
+                    call(onNetworkChanged, {
                         networkName: msg.networkName,
                         networkHost: msg.networkHost
                     });
                     break;
+                case ExtensionNotificationType.AccountChanged: {
+                    call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey});
+                    break;
+                }
                 case ExtensionNotificationType.PermissionRemoved: {
                     if (window.location.origin === msg.url) {
                         call(onPermissionRemoved, {url: msg.url});

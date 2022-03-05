@@ -203,6 +203,7 @@ export enum PageMessageType {
  */
 export enum ExtensionNotificationType {
     NetworkChanged= 'XT_DAPP_NETWORK_CHANGED',
+    AccountChanged= 'XT_DAPP_ACCOUNT_CHANGED',
     PermissionRemoved= 'XT_DAPP_PERMISSION_REMOVED',
     AccountRemoved= 'XT_DAPP_ACCOUNT_REMOVED'
 }
@@ -223,7 +224,8 @@ interface ExtensionNotificationBase {
 export type ExtensionNotification =
     | ExtensionNotificationNetworkChanged
     | ExtensionNotificationPermissionRemoved
-    | ExtensionNotificationAccountRemoved;
+    | ExtensionNotificationAccountRemoved
+    | ExtensionNotificationAccountChanged;
 
 
 /**
@@ -269,5 +271,19 @@ export interface ExtensionNotificationAccountRemoved
      * The id of the account that was removed
      */
     accountId: string;
+}
+
+/**
+ * The notification message structure for `onPermissionRemoved` event
+ * @module wallets
+ */
+export interface ExtensionNotificationAccountChanged
+    extends ExtensionNotificationBase {
+    type: ExtensionNotificationType.AccountChanged;
+    /**
+     * The id of the account that was removed
+     */
+    accountId: string;
+    accountPublicKey: string
 }
 
