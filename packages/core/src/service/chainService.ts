@@ -115,7 +115,7 @@ export class ChainService {
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
-    public async send<T>(method: string, args: object = {}, body: object = {}, options?: any | AxiosRequestConfig): Promise<T> {
+    public async send<T>(method: string, args: object = {}, body?: object , options?: any | AxiosRequestConfig): Promise<T> {
         const endpoint = this.toApiEndpoint(method, args);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.post(endpoint, body, options));
