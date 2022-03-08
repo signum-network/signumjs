@@ -140,7 +140,7 @@ export class GenericExtensionWallet implements Wallet {
         this.assertConnection();
         const result = await this.adapter.requestSign({
             unsignedTransaction,
-            accountId: this.connection?.accountId || ''
+            publicKey: this.connection?.publicKey || ''
         });
         return {
             transactionId: result.transactionId,

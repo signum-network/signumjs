@@ -4,6 +4,6 @@
  * @module wallets
  */
 export interface RequestSignArgs {
-    accountId: string;
+    publicKey: string;
     unsignedTransaction: string;
 }

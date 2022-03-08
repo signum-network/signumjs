@@ -168,7 +168,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
         const res = await this.request({
             type: ExtensionMessageType.SignRequest,
-            sourcePkh: args.accountId,
+            sourcePkh: args.publicKey,
             payload: args.unsignedTransaction,
         });
         BrowserExtensionAdapter.assertResponse(res.type === ExtensionMessageType.SignResponse);

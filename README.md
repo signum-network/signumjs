@@ -31,6 +31,8 @@ The SDK is separated in the following packages
   and exception handling
 - [@signumjs/monitor](./modules/monitor.html) A package providing a class to execute recurring async operations with
   de/serialization feature, good for listening to blockchain transactions
+- [@signumjs/wallets](./modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
+- wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  
 
 ## Installation
 
@@ -47,6 +49,7 @@ npm install @signumjs/crypto (optional)
 npm install @signumjs/util (optional)
 npm install @signumjs/http (optional)
 npm install @signumjs/monitor (optional)
+npm install @signumjs/wallets (optional)
 ```
 
 or using [yarn](https://yarnpkg.com/):
@@ -58,6 +61,7 @@ yarn add @signumjs/crypto (optional)
 yarn add @signumjs/util (optional)
 yarn add @signumjs/http (optional)
 yarn add @signumjs/monitor (optional)
+yarn add @signumjs/wallets (optional)
 ```
 
 ### Using in classic `<script>`
@@ -79,16 +83,19 @@ Just import one of the packages using the HTML `<script>` tag.
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/monitor/dist/signumjs.monitor.min.js'></script>`
 
+`<script src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>`
+
 Due to the way a package is imported following global variables are provided
 
-| Package | Variable |
-|---------|----------|
-|  core   |`sig$`      |
-|  contracts |`sig$contracts`|
-|  crypto |`sig$crypto`|
-|  http   |`sig$http`  |
-|  monitor   |`sig$monitor`  |
-|  util   |`sig$util`  |
+| Package   | Variable        |
+|-----------|-----------------|
+| core      | `sig$`          |
+| contracts | `sig$contracts` |
+| crypto    | `sig$crypto`    |
+| http      | `sig$http`      |
+| monitor   | `sig$monitor`   |
+| util      | `sig$util`      |
+| wallets   | `sig$wallets`   |
 
 Examples:
 
@@ -121,6 +128,17 @@ const value = sig$util.Amount.fromSigna("1000")
 // using http
 const client = new sig$http.HttpClientFactory.createHttpClient('https://jsonplaceholder.typicode.com/');
 client.get('/todos/1').then(console.log)
+```
+
+```ts
+// using wallets
+const wallet = new sig$wallets.GenericExtensionWallet()
+const connection = await wallet.connect();
+const subscription = connection.listen({
+    onAccountChanged: (accountId, publicKey) => { /*...*/ }
+})
+// ...
+subscription.unlisten()
 ```
 
 ```ts
