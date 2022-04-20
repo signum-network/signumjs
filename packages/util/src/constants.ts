@@ -8,7 +8,7 @@ export const CurrencySymbol = 'Ꞩ';
  * The smallest possible fee
  * @module util
  */
-export const FeeQuantPlanck = 735000;
+export const FeeQuantPlanck = 1000000;
 
 /**
  * One SIGNA expressed in Planck
