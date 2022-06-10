@@ -3,8 +3,15 @@
  */
 
 import {ExtensionListener} from './extensionListener';
-import {ExtensionPermission, ExtensionRequestArgs, ExtensionResponse, ExtensionSigned} from './messaging';
+import {
+    ExtensionPermission,
+    ExtensionRequestArgs,
+    ExtensionResponse,
+    ExtensionSentEncryptedMessage,
+    ExtensionSigned
+} from './messaging';
 import {RequestPermissionArgs, RequestSignArgs} from './args';
+import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessageArgs';
 
 /**
  *
@@ -22,6 +29,8 @@ export interface ExtensionAdapter {
     requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission>;
 
     requestSign(args: RequestSignArgs): Promise<ExtensionSigned>;
+
+    requestSendEncryptedMessage(args: RequestSendEncryptedMessageArgs): Promise<ExtensionSentEncryptedMessage>;
 
     request(message: ExtensionRequestArgs): Promise<ExtensionResponse>;
 

@@ -1,0 +1,4 @@
+*.log
+/docs
+/docstheme
+*.tgz

@@ -11,7 +11,6 @@ export interface RequestPermissionArgs {
     appMeta: ExtensionDAppMetadata;
     /**
      * The network on which the DApp operates
-     * @see
      */
     network: string;
 }

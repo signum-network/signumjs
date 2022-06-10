@@ -10,7 +10,7 @@ import {
     ExtensionMessageType,
     ExtensionNotification,
     ExtensionPermission, ExtensionRequestArgs,
-    ExtensionResponse,
+    ExtensionResponse, ExtensionSentEncryptedMessage,
     ExtensionSigned,
     PageMessage,
     PageMessageType
@@ -18,6 +18,7 @@ import {
 import {createError} from './errors';
 import {ExtensionListener} from './extensionListener';
 import {RequestPermissionArgs, RequestSignArgs} from './args';
+import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessageArgs';
 
 
 /**
@@ -168,7 +169,6 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     async requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
         const res = await this.request({
             type: ExtensionMessageType.SignRequest,
-            sourcePkh: args.publicKey,
             payload: args.unsignedTransaction,
         });
         BrowserExtensionAdapter.assertResponse(res.type === ExtensionMessageType.SignResponse);
@@ -176,6 +176,19 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
             transactionId: res.transactionId,
             fullHash: res.fullHash
         };
+    }
+
+    async requestSendEncryptedMessage(args: RequestSendEncryptedMessageArgs): Promise<ExtensionSentEncryptedMessage> {
+        const res = await this.request({
+            type: ExtensionMessageType.SendEncryptedMessageRequest,
+            ...args
+        });
+        BrowserExtensionAdapter.assertResponse(res.type === ExtensionMessageType.SendEncryptedMessageResponse);
+        return {
+            transactionId: res.transactionId,
+            fullHash: res.fullHash
+        };
+
     }
 
 }
