@@ -71,7 +71,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=placeAskOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=735000&deadline=1440')
+                    'relPath?requestType=placeAskOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -95,7 +95,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=735000&deadline=1440')
+                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -119,7 +119,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=cancelAskOrder&order=123&publicKey=senderPublicKey&feeNQT=735000&deadline=1440')
+                    'relPath?requestType=cancelAskOrder&order=123&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -141,7 +141,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=cancelBidOrder&order=123&publicKey=senderPublicKey&feeNQT=735000&deadline=1440')
+                    'relPath?requestType=cancelBidOrder&order=123&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -162,7 +162,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=735000&deadline=1440'
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
                 ).build();
 
             const service = createChainService(httpMock, 'relPath');
