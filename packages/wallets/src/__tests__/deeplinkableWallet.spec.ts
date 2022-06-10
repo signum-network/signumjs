@@ -12,7 +12,7 @@ describe('DeeplinkableWallet', () => {
             expect(parsed.decodedPayload).toEqual({
                 recipient: '16107620026796983538',
                 amountPlanck: '0',
-                feePlanck: '735000',
+                feePlanck: '1000000',
                 messageIsText: true,
                 immutable: false,
                 deadline: 1440,
