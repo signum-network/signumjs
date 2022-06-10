@@ -3,6 +3,8 @@
  */
 
 import {ConfirmedTransaction} from './confirmedTransaction';
+import {SendEncryptedMessageArgs} from './args';
+
 
 /**
  * Generic Wallet interface
@@ -22,5 +24,16 @@ export interface Wallet {
      * @return In case of success the confirmed transaction object, or any contextual string.
      */
     confirm(unsignedTransactionBytes: string): Promise<ConfirmedTransaction|string>;
+
+    /**
+     * Sends an encrypted P2P message
+     *
+     * Encrypted messages are only readable by sender and receiver. For encryption the so called agreementPrivateKey of
+     * Signums key set is used. Encryption has to be done before the transaction bytes can be generated [[Wallet.confirm]] cannot be used.
+     *
+     * @param args The parameters
+     * @return In case of success the confirmed transaction object, or any contextual string.
+     */
+    sendEncryptedMessage(args: SendEncryptedMessageArgs): Promise<ConfirmedTransaction|string>;
 
 }
