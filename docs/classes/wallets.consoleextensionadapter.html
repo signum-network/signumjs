@@ -122,11 +122,12 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#assertwalletavailable" class="tsd-kind-icon">assert<wbr>Wallet<wbr>Available</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#getcurrentpermission" class="tsd-kind-icon">get<wbr>Current<wbr>Permission</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#iswalletavailable" class="tsd-kind-icon">is<wbr>Wallet<wbr>Available</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#onnotification" class="tsd-kind-icon">on<wbr>Notification</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#request" class="tsd-kind-icon">request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#requestpermission" class="tsd-kind-icon">request<wbr>Permission</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#requestsendencryptedmessage" class="tsd-kind-icon">request<wbr>Send<wbr>Encrypted<wbr>Message</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.consoleextensionadapter.html#requestsign" class="tsd-kind-icon">request<wbr>Sign</a></li>
 							</ul>
 						</section>
@@ -135,6 +136,23 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="assertwalletavailable" class="tsd-anchor"></a>
+					<h3>assert<wbr>Wallet<wbr>Available</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">assert<wbr>Wallet<wbr>Available<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L28">wallets/src/extension/consoleExtensionAdapter.ts:28</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getcurrentpermission" class="tsd-anchor"></a>
 					<h3>get<wbr>Current<wbr>Permission</h3>
@@ -145,27 +163,10 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L23">wallets/src/extension/consoleExtensionAdapter.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L24">wallets/src/extension/consoleExtensionAdapter.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionpermission" class="tsd-signature-type">ExtensionPermission</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="iswalletavailable" class="tsd-anchor"></a>
-					<h3>is<wbr>Wallet<wbr>Available</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Wallet<wbr>Available<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L27">wallets/src/extension/consoleExtensionAdapter.ts:27</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -179,7 +180,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L19">wallets/src/extension/consoleExtensionAdapter.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L20">wallets/src/extension/consoleExtensionAdapter.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -217,19 +218,19 @@
 					<a name="request" class="tsd-anchor"></a>
 					<h3>request</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionRequestArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ExtensionResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>_payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionRequestArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ExtensionResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L31">wallets/src/extension/consoleExtensionAdapter.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L32">wallets/src/extension/consoleExtensionAdapter.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>payload: <span class="tsd-signature-type">ExtensionRequestArgs</span></h5>
+									<h5>_payload: <span class="tsd-signature-type">ExtensionRequestArgs</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ExtensionResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -240,19 +241,19 @@
 					<a name="requestpermission" class="tsd-anchor"></a>
 					<h3>request<wbr>Permission</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Permission<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-signature-type">RequestPermissionArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionpermission" class="tsd-signature-type">ExtensionPermission</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Permission<span class="tsd-signature-symbol">(</span>_args<span class="tsd-signature-symbol">: </span><a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-signature-type">RequestPermissionArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionpermission" class="tsd-signature-type">ExtensionPermission</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L35">wallets/src/extension/consoleExtensionAdapter.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L36">wallets/src/extension/consoleExtensionAdapter.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-signature-type">RequestPermissionArgs</a></h5>
+									<h5>_args: <a href="../interfaces/wallets.requestpermissionargs.html" class="tsd-signature-type">RequestPermissionArgs</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionpermission" class="tsd-signature-type">ExtensionPermission</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -260,22 +261,45 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="requestsign" class="tsd-anchor"></a>
-					<h3>request<wbr>Sign</h3>
+					<a name="requestsendencryptedmessage" class="tsd-anchor"></a>
+					<h3>request<wbr>Send<wbr>Encrypted<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Sign<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestSignArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionsigned" class="tsd-signature-type">ExtensionSigned</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Send<wbr>Encrypted<wbr>Message<span class="tsd-signature-symbol">(</span>_args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestSendEncryptedMessageArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-signature-type">ExtensionSentEncryptedMessage</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/extension/consoleExtensionAdapter.ts#L39">wallets/src/extension/consoleExtensionAdapter.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L44">wallets/src/extension/consoleExtensionAdapter.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <span class="tsd-signature-type">RequestSignArgs</span></h5>
+									<h5>_args: <span class="tsd-signature-type">RequestSendEncryptedMessageArgs</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-signature-type">ExtensionSentEncryptedMessage</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="requestsign" class="tsd-anchor"></a>
+					<h3>request<wbr>Sign</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Sign<span class="tsd-signature-symbol">(</span>_args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestSignArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionsigned" class="tsd-signature-type">ExtensionSigned</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/extension/consoleExtensionAdapter.ts#L40">wallets/src/extension/consoleExtensionAdapter.ts:40</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_args: <span class="tsd-signature-type">RequestSignArgs</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/wallets.html#extensionsigned" class="tsd-signature-type">ExtensionSigned</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -330,10 +354,10 @@
 						<a href="wallets.consoleextensionadapter.html" class="tsd-kind-icon">Console<wbr>Extension<wbr>Adapter</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="wallets.consoleextensionadapter.html#getcurrentpermission" class="tsd-kind-icon">get<wbr>Current<wbr>Permission</a>
+								<a href="wallets.consoleextensionadapter.html#assertwalletavailable" class="tsd-kind-icon">assert<wbr>Wallet<wbr>Available</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="wallets.consoleextensionadapter.html#iswalletavailable" class="tsd-kind-icon">is<wbr>Wallet<wbr>Available</a>
+								<a href="wallets.consoleextensionadapter.html#getcurrentpermission" class="tsd-kind-icon">get<wbr>Current<wbr>Permission</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.consoleextensionadapter.html#onnotification" class="tsd-kind-icon">on<wbr>Notification</a>
@@ -343,6 +367,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.consoleextensionadapter.html#requestpermission" class="tsd-kind-icon">request<wbr>Permission</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="wallets.consoleextensionadapter.html#requestsendencryptedmessage" class="tsd-kind-icon">request<wbr>Send<wbr>Encrypted<wbr>Message</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.consoleextensionadapter.html#requestsign" class="tsd-kind-icon">request<wbr>Sign</a>
@@ -394,6 +421,9 @@
 						<a href="../interfaces/wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationaccountchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
@@ -416,6 +446,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-kind-icon">Extension<wbr>Sent<wbr>Encrypted<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>

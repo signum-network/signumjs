@@ -136,6 +136,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.genericdeeplinkablewallet.html#confirm" class="tsd-kind-icon">confirm</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wallets.genericdeeplinkablewallet.html#sendencryptedmessage" class="tsd-kind-icon">send<wbr>Encrypted<wbr>Message</a></li>
 							</ul>
 						</section>
 					</div>
@@ -153,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L39">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L39">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -175,7 +176,7 @@
 					<div class="tsd-signature tsd-kind-icon">redirect<wbr>Proxy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L38">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L38">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,13 +194,37 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/wallets.wallet.html">Wallet</a>.<a href="../interfaces/wallets.wallet.html#confirm">confirm</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c24210f/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L66">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L66">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>unsignedTransaction: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="sendencryptedmessage" class="tsd-anchor"></a>
+					<h3>send<wbr>Encrypted<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Encrypted<wbr>Message<span class="tsd-signature-symbol">(</span>_args<span class="tsd-signature-symbol">: </span><a href="../interfaces/sendencryptedmessageargs.html" class="tsd-signature-type">SendEncryptedMessageArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/wallets.wallet.html">Wallet</a>.<a href="../interfaces/wallets.wallet.html#sendencryptedmessage">sendEncryptedMessage</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/bb47f53/packages/wallets/src/deeplinkable/genericDeeplinkableWallet.ts#L70">wallets/src/deeplinkable/genericDeeplinkableWallet.ts:70</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_args: <a href="../interfaces/sendencryptedmessageargs.html" class="tsd-signature-type">SendEncryptedMessageArgs</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -271,6 +296,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.genericdeeplinkablewallet.html#confirm" class="tsd-kind-icon">confirm</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="wallets.genericdeeplinkablewallet.html#sendencryptedmessage" class="tsd-kind-icon">send<wbr>Encrypted<wbr>Message</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -309,6 +337,9 @@
 						<a href="../interfaces/wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/wallets.extensionnotificationaccountchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
@@ -331,6 +362,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-kind-icon">Extension<wbr>Sent<wbr>Encrypted<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
