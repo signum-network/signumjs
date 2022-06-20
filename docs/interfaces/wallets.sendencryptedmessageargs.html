@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BlockList
+	<title>SendEncryptedMessageArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/core.html">core</a>
+					<a href="../modules/wallets.html">wallets</a>
 				</li>
 				<li>
-					<a href="core.blocklist.html">BlockList</a>
+					<a href="wallets.sendencryptedmessageargs.html">SendEncryptedMessageArgs</a>
 				</li>
 			</ul>
-			<h1>Interface BlockList</h1>
+			<h1>Interface SendEncryptedMessageArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,15 +91,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Block List</p>
+						<p>Copyright (c) 2022 Signum Network</p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="wallets.wallet.html#sendencryptedmessage">Wallet.sendEncryptedMessage</a></p>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BlockList</span>
+						<span class="target">SendEncryptedMessageArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -110,8 +115,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.blocklist.html#blocks" class="tsd-kind-icon">blocks</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.blocklist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.sendencryptedmessageargs.html#hexmessage" class="tsd-kind-icon">hex<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.sendencryptedmessageargs.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.sendencryptedmessageargs.html#recipientpublickey" class="tsd-kind-icon">recipient<wbr>Public<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -120,24 +126,50 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="blocks" class="tsd-anchor"></a>
-					<h3>blocks</h3>
-					<div class="tsd-signature tsd-kind-icon">blocks<span class="tsd-signature-symbol">:</span> <a href="core.block.html" class="tsd-signature-type">Block</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="hexmessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hex<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">hex<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c399fae/packages/core/src/typings/blockList.ts#L12">core/src/typings/blockList.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c399fae/packages/wallets/src/typings/args/sendEncryptedMessageArgs.ts#L20">wallets/src/typings/args/sendEncryptedMessageArgs.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The <em>binary</em> hexadecimal message to be sent.
+							You can either send a text or hex message, but not both</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requestprocessingtime" class="tsd-anchor"></a>
-					<h3>request<wbr>Processing<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">request<wbr>Processing<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="message" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c399fae/packages/core/src/typings/blockList.ts#L13">core/src/typings/blockList.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c399fae/packages/wallets/src/typings/args/sendEncryptedMessageArgs.ts#L14">wallets/src/typings/args/sendEncryptedMessageArgs.ts:14</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The plain message string, i.e. text, stringified json or other human readable string.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="recipientpublickey" class="tsd-anchor"></a>
+					<h3>recipient<wbr>Public<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">recipient<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c399fae/packages/wallets/src/typings/args/sendEncryptedMessageArgs.ts#L10">wallets/src/typings/args/sendEncryptedMessageArgs.ts:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The recipients public key. It cannot be the numeric Id, i.e. the receiving account must be activated in the network</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -150,7 +182,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/contracts.html">contracts</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -171,28 +203,112 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/wallets.html">wallets</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.browserextensionadapter.html" class="tsd-kind-icon">Browser<wbr>Extension<wbr>Adapter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.consoleextensionadapter.html" class="tsd-kind-icon">Console<wbr>Extension<wbr>Adapter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.deeplinkablewallet.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.extensionwalleterror.html" class="tsd-kind-icon">Extension<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.genericdeeplinkablewallet.html" class="tsd-kind-icon">Generic<wbr>Deeplinkable<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.genericextensionwallet.html" class="tsd-kind-icon">Generic<wbr>Extension<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.invalidnetworkerror.html" class="tsd-kind-icon">Invalid<wbr>Network<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.invalidparamswalleterror.html" class="tsd-kind-icon">Invalid<wbr>Params<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.notfoundwalleterror.html" class="tsd-kind-icon">Not<wbr>Found<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.notgrantedwalleterror.html" class="tsd-kind-icon">Not<wbr>Granted<wbr>Wallet<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/wallets.walletconnection.html" class="tsd-kind-icon">Wallet<wbr>Connection</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.confirmedtransaction.html" class="tsd-kind-icon">Confirmed<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.deeplinkablewalletoptions.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.easywallet.html" class="tsd-kind-icon">Easy<wbr>Wallet</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.easywalletpayargs.html" class="tsd-kind-icon">Easy<wbr>Wallet<wbr>Pay<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionnotificationaccountchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionnotificationhandler.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionnotificationnetworkchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Network<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.extensionnotificationpermissionremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Permission<wbr>Removed</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.requestpermissionargs.html" class="tsd-kind-icon">Request<wbr>Permission<wbr>Args</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.blocklist.html" class="tsd-kind-icon">Block<wbr>List</a>
+						<a href="wallets.sendencryptedmessageargs.html" class="tsd-kind-icon">Send<wbr>Encrypted<wbr>Message<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.blocklist.html#blocks" class="tsd-kind-icon">blocks</a>
+								<a href="wallets.sendencryptedmessageargs.html#hexmessage" class="tsd-kind-icon">hex<wbr>Message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.blocklist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a>
+								<a href="wallets.sendencryptedmessageargs.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="wallets.sendencryptedmessageargs.html#recipientpublickey" class="tsd-kind-icon">recipient<wbr>Public<wbr>Key</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="wallets.wallet.html" class="tsd-kind-icon">Wallet</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionnotification" class="tsd-kind-icon">Extension<wbr>Notification</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-kind-icon">Extension<wbr>Sent<wbr>Encrypted<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

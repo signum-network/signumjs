@@ -3,7 +3,7 @@
  */
 
 /* globals window */
-import {ConfirmedTransaction, Wallet} from '../typings';
+import {ConfirmedTransaction, SendEncryptedMessageArgs, Wallet} from '../typings';
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
@@ -140,11 +140,25 @@ export class GenericExtensionWallet implements Wallet {
         this.assertConnection();
         const result = await this.adapter.requestSign({
             unsignedTransaction,
-            publicKey: this.connection?.publicKey || ''
         });
-        return {
-            transactionId: result.transactionId,
-            fullHash: result.fullHash
-        };
+        return {...result};
     }
+
+    /**
+     * Requests to send an encrypted P2P message via the extension
+     *
+     * @param args The send parameters
+     * @return The confirmed transaction, in case of success
+     * @throws Error if signing failed for some reason, i.e. rejected operation or invalid transaction data
+     */
+    async sendEncryptedMessage(args: SendEncryptedMessageArgs): Promise<ConfirmedTransaction> {
+        this.assertConnection();
+        const result = await this.adapter.requestSendEncryptedMessage({
+            plainMessage: args.message || args.hexMessage,
+            messageIsText: !!args.message,
+            recipientPublicKey: args.recipientPublicKey
+        });
+        return {...result};
+    }
+
 }

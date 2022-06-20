@@ -1,7 +1,8 @@
 import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionListener} from './extensionListener';
-import {ExtensionPermission, ExtensionRequestArgs, ExtensionResponse, ExtensionSigned} from './messaging';
+import {ExtensionPermission, ExtensionRequestArgs, ExtensionResponse, ExtensionSentEncryptedMessage, ExtensionSigned} from './messaging';
 import {RequestPermissionArgs, RequestSignArgs} from './args';
+import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessageArgs';
 
 /**
  * The extension client for console
@@ -12,32 +13,36 @@ import {RequestPermissionArgs, RequestSignArgs} from './args';
  */
 export class ConsoleExtensionAdapter implements ExtensionAdapter {
 
-    private static notImplemented() {
-        return Promise.reject('Not implemented');
+    private static notAvailable() {
+        return Promise.reject('Not available');
     }
 
     onNotification(callback: (message: any, listener: ExtensionListener) => void): ExtensionListener {
-        throw new Error('Not implemented');
+        throw new Error('Not available');
     }
 
     getCurrentPermission(): Promise<ExtensionPermission> {
-        return ConsoleExtensionAdapter.notImplemented();
+        return ConsoleExtensionAdapter.notAvailable();
     }
 
     assertWalletAvailable(): Promise<void> {
-        return ConsoleExtensionAdapter.notImplemented();
+        return ConsoleExtensionAdapter.notAvailable();
     }
 
-    request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
-        return ConsoleExtensionAdapter.notImplemented();
+    request(_payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
+        return ConsoleExtensionAdapter.notAvailable();
     }
 
-    requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
-        return ConsoleExtensionAdapter.notImplemented();
+    requestPermission(_args: RequestPermissionArgs): Promise<ExtensionPermission> {
+        return ConsoleExtensionAdapter.notAvailable();
     }
 
-    requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
-        return ConsoleExtensionAdapter.notImplemented();
+    requestSign(_args: RequestSignArgs): Promise<ExtensionSigned> {
+        return ConsoleExtensionAdapter.notAvailable();
+    }
+
+    requestSendEncryptedMessage(_args: RequestSendEncryptedMessageArgs): Promise<ExtensionSentEncryptedMessage> {
+        return ConsoleExtensionAdapter.notAvailable();
     }
 
 }

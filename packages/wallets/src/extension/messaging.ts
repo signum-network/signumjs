@@ -17,7 +17,8 @@ export type ExtensionMessage = ExtensionRequestArgs | ExtensionResponse;
 export type ExtensionRequestArgs =
     | ExtensionGetCurrentPermissionRequest
     | ExtensionPermissionRequest
-    | ExtensionSignRequest;
+    | ExtensionSignRequest
+    | ExtensionSendEncryptedMessageRequest;
 
 /**
  * @ignore
@@ -26,7 +27,9 @@ export type ExtensionRequestArgs =
 export type ExtensionResponse =
     | ExtensionGetCurrentPermissionResponse
     | ExtensionPermissionResponse
-    | ExtensionSignResponse;
+    | ExtensionSignResponse
+    | ExtensionSendEncryptedMessageResponse;
+
 
 /**
  * @ignore
@@ -51,6 +54,8 @@ export enum ExtensionMessageType {
     PermissionResponse = 'PERMISSION_RESPONSE',
     SignRequest = 'SIGN_REQUEST',
     SignResponse = 'SIGN_RESPONSE',
+    SendEncryptedMessageRequest = 'SEND_ENCRYPTED_MSG_REQUEST',
+    SendEncryptedMessageResponse = 'SEND_ENCRYPTED_MSG_RESPONSE'
 }
 
 /**
@@ -101,7 +106,6 @@ export interface ExtensionPermissionResponse extends ExtensionMessageBase {
  */
 export interface ExtensionSignRequest extends ExtensionMessageBase {
     type: ExtensionMessageType.SignRequest;
-    sourcePkh: string;
     payload: string;
 }
 
@@ -111,6 +115,27 @@ export interface ExtensionSignRequest extends ExtensionMessageBase {
  */
 export interface ExtensionSignResponse extends ExtensionMessageBase {
     type: ExtensionMessageType.SignResponse;
+    transactionId: string;
+    fullHash: string;
+}
+
+/**
+ * @ignore
+ * @internal
+ */
+export interface ExtensionSendEncryptedMessageRequest extends ExtensionMessageBase {
+    type: ExtensionMessageType.SendEncryptedMessageRequest;
+    plainMessage: string;
+    messageIsText: boolean;
+    recipientPublicKey: string;
+}
+
+/**
+ * @ignore
+ * @internal
+ */
+export interface ExtensionSendEncryptedMessageResponse extends ExtensionMessageBase {
+    type: ExtensionMessageType.SendEncryptedMessageResponse;
     transactionId: string;
     fullHash: string;
 }
@@ -150,10 +175,25 @@ export type ExtensionPermission = {
 } | null;
 
 /**
- * The response object for successfully signe transactions
+ * The response object for successfully signed transactions
  * @module wallets
  */
 export type ExtensionSigned = {
+    /**
+     * The transaction isd
+     */
+    transactionId: string;
+    /**
+     * The transactions full hash
+     */
+    fullHash: string;
+} | null;
+
+/**
+ * The response object for successfully sent encrypted messages
+ * @module wallets
+ */
+export type ExtensionSentEncryptedMessage = {
     /**
      * The transaction isd
      */
@@ -205,7 +245,7 @@ export enum ExtensionNotificationType {
     NetworkChanged= 'XT_DAPP_NETWORK_CHANGED',
     AccountChanged= 'XT_DAPP_ACCOUNT_CHANGED',
     PermissionRemoved= 'XT_DAPP_PERMISSION_REMOVED',
-    AccountRemoved= 'XT_DAPP_ACCOUNT_REMOVED'
+    AccountRemoved= 'XT_DAPP_ACCOUNT_REMOVED',
 }
 
 

@@ -4,7 +4,7 @@
 
 /* globals window */
 import {createDeeplink} from '@signumjs/util';
-import {Wallet} from '../typings';
+import {SendEncryptedMessageArgs, Wallet} from '../typings';
 import {isNodeJS} from '../isNodeJS';
 
 /**
@@ -65,5 +65,9 @@ export class GenericDeeplinkableWallet implements Wallet {
 
     confirm(unsignedTransaction: string): Promise<string> {
         return this.eventuallyOpenInBrowser(this.mountDeeplink('confirm', {unsignedTransaction}));
+    }
+
+    sendEncryptedMessage(_args: SendEncryptedMessageArgs): Promise<string> {
+        return Promise.reject('Not supported yet');
     }
 }
