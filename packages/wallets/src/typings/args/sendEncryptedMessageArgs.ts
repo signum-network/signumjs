@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2022 Signum Network
+ * @see [[Wallet.sendEncryptedMessage]]
+ * @module wallets
+ */
 export interface SendEncryptedMessageArgs {
     /**
      * The recipients public key. It cannot be the numeric Id, i.e. the receiving account must be activated in the network
