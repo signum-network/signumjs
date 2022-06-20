@@ -67,7 +67,7 @@ export class GenericDeeplinkableWallet implements Wallet {
         return this.eventuallyOpenInBrowser(this.mountDeeplink('confirm', {unsignedTransaction}));
     }
 
-    sendEncryptedMessage(args: SendEncryptedMessageArgs): Promise<string> {
+    sendEncryptedMessage(_args: SendEncryptedMessageArgs): Promise<string> {
         return Promise.reject('Not supported yet');
     }
 }

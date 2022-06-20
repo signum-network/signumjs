@@ -29,19 +29,19 @@ export class ConsoleExtensionAdapter implements ExtensionAdapter {
         return ConsoleExtensionAdapter.notAvailable();
     }
 
-    request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
+    request(_payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
         return ConsoleExtensionAdapter.notAvailable();
     }
 
-    requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {
+    requestPermission(_args: RequestPermissionArgs): Promise<ExtensionPermission> {
         return ConsoleExtensionAdapter.notAvailable();
     }
 
-    requestSign(args: RequestSignArgs): Promise<ExtensionSigned> {
+    requestSign(_args: RequestSignArgs): Promise<ExtensionSigned> {
         return ConsoleExtensionAdapter.notAvailable();
     }
 
-    requestSendEncryptedMessage(args: RequestSendEncryptedMessageArgs): Promise<ExtensionSentEncryptedMessage> {
+    requestSendEncryptedMessage(_args: RequestSendEncryptedMessageArgs): Promise<ExtensionSentEncryptedMessage> {
         return ConsoleExtensionAdapter.notAvailable();
     }
 
