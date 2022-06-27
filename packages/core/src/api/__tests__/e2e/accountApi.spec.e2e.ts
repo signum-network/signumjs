@@ -52,6 +52,17 @@ describe(`[E2E] Account Api`, () => {
             expect(testTransaction).toBeDefined();
         });
 
+        it('should getAccountTransactions with distributions', async () => {
+            const transactionList = await getAccountTransactions(service)({
+                accountId: '5016',
+                includeIndirect: true,
+                resolveDistributions: true
+            });
+            expect(transactionList).not.toBeUndefined();
+            const {transactions} = transactionList;
+            expect(transactions.length).toBeGreaterThan(1);
+        });
+
         it('should getAccountTransactions paged', async () => {
             const transactionList = await getAccountTransactions(service)({
                 accountId,

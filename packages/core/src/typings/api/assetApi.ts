@@ -136,6 +136,9 @@ export interface AssetApi {
      * Distributes Signa and/or another asset to the holders of a given asset.
      * Just pass the total amount to be distributed and it will be sent/distributed proportionally
      * (at very high transation rate, i.e. 5K TPS) to all holders.
+     *
+     * To inspect the share a token holder received you need to use [[TransactionApi.getDistributionAmountsFromTransaction]]
+     *
      * @param args The distribution args object
      * @throws Error in case of unsuccessful transaction
      */

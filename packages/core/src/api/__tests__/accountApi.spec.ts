@@ -16,7 +16,7 @@ import {
 import {Alias, AliasList} from '../..';
 import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {Amount, convertNumberToNQTString} from '@signumjs/util';
+import {Amount} from '@signumjs/util';
 import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 
 describe('AccountApi', () => {

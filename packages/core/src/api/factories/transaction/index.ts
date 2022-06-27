@@ -1,6 +1,7 @@
 export * from './broadcastTransaction';
 export * from './getTransaction';
 export * from './sendAmountToSingleRecipient';
+export * from './getDistributionAmountsFromTransaction';
 export * from './sendSameAmountToMultipleRecipients';
 export * from './sendAmountToMultipleRecipients';
 export * from './createSubscription';

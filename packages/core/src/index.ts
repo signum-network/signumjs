@@ -38,6 +38,7 @@ export * from './typings/blockIdList';
 export * from './typings/blockList';
 export * from './typings/blockchainStatus';
 export * from './typings/chainTimestamp';
+export * from './typings/distributionAmount';
 export * from './typings/miningInfo';
 export * from './typings/multioutRecipientAmount';
 export * from './typings/peer';

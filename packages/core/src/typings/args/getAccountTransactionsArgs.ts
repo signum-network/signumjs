@@ -9,8 +9,7 @@
  * @param {number?} type The type of transactions to fetch (see [[TransactionType]])
  * @param {number?} subtype The subtype of transactions to fetch (see e.g. [[TransactionArbitrarySubtype]])
  * @param {boolean?} includeIndirect Includes indirect transaction, i.e. multi out payments.
- * For BRS Versions before 2.3.1 this must be `undefined`
- *
+ * @param {boolean?} resolveDistributions Resolves the amounts from [[AssetApi.distributeToAssetHolders]]
  * @module core
  */
 export interface GetAccountTransactionsArgs {
@@ -18,6 +17,7 @@ export interface GetAccountTransactionsArgs {
     timestamp?: string;
     firstIndex?: number;
     includeIndirect?: boolean;
+    resolveDistributions?: boolean;
     lastIndex?: number;
     numberOfConfirmations?: number;
     subtype?: number;

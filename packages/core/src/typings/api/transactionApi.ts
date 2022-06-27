@@ -11,6 +11,7 @@ import {
     UnsignedTransactionArgs
 } from '../args';
 import {UnsignedTransaction} from '../unsignedTransaction';
+import {DistributionAmount} from '../distributionAmount';
 
 /**
  * Transaction API
@@ -116,4 +117,19 @@ export interface TransactionApi {
      * @return The TransactionId
      */
     signAndBroadcastTransaction: (unsignedTransaction: UnsignedTransactionArgs) => Promise<TransactionId>;
+
+
+    /**
+     * Gets the amount a token holder received from a previous distribution to asset/token holders
+     *
+     * Distribution to token holders is very efficient at very high transaction rate, so one need explicitely
+     * query the node for the underlying amounts of a run distribution.
+     *
+     * @see [[AssetApi.distributeToAssetHolders]]
+     * @param transactionId The transaction Id of the distribution
+     * @param accountId The relevant account
+     *
+     * @return the received income from an asset distribution payment
+     */
+    getDistributionAmountsFromTransaction: (transactionId: string, accountId: string) => Promise<DistributionAmount>;
 }
