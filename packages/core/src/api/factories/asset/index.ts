@@ -7,3 +7,6 @@ export * from './placeBidOrder';
 export * from './cancelAskOrder';
 export * from './cancelBidOrder';
 export * from './getAssetHolders';
+export * from './getAssetTransfers';
+export * from './getAssetTransfersPerAccount';
+export * from './getAssetTransfersPerAsset';

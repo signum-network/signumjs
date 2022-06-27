@@ -14,6 +14,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - Attention: `sendEncryptedMessage` changed its interface
 - Multiouts with duplicate id checks now, i.e. automatic dedupe for same multiout
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
+- Export of `@signumjs/utils` classes `ChainTime` and `Amount` 
 - New Functions/Classes:
   - `getMiningInfo`
   - `publishContractByReference`

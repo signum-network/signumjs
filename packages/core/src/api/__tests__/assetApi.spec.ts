@@ -2,7 +2,15 @@
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
 import {getAsset} from '../factories/asset/getAsset';
-import {cancelAskOrder, cancelBidOrder, getAssetHolders, placeAskOrder, placeBidOrder, transferAsset} from '../factories';
+import {
+    cancelAskOrder,
+    cancelBidOrder,
+    getAssetHolders,
+    getAssetTransfers,
+    placeAskOrder,
+    placeBidOrder,
+    transferAsset
+} from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
 import {TransactionId} from '../../typings/transactionId';
@@ -244,6 +252,80 @@ describe('Asset Api', () => {
                         unconfirmedQuantityQNT: '90317196599'
                     }
                 ],
+                requestProcessingTime: 100
+            });
+        });
+    describe('getAssetTransfers', () => {
+        it('should get asset transfers', async () => {
+
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                "transfers": [
+                    {
+                        "assetTransfer": "17238227294019155298",
+                        "asset": "12402415494995249540",
+                        "sender": "11224962117215913721",
+                        "senderRS": "S-Y3RT-LCYX-ZZ4F-BMSKR",
+                        "recipient": "9595904932667603984",
+                        "recipientRS": "S-6H2J-Q9P3-QZU3-A2WCC",
+                        "quantityQNT": "40161",
+                        "height": 1029448,
+                        "timestamp": 248521579,
+                        "name": "TRT",
+                        "decimals": 4
+                    },
+                    {
+                        "assetTransfer": "3873444853174166315",
+                        "asset": "12402415494995249540",
+                        "sender": "11224962117215913721",
+                        "senderRS": "S-Y3RT-LCYX-ZZ4F-BMSKR",
+                        "recipient": "17256042864802223939",
+                        "recipientRS": "S-8PU5-KWJR-FM67-G9GYY",
+                        "quantityQNT": "40161",
+                        "height": 1028434,
+                        "timestamp": 248277954,
+                        "name": "TRT",
+                        "decimals": 4
+                    }],
+                    requestProcessingTime: 100
+                },
+                'relPath?requestType=getAssetTransfers&asset=assetId&account=accountId&includeAssetInfo=true&firstIndex=0&lastIndex=10'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const asset = await getAssetTransfers(service)({
+                assetId: 'assetId',
+                accountId: 'accountId',
+                includeAssetInfo: true,
+                firstIndex: 0,
+                lastIndex: 10,
+            });
+            expect(asset).toEqual({
+                "transfers": [
+                    {
+                        "assetTransfer": "17238227294019155298",
+                        "asset": "12402415494995249540",
+                        "sender": "11224962117215913721",
+                        "senderRS": "S-Y3RT-LCYX-ZZ4F-BMSKR",
+                        "recipient": "9595904932667603984",
+                        "recipientRS": "S-6H2J-Q9P3-QZU3-A2WCC",
+                        "quantityQNT": "40161",
+                        "height": 1029448,
+                        "timestamp": 248521579,
+                        "name": "TRT",
+                        "decimals": 4
+                    },
+                    {
+                        "assetTransfer": "3873444853174166315",
+                        "asset": "12402415494995249540",
+                        "sender": "11224962117215913721",
+                        "senderRS": "S-Y3RT-LCYX-ZZ4F-BMSKR",
+                        "recipient": "17256042864802223939",
+                        "recipientRS": "S-8PU5-KWJR-FM67-G9GYY",
+                        "quantityQNT": "40161",
+                        "height": 1028434,
+                        "timestamp": 248277954,
+                        "name": "TRT",
+                        "decimals": 4
+                    }],
                 requestProcessingTime: 100
             });
         });

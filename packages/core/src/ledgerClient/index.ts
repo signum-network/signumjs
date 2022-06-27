@@ -1,1 +1,1 @@
-export * from './ledgerClientFactory'
+export * from './ledgerClientFactory';

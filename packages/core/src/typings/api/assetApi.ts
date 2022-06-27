@@ -1,9 +1,18 @@
 import {Asset} from '../asset';
 import {AssetList} from '../assetList';
-import {CancelOrderArgs, IssueAssetArgs, PlaceOrderArgs, GetAssetHoldersArgs, TransferAssetArgs} from '../args';
+import {
+    CancelOrderArgs,
+    IssueAssetArgs,
+    PlaceOrderArgs,
+    GetAssetHoldersArgs,
+    TransferAssetArgs,
+    GetAssetTransfersArgs,
+    GetAssetTransfersPerAssetArgs, GetAssetTransfersPerAccountArgs
+} from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {AssetAccountList} from '../assetAccountList';
+import {AssetTransferList} from '../assetTransferList';
 
 /**
  * Asset API
@@ -83,4 +92,28 @@ export interface AssetApi {
      * @return The list of asset accounts
      */
     getAssetHolders: (args: GetAssetHoldersArgs) => Promise<AssetAccountList>;
+
+    /**
+     * Get all asset transfers by accountId and/or assetId
+     * @param args The argument object
+     * @return The list of asset transfers
+     */
+    getAssetTransfers: (args: GetAssetTransfersArgs) => Promise<AssetTransferList>;
+
+    /**
+     * A convenience function to get all asset transfers by assetId
+     * @see also [[AssetApi.getAssetTransfers]]
+     * @param args The argument object
+     * @return The list of asset transfers
+     */
+    getAssetTransfersPerAsset: (args: GetAssetTransfersPerAssetArgs) => Promise<AssetTransferList>;
+
+    /**
+     * A convenience function to get all asset transfers by accountId
+     * @see also [[AssetApi.getAssetTransfers]]
+     * @param args The argument object
+     * @return The list of asset transfers
+     */
+    getAssetTransfersPerAccount: (args: GetAssetTransfersPerAccountArgs) => Promise<AssetTransferList>;
+
 }

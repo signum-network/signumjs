@@ -2,7 +2,7 @@
  * This is the main package, and almost all you may need to interact with
  * the Signum Node API
  *
- * @see Get started with [[composeApi]]
+ * @see Get started with [[composeApi]] or [[LedgerClientFactory]]
  *
  * @moduledefinition core
  * */
@@ -11,6 +11,7 @@
 
 // order alphabetically, please :)
 
+export {Amount, ChainTime} from '@signumjs/util';
 export * from './address';
 export * from './api';
 export * from './attachment';
@@ -25,6 +26,10 @@ export * from './typings/api';
 export * from './typings/args';
 export * from './typings/asset';
 export * from './typings/assetList';
+export * from './typings/assetTransfer';
+export * from './typings/assetTransferList';
+export * from './typings/assetAccount';
+export * from './typings/assetAccountList';
 export * from './typings/attachment';
 export * from './typings/balance';
 export * from './typings/block';
