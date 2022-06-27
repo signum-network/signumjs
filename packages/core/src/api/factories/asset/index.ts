@@ -10,3 +10,4 @@ export * from './getAssetHolders';
 export * from './getAssetTransfers';
 export * from './getAssetTransfersPerAccount';
 export * from './getAssetTransfersPerAsset';
+export * from './addAssetTreasuryAccount';

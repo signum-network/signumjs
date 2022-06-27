@@ -7,7 +7,9 @@ import {
     GetAssetHoldersArgs,
     TransferAssetArgs,
     GetAssetTransfersArgs,
-    GetAssetTransfersPerAssetArgs, GetAssetTransfersPerAccountArgs
+    GetAssetTransfersPerAssetArgs,
+    GetAssetTransfersPerAccountArgs,
+    AddAssetTreasuryAccountArgs,
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -95,8 +97,10 @@ export interface AssetApi {
 
     /**
      * Get all asset transfers by accountId and/or assetId
+     * @see also [[AssetApi.getAssetTransfersPerAsset]] or [[AssetApi.getAssetTransfersPerAccount]]
      * @param args The argument object
      * @return The list of asset transfers
+     * @throws Error if not at least assetId or accountId was giveb
      */
     getAssetTransfers: (args: GetAssetTransfersArgs) => Promise<AssetTransferList>;
 
@@ -115,5 +119,16 @@ export interface AssetApi {
      * @return The list of asset transfers
      */
     getAssetTransfersPerAccount: (args: GetAssetTransfersPerAccountArgs) => Promise<AssetTransferList>;
+
+    /**
+     * Adds/Marks an account as treasury account for a given asset
+     *
+     * Treasury Accounts are excluded from distributions for token/asset holders.
+     *
+     * @param args
+     * @return The transaction object
+     * @throws Error in case of unsuccessful transaction
+     */
+    addAssetTreasuryAccount: (args: AddAssetTreasuryAccountArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 }

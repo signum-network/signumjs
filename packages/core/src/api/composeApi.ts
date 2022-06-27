@@ -75,7 +75,7 @@ import {
     placeAskOrder,
     placeBidOrder,
     transferAsset,
-    getAssetHolders,
+    getAssetHolders, getAssetTransfers, getAssetTransfersPerAccount, getAssetTransfersPerAsset, addAssetTreasuryAccount
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
@@ -202,6 +202,10 @@ export function composeApi(settings: ApiSettings): Api {
             cancelAskOrder,
             cancelBidOrder,
             getAssetHolders,
+            getAssetTransfers,
+            getAssetTransfersPerAccount,
+            getAssetTransfersPerAsset,
+            addAssetTreasuryAccount,
         })
         .compose();
 }
