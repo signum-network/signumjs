@@ -19,6 +19,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `publishContractByReference`
   - `getNetworkInfo`
   - `LedgerClientFactory`
+  - `getAssetHolders`
 - Minor bug fixes
 
 ----------------------------------------------------

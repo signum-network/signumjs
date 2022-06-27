@@ -1,7 +1,8 @@
+/* tslint:disable:quotemark */
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
 import {getAsset} from '../factories/asset/getAsset';
-import {cancelAskOrder, cancelBidOrder, placeAskOrder, placeBidOrder, transferAsset} from '../factories';
+import {cancelAskOrder, cancelBidOrder, getAssetHolders, placeAskOrder, placeBidOrder, transferAsset} from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
 import {TransactionId} from '../../typings/transactionId';
@@ -176,6 +177,75 @@ describe('Asset Api', () => {
             });
 
             expect(transaction).toBe('transactionId');
+        });
+    });
+
+
+    describe('getAssetHolders', () => {
+        it('should get assetHolders', async () => {
+
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                    accountAssets: [
+                        {
+                            account: '3494634182417345690',
+                            accountRS: 'S-SV6U-AS5G-DMA6-5HVZ2',
+                            asset: '12402415494995249540',
+                            quantityQNT: '291749654538',
+                            unconfirmedQuantityQNT: '291749654538'
+                        },
+                        {
+                            account: '16655635797853184825',
+                            accountRS: 'S-5ATT-JF5P-Q4H2-GN7BG',
+                            asset: '12402415494995249540',
+                            quantityQNT: '104492600906',
+                            unconfirmedQuantityQNT: '104492600906'
+                        },
+                        {
+                            account: '8952122635653861124',
+                            accountRS: 'S-5MS6-5FBY-74H4-9N4HS',
+                            asset: '12402415494995249540',
+                            quantityQNT: '90317196599',
+                            unconfirmedQuantityQNT: '90317196599'
+                        }
+                    ],
+                    requestProcessingTime: 100
+                },
+                'relPath?requestType=getAssetAccounts&asset=assetId&ignoreTreasury=true&quantityMinimumQNT=1000&firstIndex=0&lastIndex=10'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const asset = await getAssetHolders(service)({
+                assetId: 'assetId',
+                ignoreTreasuryAccount: true,
+                minimumQuantity: '1000',
+                firstIndex: 0,
+                lastIndex: 10,
+            });
+            expect(asset).toEqual({
+                accountAssets: [
+                    {
+                        account: '3494634182417345690',
+                        accountRS: 'S-SV6U-AS5G-DMA6-5HVZ2',
+                        asset: '12402415494995249540',
+                        quantityQNT: '291749654538',
+                        unconfirmedQuantityQNT: '291749654538'
+                    },
+                    {
+                        account: '16655635797853184825',
+                        accountRS: 'S-5ATT-JF5P-Q4H2-GN7BG',
+                        asset: '12402415494995249540',
+                        quantityQNT: '104492600906',
+                        unconfirmedQuantityQNT: '104492600906'
+                    },
+                    {
+                        account: '8952122635653861124',
+                        accountRS: 'S-5MS6-5FBY-74H4-9N4HS',
+                        asset: '12402415494995249540',
+                        quantityQNT: '90317196599',
+                        unconfirmedQuantityQNT: '90317196599'
+                    }
+                ],
+                requestProcessingTime: 100
+            });
         });
     });
 

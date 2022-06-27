@@ -5,3 +5,4 @@ export * from './getPeers';
 export * from './getServerStatus';
 export * from './getTime';
 export * from './getSuggestedFees';
+export * from './getNetworkInfo';

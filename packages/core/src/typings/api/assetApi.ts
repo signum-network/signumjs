@@ -1,9 +1,9 @@
 import {Asset} from '../asset';
 import {AssetList} from '../assetList';
-import {CancelOrderArgs, IssueAssetArgs, PlaceOrderArgs} from '../args';
+import {CancelOrderArgs, IssueAssetArgs, PlaceOrderArgs, GetAssetHoldersArgs, TransferAssetArgs} from '../args';
 import {TransactionId} from '../transactionId';
-import {TransferAssetArgs} from '../args/transferAssetArgs';
 import {UnsignedTransaction} from '../unsignedTransaction';
+import {AssetAccountList} from '../assetAccountList';
 
 /**
  * Asset API
@@ -77,4 +77,10 @@ export interface AssetApi {
      */
     cancelBidOrder: (args: CancelOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
+    /**
+     * Get all accounts that holds the fiven asset
+     * @param args The argument object
+     * @return The list of asset accounts
+     */
+    getAssetHolders: (args: GetAssetHoldersArgs) => Promise<AssetAccountList>;
 }

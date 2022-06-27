@@ -21,6 +21,7 @@ import {
     getServerStatus,
     getTime,
     getSuggestedFees,
+    getNetworkInfo,
 } from './factories/network';
 import {
     sendEncryptedMessage,
@@ -74,10 +75,10 @@ import {
     placeAskOrder,
     placeBidOrder,
     transferAsset,
+    getAssetHolders,
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
-import {getNetworkInfo} from './factories/network/getNetworkInfo';
 
 /**
  * Settings for API used in [[composeApi]]
@@ -200,6 +201,7 @@ export function composeApi(settings: ApiSettings): Api {
             placeBidOrder,
             cancelAskOrder,
             cancelBidOrder,
+            getAssetHolders,
         })
         .compose();
 }

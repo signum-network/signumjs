@@ -6,6 +6,7 @@ export * from './createSubscriptionArgs';
 export * from './getAccountArgs';
 export * from './getAccountBlocksArgs';
 export * from './getAccountTransactionsArgs';
+export * from './getAssetHoldersArgs';
 export * from './issueAssetArgs';
 export * from './placeOrderArgs';
 export * from './publishContractArgs';
