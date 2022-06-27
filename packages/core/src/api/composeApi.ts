@@ -75,11 +75,10 @@ import {
     placeAskOrder,
     placeBidOrder,
     transferAsset,
-    getAssetHolders, getAssetTransfers, getAssetTransfersPerAccount, getAssetTransfersPerAsset, addAssetTreasuryAccount
+    getAssetHolders, getAssetTransfers, getAssetTransfersPerAccount, getAssetTransfersPerAsset, addAssetTreasuryAccount, distributeToAssetHolders
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
-
 /**
  * Settings for API used in [[composeApi]]
  *
@@ -206,6 +205,7 @@ export function composeApi(settings: ApiSettings): Api {
             getAssetTransfersPerAccount,
             getAssetTransfersPerAsset,
             addAssetTreasuryAccount,
+            distributeToAssetHolders
         })
         .compose();
 }

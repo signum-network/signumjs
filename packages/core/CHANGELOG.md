@@ -21,6 +21,10 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getNetworkInfo`
   - `LedgerClientFactory`
   - `getAssetHolders`
+  - `getAssetHoldersPerAccount`
+  - `getAssetHoldersPerAsset`
+  - `addAssetTreasuryAccount`
+- New Transaction Subtype Enums for Assets
 - Minor bug fixes
 
 ----------------------------------------------------

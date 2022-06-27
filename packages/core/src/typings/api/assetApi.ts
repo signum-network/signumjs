@@ -15,6 +15,8 @@ import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
+import {distributeToAssetHolders} from '../../api';
+import {DistributeToAssetHoldersArgs} from '../args/distributeToAssetHoldersArgs';
 
 /**
  * Asset API
@@ -130,5 +132,14 @@ export interface AssetApi {
      * @throws Error in case of unsuccessful transaction
      */
     addAssetTreasuryAccount: (args: AddAssetTreasuryAccountArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Distributes Signa and/or another asset to the holders of a given asset.
+     * Just pass the total amount to be distributed and it will be sent/distributed proportionally
+     * (at very high transation rate, i.e. 5K TPS) to all holders.
+     * @param args The distribution args object
+     * @throws Error in case of unsuccessful transaction
+     */
+    distributeToAssetHolders: (args: DistributeToAssetHoldersArgs) => Promise<TransactionId | UnsignedTransaction>;
 
 }

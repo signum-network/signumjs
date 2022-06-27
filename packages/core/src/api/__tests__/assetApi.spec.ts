@@ -5,7 +5,7 @@ import {getAsset} from '../factories/asset/getAsset';
 import {
     addAssetTreasuryAccount,
     cancelAskOrder,
-    cancelBidOrder,
+    cancelBidOrder, distributeToAssetHolders,
     getAssetHolders,
     getAssetTransfers,
     placeAskOrder,
@@ -354,4 +354,30 @@ describe('Asset Api', () => {
                 expect(transaction).toBe('transactionId');
             });
         });
+
+        describe('distributeToAssetHolders', () => {
+            it('should distributeToAssetHolders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onPostReply(200, {
+                            unsignedTransactionBytes: 'unsignedHexMessage'
+                        },
+                        'relPath?requestType=distributeToAssetHolders&asset=assetId&quantityMinimumQNT=1000&amountNQT=totalAmount&assetToDistribute=otherAssetId&quantityQNT=qnty&feeNQT=1000000&deadline=1440'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const {transaction} = await distributeToAssetHolders(service)({
+                    assetId: 'assetId',
+                    totalAmountPlanck: 'totalAmount',
+                    additionalAssetQuantity: 'qnty',
+                    additionalAssetId: 'otherAssetId',
+                    minimumHoldQuantity: '1000',
+                    feePlanck: FeeQuantPlanck + '',
+                    senderPrivateKey: 'senderPrivateKey',
+                    senderPublicKey: 'senderPublicKey',
+                }) as TransactionId;
+
+                expect(transaction).toBe('transactionId');
+            });
+        });
     });
+});

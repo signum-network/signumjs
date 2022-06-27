@@ -3,6 +3,8 @@
  * Modified work Copyright (c) 2022 Signum Network
  */
 
+import {Transaction} from './transaction';
+
 /**
  *
  * TransactionId
@@ -17,4 +19,9 @@ export interface TransactionId {
     readonly transaction: string;
     readonly numberOfPeersSentTo: number;
     readonly requestProcessingTime: number;
+    readonly transactionBytes: string;
+    readonly unsignedTransactionBytes: string;
+    readonly signatureHash: string;
+    readonly broadcasted: boolean;
+    readonly transactionJSON: Transaction;
 }

@@ -1,5 +1,6 @@
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2022 Signum Network
  */
 
 /**
@@ -14,5 +15,9 @@ export enum TransactionAssetSubtype {
     BidOrderPlacement,
     AskOrderCancellation,
     BidOrderCancellation,
+    AssetMint,
+    AssetAddTreasureyAccount,
+    AssetDistributeToHolders,
+    AssetMultiTransfer
 }
 
