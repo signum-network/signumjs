@@ -116,7 +116,7 @@ describe('Asset Api', () => {
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey'
-            });
+            }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
         });
@@ -138,7 +138,7 @@ describe('Asset Api', () => {
                 order: '123',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey'
-            });
+            }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
         });
@@ -160,7 +160,7 @@ describe('Asset Api', () => {
                 order: '123',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey'
-            });
+            }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
         });
@@ -183,7 +183,7 @@ describe('Asset Api', () => {
                 recipientId: 'recipientId',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
-            });
+            }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
         });

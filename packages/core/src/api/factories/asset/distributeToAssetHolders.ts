@@ -6,8 +6,7 @@ import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
-import {AddAssetTreasuryAccountArgs} from '../../../typings/args';
-import {DistributeToAssetHoldersArgs} from '../../../typings/args/distributeToAssetHoldersArgs';
+import {DistributeToAssetHoldersArgs} from '../../../typings/args';
 
 /**
  *

@@ -1,4 +1,5 @@
 export * from './addAssetTreasuryAccountArgs';
+export * from './distributeToAssetHoldersArgs';
 export * from './callContractMethodArgs';
 export * from './cancelOrderArgs';
 export * from './cancelSubscriptionArgs';

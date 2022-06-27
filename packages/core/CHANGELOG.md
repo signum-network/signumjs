@@ -24,6 +24,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getAssetHoldersPerAccount`
   - `getAssetHoldersPerAsset`
   - `addAssetTreasuryAccount`
+  - `distributeToTokenHolders`
 - New Transaction Subtype Enums for Assets
 - Minor bug fixes
 

@@ -10,13 +10,12 @@ import {
     GetAssetTransfersPerAssetArgs,
     GetAssetTransfersPerAccountArgs,
     AddAssetTreasuryAccountArgs,
+    DistributeToAssetHoldersArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
-import {distributeToAssetHolders} from '../../api';
-import {DistributeToAssetHoldersArgs} from '../args/distributeToAssetHoldersArgs';
 
 /**
  * Asset API
