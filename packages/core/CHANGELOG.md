@@ -26,6 +26,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `addAssetTreasuryAccount`
   - `distributeToTokenHolders`
 - New Transaction Subtype Enums for Assets
+- `getAccountTransactions` can resolve the distributions now! 
 - Minor bug fixes
 
 ----------------------------------------------------
