@@ -15,7 +15,7 @@ export interface Transaction {
     attachment?: any;
     block: string;
     blockTimestamp: number;
-    cashbackId: string;
+    cashBackId: string;
     confirmations?: number;
     deadline: number;
     ecBlockHeight: number;

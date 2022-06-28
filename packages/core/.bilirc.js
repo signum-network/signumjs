@@ -42,6 +42,7 @@ module.exports = {
         '@signumjs/util': [
           'asyncRetry',
           'Amount',
+          'ChainTime',
           'FeeQuantPlanck',
           'convertNumberToNQTString',
           'convertNQTStringToNumber',

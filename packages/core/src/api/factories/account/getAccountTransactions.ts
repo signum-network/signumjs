@@ -22,16 +22,17 @@ export const getAccountTransactions = (service: ChainService):
             ...args,
             account: args.accountId,
         };
+
+        if (args.resolveDistributions) {
+            parameters.includeIndirect = true;
+        }
+
         delete parameters.accountId;
         delete parameters.resolveDistributions;
 
         const result = await service.query<TransactionList>('getAccountTransactions', parameters);
 
-        if (!args.resolveDistributions) {
-            return result;
-        }
-
-        if (!args.includeIndirect) {
+        if (!args.resolveDistributions || !parameters.includeIndirect) {
             return result;
         }
 
@@ -40,20 +41,31 @@ export const getAccountTransactions = (service: ChainService):
             .filter(({
                          type,
                          subtype,
-                     }) => type === TransactionType.Asset && subtype === TransactionAssetSubtype.AssetDistributeToHolders)
+                         sender,
+                     }) => (
+                type === TransactionType.Asset
+                && subtype === TransactionAssetSubtype.AssetDistributeToHolders
+                && args.accountId !== sender
+                )
+            )
             .map(tx => getDistributionAmountsFromTransaction(service)(tx.transaction, args.accountId));
 
-        const resolvedDistributions = await Promise.all(distributions);
-
-        for (const dtx of resolvedDistributions) {
-            const tx = result.transactions.find(({transaction}) => transaction === dtx.transaction);
-            const {asset, assetToDistribute} = tx.attachment;
-            tx.distribution = {
-                assetId: asset,
-                distributedAssetId: assetToDistribute && assetToDistribute !== '0' ? assetToDistribute : null,
-                ...dtx
-            };
-            tx.amountNQT = dtx.amountNQT;
+        try {
+            const resolvedDistributions = await Promise.all(distributions);
+            for (const dtx of resolvedDistributions) {
+                const tx = result.transactions.find(({transaction}) => transaction === dtx.transaction);
+                const {asset, assetToDistribute} = tx.attachment;
+                tx.distribution = {
+                    assetId: asset,
+                    distributedAssetId: assetToDistribute && assetToDistribute !== '0' ? assetToDistribute : null,
+                    ...dtx
+                };
+                if (tx.sender !== args.accountId) {
+                    tx.amountNQT = dtx.amountNQT;
+                }
+            }
+        } catch (_) {
+            // ignore  silently
         }
 
         return result;
