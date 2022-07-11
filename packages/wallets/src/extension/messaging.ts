@@ -128,6 +128,7 @@ export interface ExtensionSendEncryptedMessageRequest extends ExtensionMessageBa
     plainMessage: string;
     messageIsText: boolean;
     recipientPublicKey: string;
+    feeSigna?: string;
 }
 
 /**
@@ -324,6 +325,6 @@ export interface ExtensionNotificationAccountChanged
      * The id of the account that was removed
      */
     accountId: string;
-    accountPublicKey: string
+    accountPublicKey: string;
 }
 
