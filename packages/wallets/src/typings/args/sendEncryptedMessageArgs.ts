@@ -18,4 +18,9 @@ export interface SendEncryptedMessageArgs {
      * You can either send a text or hex message, but not both
      */
     hexMessage?: string;
+
+    /**
+     * A custom fee in Signa value. You can use this to override automatic calculation.
+     */
+    feeSigna?: string | number;
 }

@@ -153,10 +153,12 @@ export class GenericExtensionWallet implements Wallet {
      */
     async sendEncryptedMessage(args: SendEncryptedMessageArgs): Promise<ConfirmedTransaction> {
         this.assertConnection();
+        const feeSigna = args.feeSigna === 'number' ? args.feeSigna.toString() : args.feeSigna as string;
         const result = await this.adapter.requestSendEncryptedMessage({
             plainMessage: args.message || args.hexMessage,
             messageIsText: !!args.message,
-            recipientPublicKey: args.recipientPublicKey
+            recipientPublicKey: args.recipientPublicKey,
+            feeSigna,
         });
         return {...result};
     }
