@@ -6,7 +6,7 @@ import {AssetTransfer} from './assetTransfer';
 
 /**
  * Asset Transfer List
- ** @module core
+ * @module core
  */
 export interface AssetTransferList {
     transfers: AssetTransfer[];

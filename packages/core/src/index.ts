@@ -50,9 +50,7 @@ export * from './typings/transactionList';
 export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
 
-// This conflicts with tsdoc
-/**
- * @ignore
- */
-export {Amount, ChainTime} from '@signumjs/util';
+// bad workaround is to comment next line when build docs
+// FIXME: This conflicts with tsdoc
+// export {Amount, ChainTime} from '@signumjs/util';
 
