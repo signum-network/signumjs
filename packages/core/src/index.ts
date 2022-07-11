@@ -7,11 +7,7 @@
  * @moduledefinition core
  * */
 
-
-
 // order alphabetically, please :)
-
-
 export * from './address';
 export * from './api';
 export * from './attachment';
@@ -53,5 +49,10 @@ export * from './typings/transactionId';
 export * from './typings/transactionList';
 export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
-//export {Amount, ChainTime} from '@signumjs/util';
+
+// This conflicts with tsdoc
+/**
+ * @ignore
+ */
+export {Amount, ChainTime} from '@signumjs/util';
 
