@@ -11,7 +11,7 @@
 
 // order alphabetically, please :)
 
-export {Amount, ChainTime} from '@signumjs/util';
+
 export * from './address';
 export * from './api';
 export * from './attachment';
@@ -53,5 +53,5 @@ export * from './typings/transactionId';
 export * from './typings/transactionList';
 export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
-
+//export {Amount, ChainTime} from '@signumjs/util';
 
