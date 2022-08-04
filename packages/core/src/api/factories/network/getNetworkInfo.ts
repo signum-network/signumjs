@@ -2,7 +2,6 @@
  * Original work Copyright (c) 2021,2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {MiningInfo} from '../../../typings/miningInfo';
 import {NetworkInfo} from '../../../typings/networkInfo';
 
 

@@ -18,9 +18,6 @@ export const signIfPrivateKey = async (service: ChainService,
         return response;
     }
 
-    // TODO: activate local transaction verification
-    // verifyUnsignedTransaction(parameters, unsignedHexMessage);
-
     return signAndBroadcastTransaction(service)({
         senderPublicKey: txArgs.senderPublicKey,
         senderPrivateKey: txArgs.senderPrivateKey,

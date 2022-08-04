@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service';
 import {AssetTransferList} from '../../../typings/assetTransferList';
-import {GetAssetTransfersPerAccountArgs, GetAssetTransfersPerAssetArgs} from '../../../typings/args';
+import {GetAssetTransfersPerAssetArgs} from '../../../typings/args';
 import {getAssetTransfers} from './getAssetTransfers';
 
 /**
