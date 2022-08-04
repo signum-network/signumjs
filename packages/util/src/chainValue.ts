@@ -128,6 +128,14 @@ export class ChainValue {
     }
 
     /**
+     * Constructs a value object instance for calculations. The initial value is 0;
+     * @param decimals The number of decimals of the amount. Must be between 0 and 8
+     */
+    public static create(decimals: number) {
+        return new ChainValue(decimals);
+    }
+
+    /**
      * @return The set decimals amount
      */
     getDecimals(): number {
