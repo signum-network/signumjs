@@ -30,7 +30,8 @@ module.exports = {
                     'convertHexStringToString',
                     'convertHexEndianess',
                     'convertHexStringToByteArray',
-                    'convertByteArrayToHexString'
+                    'convertByteArrayToHexString',
+                    'convertStringToHexString'
                 ]
             },
         },

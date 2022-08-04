@@ -43,6 +43,7 @@ module.exports = {
           'asyncRetry',
           'Amount',
           'ChainTime',
+          'ChainValue',
           'FeeQuantPlanck',
           'convertNumberToNQTString',
           'convertNQTStringToNumber',
