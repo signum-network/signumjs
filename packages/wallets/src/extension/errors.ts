@@ -24,7 +24,7 @@ export class NotGrantedWalletError extends ExtensionWalletError {
  */
 export class NotFoundWalletError extends ExtensionWalletError {
     name = 'NotFoundWalletError';
-    message = 'Could not found a compatible wallet';
+    message = 'Could not find a compatible wallet';
 }
 
 /**

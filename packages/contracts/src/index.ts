@@ -6,6 +6,7 @@
  * @moduledefinition contracts
  * */
 export * from './getContractDatablock';
+export * from './convertShortStringToContractData';
 export * from './ContractDataView';
 export * from './constants';
 export * from './countCodePages';

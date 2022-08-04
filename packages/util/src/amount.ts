@@ -4,6 +4,7 @@
  */
 import BigNumber from 'bignumber.js';
 import {CurrencySymbol} from './constants';
+import {ChainValue} from './chainValue';
 
 BigNumber.config({
     EXPONENTIAL_AT: [-9, 20],
@@ -105,28 +106,41 @@ function assureValidValue(v: string): void {
 /**
  * A Value Object to facilitate SIGNA and Planck conversions/calculations.
  *
+ * This class is a convenient wrapper around [[ChainValue]] with `decimals = 8`
+ *
  * Note: This class uses a big number representation (ES5 compatible) under the hood, so
  * number limits and numeric calculations are much more precise than JS number type
  *
  * @module util
  */
 export class Amount {
-
-    private _planck: BigNumber;
+    private _value: ChainValue;
 
     private constructor(planck: number | string) {
         if (typeof planck === 'string') {
             assureValidValue(planck);
         }
-        this._planck = new BigNumber(planck);
+        this._value = new ChainValue(8).setAtomic(planck);
     }
 
+    /**
+     * @return The Signa Currency Symbol
+     * @deprecated
+     * <div class='deprecated'>
+     *     Due to Multiverse feature it's not recommended to use this hard coded stuff.
+     * </div>
+     * @module util
+     */
     public static CurrencySymbol(): string {
         return CurrencySymbol;
     }
 
+    /**
+     * Same as `Amount.fromPlanck(0)` or `Amount.fromSigna(0)`
+     * @constructor
+     */
     public static Zero(): Amount {
-        return new Amount('0');
+        return new Amount(0);
     }
 
     /**
@@ -152,23 +166,24 @@ export class Amount {
      * @return the underlying value in its big number representation (immutable)
      */
     getRaw(): BigNumber {
-        return this._planck;
+        return this._value.getRaw();
     }
 
     /**
      * @return Gets Planck representation
      */
     getPlanck(): string {
-        return this._planck.toFixed(0);
+        return this._value.getAtomic();
     }
 
     /**
      * Sets value as Planck, i.e. overwrites current hold value
      * @param p The planck value
+     * @return This value object
      */
-    setPlanck(p: string): void {
-        assureValidValue(p);
-        this._planck = new BigNumber(p);
+    setPlanck(p: string): Amount {
+        this._value.setAtomic(p);
+        return this;
     }
 
     /**
@@ -176,16 +191,17 @@ export class Amount {
      * @return value in SIGNA
      */
     getSigna(): string {
-        return this._planck.dividedBy(1E8).toString();
+        return this._value.getCompound();
     }
 
     /**
      * Sets value as SIGNA, i.e. overwrites current hold value
      * @param b value in SIGNA
+     * @return This value object
      */
-    setSigna(b: string): void {
-        assureValidValue(b);
-        this._planck = new BigNumber(b).multipliedBy(1E8);
+    setSigna(b: string): Amount {
+        this._value.setCompound(b);
+        return this;
     }
 
     /**
@@ -194,7 +210,7 @@ export class Amount {
      * @return true if equal, otherwise false
      */
     public equals(amount: Amount): boolean {
-        return this._planck.eq(amount._planck);
+        return this._value.equals(amount._value);
     }
 
     /**
@@ -203,7 +219,7 @@ export class Amount {
      * @return true if less or equal, otherwise false
      */
     public lessOrEqual(amount: Amount): boolean {
-        return this._planck.lte(amount._planck);
+        return this._value.lessOrEqual(amount._value);
     }
 
     /**
@@ -212,7 +228,7 @@ export class Amount {
      * @return true if less, otherwise false
      */
     public less(amount: Amount): boolean {
-        return this._planck.lt(amount._planck);
+        return this._value.less(amount._value);
     }
 
     /**
@@ -221,7 +237,7 @@ export class Amount {
      * @return true if greater or equal, otherwise false
      */
     public greaterOrEqual(amount: Amount): boolean {
-        return this._planck.gte(amount._planck);
+        return this._value.greaterOrEqual(amount._value);
     }
 
     /**
@@ -230,7 +246,7 @@ export class Amount {
      * @return true if greater, otherwise false
      */
     public greater(amount: Amount): boolean {
-        return this._planck.gt(amount._planck);
+        return this._value.greater(amount._value);
     }
 
     /**
@@ -239,7 +255,7 @@ export class Amount {
      * @return the _mutated_ Amount object
      */
     public add(amount: Amount): Amount {
-        this._planck = this._planck.plus(amount._planck);
+        this._value.add(amount._value);
         return this;
     }
 
@@ -249,7 +265,7 @@ export class Amount {
      * @return the _mutated_ Amount object
      */
     public subtract(amount: Amount): Amount {
-        this._planck = this._planck.minus(amount._planck);
+        this._value.subtract(amount._value);
         return this;
     }
 
@@ -259,7 +275,7 @@ export class Amount {
      * @return the _mutated_ Amount object
      */
     public multiply(value: number): Amount {
-        this._planck = this._planck.multipliedBy(value);
+        this._value.multiply(value);
         return this;
     }
 
@@ -269,10 +285,7 @@ export class Amount {
      * @return the _mutated_ Amount object
      */
     public divide(value: number): Amount {
-        if (value === 0) {
-            throw new Error('Division by zero');
-        }
-        this._planck = this._planck.div(value);
+        this._value.divide(value);
         return this;
     }
 
@@ -282,7 +295,7 @@ export class Amount {
      * @return The formatted string
      */
     public toString(format: AmountFormat = AmountFormats.DotDecimal): string {
-        return this._planck.dividedBy(1E8).toFormat(format);
+        return this._value.toFormat(format.prefix, format);
     }
 
     /**

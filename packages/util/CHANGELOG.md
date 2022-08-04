@@ -9,9 +9,12 @@ All notable changes to this project will be documented in this file.
 
 - Rebranding
 - Removed all deprecated functions
-- Several Renamed Functions and classes
+- Renamed Functions and classes
   - `BurstValue` is `Amount` now
   - `BurstTime` is `ChainTime` now
+- New Methods/Classes
+  - `asyncRetry`
+  - `chainValue`, a generic version of `Amount`
 
 
 ----------------------------------------------------

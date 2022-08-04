@@ -5,6 +5,7 @@
  * */
 export * from './asyncRetry';
 export * from './chainTime';
+export * from './chainValue';
 export * from './amount';
 export * from './constants';
 export * from './convertBase36StringToHexString';
@@ -24,5 +25,4 @@ export * from './convertStringToByteArray';
 export * from './convertStringToHexString';
 export * from './createDeeplink';
 export * from './parseDeeplink';
-export * from './sumNQTStringToNumber';
 export * from './typings';

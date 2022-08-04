@@ -1,4 +1,4 @@
-import {Amount, AmountFormat, AmountFormats} from '../amount';
+import {Amount, AmountFormats} from '../amount';
 
 describe('Amount', () => {
     describe('fromSigna', () => {

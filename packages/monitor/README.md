@@ -1,6 +1,6 @@
 # @signumjs/monitor
 
-A monitor to watch for specific changes on the the Signum blockchain platform
+A monitor to watch for specific changes on the Signum blockchain platform
 
 Due to average blocktime of 240 seconds, transactions stay pending for a certain time. It is a repeating pattern
 to watch for such changes and waiting for confirmation. This package simplifies this task.

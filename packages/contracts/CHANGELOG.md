@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 - Rebranding
 - Support for initial Data Stack 
+- Added `convertShortStringToContractData`
 
 ----------------------------------------------------
 > Before Rebranding
