@@ -109,6 +109,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/util.amountformat.html" class="tsd-kind-icon">Amount<wbr>Format</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/util.asyncretryargs.html" class="tsd-kind-icon">Async<wbr>Retry<wbr>Args</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/util.chainvalueformat.html" class="tsd-kind-icon">Chain<wbr>Value<wbr>Format</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/util.createdeeplinkargs.html" class="tsd-kind-icon">Create<wbr>Deeplink<wbr>Args</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/util.deeplinkparts.html" class="tsd-kind-icon">Deeplink<wbr>Parts</a></li>
 							</ul>
@@ -118,13 +119,21 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/util.amount.html" class="tsd-kind-icon">Amount</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/util.chaintime.html" class="tsd-kind-icon">Chain<wbr>Time</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/util.chainvalue.html" class="tsd-kind-icon">Chain<wbr>Value</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-object-literal tsd-parent-kind-external-module"><a href="util.html#amountformats" class="tsd-kind-icon">Amount<wbr>Formats</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-external-module"><a href="util.html#chainvalueformats" class="tsd-kind-icon">Chain<wbr>Value<wbr>Formats</a></li>
 								<li class="tsd-kind-object-literal tsd-parent-kind-external-module"><a href="util.html#formatdotdecimal" class="tsd-kind-icon">Format<wbr>Dot<wbr>Decimal</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Call signatures</h3>
+							<ul class="tsd-index-list">
+								<li class=""><a href="util.html#currencysymbol-1" class="tsd-kind-icon">Currency<wbr>Symbol</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -154,7 +163,6 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="util.html#convertstringtohexstring" class="tsd-kind-icon">convert<wbr>String<wbr>ToHex<wbr>String</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="util.html#createdeeplink" class="tsd-kind-icon">create<wbr>Deeplink</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="util.html#parsedeeplink" class="tsd-kind-icon">parse<wbr>Deeplink</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="util.html#sumnqtstringtonumber" class="tsd-kind-icon">sumNQTString<wbr>ToNumber</a></li>
 							</ul>
 						</section>
 					</div>
@@ -168,13 +176,19 @@
 					<div class="tsd-signature tsd-kind-icon">Currency<wbr>Symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Ꞩ"</span><span class="tsd-signature-symbol"> = &quot;Ꞩ&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/constants.ts#L5">util/src/constants.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/constants.ts#L9">util/src/constants.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Symbol/Character for currency unit</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><div class='deprecated'>
+									Due to Multiverse feature it's not recommended to use this hard coded stuff.
+							</div></dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
@@ -183,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">Fee<wbr>Quant<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">1000000</span><span class="tsd-signature-symbol"> = 1000000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/constants.ts#L11">util/src/constants.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/constants.ts#L15">util/src/constants.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">One<wbr>Signa<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">100000000</span><span class="tsd-signature-symbol"> = 100000000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/constants.ts#L17">util/src/constants.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/constants.ts#L21">util/src/constants.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">Amount<wbr>Formats<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L87">util/src/amount.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L83">util/src/amount.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -230,7 +244,7 @@
 						<div class="tsd-signature tsd-kind-icon">Comma<wbr>Decimal<span class="tsd-signature-symbol">:</span> <a href="../interfaces/util.amountformat.html" class="tsd-signature-type">AmountFormat</a><span class="tsd-signature-symbol"> = FormatCommaDecimal</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L95">util/src/amount.ts:95</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L91">util/src/amount.ts:91</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -245,7 +259,52 @@
 						<div class="tsd-signature tsd-kind-icon">Dot<wbr>Decimal<span class="tsd-signature-symbol">:</span> <a href="../interfaces/util.amountformat.html" class="tsd-signature-type">AmountFormat</a><span class="tsd-signature-symbol"> = FormatDotDecimal</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L91">util/src/amount.ts:91</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L87">util/src/amount.ts:87</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>1,000,000.123456</p>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-external-module">
+					<a name="chainvalueformats" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Chain<wbr>Value<wbr>Formats</h3>
+					<div class="tsd-signature tsd-kind-icon">Chain<wbr>Value<wbr>Formats<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L79">util/src/chainValue.ts:79</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Amount formatting presets, see <a href="../classes/util.chainvalue.html#toformat">ChainValue.toFormat</a></p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="chainvalueformats.commadecimal-1" class="tsd-anchor"></a>
+						<h3>Comma<wbr>Decimal</h3>
+						<div class="tsd-signature tsd-kind-icon">Comma<wbr>Decimal<span class="tsd-signature-symbol">:</span> <a href="../interfaces/util.chainvalueformat.html" class="tsd-signature-type">ChainValueFormat</a><span class="tsd-signature-symbol"> = FormatCommaDecimal</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L87">util/src/chainValue.ts:87</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>1.000.000,123456</p>
+							</div>
+						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="chainvalueformats.dotdecimal-1" class="tsd-anchor"></a>
+						<h3>Dot<wbr>Decimal</h3>
+						<div class="tsd-signature tsd-kind-icon">Dot<wbr>Decimal<span class="tsd-signature-symbol">:</span> <a href="../interfaces/util.chainvalueformat.html" class="tsd-signature-type">ChainValueFormat</a><span class="tsd-signature-symbol"> = FormatDotDecimal</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L83">util/src/chainValue.ts:83</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -261,7 +320,7 @@
 					<div class="tsd-signature tsd-kind-icon">Format<wbr>Dot<wbr>Decimal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L57">util/src/amount.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L53">util/src/amount.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -275,7 +334,7 @@
 						<div class="tsd-signature tsd-kind-icon">decimal<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;.&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L59">util/src/amount.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L55">util/src/amount.ts:55</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -285,7 +344,7 @@
 						<div class="tsd-signature tsd-kind-icon">fraction<wbr>Group<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L63">util/src/amount.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L59">util/src/amount.ts:59</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -295,7 +354,7 @@
 						<div class="tsd-signature tsd-kind-icon">fraction<wbr>Group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L64">util/src/amount.ts:64</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L60">util/src/amount.ts:60</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -305,7 +364,7 @@
 						<div class="tsd-signature tsd-kind-icon">group<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;,&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L60">util/src/amount.ts:60</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L56">util/src/amount.ts:56</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -315,7 +374,7 @@
 						<div class="tsd-signature tsd-kind-icon">group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L61">util/src/amount.ts:61</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L57">util/src/amount.ts:57</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -325,7 +384,7 @@
 						<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = CurrencySymbol + &#x27; &#x27;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L58">util/src/amount.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L54">util/src/amount.ts:54</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -335,7 +394,7 @@
 						<div class="tsd-signature tsd-kind-icon">secondary<wbr>Group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L62">util/src/amount.ts:62</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L58">util/src/amount.ts:58</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -345,10 +404,23 @@
 						<div class="tsd-signature tsd-kind-icon">suffix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/amount.ts#L65">util/src/amount.ts:65</a></li>
+								<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L61">util/src/amount.ts:61</a></li>
 							</ul>
 						</aside>
 					</section>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Call signatures</h2>
+				<section class="tsd-panel tsd-member ">
+					<a name="currencysymbol-1" class="tsd-anchor"></a>
+					<h3>Currency<wbr>Symbol</h3>
+					<div class="tsd-signature tsd-kind-icon">Currency<wbr>Symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L119">util/src/amount.ts:119</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -363,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/asyncRetry.ts#L12">util/src/asyncRetry.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/asyncRetry.ts#L12">util/src/asyncRetry.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -400,7 +472,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertBase36StringToHexString.ts#L14">util/src/convertBase36StringToHexString.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertBase36StringToHexString.ts#L14">util/src/convertBase36StringToHexString.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -435,7 +507,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertBase64StringToString.ts#L15">util/src/convertBase64StringToString.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertBase64StringToString.ts#L15">util/src/convertBase64StringToString.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -470,7 +542,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertByteArrayToHexString.ts#L14">util/src/convertByteArrayToHexString.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertByteArrayToHexString.ts#L14">util/src/convertByteArrayToHexString.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -513,7 +585,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertByteArrayToString.ts#L15">util/src/convertByteArrayToString.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertByteArrayToString.ts#L15">util/src/convertByteArrayToString.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -564,7 +636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertDecStringToHexString.ts#L22">util/src/convertDecStringToHexString.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertDecStringToHexString.ts#L22">util/src/convertDecStringToHexString.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -613,7 +685,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertHexEndianess.ts#L17">util/src/convertHexEndianess.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertHexEndianess.ts#L17">util/src/convertHexEndianess.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -652,7 +724,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertHexStringToBase36String.ts#L14">util/src/convertHexStringToBase36String.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertHexStringToBase36String.ts#L14">util/src/convertHexStringToBase36String.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -687,7 +759,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertHexStringToByteArray.ts#L12">util/src/convertHexStringToByteArray.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertHexStringToByteArray.ts#L12">util/src/convertHexStringToByteArray.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -721,7 +793,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertHexStringToDecString.ts#L12">util/src/convertHexStringToDecString.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertHexStringToDecString.ts#L12">util/src/convertHexStringToDecString.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -756,7 +828,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertHexStringToString.ts#L16">util/src/convertHexStringToString.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertHexStringToString.ts#L16">util/src/convertHexStringToString.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -791,7 +863,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertNQTStringToNumber.ts#L17">util/src/convertNQTStringToNumber.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertNQTStringToNumber.ts#L17">util/src/convertNQTStringToNumber.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -834,7 +906,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertNumberToNQTString.ts#L16">util/src/convertNumberToNQTString.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertNumberToNQTString.ts#L16">util/src/convertNumberToNQTString.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -862,7 +934,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertStringToBase64String.ts#L17">util/src/convertStringToBase64String.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertStringToBase64String.ts#L17">util/src/convertStringToBase64String.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,7 +977,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertStringToByteArray.ts#L13">util/src/convertStringToByteArray.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertStringToByteArray.ts#L13">util/src/convertStringToByteArray.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -940,7 +1012,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/convertStringToHexString.ts#L16">util/src/convertStringToHexString.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/convertStringToHexString.ts#L16">util/src/convertStringToHexString.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -975,7 +1047,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/createDeeplink.ts#L45">util/src/createDeeplink.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/createDeeplink.ts#L45">util/src/createDeeplink.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1017,7 +1089,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/parseDeeplink.ts#L23">util/src/parseDeeplink.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/parseDeeplink.ts#L23">util/src/parseDeeplink.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1055,44 +1127,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/util.deeplinkparts.html" class="tsd-signature-type">DeeplinkParts</a></h4>
 							<p>The parsed deeplink parts.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="sumnqtstringtonumber" class="tsd-anchor"></a>
-					<h3>sumNQTString<wbr>ToNumber</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">sumNQTString<wbr>ToNumber<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>nqts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/05be395/packages/util/src/sumNQTStringToNumber.ts#L18">util/src/sumNQTStringToNumber.ts:18</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sums various NQT values and returns in Burst</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><div class='deprecated'>
-											Use <a href="../classes/util.amount.html#add">Amount.add</a> instead
-									</div></dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>nqts: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Variable amount list with NQT string</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-							<p>The sum of all amounts in BURST</p>
 						</li>
 					</ul>
 				</section>
@@ -1144,11 +1178,17 @@
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="../classes/util.chaintime.html" class="tsd-kind-icon">Chain<wbr>Time</a>
 					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/util.chainvalue.html" class="tsd-kind-icon">Chain<wbr>Value</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/util.amountformat.html" class="tsd-kind-icon">Amount<wbr>Format</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../interfaces/util.asyncretryargs.html" class="tsd-kind-icon">Async<wbr>Retry<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/util.chainvalueformat.html" class="tsd-kind-icon">Chain<wbr>Value<wbr>Format</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/util.createdeeplinkargs.html" class="tsd-kind-icon">Create<wbr>Deeplink<wbr>Args</a>
@@ -1219,14 +1259,17 @@
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="util.html#parsedeeplink" class="tsd-kind-icon">parse<wbr>Deeplink</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="util.html#sumnqtstringtonumber" class="tsd-kind-icon">sumNQTString<wbr>ToNumber</a>
-					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
 						<a href="util.html#amountformats" class="tsd-kind-icon">Amount<wbr>Formats</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="util.html#chainvalueformats" class="tsd-kind-icon">Chain<wbr>Value<wbr>Formats</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
 						<a href="util.html#formatdotdecimal" class="tsd-kind-icon">Format<wbr>Dot<wbr>Decimal</a>
+					</li>
+					<li class=" ">
+						<a href="util.html#currencysymbol-1" class="tsd-kind-icon">Currency<wbr>Symbol</a>
 					</li>
 				</ul>
 			</nav>

@@ -2,10 +2,12 @@
 
 > The Signum Network SDK for Javascript (written in Typescript)
 
+[![Build](https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/signum-network/phoenix/actions?query=workflow%3A%22Build+SignumJS%22)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=alert_status)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=coverage)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 ![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Build](https://github.com/burst-apps-team/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/burst-apps-team/phoenix/actions?query=workflow%3A%22Build+BurstJS%22)
-[![Known Vulnerabilities](https://snyk.io/test/github/burst-apps-team/phoenix/badge.svg?targetFile=lib%2Fpackage.json)](https://snyk.io/test/github/burst-apps-team/phoenix?targetFile=lib%2Fpackage.json)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
 
 `@signumjs` is a modern SDK written in Typescript providing common functionalities for _browsers_ and _nodejs_ to
@@ -20,6 +22,8 @@ The SDK is separated in the following packages
 - [@signumjs/contracts](./modules/contracts.html) A package providing Signum relevant functions for _smart contracts_
 - [@signumjs/crypto](./modules/crypto.html) A package providing Signum relevant crypto functions
 - [@signumjs/util](./modules/util.html) A package providing useful functions, e.g. common conversion functions
+- [@signumjs/wallets](./modules/wallets.html) This package provides functions and classes to interact with wallets. Currently, supported is the [Browser Extension Wallet](https://github.com/signum-network/signum-xt-wallet), and rough support for Deeplinking,  
+- i.e. with [Phoenix Wallet](https://github.com/signum-network/phoenix) 
 - [@signumjs/http](./modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
   and exception handling
 - [@signumjs/monitor](./modules/monitor.html) A package providing a class to execute recurring async operations with
@@ -38,6 +42,7 @@ npm install @signumjs/core
 npm install @signumjs/contracts (optional)
 npm install @signumjs/crypto (optional)
 npm install @signumjs/util (optional)
+npm install @signumjs/wallets (optional)
 npm install @signumjs/http (optional)
 npm install @signumjs/monitor (optional)
 ```
@@ -49,6 +54,7 @@ yarn add @signumjs/core
 yarn add @signumjs/contracts (optional)
 yarn add @signumjs/crypto (optional)
 yarn add @signumjs/util (optional)
+yarn add @signumjs/wallets (optional)
 yarn add @signumjs/http (optional)
 yarn add @signumjs/monitor (optional)
 ```
@@ -70,18 +76,21 @@ Just import one of the packages using the HTML `<script>` tag.
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js'></script>`
 
+`<script src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>`
+
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/monitor/dist/signumjs.monitor.min.js'></script>`
 
 Due to the way a package is imported following global variables are provided
 
-| Package | Variable |
-|---------|----------|
-|  core   |`sig$`      |
-|  contracts |`sig$contracts`|
-|  crypto |`sig$crypto`|
-|  http   |`sig$http`  |
-|  monitor   |`sig$monitor`  |
-|  util   |`sig$util`  |
+| Package   | Variable        |
+|-----------|-----------------|
+| core      | `sig$`          |
+| contracts | `sig$contracts` |
+| crypto    | `sig$crypto`    |
+| http      | `sig$http`      |
+| wallets   | `sig$wallets`   |
+| monitor   | `sig$monitor`   |
+| util      | `sig$util`      |
 
 Examples:
 
@@ -165,13 +174,13 @@ The following example shows how to interact with the blockchain, i.e. getting th
 In a separate file, preferably `index.js` or `main.js` write your entry point like this:
 
 ```js
-import {composeApi, ApiSettings} from '@signumjs/core'
+import {LedgerClientFactory} from '@signumjs/core'
 import {Amount} from '@signumjs/util'
 
 // this self-executing file makes turns this file into a starting point of your app
 (async () => {
     try {
-        const api = composeApi({nodeHost: 'https://testnet.burstcoin.network:6876'});
+        const api = LedgerClientFactory.createClient({nodeHost: 'https://europe3.testnet.signum.network'});
         const {balanceNQT} = await api.account.getAccountBalance('13036514135565182944')
         console.log(`Account Balance: ${Amount.fromPlanck(balanceNQT).toString()}`)
     } catch (e) { // e is of type HttpError (as part of @signumjs/http)
@@ -184,7 +193,8 @@ import {Amount} from '@signumjs/util'
 ### `<script>` style
 
 ```js
-const api = sig$.composeApi({nodeHost: 'https://testnet.burstcoin.network:6876'});
+// composeApi is the legacy composer function... but same as LedgerClientFactory.createClient
+const api = sig$.composeApi({nodeHost: 'https://europe3.testnet.signum.network'});
 api.account.getAccountBalance('13036514135565182944')
     .then(balance => {
         console.log(`Account Balance: ${sig$util.Amount.fromPlanck(balance.balanceNQT).toString()}`)

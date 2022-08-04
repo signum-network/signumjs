@@ -8,7 +8,7 @@ import {GetAssetTransfersArgs} from '../../../typings/args';
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
  *
- * See details at [[AssetApi.GetAssetTransfers]]
+ * See details at [[AssetApi.getAssetTransfers]]
  * @module core.api.factories
  */
 export const getAssetTransfers = (service: ChainService):

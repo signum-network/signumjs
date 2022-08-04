@@ -1,5 +1,9 @@
 /**
  * Symbol/Character for currency unit
+ * @deprecated
+ * <div class='deprecated'>
+ *     Due to Multiverse feature it's not recommended to use this hard coded stuff.
+ * </div>
  * @module util
  * */
 export const CurrencySymbol = 'Ꞩ';

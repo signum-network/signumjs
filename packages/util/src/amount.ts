@@ -6,11 +6,6 @@ import BigNumber from 'bignumber.js';
 import {CurrencySymbol} from './constants';
 import {ChainValue} from './chainValue';
 
-BigNumber.config({
-    EXPONENTIAL_AT: [-9, 20],
-    DECIMAL_PLACES: 8 // TODO: should be better configurable
-});
-
 /**
  * Structure to determine the representation format of [Amount] string
  * @module util
@@ -96,13 +91,6 @@ export const AmountFormats = {
     CommaDecimal: FormatCommaDecimal
 };
 
-
-function assureValidValue(v: string): void {
-    if (!(v && /^-?\d*(\.\d+)?$/.test(v))) {
-        throw new Error(`Invalid value: ${v}`);
-    }
-}
-
 /**
  * A Value Object to facilitate SIGNA and Planck conversions/calculations.
  *
@@ -117,9 +105,6 @@ export class Amount {
     private _value: ChainValue;
 
     private constructor(planck: number | string) {
-        if (typeof planck === 'string') {
-            assureValidValue(planck);
-        }
         this._value = new ChainValue(8).setAtomic(planck);
     }
 

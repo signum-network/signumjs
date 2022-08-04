@@ -9,7 +9,7 @@ import {getAssetTransfers} from './getAssetTransfers';
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
  *
- * See details at [[AssetApi.GetAssetTransfersPerAccount]]
+ * See details at [[AssetApi.getAssetTransfersPerAccount]]
  * @module core.api.factories
  */
 export const getAssetTransfersPerAccount = (service: ChainService):

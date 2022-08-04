@@ -1,6 +1,5 @@
 /**
- * Original work Copyright (c) 2020 Burst Apps Team
- * Modified work Copyright (c) 2022 Signum Network
+ * Copyright (c) 2022 Signum Network
  */
 import BigNumber from 'bignumber.js';
 
@@ -10,7 +9,7 @@ BigNumber.config({
 });
 
 /**
- * Structure to determine the representation format of [Amount] string
+ * Structure to determine the representation format of [ChainValue] string
  * @module util
  */
 export interface ChainValueFormat {
@@ -74,7 +73,7 @@ const FormatCommaDecimal: ChainValueFormat = {
 };
 
 /**
- * Amount formatting presets, see [[ChainValue.toString]]
+ * Amount formatting presets, see [[ChainValue.toFormat]]
  * @module util
  */
 export const ChainValueFormats = {

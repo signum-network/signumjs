@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Amount
+	<title>ChainValue
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/util.html">util</a>
 				</li>
 				<li>
-					<a href="util.amount.html">Amount</a>
+					<a href="util.chainvalue.html">ChainValue</a>
 				</li>
 			</ul>
-			<h1>Class Amount</h1>
+			<h1>Class ChainValue</h1>
 		</div>
 	</div>
 </header>
@@ -91,9 +91,13 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A Value Object to facilitate SIGNA and Planck conversions/calculations.</p>
+						<p>A Value Object to facilitate calculations for token and coin values (QNT/NQT).</p>
 					</div>
-					<p>This class is a convenient wrapper around <a href="util.chainvalue.html">ChainValue</a> with <code>decimals = 8</code></p>
+					<p>For efficiency reasons, the monetary values/quantities are stored as integers with a prefined set of decimals,
+						e.g. Signa has 8 decimals and stores the values as Planck that is 1 Signa = 100_000_000 Planck (NQT)
+					and tokens have configurable decimals (0 to 8), so that a custom FooCoin can hav 2 decimals only where 1 FOO = 100 FOOQNT</p>
+					<p>In this context integer quantities are denominates as <em>_atomic</em> values and
+					fractional values considering the decimals are denominated as <em>compound</em> values.</p>
 					<p>Note: This class uses a big number representation (ES5 compatible) under the hood, so
 					number limits and numeric calculations are much more precise than JS number type</p>
 				</div>
@@ -102,7 +106,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Amount</span>
+						<span class="target">ChainValue</span>
 					</li>
 				</ul>
 			</section>
@@ -111,31 +115,70 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="util.chainvalue.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#add" class="tsd-kind-icon">add</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#clone" class="tsd-kind-icon">clone</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#divide" class="tsd-kind-icon">divide</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#equals" class="tsd-kind-icon">equals</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#getplanck" class="tsd-kind-icon">get<wbr>Planck</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#getraw" class="tsd-kind-icon">get<wbr>Raw</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#getsigna" class="tsd-kind-icon">get<wbr>Signa</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#greater" class="tsd-kind-icon">greater</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#greaterorequal" class="tsd-kind-icon">greater<wbr>OrEqual</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#less" class="tsd-kind-icon">less</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#lessorequal" class="tsd-kind-icon">less<wbr>OrEqual</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#multiply" class="tsd-kind-icon">multiply</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#setplanck" class="tsd-kind-icon">set<wbr>Planck</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#setsigna" class="tsd-kind-icon">set<wbr>Signa</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#subtract" class="tsd-kind-icon">subtract</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.amount.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="util.amount.html#currencysymbol" class="tsd-kind-icon">Currency<wbr>Symbol</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="util.amount.html#zero" class="tsd-kind-icon">Zero</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="util.amount.html#fromplanck" class="tsd-kind-icon">from<wbr>Planck</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="util.amount.html#fromsigna" class="tsd-kind-icon">from<wbr>Signa</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#clone" class="tsd-kind-icon">clone</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#divide" class="tsd-kind-icon">divide</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#equals" class="tsd-kind-icon">equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#getatomic" class="tsd-kind-icon">get<wbr>Atomic</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#getcompound" class="tsd-kind-icon">get<wbr>Compound</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#getdecimals" class="tsd-kind-icon">get<wbr>Decimals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#getraw" class="tsd-kind-icon">get<wbr>Raw</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#greater" class="tsd-kind-icon">greater</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#greaterorequal" class="tsd-kind-icon">greater<wbr>OrEqual</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#less" class="tsd-kind-icon">less</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#lessorequal" class="tsd-kind-icon">less<wbr>OrEqual</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#multiply" class="tsd-kind-icon">multiply</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#setatomic" class="tsd-kind-icon">set<wbr>Atomic</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#setcompound" class="tsd-kind-icon">set<wbr>Compound</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#subtract" class="tsd-kind-icon">subtract</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="util.chainvalue.html#toformat" class="tsd-kind-icon">to<wbr>Format</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Chain<wbr>Value<span class="tsd-signature-symbol">(</span>decimals<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L116">util/src/chainValue.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructs a value object instance for calculations. The initial value is 0;</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>decimals: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The number of decimals of the amount. Must be between 0 and 8</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -144,31 +187,31 @@
 					<a name="add" class="tsd-anchor"></a>
 					<h3>add</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L242">util/src/amount.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L238">util/src/chainValue.ts:238</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds two values</p>
+									<p>Adds another value to this value</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be added</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>the <em>mutated</em> Amount object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the <em>mutated</em> value object</p>
 						</li>
 					</ul>
 				</section>
@@ -176,22 +219,22 @@
 					<a name="clone" class="tsd-anchor"></a>
 					<h3>clone</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">clone<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L290">util/src/amount.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L300">util/src/chainValue.ts:300</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Clones/Copies the current Amount to a new object</p>
+									<p>Clones/Copies the current ChainValue to a new object</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>new Amount instance</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>new ChainValue instance</p>
 						</li>
 					</ul>
 				</section>
@@ -199,31 +242,31 @@
 					<a name="divide" class="tsd-anchor"></a>
 					<h3>divide</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">divide<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">divide<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L272">util/src/amount.ts:272</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L273">util/src/chainValue.ts:273</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Divides by a <em>numeric</em> value (not Amount)</p>
+									<p>Divides this value object with a <em>numeric</em> value (not ChainValue!)</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<h5>value: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A numeric value to be divided by</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>the <em>mutated</em> Amount object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the <em>mutated</em> value object</p>
 						</li>
 					</ul>
 				</section>
@@ -231,13 +274,13 @@
 					<a name="equals" class="tsd-anchor"></a>
 					<h3>equals</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L197">util/src/amount.ts:197</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L193">util/src/chainValue.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +291,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>value: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be compared</p>
 									</div>
@@ -260,22 +303,65 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getplanck" class="tsd-anchor"></a>
-					<h3>get<wbr>Planck</h3>
+					<a name="getatomic" class="tsd-anchor"></a>
+					<h3>get<wbr>Atomic</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Planck<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Atomic<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L160">util/src/amount.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L148">util/src/chainValue.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>Gets Planck representation</p>
+							<p>Gets Atomic representation</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcompound" class="tsd-anchor"></a>
+					<h3>get<wbr>Compound</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Compound<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L171">util/src/chainValue.ts:171</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the <em>&#39;compound&#39;</em> representation</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>value in decimal related representation, i.e. 100 QNT with 3 decimals results in <code>&#39;0.3&#39;</code></p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getdecimals" class="tsd-anchor"></a>
+					<h3>get<wbr>Decimals</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Decimals<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L133">util/src/chainValue.ts:133</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The set decimals amount</p>
 						</li>
 					</ul>
 				</section>
@@ -289,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L153">util/src/amount.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L141">util/src/chainValue.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,39 +389,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getsigna" class="tsd-anchor"></a>
-					<h3>get<wbr>Signa</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Signa<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L178">util/src/amount.ts:178</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets SIGNA representation</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>value in SIGNA</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="greater" class="tsd-anchor"></a>
 					<h3>greater</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">greater<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">greater<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L233">util/src/amount.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L229">util/src/chainValue.ts:229</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,7 +409,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be compared</p>
 									</div>
@@ -361,13 +424,13 @@
 					<a name="greaterorequal" class="tsd-anchor"></a>
 					<h3>greater<wbr>OrEqual</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">greater<wbr>OrEqual<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">greater<wbr>OrEqual<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L224">util/src/amount.ts:224</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L220">util/src/chainValue.ts:220</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -378,7 +441,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be compared</p>
 									</div>
@@ -393,13 +456,13 @@
 					<a name="less" class="tsd-anchor"></a>
 					<h3>less</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">less<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">less<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L215">util/src/amount.ts:215</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L211">util/src/chainValue.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +473,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be compared</p>
 									</div>
@@ -425,13 +488,13 @@
 					<a name="lessorequal" class="tsd-anchor"></a>
 					<h3>less<wbr>OrEqual</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">less<wbr>OrEqual<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">less<wbr>OrEqual<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L206">util/src/amount.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L202">util/src/chainValue.ts:202</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -442,7 +505,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be compared</p>
 									</div>
@@ -457,95 +520,95 @@
 					<a name="multiply" class="tsd-anchor"></a>
 					<h3>multiply</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">multiply<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">multiply<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L262">util/src/amount.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L258">util/src/chainValue.ts:258</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Multiplies with a <em>numeric</em> value (not Amount)</p>
+									<p>Multiplies this value object with a <em>numeric</em> value (not ChainValue!)</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<h5>value: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A numeric value to be multiplied with</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>the <em>mutated</em> Amount object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the <em>mutated</em> value object</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setplanck" class="tsd-anchor"></a>
-					<h3>set<wbr>Planck</h3>
+					<a name="setatomic" class="tsd-anchor"></a>
+					<h3>set<wbr>Atomic</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Planck<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Atomic<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L169">util/src/amount.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L157">util/src/chainValue.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets value as Planck, i.e. overwrites current hold value</p>
+									<p>Sets value as atomic value, i.e. overwrites current hold value</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>p: <span class="tsd-signature-type">string</span></h5>
+									<h5>a: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The planck value</p>
+										<p>The atomic value. Float numbers are floored to first lower integer, i.e. <code>1.23</code> -&gt; <code>1</code></p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>This value object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the updated value object</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setsigna" class="tsd-anchor"></a>
-					<h3>set<wbr>Signa</h3>
+					<a name="setcompound" class="tsd-anchor"></a>
+					<h3>set<wbr>Compound</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Signa<span class="tsd-signature-symbol">(</span>b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Compound<span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L187">util/src/amount.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L180">util/src/chainValue.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets value as SIGNA, i.e. overwrites current hold value</p>
+									<p>Sets as <em>&#39;compound&#39;</em> representation</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>b: <span class="tsd-signature-type">string</span></h5>
+									<h5>c: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value in SIGNA</p>
+										<p>compound value</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>This value object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the updated value object</p>
 						</li>
 					</ul>
 				</section>
@@ -553,164 +616,69 @@
 					<a name="subtract" class="tsd-anchor"></a>
 					<h3>subtract</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">subtract<span class="tsd-signature-symbol">(</span>amount<span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
+						<li class="tsd-signature tsd-kind-icon">subtract<span class="tsd-signature-symbol">(</span>chainValue<span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L252">util/src/amount.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L248">util/src/chainValue.ts:248</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Subtracts from value</p>
+									<p>Subtracts another value from this value</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>amount: <a href="util.amount.html" class="tsd-signature-type">Amount</a></h5>
+									<h5>chainValue: <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The other value to be subtracted</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-							<p>the <em>mutated</em> Amount object</p>
+							<h4 class="tsd-returns-title">Returns <a href="util.chainvalue.html" class="tsd-signature-type">ChainValue</a></h4>
+							<p>the <em>mutated</em> value object</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="tostring" class="tsd-anchor"></a>
-					<h3>to<wbr>String</h3>
+					<a name="toformat" class="tsd-anchor"></a>
+					<h3>to<wbr>Format</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">?: </span><a href="../interfaces/util.amountformat.html" class="tsd-signature-type">AmountFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Format<span class="tsd-signature-symbol">(</span>prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, format<span class="tsd-signature-symbol">?: </span><a href="../interfaces/util.chainvalueformat.html" class="tsd-signature-type">ChainValueFormat</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L282">util/src/amount.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L292">util/src/chainValue.ts:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets a string representation in form <code>Ꞩ 100</code></p>
+									<p>Gets a string representation according to <a href="../interfaces/util.chainvalueformat.html">ChainValueFormat</a></p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> format: <a href="../interfaces/util.amountformat.html" class="tsd-signature-type">AmountFormat</a><span class="tsd-signature-symbol"> = AmountFormats.DotDecimal</span></h5>
+									<h5>prefix: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The format object, Default: <a href="../modules/util.html#amountformats.dotdecimal">AmountFormats.DotDecimal</a></p>
+										<p>The prefix for value</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> format: <a href="../interfaces/util.chainvalueformat.html" class="tsd-signature-type">ChainValueFormat</a><span class="tsd-signature-symbol"> = ChainValueFormats.DotDecimal</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The format object, Default: <a href="../modules/util.html#chainvalueformats.dotdecimal-1">ChainValueFormats.DotDecimal</a></p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 							<p>The formatted string</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="currencysymbol" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> Currency<wbr>Symbol</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">Currency<wbr>Symbol<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L119">util/src/amount.ts:119</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="zero" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> Zero</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">Zero<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L127">util/src/amount.ts:127</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Same as <code>Amount.fromPlanck(0)</code> or <code>Amount.fromSigna(0)</code></p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="fromplanck" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Planck</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Planck<span class="tsd-signature-symbol">(</span>planck<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L135">util/src/amount.ts:135</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a Burst Value object from Planck</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>planck: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The value in Planck</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="fromsigna" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Signa</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Signa<span class="tsd-signature-symbol">(</span>signa<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="util.amount.html" class="tsd-signature-type">Amount</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/amount.ts#L143">util/src/amount.ts:143</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a Value object from SIGNA</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>signa: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The value in SIGNA</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="util.amount.html" class="tsd-signature-type">Amount</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -756,81 +724,75 @@
 					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
 						<a href="../enums/util.encoderformat.html" class="tsd-kind-icon">Encoder<wbr>Format</a>
 					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="util.amount.html" class="tsd-kind-icon">Amount</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="util.chaintime.html" class="tsd-kind-icon">Chain<wbr>Time</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="util.amount.html" class="tsd-kind-icon">Amount</a>
+						<a href="util.chainvalue.html" class="tsd-kind-icon">Chain<wbr>Value</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#add" class="tsd-kind-icon">add</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="util.chainvalue.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#clone" class="tsd-kind-icon">clone</a>
+								<a href="util.chainvalue.html#add" class="tsd-kind-icon">add</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#divide" class="tsd-kind-icon">divide</a>
+								<a href="util.chainvalue.html#clone" class="tsd-kind-icon">clone</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#equals" class="tsd-kind-icon">equals</a>
+								<a href="util.chainvalue.html#divide" class="tsd-kind-icon">divide</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#getplanck" class="tsd-kind-icon">get<wbr>Planck</a>
+								<a href="util.chainvalue.html#equals" class="tsd-kind-icon">equals</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#getraw" class="tsd-kind-icon">get<wbr>Raw</a>
+								<a href="util.chainvalue.html#getatomic" class="tsd-kind-icon">get<wbr>Atomic</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#getsigna" class="tsd-kind-icon">get<wbr>Signa</a>
+								<a href="util.chainvalue.html#getcompound" class="tsd-kind-icon">get<wbr>Compound</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#greater" class="tsd-kind-icon">greater</a>
+								<a href="util.chainvalue.html#getdecimals" class="tsd-kind-icon">get<wbr>Decimals</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#greaterorequal" class="tsd-kind-icon">greater<wbr>OrEqual</a>
+								<a href="util.chainvalue.html#getraw" class="tsd-kind-icon">get<wbr>Raw</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#less" class="tsd-kind-icon">less</a>
+								<a href="util.chainvalue.html#greater" class="tsd-kind-icon">greater</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#lessorequal" class="tsd-kind-icon">less<wbr>OrEqual</a>
+								<a href="util.chainvalue.html#greaterorequal" class="tsd-kind-icon">greater<wbr>OrEqual</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#multiply" class="tsd-kind-icon">multiply</a>
+								<a href="util.chainvalue.html#less" class="tsd-kind-icon">less</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#setplanck" class="tsd-kind-icon">set<wbr>Planck</a>
+								<a href="util.chainvalue.html#lessorequal" class="tsd-kind-icon">less<wbr>OrEqual</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#setsigna" class="tsd-kind-icon">set<wbr>Signa</a>
+								<a href="util.chainvalue.html#multiply" class="tsd-kind-icon">multiply</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#subtract" class="tsd-kind-icon">subtract</a>
+								<a href="util.chainvalue.html#setatomic" class="tsd-kind-icon">set<wbr>Atomic</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="util.amount.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+								<a href="util.chainvalue.html#setcompound" class="tsd-kind-icon">set<wbr>Compound</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="util.amount.html#currencysymbol" class="tsd-kind-icon">Currency<wbr>Symbol</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="util.chainvalue.html#subtract" class="tsd-kind-icon">subtract</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="util.amount.html#zero" class="tsd-kind-icon">Zero</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="util.amount.html#fromplanck" class="tsd-kind-icon">from<wbr>Planck</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="util.amount.html#fromsigna" class="tsd-kind-icon">from<wbr>Signa</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="util.chainvalue.html#toformat" class="tsd-kind-icon">to<wbr>Format</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="util.chaintime.html" class="tsd-kind-icon">Chain<wbr>Time</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="util.chainvalue.html" class="tsd-kind-icon">Chain<wbr>Value</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/util.amountformat.html" class="tsd-kind-icon">Amount<wbr>Format</a>
 					</li>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DistributeToAssetHoldersArgs
+	<title>ChainValueFormat
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/core.html">core</a>
+					<a href="../modules/util.html">util</a>
 				</li>
 				<li>
-					<a href="core.distributetoassetholdersargs.html">DistributeToAssetHoldersArgs</a>
+					<a href="util.chainvalueformat.html">ChainValueFormat</a>
 				</li>
 			</ul>
-			<h1>Interface DistributeToAssetHoldersArgs</h1>
+			<h1>Interface ChainValueFormat</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.assetapi.html#distributetoassetholders">AssetApi.distributeToAssetHolders</a></p>
+						<p>Structure to determine the representation format of [ChainValue] string</p>
 					</div>
 				</div>
 			</section>
@@ -99,12 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="core.defaultsendargs.html" class="tsd-signature-type">DefaultSendArgs</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">DistributeToAssetHoldersArgs</span>
-							</li>
-						</ul>
+						<span class="target">ChainValueFormat</span>
 					</li>
 				</ul>
 			</section>
@@ -115,16 +110,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.distributetoassetholdersargs.html#additionalassetid" class="tsd-kind-icon">additional<wbr>Asset<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.distributetoassetholdersargs.html#additionalassetquantity" class="tsd-kind-icon">additional<wbr>Asset<wbr>Quantity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.distributetoassetholdersargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.distributetoassetholdersargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.distributetoassetholdersargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.distributetoassetholdersargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.distributetoassetholdersargs.html#minimumholdquantity" class="tsd-kind-icon">minimum<wbr>Hold<wbr>Quantity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.distributetoassetholdersargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.distributetoassetholdersargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.distributetoassetholdersargs.html#totalamountplanck" class="tsd-kind-icon">total<wbr>Amount<wbr>Planck</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#decimalseparator" class="tsd-kind-icon">decimal<wbr>Separator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#fractiongroupseparator" class="tsd-kind-icon">fraction<wbr>Group<wbr>Separator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#fractiongroupsize" class="tsd-kind-icon">fraction<wbr>Group<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#groupseparator" class="tsd-kind-icon">group<wbr>Separator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#groupsize" class="tsd-kind-icon">group<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#secondarygroupsize" class="tsd-kind-icon">secondary<wbr>Group<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="util.chainvalueformat.html#suffix" class="tsd-kind-icon">suffix</a></li>
 							</ul>
 						</section>
 					</div>
@@ -133,166 +125,107 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="additionalassetid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> additional<wbr>Asset<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">additional<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="decimalseparator" class="tsd-anchor"></a>
+					<h3>decimal<wbr>Separator</h3>
+					<div class="tsd-signature tsd-kind-icon">decimal<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/distributeToAssetHoldersArgs.ts#L26">core/src/typings/args/distributeToAssetHoldersArgs.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L19">util/src/chainValue.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>You may distribute an additional asset, i.e. as air drop, together with this pay out.</p>
+							<p>Decimal separator, Default: &#39;.&#39;</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="additionalassetquantity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> additional<wbr>Asset<wbr>Quantity</h3>
-					<div class="tsd-signature tsd-kind-icon">additional<wbr>Asset<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="fractiongroupseparator" class="tsd-anchor"></a>
+					<h3>fraction<wbr>Group<wbr>Separator</h3>
+					<div class="tsd-signature tsd-kind-icon">fraction<wbr>Group<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/distributeToAssetHoldersArgs.ts#L30">core/src/typings/args/distributeToAssetHoldersArgs.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L35">util/src/chainValue.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>If given <code>additionalAssetId</code>, then you need to specify a quantity that&#39;s being distributed together.</p>
+							<p>Grouping separator of the fraction part, Default: &#39;&#39;</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="assetid" class="tsd-anchor"></a>
-					<h3>asset<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="fractiongroupsize" class="tsd-anchor"></a>
+					<h3>fraction<wbr>Group<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">fraction<wbr>Group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/distributeToAssetHoldersArgs.ts#L13">core/src/typings/args/distributeToAssetHoldersArgs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L39">util/src/chainValue.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The related asset</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="attachment" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attachment</h3>
-					<div class="tsd-signature tsd-kind-icon">attachment<span class="tsd-signature-symbol">:</span> <a href="../classes/core.attachment.html" class="tsd-signature-type">Attachment</a></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>An optional attachment</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="deadline" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deadline</h3>
-					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The deadline when after how many minutes the transaction will be discarded, if it was not
-							processed, e.g. due to very low fee</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="feeplanck" class="tsd-anchor"></a>
-					<h3>fee<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The fee expressed in Planck</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>note</dt>
-							<dd><p>It&#39;s recommended to use <a href="../classes/util.amount.html">util.Amount</a></p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="minimumholdquantity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> minimum<wbr>Hold<wbr>Quantity</h3>
-					<div class="tsd-signature tsd-kind-icon">minimum<wbr>Hold<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/distributeToAssetHoldersArgs.ts#L17">core/src/typings/args/distributeToAssetHoldersArgs.ts:17</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Distributes only to those who have a minimum amount of that token/asset</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="senderprivatekey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sender<wbr>Private<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The senders private key, i.e. the <a href="crypto.keys.html#signprivatekey">crypto.Keys.signPrivateKey</a>
-								If the private key is not given, then the transaction method will return the unsigned byte string.
-								The transaction won&#39;t be processed until the unsigned bytes are being signed and broadcasted using
-							<a href="core_api.transactionapi.html#signandbroadcasttransaction">TransactionApi.signAndBroadcastTransaction</a></p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="senderpublickey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Public<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The senders public key,  i.e. the <a href="crypto.keys.html#publickey">crypto.Keys.publicKey</a></p>
+							<p>Grouping size of the fraction part, Default: 0</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="totalamountplanck" class="tsd-anchor"></a>
-					<h3>total<wbr>Amount<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">total<wbr>Amount<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="groupseparator" class="tsd-anchor"></a>
+					<h3>group<wbr>Separator</h3>
+					<div class="tsd-signature tsd-kind-icon">group<wbr>Separator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/core/src/typings/args/distributeToAssetHoldersArgs.ts#L21">core/src/typings/args/distributeToAssetHoldersArgs.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L23">util/src/chainValue.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Total Amount of Signa to be distributed, expressed in Planck</p>
+							<p>grouping separator of the integer part, Default: &#39;,&#39;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="groupsize" class="tsd-anchor"></a>
+					<h3>group<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L27">util/src/chainValue.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Primary grouping size of the integer part, Default: 3</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="secondarygroupsize" class="tsd-anchor"></a>
+					<h3>secondary<wbr>Group<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">secondary<wbr>Group<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L31">util/src/chainValue.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Secondary grouping size of the integer part, Default 0</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="suffix" class="tsd-anchor"></a>
+					<h3>suffix</h3>
+					<div class="tsd-signature tsd-kind-icon">suffix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d0ab81a/packages/util/src/chainValue.ts#L43">util/src/chainValue.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>String to append, Default: &#39;&#39;</p>
 						</div>
 					</div>
 				</section>
@@ -307,7 +240,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/contracts.html">contracts</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -325,7 +258,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/monitor.html">monitor</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -335,45 +268,135 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/util.encoderformat.html" class="tsd-kind-icon">Encoder<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/util.amount.html" class="tsd-kind-icon">Amount</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/util.chaintime.html" class="tsd-kind-icon">Chain<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/util.chainvalue.html" class="tsd-kind-icon">Chain<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="util.amountformat.html" class="tsd-kind-icon">Amount<wbr>Format</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="util.asyncretryargs.html" class="tsd-kind-icon">Async<wbr>Retry<wbr>Args</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.distributetoassetholdersargs.html" class="tsd-kind-icon">Distribute<wbr>ToAsset<wbr>Holders<wbr>Args</a>
+						<a href="util.chainvalueformat.html" class="tsd-kind-icon">Chain<wbr>Value<wbr>Format</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.distributetoassetholdersargs.html#additionalassetid" class="tsd-kind-icon">additional<wbr>Asset<wbr>Id</a>
+								<a href="util.chainvalueformat.html#decimalseparator" class="tsd-kind-icon">decimal<wbr>Separator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.distributetoassetholdersargs.html#additionalassetquantity" class="tsd-kind-icon">additional<wbr>Asset<wbr>Quantity</a>
+								<a href="util.chainvalueformat.html#fractiongroupseparator" class="tsd-kind-icon">fraction<wbr>Group<wbr>Separator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.distributetoassetholdersargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.distributetoassetholdersargs.html#attachment" class="tsd-kind-icon">attachment</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.distributetoassetholdersargs.html#deadline" class="tsd-kind-icon">deadline</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.distributetoassetholdersargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
+								<a href="util.chainvalueformat.html#fractiongroupsize" class="tsd-kind-icon">fraction<wbr>Group<wbr>Size</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.distributetoassetholdersargs.html#minimumholdquantity" class="tsd-kind-icon">minimum<wbr>Hold<wbr>Quantity</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.distributetoassetholdersargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.distributetoassetholdersargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
+								<a href="util.chainvalueformat.html#groupseparator" class="tsd-kind-icon">group<wbr>Separator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.distributetoassetholdersargs.html#totalamountplanck" class="tsd-kind-icon">total<wbr>Amount<wbr>Planck</a>
+								<a href="util.chainvalueformat.html#groupsize" class="tsd-kind-icon">group<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="util.chainvalueformat.html#secondarygroupsize" class="tsd-kind-icon">secondary<wbr>Group<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="util.chainvalueformat.html#suffix" class="tsd-kind-icon">suffix</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="util.createdeeplinkargs.html" class="tsd-kind-icon">Create<wbr>Deeplink<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="util.deeplinkparts.html" class="tsd-kind-icon">Deeplink<wbr>Parts</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/util.html#currencysymbol" class="tsd-kind-icon">Currency<wbr>Symbol</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/util.html#feequantplanck" class="tsd-kind-icon">Fee<wbr>Quant<wbr>Planck</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/util.html#onesignaplanck" class="tsd-kind-icon">One<wbr>Signa<wbr>Planck</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/util.html#asyncretry" class="tsd-kind-icon">async<wbr>Retry</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertbase36stringtohexstring" class="tsd-kind-icon">convert<wbr>Base36<wbr>String<wbr>ToHex<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertbase64stringtostring" class="tsd-kind-icon">convert<wbr>Base64<wbr>String<wbr>ToString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertbytearraytohexstring" class="tsd-kind-icon">convert<wbr>Byte<wbr>Array<wbr>ToHex<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertbytearraytostring" class="tsd-kind-icon">convert<wbr>Byte<wbr>Array<wbr>ToString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertdecstringtohexstring" class="tsd-kind-icon">convert<wbr>Dec<wbr>String<wbr>ToHex<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#converthexendianess" class="tsd-kind-icon">convert<wbr>Hex<wbr>Endianess</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#converthexstringtobase36string" class="tsd-kind-icon">convert<wbr>Hex<wbr>String<wbr>ToBase36<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#converthexstringtobytearray" class="tsd-kind-icon">convert<wbr>Hex<wbr>String<wbr>ToByte<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#converthexstringtodecstring" class="tsd-kind-icon">convert<wbr>Hex<wbr>String<wbr>ToDec<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#converthexstringtostring" class="tsd-kind-icon">convert<wbr>Hex<wbr>String<wbr>ToString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertnqtstringtonumber" class="tsd-kind-icon">convertNQTString<wbr>ToNumber</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertnumbertonqtstring" class="tsd-kind-icon">convert<wbr>Number<wbr>ToNQTString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertstringtobase64string" class="tsd-kind-icon">convert<wbr>String<wbr>ToBase64<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertstringtobytearray" class="tsd-kind-icon">convert<wbr>String<wbr>ToByte<wbr>Array</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#convertstringtohexstring" class="tsd-kind-icon">convert<wbr>String<wbr>ToHex<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#createdeeplink" class="tsd-kind-icon">create<wbr>Deeplink</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/util.html#parsedeeplink" class="tsd-kind-icon">parse<wbr>Deeplink</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/util.html#amountformats" class="tsd-kind-icon">Amount<wbr>Formats</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/util.html#chainvalueformats" class="tsd-kind-icon">Chain<wbr>Value<wbr>Formats</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/util.html#formatdotdecimal" class="tsd-kind-icon">Format<wbr>Dot<wbr>Decimal</a>
+					</li>
+					<li class=" ">
+						<a href="../modules/util.html#currencysymbol-1" class="tsd-kind-icon">Currency<wbr>Symbol</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

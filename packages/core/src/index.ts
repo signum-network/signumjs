@@ -52,5 +52,5 @@ export * from './typings/unconfirmedTransactionList';
 
 // bad workaround is to comment next line when build docs
 // FIXME: This conflicts with tsdoc
-export {Amount, ChainTime, ChainValue} from '@signumjs/util';
+// export {Amount, ChainTime, ChainValue} from '@signumjs/util';
 

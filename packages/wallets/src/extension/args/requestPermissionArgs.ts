@@ -1,8 +1,8 @@
 import {ExtensionDAppMetadata} from '../messaging';
 
 /**
- * Argument object of [[ExtensionAdapter.requestPermission]]
- * @module wallets
+ * Argument object of ExtensionAdapter.requestPermission
+ * @internal
  */
 export interface RequestPermissionArgs {
     /**
