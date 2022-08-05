@@ -3,6 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {Asset} from '../../../typings/asset';
+import {GetAssetArgs} from '../../../typings/args';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
@@ -11,6 +12,6 @@ import {Asset} from '../../../typings/asset';
  * @module core.api.factories
  * */
 export const getAsset = (service: ChainService):
-    (assetId: string) => Promise<Asset> =>
-    (assetId: string): Promise<Asset> =>
-        service.query('getAsset', {asset: assetId});
+    (args: GetAssetArgs) => Promise<Asset> =>
+    (args: GetAssetArgs): Promise<Asset> =>
+        service.query('getAsset', {asset: args.assetId, quantityMinimumQNT: args.minimumQuantity});

@@ -27,6 +27,7 @@ export const issueAsset = (service: ChainService) =>
                 decimals: a.decimals,
                 publicKey: a.senderPublicKey,
                 feeNQT: a.feePlanck,
+                mintable: a.mintable,
                 deadline: a.deadline || DefaultDeadline,
             };
 

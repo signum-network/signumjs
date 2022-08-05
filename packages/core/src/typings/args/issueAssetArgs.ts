@@ -27,4 +27,9 @@ export interface IssueAssetArgs extends DefaultSendArgs {
      * If you set decimals to 4 and want to have 100 full assets, you need to set this value to 1000000
      */
     quantity: string | number;
+
+    /**
+     * Decides whether this asset is mintable, i.e. has a variable supply.
+     */
+    mintable: boolean;
 }

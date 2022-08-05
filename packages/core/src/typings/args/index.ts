@@ -5,6 +5,7 @@ export * from './cancelOrderArgs';
 export * from './cancelSubscriptionArgs';
 export * from './commitmentArgs';
 export * from './createSubscriptionArgs';
+export * from './getAssetArgs';
 export * from './getAccountArgs';
 export * from './getAccountBlocksArgs';
 export * from './getAccountTransactionsArgs';
