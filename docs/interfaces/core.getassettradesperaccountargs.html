@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PeerAddressList
+	<title>GetAssetTradesPerAccountArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.peeraddresslist.html">PeerAddressList</a>
+					<a href="core.getassettradesperaccountargs.html">GetAssetTradesPerAccountArgs</a>
 				</li>
 			</ul>
-			<h1>Interface PeerAddressList</h1>
+			<h1>Interface GetAssetTradesPerAccountArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Peer Address List</p>
+						<p>The argument object for <a href="core_api.assetapi.html#getassettradesperaccount">AssetApi.getAssetTradesPerAccount</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,7 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PeerAddressList</span>
+						<span class="target">GetAssetTradesPerAccountArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -110,8 +110,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.peeraddresslist.html#peers" class="tsd-kind-icon">peers</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.peeraddresslist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassettradesperaccountargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassettradesperaccountargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassettradesperaccountargs.html#includeassetinfo" class="tsd-kind-icon">include<wbr>Asset<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassettradesperaccountargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
 							</ul>
 						</section>
 					</div>
@@ -120,22 +122,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="peers" class="tsd-anchor"></a>
-					<h3>peers</h3>
-					<div class="tsd-signature tsd-kind-icon">peers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="accountid" class="tsd-anchor"></a>
+					<h3>account<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/peerAddressList.ts#L11">core/src/typings/peerAddressList.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/args/getAssetTradesPerAccountArgs.ts#L8">core/src/typings/args/getAssetTradesPerAccountArgs.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requestprocessingtime" class="tsd-anchor"></a>
-					<h3>request<wbr>Processing<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">request<wbr>Processing<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="firstindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/peerAddressList.ts#L12">core/src/typings/peerAddressList.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/args/getAssetTradesPerAccountArgs.ts#L10">core/src/typings/args/getAssetTradesPerAccountArgs.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="includeassetinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Asset<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Asset<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/args/getAssetTradesPerAccountArgs.ts#L9">core/src/typings/args/getAssetTradesPerAccountArgs.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="lastindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/276a6d8/packages/core/src/typings/args/getAssetTradesPerAccountArgs.ts#L11">core/src/typings/args/getAssetTradesPerAccountArgs.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -181,13 +203,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.peeraddresslist.html" class="tsd-kind-icon">Peer<wbr>Address<wbr>List</a>
+						<a href="core.getassettradesperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.peeraddresslist.html#peers" class="tsd-kind-icon">peers</a>
+								<a href="core.getassettradesperaccountargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.peeraddresslist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a>
+								<a href="core.getassettradesperaccountargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getassettradesperaccountargs.html#includeassetinfo" class="tsd-kind-icon">include<wbr>Asset<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getassettradesperaccountargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
 							</li>
 						</ul>
 					</li>
