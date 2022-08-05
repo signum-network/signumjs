@@ -22,6 +22,8 @@ export * from './typings/api';
 export * from './typings/args';
 export * from './typings/asset';
 export * from './typings/assetList';
+export * from './typings/assetTrade';
+export * from './typings/assetTradeList';
 export * from './typings/assetTransfer';
 export * from './typings/assetTransferList';
 export * from './typings/assetAccount';
@@ -49,8 +51,3 @@ export * from './typings/transactionId';
 export * from './typings/transactionList';
 export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
-
-// bad workaround is to comment next line when build docs
-// FIXME: This conflicts with tsdoc
-// export {Amount, ChainTime, ChainValue} from '@signumjs/util';
-

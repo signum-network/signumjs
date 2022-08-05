@@ -10,12 +10,13 @@ import {
     GetAssetTransfersPerAssetArgs,
     GetAssetTransfersPerAccountArgs,
     AddAssetTreasuryAccountArgs,
-    DistributeToAssetHoldersArgs
+    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
+import {AssetTradeList} from '../assetTradeList';
 
 /**
  * Asset API
@@ -120,6 +121,31 @@ export interface AssetApi {
      * @return The list of asset transfers
      */
     getAssetTransfersPerAccount: (args: GetAssetTransfersPerAccountArgs) => Promise<AssetTransferList>;
+
+    /**
+     * Get all asset trades by accountId and/or assetId
+     * @see also [[AssetApi.getAssetTradesPerAsset]] or [[AssetApi.getAssetTradesPerAccount]]
+     * @param args The argument object
+     * @return The list of asset trades
+     * @throws Error if not at least assetId or accountId was giveb
+     */
+    getAssetTrades: (args: GetAssetTradesArgs) => Promise<AssetTradeList>;
+
+    /**
+     * A convenience function to get all asset transfers by assetId
+     * @see also [[AssetApi.getAssetTrades]]
+     * @param args The argument object
+     * @return The list of asset trades
+     */
+    getAssetTradesPerAsset: (args: GetAssetTradesPerAssetArgs) => Promise<AssetTradeList>;
+
+    /**
+     * A convenience function to get all asset transfers by accountId
+     * @see also [[AssetApi.getAssetTrades]]
+     * @param args The argument object
+     * @return The list of asset trades
+     */
+    getAssetTradesPerAccount: (args: GetAssetTradesPerAccountArgs) => Promise<AssetTradeList>;
 
     /**
      * Adds/Marks an account as treasury account for a given asset
