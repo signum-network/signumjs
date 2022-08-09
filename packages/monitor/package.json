@@ -1,7 +1,7 @@
 {
   "name": "@signumjs/monitor",
   "description": "Monitor transactions on Signum Network blockchain",
-  "version": "1.0.0-rc.22",
+  "version": "1.0.0-rc.23",
   "keywords": [
     "signum",
     "signum-network",
