@@ -18,5 +18,5 @@ export const getAllTrades = (service: ChainService):
             ...args,
             includeAssetInfo: args.includeAssetInfo || true
         };
-        return service.query('getAllAssets', params);
+        return service.query('getAllTrades', params);
     };
