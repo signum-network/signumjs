@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CancelOrderArgs
+	<title>GetAllTradesArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.cancelorderargs.html">CancelOrderArgs</a>
+					<a href="core.getalltradesargs.html">GetAllTradesArgs</a>
 				</li>
 			</ul>
-			<h1>Interface CancelOrderArgs</h1>
+			<h1>Interface GetAllTradesArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.assetapi.html#cancelaskorder">AssetApi.cancelAskOrder</a> and <a href="core_api.assetapi.html#cancelbidorder">AssetApi.cancelBidOrder</a></p>
+						<p>The argument object for <a href="core_api.assetapi.html#getalltrades">AssetApi.getAllTrades</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,12 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="core.defaultsendargs.html" class="tsd-signature-type">DefaultSendArgs</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">CancelOrderArgs</span>
-							</li>
-						</ul>
+						<span class="target">GetAllTradesArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -115,12 +110,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.cancelorderargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.cancelorderargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.cancelorderargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.cancelorderargs.html#order" class="tsd-kind-icon">order</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.cancelorderargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.cancelorderargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getalltradesargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getalltradesargs.html#includeassetinfo" class="tsd-kind-icon">include<wbr>Asset<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getalltradesargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getalltradesargs.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
 							</ul>
 						</section>
 					</div>
@@ -128,109 +121,45 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="attachment" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attachment</h3>
-					<div class="tsd-signature tsd-kind-icon">attachment<span class="tsd-signature-symbol">:</span> <a href="../classes/core.attachment.html" class="tsd-signature-type">Attachment</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="firstindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/getAllTradesArgs.ts#L9">core/src/typings/args/getAllTradesArgs.ts:9</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>An optional attachment</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="deadline" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deadline</h3>
-					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The deadline when after how many minutes the transaction will be discarded, if it was not
-							processed, e.g. due to very low fee</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="feeplanck" class="tsd-anchor"></a>
-					<h3>fee<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The fee expressed in Planck</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>note</dt>
-							<dd><p>It&#39;s recommended to use <a href="../classes/util.amount.html">util.Amount</a></p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="order" class="tsd-anchor"></a>
-					<h3>order</h3>
-					<div class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="includeassetinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Asset<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Asset<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/cancelOrderArgs.ts#L12">core/src/typings/args/cancelOrderArgs.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/getAllTradesArgs.ts#L11">core/src/typings/args/getAllTradesArgs.ts:11</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The order (transaction id) to be cancelled</p>
-						</div>
-					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="senderprivatekey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sender<wbr>Private<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="lastindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/getAllTradesArgs.ts#L10">core/src/typings/args/getAllTradesArgs.ts:10</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The senders private key, i.e. the <a href="crypto.keys.html#signprivatekey">crypto.Keys.signPrivateKey</a>
-								If the private key is not given, then the transaction method will return the unsigned byte string.
-								The transaction won&#39;t be processed until the unsigned bytes are being signed and broadcasted using
-							<a href="core_api.transactionapi.html#signandbroadcasttransaction">TransactionApi.signAndBroadcastTransaction</a></p>
-						</div>
-					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="senderpublickey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Public<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="timestamp" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timestamp</h3>
+					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/args/getAllTradesArgs.ts#L8">core/src/typings/args/getAllTradesArgs.ts:8</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The senders public key,  i.e. the <a href="crypto.keys.html#publickey">crypto.Keys.publicKey</a></p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -274,25 +203,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.cancelorderargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Args</a>
+						<a href="core.getalltradesargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Trades<wbr>Args</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.cancelorderargs.html#attachment" class="tsd-kind-icon">attachment</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.cancelorderargs.html#deadline" class="tsd-kind-icon">deadline</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.cancelorderargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getalltradesargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.cancelorderargs.html#order" class="tsd-kind-icon">order</a>
+								<a href="core.getalltradesargs.html#includeassetinfo" class="tsd-kind-icon">include<wbr>Asset<wbr>Info</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.cancelorderargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getalltradesargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.cancelorderargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getalltradesargs.html#timestamp" class="tsd-kind-icon">timestamp</a>
 							</li>
 						</ul>
 					</li>

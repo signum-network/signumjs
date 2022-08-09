@@ -24,6 +24,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getAssetHoldersPerAsset`
   - `addAssetTreasuryAccount`
   - `distributeToTokenHolders`
+  - `getAllTrades`
   - `getAssetTrades`
   - `getAssetTradesPerAccount`
   - `getAssetTradesPerAsset`

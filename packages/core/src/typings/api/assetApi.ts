@@ -10,13 +10,14 @@ import {
     GetAssetTransfersPerAssetArgs,
     GetAssetTransfersPerAccountArgs,
     AddAssetTreasuryAccountArgs,
-    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs
+    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs, GetAssetArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
 import {AssetTradeList} from '../assetTradeList';
+import {GetAllTradesArgs} from '../args/getAllTradesArgs';
 
 /**
  * Asset API
@@ -29,12 +30,10 @@ export interface AssetApi {
 
     /**
      * Get asset information by its id
-     * @param {string} assetId The asset id
+     * @param args The arguments object
      * @return {Promise<Asset>} The asset, if exists
      */
-    getAsset: (
-        assetId: string,
-    ) => Promise<Asset>;
+    getAsset: (args: GetAssetArgs) => Promise<Asset>;
 
 
     /**
@@ -89,6 +88,14 @@ export interface AssetApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     cancelBidOrder: (args: CancelOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Search for asset trades
+     * @param args The argument object
+     * @return The list of asset trades
+     */
+    getAllTrades: (args: GetAllTradesArgs) => Promise<AssetTradeList>;
+
 
     /**
      * Get all accounts that holds the fiven asset
