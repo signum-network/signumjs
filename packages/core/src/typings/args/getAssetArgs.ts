@@ -15,5 +15,5 @@ export interface GetAssetArgs {
      * and the upfront fee calculation
      * If you set decimals to 4 and want to have 100 full assets, you need to set this value to 1000000
      */
-    minimumQuantity: string | number;
+    minimumQuantity?: string | number;
 }

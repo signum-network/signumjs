@@ -13,4 +13,10 @@ import {AssetTradeList} from '../../../typings/assetTradeList';
  */
 export const getAllTrades = (service: ChainService):
     (args: GetAllTradesArgs) => Promise<AssetTradeList> =>
-    (args: GetAllTradesArgs): Promise<AssetTradeList> => service.query('getAllAssets', args);
+    (args: GetAllTradesArgs): Promise<AssetTradeList> => {
+        const params = {
+            ...args,
+            includeAssetInfo: args.includeAssetInfo || true
+        };
+        return service.query('getAllAssets', params);
+    };
