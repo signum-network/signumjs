@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetAssetArgs
+	<title>MintAssetArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.getassetargs.html">GetAssetArgs</a>
+					<a href="core.mintassetargs.html">MintAssetArgs</a>
 				</li>
 			</ul>
-			<h1>Interface GetAssetArgs</h1>
+			<h1>Interface MintAssetArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.assetapi.html#getasset">AssetApi.getAsset</a></p>
+						<p>The argument object for <a href="core_api.assetapi.html#issueasset">AssetApi.issueAsset</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,7 +99,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetAssetArgs</span>
+						<a href="core.defaultsendargs.html" class="tsd-signature-type">DefaultSendArgs</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">MintAssetArgs</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -110,8 +115,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassetargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getassetargs.html#minimumquantity" class="tsd-kind-icon">minimum<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.mintassetargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.mintassetargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.mintassetargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.mintassetargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.mintassetargs.html#quantity" class="tsd-kind-icon">quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.mintassetargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.mintassetargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -125,30 +135,117 @@
 					<div class="tsd-signature tsd-kind-icon">asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/getAssetArgs.ts#L11">core/src/typings/args/getAssetArgs.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/mintAssetArgs.ts#L13">core/src/typings/args/mintAssetArgs.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The assets/token id</p>
+							<p>The asset/token id to be minted. Note: Asset must be mintable</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="minimumquantity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> minimum<wbr>Quantity</h3>
-					<div class="tsd-signature tsd-kind-icon">minimum<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="attachment" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attachment</h3>
+					<div class="tsd-signature tsd-kind-icon">attachment<span class="tsd-signature-symbol">:</span> <a href="../classes/core.attachment.html" class="tsd-signature-type">Attachment</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/getAssetArgs.ts#L18">core/src/typings/args/getAssetArgs.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The minimum quantity (see also ChainValue) to be considered for <code>numberOfAccounts</code> response field.
-								This argument can help you to get the number of eligible amounts for distributionTokenHolders.
-								and the upfront fee calculation
+							<p>An optional attachment</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="deadline" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deadline</h3>
+					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The deadline when after how many minutes the transaction will be discarded, if it was not
+							processed, e.g. due to very low fee</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="feeplanck" class="tsd-anchor"></a>
+					<h3>fee<wbr>Planck</h3>
+					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The fee expressed in Planck</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>note</dt>
+							<dd><p>It&#39;s recommended to use <a href="../classes/util.amount.html">util.Amount</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="quantity" class="tsd-anchor"></a>
+					<h3>quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/mintAssetArgs.ts#L18">core/src/typings/args/mintAssetArgs.ts:18</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The amount of assets to be minted (take the decimals into consideration)
 							If you set decimals to 4 and want to have 100 full assets, you need to set this value to 1000000</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="senderprivatekey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sender<wbr>Private<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The senders private key, i.e. the <a href="crypto.keys.html#signprivatekey">crypto.Keys.signPrivateKey</a>
+								If the private key is not given, then the transaction method will return the unsigned byte string.
+								The transaction won&#39;t be processed until the unsigned bytes are being signed and broadcasted using
+							<a href="core_api.transactionapi.html#signandbroadcasttransaction">TransactionApi.signAndBroadcastTransaction</a></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="senderpublickey" class="tsd-anchor"></a>
+					<h3>sender<wbr>Public<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The senders public key,  i.e. the <a href="crypto.keys.html#publickey">crypto.Keys.publicKey</a></p>
 						</div>
 					</div>
 				</section>
@@ -194,13 +291,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.getassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Args</a>
+						<a href="core.mintassetargs.html" class="tsd-kind-icon">Mint<wbr>Asset<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getassetargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a>
+								<a href="core.mintassetargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.mintassetargs.html#attachment" class="tsd-kind-icon">attachment</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.mintassetargs.html#deadline" class="tsd-kind-icon">deadline</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.mintassetargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getassetargs.html#minimumquantity" class="tsd-kind-icon">minimum<wbr>Quantity</a>
+								<a href="core.mintassetargs.html#quantity" class="tsd-kind-icon">quantity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.mintassetargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="core.mintassetargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
 							</li>
 						</ul>
 					</li>

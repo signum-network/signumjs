@@ -112,6 +112,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#addassettreasuryaccount" class="tsd-kind-icon">add<wbr>Asset<wbr>Treasury<wbr>Account</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#burnasset" class="tsd-kind-icon">burn<wbr>Asset</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#cancelaskorder" class="tsd-kind-icon">cancel<wbr>Ask<wbr>Order</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#cancelbidorder" class="tsd-kind-icon">cancel<wbr>Bid<wbr>Order</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#distributetoassetholders" class="tsd-kind-icon">distribute<wbr>ToAsset<wbr>Holders</a></li>
@@ -126,6 +127,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#getassettransfersperaccount" class="tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#getassettransfersperasset" class="tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#issueasset" class="tsd-kind-icon">issue<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#mintasset" class="tsd-kind-icon">mint<wbr>Asset</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#placeaskorder" class="tsd-kind-icon">place<wbr>Ask<wbr>Order</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#placebidorder" class="tsd-kind-icon">place<wbr>Bid<wbr>Order</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.assetapi.html#transferasset" class="tsd-kind-icon">transfer<wbr>Asset</a></li>
@@ -142,7 +144,7 @@
 					<div class="tsd-signature tsd-kind-icon">add<wbr>Asset<wbr>Treasury<wbr>Account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L166">core/src/typings/api/assetApi.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L180">core/src/typings/api/assetApi.ts:180</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,12 +186,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="burnasset" class="tsd-anchor"></a>
+					<h3>burn<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">burn<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L76">core/src/typings/api/assetApi.ts:76</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Burns assets, i.e. is de facto a transfer to recipient address &#39;0&#39;</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transferassetargs.html" class="tsd-signature-type">TransferAssetArgs</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"recipientPublicKey"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"recipientId"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transferassetargs.html" class="tsd-signature-type">TransferAssetArgs</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"recipientPublicKey"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"recipientId"</span><span class="tsd-signature-symbol">&gt;</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="cancelaskorder" class="tsd-anchor"></a>
 					<h3>cancel<wbr>Ask<wbr>Order</h3>
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L83">core/src/typings/api/assetApi.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L97">core/src/typings/api/assetApi.ts:97</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -233,7 +279,7 @@
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L90">core/src/typings/api/assetApi.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L104">core/src/typings/api/assetApi.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -277,7 +323,7 @@
 					<div class="tsd-signature tsd-kind-icon">distribute<wbr>ToAsset<wbr>Holders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L178">core/src/typings/api/assetApi.ts:178</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L192">core/src/typings/api/assetApi.ts:192</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -324,7 +370,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L45">core/src/typings/api/assetApi.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L45">core/src/typings/api/assetApi.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -374,7 +420,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Trades<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L97">core/src/typings/api/assetApi.ts:97</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L111">core/src/typings/api/assetApi.ts:111</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -418,7 +464,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L36">core/src/typings/api/assetApi.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L36">core/src/typings/api/assetApi.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -462,7 +508,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Holders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L105">core/src/typings/api/assetApi.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L119">core/src/typings/api/assetApi.ts:119</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -506,7 +552,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L139">core/src/typings/api/assetApi.ts:139</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L153">core/src/typings/api/assetApi.ts:153</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -556,7 +602,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L155">core/src/typings/api/assetApi.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L169">core/src/typings/api/assetApi.ts:169</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -603,7 +649,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L147">core/src/typings/api/assetApi.ts:147</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L161">core/src/typings/api/assetApi.ts:161</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -650,7 +696,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L114">core/src/typings/api/assetApi.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L128">core/src/typings/api/assetApi.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -700,7 +746,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L130">core/src/typings/api/assetApi.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L144">core/src/typings/api/assetApi.ts:144</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -747,7 +793,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L122">core/src/typings/api/assetApi.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L136">core/src/typings/api/assetApi.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -794,7 +840,7 @@
 					<div class="tsd-signature tsd-kind-icon">issue<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L55">core/src/typings/api/assetApi.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L55">core/src/typings/api/assetApi.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -833,12 +879,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="mintasset" class="tsd-anchor"></a>
+					<h3>mint<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">mint<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L62">core/src/typings/api/assetApi.ts:62</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Mints assets</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.mintassetargs.html" class="tsd-signature-type">MintAssetArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.mintassetargs.html" class="tsd-signature-type">MintAssetArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="placeaskorder" class="tsd-anchor"></a>
 					<h3>place<wbr>Ask<wbr>Order</h3>
 					<div class="tsd-signature tsd-kind-icon">place<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L69">core/src/typings/api/assetApi.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L83">core/src/typings/api/assetApi.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -882,7 +972,7 @@
 					<div class="tsd-signature tsd-kind-icon">place<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L76">core/src/typings/api/assetApi.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L90">core/src/typings/api/assetApi.ts:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -926,7 +1016,7 @@
 					<div class="tsd-signature tsd-kind-icon">transfer<wbr>Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/57b0aca/packages/core/src/typings/api/assetApi.ts#L62">core/src/typings/api/assetApi.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eedb7aa/packages/core/src/typings/api/assetApi.ts#L69">core/src/typings/api/assetApi.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1027,6 +1117,9 @@
 								<a href="core_api.assetapi.html#addassettreasuryaccount" class="tsd-kind-icon">add<wbr>Asset<wbr>Treasury<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.assetapi.html#burnasset" class="tsd-kind-icon">burn<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.assetapi.html#cancelaskorder" class="tsd-kind-icon">cancel<wbr>Ask<wbr>Order</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -1067,6 +1160,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.assetapi.html#issueasset" class="tsd-kind-icon">issue<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.assetapi.html#mintasset" class="tsd-kind-icon">mint<wbr>Asset</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.assetapi.html#placeaskorder" class="tsd-kind-icon">place<wbr>Ask<wbr>Order</a>
