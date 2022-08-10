@@ -28,6 +28,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getAssetTrades`
   - `getAssetTradesPerAccount`
   - `getAssetTradesPerAsset`
+  - `getAliasesOnSale`
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 
 - Minor bug fixes

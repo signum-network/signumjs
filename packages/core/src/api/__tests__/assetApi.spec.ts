@@ -10,7 +10,10 @@ import {
     getAssetTransfers,
     placeAskOrder,
     placeBidOrder,
-    transferAsset
+    transferAsset,
+    burnAsset,
+    issueAsset,
+    mintAsset,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -47,7 +50,10 @@ describe('Asset Api', () => {
                 numberOfAccounts: 100,
             }).build();
             const service = createChainService(httpMock, 'relPath');
-            const asset = await getAsset(service)('assetId');
+            const asset = await getAsset(service)({
+                assetId: 'assetId',
+                minimumQuantity: '100'
+            });
             expect(asset).toEqual({
                 account: 'accountId',
                 accountRS: 'BURST-ADDRESS',
@@ -181,6 +187,74 @@ describe('Asset Api', () => {
                 feePlanck: FeeQuantPlanck + '',
                 quantity: 100,
                 recipientId: 'recipientId',
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
+    });
+
+    describe('burnAsset', () => {
+        it('should burnAsset', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=0&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await burnAsset(service)({
+                asset: '123',
+                feePlanck: FeeQuantPlanck + '',
+                quantity: 100,
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
+    });
+
+    describe('issueAsset', () => {
+        it('should issueAsset', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=issueAsset&name=assetName&description=description&quantityQNT=100&decimals=2&publicKey=senderPublicKey&feeNQT=1000000&mintable=true&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await issueAsset(service)({
+                mintable: true,
+                name: 'assetName',
+                decimals: 2,
+                description: 'description',
+                feePlanck: FeeQuantPlanck + '',
+                quantity: 100,
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
+    });
+    describe('mintAsset', () => {
+        it('should mintAsset', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=mintAsset&asset=assetId&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await mintAsset(service)({
+                assetId: 'assetId',
+                feePlanck: FeeQuantPlanck + '',
+                quantity: 100,
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
             }) as TransactionId;

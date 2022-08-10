@@ -81,10 +81,12 @@ import {
     getAssetTransfersPerAsset,
     addAssetTreasuryAccount,
     distributeToAssetHolders,
-    getAllTrades
+    getAllTrades, mintAsset
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
+import {getAliasesOnSale} from './factories/alias/getAliasesOnSale';
+import {burnAsset} from './factories/asset/burnAsset';
 /**
  * Settings for API used in [[composeApi]]
  *
@@ -189,7 +191,8 @@ export function composeApi(settings: ApiSettings): Api {
         }).withAliasApi({
             getAliasByName,
             getAliasById,
-            setAlias
+            setAlias,
+            getAliasesOnSale,
         }).withContractApi({
             getContract,
             getContractsByAccount,
@@ -201,6 +204,8 @@ export function composeApi(settings: ApiSettings): Api {
             getAsset,
             getAllAssets,
             issueAsset,
+            mintAsset,
+            burnAsset,
             transferAsset,
             placeAskOrder,
             placeBidOrder,

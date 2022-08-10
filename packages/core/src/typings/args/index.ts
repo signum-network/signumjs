@@ -17,6 +17,7 @@ export * from './getAssetTradesArgs';
 export * from './getAssetTradesPerAccountArgs';
 export * from './getAssetTradesPerAssetArgs';
 export * from './issueAssetArgs';
+export * from './mintAssetArgs';
 export * from './placeOrderArgs';
 export * from './publishContractArgs';
 export * from './publishContractByReferenceArgs';

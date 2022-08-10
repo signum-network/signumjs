@@ -10,7 +10,7 @@ import {
     GetAssetTransfersPerAssetArgs,
     GetAssetTransfersPerAccountArgs,
     AddAssetTreasuryAccountArgs,
-    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs, GetAssetArgs
+    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs, GetAssetArgs, MintAssetArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -55,11 +55,25 @@ export interface AssetApi {
     issueAsset: (args: IssueAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
+     * Mints assets
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    mintAsset: (args: MintAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
      * Transfer assets
      * @param args The argument object
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Burns assets, i.e. is de facto a transfer to recipient address '0'
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    burnAsset: (args: Omit<TransferAssetArgs, 'recipientPublicKey'| 'recipientId'>) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Place Ask Order

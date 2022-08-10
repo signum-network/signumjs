@@ -2,6 +2,7 @@ import {TransactionId} from '../transactionId';
 import {Alias} from '../alias';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {SetAliasArgs} from '../args/setAliasArgs';
+import {AliasList} from '../aliasList';
 
 /**
  * Alias API
@@ -38,5 +39,14 @@ export interface AliasApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     setAlias: (args: SetAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+
+    /**
+     * Get all aliases, which are on sale.
+     * @param {number} firstIndex The first index; use for pagination
+     * @param {number} lastIndex The last index to be returned;  use for pagination
+     * @return {Promise<Alias>} The Alias List (at maximum 500 per page)
+     */
+    getAliasesOnSale: (firstIndex?: number, lastIndex?: number) => Promise<AliasList>;
 
 }
