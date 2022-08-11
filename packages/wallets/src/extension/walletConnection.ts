@@ -27,10 +27,10 @@ export class WalletConnection {
      * @param adapter the extension adapter with its internal implementation
      */
     constructor(
-        public readonly accountId: string,
-        public readonly publicKey: string,
-        public readonly availableNodeHosts: string[],
-        public readonly currentNodeHost: string,
+        public accountId: string,
+        public publicKey: string,
+        public availableNodeHosts: string[],
+        public currentNodeHost: string,
         private adapter: ExtensionAdapter,
     ) {
     }
@@ -44,28 +44,41 @@ export class WalletConnection {
      * @return The listener instance, needed to unlisten
      */
     listen(notificationHandler: ExtensionNotificationHandler): ExtensionListener {
-        this.notificationListener = this.adapter.onNotification( (msg: ExtensionNotification) => {
-            const  {onPermissionRemoved, onNetworkChanged, onAccountRemoved, onAccountChanged } = notificationHandler;
+        this.notificationListener = this.adapter.onNotification((msg: ExtensionNotification) => {
+            const {onPermissionRemoved, onNetworkChanged, onAccountRemoved, onAccountChanged} = notificationHandler;
             const call = (fn, args = undefined) => fn && fn(args);
             switch (msg.type) {
                 case ExtensionNotificationType.NetworkChanged:
-                    call(onNetworkChanged, {
-                        networkName: msg.networkName,
-                        networkHost: msg.networkHost
-                    });
+                    if (this.currentNodeHost !== msg.networkHost) {
+                        this.currentNodeHost = msg.networkHost;
+                        call(onNetworkChanged, {
+                            networkName: msg.networkName,
+                            networkHost: msg.networkHost,
+                        });
+                    }
                     break;
                 case ExtensionNotificationType.AccountChanged: {
-                    call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey});
+                    if (this.accountId !== msg.accountId) {
+                        this.accountId = msg.accountId;
+                        this.publicKey = msg.accountPublicKey;
+                        call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey});
+                    }
                     break;
                 }
                 case ExtensionNotificationType.PermissionRemoved: {
                     if (window.location.origin === msg.url) {
+                        this.accountId = '';
+                        this.publicKey = '';
+                        this.availableNodeHosts = [];
+                        this.currentNodeHost = '';
                         call(onPermissionRemoved, {url: msg.url});
                     }
                     break;
                 }
                 case ExtensionNotificationType.AccountRemoved: {
                     if (this.accountId === msg.accountId) {
+                        this.accountId = '';
+                        this.publicKey = '';
                         call(onAccountRemoved, {accountId: msg.accountId});
                     }
                     break;
