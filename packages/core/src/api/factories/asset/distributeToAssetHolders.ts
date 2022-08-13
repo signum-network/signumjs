@@ -31,7 +31,8 @@ export const distributeToAssetHolders = (service: ChainService) =>
                 assetToDistribute: a.additionalAssetId || undefined,
                 quantityQNT: a.additionalAssetQuantity || undefined,
                 feeNQT: a.feePlanck,
-                deadline: a.deadline || DefaultDeadline
+                deadline: a.deadline || DefaultDeadline,
+                publicKey: a.senderPublicKey,
             };
 
             if (a.attachment) {

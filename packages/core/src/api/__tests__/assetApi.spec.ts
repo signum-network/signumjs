@@ -435,7 +435,7 @@ describe('Asset Api', () => {
                     .onPostReply(200, {
                             unsignedTransactionBytes: 'unsignedHexMessage'
                         },
-                        'relPath?requestType=distributeToAssetHolders&asset=assetId&quantityMinimumQNT=1000&amountNQT=totalAmount&assetToDistribute=otherAssetId&quantityQNT=qnty&feeNQT=1000000&deadline=1440'
+                        'relPath?requestType=distributeToAssetHolders&asset=assetId&quantityMinimumQNT=1000&amountNQT=totalAmount&assetToDistribute=otherAssetId&quantityQNT=qnty&feeNQT=1000000&deadline=1440&publicKey=senderPublicKey'
                     ).build();
 
                 const service = createChainService(httpMock, 'relPath');
