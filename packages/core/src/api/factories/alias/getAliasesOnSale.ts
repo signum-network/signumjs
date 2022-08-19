@@ -13,4 +13,4 @@ import {AliasList} from '../../../typings/aliasList';
 export const getAliasesOnSale = (service: ChainService):
     (firstIndex?: number, lastIndex?: number) => Promise<AliasList> =>
     (firstIndex?: number, lastIndex?: number): Promise<AliasList> =>
-        service.query('getAlias', {firstIndex, lastIndex});
+        service.query('getAliasesOnSale', {firstIndex, lastIndex});

@@ -44,7 +44,7 @@ import {
     setRewardRecipient,
     getRewardRecipient, addCommitment, removeCommitment,
 } from './factories/account';
-import {getAliasById, getAliasByName} from './factories/alias';
+import {getAliasById, getAliasByName, getAliasesOnSale} from './factories/alias';
 import {
     callContractMethod,
     getAllContractIds,
@@ -81,11 +81,10 @@ import {
     getAssetTransfersPerAsset,
     addAssetTreasuryAccount,
     distributeToAssetHolders,
-    getAllTrades, mintAsset
+    getAllTrades, mintAsset, getAssetTrades, getAssetTradesPerAccount, getAssetTradesPerAsset
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
-import {getAliasesOnSale} from './factories/alias/getAliasesOnSale';
 import {burnAsset} from './factories/asset/burnAsset';
 /**
  * Settings for API used in [[composeApi]]
@@ -202,6 +201,10 @@ export function composeApi(settings: ApiSettings): Api {
             callContractMethod,
         }).withAssetApi({
             getAsset,
+            getAllTrades,
+            getAssetTrades,
+            getAssetTradesPerAccount,
+            getAssetTradesPerAsset,
             getAllAssets,
             issueAsset,
             mintAsset,
@@ -211,7 +214,6 @@ export function composeApi(settings: ApiSettings): Api {
             placeBidOrder,
             cancelAskOrder,
             cancelBidOrder,
-            getAllTrades,
             getAssetHolders,
             getAssetTransfers,
             getAssetTransfersPerAccount,
