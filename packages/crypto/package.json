@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/crypto",
-  "version": "1.0.0-rc.28",
+  "version": "1.0.0-rc.29",
   "description": "Cryptographic functions for building Signum Network apps.",
   "keywords": [
     "signum",
