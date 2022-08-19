@@ -16,11 +16,6 @@ export const getAssetTrades = (service: ChainService):
     (args: GetAssetTradesArgs) => Promise<AssetTransferList> =>
     (args: GetAssetTradesArgs): Promise<AssetTransferList> => {
 
-
-        if (!args.assetId || !args.accountId) {
-            throw new Error('Need at least argument "assetId" or "accountId"');
-        }
-
         const {assetId, accountId, includeAssetInfo = false, firstIndex, lastIndex} = args;
 
         const params = {

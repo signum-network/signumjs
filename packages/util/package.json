@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/bignumber.js": "^5.0.0",
     "@types/jest": "^24.0.23",
-    "bili": "^4.8.1",
+    "bili": "^4.10.1",
     "rollup-plugin-typescript2": "^0.24.2"
   },
   "scripts": {

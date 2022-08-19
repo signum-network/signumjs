@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.12",
-    "bili": "^4.8.1",
+    "bili": "^4.10.1",
     "dotenv": "^8.2.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
