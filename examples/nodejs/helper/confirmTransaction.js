@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 
 /**
- * This method asksd for the users passphrase as confirmation for the transaction
+ * This method asks for the users passphrase as confirmation for the transaction
  */
 module.exports = async function confirmTransaction(params) {
 

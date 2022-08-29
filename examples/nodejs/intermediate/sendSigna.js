@@ -2,13 +2,7 @@ const {Address, AddressPrefix} = require("@signumjs/core");
 const {Amount, CurrencySymbol} = require("@signumjs/util");
 const inquirer = require("inquirer");
 const {generateMasterKeys} = require("@signumjs/crypto");
-const {provideLedger, handleError, confirmTransaction} = require('../helper');
-
-// these are our possible networks
-const LedgerHostUrls = {
-    'TestNet': 'http://localhost:6876',
-    'MainNet': 'https://europe.signum.network',
-}
+const {provideLedger, handleError, confirmTransaction, LedgerHostUrls} = require('../helper');
 
 /**
  * Just a helper function to ask for the send parameters
