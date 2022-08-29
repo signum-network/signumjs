@@ -11,7 +11,7 @@ async function getBalance(account) {
         // We just create an address instance of incoming account string, which
         // might be the numeric id or an address like 'S-ABCD....'
         // It throws an error, if the input is not a valid address or account id
-        const address = Address.create(account)
+        const address = Address.create({accountId: account})
 
         // Now, we call the getAccountBalance method,
         const {balanceNQT} = await api.account.getAccountBalance(address.getNumericId());
