@@ -20,6 +20,7 @@ export const addAssetTreasuryAccount = (service: ChainService) =>
     (args: AddAssetTreasuryAccountArgs) => signIfPrivateKey(service, args, async (a: AddAssetTreasuryAccountArgs) => {
             let parameters = {
                 recipient: a.accountId,
+                publicKey: a.senderPublicKey,
                 recipientPublicKey: a.recipientPublicKey || undefined,
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
                 feeNQT: a.feePlanck,

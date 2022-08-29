@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/signum-network/signumjs#readme",
   "dependencies": {
-    "@signumjs/contracts": "^1.0.0-rc.8",
-    "@signumjs/core": "^1.0.0-rc.8",
-    "@signumjs/crypto": "^1.0.0-rc.8",
-    "@signumjs/http": "^1.0.0-rc.8",
-    "@signumjs/monitor": "^1.0.0-rc.8",
-    "@signumjs/util": "^1.0.0-rc.8",
+    "@signumjs/contracts": "^1.0.0-rc.30",
+    "@signumjs/core": "^1.0.0-rc.30",
+    "@signumjs/crypto": "^1.0.0-rc.30",
+    "@signumjs/http": "^1.0.0-rc.30",
+    "@signumjs/monitor": "^1.0.0-rc.30",
+    "@signumjs/util": "^1.0.0-rc.30",
     "inquirer": "^8.2.0"
   }
 }

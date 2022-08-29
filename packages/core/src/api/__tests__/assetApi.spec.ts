@@ -413,7 +413,7 @@ describe('Asset Api', () => {
                     .onPostReply(200, {
                             unsignedTransactionBytes: 'unsignedHexMessage'
                         },
-                        'relPath?requestType=addAssetTreasuryAccount&recipient=accountId&referencedTransactionFullHash=hash&feeNQT=1000000&deadline=1440'
+                        'relPath?requestType=addAssetTreasuryAccount&recipient=accountId&publicKey=senderPublicKey&referencedTransactionFullHash=hash&feeNQT=1000000&deadline=1440'
                     ).build();
 
                 const service = createChainService(httpMock, 'relPath');

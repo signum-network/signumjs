@@ -18,7 +18,7 @@ function mountDeeplink() {
             recipient: "S-465G-WL4X-SUEK-98F2J",
             amountPlanck: Amount.fromSigna(5.103635).getPlanck(),
             feePlanck: Amount.fromSigna('0.0735').getPlanck(),
-            message: '59b13cb7d10d5ead3b45b8e9039ebed100000000000000000000000000000000'
+            message: '59b13cb7d10d5ead3b45b8e9039ebed100000000000000000000000000000000',
             messageIsText: false,
             immutable: false,
             deadline: 1440,
