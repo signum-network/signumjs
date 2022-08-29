@@ -5,6 +5,7 @@ const {composeApi} = require("@signumjs/core");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 // this is how you configure your api
+// Alternatively, you can use LedgerClientFactory.create({...})
 const api = composeApi({
     nodeHost: "https://europe.signum.network"
 });
