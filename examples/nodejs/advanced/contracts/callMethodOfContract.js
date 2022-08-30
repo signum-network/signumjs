@@ -66,12 +66,6 @@ function askForCallingParameters() {
             },
             {
                 type: 'input',
-                name: 'arg4',
-                message: 'Please enter 4th argument (enter to skip)',
-                default: null
-            },
-            {
-                type: 'input',
                 name: 'amount',
                 message: 'Please enter the amount in Signa to send',
                 default: 1
@@ -87,7 +81,7 @@ function askForCallingParameters() {
 async function callMethodOfContract(params) {
     try {
 
-        const {ledger: ledgerChoice, contract, amount, method, arg1, arg2, arg3, arg4} = params;
+        const {ledger: ledgerChoice, contract, amount, method, arg1, arg2, arg3} = params;
 
         // here we instantiate the ledger api
         const ledger = provideLedger(LedgerHostUrls[ledgerChoice])
@@ -99,30 +93,6 @@ async function callMethodOfContract(params) {
         // asking for the passphrase
         const {passphrase} = await confirmTransaction(params);
 
-        // as the args are strings we convert them to supported
-        // data types, i.e. number (long), boolean or string
-        // Attention: contracts arguments must be numeric in any case,
-        // passing a text string will cause issues
-        const getMethodArg = (arg) => {
-            const loarg = arg.toLowerCase()
-            if (loarg === 'true' || loarg === 'false') {
-                return loarg === 'true'
-            } else if (!Number.isNaN(+loarg)) {
-                return +loarg
-            } else {
-                return arg
-            }
-        }
-
-        let methodArgs = [];
-        // at maximum four long args can be passed to the contracts method
-        [arg1, arg2, arg3, arg4].forEach(a => {
-            if (a) {
-                methodArgs.push(getMethodArg(a))
-            }
-        })
-
-        // standard pattern: derive the keys from the passphrase
         const senderKeys = generateMasterKeys(passphrase);
         const args = {
             contractId,
@@ -131,7 +101,7 @@ async function callMethodOfContract(params) {
             senderPrivateKey: senderKeys.signPrivateKey,
             feePlanck: "" + FeeQuantPlanck,
             methodHash: ContractMethods[method],
-            methodArgs,
+            methodArgs: [arg1, arg2, arg3]
         }
 
         // finally, we call the contracts method
