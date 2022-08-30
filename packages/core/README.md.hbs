@@ -23,17 +23,18 @@ yarn add @signumjs/core
 #### Example
 
 ```js
-import {composeApi, ApiSettings} from '@signumjs/core'
+import {LedgerClientFactory} from '@signumjs/core'
 import {Amount} from '@signumjs/util'
 
-const apiSettings = new ApiSettings('https://testnet.signum.network:6876');
-const api = composeApi(apiSettings);
+const ledger = LedgerClientFactory.create({
+    nodeHost: 'https://europe3.testnet.signum.network'
+});
 
 // this self-executing file makes turns this file into a starting point of your app
 
 (async () => {
     try{
-        const {balanceNQT} = await api.account.getAccountBalance('13036514135565182944')
+        const {balanceNQT} = await ledger.account.getAccountBalance('13036514135565182944')
         console.log(`Account Balance: ${Amount.fromPlanck(balanceNQT).toString()}`)
     }
         catch(e){ // e is of type HttpError (as part of @signumjs/http)
@@ -83,8 +84,8 @@ Just import the package using the HTML `<script>` tag.
 
 ```js
 (function(){
-    const api = sig$.composeApi({nodeHost: "https://testnet.burstcoin.network:6876"});
-    api.network.getBlockchainStatus().then(console.log).catch(console.error);
+    const ledger = sig$.LedgerClientFactory.create({nodeHost: "https://testnet.burstcoin.network:6876"});
+    ledger.network.getBlockchainStatus().then(console.log).catch(console.error);
 })()
 ```
 

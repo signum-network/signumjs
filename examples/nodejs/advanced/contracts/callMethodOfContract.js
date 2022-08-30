@@ -38,7 +38,7 @@ function askForCallingParameters() {
             {
                 type: 'input',
                 name: 'contract',
-                message: 'Please enter the contracts Id or Address?'
+                message: 'Please enter the Nfts Id or Address?'
             },
             {
                 type: 'list',
