@@ -45,7 +45,8 @@ describe(`[E2E] Asset Api`, () => {
             quantity: 50 * 1000,
             decimals: 4,
             name: 'SignumJS',
-            description: '[E2E] SignumJS Test Asset'
+            description: '[E2E] SignumJS Test Asset',
+            mintable: false
         });
         expect(response.transaction).toBeDefined();
     });

@@ -97,7 +97,8 @@ describe('Asset Api', () => {
                 quantity: 100,
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
-                senderPublicKey: 'senderPublicKey'
+                senderPublicKey: 'senderPublicKey',
+                decimals: 0
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
@@ -111,7 +112,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
+                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=10000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -121,7 +122,8 @@ describe('Asset Api', () => {
                 quantity: 100,
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
-                senderPublicKey: 'senderPublicKey'
+                senderPublicKey: 'senderPublicKey',
+                decimals: 2,
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
