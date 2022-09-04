@@ -57,7 +57,7 @@ describe(`[E2E] Asset Api`, () => {
             pricePlanck: Amount.fromSigna(1).getPlanck(),
             feePlanck: FeeQuantPlanck + '',
             quantity: 1,
-            asset: '8485879651352780597',
+            assetId: '8485879651352780597',
         });
 
         expect(response.transaction).toBeDefined();

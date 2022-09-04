@@ -10,7 +10,7 @@ export interface PlaceOrderArgs extends DefaultSendArgs {
     /**
      * The assets id
      */
-    asset: string;
+    assetId: string;
     /**
      * The price that is offered for bid/ask
      */

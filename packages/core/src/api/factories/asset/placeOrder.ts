@@ -24,7 +24,7 @@ export const placeOrder = (service: ChainService) =>
         signIfPrivateKey(service, args, async (a: GenericPlaceOrderArgs) => {
 
             let parameters = {
-                asset: a.asset,
+                asset: a.assetId,
                 priceNQT: a.pricePlanck,
                 quantityQNT: a.quantity,
                 publicKey: a.senderPublicKey,
