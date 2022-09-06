@@ -6,7 +6,6 @@
  */
 export interface GetAssetTransfersPerAccountArgs {
     accountId: string;
-    includeAssetInfo?: boolean;
     firstIndex?: number;
     lastIndex?: number;
 }

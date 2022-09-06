@@ -371,7 +371,6 @@ describe('Asset Api', () => {
                 const asset = await getAssetTransfers(service)({
                     assetId: 'assetId',
                     accountId: 'accountId',
-                    includeAssetInfo: true,
                     firstIndex: 0,
                     lastIndex: 10,
                 });

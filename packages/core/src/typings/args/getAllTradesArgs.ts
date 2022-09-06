@@ -12,8 +12,4 @@ export interface GetAllTradesArgs {
     timestamp?: number;
     firstIndex?: number;
     lastIndex?: number;
-    /**
-     * Includes additional asset info. Default is `true`
-     */
-    includeAssetInfo?: boolean;
 }
