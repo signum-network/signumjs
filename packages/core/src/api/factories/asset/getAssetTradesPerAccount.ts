@@ -2,7 +2,6 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {AssetTransferList} from '../../../typings/assetTransferList';
 import {GetAssetTradesPerAccountArgs} from '../../../typings/args';
 import {getAssetTrades} from './getAssetTrades';
 import {AssetTradeList} from '../../../typings/assetTradeList';

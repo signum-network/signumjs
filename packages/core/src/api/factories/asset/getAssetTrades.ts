@@ -2,8 +2,6 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {AssetTransferList} from '../../../typings/assetTransferList';
-import {GetAssetTransfersArgs} from '../../../typings/args';
 import {GetAssetTradesArgs} from '../../../typings/args/getAssetTradesArgs';
 import {AssetTradeList} from '../../../typings/assetTradeList';
 import {convertAssetPriceToPlanck} from '../../../internal/convertAssetPricing';
