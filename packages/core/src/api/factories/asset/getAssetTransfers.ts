@@ -20,13 +20,13 @@ export const getAssetTransfers = (service: ChainService):
             throw new Error('Need at least argument "assetId" or "accountId"');
         }
 
-        const {assetId, accountId, includeAssetInfo = false, firstIndex, lastIndex} = args;
+        const {assetId, accountId, firstIndex, lastIndex} = args;
 
 
         const params = {
             asset: assetId,
             account: accountId,
-            includeAssetInfo,
+            includeAssetInfo: true,
             firstIndex,
             lastIndex
         };

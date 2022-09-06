@@ -4,6 +4,7 @@
 import {ChainService} from '../../../service';
 import {GetAllTradesArgs} from '../../../typings/args/getAllTradesArgs';
 import {AssetTradeList} from '../../../typings/assetTradeList';
+import {convertAssetPriceToPlanck} from '../../../internal/convertAssetPricing';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
@@ -13,10 +14,15 @@ import {AssetTradeList} from '../../../typings/assetTradeList';
  */
 export const getAllTrades = (service: ChainService):
     (args: GetAllTradesArgs) => Promise<AssetTradeList> =>
-    (args: GetAllTradesArgs): Promise<AssetTradeList> => {
+    async (args: GetAllTradesArgs): Promise<AssetTradeList> => {
         const params = {
             ...args,
-            includeAssetInfo: args.includeAssetInfo || true
+            includeAssetInfo: true
         };
-        return service.query('getAllTrades', params);
+        const result = await service.query<AssetTradeList>('getAllTrades', params);
+        const convertedTrades = result.trades.map(t => ({...t, priceNQT: convertAssetPriceToPlanck(t.priceNQT, t.decimals)}));
+        return {
+            ...result,
+            trades: convertedTrades
+        };
     };

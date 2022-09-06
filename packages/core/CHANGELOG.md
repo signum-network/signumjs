@@ -10,7 +10,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
 - Several Renamed Functions and classes
 - Improved consistency of functions
 - Improved documentation
-- Added support for external signing
+- Added support for external signing, i.e. using no public key return unsigned tx bytes
   - Attention: `sendEncryptedMessage` changed its interface
 - Multiouts with duplicate id checks now, i.e. automatic dedupe for same multiout
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
@@ -33,6 +33,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `burnAsset`
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 
+- Account class converted to interface and follows now the Nodes response
 - Minor bug fixes
 
 ----------------------------------------------------

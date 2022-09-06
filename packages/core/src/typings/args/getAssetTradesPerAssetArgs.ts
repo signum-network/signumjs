@@ -6,7 +6,6 @@
  */
 export interface GetAssetTradesPerAssetArgs {
     assetId: string;
-    includeAssetInfo?: boolean;
     firstIndex?: number;
     lastIndex?: number;
 }

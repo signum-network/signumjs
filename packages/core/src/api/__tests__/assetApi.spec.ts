@@ -93,11 +93,12 @@ describe('Asset Api', () => {
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await placeAskOrder(service)({
                 feePlanck: FeeQuantPlanck + '',
-                asset: '123',
+                assetId: '123',
                 quantity: 100,
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
-                senderPublicKey: 'senderPublicKey'
+                senderPublicKey: 'senderPublicKey',
+                decimals: 0
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
@@ -111,17 +112,18 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
+                    'relPath?requestType=placeBidOrder&asset=123&priceNQT=10000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
                 .build();
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await placeBidOrder(service)({
                 feePlanck: FeeQuantPlanck + '',
-                asset: '123',
+                assetId: '123',
                 quantity: 100,
                 pricePlanck: Amount.fromSigna(10).getPlanck(),
                 senderPrivateKey: 'senderPrivateKey',
-                senderPublicKey: 'senderPublicKey'
+                senderPublicKey: 'senderPublicKey',
+                decimals: 2,
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
@@ -183,7 +185,7 @@ describe('Asset Api', () => {
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await transferAsset(service)({
-                asset: '123',
+                assetId: '123',
                 feePlanck: FeeQuantPlanck + '',
                 quantity: 100,
                 recipientId: 'recipientId',
@@ -206,7 +208,7 @@ describe('Asset Api', () => {
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await burnAsset(service)({
-                asset: '123',
+                assetId: '123',
                 feePlanck: FeeQuantPlanck + '',
                 quantity: 100,
                 senderPrivateKey: 'senderPrivateKey',
@@ -369,7 +371,6 @@ describe('Asset Api', () => {
                 const asset = await getAssetTransfers(service)({
                     assetId: 'assetId',
                     accountId: 'accountId',
-                    includeAssetInfo: true,
                     firstIndex: 0,
                     lastIndex: 10,
                 });

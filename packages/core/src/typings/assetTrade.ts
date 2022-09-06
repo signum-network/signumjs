@@ -21,6 +21,6 @@ export interface AssetTrade {
     quantityQNT: string;
     height: number;
     timestamp: number;
-    name?: string;
-    decimals?: number;
+    name: string;
+    decimals: number;
 }

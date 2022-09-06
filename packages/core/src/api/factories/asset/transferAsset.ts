@@ -20,7 +20,7 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 export const transferAsset = (service: ChainService) =>
     (args: TransferAssetArgs) => signIfPrivateKey(service, args, async (a: TransferAssetArgs) => {
             let parameters = {
-                asset: a.asset,
+                asset: a.assetId,
                 quantityQNT: a.quantity,
                 publicKey: a.senderPublicKey,
                 recipient: a.recipientId,

@@ -16,7 +16,6 @@ export const getAssetTransfersPerAccount = (service: ChainService):
     (args: GetAssetTransfersPerAccountArgs) => Promise<AssetTransferList> =>
     (args: GetAssetTransfersPerAccountArgs): Promise<AssetTransferList> => getAssetTransfers(service)({
         accountId: args.accountId,
-        includeAssetInfo: args.includeAssetInfo,
         firstIndex: args.firstIndex,
         lastIndex: args.lastIndex
     });
