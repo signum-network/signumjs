@@ -18,9 +18,9 @@ export const getAccount = (service: ChainService):
 
         const params = {
             account: args.accountId,
-            height : args.commitmentAtHeight, // || undefined,
-            getCommittedAmount : args.includeCommittedAmount, // || undefined,
-            estimateCommitment : args.includeEstimatedCommitment, // || undefined
+            height : args.commitmentAtHeight,
+            getCommittedAmount : args.includeCommittedAmount,
+            estimateCommitment : args.includeEstimatedCommitment
         };
 
         return service.query('getAccount', params);
