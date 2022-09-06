@@ -1,3 +1,6 @@
+/** @ignore */
+/** @internal */
+
 import {Amount} from '@signumjs/util';
 
 export function convertAssetPriceToPlanck(assetPrice: string, decimals: number): string {

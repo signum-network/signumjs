@@ -115,9 +115,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.placeorderargs.html#asset" class="tsd-kind-icon">asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.placeorderargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.placeorderargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.placeorderargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.placeorderargs.html#decimals" class="tsd-kind-icon">decimals</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.placeorderargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.placeorderargs.html#priceplanck" class="tsd-kind-icon">price<wbr>Planck</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.placeorderargs.html#quantity" class="tsd-kind-icon">quantity</a></li>
@@ -131,12 +132,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="asset" class="tsd-anchor"></a>
-					<h3>asset</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="assetid" class="tsd-anchor"></a>
+					<h3>asset<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/placeOrderArgs.ts#L13">core/src/typings/args/placeOrderArgs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/placeOrderArgs.ts#L13">core/src/typings/args/placeOrderArgs.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,7 +153,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#attachment">attachment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/defaultSendArgs.ts#L28">core/src/typings/args/defaultSendArgs.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,13 +169,29 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#deadline">deadline</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/defaultSendArgs.ts#L33">core/src/typings/args/defaultSendArgs.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The deadline when after how many minutes the transaction will be discarded, if it was not
 							processed, e.g. due to very low fee</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="decimals" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decimals</h3>
+					<div class="tsd-signature tsd-kind-icon">decimals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/placeOrderArgs.ts#L27">core/src/typings/args/placeOrderArgs.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The decimals of the targeted token, as it&#39;s required to calculate the correct price for the order.
+							If it is not passed, the decimals will be fetched from the chain (which includes an additional request)</p>
 						</div>
 					</div>
 				</section>
@@ -185,7 +202,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#feeplanck">feePlanck</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/defaultSendArgs.ts#L13">core/src/typings/args/defaultSendArgs.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -205,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">price<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/placeOrderArgs.ts#L17">core/src/typings/args/placeOrderArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/placeOrderArgs.ts#L17">core/src/typings/args/placeOrderArgs.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -220,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/placeOrderArgs.ts#L21">core/src/typings/args/placeOrderArgs.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/placeOrderArgs.ts#L21">core/src/typings/args/placeOrderArgs.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +253,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderprivatekey">senderPrivateKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/defaultSendArgs.ts#L24">core/src/typings/args/defaultSendArgs.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -255,7 +272,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="core.defaultsendargs.html">DefaultSendArgs</a>.<a href="core.defaultsendargs.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/args/defaultSendArgs.ts#L17">core/src/typings/args/defaultSendArgs.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -309,13 +326,16 @@
 						<a href="core.placeorderargs.html" class="tsd-kind-icon">Place<wbr>Order<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.placeorderargs.html#asset" class="tsd-kind-icon">asset</a>
+								<a href="core.placeorderargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.placeorderargs.html#attachment" class="tsd-kind-icon">attachment</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.placeorderargs.html#deadline" class="tsd-kind-icon">deadline</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.placeorderargs.html#decimals" class="tsd-kind-icon">decimals</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="core.placeorderargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>

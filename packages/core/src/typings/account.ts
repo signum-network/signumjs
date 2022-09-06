@@ -45,12 +45,11 @@ export interface Account {
      */
     commitmentNQT: string;
     /**
-     * The public key. If an account does not have a public key it is considered inactive and though less secure. Public Key is being assigned by
-     * outgoing transactions or if receiving an transaction with assigned (and mathgcing) public key
+     * The public key. If an account does not have a public key it is considered inactive and though less secure.
+     * Public Key is being assigned by outgoing transactions or if receiving an transaction with assigned (and mathgcing) public key
      */
     publicKey: string;
     name: string;
-    transactions: Transaction[];
     unconfirmedAssetBalances: UnconfirmedAssetBalance[];
     /**
      * The currently available balance in Planck, without commitment and open orders

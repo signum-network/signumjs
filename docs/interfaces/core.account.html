@@ -81,7 +81,7 @@
 					<a href="core.account.html">Account</a>
 				</li>
 			</ul>
-			<h1>Class Account</h1>
+			<h1>Interface Account</h1>
 		</div>
 	</div>
 </header>
@@ -91,11 +91,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Account class</p>
+						<p>The Signum account interface</p>
 					</div>
-					<p>The account class serves as a model for a Burstcoin account.
-						It&#39;s meant to model the response from BRS API, except publicKey
-					has been moved into the keys object.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -111,244 +108,225 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="core.account.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#account" class="tsd-kind-icon">account</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#accountrs" class="tsd-kind-icon">accountRS</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#accountrsextended" class="tsd-kind-icon">accountRSExtended</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#assetbalances" class="tsd-kind-icon">asset<wbr>Balances</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#balancenqt" class="tsd-kind-icon">balanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#commitmentnqt" class="tsd-kind-icon">commitmentNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#committedbalancenqt" class="tsd-kind-icon">committed<wbr>BalanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#confirmed" class="tsd-kind-icon">confirmed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#effectivebalancenqt" class="tsd-kind-icon">effective<wbr>BalanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#keys" class="tsd-kind-icon">keys</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#pinhash" class="tsd-kind-icon">pin<wbr>Hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#selected" class="tsd-kind-icon">selected</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#transactions" class="tsd-kind-icon">transactions</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#type" class="tsd-kind-icon">type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#unconfirmedassetbalances" class="tsd-kind-icon">unconfirmed<wbr>Asset<wbr>Balances</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="core.account.html#unconfirmedbalancenqt" class="tsd-kind-icon">unconfirmed<wbr>BalanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#account" class="tsd-kind-icon">account</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#accountrs" class="tsd-kind-icon">accountRS</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#accountrsextended" class="tsd-kind-icon">accountRSExtended</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#assetbalances" class="tsd-kind-icon">asset<wbr>Balances</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#balancenqt" class="tsd-kind-icon">balanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#commitmentnqt" class="tsd-kind-icon">commitmentNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#committedbalancenqt" class="tsd-kind-icon">committed<wbr>BalanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#forgedbalancenqt" class="tsd-kind-icon">forged<wbr>BalanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#guaranteedbalancenqt" class="tsd-kind-icon">guaranteed<wbr>BalanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#publickey" class="tsd-kind-icon">public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#transactions" class="tsd-kind-icon">transactions</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#unconfirmedassetbalances" class="tsd-kind-icon">unconfirmed<wbr>Asset<wbr>Balances</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.account.html#unconfirmedbalancenqt" class="tsd-kind-icon">unconfirmed<wbr>BalanceNQT</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Account<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="core.account.html" class="tsd-signature-type">Account</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L39">core/src/typings/account.ts:39</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> data: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = {}</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="core.account.html" class="tsd-signature-type">Account</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="account" class="tsd-anchor"></a>
 					<h3>account</h3>
 					<div class="tsd-signature tsd-kind-icon">account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L22">core/src/typings/account.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L16">core/src/typings/account.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="accountrs" class="tsd-anchor"></a>
 					<h3>accountRS</h3>
 					<div class="tsd-signature tsd-kind-icon">accountRS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L23">core/src/typings/account.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L17">core/src/typings/account.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="accountrsextended" class="tsd-anchor"></a>
 					<h3>accountRSExtended</h3>
 					<div class="tsd-signature tsd-kind-icon">accountRSExtended<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L24">core/src/typings/account.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L21">core/src/typings/account.ts:21</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The extended address carries the public key base36 encoded</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="assetbalances" class="tsd-anchor"></a>
 					<h3>asset<wbr>Balances</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<wbr>Balances<span class="tsd-signature-symbol">:</span> <a href="../interfaces/core.assetbalance.html" class="tsd-signature-type">AssetBalance</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">asset<wbr>Balances<span class="tsd-signature-symbol">:</span> <a href="core.assetbalance.html" class="tsd-signature-type">AssetBalance</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L25">core/src/typings/account.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L25">core/src/typings/account.ts:25</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The total token balances (in quantity) which this account owns, including reserved ones</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="balancenqt" class="tsd-anchor"></a>
 					<h3>balanceNQT</h3>
 					<div class="tsd-signature tsd-kind-icon">balanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L26">core/src/typings/account.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L29">core/src/typings/account.ts:29</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The overall balance, including commitment and reserved orders in Planck.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="commitmentnqt" class="tsd-anchor"></a>
 					<h3>commitmentNQT</h3>
 					<div class="tsd-signature tsd-kind-icon">commitmentNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L37">core/src/typings/account.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L46">core/src/typings/account.ts:46</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The accounts commitment estimate per TiB.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="committedbalancenqt" class="tsd-anchor"></a>
 					<h3>committed<wbr>BalanceNQT</h3>
 					<div class="tsd-signature tsd-kind-icon">committed<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L38">core/src/typings/account.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L42">core/src/typings/account.ts:42</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The total committed balance in Planck.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="confirmed" class="tsd-anchor"></a>
-					<h3>confirmed</h3>
-					<div class="tsd-signature tsd-kind-icon">confirmed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L39">core/src/typings/account.ts:39</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="description" class="tsd-anchor"></a>
 					<h3>description</h3>
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L27">core/src/typings/account.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L30">core/src/typings/account.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="effectivebalancenqt" class="tsd-anchor"></a>
-					<h3>effective<wbr>BalanceNQT</h3>
-					<div class="tsd-signature tsd-kind-icon">effective<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="forgedbalancenqt" class="tsd-anchor"></a>
+					<h3>forged<wbr>BalanceNQT</h3>
+					<div class="tsd-signature tsd-kind-icon">forged<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L28">core/src/typings/account.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L34">core/src/typings/account.ts:34</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The balance forged by you (Solo-Mining only in Planck</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="keys" class="tsd-anchor"></a>
-					<h3>keys</h3>
-					<div class="tsd-signature tsd-kind-icon">keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Keys</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="guaranteedbalancenqt" class="tsd-anchor"></a>
+					<h3>guaranteed<wbr>BalanceNQT</h3>
+					<div class="tsd-signature tsd-kind-icon">guaranteed<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L29">core/src/typings/account.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L38">core/src/typings/account.ts:38</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The overall balance, including commitment and reserved orders in Planck.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L30">core/src/typings/account.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L52">core/src/typings/account.ts:52</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="pinhash" class="tsd-anchor"></a>
-					<h3>pin<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">pin<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="publickey" class="tsd-anchor"></a>
+					<h3>public<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L31">core/src/typings/account.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L51">core/src/typings/account.ts:51</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The public key. If an account does not have a public key it is considered inactive and though less secure. Public Key is being assigned by
+							outgoing transactions or if receiving an transaction with assigned (and mathgcing) public key</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="selected" class="tsd-anchor"></a>
-					<h3>selected</h3>
-					<div class="tsd-signature tsd-kind-icon">selected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L32">core/src/typings/account.ts:32</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="transactions" class="tsd-anchor"></a>
 					<h3>transactions</h3>
-					<div class="tsd-signature tsd-kind-icon">transactions<span class="tsd-signature-symbol">:</span> <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">transactions<span class="tsd-signature-symbol">:</span> <a href="core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L33">core/src/typings/account.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L53">core/src/typings/account.ts:53</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L34">core/src/typings/account.ts:34</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="unconfirmedassetbalances" class="tsd-anchor"></a>
 					<h3>unconfirmed<wbr>Asset<wbr>Balances</h3>
-					<div class="tsd-signature tsd-kind-icon">unconfirmed<wbr>Asset<wbr>Balances<span class="tsd-signature-symbol">:</span> <a href="../interfaces/core.unconfirmedassetbalance.html" class="tsd-signature-type">UnconfirmedAssetBalance</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">unconfirmed<wbr>Asset<wbr>Balances<span class="tsd-signature-symbol">:</span> <a href="core.unconfirmedassetbalance.html" class="tsd-signature-type">UnconfirmedAssetBalance</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L35">core/src/typings/account.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L54">core/src/typings/account.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="unconfirmedbalancenqt" class="tsd-anchor"></a>
 					<h3>unconfirmed<wbr>BalanceNQT</h3>
 					<div class="tsd-signature tsd-kind-icon">unconfirmed<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f9c5eb/packages/core/src/typings/account.ts#L36">core/src/typings/account.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fd72989/packages/core/src/typings/account.ts#L58">core/src/typings/account.ts:58</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The currently available balance in Planck, without commitment and open orders</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -391,64 +369,52 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="core.account.html" class="tsd-kind-icon">Account</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="core.account.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#account" class="tsd-kind-icon">account</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#accountrs" class="tsd-kind-icon">accountRS</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#accountrsextended" class="tsd-kind-icon">accountRSExtended</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#assetbalances" class="tsd-kind-icon">asset<wbr>Balances</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#balancenqt" class="tsd-kind-icon">balanceNQT</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#commitmentnqt" class="tsd-kind-icon">commitmentNQT</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#committedbalancenqt" class="tsd-kind-icon">committed<wbr>BalanceNQT</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#confirmed" class="tsd-kind-icon">confirmed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#description" class="tsd-kind-icon">description</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#effectivebalancenqt" class="tsd-kind-icon">effective<wbr>BalanceNQT</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.account.html#forgedbalancenqt" class="tsd-kind-icon">forged<wbr>BalanceNQT</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#keys" class="tsd-kind-icon">keys</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.account.html#guaranteedbalancenqt" class="tsd-kind-icon">guaranteed<wbr>BalanceNQT</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#pinhash" class="tsd-kind-icon">pin<wbr>Hash</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.account.html#publickey" class="tsd-kind-icon">public<wbr>Key</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#selected" class="tsd-kind-icon">selected</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#transactions" class="tsd-kind-icon">transactions</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="core.account.html#type" class="tsd-kind-icon">type</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#unconfirmedassetbalances" class="tsd-kind-icon">unconfirmed<wbr>Asset<wbr>Balances</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.account.html#unconfirmedbalancenqt" class="tsd-kind-icon">unconfirmed<wbr>BalanceNQT</a>
 							</li>
 						</ul>
