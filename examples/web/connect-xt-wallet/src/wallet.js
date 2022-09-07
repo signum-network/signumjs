@@ -5,10 +5,6 @@ let walletListener = null;
 window.wallet = new sig$wallets.GenericExtensionWallet()
 window.signumLedger = null
 
-function getReedSolomonAddress(publicKey){
-    return sig$.Address.fromPublicKey(publicKey, 'TS').getReedSolomonAddress()
-}
-
 // we need to reconstruct the ledger client to use the correct node, i.e. the one selected by
 // the wallet
 function createLedgerClient(nodeHost){
