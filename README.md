@@ -23,15 +23,15 @@ Best way to start is with the extensive [Online Documentation](https://docs.sign
 
 The SDK is separated in the following packages
 
-- [@signumjs/core](./docs/modules/core.html) The main package providing an extensive API for blockchain interaction
-- [@signumjs/contracts](./docs/modules/contracts.html) A package providing Signum relevant functions for _smart contracts_
-- [@signumjs/crypto](./docs/modules/crypto.html) A package providing Signum relevant crypto functions
-- [@signumjs/util](./docs/modules/util.html) A package providing useful functions, e.g. common conversion functions
-- [@signumjs/http](./docs/modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
+- [@signumjs/core](https://signum-network.github.io/signumjs/modules/core.html) The main package providing an extensive API for blockchain interaction
+- [@signumjs/contracts](https://signum-network.github.io/signumjs/modules/contracts.html) A package providing Signum relevant functions for _smart contracts_
+- [@signumjs/crypto](https://signum-network.github.io/signumjs/modules/crypto.html) A package providing Signum relevant crypto functions
+- [@signumjs/util](https://signum-network.github.io/signumjs/modules/util.html) A package providing useful functions, e.g. common conversion functions
+- [@signumjs/http](https://signum-network.github.io/signumjs/modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
   and exception handling
-- [@signumjs/monitor](./docs/modules/monitor.html) A package providing a class to execute recurring async operations with
+- [@signumjs/monitor](https://signum-network.github.io/signumjs/modules/monitor.html) A package providing a class to execute recurring async operations with
   de/serialization feature, good for listening to blockchain transactions
-- [@signumjs/wallets](./docs/modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
+- [@signumjs/wallets](https://signum-network.github.io/signumjs/modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
 - wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  
 
 ## Installation
