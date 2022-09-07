@@ -26,6 +26,7 @@
     "@signumjs/crypto": "^1.0.0-rc.30",
     "@signumjs/http": "^1.0.0-rc.30",
     "@signumjs/monitor": "^1.0.0-rc.30",
+    "@signumjs/wallets": "^1.0.0-rc.30",
     "@signumjs/util": "^1.0.0-rc.30",
     "inquirer": "^8.2.0"
   }

@@ -58,9 +58,8 @@ function validateForm() {
 }
 
 function calcFee() {
-    // TODO: still need the fee calculation regime in our signumjs code
     // this calculation should not be delegated to users
-    const feeFactor = Math.floor((176 + getMessage().length) / 176);
+    const feeFactor = Math.floor((184 + getMessage().length) / 184);
     return sig$util.Amount
         .fromPlanck(sig$util.FeeQuantPlanck)
         .multiply(feeFactor)
@@ -72,7 +71,7 @@ async function sendMessage() {
     const passphrase = getPassphrase()
     const message = getMessage()
 
-    // We need to generated the keys from the passphrase now
+    // We need to generate the keys from the passphrase now
     const keys = sig$crypto.generateMasterKeys(passphrase)
 
     const params = {

@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/@blaze/css@5.0.0/dist/blaze.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Importing the bundles from the CDN -->
+    <script src="https://kit.fontawesome.com/5635c2f757.js"></script>
+    <script type="application/javascript"
+            src='https://cdn.jsdelivr.net/npm/@signumjs/core/dist/signumjs.min.js'></script>
+    <script type="application/javascript"
+            src='https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js'></script>
+    <script type="application/javascript"
+            src='https://cdn.jsdelivr.net/npm/@signumjs/crypto/dist/signumjs.crypto.min.js'></script>
+</head>
+<body onload="main()">
+<!-- body -->
+<div id="root" class="u-window-box-medium">
+    <div class="o-container o-container--large">
+        <div class="c-alerts c-alerts--bottomleft">
+            <div id="error-message" class="c-alert c-alert--error" hidden></div>
+            <div id="success-message" class="c-alert c-alert--success" hidden></div>
+        </div>
+        <div class="c-card">
+            <div role="separator" class="c-card__item c-card__item--divider">
+                Send a message with Signum
+            </div>
+            <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="address-field">Network</label>
+                <select id="network-selector" class="c-field">
+                    <option value="https://europe3.testnet.signum.network">Test Net</option>
+                    <option value="https://europe.signum.network">Main Net</option>
+                </select>
+            </div>
+            <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="address-field">Recipient</label>
+                <input id="address-field"
+                       class="c-field u-xlarge c-tooltip c-tooltip--top"
+                       placeholder="Enter Recipients Signum Address..."
+                       aria-label="The recipient of the message"
+                       type="text"
+                       autocomplete="on"
+                >
+            </div>
+            <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="message-field">Message</label>
+                <textarea id="message-field"
+                          maxlength="1000"
+                          rows="10"
+                          cols="100"
+                          class="c-field u-xlarge c-tooltip c-tooltip--top"
+                          placeholder="Enter a message (max 1000 chars)"
+
+                          aria-label="The message to be sent"></textarea>
+            </div>
+            <div class="c-card__item ">
+                <label class="c-label u-xsmall" for="passphrase-field">Passphrase</label>
+                <span class="inline-container">
+                    <input id="passphrase-field"
+                           type="password"
+                           class="c-field u-xlarge c-tooltip c-tooltip--top"
+                           placeholder="Enter your passphrase to confirm"
+                           aria-label="The passphrase"
+                           autocomplete="on"
+                    >
+                    <button id="send-button"
+                            type="button"
+                            class="c-button c-button--brand"
+                            onclick="sendMessage()"
+                            disabled="disabled"
+                    >Send
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/ecmascript" src="src/main.js"></script>
+</body>
+</html>

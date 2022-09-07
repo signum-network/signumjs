@@ -7,11 +7,11 @@
     <script type="application/javascript"
             src='https://cdn.jsdelivr.net/npm/@signumjs/core/dist/signumjs.min.js'></script>
     <script type="application/javascript"
-            src='https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js'></script>
+            src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>
     <script type="application/javascript"
-            src='https://cdn.jsdelivr.net/npm/@signumjs/crypto/dist/signumjs.crypto.min.js'></script>
+            src='https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js'></script>
 </head>
-<body onload="main()">
+<body onload="init()">
 <!-- body -->
 <div id="root" class="u-window-box-medium">
     <div class="o-container o-container--large">
@@ -21,14 +21,7 @@
         </div>
         <div class="c-card">
             <div role="separator" class="c-card__item c-card__item--divider">
-                Send a message with Signum
-            </div>
-            <div class="c-card__item ">
-                <label class="c-label u-xsmall" for="address-field">Network</label>
-                <select id="network-selector" class="c-field">
-                    <option value="http://nivbox.co.uk:6876/">Test Net</option>
-                    <option value="https://europe.signum.network">Main Net</option>
-                </select>
+                Send a message with Signum XT Wallet (Testnet only)
             </div>
             <div class="c-card__item ">
                 <label class="c-label u-xsmall" for="address-field">Recipient</label>
@@ -52,27 +45,33 @@
                           aria-label="The message to be sent"></textarea>
             </div>
             <div class="c-card__item ">
-                <label class="c-label u-xsmall" for="passphrase-field">Passphrase</label>
-                <span class="inline-container">
-                    <input id="passphrase-field"
-                           type="password"
-                           class="c-field u-xlarge c-tooltip c-tooltip--top"
-                           placeholder="Enter your passphrase to confirm"
-                           aria-label="The passphrase"
-                           autocomplete="on"
-                    >
-                    <button id="send-button"
-                            type="button"
-                            class="c-button c-button--brand"
-                            onclick="sendMessage()"
-                            disabled="disabled"
-                    >Send
-                    </button>
-                </span>
+                <div class="o-grid">
+                    <div class="o-grid__cell o-grid__cell--width-50">
+                        <button id="connect-button"
+                                type="button"
+                                class="c-button c-button--brand"
+                                onclick="connectWallet()"
+                        >Connect Wallet
+                        </button>
+                        <button id="send-button"
+                                type="button"
+                                class="c-button c-button--brand"
+                                onclick="sendMessage()"
+                                disabled="disabled"
+                        >Send
+                        </button>
+                    </div>
+                    <div class="o-grid__cell o-grid__cell--width-50">
+                        <span id="connection-info"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script type="application/ecmascript" src="src/notification.js"></script>
+<script type="application/ecmascript" src="src/send.js"></script>
+<script type="application/ecmascript" src="src/wallet.js"></script>
 <script type="application/ecmascript" src="src/main.js"></script>
 </body>
 </html>

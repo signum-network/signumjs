@@ -133,7 +133,7 @@ class NftDataView {
 /**
  * Just a helper function to ask for the account id/address
  */
-function askForCallingParameters() {
+function askForNftId() {
     return inquirer
         .prompt([
             {
@@ -157,7 +157,7 @@ function asAddress(id, prefix){
 /**
  * This advanced example shows how to interact with smart contracts, i.e. how to call methods
  */
-async function callMethodOfContract(params) {
+async function showNftData(params) {
     try {
 
         const {ledger: ledgerChoice, nft} = params;
@@ -192,6 +192,6 @@ async function callMethodOfContract(params) {
 }
 
 (async () => {
-    const params = await askForCallingParameters();
-    await callMethodOfContract(params);
+    const params = await askForNftId();
+    await showNftData(params);
 })();
