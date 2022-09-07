@@ -16,22 +16,22 @@ technology.
 
 ----------------------------
 
-Best way to start is with the extensive (still under construction) [Online Documentation](https://signum-network.gitbook.io/signumjs/)
+Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs)
 
 ----------------------------
 ## Packages
 
 The SDK is separated in the following packages
 
-- [@signumjs/core](./modules/core.html) The main package providing an extense API for blockchain interaction
-- [@signumjs/contracts](./modules/contracts.html) A package providing Signum relevant functions for _smart contracts_
-- [@signumjs/crypto](./modules/crypto.html) A package providing Signum relevant crypto functions
-- [@signumjs/util](./modules/util.html) A package providing useful functions, e.g. common conversion functions
-- [@signumjs/http](./modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
+- [@signumjs/core](./docs/modules/core.html) The main package providing an extensive API for blockchain interaction
+- [@signumjs/contracts](./docs/modules/contracts.html) A package providing Signum relevant functions for _smart contracts_
+- [@signumjs/crypto](./docs/modules/crypto.html) A package providing Signum relevant crypto functions
+- [@signumjs/util](./docs/modules/util.html) A package providing useful functions, e.g. common conversion functions
+- [@signumjs/http](./docs/modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
   and exception handling
-- [@signumjs/monitor](./modules/monitor.html) A package providing a class to execute recurring async operations with
+- [@signumjs/monitor](./docs/modules/monitor.html) A package providing a class to execute recurring async operations with
   de/serialization feature, good for listening to blockchain transactions
-- [@signumjs/wallets](./modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
+- [@signumjs/wallets](./docs/modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
 - wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  
 
 ## Installation
@@ -101,11 +101,11 @@ Examples:
 
 ```js
 // using core
-const api = sig$.composeApi({
+const ledger = sig$.LedgerClientFactory.create({
     nodeHost: "http://testnet.signum.network",
 });
 
-api.network.getBlockchainStatus().then(console.log);
+ledger.network.getBlockchainStatus().then(console.log);
 ```
 
 ```js
@@ -146,10 +146,12 @@ subscription.unlisten()
 
 // A method that checks if an account exists
 // > IMPORTANT: Do not use closures, when you need to serialize the monitor
+import {LedgerClientFactory} from './ledgerClientFactory';
+
 async function tryFetchAccount() {
     try {
-        const api = composeApi({nodeHost: 'https://testnet.signum.network:6876/'})
-        const {account} = await api.account.getAccount('1234')
+        const ledger = LedgerClientFactory.create({nodeHost: 'https://europe3.testnet.signum.network/'})
+        const {account} = await ledger.account.getAccount('1234')
         return account;
     } catch (e) {
         // ignore error
@@ -190,14 +192,14 @@ The following example shows how to interact with the blockchain, i.e. getting th
 In a separate file, preferably `index.js` or `main.js` write your entry point like this:
 
 ```js
-import {composeApi, ApiSettings} from '@signumjs/core'
+import {LedgerClientFactory, ApiSettings} from '@signumjs/core'
 import {Amount} from '@signumjs/util'
 
 // this self-executing file makes turns this file into a starting point of your app
 (async () => {
     try {
-        const api = composeApi({nodeHost: 'https://testnet.burstcoin.network:6876'});
-        const {balanceNQT} = await api.account.getAccountBalance('13036514135565182944')
+        const ledger = LedgerClientFactory.createClient({nodeHost: 'https://europe3.testnet.signum.network'});
+        const {balanceNQT} = await ledger.account.getAccountBalance('13036514135565182944')
         console.log(`Account Balance: ${Amount.fromPlanck(balanceNQT).toString()}`)
     } catch (e) { // e is of type HttpError (as part of @signumjs/http)
         console.error(`Whooops, something went wrong: ${e.message}`)
@@ -209,8 +211,8 @@ import {Amount} from '@signumjs/util'
 ### `<script>` style
 
 ```js
-const api = sig$.composeApi({nodeHost: 'https://testnet.burstcoin.network:6876'});
-api.account.getAccountBalance('13036514135565182944')
+const ledger = sig$.LedgerClientFactory.create({nodeHost: 'https://europe3.testnet.signum.network'});
+ledger.account.getAccountBalance('13036514135565182944')
     .then(balance => {
         console.log(`Account Balance: ${sig$util.Amount.fromPlanck(balance.balanceNQT).toString()}`)
 
