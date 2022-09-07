@@ -1,9 +1,5 @@
 const inquirer = require("inquirer");
-const {Address} = require("@signumjs/core");
-const {generateMasterKeys} = require("@signumjs/crypto");
 const {
-    Amount,
-    FeeQuantPlanck,
     convertHexStringToDecString,
     convertHexEndianess,
     convertStringToHexString
