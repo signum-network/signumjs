@@ -16,7 +16,9 @@ technology.
 
 ----------------------------
 
-Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs)
+Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs).
+
+Another documentation with code examples can be found [here](https://docs.signum.network/signum/signumjs)
 
 ----------------------------
 ## Packages
