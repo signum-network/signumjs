@@ -1,6 +1,6 @@
 
 /**
- * The argument object for [[AssetApi.getAccountOpenAskOrdersPerAccount]] and [[AssetApi.getAccountOpenBidOrdersPerAccount]]
+ * The argument object for [[AssetApi.getOpenAskOrdersPerAccount]] and [[AssetApi.getOpenBidOrdersPerAccount]]
  *
  * @module core
  */

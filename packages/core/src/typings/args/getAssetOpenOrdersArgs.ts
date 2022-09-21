@@ -1,6 +1,6 @@
 
 /**
- * The argument object for [[AssetApi.getAssetOpenAskOrders]] and [[AssetApi.getAssetOpenBidOrders]]
+ * The argument object for [[AssetApi.getOpenAskOrders]] and [[AssetApi.getOpenBidOrders]]
  *
  * @module core
  */
