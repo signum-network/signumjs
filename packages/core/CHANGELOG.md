@@ -31,6 +31,13 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getAliasesOnSale`
   - `mintAsset`
   - `burnAsset`
+  - `getOpenBidOrders`
+  - `getOpenAskOrders`
+  - `getOpenBidOrdersPerAccount`
+  - `getOpenAskOrdersPerAccount`
+  - `getOpenBidOrdersPerAsset`
+  - `getOpenAskOrdersPerAsset`
+
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 
 - Account class converted to interface and follows now the Nodes response

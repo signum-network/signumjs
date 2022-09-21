@@ -81,7 +81,14 @@ import {
     getAssetTransfersPerAsset,
     addAssetTreasuryAccount,
     distributeToAssetHolders,
-    getAllTrades, mintAsset, getAssetTrades, getAssetTradesPerAccount, getAssetTradesPerAsset
+    getAllTrades,
+    mintAsset,
+    getAssetTrades,
+    getAssetTradesPerAccount,
+    getAssetTradesPerAsset,
+    getOpenBidOrders,
+    getOpenAskOrders,
+    getOpenBidOrdersPerAsset, getOpenAskOrdersPerAsset, getOpenBidOrdersPerAccount, getOpenAskOrdersPerAccount
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
@@ -219,7 +226,13 @@ export function composeApi(settings: ApiSettings): Api {
             getAssetTransfersPerAccount,
             getAssetTransfersPerAsset,
             addAssetTreasuryAccount,
-            distributeToAssetHolders
+            distributeToAssetHolders,
+            getOpenBidOrders,
+            getOpenAskOrders,
+            getOpenBidOrdersPerAsset,
+            getOpenAskOrdersPerAsset,
+            getOpenBidOrdersPerAccount,
+            getOpenAskOrdersPerAccount,
         })
         .compose();
 }

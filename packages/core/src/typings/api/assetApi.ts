@@ -10,7 +10,13 @@ import {
     GetAssetTransfersPerAssetArgs,
     GetAssetTransfersPerAccountArgs,
     AddAssetTreasuryAccountArgs,
-    DistributeToAssetHoldersArgs, GetAssetTradesArgs, GetAssetTradesPerAssetArgs, GetAssetTradesPerAccountArgs, GetAssetArgs, MintAssetArgs
+    DistributeToAssetHoldersArgs,
+    GetAssetTradesArgs,
+    GetAssetTradesPerAssetArgs,
+    GetAssetTradesPerAccountArgs,
+    GetAssetArgs,
+    MintAssetArgs,
+    GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAccountArgs, GetAssetOpenOrdersPerAssetArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -18,6 +24,9 @@ import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
 import {AssetTradeList} from '../assetTradeList';
 import {GetAllTradesArgs} from '../args/getAllTradesArgs';
+import {ChainService} from '../../service';
+import {AssetBidOrderList} from '../assetBidOrderList';
+import {AssetAskOrderList} from '../assetAskOrderList';
 
 /**
  * Asset API
@@ -191,4 +200,45 @@ export interface AssetApi {
      */
     distributeToAssetHolders: (args: DistributeToAssetHoldersArgs) => Promise<TransactionId | UnsignedTransaction>;
 
+    /**
+     * Gets all open Bid Orders
+     * @param args The query object
+     * @return A list of bid orders
+     */
+    getOpenBidOrders: (args: GetAssetOpenOrdersArgs) => Promise<AssetBidOrderList>;
+
+    /**
+     * Gets all open Ask Orders
+     * @param args The query object
+     * @return A list of ask orders
+     */
+    getOpenAskOrders: (args: GetAssetOpenOrdersArgs) => Promise<AssetAskOrderList>;
+
+    /**
+     * Gets all open Bid Orders per account
+     * @param args The query object
+     * @return A list of bid orders
+     */
+    getOpenBidOrdersPerAccount: (args: GetAssetOpenOrdersPerAccountArgs) => Promise<AssetBidOrderList>;
+
+    /**
+     * Gets all open Ask Orders
+     * @param args The query object
+     * @return A list of ask orders
+     */
+    getOpenAskOrdersPerAccount: (args: GetAssetOpenOrdersPerAccountArgs) => Promise<AssetAskOrderList>;
+
+    /**
+     * Gets all open Bid Orders per asset
+     * @param args The query object
+     * @return A list of bid orders
+     */
+    getOpenBidOrdersPerAsset: (args: GetAssetOpenOrdersPerAssetArgs) => Promise<AssetBidOrderList>;
+
+    /**
+     * Gets all open Ask Orders per asset
+     * @param args The query object
+     * @return A list of ask orders
+     */
+    getOpenAskOrdersPerAsset: (args: GetAssetOpenOrdersPerAssetArgs) => Promise<AssetAskOrderList>;
 }

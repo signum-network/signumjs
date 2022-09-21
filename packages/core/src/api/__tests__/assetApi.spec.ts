@@ -5,7 +5,8 @@ import {getAsset} from '../factories/asset/getAsset';
 import {
     addAssetTreasuryAccount,
     cancelAskOrder,
-    cancelBidOrder, distributeToAssetHolders,
+    cancelBidOrder,
+    distributeToAssetHolders,
     getAssetHolders,
     getAssetTransfers,
     placeAskOrder,
@@ -14,6 +15,12 @@ import {
     burnAsset,
     issueAsset,
     mintAsset,
+    getOpenBidOrders,
+    getOpenAskOrders,
+    getOpenBidOrdersPerAsset,
+    getOpenAskOrdersPerAsset,
+    getOpenBidOrdersPerAccount,
+    getOpenAskOrdersPerAccount,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -452,6 +459,236 @@ describe('Asset Api', () => {
                 }) as TransactionId;
 
                 expect(transaction).toBe('transactionId');
+            });
+        });
+
+
+        describe('getOpenBidOrders', () => {
+            it('should get open bid orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            bidOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'bid'
+                                }]
+                        },
+                        'relPath?requestType=getAllOpenBidOrders&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenBidOrders(service)({
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.bidOrders.length).toBe(1);
+            });
+        });
+        describe('getOpenAskOrders', () => {
+            it('should get open ask orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            askOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'ask'
+                                }]
+                        },
+                        'relPath?requestType=getAllOpenAskOrders&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenAskOrders(service)({
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.askOrders.length).toBe(1);
+            });
+        });
+        describe('getOpenBidOrdersPerAsset', () => {
+            it('should get open bid orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            bidOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'bid'
+                                }]
+                        },
+                        'relPath?requestType=getBidOrders&asset=assetId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenBidOrdersPerAsset(service)({
+                    assetId: 'assetId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.bidOrders.length).toBe(1);
+            });
+        });
+        describe('getOpenAskOrdersPerAsset', () => {
+            it('should get open ask orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            askOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'ask'
+                                }]
+                        },
+                        'relPath?requestType=getAskOrders&asset=assetId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenAskOrdersPerAsset(service)({
+                    assetId: 'assetId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.askOrders.length).toBe(1);
+            });
+        });
+        describe('getOpenBidOrdersPerAccount', () => {
+            it('should get open bid orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            bidOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'bid'
+                                }]
+                        },
+                        'relPath?requestType=getAccountCurrentBidOrders&account=accountId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenBidOrdersPerAccount(service)({
+                    accountId: 'accountId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.bidOrders.length).toBe(1);
+            });
+            it('should get open bid orders for specific asset', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            bidOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'bid'
+                                }]
+                        },
+                        'relPath?requestType=getAccountCurrentBidOrders&account=accountId&asset=assetId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenBidOrdersPerAccount(service)({
+                    assetId: 'assetId',
+                    accountId: 'accountId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.bidOrders.length).toBe(1);
+            });
+        });
+        describe('getOpenAskOrdersPerAccount', () => {
+            it('should get open ask orders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            askOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'ask'
+                                }]
+                        },
+                        'relPath?requestType=getAccountCurrentAskOrders&account=accountId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenAskOrdersPerAccount(service)({
+                    accountId: 'accountId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.askOrders.length).toBe(1);
+            });
+            it('should get open ask orders for specific asset', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                            askOrders: [
+                                {
+                                    'order': '12287063733956918204',
+                                    'asset': '2742339563614125644',
+                                    'account': '5812913123670292755',
+                                    'accountRS': 'S-7YAM-Q2DB-UXXS-7XWC3',
+                                    'quantityQNT': '1301635506',
+                                    'priceNQT': '600',
+                                    'height': 1042886,
+                                    'type': 'ask'
+                                }]
+                        },
+                        'relPath?requestType=getAccountCurrentAskOrders&account=accountId&asset=assetId&firstIndex=0&lastIndex=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await getOpenAskOrdersPerAccount(service)({
+                    assetId: 'assetId',
+                    accountId: 'accountId',
+                    firstIndex: 0,
+                    lastIndex: 100,
+                });
+
+                expect(result.askOrders.length).toBe(1);
             });
         });
     });

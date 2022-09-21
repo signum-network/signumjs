@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {GetAssetTradesArgs} from '../../../typings/args/getAssetTradesArgs';
+import {GetAssetTradesArgs} from '../../../typings/args';
 import {AssetTradeList} from '../../../typings/assetTradeList';
 import {convertAssetPriceToPlanck} from '../../../internal/convertAssetPricing';
 

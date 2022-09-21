@@ -1,7 +1,5 @@
-const inquirer = require("inquirer");
-const {Address} = require("@signumjs/core");
 const {generateMasterKeys} = require("@signumjs/crypto");
-const {Amount, FeeQuantPlanck, ChainValue, convertHexStringToDecString, convertHexEndianess, convertStringToHexString} = require("@signumjs/util");
+const {Amount, ChainValue, convertHexStringToDecString, convertHexEndianess, convertStringToHexString} = require("@signumjs/util");
 const {provideLedger, handleError, confirmTransaction, LedgerHostUrls} = require('../../helper');
 
 /**

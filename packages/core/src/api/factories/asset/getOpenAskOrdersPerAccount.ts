@@ -1,0 +1,20 @@
+/**
+ * Original work Copyright (c) 2022 Signum Network
+ */
+import {ChainService} from '../../../service';
+import {GetAssetOpenOrdersPerAccountArgs} from '../../../typings/args';
+import {AssetAskOrderList} from '../../../typings/assetAskOrderList';
+import {getOpenOrdersPerAccount} from './getOpenOrdersPerAccount';
+
+/**
+ *
+ * Use with [[ApiComposer]] and belongs to [[AssetApi.getOpenAskOrdersPerAccount]].
+ *
+ * See details at [[AssetApi.getOpenAskOrdersPerAccount]]
+ * @module core.api.factories
+ *
+ */
+export const getOpenAskOrdersPerAccount = (service: ChainService):
+    (args: GetAssetOpenOrdersPerAccountArgs) => Promise<AssetAskOrderList> =>
+    (args: GetAssetOpenOrdersPerAccountArgs): Promise<AssetAskOrderList> =>
+        getOpenOrdersPerAccount(service)({...args, type: 'ask'}) as Promise<AssetAskOrderList>;
