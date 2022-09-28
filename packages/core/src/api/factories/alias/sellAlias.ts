@@ -4,26 +4,28 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
-import {SetAliasArgs} from '../../../typings/args/setAliasArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {DefaultDeadline} from '../../../constants';
+import {SellAliasArgs} from '../../../typings/args';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AliasApi]].
  *
- * See details at [[AliasApi.setAlias]]
+ * See details at [[AliasApi.buyAlias]]
  * @module core.api.factories
  */
-export const setAlias = (service: ChainService) =>  (args: SetAliasArgs) => signIfPrivateKey(service, args,
-    async (a: SetAliasArgs) => {
+export const sellAlias = (service: ChainService) =>  (args: SellAliasArgs) => signIfPrivateKey(service, args,
+    async (a: SellAliasArgs) => {
 
         const parameters = {
             aliasName: a.aliasName,
-            aliasURI: a.aliasURI,
+            alias: a.aliasId,
             deadline: a.deadline || DefaultDeadline,
             feeNQT: a.feePlanck,
-            publicKey: a.senderPublicKey
+            publicKey: a.senderPublicKey,
+            priceNQT: a.amountPlanck,
+            referencedTransactionFullHash: a.referencedTransactionFullHash,
         };
-        return  service.send<UnsignedTransaction>('setAlias', parameters);
+        return  service.send<UnsignedTransaction>('sellAlias', parameters);
 
     });

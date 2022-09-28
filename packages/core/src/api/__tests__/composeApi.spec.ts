@@ -55,7 +55,7 @@ describe('composeApi', () => {
         ));
         const response = await api.network.getNetworkInfo();
         expect(response).toBe('test');
-        expect(spied).toBeCalledWith('/burst?requestType=getConstants', undefined);
+        expect(spied).toBeCalledWith('/api?requestType=getConstants', undefined);
     });
 
 });

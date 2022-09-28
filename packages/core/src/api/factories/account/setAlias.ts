@@ -23,7 +23,8 @@ export const setAlias = (service: ChainService) =>
                 aliasURI: a.aliasURI,
                 deadline: a.deadline || DefaultDeadline,
                 feeNQT: a.feePlanck,
-                publicKey: a.senderPublicKey
+                publicKey: a.senderPublicKey,
+                referencedTransactionFullHash: a.referencedTransactionFullHash
             };
             return service.send<UnsignedTransaction>('setAlias', parameters);
         });

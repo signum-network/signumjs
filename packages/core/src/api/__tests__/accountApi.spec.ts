@@ -418,7 +418,7 @@ describe('AccountApi', () => {
             httpMock = HttpMockBuilder.create().onGetReply(
                 200,
                 {blocks: []}, // no need to test the mocked result... focus is the correctly mounted url
-                '/burst?requestType=getAccountBlocks&account=accountId&firstIndex=1000&lastIndex=0&includeTransactions=true'
+                '/api?requestType=getAccountBlocks&account=accountId&firstIndex=1000&lastIndex=0&includeTransactions=true'
             ).build();
             const service = createChainService(httpMock);
             const blockResponse = await getAccountBlocks(service)({
@@ -434,7 +434,7 @@ describe('AccountApi', () => {
             httpMock = HttpMockBuilder.create().onGetReply(
                 200,
                 {blockIds: ['123', '456']},
-                '/burst?requestType=getAccountBlockIds&account=accountId&firstIndex=1000&lastIndex=0&includeTransactions=true'
+                '/api?requestType=getAccountBlockIds&account=accountId&firstIndex=1000&lastIndex=0&includeTransactions=true'
             ).build();
             const service = createChainService(httpMock);
             const blockResponse = await getAccountBlockIds(service)({

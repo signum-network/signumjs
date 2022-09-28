@@ -19,7 +19,7 @@ const DefaultDeadline = 1440;
  * The default endpoint for [[ApiSettings]]
  * @module core
  */
-const DefaultApiEndpoint = '/burst';
+const DefaultApiEndpoint = '/api';
 
 
 /**

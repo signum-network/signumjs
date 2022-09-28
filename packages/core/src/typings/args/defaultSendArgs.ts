@@ -31,4 +31,9 @@ export interface DefaultSendArgs {
      * processed, e.g. due to very low fee
      */
     deadline?: number;
+
+    /**
+     * Using this field allows to make a transaction dependent on other transactions.
+     */
+    referencedTransactionFullHash?: string;
 }

@@ -33,3 +33,6 @@ export * from './setAccountInfoArgs';
 export * from './setRewardRecipientArgs';
 export * from './transferAssetArgs';
 export * from './unsignedTransactionArgs';
+export * from './setAliasArgs';
+export * from './buyAliasArgs';
+export * from './sellAliasArgs';

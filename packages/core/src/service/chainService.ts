@@ -69,7 +69,7 @@ export class ChainService {
     /**
      * Mounts an API conformant endpoint of format `<host>?requestType=getBlock&height=123`
      *
-     * @see https://www.burstcoin.community/burst-api/
+     * @see https://docs.signum.network/signum/node-http-api
      *
      * @param {string} method The method name for `requestType`
      * @param {any} data A JSON object which will be mapped to url params
