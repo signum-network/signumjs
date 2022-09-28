@@ -1,11 +1,7 @@
 /* tslint:disable:quotemark */
 import {HttpMockBuilder, Http} from '@signumjs/http';
-import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
-import {getAsset} from '../factories/asset/getAsset';
 import {
-    getAliases,
     getAliasById,
-    setAlias,
     getAliasesOnSale,
     buyAlias,
     sellAlias,
@@ -209,7 +205,7 @@ describe('Alias Api', () => {
                     aliasName: 'aliasName',
                     senderPublicKey: 'senderPublicKey',
                     senderPrivateKey: 'senderPrivateKey',
-                    recipientId:'recipientId'
+                    recipientId: 'recipientId'
                 });
                 expect(asset).toEqual({'transaction': 'transactionId'});
             });

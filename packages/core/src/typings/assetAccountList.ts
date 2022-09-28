@@ -9,7 +9,7 @@ import {AssetAccount} from './assetAccount';
  * Asset Account List
  * @module core
  */
-export interface AssetAccountList {
+export interface AssetAccountList extends Indexable {
     accountAssets: AssetAccount[];
     requestProcessingTime: number;
 }

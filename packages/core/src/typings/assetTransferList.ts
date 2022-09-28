@@ -8,7 +8,7 @@ import {AssetTransfer} from './assetTransfer';
  * Asset Transfer List
  * @module core
  */
-export interface AssetTransferList {
+export interface AssetTransferList extends Indexable{
     transfers: AssetTransfer[];
     requestProcessingTime: number;
 }

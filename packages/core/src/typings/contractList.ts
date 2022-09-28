@@ -8,7 +8,7 @@ import {Contract} from './contract';
  * The Contract Id List
  * @module core
  */
-export interface ContractList {
+export interface ContractList extends Indexable{
     ats: Contract[];
     requestProcessingTime: number;
 }

@@ -13,6 +13,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
 - Added support for external signing, i.e. using no public key return unsigned tx bytes
   - Attention: `sendEncryptedMessage` changed its interface
   - Attention: `getAliases` changed its interface
+  - Attention: `getAllAssets` changed its interface
 - Multiouts with duplicate id checks now, i.e. automatic dedupe for same multiout
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
 - New Functions/Classes:

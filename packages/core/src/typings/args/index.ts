@@ -19,6 +19,7 @@ export * from './getAssetTradesPerAssetArgs';
 export * from './getAssetOpenOrdersArgs';
 export * from './getAssetOpenOrdersPerAccountArgs';
 export * from './getAssetOpenOrdersPerAssetArgs';
+export * from './getTradeHistoryPerAccountArgs';
 export * from './issueAssetArgs';
 export * from './mintAssetArgs';
 export * from './placeOrderArgs';

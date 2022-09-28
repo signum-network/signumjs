@@ -3,6 +3,7 @@
  */
 import {ChainService} from '../../../service';
 import {AssetList} from '../../../typings/assetList';
+import {GetAllAssetsArgs} from '../../../typings/args/getAllAssetsArgs';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
@@ -11,6 +12,5 @@ import {AssetList} from '../../../typings/assetList';
  * @module core.api.factories
  */
 export const getAllAssets = (service: ChainService):
-    (firstIndex?: number, lastIndex?: number) => Promise<AssetList> =>
-    (firstIndex?: number, lastIndex?: number): Promise<AssetList> =>
-        service.query('getAllAssets', {firstIndex, lastIndex});
+    (args: GetAllAssetsArgs) => Promise<AssetList> =>
+    (args: GetAllAssetsArgs): Promise<AssetList> => service.query<AssetList>('getAllAssets', args);

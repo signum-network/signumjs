@@ -8,7 +8,7 @@ import {AssetOrder} from './assetOrder';
  * Asset Ask Order List
  * @module core
  */
-export interface AssetAskOrderList {
+export interface AssetAskOrderList extends Indexable {
     askOrders: AssetOrder[];
     requestProcessingTime: number;
 }

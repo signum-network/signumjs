@@ -18,6 +18,7 @@ export * from './getAllTrades';
 export * from './getAssetHolders';
 export * from './getAssetTrades';
 export * from './getAssetTradesPerAccount';
+export * from './getTradeHistoryPerAccount';
 export * from './getAssetTradesPerAsset';
 export * from './getAssetTransfers';
 export * from './getAssetTransfersPerAccount';

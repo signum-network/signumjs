@@ -3,6 +3,8 @@ import {Alias} from '../alias';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {SetAliasArgs} from '../args/setAliasArgs';
 import {AliasList} from '../aliasList';
+import {ChainService} from '../../service';
+import {BuyAliasArgs, SellAliasArgs} from '../args';
 
 /**
  * Alias API
@@ -33,13 +35,12 @@ export interface AliasApi {
     ) => Promise<Alias>;
 
     /**
-     * Registers an Alias
-     **
-     * @param args The args
+     * Sets or Updates an Alias
+     * @param {SetAliasArgs} args The arguments
+     *
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     setAlias: (args: SetAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
-
 
     /**
      * Get all aliases, which are on sale.
@@ -49,4 +50,20 @@ export interface AliasApi {
      */
     getAliasesOnSale: (firstIndex?: number, lastIndex?: number) => Promise<AliasList>;
 
+    /**
+     * Buys an Alias
+     * @param args The args
+     *
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    buyAlias: (args: BuyAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Sells an Alias. Sales can be public if no recipient is defined, i.e. everybody can buy it, or
+     * only per account in case the recipient is given.
+     * @param args The args
+     *
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    sellAlias: (args: SellAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
 }

@@ -4,8 +4,6 @@
 import {ChainService} from '../../../service';
 import {GetAssetTradesArgs} from '../../../typings/args';
 import {AssetTradeList} from '../../../typings/assetTradeList';
-import {convertAssetPriceToPlanck} from '../../../internal/convertAssetPricing';
-
 
 /**
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
@@ -26,11 +24,5 @@ export const getAssetTrades = (service: ChainService):
             firstIndex,
             lastIndex
         };
-
-        const result = await service.query<AssetTradeList>('getTrades', params);
-        const convertedTrades = result.trades.map(t => ({...t, priceNQT: convertAssetPriceToPlanck(t.priceNQT, t.decimals)}));
-        return {
-            ...result,
-            trades: convertedTrades
-        };
+        return service.query<AssetTradeList>('getTrades', params);
     };

@@ -23,6 +23,8 @@ export * from './convertNumberToNQTString';
 export * from './convertStringToBase64String';
 export * from './convertStringToByteArray';
 export * from './convertStringToHexString';
+export * from './convertAssetPriceToPlanck';
+export * from './convertPlanckToAssetPrice';
 export * from './createDeeplink';
 export * from './parseDeeplink';
 export * from './typings';

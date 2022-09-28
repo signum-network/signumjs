@@ -20,6 +20,7 @@ export interface Asset {
     decimals: number;
     quantityQNT: string;
     quantityCirculatingQNT: string;
+    quantityBurntQNT: string;
     asset: string;
     mintable: boolean;
     numberOfTrades: number;

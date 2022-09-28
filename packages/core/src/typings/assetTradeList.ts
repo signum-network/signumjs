@@ -8,7 +8,7 @@ import {AssetTrade} from './assetTrade';
  * Asset Trade List
  * @module core
  */
-export interface AssetTradeList {
+export interface AssetTradeList extends Indexable {
     trades: AssetTrade[];
     requestProcessingTime: number;
 }

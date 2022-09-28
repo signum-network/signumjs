@@ -8,7 +8,7 @@ import {Asset} from './asset';
  * Asset List
  * @module core
  */
-export interface AssetList {
+export interface AssetList extends Indexable {
     assets: Asset[];
     requestProcessingTime: number;
 }

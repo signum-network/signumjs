@@ -1,5 +1,6 @@
-import {convertAssetPriceToPlanck, convertPlanckToAssetPrice} from '../convertAssetPricing';
-import {Amount} from '@signumjs/util';
+import {Amount} from '../amount';
+import {convertAssetPriceToPlanck} from '../convertAssetPriceToPlanck';
+import {convertPlanckToAssetPrice} from '../convertPlanckToAssetPrice';
 
 describe('assetPricing', () => {
     describe('convertAssetPriceToPlanck', () => {

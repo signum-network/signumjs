@@ -16,7 +16,7 @@ import {
     GetAssetTradesPerAccountArgs,
     GetAssetArgs,
     MintAssetArgs,
-    GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAccountArgs, GetAssetOpenOrdersPerAssetArgs
+    GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAccountArgs, GetAssetOpenOrdersPerAssetArgs, GetTradeHistoryPerAccountArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -24,9 +24,10 @@ import {AssetAccountList} from '../assetAccountList';
 import {AssetTransferList} from '../assetTransferList';
 import {AssetTradeList} from '../assetTradeList';
 import {GetAllTradesArgs} from '../args/getAllTradesArgs';
-import {ChainService} from '../../service';
 import {AssetBidOrderList} from '../assetBidOrderList';
 import {AssetAskOrderList} from '../assetAskOrderList';
+import {TradeHistory} from '../tradeHistory';
+import {GetAllAssetsArgs} from '../args/getAllAssetsArgs';
 
 /**
  * Asset API
@@ -47,14 +48,10 @@ export interface AssetApi {
 
     /**
      * Get all available assets
-     * @param {number?} firstIndex The first index of range to be returned (begins with 0)
-     * @param {number?} lastIndex The first index of range to be returned (max is 500)
+     * @param args The argument object
      * @return {Promise<Asset>} List of assets
      */
-    getAllAssets: (
-        firstIndex?: number,
-        lastIndex?: number,
-    ) => Promise<AssetList>;
+    getAllAssets: (args: GetAllAssetsArgs) => Promise<AssetList>;
 
     /**
      * Issues assets
@@ -241,4 +238,14 @@ export interface AssetApi {
      * @return A list of ask orders
      */
     getOpenAskOrdersPerAsset: (args: GetAssetOpenOrdersPerAssetArgs) => Promise<AssetAskOrderList>;
+
+    /**
+     * The trade history is a journal about open/filled and/or cancelled trades for a given account and
+     * optionally set asset
+     *
+     * @param {GetTradeHistoryPerAccountArgs} args The args object
+     *
+     * @param The trade history
+     */
+    getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 }

@@ -8,7 +8,7 @@ import {Block} from './block';
  * Block List
  * @module core
  */
-export interface BlockList {
+export interface BlockList extends Indexable {
     blocks: Block[];
     requestProcessingTime: number;
 }

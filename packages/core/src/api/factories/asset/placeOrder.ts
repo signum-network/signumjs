@@ -8,7 +8,7 @@ import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
 import {PlaceOrderArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
-import {convertPlanckToAssetPrice} from '../../../internal/convertAssetPricing';
+import {convertPlanckToAssetPrice} from '@signumjs/util';
 import {Asset} from '../../../typings/asset';
 
 interface GenericPlaceOrderArgs extends PlaceOrderArgs {
