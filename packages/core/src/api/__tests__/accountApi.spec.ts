@@ -261,35 +261,38 @@ describe('AccountApi', () => {
 
     describe('getAliases', () => {
 
-        it('should getAliases', async () => {
-            const mockAlias: Alias = {
-                account: '12345',
-                accountRS: 'BURST-K8MA-U2JT-R6DJ-FVQLC`',
-                alias: '12345',
-                aliasName: 'test',
-                aliasURI: 'acct:burst-K8MA-U2JT-R6DJ-FVQLC@burst',
-                timestamp: 131932255
-            };
-            const mockResponse: AliasList = {
-                aliases: [mockAlias],
-                requestProcessingTime: 1337
-            };
-
-            httpMock = HttpMockBuilder.create().onGetReply(200, mockResponse).build();
-            const service = createChainService(httpMock);
-            const aliasesResponse = await getAliases(service)('accountId');
-            expect(aliasesResponse.aliases).toHaveLength(1);
-        });
-
-        it('should fail getAliases', async () => {
-            httpMock = HttpMockBuilder.create().onGetThrowError(404, 'Test Error').build();
-            const service = createChainService(httpMock);
-            try {
-                await getAliases(service)('accountId');
-            } catch (e) {
-                expect(e.status).toBe(404);
-                expect(e.message).toBe('Test Error');
-            }
+        it('should getAliases per Account', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                    'account': '2402520554221019656',
+                    'accountRS': 'TS-QAJA-QW5Y-SWVP-4RVP4',
+                    'aliasName': 'superduperalias',
+                    'aliasURI': 'Contentchange....',
+                    'timestamp': 251224892,
+                    'alias': '8468600040485258181',
+                    'priceNQT': '500000000',
+                    'buyer': '6502115112683865257',
+                    'requestProcessingTime': 13
+                },
+                'relPath?requestType=getAliases&account=accountId&timestamp=1000&firstIndex=0&lastIndex=99'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const asset = await getAliases(service)({
+                accountId: 'accountId',
+                timestamp: 1000,
+                firstIndex: 0,
+                lastIndex: 99,
+            });
+            expect(asset).toEqual({
+                'account': '2402520554221019656',
+                'accountRS': 'TS-QAJA-QW5Y-SWVP-4RVP4',
+                'aliasName': 'superduperalias',
+                'aliasURI': 'Contentchange....',
+                'timestamp': 251224892,
+                'alias': '8468600040485258181',
+                'priceNQT': '500000000',
+                'buyer': '6502115112683865257',
+                'requestProcessingTime': 13
+            });
         });
     });
 
@@ -575,4 +578,5 @@ describe('AccountApi', () => {
         });
 
     });
-});
+})
+;

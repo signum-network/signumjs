@@ -25,6 +25,8 @@ export const sellAlias = (service: ChainService) =>  (args: SellAliasArgs) => si
             publicKey: a.senderPublicKey,
             priceNQT: a.amountPlanck,
             referencedTransactionFullHash: a.referencedTransactionFullHash,
+            recipient: a.recipientId,
+            recipientPublicKey: a.recipientPublicKey,
         };
         return  service.send<UnsignedTransaction>('sellAlias', parameters);
 
