@@ -2,6 +2,8 @@
 
 Cryptographic functions for building Signum apps.
 
+[![Featured on Openbase](https://badges.openbase.com/js/featured/@signumjs/crypto.svg?token=ShJWpDur1ZmdRPNkvCiTvHa1r/JOG+8TkABhdRCIZbI=)](https://openbase.com/js/@signumjs/crypto?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+
 ## Installation
 
 SignumJS can be used with NodeJS or Web. Two formats are available
