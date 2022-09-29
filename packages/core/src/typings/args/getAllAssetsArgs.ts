@@ -1,4 +1,3 @@
-
 /**
  * The argument object for [[AssetApi.getAllAssets]]
  *

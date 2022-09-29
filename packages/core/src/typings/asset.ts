@@ -15,6 +15,7 @@
 export interface Asset {
     account: string;
     accountRS: string;
+    publicKey: string;
     name: string;
     description: string;
     decimals: number;
