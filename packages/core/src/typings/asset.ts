@@ -26,4 +26,9 @@ export interface Asset {
     numberOfTrades: number;
     numberOfTransfers: number;
     numberOfAccounts: number;
+    volumeQNT: string;
+    priceHigh: string;
+    priceLow: string;
+    priceOpen: string;
+    priceClose: string;
 }

@@ -205,6 +205,7 @@ export function composeApi(settings: ApiSettings): Api {
             getAliasesOnSale,
             buyAlias,
             sellAlias,
+            getAliases,
         }).withContractApi({
             getContract,
             getContractsByAccount,
