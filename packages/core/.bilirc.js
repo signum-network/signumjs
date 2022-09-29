@@ -52,6 +52,7 @@ module.exports = {
           'convertBase36StringToHexString',
           'convertHexStringToBase36String',
           'convertHexEndianess',
+          'convertPlanckToAssetPrice'
         ]
       },
     }
