@@ -12,7 +12,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=coverage)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)
 ![npm](https://img.shields.io/npm/v/@signumjs/core.svg?style=flat)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@signumjs/core/badge)](https://www.jsdelivr.com/package/npm/@signumjs/core)
-[![Rate this package](https://badges.openbase.com/js/rating/@signumjs/core.svg?style=openbase&token=P1bz00HiaPT2Owcb0MgpTFPvzuCfEe+W6f/dlH+Zf0g=)](https://openbase.com/js/@signumjs/core?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![Rate this package](https://badges.openbase.com/js/rating/@signumjs/core.svg?token=P1bz00HiaPT2Owcb0MgpTFPvzuCfEe+W6f/dlH+Zf0g=)](https://openbase.com/js/@signumjs/core?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![Featured on Openbase](https://badges.openbase.com/js/featured/@signumjs/core.svg?token=P1bz00HiaPT2Owcb0MgpTFPvzuCfEe+W6f/dlH+Zf0g=)](https://openbase.com/js/@signumjs/core?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 `@signumjs` is a modern SDK written in Typescript providing common functionalities for _browsers_ and _nodejs_ to
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
