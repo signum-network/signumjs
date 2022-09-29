@@ -1,6 +1,6 @@
 
 /**
- * The argument object for [[AssetApi.getAllAsset]]
+ * The argument object for [[AssetApi.getAllAssets]]
  *
  * @module core
  */

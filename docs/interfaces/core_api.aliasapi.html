@@ -111,9 +111,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#buyalias" class="tsd-kind-icon">buy<wbr>Alias</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasbyid" class="tsd-kind-icon">get<wbr>Alias<wbr>ById</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasbyname" class="tsd-kind-icon">get<wbr>Alias<wbr>ByName</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasesonsale" class="tsd-kind-icon">get<wbr>Aliases<wbr>OnSale</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#sellalias" class="tsd-kind-icon">sell<wbr>Alias</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#setalias" class="tsd-kind-icon">set<wbr>Alias</a></li>
 							</ul>
 						</section>
@@ -123,12 +125,56 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="buyalias" class="tsd-anchor"></a>
+					<h3>buy<wbr>Alias</h3>
+					<div class="tsd-signature tsd-kind-icon">buy<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L59">core/src/typings/api/aliasApi.ts:59</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Buys an Alias</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The args</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.buyaliasargs.html" class="tsd-signature-type">BuyAliasArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.buyaliasargs.html" class="tsd-signature-type">BuyAliasArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getaliasbyid" class="tsd-anchor"></a>
 					<h3>get<wbr>Alias<wbr>ById</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ById<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/api/aliasApi.ts#L21">core/src/typings/api/aliasApi.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L23">core/src/typings/api/aliasApi.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ByName<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/api/aliasApi.ts#L31">core/src/typings/api/aliasApi.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L33">core/src/typings/api/aliasApi.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,7 +262,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Aliases<wbr>OnSale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/api/aliasApi.ts#L50">core/src/typings/api/aliasApi.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L51">core/src/typings/api/aliasApi.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -261,22 +307,66 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sellalias" class="tsd-anchor"></a>
+					<h3>sell<wbr>Alias</h3>
+					<div class="tsd-signature tsd-kind-icon">sell<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L68">core/src/typings/api/aliasApi.ts:68</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Sells an Alias. Sales can be public if no recipient is defined, i.e. everybody can buy it, or
+							only per account in case the recipient is given.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The args</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.sellaliasargs.html" class="tsd-signature-type">SellAliasArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.sellaliasargs.html" class="tsd-signature-type">SellAliasArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="setalias" class="tsd-anchor"></a>
 					<h3>set<wbr>Alias</h3>
 					<div class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/api/aliasApi.ts#L41">core/src/typings/api/aliasApi.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/api/aliasApi.ts#L43">core/src/typings/api/aliasApi.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Registers an Alias
-							*</p>
+							<p>Sets or Updates an Alias</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd><p>The args</p>
+							<dd><p>The arguments</p>
 							</dd>
 							<dt>returns</dt>
 							<dd><p>The Transaction Id or Unsigned Bytes as Hex String if no private key was sent</p>
@@ -362,6 +452,9 @@
 						<a href="core_api.aliasapi.html" class="tsd-kind-icon">Alias<wbr>Api</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.aliasapi.html#buyalias" class="tsd-kind-icon">buy<wbr>Alias</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#getaliasbyid" class="tsd-kind-icon">get<wbr>Alias<wbr>ById</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -369,6 +462,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#getaliasesonsale" class="tsd-kind-icon">get<wbr>Aliases<wbr>OnSale</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.aliasapi.html#sellalias" class="tsd-kind-icon">sell<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#setalias" class="tsd-kind-icon">set<wbr>Alias</a>

@@ -1,6 +1,9 @@
-<img src="./docstheme/default/assets/images/signumjs.png" alt="signumjs" height="128" align="middle" />
-
-> The Signum Network SDK for Javascript (written in Typescript)
+<p align="center">
+    <img src="https://github.com/signum-network/signumjs/raw/main/docstheme/default/assets/images/signumjs.png" alt="signumjs" height="128" align="center" />
+</p>
+<p align="center">
+    The Signum Network SDK for Javascript (written in Typescript)
+</p>
 
 [![Build](https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg)](https://github.com/signum-network/phoenix/actions?query=workflow%3A%22Build+SignumJS%22)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=alert_status)](https://sonarcloud.io/dashboard?id=signum-network_signumjs)

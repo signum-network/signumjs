@@ -2,7 +2,7 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AccountApi.buyAlias]]
+ * The argument object for [[AliasApi.buyAlias]]
  *
  * @param alias The alias Id
  * @param aliasName Alternative to alias Id

@@ -10,7 +10,7 @@
   "excludePrivate": true,
   "excludeProtected": true,
   "stripInternal": true,
-  "readme": "DOCINDEX.md",
+  "readme": "README.md",
   "exclude": [
     "/node_modules/",
     "/__tests__/",

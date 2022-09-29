@@ -115,6 +115,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#asset" class="tsd-kind-icon">asset</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#height" class="tsd-kind-icon">height</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#order" class="tsd-kind-icon">order</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#price" class="tsd-kind-icon">price</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#pricenqt" class="tsd-kind-icon">priceNQT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#quantityqnt" class="tsd-kind-icon">quantityQNT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetorder.html#type" class="tsd-kind-icon">type</a></li>
@@ -131,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L10">core/src/typings/assetOrder.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L10">core/src/typings/assetOrder.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -141,7 +142,7 @@
 					<div class="tsd-signature tsd-kind-icon">accountRS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L11">core/src/typings/assetOrder.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L11">core/src/typings/assetOrder.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -151,7 +152,7 @@
 					<div class="tsd-signature tsd-kind-icon">asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L15">core/src/typings/assetOrder.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L25">core/src/typings/assetOrder.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -161,7 +162,7 @@
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L17">core/src/typings/assetOrder.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L27">core/src/typings/assetOrder.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,9 +172,24 @@
 					<div class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L13">core/src/typings/assetOrder.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L23">core/src/typings/assetOrder.ts:23</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="price" class="tsd-anchor"></a>
+					<h3>price</h3>
+					<div class="tsd-signature tsd-kind-icon">price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L22">core/src/typings/assetOrder.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The price per integral token, i.e. if a token has 2 (two) decimals, then this amount is per 100 QNT (Quantity). The amount is always returned in Planck, that is Signa multiplied by 10E8</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="pricenqt" class="tsd-anchor"></a>
@@ -181,9 +197,19 @@
 					<div class="tsd-signature tsd-kind-icon">priceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L12">core/src/typings/assetOrder.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L18">core/src/typings/assetOrder.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The price in planck per one token quantity. To get the right Planck expression use either price field or this formula: (priceNQT * 10^8) * 10^(decimals-8)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="../modules/util.html#convertassetpricetoplanck">util.convertAssetPriceToPlanck</a></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="quantityqnt" class="tsd-anchor"></a>
@@ -191,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">quantityQNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L16">core/src/typings/assetOrder.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L26">core/src/typings/assetOrder.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -201,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"ask"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"bid"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/96435c7/packages/core/src/typings/assetOrder.ts#L14">core/src/typings/assetOrder.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/959bda3/packages/core/src/typings/assetOrder.ts#L24">core/src/typings/assetOrder.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -263,6 +289,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.assetorder.html#order" class="tsd-kind-icon">order</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.assetorder.html#price" class="tsd-kind-icon">price</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core.assetorder.html#pricenqt" class="tsd-kind-icon">priceNQT</a>

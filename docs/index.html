@@ -82,10 +82,12 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<img src="assets/images/signumjs.png" alt="signumjs" height="128" align="middle" />
-				<blockquote>
-					<p>The Signum Network SDK for Javascript (written in Typescript)</p>
-				</blockquote>
+				<p align="center">
+					<img src="https://github.com/signum-network/signumjs/raw/main/docstheme/default/assets/images/signumjs.png" alt="signumjs" height="128" align="center" />
+				</p>
+				<p align="center">
+					The Signum Network SDK for Javascript (written in Typescript)
+				</p>
 				<p><a href="https://github.com/signum-network/phoenix/actions?query=workflow%3A%22Build+SignumJS%22"><img src="https://github.com/signum-network/phoenix/workflows/Build%20SignumJS/badge.svg" alt="Build"></a>
 					<a href="https://sonarcloud.io/dashboard?id=signum-network_signumjs"><img src="https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=alert_status" alt="Quality Gate Status"></a>
 					<a href="https://sonarcloud.io/dashboard?id=signum-network_signumjs"><img src="https://sonarcloud.io/api/project_badges/measure?project=signum-network_signumjs&metric=sqale_rating" alt="Maintainability Rating"></a>
@@ -96,21 +98,24 @@
 				<p><code>@signumjs</code> is a modern SDK written in Typescript providing common functionalities for <em>browsers</em> and <em>nodejs</em> to
 					interact with the <a href="https://signum.network/">Signum Network blockchain</a>, an advanced community-driven blockchain
 				technology.</p>
+				<hr>
+				<p>Best way to start is with the extensive <a href="https://docs.signum.network/signum/signumjs">Online Documentation</a></p>
+				<hr>
 				<a href="#packages" id="packages" style="color: inherit; text-decoration: none;">
 					<h2>Packages</h2>
 				</a>
 				<p>The SDK is separated in the following packages</p>
 				<ul>
-					<li><a href="./modules/core.html">@signumjs/core</a> The main package providing an extense API for blockchain interaction</li>
-					<li><a href="./modules/contracts.html">@signumjs/contracts</a> A package providing Signum relevant functions for <em>smart contracts</em></li>
-					<li><a href="./modules/crypto.html">@signumjs/crypto</a> A package providing Signum relevant crypto functions</li>
-					<li><a href="./modules/util.html">@signumjs/util</a> A package providing useful functions, e.g. common conversion functions</li>
-					<li><a href="./modules/wallets.html">@signumjs/wallets</a> This package provides functions and classes to interact with wallets. Currently, supported is the <a href="https://github.com/signum-network/signum-xt-wallet">Browser Extension Wallet</a>, and rough support for Deeplinking,  </li>
-					<li>i.e. with <a href="https://github.com/signum-network/phoenix">Phoenix Wallet</a> </li>
-					<li><a href="./modules/http.html">@signumjs/http</a> A package providing a <em>simplified</em> Http layer, with consistent response types,
+					<li><a href="https://signum-network.github.io/signumjs/modules/core.html">@signumjs/core</a> The main package providing an extensive API for blockchain interaction</li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/contracts.html">@signumjs/contracts</a> A package providing Signum relevant functions for <em>smart contracts</em></li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/crypto.html">@signumjs/crypto</a> A package providing Signum relevant crypto functions</li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/util.html">@signumjs/util</a> A package providing useful functions, e.g. common conversion functions</li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/http.html">@signumjs/http</a> A package providing a <em>simplified</em> Http layer, with consistent response types,
 					and exception handling</li>
-					<li><a href="./modules/monitor.html">@signumjs/monitor</a> A package providing a class to execute recurring async operations with
+					<li><a href="https://signum-network.github.io/signumjs/modules/monitor.html">@signumjs/monitor</a> A package providing a class to execute recurring async operations with
 					de/serialization feature, good for listening to blockchain transactions</li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/wallets.html">@signumjs/wallets</a> This package provides the communication with SIP22 compatible deeplinkable </li>
+					<li>wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  </li>
 				</ul>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
@@ -124,16 +129,16 @@
 <span class="hljs-built_in">npm</span> install @signumjs/contracts (optional)
 <span class="hljs-built_in">npm</span> install @signumjs/crypto (optional)
 <span class="hljs-built_in">npm</span> install @signumjs/util (optional)
-<span class="hljs-built_in">npm</span> install @signumjs/wallets (optional)
 <span class="hljs-built_in">npm</span> install @signumjs/http (optional)
-<span class="hljs-built_in">npm</span> install @signumjs/monitor (optional)</code></pre><p>or using <a href="https://yarnpkg.com/">yarn</a>:</p>
+<span class="hljs-built_in">npm</span> install @signumjs/monitor (optional)
+<span class="hljs-built_in">npm</span> install @signumjs/wallets (optional)</code></pre><p>or using <a href="https://yarnpkg.com/">yarn</a>:</p>
 				<pre><code class="language-yarn">yarn add @signumjs/core
 yarn add @signumjs/contracts (optional)
 yarn add @signumjs/crypto (optional)
 yarn add @signumjs/util (optional)
-yarn add @signumjs/wallets (optional)
 yarn add @signumjs/http (optional)
-yarn add @signumjs/monitor (optional)</code></pre>
+yarn add @signumjs/monitor (optional)
+yarn add @signumjs/wallets (optional)</code></pre>
 				<a href="#using-in-classic-ltscriptgt" id="using-in-classic-ltscriptgt" style="color: inherit; text-decoration: none;">
 					<h3>Using in classic <code>&lt;script&gt;</code></h3>
 				</a>
@@ -145,8 +150,8 @@ yarn add @signumjs/monitor (optional)</code></pre>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/crypto/dist/signumjs.crypto.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/http/dist/signumjs.http.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js&#39;&gt;&lt;/script&gt;</code></p>
-				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/monitor/dist/signumjs.monitor.min.js&#39;&gt;&lt;/script&gt;</code></p>
+				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p>Due to the way a package is imported following global variables are provided</p>
 				<table>
 					<thead>
@@ -172,10 +177,6 @@ yarn add @signumjs/monitor (optional)</code></pre>
 							<td><code>sig$http</code></td>
 						</tr>
 						<tr>
-							<td>wallets</td>
-							<td><code>sig$wallets</code></td>
-						</tr>
-						<tr>
 							<td>monitor</td>
 							<td><code>sig$monitor</code></td>
 						</tr>
@@ -183,32 +184,46 @@ yarn add @signumjs/monitor (optional)</code></pre>
 							<td>util</td>
 							<td><code>sig$util</code></td>
 						</tr>
+						<tr>
+							<td>wallets</td>
+							<td><code>sig$wallets</code></td>
+						</tr>
 				</tbody></table>
 				<p>Examples:</p>
 				<pre><code class="language-js"><span class="hljs-comment">// using core</span>
-<span class="hljs-keyword">const</span> api = sig$.composeApi({
+<span class="hljs-keyword">const</span> ledger = sig$.LedgerClientFactory.create({
     <span class="hljs-attr">nodeHost</span>: <span class="hljs-string">"http://testnet.signum.network"</span>,
 });
 
-api.network.getBlockchainStatus().then(<span class="hljs-built_in">console</span>.log);</code></pre>
+ledger.network.getBlockchainStatus().then(<span class="hljs-built_in">console</span>.log);</code></pre>
 				<pre><code class="language-js"><span class="hljs-comment">// using contracts</span>
 <span class="hljs-keyword">const</span> dataView = <span class="hljs-keyword">new</span> sig$contracts.ContractDataView(contract)
 <span class="hljs-built_in">console</span>.log(dataView.getVariable(<span class="hljs-number">2</span>))</code></pre>
 				<pre><code class="language-js"><span class="hljs-comment">// using crypto</span>
 <span class="hljs-built_in">console</span>.log(sig$crypto.hashSHA256(<span class="hljs-string">"test"</span>))</code></pre>
 				<pre><code class="language-js"><span class="hljs-comment">// using util</span>
-<span class="hljs-keyword">const</span> value = sig$util.Value.fromSigna(<span class="hljs-string">"1000"</span>)</code></pre>
+<span class="hljs-keyword">const</span> value = sig$util.Amount.fromSigna(<span class="hljs-string">"1000"</span>)</code></pre>
 				<pre><code class="language-ts"><span class="hljs-comment">// using http</span>
 <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> sig$http.HttpClientFactory.createHttpClient(<span class="hljs-string">'https://jsonplaceholder.typicode.com/'</span>);
 client.get(<span class="hljs-string">'/todos/1'</span>).then(<span class="hljs-built_in">console</span>.log)</code></pre>
+				<pre><code class="language-ts"><span class="hljs-comment">// using wallets</span>
+<span class="hljs-keyword">const</span> wallet = <span class="hljs-keyword">new</span> sig$wallets.GenericExtensionWallet()
+<span class="hljs-keyword">const</span> connection = <span class="hljs-keyword">await</span> wallet.connect();
+<span class="hljs-keyword">const</span> subscription = connection.listen({
+    onAccountChanged: <span class="hljs-function">(<span class="hljs-params">accountId, publicKey</span>) =&gt;</span> { <span class="hljs-comment">/*...*/</span> }
+})
+<span class="hljs-comment">// ...</span>
+subscription.unlisten()</code></pre>
 				<pre><code class="language-ts"> <span class="hljs-comment">// using monitor</span>
 
 <span class="hljs-comment">// A method that checks if an account exists</span>
 <span class="hljs-comment">// &gt; IMPORTANT: Do not use closures, when you need to serialize the monitor</span>
+<span class="hljs-keyword">import</span> {LedgerClientFactory} <span class="hljs-keyword">from</span> <span class="hljs-string">'./ledgerClientFactory'</span>;
+
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tryFetchAccount</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">const</span> api = composeApi({nodeHost: <span class="hljs-string">'https://testnet.signum.network:6876/'</span>})
-        <span class="hljs-keyword">const</span> {account} = <span class="hljs-keyword">await</span> api.account.getAccount(<span class="hljs-string">'1234'</span>)
+        <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">'https://europe3.testnet.signum.network/'</span>})
+        <span class="hljs-keyword">const</span> {account} = <span class="hljs-keyword">await</span> ledger.account.getAccount(<span class="hljs-string">'1234'</span>)
         <span class="hljs-keyword">return</span> account;
     } <span class="hljs-keyword">catch</span> (e) {
         <span class="hljs-comment">// ignore error</span>
@@ -246,14 +261,14 @@ client.get(<span class="hljs-string">'/todos/1'</span>).then(<span class="hljs-b
 					<h3>ES6/NodeJS style</h3>
 				</a>
 				<p>In a separate file, preferably <code>index.js</code> or <code>main.js</code> write your entry point like this:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> {LedgerClientFactory} <span class="hljs-keyword">from</span> <span class="hljs-string">'@signumjs/core'</span>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {LedgerClientFactory, ApiSettings} <span class="hljs-keyword">from</span> <span class="hljs-string">'@signumjs/core'</span>
 <span class="hljs-keyword">import</span> {Amount} <span class="hljs-keyword">from</span> <span class="hljs-string">'@signumjs/util'</span>
 
 <span class="hljs-comment">// this self-executing file makes turns this file into a starting point of your app</span>
 (<span class="hljs-keyword">async</span> () =&gt; {
     <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">const</span> api = LedgerClientFactory.createClient({<span class="hljs-attr">nodeHost</span>: <span class="hljs-string">'https://europe3.testnet.signum.network'</span>});
-        <span class="hljs-keyword">const</span> {balanceNQT} = <span class="hljs-keyword">await</span> api.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</span>)
+        <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.createClient({<span class="hljs-attr">nodeHost</span>: <span class="hljs-string">'https://europe3.testnet.signum.network'</span>});
+        <span class="hljs-keyword">const</span> {balanceNQT} = <span class="hljs-keyword">await</span> ledger.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</span>)
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Account Balance: <span class="hljs-subst">${Amount.fromPlanck(balanceNQT).toString()}</span>`</span>)
     } <span class="hljs-keyword">catch</span> (e) { <span class="hljs-comment">// e is of type HttpError (as part of @signumjs/http)</span>
         <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Whooops, something went wrong: <span class="hljs-subst">${e.message}</span>`</span>)
@@ -263,9 +278,8 @@ client.get(<span class="hljs-string">'/todos/1'</span>).then(<span class="hljs-b
 				<a href="#ltscriptgt-style" id="ltscriptgt-style" style="color: inherit; text-decoration: none;">
 					<h3><code>&lt;script&gt;</code> style</h3>
 				</a>
-				<pre><code class="language-js"><span class="hljs-comment">// composeApi is the legacy composer function... but same as LedgerClientFactory.createClient</span>
-<span class="hljs-keyword">const</span> api = sig$.composeApi({<span class="hljs-attr">nodeHost</span>: <span class="hljs-string">'https://europe3.testnet.signum.network'</span>});
-api.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</span>)
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> ledger = sig$.LedgerClientFactory.create({<span class="hljs-attr">nodeHost</span>: <span class="hljs-string">'https://europe3.testnet.signum.network'</span>});
+ledger.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</span>)
     .then(<span class="hljs-function"><span class="hljs-params">balance</span> =&gt;</span> {
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Account Balance: <span class="hljs-subst">${sig$util.Amount.fromPlanck(balance.balanceNQT).toString()}</span>`</span>)
 
@@ -278,11 +292,13 @@ api.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</
 					<h2>Development</h2>
 				</a>
 				<p>Contributors are warmly welcome. To start your local build just hit</p>
-				<pre><code>npm <span class="hljs-keyword">install</span></code></pre><p>That&#39;s it!</p>
+				<pre><code class="language-bash">npm install</code></pre>
+				<p>That&#39;s it!</p>
 				<a href="#building-the-packages" id="building-the-packages" style="color: inherit; text-decoration: none;">
 					<h2>Building the packages</h2>
 				</a>
 				<p>The SDK is using <a href="https://lerna.js.org/">Lerna</a> to manage all subpackages in a developer friendlier way:</p>
+				<pre><code class="language-bash">npm run build</code></pre>
 				<a href="#running-tests" id="running-tests" style="color: inherit; text-decoration: none;">
 					<h2>Running Tests</h2>
 				</a>
@@ -293,14 +309,14 @@ api.account.getAccountBalance(<span class="hljs-string">'13036514135565182944'</
 						| Keep in mind that these tests are slow as they run against true servers. And therefore, it cannot be guaranteed
 					that all E2E tests always work</li>
 				</ol>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2>Documentation</h2>
+				<a href="#publish" id="publish" style="color: inherit; text-decoration: none;">
+					<h2>Publish</h2>
 				</a>
-				<ul>
-					<li><a href="https://signum-network.github.io/signumjs/">SignumJS Online Documentation</a></li>
-					<li>To generate esdocs: <code>npm run doc</code></li>
-					<li>To update the README.md files: <code>lerna run readme</code></li>
-				</ul>
+				<p>To publish all packages (using lerna and same version strategy) just run </p>
+				<pre><code class="language-bash">npm run publish</code></pre>
+				<blockquote>
+					<p>Note: Only with a valid npm token</p>
+				</blockquote>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
