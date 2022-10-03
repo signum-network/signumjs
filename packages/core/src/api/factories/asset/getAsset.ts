@@ -14,4 +14,9 @@ import {GetAssetArgs} from '../../../typings/args';
 export const getAsset = (service: ChainService):
     (args: GetAssetArgs) => Promise<Asset> =>
     (args: GetAssetArgs): Promise<Asset> =>
-        service.query('getAsset', {asset: args.assetId, quantityMinimumQNT: args.minimumQuantity});
+        service.query('getAsset', {
+            asset: args.assetId,
+            quantityMinimumQNT: args.minimumQuantity,
+            heightStart: args.heightStart,
+            heightEnd: args.heightEnd
+        });
