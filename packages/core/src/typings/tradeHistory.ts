@@ -3,7 +3,12 @@
  */
 import {AssetTrade} from './assetTrade';
 
-interface JournalEntry {
+
+/**
+ * Journal Entry of [[TradeHistory]]
+ * @module core
+ */
+export interface JournalEntry {
     order: string;
     asset: string;
     account: string;
@@ -22,7 +27,7 @@ interface JournalEntry {
 }
 
 /**
- * Asset Trade
+ * Trade History
  * @module core
  */
 export interface TradeHistory extends Indexable {
