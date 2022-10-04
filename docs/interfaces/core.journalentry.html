@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetAccountTransactionsArgs
+	<title>JournalEntry
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.getaccounttransactionsargs.html">GetAccountTransactionsArgs</a>
+					<a href="core.journalentry.html">JournalEntry</a>
 				</li>
 			</ul>
-			<h1>Interface GetAccountTransactionsArgs</h1>
+			<h1>Interface JournalEntry</h1>
 		</div>
 	</div>
 </header>
@@ -91,44 +91,15 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.accountapi.html#getaccounttransactions">AccountApi.getAccountTransactions</a></p>
+						<p>Journal Entry of <a href="core.tradehistory.html">TradeHistory</a></p>
 					</div>
-					<dl class="tsd-comment-tags">
-						<dt>param</dt>
-						<dd><p>The numeric accountId</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The timestamp (block time) you are looking for</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The first index of the transaction list, beginning at 0</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The last index of the transaction list (BRS does not return more than 500)</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The minimum required number of confirmations per transaction</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The type of transactions to fetch (see <a href="../enums/core.transactiontype.html">TransactionType</a>)</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The subtype of transactions to fetch (see e.g. <a href="../enums/core.transactionarbitrarysubtype.html">TransactionArbitrarySubtype</a>)</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>Includes indirect transaction, i.e. multi out payments.</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>Resolves the amounts from <a href="core_api.assetapi.html#distributetoassetholders">AssetApi.distributeToAssetHolders</a></p>
-						</dd>
-					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GetAccountTransactionsArgs</span>
+						<span class="target">JournalEntry</span>
 					</li>
 				</ul>
 			</section>
@@ -139,15 +110,21 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#includeindirect" class="tsd-kind-icon">include<wbr>Indirect</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#numberofconfirmations" class="tsd-kind-icon">number<wbr>OfConfirmations</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#resolvedistributions" class="tsd-kind-icon">resolve<wbr>Distributions</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#subtype" class="tsd-kind-icon">subtype</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaccounttransactionsargs.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#account" class="tsd-kind-icon">account</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#accountrs" class="tsd-kind-icon">accountRS</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#asset" class="tsd-kind-icon">asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#decimals" class="tsd-kind-icon">decimals</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#executedquantityqnt" class="tsd-kind-icon">executed<wbr>QuantityQNT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#executedvolumenqt" class="tsd-kind-icon">executed<wbr>VolumeNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#height" class="tsd-kind-icon">height</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#order" class="tsd-kind-icon">order</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#price" class="tsd-kind-icon">price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#pricenqt" class="tsd-kind-icon">priceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#quantityqnt" class="tsd-kind-icon">quantityQNT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#trades" class="tsd-kind-icon">trades</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.journalentry.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -156,92 +133,152 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="accountid" class="tsd-anchor"></a>
-					<h3>account<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="account" class="tsd-anchor"></a>
+					<h3>account</h3>
+					<div class="tsd-signature tsd-kind-icon">account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L16">core/src/typings/args/getAccountTransactionsArgs.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L14">core/src/typings/tradeHistory.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="firstindex" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
-					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="accountrs" class="tsd-anchor"></a>
+					<h3>accountRS</h3>
+					<div class="tsd-signature tsd-kind-icon">accountRS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L18">core/src/typings/args/getAccountTransactionsArgs.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L15">core/src/typings/tradeHistory.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="includeindirect" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Indirect</h3>
-					<div class="tsd-signature tsd-kind-icon">include<wbr>Indirect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="asset" class="tsd-anchor"></a>
+					<h3>asset</h3>
+					<div class="tsd-signature tsd-kind-icon">asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L19">core/src/typings/args/getAccountTransactionsArgs.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L13">core/src/typings/tradeHistory.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="lastindex" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
-					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="decimals" class="tsd-anchor"></a>
+					<h3>decimals</h3>
+					<div class="tsd-signature tsd-kind-icon">decimals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L21">core/src/typings/args/getAccountTransactionsArgs.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L20">core/src/typings/tradeHistory.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="numberofconfirmations" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> number<wbr>OfConfirmations</h3>
-					<div class="tsd-signature tsd-kind-icon">number<wbr>OfConfirmations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="executedquantityqnt" class="tsd-anchor"></a>
+					<h3>executed<wbr>QuantityQNT</h3>
+					<div class="tsd-signature tsd-kind-icon">executed<wbr>QuantityQNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L22">core/src/typings/args/getAccountTransactionsArgs.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L22">core/src/typings/tradeHistory.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="resolvedistributions" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> resolve<wbr>Distributions</h3>
-					<div class="tsd-signature tsd-kind-icon">resolve<wbr>Distributions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="executedvolumenqt" class="tsd-anchor"></a>
+					<h3>executed<wbr>VolumeNQT</h3>
+					<div class="tsd-signature tsd-kind-icon">executed<wbr>VolumeNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L20">core/src/typings/args/getAccountTransactionsArgs.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L23">core/src/typings/tradeHistory.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="subtype" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> subtype</h3>
-					<div class="tsd-signature tsd-kind-icon">subtype<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="height" class="tsd-anchor"></a>
+					<h3>height</h3>
+					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L23">core/src/typings/args/getAccountTransactionsArgs.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L18">core/src/typings/tradeHistory.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="timestamp" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timestamp</h3>
-					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L17">core/src/typings/args/getAccountTransactionsArgs.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L19">core/src/typings/tradeHistory.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="order" class="tsd-anchor"></a>
+					<h3>order</h3>
+					<div class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L12">core/src/typings/tradeHistory.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="price" class="tsd-anchor"></a>
+					<h3>price</h3>
+					<div class="tsd-signature tsd-kind-icon">price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L21">core/src/typings/tradeHistory.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="pricenqt" class="tsd-anchor"></a>
+					<h3>priceNQT</h3>
+					<div class="tsd-signature tsd-kind-icon">priceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L17">core/src/typings/tradeHistory.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="quantityqnt" class="tsd-anchor"></a>
+					<h3>quantityQNT</h3>
+					<div class="tsd-signature tsd-kind-icon">quantityQNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L16">core/src/typings/tradeHistory.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"filled"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"open"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cancelled"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L25">core/src/typings/tradeHistory.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="trades" class="tsd-anchor"></a>
+					<h3>trades</h3>
+					<div class="tsd-signature tsd-kind-icon">trades<span class="tsd-signature-symbol">:</span> <a href="core.assettrade.html" class="tsd-signature-type">AssetTrade</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L26">core/src/typings/tradeHistory.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="type" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"bid"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"ask"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/args/getAccountTransactionsArgs.ts#L24">core/src/typings/args/getAccountTransactionsArgs.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/tradeHistory.ts#L24">core/src/typings/tradeHistory.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -287,34 +324,52 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.getaccounttransactionsargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Transactions<wbr>Args</a>
+						<a href="core.journalentry.html" class="tsd-kind-icon">Journal<wbr>Entry</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a>
+								<a href="core.journalentry.html#account" class="tsd-kind-icon">account</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
+								<a href="core.journalentry.html#accountrs" class="tsd-kind-icon">accountRS</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#includeindirect" class="tsd-kind-icon">include<wbr>Indirect</a>
+								<a href="core.journalentry.html#asset" class="tsd-kind-icon">asset</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
+								<a href="core.journalentry.html#decimals" class="tsd-kind-icon">decimals</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#numberofconfirmations" class="tsd-kind-icon">number<wbr>OfConfirmations</a>
+								<a href="core.journalentry.html#executedquantityqnt" class="tsd-kind-icon">executed<wbr>QuantityQNT</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#resolvedistributions" class="tsd-kind-icon">resolve<wbr>Distributions</a>
+								<a href="core.journalentry.html#executedvolumenqt" class="tsd-kind-icon">executed<wbr>VolumeNQT</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#subtype" class="tsd-kind-icon">subtype</a>
+								<a href="core.journalentry.html#height" class="tsd-kind-icon">height</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#timestamp" class="tsd-kind-icon">timestamp</a>
+								<a href="core.journalentry.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.getaccounttransactionsargs.html#type" class="tsd-kind-icon">type</a>
+								<a href="core.journalentry.html#order" class="tsd-kind-icon">order</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#price" class="tsd-kind-icon">price</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#pricenqt" class="tsd-kind-icon">priceNQT</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#quantityqnt" class="tsd-kind-icon">quantityQNT</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#status" class="tsd-kind-icon">status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#trades" class="tsd-kind-icon">trades</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.journalentry.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
