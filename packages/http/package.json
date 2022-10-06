@@ -1,7 +1,7 @@
 {
   "name": "@signumjs/http",
   "description": "SignumJS Generic Http Module",
-  "version": "1.0.0-rc.36",
+  "version": "1.0.0-rc.37",
   "keywords": [
     "signum",
     "signum-network",
