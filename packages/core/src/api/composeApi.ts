@@ -64,7 +64,7 @@ import {
     getSubscription,
     getUnconfirmedTransactions,
     signAndBroadcastTransaction,
-    parseTransactionBytes
+    parseTransactionBytes, getDistributionAmountsFromTransaction
 } from './factories/transaction';
 import {
     cancelAskOrder,
@@ -164,16 +164,17 @@ export function composeApi(settings: ApiSettings): Api {
         })
         .withTransactionApi({
             broadcastTransaction,
-            getTransaction,
-            sendAmountToSingleRecipient,
-            sendAmountToMultipleRecipients,
-            sendSameAmountToMultipleRecipients,
-            createSubscription,
             cancelSubscription,
+            createSubscription,
+            getDistributionAmountsFromTransaction,
             getSubscription,
+            getTransaction,
             getUnconfirmedTransactions,
-            signAndBroadcastTransaction,
             parseTransactionBytes,
+            sendAmountToMultipleRecipients,
+            sendAmountToSingleRecipient,
+            sendSameAmountToMultipleRecipients,
+            signAndBroadcastTransaction,
         })
         .withMessageApi({
             sendMessage,
