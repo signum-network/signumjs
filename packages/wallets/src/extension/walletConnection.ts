@@ -22,6 +22,7 @@ export class WalletConnection {
     /**
      * @param accountId The connected account
      * @param publicKey The accounts public key
+     * @param watchOnly Indicates whether this account is watch only, or not. Watch Only accounts cannot sign messages.
      * @param availableNodeHosts The available nodeHosts for given network, which are registered in the wallet.
      * @param currentNodeHost The currently selected nodeHost in the wallet
      * @param adapter the extension adapter with its internal implementation
@@ -29,6 +30,7 @@ export class WalletConnection {
     constructor(
         public accountId: string,
         public publicKey: string,
+        public watchOnly: boolean,
         public availableNodeHosts: string[],
         public currentNodeHost: string,
         private adapter: ExtensionAdapter,
@@ -61,6 +63,7 @@ export class WalletConnection {
                     if (this.accountId !== msg.accountId) {
                         this.accountId = msg.accountId;
                         this.publicKey = msg.accountPublicKey;
+                        this.watchOnly = msg.watchOnly;
                         call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey});
                     }
                     break;
@@ -71,6 +74,7 @@ export class WalletConnection {
                         this.publicKey = '';
                         this.availableNodeHosts = [];
                         this.currentNodeHost = '';
+                        this.watchOnly = false;
                         call(onPermissionRemoved, {url: msg.url});
                     }
                     break;
@@ -79,6 +83,7 @@ export class WalletConnection {
                     if (this.accountId === msg.accountId) {
                         this.accountId = '';
                         this.publicKey = '';
+                        this.watchOnly = false;
                         call(onAccountRemoved, {accountId: msg.accountId});
                     }
                     break;

@@ -98,6 +98,7 @@ export interface ExtensionPermissionResponse extends ExtensionMessageBase {
     publicKey: string;
     availableNodeHosts: string[];
     currentNodeHost: string;
+    watchOnly: boolean;
 }
 
 /**
@@ -173,6 +174,10 @@ export type ExtensionPermission = {
      * The accounts public key that is granted by this permission
      */
     publicKey: string;
+    /**
+     * Determines, whether the account is watch only, i.e. has no signing keys
+     */
+    watchOnly: boolean;
 } | null;
 
 /**
@@ -322,9 +327,13 @@ export interface ExtensionNotificationAccountChanged
     extends ExtensionNotificationBase {
     type: ExtensionNotificationType.AccountChanged;
     /**
-     * The id of the account that was removed
+     * The id of the selected/changed account
      */
     accountId: string;
     accountPublicKey: string;
+    /**
+     * Indicates whether the account is being watched only, i.e. has no private keys for sign available
+     */
+    watchOnly: boolean;
 }
 

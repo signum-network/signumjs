@@ -76,7 +76,7 @@ export class GenericExtensionWallet implements Wallet {
 
     private async fetchPermission(network: string, appName: string): Promise<WalletConnection> {
         try {
-            const {availableNodeHosts, accountId, publicKey, currentNodeHost} = await this.adapter.requestPermission({
+            const {availableNodeHosts, accountId, publicKey, currentNodeHost, watchOnly} = await this.adapter.requestPermission({
                 network: network,
                 appMeta: {
                     name: appName
@@ -86,6 +86,7 @@ export class GenericExtensionWallet implements Wallet {
             return new WalletConnection(
                 accountId,
                 publicKey,
+                watchOnly,
                 availableNodeHosts,
                 currentNodeHost,
                 this.adapter);

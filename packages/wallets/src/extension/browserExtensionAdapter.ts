@@ -163,6 +163,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
             availableNodeHosts: res.availableNodeHosts,
             accountId: res.accountId,
             publicKey: res.publicKey,
+            watchOnly: res.watchOnly
         };
     }
 
