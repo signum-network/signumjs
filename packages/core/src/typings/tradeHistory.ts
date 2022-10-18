@@ -16,6 +16,7 @@ export interface JournalEntry {
     quantityQNT: string;
     priceNQT: string;
     height: number;
+    timestamp: number;
     name: string;
     decimals: number;
     price: string;
