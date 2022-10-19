@@ -48,8 +48,8 @@ import {getAliasById, getAliasByName, getAliasesOnSale, sellAlias, buyAlias} fro
 import {
     callContractMethod,
     getAllContractIds,
-    getContract,
-    getContractsByAccount,
+    getContract, getContractMapValuesByFirstKey,
+    getContractsByAccount, getSingleContractMapValue,
     publishContract,
     publishContractByReference
 } from './factories/contract';
@@ -214,6 +214,8 @@ export function composeApi(settings: ApiSettings): Api {
             publishContract,
             publishContractByReference,
             callContractMethod,
+            getSingleContractMapValue,
+            getContractMapValuesByFirstKey,
         }).withAssetApi({
             getAsset,
             getAllTrades,
