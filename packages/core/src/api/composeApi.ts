@@ -92,7 +92,7 @@ import {
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
     getOpenAskOrdersPerAccount,
-    burnAsset, getTradeHistoryPerAccount
+    burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
@@ -243,7 +243,9 @@ export function composeApi(settings: ApiSettings): Api {
             getOpenAskOrdersPerAsset,
             getOpenBidOrdersPerAccount,
             getOpenAskOrdersPerAccount,
-            getTradeHistoryPerAccount
+            getTradeHistoryPerAccount,
+            getAssetsByIssuer,
+            getAssetsByName
         })
         .compose();
 }

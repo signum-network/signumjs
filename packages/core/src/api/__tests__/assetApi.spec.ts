@@ -20,7 +20,7 @@ import {
     getOpenBidOrdersPerAsset,
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
-    getOpenAskOrdersPerAccount,
+    getOpenAskOrdersPerAccount, getAllAssets, getAssetsByIssuer, getAssetsByName,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -84,6 +84,58 @@ describe('Asset Api', () => {
             } catch (error) {
                 expect(error.status).toBe(500);
             }
+        });
+    });
+   describe('getAllAssets', () => {
+        it('should getAllAssets', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAllAssets&skipZeroVolume=true&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3'
+                ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAllAssets(service)({
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
+        });
+    });
+
+   describe('getAssetsByIssuer', () => {
+        it('should getAssetsByIssuer', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAssetsByIssuer&account=accountId&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3&skipZeroVolume=true'
+                ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAssetsByIssuer(service)({
+                accountId: 'accountId',
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
+        });
+    });
+
+    describe('getAssetsByName', () => {
+        it('should getAssetsByName', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAssetsByName&name=name&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3&skipZeroVolume=true'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAssetsByName(service)({
+                name: 'name',
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
         });
     });
 
@@ -692,4 +744,4 @@ describe('Asset Api', () => {
             });
         });
     });
-});
+})

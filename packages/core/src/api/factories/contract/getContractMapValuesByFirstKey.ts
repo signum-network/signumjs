@@ -2,13 +2,13 @@
  * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
-import {GetContractMapValuesByFirstKeyArgs, GetSingleContractMapValueArgs} from '../../../typings/args';
+import {GetContractMapValuesByFirstKeyArgs } from '../../../typings/args';
 import {ContractMapValueList} from '../../../typings/contractMapValueList';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[ContractApi]].
  *
- * See details at [[ContractApi.getAllContractIds]]
+ * See details at [[ContractApi.getContractMapValuesByFirstKey]]
  * @module core.api.factories
  */
 export const getContractMapValuesByFirstKey = (service: ChainService):

@@ -7,7 +7,7 @@ import {GetSingleContractMapValueArgs} from '../../../typings/args';
 /**
  * Use with [[ApiComposer]] and belongs to [[ContractApi]].
  *
- * See details at [[ContractApi.getAllContractIds]]
+ * See details at [[ContractApi.getSingleContractMapValue]]
  * @module core.api.factories
  */
 export const getSingleContractMapValue = (service: ChainService):

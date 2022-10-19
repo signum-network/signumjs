@@ -16,7 +16,11 @@ import {
     GetAssetTradesPerAccountArgs,
     GetAssetArgs,
     MintAssetArgs,
-    GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAccountArgs, GetAssetOpenOrdersPerAssetArgs, GetTradeHistoryPerAccountArgs
+    GetAssetOpenOrdersArgs,
+    GetAssetOpenOrdersPerAccountArgs,
+    GetAssetOpenOrdersPerAssetArgs,
+    GetTradeHistoryPerAccountArgs,
+    GetAssetsByNameArgs, GetAssetsByIssuerArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -248,4 +252,22 @@ export interface AssetApi {
      * @param The trade history
      */
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
+
+    /**
+     * Gets all assets bygiven issuer
+     *
+     * @param {GetAssetsByIssuerArgs} args The args object
+     *
+     * @param The asset list
+     */
+    getAssetsByIssuer: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
+
+    /**
+     * Gets all assets by name (or parts of it)
+     *
+     * @param {GetAssetsByNameArgs} args The args object
+     *
+     * @param The asset list
+     */
+    getAssetsByName: (args: GetAssetsByNameArgs) => Promise<AssetList>;
 }

@@ -7,6 +7,8 @@ export * from './getAllAssets';
 export * from './getAllTrades';
 export * from './getAsset';
 export * from './getAssetHolders';
+export * from './getAssetsByIssuer';
+export * from './getAssetsByName';
 export * from './getAssetTrades';
 export * from './getAssetTradesPerAccount';
 export * from './getAssetTradesPerAsset';
