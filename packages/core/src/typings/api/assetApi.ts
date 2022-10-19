@@ -32,7 +32,6 @@ import {AssetBidOrderList} from '../assetBidOrderList';
 import {AssetAskOrderList} from '../assetAskOrderList';
 import {TradeHistory} from '../tradeHistory';
 import {GetAllAssetsArgs} from '../args/getAllAssetsArgs';
-import {ChainService} from '../../service';
 
 /**
  * Asset API
