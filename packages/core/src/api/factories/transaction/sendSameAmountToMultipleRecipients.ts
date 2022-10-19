@@ -20,7 +20,11 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
         signIfPrivateKey(service, args,
             async (a: SendSameAmountToMultipleRecipientsArgs) => {
 
-                const {recipientIds, senderPublicKey, amountPlanck, feePlanck, deadline = DefaultDeadline, dedupe = false} = a;
+                const {recipientIds, senderPublicKey, amountPlanck, feePlanck,
+                    referencedTransactionFullHash,
+                    deadline = DefaultDeadline,
+                    dedupe = false,
+                } = a;
 
                 const uniqueRecipients = new Set<string>(recipientIds);
                 if (!dedupe && recipientIds.length !== uniqueRecipients.size) {
@@ -37,6 +41,7 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
                     feeNQT: feePlanck,
                     amountNQT: amountPlanck,
                     deadline,
+                    referencedTransactionFullHash
                 };
 
                 return service.send<UnsignedTransaction>('sendMoneyMultiSame', parameters);

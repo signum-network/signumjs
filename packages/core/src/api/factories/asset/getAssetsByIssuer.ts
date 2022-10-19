@@ -1,5 +1,5 @@
 /**
- * Modified work Copyright (c) 2022 Signum Network
+ * Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
 import {AssetList} from '../../../typings/assetList';

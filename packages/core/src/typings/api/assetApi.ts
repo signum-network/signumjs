@@ -20,7 +20,7 @@ import {
     GetAssetOpenOrdersPerAccountArgs,
     GetAssetOpenOrdersPerAssetArgs,
     GetTradeHistoryPerAccountArgs,
-    GetAssetsByNameArgs, GetAssetsByIssuerArgs
+    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -32,6 +32,7 @@ import {AssetBidOrderList} from '../assetBidOrderList';
 import {AssetAskOrderList} from '../assetAskOrderList';
 import {TradeHistory} from '../tradeHistory';
 import {GetAllAssetsArgs} from '../args/getAllAssetsArgs';
+import {ChainService} from '../../service';
 
 /**
  * Asset API
@@ -77,6 +78,13 @@ export interface AssetApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Transfer multiple assets in one transaction
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    transferMultipleAssets: (args: TransferMultipleAssetsArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Burns assets, i.e. is de facto a transfer to recipient address '0'
@@ -254,7 +262,7 @@ export interface AssetApi {
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 
     /**
-     * Gets all assets bygiven issuer
+     * Gets all assets by given issuer
      *
      * @param {GetAssetsByIssuerArgs} args The args object
      *
