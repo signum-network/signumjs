@@ -3,7 +3,7 @@ import {MultioutAssetQuantities} from '../multioutAssetQuantities';
 
 
 /**
- * The argument object for [[AssetApi.transferMultipleAsset]]
+ * The argument object for [[AssetApi.transferMultipleAssets]]
  *
  * @module core
  */

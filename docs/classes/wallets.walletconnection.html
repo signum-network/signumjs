@@ -121,6 +121,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#availablenodehosts" class="tsd-kind-icon">available<wbr>Node<wbr>Hosts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#currentnodehost" class="tsd-kind-icon">current<wbr>Node<wbr>Host</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#publickey" class="tsd-kind-icon">public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="wallets.walletconnection.html#watchonly" class="tsd-kind-icon">watch<wbr>Only</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -138,13 +139,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Wallet<wbr>Connection<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, publicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, availableNodeHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, currentNodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, adapter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionAdapter</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Wallet<wbr>Connection<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, publicKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, watchOnly<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, availableNodeHosts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, currentNodeHost<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, adapter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionAdapter</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="wallets.walletconnection.html" class="tsd-signature-type">WalletConnection</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L20">wallets/src/extension/walletConnection.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L20">wallets/src/extension/walletConnection.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,6 +165,14 @@
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>The accounts public key</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>watchOnly: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Indicates whether this account is watch only, or not. Watch Only accounts cannot sign messages.</p>
 										</div>
 									</div>
 								</li>
@@ -205,7 +214,7 @@
 					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L30">wallets/src/extension/walletConnection.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L31">wallets/src/extension/walletConnection.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -220,7 +229,7 @@
 					<div class="tsd-signature tsd-kind-icon">available<wbr>Node<wbr>Hosts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L32">wallets/src/extension/walletConnection.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L34">wallets/src/extension/walletConnection.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -235,7 +244,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Node<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L33">wallets/src/extension/walletConnection.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L35">wallets/src/extension/walletConnection.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -250,12 +259,27 @@
 					<div class="tsd-signature tsd-kind-icon">public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L31">wallets/src/extension/walletConnection.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L32">wallets/src/extension/walletConnection.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The accounts public key</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="watchonly" class="tsd-anchor"></a>
+					<h3>watch<wbr>Only</h3>
+					<div class="tsd-signature tsd-kind-icon">watch<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L33">wallets/src/extension/walletConnection.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates whether this account is watch only, or not. Watch Only accounts cannot sign messages.</p>
 						</div>
 					</div>
 				</section>
@@ -272,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/walletConnection.ts#L46">wallets/src/extension/walletConnection.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/walletConnection.ts#L48">wallets/src/extension/walletConnection.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -386,6 +410,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="wallets.walletconnection.html#publickey" class="tsd-kind-icon">public<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="wallets.walletconnection.html#watchonly" class="tsd-kind-icon">watch<wbr>Only</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wallets.walletconnection.html#listen" class="tsd-kind-icon">listen</a>

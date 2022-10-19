@@ -114,7 +114,9 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#callcontractmethod" class="tsd-kind-icon">call<wbr>Contract<wbr>Method</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getallcontractids" class="tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontractmapvaluesbyfirstkey" class="tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontractsbyaccount" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getsinglecontractmapvalue" class="tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#publishcontract" class="tsd-kind-icon">publish<wbr>Contract</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#publishcontractbyreference" class="tsd-kind-icon">publish<wbr>Contract<wbr>ByReference</a></li>
 							</ul>
@@ -130,7 +132,7 @@
 					<div class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L62">core/src/typings/api/contractApi.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L68">core/src/typings/api/contractApi.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -174,7 +176,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L39">core/src/typings/api/contractApi.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L45">core/src/typings/api/contractApi.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L24">core/src/typings/api/contractApi.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L30">core/src/typings/api/contractApi.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -257,12 +259,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getcontractmapvaluesbyfirstkey" class="tsd-anchor"></a>
+					<h3>get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L82">core/src/typings/api/contractApi.ts:82</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets a key-value list for the given first key of a contracts data store</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>A list of values</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.getcontractmapvaluesbyfirstkeyargs.html" class="tsd-signature-type">GetContractMapValuesByFirstKeyArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractmapvaluelist.html" class="tsd-signature-type">ContractMapValueList</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.getcontractmapvaluesbyfirstkeyargs.html" class="tsd-signature-type">GetContractMapValuesByFirstKeyArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractmapvaluelist.html" class="tsd-signature-type">ContractMapValueList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getcontractsbyaccount" class="tsd-anchor"></a>
 					<h3>get<wbr>Contracts<wbr>ByAccount</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L31">core/src/typings/api/contractApi.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L37">core/src/typings/api/contractApi.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -301,12 +347,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getsinglecontractmapvalue" class="tsd-anchor"></a>
+					<h3>get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L75">core/src/typings/api/contractApi.ts:75</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets a map value from a contracts data store</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>The value. Non-existing key-value tuples return always 0 (Zero)</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="getsinglecontractmapvalueargs.html" class="tsd-signature-type">GetSingleContractMapValueArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="getsinglecontractmapvalueargs.html" class="tsd-signature-type">GetSingleContractMapValueArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="publishcontract" class="tsd-anchor"></a>
 					<h3>publish<wbr>Contract</h3>
 					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L47">core/src/typings/api/contractApi.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L53">core/src/typings/api/contractApi.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -350,7 +440,7 @@
 					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/core/src/typings/api/contractApi.ts#L55">core/src/typings/api/contractApi.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/core/src/typings/api/contractApi.ts#L61">core/src/typings/api/contractApi.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -464,7 +554,13 @@
 								<a href="core_api.contractapi.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.contractapi.html#getcontractmapvaluesbyfirstkey" class="tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.contractapi.html#getcontractsbyaccount" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.contractapi.html#getsinglecontractmapvalue" class="tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.contractapi.html#publishcontract" class="tsd-kind-icon">publish<wbr>Contract</a>

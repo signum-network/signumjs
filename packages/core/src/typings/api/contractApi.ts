@@ -79,5 +79,5 @@ export interface ContractApi {
      * @param args {GetContractMapValuesByFirstKeyArgs} The argument object
      * @return  A list of values
      */
-    GetContractMapValuesByFirstKeyArgs: (args: GetContractMapValuesByFirstKeyArgs) => Promise<ContractMapValueList>;
+    getContractMapValuesByFirstKey: (args: GetContractMapValuesByFirstKeyArgs) => Promise<ContractMapValueList>;
 }

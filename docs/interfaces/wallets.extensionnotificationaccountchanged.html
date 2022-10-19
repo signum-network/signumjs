@@ -118,6 +118,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.extensionnotificationaccountchanged.html#accountid" class="tsd-kind-icon">account<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.extensionnotificationaccountchanged.html#accountpublickey" class="tsd-kind-icon">account<wbr>Public<wbr>Key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="wallets.extensionnotificationaccountchanged.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.extensionnotificationaccountchanged.html#watchonly" class="tsd-kind-icon">watch<wbr>Only</a></li>
 							</ul>
 						</section>
 					</div>
@@ -131,12 +132,12 @@
 					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/messaging.ts#L327">wallets/src/extension/messaging.ts:327</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/messaging.ts#L332">wallets/src/extension/messaging.ts:332</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The id of the account that was removed</p>
+							<p>The id of the selected/changed account</p>
 						</div>
 					</div>
 				</section>
@@ -146,7 +147,7 @@
 					<div class="tsd-signature tsd-kind-icon">account<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/messaging.ts#L328">wallets/src/extension/messaging.ts:328</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/messaging.ts#L333">wallets/src/extension/messaging.ts:333</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,9 +158,24 @@
 					<aside class="tsd-sources">
 						<p>Overrides ExtensionNotificationBase.type</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/4355e7d/packages/wallets/src/extension/messaging.ts#L323">wallets/src/extension/messaging.ts:323</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/messaging.ts#L328">wallets/src/extension/messaging.ts:328</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="watchonly" class="tsd-anchor"></a>
+					<h3>watch<wbr>Only</h3>
+					<div class="tsd-signature tsd-kind-icon">watch<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d2e109f/packages/wallets/src/extension/messaging.ts#L337">wallets/src/extension/messaging.ts:337</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates whether the account is being watched only, i.e. has no private keys for sign available</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -264,6 +280,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="wallets.extensionnotificationaccountchanged.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="wallets.extensionnotificationaccountchanged.html#watchonly" class="tsd-kind-icon">watch<wbr>Only</a>
 							</li>
 						</ul>
 					</li>
