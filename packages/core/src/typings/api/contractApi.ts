@@ -1,12 +1,18 @@
 import {Contract} from '../contract';
 import {ContractList} from '../contractList';
 import {ContractIdList} from '../contractIdList';
-import {PublishContractArgs, PublishContractByReferenceArgs} from '../args';
+import {
+    GetContractMapValuesByFirstKeyArgs,
+    GetSingleContractMapValueArgs,
+    PublishContractArgs,
+    PublishContractByReferenceArgs
+} from '../args';
 import {TransactionId} from '../transactionId';
 import {CallContractMethodArgs} from '../args/callContractMethodArgs';
 import {GetAllContractIdsArgs} from '../args/getAllContractIdsArgs';
 import {GetContractsByAccountArgs} from '../args/getContractsByAccountArgs';
 import {UnsignedTransaction} from '../unsignedTransaction';
+import {ContractMapValueList} from '../contractMapValueList';
 
 /**
  * Contract API
@@ -61,4 +67,17 @@ export interface ContractApi {
      */
     callContractMethod: (args: CallContractMethodArgs) => Promise<TransactionId | UnsignedTransaction>;
 
+    /**
+     * Gets a map value from a contracts data store
+     * @param args {GetSingleContractMapValueArgs} The argument object
+     * @return  The value. Non-existing key-value tuples return always 0 (Zero)
+     */
+    getSingleContractMapValue: (args: GetSingleContractMapValueArgs) => Promise<{value: string}>;
+
+    /**
+     * Gets a key-value list for the given first key of a contracts data store
+     * @param args {GetContractMapValuesByFirstKeyArgs} The argument object
+     * @return  A list of values
+     */
+    GetContractMapValuesByFirstKeyArgs: (args: GetContractMapValuesByFirstKeyArgs) => Promise<ContractMapValueList>;
 }

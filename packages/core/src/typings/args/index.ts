@@ -37,3 +37,8 @@ export * from './unsignedTransactionArgs';
 export * from './setAliasArgs';
 export * from './buyAliasArgs';
 export * from './sellAliasArgs';
+export * from './getSingleContractMapValueArgs';
+export * from './getContractMapValuesByFirstKeyArgs';
+export * from './getAssetsByIssuerArgs';
+export * from './getAssetsByNameArgs';
+export * from './transferMultipleAssetsArgs';

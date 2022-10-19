@@ -16,7 +16,11 @@ import {
     GetAssetTradesPerAccountArgs,
     GetAssetArgs,
     MintAssetArgs,
-    GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAccountArgs, GetAssetOpenOrdersPerAssetArgs, GetTradeHistoryPerAccountArgs
+    GetAssetOpenOrdersArgs,
+    GetAssetOpenOrdersPerAccountArgs,
+    GetAssetOpenOrdersPerAssetArgs,
+    GetTradeHistoryPerAccountArgs,
+    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -73,6 +77,13 @@ export interface AssetApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Transfer multiple assets in one transaction
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    transferMultipleAssets: (args: TransferMultipleAssetsArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Burns assets, i.e. is de facto a transfer to recipient address '0'
@@ -248,4 +259,22 @@ export interface AssetApi {
      * @param The trade history
      */
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
+
+    /**
+     * Gets all assets by given issuer
+     *
+     * @param {GetAssetsByIssuerArgs} args The args object
+     *
+     * @param The asset list
+     */
+    getAssetsByIssuer: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
+
+    /**
+     * Gets all assets by name (or parts of it)
+     *
+     * @param {GetAssetsByNameArgs} args The args object
+     *
+     * @param The asset list
+     */
+    getAssetsByName: (args: GetAssetsByNameArgs) => Promise<AssetList>;
 }

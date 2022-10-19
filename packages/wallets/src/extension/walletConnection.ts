@@ -64,7 +64,7 @@ export class WalletConnection {
                         this.accountId = msg.accountId;
                         this.publicKey = msg.accountPublicKey;
                         this.watchOnly = msg.watchOnly;
-                        call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey});
+                        call(onAccountChanged, {accountId: msg.accountId, accountPublicKey: msg.accountPublicKey, watchOnly: msg.watchOnly});
                     }
                     break;
                 }

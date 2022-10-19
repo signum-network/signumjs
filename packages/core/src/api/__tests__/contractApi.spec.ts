@@ -1,6 +1,13 @@
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {publishContractByReference, getAllContractIds, getContract, getContractsByAccount, publishContract} from '../factories/contract';
+import {
+    publishContractByReference,
+    getAllContractIds,
+    getContract,
+    getContractsByAccount,
+    publishContract,
+    getSingleContractMapValue, getContractMapValuesByFirstKey
+} from '../factories/contract';
 import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 import {TransactionId} from '../../typings/transactionId';
 
@@ -152,6 +159,44 @@ describe('Contract Api', () => {
                 senderPrivateKey: 'privateKey',
             }) as TransactionId;
             expect(transaction).toEqual('transactionId');
+        });
+    });
+
+    describe('getSingleContractMapValue', () => {
+
+        const mockResponse = {
+            value: '42',
+            requestProcessingTime: 1
+        };
+
+        it('should getSingleContractMapValue', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, mockResponse, 'relPath?requestType=getATMapValue&at=contractId&key1=key1&key2=key2')
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const mapValue = await getSingleContractMapValue(service)({ contractId: 'contractId', key1: 'key1', key2: 'key2'});
+            expect(mapValue.value).toEqual('42');
+        });
+    });
+
+    describe('getContractMapValuesByFirstKey', () => {
+
+        const mockResponse = {
+
+            keyValues: [{
+                key2: '12325346463645',
+                value: '42'
+            }],
+            requestProcessingTime: 1
+        };
+
+        it('should getContractMapValuesByFirstKey', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, mockResponse, 'relPath?requestType=getATMapValues&at=contractId&key1=key1')
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const mapValues = await getContractMapValuesByFirstKey(service)({ contractId: 'contractId', key1: 'key1'});
+            expect(mapValues.keyValues[0].value).toEqual('42');
         });
     });
 });

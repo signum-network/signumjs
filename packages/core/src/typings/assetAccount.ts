@@ -9,6 +9,7 @@
 export interface AssetAccount {
     account: string;
     accountRS: string;
+    isTreasury: boolean;
     asset: string;
     quantityQNT: string;
     unconfirmedQuantityQNT: string;

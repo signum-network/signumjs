@@ -48,8 +48,8 @@ import {getAliasById, getAliasByName, getAliasesOnSale, sellAlias, buyAlias} fro
 import {
     callContractMethod,
     getAllContractIds,
-    getContract,
-    getContractsByAccount,
+    getContract, getContractMapValuesByFirstKey,
+    getContractsByAccount, getSingleContractMapValue,
     publishContract,
     publishContractByReference
 } from './factories/contract';
@@ -92,7 +92,7 @@ import {
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
     getOpenAskOrdersPerAccount,
-    burnAsset, getTradeHistoryPerAccount
+    burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName, transferMultipleAssets
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
@@ -214,6 +214,8 @@ export function composeApi(settings: ApiSettings): Api {
             publishContract,
             publishContractByReference,
             callContractMethod,
+            getSingleContractMapValue,
+            getContractMapValuesByFirstKey,
         }).withAssetApi({
             getAsset,
             getAllTrades,
@@ -225,6 +227,7 @@ export function composeApi(settings: ApiSettings): Api {
             mintAsset,
             burnAsset,
             transferAsset,
+            transferMultipleAssets,
             placeAskOrder,
             placeBidOrder,
             cancelAskOrder,
@@ -241,7 +244,9 @@ export function composeApi(settings: ApiSettings): Api {
             getOpenAskOrdersPerAsset,
             getOpenBidOrdersPerAccount,
             getOpenAskOrdersPerAccount,
-            getTradeHistoryPerAccount
+            getTradeHistoryPerAccount,
+            getAssetsByIssuer,
+            getAssetsByName
         })
         .compose();
 }

@@ -20,7 +20,7 @@ import {
     getOpenBidOrdersPerAsset,
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
-    getOpenAskOrdersPerAccount,
+    getOpenAskOrdersPerAccount, getAllAssets, getAssetsByIssuer, getAssetsByName, transferMultipleAssets,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -84,6 +84,58 @@ describe('Asset Api', () => {
             } catch (error) {
                 expect(error.status).toBe(500);
             }
+        });
+    });
+    describe('getAllAssets', () => {
+        it('should getAllAssets', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAllAssets&skipZeroVolume=true&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAllAssets(service)({
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
+        });
+    });
+
+    describe('getAssetsByIssuer', () => {
+        it('should getAssetsByIssuer', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAssetsByIssuer&account=accountId&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3&skipZeroVolume=true'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAssetsByIssuer(service)({
+                accountId: 'accountId',
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
+        });
+    });
+
+    describe('getAssetsByName', () => {
+        it('should getAssetsByName', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAssetsByName&name=name&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3&skipZeroVolume=true'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAssetsByName(service)({
+                name: 'name',
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
         });
     });
 
@@ -201,6 +253,91 @@ describe('Asset Api', () => {
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
+        });
+    });
+
+    describe('transferMultipleAsset', () => {
+        it('should transferMultipleAsset', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAssetMulti&assetIdsAndQuantities=1%3A123%3B2%3A234%3B3%3A345%3B4%3A456&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await transferMultipleAssets(service)({
+                assetQuantities: [
+                    {quantity: '123', assetId: '1'},
+                    {quantity: '234', assetId: '2'},
+                    {quantity: '345', assetId: '3'},
+                    {quantity: '456', assetId: '4'},
+                ],
+                feePlanck: FeeQuantPlanck + '',
+                amountPlanck: '10000000000',
+                recipientId: 'recipientId',
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
+
+        it('should throw exception - too many quantities', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            try {
+                const result = await transferMultipleAssets(service)({
+                    assetQuantities: [
+                        {quantity: '123', assetId: '1'},
+                        {quantity: '234', assetId: '2'},
+                        {quantity: '234', assetId: '3'},
+                        {quantity: '234', assetId: '4'},
+                        {quantity: '234', assetId: '5'},
+                    ],
+                    feePlanck: FeeQuantPlanck + '',
+                    amountPlanck: '10000000000',
+                    recipientId: 'recipientId',
+                    senderPrivateKey: 'senderPrivateKey',
+                    senderPublicKey: 'senderPublicKey',
+                }) as TransactionId;
+                fail('should throw error');
+            } catch (e) {
+                expect(e.message).toBe('At maximum 4 asset-quantities are allowed');
+            }
+        });
+
+        it('should throw exception - duplicated assets', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            try {
+                const result = await transferMultipleAssets(service)({
+                    assetQuantities: [
+                        {quantity: '123', assetId: '1'},
+                        {quantity: '234', assetId: '1'},
+                    ],
+                    feePlanck: FeeQuantPlanck + '',
+                    amountPlanck: '10000000000',
+                    recipientId: 'recipientId',
+                    senderPrivateKey: 'senderPrivateKey',
+                    senderPublicKey: 'senderPublicKey',
+                }) as TransactionId;
+                fail('should throw error');
+            } catch (e) {
+                expect(e.message).toBe('Duplicate assetId found');
+            }
         });
     });
 

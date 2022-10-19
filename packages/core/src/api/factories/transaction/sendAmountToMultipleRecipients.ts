@@ -33,7 +33,7 @@ export const sendAmountToMultipleRecipients = (service: ChainService) =>
     (args: SendAmountToMultipleRecipientsArgs) =>
         signIfPrivateKey(service, args, async (a: SendAmountToMultipleRecipientsArgs) => {
 
-                const {recipientAmounts, deadline = DefaultDeadline, feePlanck, senderPublicKey} = a;
+                const {recipientAmounts, deadline = DefaultDeadline, feePlanck, senderPublicKey, referencedTransactionFullHash} = a;
 
                 assertDuplicates(recipientAmounts);
 
@@ -45,7 +45,8 @@ export const sendAmountToMultipleRecipients = (service: ChainService) =>
                     publicKey: senderPublicKey,
                     recipients: mountRecipientsString(recipientAmounts),
                     feeNQT: feePlanck,
-                    deadline
+                    deadline,
+                    referencedTransactionFullHash
                 };
 
                 return service.send<UnsignedTransaction>('sendMoneyMulti', parameters);

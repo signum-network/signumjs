@@ -37,8 +37,8 @@ function onNetworkChange(args) {
     }
 }
 
-function onAccountChange() {
-    propagateWalletEvent('accountChanged')
+function onAccountChange(args) {
+    propagateWalletEvent('accountChanged', args)
 }
 
 function onPermissionOrAccountRemoval() {
