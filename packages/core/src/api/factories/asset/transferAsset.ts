@@ -26,6 +26,7 @@ export const transferAsset = (service: ChainService) =>
                 recipient: a.recipientId,
                 recipientPublicKey: a.recipientPublicKey || undefined,
                 feeNQT: a.feePlanck,
+                amountNQT: a.amountPlanck,
                 deadline: a.deadline || DefaultDeadline,
                 referencedTransactionFullHash: a.referencedTransactionFullHash
             };

@@ -79,7 +79,7 @@ export interface AssetApi {
     transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
-     * Transfer multiple assets in one transaction
+     * Transfer multiple (2-4) assets in one transaction.
      * @param args The argument object
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */

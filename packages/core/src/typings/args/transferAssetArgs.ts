@@ -24,4 +24,9 @@ export interface TransferAssetArgs extends DefaultSendArgs {
      * The _optional_ recipients public key in hex format.
      */
     recipientPublicKey?: string;
+
+    /**
+     * The amount to be sent as Planck value
+     */
+    amountPlanck?: string;
 }

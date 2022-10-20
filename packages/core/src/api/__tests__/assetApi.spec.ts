@@ -254,6 +254,28 @@ describe('Asset Api', () => {
 
             expect(transaction).toBe('transactionId');
         });
+
+        it('should transferAsset with amount', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&amountNQT=100000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await transferAsset(service)({
+                assetId: '123',
+                feePlanck: FeeQuantPlanck + '',
+                quantity: 100,
+                recipientId: 'recipientId',
+                amountPlanck: "100000000",
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
     });
 
     describe('transferMultipleAsset', () => {
@@ -262,7 +284,7 @@ describe('Asset Api', () => {
                 .onPostReply(200, {
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
-                    'relPath?requestType=transferAssetMulti&assetIdsAndQuantities=1%3A123%3B2%3A234%3B3%3A345%3B4%3A456&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
+                    'relPath?requestType=transferAssetMulti&assetIdsAndQuantities=1%3A123%3B2%3A234%3B3%3A345%3B4%3A456&amountNQT=10000000000&publicKey=senderPublicKey&recipient=recipientId&recipientPublicKey=recipientPublicKey&feeNQT=1000000&deadline=1440'
                 ).build();
 
             const service = createChainService(httpMock, 'relPath');
@@ -276,11 +298,38 @@ describe('Asset Api', () => {
                 feePlanck: FeeQuantPlanck + '',
                 amountPlanck: '10000000000',
                 recipientId: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
             }) as TransactionId;
 
             expect(transaction).toBe('transactionId');
+        });
+
+        it('should throw exception - too few quantities', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            try {
+                const result = await transferMultipleAssets(service)({
+                    assetQuantities: [
+                        {quantity: '123', assetId: '1'},
+                    ],
+                    feePlanck: FeeQuantPlanck + '',
+                    amountPlanck: '10000000000',
+                    recipientId: 'recipientId',
+                    senderPrivateKey: 'senderPrivateKey',
+                    senderPublicKey: 'senderPublicKey',
+                }) as TransactionId;
+                fail('should throw error');
+            } catch (e) {
+                expect(e.message).toBe('At least 2 asset-quantities are needed');
+            }
         });
 
         it('should throw exception - too many quantities', async () => {

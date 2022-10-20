@@ -18,6 +18,10 @@ function mountAssetQuantitiesString(assetQuantities: MultioutAssetQuantities[]):
 
 function assertCorrectAssetQuantities(assetQuantities: MultioutAssetQuantities[]) {
     const MaxItems = 4;
+    const MinItems = 2;
+    if (assetQuantities.length < MinItems) {
+        throw new Error(`At least ${MinItems} asset-quantities are needed`);
+    }
     if (assetQuantities.length > MaxItems) {
         throw new Error(`At maximum ${MaxItems} asset-quantities are allowed`);
     }
@@ -39,14 +43,14 @@ function assertCorrectAssetQuantities(assetQuantities: MultioutAssetQuantities[]
  *
  */
 export const transferMultipleAssets = (service: ChainService) =>
-    (args: TransferMultipleAssetsArgs) => signIfPrivateKey(service, args, async (a: TransferAssetArgs) => {
+    (args: TransferMultipleAssetsArgs) => signIfPrivateKey(service, args, async (a: TransferMultipleAssetsArgs) => {
 
             assertCorrectAssetQuantities(args.assetQuantities);
             const assetIdsAndQuantities = mountAssetQuantitiesString(args.assetQuantities);
 
             let parameters = {
                 assetIdsAndQuantities,
-                quantityQNT: a.quantity,
+                amountNQT: a.amountPlanck,
                 publicKey: a.senderPublicKey,
                 recipient: a.recipientId,
                 recipientPublicKey: a.recipientPublicKey || undefined,
