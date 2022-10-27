@@ -27,4 +27,5 @@ export * from './convertAssetPriceToPlanck';
 export * from './convertPlanckToAssetPrice';
 export * from './createDeeplink';
 export * from './parseDeeplink';
+export * from './parseTransactionBytes';
 export * from './typings';
