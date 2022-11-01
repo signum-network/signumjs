@@ -21,8 +21,6 @@ export const signIfPrivateKey = async (service: ChainService,
 
     const response = await transactionFn(txArgs);
 
-    verifyTransaction(txArgs, response);
-
     if (!txArgs.senderPrivateKey) {
         return response;
     }

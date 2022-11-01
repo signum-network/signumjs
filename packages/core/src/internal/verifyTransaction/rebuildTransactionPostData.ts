@@ -1,5 +1,327 @@
-export function rebuildTransactionPostData(unsignedBytes: string) {
-    // rebuild and return as object
-    return  {
+import BigNumber from 'bignumber.js';
+
+interface BaseTransaction {
+    type?: number;
+    version?: number;
+    subtype?: number;
+    timestamp?: number;
+    deadline?: number;
+    senderPublicKey?: string;
+    sender?: string;
+    recipient?: string;
+    amountNQT?: string;
+    feeNQT?: string;
+    referencedTransactionFullHash?: string;
+    signature?: string;
+    flags?: number;
+    ecBlockHeight?: number;
+    ecBlockId?: string;
+    cashBackId?: string;
+}
+
+interface AttachmentFields {
+    type: string;
+    parameterName?: string;
+}
+
+interface AttachmentSpec {
+    request: string;
+    fields: AttachmentFields[];
+}
+
+/**
+ * Mini class to easily implement reading data sequentially.
+ */
+class ByteBuffer {
+    private needle: number;
+    private readonly transactionBytes: number[] = [];
+    private readonly hexTransactionBytes: string;
+
+    constructor (hexString: string) {
+        this.needle = 0;
+        this.transactionBytes = [];
+        this.hexTransactionBytes = hexString;
+        if (hexString.length % 2) {
+            throw new Error(`Invalid Hex String: ${hexString}`);
+        }
+        this.transactionBytes = [];
+        for (let c = 0; c < hexString.length; c += 2) {
+            const byte = parseInt(hexString.substring(c, c + 2), 16);
+            if (Number.isNaN(byte)) {
+                throw new Error(`Invalid Hex String: ${hexString}`);
+            }
+            this.transactionBytes.push(byte);
+        }
+    }
+
+    readByte(): number {
+        if (this.needle + 1 > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        const byteVal = this.transactionBytes[this.needle];
+        this.needle++;
+        return byteVal;
+    }
+
+    readShort(): number {
+        if (this.needle + 2 > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        const shortVal = this.transactionBytes[this.needle] + this.transactionBytes[this.needle + 1] * 256;
+        this.needle += 2;
+        return shortVal;
+    }
+
+    readInt(): number {
+        if (this.needle + 4 > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        const intVal = this.transactionBytes[this.needle] +
+            this.transactionBytes[this.needle + 1] * 256 +
+            this.transactionBytes[this.needle + 2] * 65536 +
+            this.transactionBytes[this.needle + 3] * 16777216;
+            this.needle += 4;
+        return intVal;
+    }
+
+    readLong(): BigNumber {
+        if (this.needle + 8 > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        let longVal = new BigNumber(0);
+        let longBase = new BigNumber(1);
+        for (let i = 0; i < 8; i++) {
+            longVal = longVal.plus(longBase.multipliedBy(this.transactionBytes[this.needle + i]));
+            longBase = longBase.multipliedBy(256);
+        }
+        this.needle += 8;
+        return longVal;
+    }
+
+    readHexString(nBytes: number): string {
+        if (this.needle + nBytes > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        const stringVal = this.hexTransactionBytes.slice(this.needle * 2, (this.needle + nBytes) * 2);
+        this.needle += nBytes;
+        return stringVal;
+    }
+
+    readString(nBytes: number) {
+        if (this.needle + nBytes > this.transactionBytes.length) {
+            throw new Error('Unexpected end of input.');
+        }
+        this.needle += nBytes;
+        const escapedUTF8 = escape(String.fromCharCode.apply(null, this.transactionBytes.slice(this.needle, this.needle + nBytes)));
+        return decodeURIComponent(escapedUTF8);
     }
 }
+
+/**
+ * Try to rebuild the form data based on unsignedBytes in a response.
+ * @param hexUnsignedBytes string with unsignedBytes
+ * @returns Any object, expected to match the form data
+ * @throws Error on failure
+ */
+export function rebuildTransactionPostData(hexUnsignedBytes: string) {
+    const trBytes = new ByteBuffer(hexUnsignedBytes);
+    const transaction = parseBaseTransaction(trBytes);
+    let rebuiltData: any = {};
+
+    rebuiltData.feeNQT = transaction.feeNQT;
+    rebuiltData.publicKey = transaction.senderPublicKey;
+    rebuiltData.deadline = transaction.deadline;
+    rebuiltData.amountNQT = transaction.amountNQT;
+    if (transaction.recipient) { rebuiltData.recipient = transaction.recipient; }
+    if (transaction.referencedTransactionFullHash) {
+        rebuiltData['referencedTransactionFullHash'] = transaction.referencedTransactionFullHash;
+    }
+
+    const foundRequest = decodeRequestType.find(Obj => Obj.type === transaction.type && Obj.subtype === transaction.subtype);
+    if (!foundRequest) {
+        throw new Error(`Unsupported transaction type '${transaction.type}' subtype '${transaction.subtype}'.`);
+    }
+    if (foundRequest.hasAttachment) {
+        rebuiltData = parseAttachment(foundRequest.requestType, rebuiltData, trBytes);
+        // Some exceptions
+        if (foundRequest.requestType === 'sendMoneyMultiSame') {
+            rebuiltData.amountNQT = (new BigNumber(rebuiltData.amountNQT)).dividedBy(rebuiltData.recipients.split(';').length).toFixed(0);
+        }
+    }
+    // addAttachment()
+    // addMessage()
+    // addEncryptedMessage()
+    // addRecipientPublicKey()
+    // addEncryptToSelfMessage()
+    return {
+        requestType: foundRequest.requestType,
+        rebuiltData,
+    };
+}
+
+/**
+ * From a given trByteBuffer, parse the transaction fields common for all
+ * kinds of transactions. Returns an incomplete Transaction object
+ */
+function parseBaseTransaction(trByteBuffer: ByteBuffer): BaseTransaction {
+    const transactionJSON: BaseTransaction = {};
+    transactionJSON.type = trByteBuffer.readByte();
+    const subtypeAndVersion = trByteBuffer.readByte();
+    transactionJSON.subtype = subtypeAndVersion & 0x0F;
+    transactionJSON.version = (subtypeAndVersion & 0xF0) >> 4;
+    if (transactionJSON.version < 2) {
+        throw new Error('Unsupported transaction version.');
+    }
+    transactionJSON.timestamp = trByteBuffer.readInt();
+    transactionJSON.deadline = trByteBuffer.readShort();
+    transactionJSON.senderPublicKey = trByteBuffer.readHexString(32);
+    transactionJSON.recipient = trByteBuffer.readLong().toString();
+    if (transactionJSON.recipient === '0') {
+        delete transactionJSON.recipient;
+    }
+    transactionJSON.amountNQT = trByteBuffer.readLong().toString();
+    transactionJSON.feeNQT = trByteBuffer.readLong().toString();
+    transactionJSON.referencedTransactionFullHash = trByteBuffer.readHexString(32);
+    if (/^0+$/.test(transactionJSON.referencedTransactionFullHash)) {
+        delete transactionJSON.referencedTransactionFullHash;
+    }
+    transactionJSON.signature = trByteBuffer.readHexString(64);
+    if (/^0+$/.test(transactionJSON.signature)) {
+        delete transactionJSON.signature;
+    }
+    transactionJSON.flags = trByteBuffer.readInt();
+    transactionJSON.ecBlockHeight = trByteBuffer.readInt();
+    transactionJSON.ecBlockId = trByteBuffer.readLong().toString();
+    transactionJSON.cashBackId = trByteBuffer.readLong().toString();
+    return transactionJSON;
+}
+
+/**
+ * Updates the incoming 'data' object (rebuiltData) accordingly the 'requestType'
+ * and bytes from 'trBytes'.
+ * @return the updated object.
+ * @throw Error on failure
+ */
+function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
+    let spec: AttachmentSpec;
+    const attachmentVersion = trBytes.readByte();
+    switch (attachmentVersion) {
+    case 1:
+        spec = attachmentSpecV1.find(obj => obj.request === requestType);
+        break;
+    case 2:
+        spec = attachmentSpecV2.find(obj => obj.request === requestType);
+        break;
+    }
+    if (!spec) {
+        throw new Error(`Attachment specification not found for transaction type '${requestType}', version '${attachmentVersion}'.`);
+    }
+    const pastValues: string[] = [];
+    let sizeOfString: number;
+    for (const item of spec.fields) {
+        const itemType = item.type.split('*');
+        const typeSpec = itemType[0];
+        const repetitionSpec = itemType[1];
+        let repetition: number;
+        if (repetitionSpec.startsWith('$')) {
+            // variable repetition, depending on previous element
+            const repVal = parseInt(repetitionSpec.substring(1));
+            repetition = parseInt(pastValues[repVal], 10);
+        } else {
+            // fixed repetition
+            repetition = parseInt(repetitionSpec, 10);
+        }
+        const currentValues: string[] = [];
+        for (let amount = 0; amount < repetition; amount++ ) {
+            switch (typeSpec) {
+            case 'ByteString':
+                sizeOfString = trBytes.readByte();
+                currentValues.push(trBytes.readString(sizeOfString));
+                break;
+            case 'ShortString':
+                sizeOfString = trBytes.readShort();
+                currentValues.push(trBytes.readString(sizeOfString));
+                break;
+            case 'Long:Long':
+                currentValues.push(
+                    trBytes.readLong().toString() +
+                    ':' +
+                    trBytes.readLong().toString()
+                );
+                break;
+            case 'Long':
+                currentValues.push(trBytes.readLong().toString());
+                break;
+            case 'Int':
+                currentValues.push(trBytes.readInt().toString());
+                break;
+            case 'Short':
+                currentValues.push(trBytes.readShort().toString());
+                break;
+            case 'Byte':
+                currentValues.push(trBytes.readByte().toString());
+                break;
+            case 'Delete':
+                break;
+            default:
+                throw new Error('Internal error');
+            }
+        }
+        if (item.parameterName) {
+            data[item.parameterName] = currentValues.join(';');
+        }
+        if (typeSpec === 'Delete') {
+            delete data[item.parameterName];
+        }
+        pastValues.push(currentValues.toString());
+    }
+    return data;
+}
+
+/** From a transaction type/subtype, returns the original requestType */
+const decodeRequestType = [
+    { type: 0, subtype: 0, requestType: 'sendMoney', hasAttachment: false },
+    { type: 0, subtype: 1, requestType: 'sendMoneyMulti', hasAttachment: true },
+    { type: 0, subtype: 2, requestType: 'sendMoneyMultiSame', hasAttachment: true },
+    { type: 1, subtype: 0, requestType: 'sendMessage', hasAttachment: false },
+    { type: 1, subtype: 1, requestType: 'setAlias', hasAttachment: true },
+    { type: 1, subtype: 5, requestType: 'setAccountInfo', hasAttachment: true },
+    { type: 1, subtype: 6, requestType: 'sellAlias', hasAttachment: true },
+    { type: 1, subtype: 7, requestType: 'buyAlias', hasAttachment: true },
+    { type: 2, subtype: 0, requestType: 'issueAsset', hasAttachment: true },
+    { type: 2, subtype: 1, requestType: 'transferAsset', hasAttachment: true },
+    { type: 2, subtype: 2, requestType: 'placeAskOrder', hasAttachment: true },
+    { type: 2, subtype: 3, requestType: 'placeBidOrder', hasAttachment: true },
+    { type: 2, subtype: 4, requestType: 'cancelAskOrder', hasAttachment: true },
+    { type: 2, subtype: 5, requestType: 'cancelBidOrder', hasAttachment: true },
+    { type: 2, subtype: 9, requestType: 'transferAssetMulti', hasAttachment: true },
+    { type: 20, subtype: 0, requestType: 'setRewardRecipient', hasAttachment: false },
+    { type: 20, subtype: 1, requestType: 'addCommitment', hasAttachment: true },
+    { type: 20, subtype: 2, requestType: 'removeCommitment', hasAttachment: true },
+    { type: 21, subtype: 0, requestType: 'sendMoneyEscrow', hasAttachment: true },
+    { type: 21, subtype: 1, requestType: 'escrowSign', hasAttachment: true },
+    { type: 21, subtype: 3, requestType: 'sendMoneySubscription', hasAttachment: true },
+    { type: 21, subtype: 4, requestType: 'subscriptionCancel', hasAttachment: true },
+];
+
+const attachmentSpecV1: AttachmentSpec[] = [
+    { request: 'sendMoneyMulti', fields: [
+        { type: 'Byte*1' },
+        { type: 'Long:Long*$0',  parameterName: 'recipients' },
+        { type: 'Delete*1',  parameterName: 'amountNQT' }
+    ] },
+    { request: 'sendMoneyMultiSame', fields: [
+        { type: 'Byte*1' },
+        { type: 'Long*$0',  parameterName: 'recipients' },
+    ] },
+];
+
+const attachmentSpecV2: AttachmentSpec[] = [
+    { request: 'issueAsset', fields: [
+        { type: 'ByteString*1', parameterName: 'name' },
+        { type: 'ShortString*1', parameterName: 'description' },
+        { type: 'Long*1', parameterName: 'quantityQNT' },
+        { type: 'Byte*1', parameterName: 'decimals' },
+        { type: 'Byte*1', parameterName: 'mintable' }
+    ] }
+];

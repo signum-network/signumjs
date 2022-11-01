@@ -8,6 +8,7 @@ import {asyncRetry} from '@signumjs/util';
 import {ChainServiceSettings} from './chainServiceSettings';
 import {AxiosRequestConfig} from 'axios';
 import {DefaultApiEndpoint} from '../constants';
+import {verifyTransaction} from '../internal/verifyTransaction';
 
 // Old API is inconsistent in its error responses
 interface ApiError {
@@ -123,6 +124,9 @@ export class ChainService {
         if (response.errorCode || response.error || response.errorDescription) {
             ChainService.throwAsHttpError(endpoint, response);
         }
+
+        verifyTransaction(method, args, response);
+
         return response;
     }
 
