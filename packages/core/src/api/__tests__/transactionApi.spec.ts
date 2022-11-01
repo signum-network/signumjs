@@ -73,6 +73,7 @@ describe('TransactionApi', () => {
         };
 
         const mockBroadcastResponse = {
+            broadcasted: true,
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
@@ -200,6 +201,7 @@ describe('TransactionApi', () => {
         };
 
         const mockBroadcastResponse = {
+            broadcasted: true,
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
@@ -325,6 +327,7 @@ describe('TransactionApi', () => {
         };
 
         const mockBroadcastResponse = {
+            broadcasted: true,
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
@@ -521,6 +524,7 @@ describe('TransactionApi', () => {
         };
 
         const mockBroadcastResponse = {
+            broadcasted: true,
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
