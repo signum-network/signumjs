@@ -3,6 +3,7 @@
  */
 
 import {AssetOrder} from './assetOrder';
+import {Indexable} from './indexable';
 
 /**
  * Asset Bid Order List

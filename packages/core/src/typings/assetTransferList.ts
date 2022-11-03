@@ -3,6 +3,7 @@
  */
 
 import {AssetTransfer} from './assetTransfer';
+import {Indexable} from './indexable';
 
 /**
  * Asset Transfer List

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "accountDescriptor",
+  "$id": "src44",
   "type": "object",
   "title": "Profile Descriptor (SRC44)",
   "description": "This is the schema of the structure profile description of Signum Blockchain Network",

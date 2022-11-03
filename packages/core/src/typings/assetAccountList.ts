@@ -4,6 +4,7 @@
  */
 
 import {AssetAccount} from './assetAccount';
+import {Indexable} from './indexable';
 
 /**
  * Asset Account List
