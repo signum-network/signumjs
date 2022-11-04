@@ -301,6 +301,7 @@ describe('AccountApi', () => {
         let service;
 
         const mockBroadcastResponse = {
+            broadcasted: true,
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
