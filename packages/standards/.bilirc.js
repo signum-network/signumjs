@@ -14,6 +14,14 @@ module.exports = {
       jsnext: true,
       preferBuiltins: true,
       browser:true
+    },
+    commonjs: {
+      namedExports: {
+        'ajv': [
+          'ucs2length',
+          'equal',
+        ]
+      }
     }
   }
 };

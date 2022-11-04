@@ -68,7 +68,7 @@ describe('profileData', () => {
             };
             expect(() => {
                 ProfileData.parse(JSON.stringify(t));
-            }).toThrow('[SRC44 Parse Error]: [SRC44 Validation Error]: /ds: maxLength must NOT have more than 384 characters');
+            }).toThrow('ds must be at maximum 384 bytes - Got 500');
         });
 
         it('should throw exception if object is too large', () => {
@@ -79,7 +79,7 @@ describe('profileData', () => {
             };
             expect(() => {
                 ProfileData.parse(JSON.stringify(t));
-            }).toThrow('[SRC44 Parse Error]: Profile data exceeds maximum allowed length of 1000 bytes - Got 2263');
+            }).toThrow('Maximum length of 1000 bytes allowed - Got 2263');
         });
 
         it('should throw exception if object is not valid - 1', () => {
@@ -88,13 +88,13 @@ describe('profileData', () => {
                     'vs': 1,
                     'al': '@somealias',
                 }));
-            }).toThrow(' must have required property \'nm\'');
+            }).toThrow('nm is required and must be at maximum 24 bytes - Got undefined');
         });
 
         it('should throw exception if object is not valid - 2', () => {
             expect(() => {
                 ProfileData.parse(JSON.stringify({foo: 'whatever'}));
-            }).toThrow(' must have required property \'vs\'');
+            }).toThrow('vs is required and must be 1 - Got undefined');
         });
     });
 });

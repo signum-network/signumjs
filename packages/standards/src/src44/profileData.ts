@@ -1,17 +1,24 @@
-import {validateJson} from '../internal/validateJson';
-import profileSchema from './ajv/schema-profile.json';
-import src44 from './ajv/validators';
-import {Src44Profile} from './typings/src44Profile';
-import {SRC44ParseException} from './exceptions/src44ParseException';
+/**
+ * Copyright (c) 2022 Signum Network
+ */
+
+import {SRC44Profile, SRC44ProfileType} from './typings';
+import {SRC44ParseException, SRC44ValidationException} from './exceptions';
 import {sanitizeUrl} from '@braintree/sanitize-url';
-import {SRC44ProfileType} from './typings/src44ProfileType';
-import {SRC44ValidationException} from './exceptions/src44ValidationException';
+import {validateSRC44} from './validateSRC44';
+import { parseIpfsMedia } from './parseIpfsMedia';
 
-const MaxLength = 1000;
-
+/**
+ * Profile Data
+ *
+ * SRC44-compliant Profile Data to be used as description in Smart Contracts, Account Info, and/or Aliases.
+ * Use [[ProfileDataBuilder]] to construct from the scratch, or use this to parse json data
+ * @module standards.SRC44
+ */
 export class ProfileData {
 
-    private constructor(private data: Src44Profile) {
+    private constructor(private data: SRC44Profile) {
+        this.validate();
     }
 
     get raw() {
@@ -43,11 +50,11 @@ export class ProfileData {
     }
 
     get avatar() {
-        return this.getIpfsMedia(this.data.av);
+        return parseIpfsMedia(this.data.av);
     }
 
     get background() {
-        return this.getIpfsMedia(this.data.bg);
+        return parseIpfsMedia(this.data.bg);
     }
 
     get sendRule() {
@@ -71,15 +78,10 @@ export class ProfileData {
 
     public static parse(jsonString: string) {
         try {
-            if (jsonString.length > MaxLength) {
-                throw new Error(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${jsonString.length}`);
-            }
             const profile = JSON.parse(jsonString);
-            const profileData = new ProfileData(profile);
-            profileData.validate();
-            return profileData;
-
-        } catch (e) {
+            return new ProfileData(profile);
+        // @ts-ignore
+        } catch (e: any) {
             throw new SRC44ParseException(e.message);
         }
     }
@@ -107,37 +109,11 @@ export class ProfileData {
     }
 
     public validate() {
-        this.stringify();
-        const {isValid, error} = validateJson({
-            data: this.raw,
-            schema: profileSchema,
-            validator: src44,
-        });
-
-        if (!isValid) {
-            throw new SRC44ValidationException(error);
-        }
-    }
-
-    private getIpfsMedia(o: any) {
-        if (!o) {
-            return undefined;
-        }
-        const keys = Object.keys(o);
-        if (keys.length === 1) {
-            const ipfsCid = keys[0];
-            const mimeType = o[ipfsCid];
-            if (!mimeType.startsWith('image')) {
-                throw new SRC44ParseException(`Only image Mime Types allowed. Got [${mimeType}]`);
-            }
-            return {
-                ipfsCid,
-                mimeType
-            };
-        }
+        validateSRC44(this.raw);
     }
 
     public stringify(): string {
+        const MaxLength = 1000;
         const str = JSON.stringify(this.data);
         if (str.length > MaxLength) {
             throw new SRC44ValidationException(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${str.length}`);

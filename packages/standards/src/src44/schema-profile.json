@@ -107,6 +107,7 @@
       "type": "string",
       "title": "The home page schema",
       "description": "The URL to the creators home page",
+      "maxLength": 128,
       "default": "",
       "examples": [
         "https://masterpiece.art"

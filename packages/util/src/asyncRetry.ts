@@ -13,7 +13,8 @@ export async function asyncRetry<T>(args: AsyncRetryArgs<T>): Promise<T> {
     const {asyncFn, onFailureAsync, retryCount = 1, maxRetrials = 20} = args;
     try {
         return await asyncFn();
-    } catch (e) {
+    // @ts-ignore
+    } catch (e: any) {
         if (retryCount > maxRetrials) {
             throw e; // cannot recover
         }

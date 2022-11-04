@@ -43,7 +43,8 @@ export const parseDeeplink = (deeplink: string, encoderFormat: EncoderFormat = E
 
         try {
             return JSON.parse(decoded);
-        } catch (e) {
+            // @ts-ignore
+        } catch (e: any) {
             return decoded;
         }
     };

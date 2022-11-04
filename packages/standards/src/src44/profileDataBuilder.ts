@@ -1,7 +1,16 @@
+/**
+ * Copyright (c) 2022 Signum Network
+ */
 import {sanitizeUrl} from '@braintree/sanitize-url';
-import {SRC44ProfileType} from './typings/src44ProfileType';
+import {SRC44ProfileType} from './typings';
 import {ProfileData} from './profileData';
 
+/**
+ * Profile Data Builder
+ *
+ * Creates SRC44-compliant [[ProfileData]] object to be used as description in Smart Contracts, Account Info, and/or Aliases
+ * @module standards.SRC44
+ */
 export class ProfileDataBuilder {
     private data: ProfileData;
 
@@ -10,7 +19,7 @@ export class ProfileDataBuilder {
         return this;
     }
 
-     setHomePage(url: string) {
+    setHomePage(url: string) {
         this.data.raw.hp = sanitizeUrl(url);
         return this;
     }
