@@ -1,10 +1,11 @@
 import {validateJson} from '../internal/validateJson';
 import profileSchema from './ajv/schema-profile.json';
-import {src44} from './ajv/validators';
+import src44 from './ajv/validators';
 import {Src44Profile} from './typings/src44Profile';
 import {SRC44ParseException} from './exceptions/src44ParseException';
 import {sanitizeUrl} from '@braintree/sanitize-url';
 import {SRC44ProfileType} from './typings/src44ProfileType';
+import {SRC44ValidationException} from './exceptions/src44ValidationException';
 
 const MaxLength = 1000;
 
@@ -25,14 +26,12 @@ export class ProfileData {
         return this.data.nm;
     }
 
-    get description() {
-        return this.data.ds;
+    get alias() {
+        return this.data.al;
     }
 
-    set description(d: string){
-        if(d.length > 384){
-            // todo: c
-        }
+    get description() {
+        return this.data.ds;
     }
 
     get type(): SRC44ProfileType {
@@ -63,10 +62,6 @@ export class ProfileData {
         return this.data.sc ? this.data.sc.map(sanitizeUrl) : undefined;
     }
 
-    get alias() {
-        return this.data.al;
-    }
-
     public static create(name: string) {
         return new ProfileData({
             vs: 1,
@@ -79,20 +74,10 @@ export class ProfileData {
             if (jsonString.length > MaxLength) {
                 throw new Error(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${jsonString.length}`);
             }
-
             const profile = JSON.parse(jsonString);
-
-            const {isValid, error} = validateJson({
-                data: profile,
-                schema: profileSchema,
-                validator: src44,
-            });
-
-            if (!isValid) {
-                throw new Error(error);
-            }
-
-            return new ProfileData(profile);
+            const profileData = new ProfileData(profile);
+            profileData.validate();
+            return profileData;
 
         } catch (e) {
             throw new SRC44ParseException(e.message);
@@ -122,7 +107,16 @@ export class ProfileData {
     }
 
     public validate() {
-        // TODO
+        this.stringify();
+        const {isValid, error} = validateJson({
+            data: this.raw,
+            schema: profileSchema,
+            validator: src44,
+        });
+
+        if (!isValid) {
+            throw new SRC44ValidationException(error);
+        }
     }
 
     private getIpfsMedia(o: any) {
@@ -146,7 +140,7 @@ export class ProfileData {
     public stringify(): string {
         const str = JSON.stringify(this.data);
         if (str.length > MaxLength) {
-            throw new SRC44ParseException(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${str.length}`);
+            throw new SRC44ValidationException(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${str.length}`);
         }
         return str;
     }
