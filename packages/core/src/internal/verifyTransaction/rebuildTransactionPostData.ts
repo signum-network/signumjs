@@ -111,8 +111,8 @@ class ByteBuffer {
         if (this.needle + nBytes > this.transactionBytes.length) {
             throw new Error('Unexpected end of input.');
         }
-        this.needle += nBytes;
         const escapedUTF8 = escape(String.fromCharCode.apply(null, this.transactionBytes.slice(this.needle, this.needle + nBytes)));
+        this.needle += nBytes;
         return decodeURIComponent(escapedUTF8);
     }
 }
@@ -314,6 +314,25 @@ const attachmentSpecV1: AttachmentSpec[] = [
         { type: 'Byte*1' },
         { type: 'Long*$0',  parameterName: 'recipients' },
     ] },
+    { request: 'setAlias', fields: [
+        { type: 'ByteString*1',  parameterName: 'aliasName' },
+        { type: 'ShortString*1',  parameterName: 'aliasURI' },
+        { type: 'Delete*1',  parameterName: 'amountNQT' }
+    ] },
+    { request: 'setAccountInfo', fields: [
+        { type: 'ByteString*1',  parameterName: 'name' },
+        { type: 'ShortString*1',  parameterName: 'description' },
+        { type: 'Delete*1',  parameterName: 'amountNQT' }
+    ] },
+    { request: 'sellAlias', fields: [
+        { type: 'ByteString*1',  parameterName: 'aliasName' },
+        { type: 'Long*1',  parameterName: 'priceNQT' },
+        { type: 'Delete*1',  parameterName: 'amountNQT' }
+    ] },
+    { request: 'buyAlias', fields: [
+        { type: 'ByteString*1',  parameterName: 'aliasName' },
+        { type: 'Delete*1',  parameterName: 'recipient' }
+    ] }
 ];
 
 const attachmentSpecV2: AttachmentSpec[] = [

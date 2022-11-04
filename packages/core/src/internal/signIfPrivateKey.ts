@@ -11,7 +11,6 @@ import {TransactionId} from '../typings/transactionId';
 import {signAndBroadcastTransaction} from '../api/factories/transaction/signAndBroadcastTransaction';
 import {DefaultSendArgs} from '../typings/args/defaultSendArgs';
 import {ChainService} from '../service';
-import {verifyTransaction} from './verifyTransaction';
 
 type TransactionFn = (args: any) => Promise<UnsignedTransaction>;
 

@@ -82,4 +82,82 @@ describe('rebuildTransactionPostData', () => {
             expect(output.rebuiltData).toEqual(rebuiltData)
         })
     })
+    describe('setAlias', () => {
+        const requestType = 'setAlias'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '012152a47b0f4b00f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a00000000000000000000000000000000002d31010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a14907001461702d41ea3cf104cfe1531b543c7c010d4d79546573743235416c6961731500736f6d65206461746120696e666f726d6174696f6e'
+            const rebuiltData = {
+                aliasName: 'MyTest25Alias',
+                aliasURI: 'some data information',
+                feeNQT: '20000000',
+                publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
+                deadline: 75
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('setAccountInfo', () => {
+        const requestType = 'setAccountInfo'
+        it('should rebuild data correctly - Plus very long and utf-8 data', () => {
+            const transactionBytes = '01255daa7b0f3d00f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a00000000000000000000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a74907001314da8d5ddb423204cfe1531b543c7c01166120e5928ce59bbd20efbc83efbc9e20f09fa8812041520161626320e4b8ade58d8ee4babae6b091e585b1e5928ce59bbd20efbc83efbc9e20f09fa881204c6f72656d20697073756d20646f6c6f722073697420616d65742c20636f6e73656374657475722061646970697363696e6720656c69742e20437261732065742070756c76696e6172206573742e2041656e65616e2076656e656e61746973207175616d2065676574206c756374757320617563746f722e204475697320626c616e6469742074726973746971756520616c697175616d2e204e616d206469676e697373696d206e756c6c612076697461652075726e61206c6f626f727469732c206174206c6163696e6961206d6574757320636f6d6d6f646f2e2053757370656e64697373652074696e636964756e74206e697369206d692c2076656c20616c697175616d206d61676e6120666163696c69736973206d61747469732e204d616563656e6173207365642e'
+            const rebuiltData = {
+                name: 'a 和国 ＃＞ 🨁 A',
+                description: 'abc 中华人民共和国 ＃＞ 🨁 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et pulvinar est. Aenean venenatis quam eget luctus auctor. Duis blandit tristique aliquam. Nam dignissim nulla vitae urna lobortis, at lacinia metus commodo. Suspendisse tincidunt nisi mi, vel aliquam magna facilisis mattis. Maecenas sed.',
+                feeNQT: '3000000',
+                publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
+                deadline: 61
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('sellAlias', () => {
+        const requestType = 'sellAlias'
+        it('should rebuild data correctly - Att. v1: aliasName, no recipient', () => {
+            const transactionBytes = '01265fad7b0f0200f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a0000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ab490700e71c543a858800d104cfe1531b543c7c0111383764666164736a396173386661646a6800e1f50500000000'
+            const rebuiltData = {
+                aliasName: '87dfadsj9as8fadjh',
+                priceNQT: '100000000',
+                feeNQT: '1000000',
+                publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
+                deadline: 2
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - Att. v1: aliasName, With recipient', () => {
+            const transactionBytes = '012627ae7b0f0200f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611aeedad9492ab5777f000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ad4907007b7d90d5e079966104cfe1531b543c7c0111383764666164736a396173386661646a6800e1f50500000000'
+            const rebuiltData = {
+                aliasName: '87dfadsj9as8fadjh',
+                recipient: '9185009158277683950',
+                priceNQT: '100000000',
+                feeNQT: '1000000',
+                publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
+                deadline: 2
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('buyAlias', () => {
+        const requestType = 'buyAlias'
+        it('should rebuild data correctly - Att. v1: aliasName', () => {
+            const transactionBytes = '012746b07b0f9100be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da821d514bbf423104f1e01e1f5050000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000af4907003cd10663e6abe62104cfe1531b543c7c0111383764666164736a396173386661646a68'
+            const rebuiltData = {
+                aliasName: '87dfadsj9as8fadjh',
+                amountNQT: '100000001',
+                feeNQT: '1000000',
+                publicKey: 'be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da821',
+                deadline: 145
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
 })

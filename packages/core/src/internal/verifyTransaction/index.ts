@@ -3,7 +3,12 @@
 
 import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 
-const methodsToVerify = [ 'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame' ];
+// Type 0 (payment): OK
+// Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
+const methodsToVerify = [
+    'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
+    'setAlias', 'setAccountInfo'
+];
 
 /**
  * @param method Signum API name
