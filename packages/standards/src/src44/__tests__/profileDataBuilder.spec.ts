@@ -17,7 +17,7 @@ describe('profileDataBuilder', () => {
                 .setSendRule('^[a-Z]{3}$')
                 .build();
 
-            expect(profileData.raw).toEqual({'al': '@alias', 'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'}, 'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'}, 'ds': 'description', 'hp': 'https://homepage.com', 'nm': 'Some name', 'sc': ['https://somelink.com'], 'sr': '^[a-Z]{3}$', 'tp': 'oth', 'vs': 1, 'xc': 'value', 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'});
+            expect(profileData.raw).toEqual({'al': 'alias', 'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'}, 'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'}, 'ds': 'description', 'hp': 'https://homepage.com', 'nm': 'Some name', 'sc': ['https://somelink.com'], 'sr': '^[a-Z]{3}$', 'tp': 'oth', 'vs': 1, 'xc': 'value', 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'});
         });
 
         it('should throw exception on invalid data - wrong mime type', () => {
@@ -53,7 +53,7 @@ describe('profileDataBuilder', () => {
                     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
                     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
                     .setSocialMediaLinks(['https://somelink.com'])
-                    .setAlias('@alias')
+                    .setAlias('alias')
                     .setCustomField('xc', 'value'.repeat(200))
                     .setDescription('description'.repeat(20))
                     .setExtension('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc')
@@ -61,7 +61,7 @@ describe('profileDataBuilder', () => {
                     .setType('oth')
                     .setSendRule('^[a-Z]{3}$')
                     .build();
-            }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed - Got 1553');
+            }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed - Got 1552');
         });
     });
 });

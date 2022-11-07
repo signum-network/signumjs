@@ -21,7 +21,7 @@ describe('profileData', () => {
             const profile = ProfileData.parse(JSON.stringify(TestObject1));
             expect(profile.get()).toEqual(
                 {
-                    'alias': '@somealias',
+                    'alias': 'somealias',
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif',
@@ -48,7 +48,7 @@ describe('profileData', () => {
     describe('stringify', () => {
         it('should stringify as expected', () => {
             const profile = ProfileData.parse(JSON.stringify(TestObject1));
-            expect(profile.stringify()).toEqual('{\"vs\":1,\"tp\":\"cex\",\"nm\":\"Bittrex\",\"ds\":\"World class exchange at your service\",\"av\":{\"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR\":\"image/gif\"},\"bg\":{\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\":\"image/jpeg\"},\"hp\":\"https://bittrex.com\",\"sr\":\"^[0-9a-fA-F]{24}$\",\"al\":\"@somealias\",\"xt\":\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\",\"sc\":[\"https://twitter.com/bittrex\",\"https://twitter.com/bittrex2\"]}');
+            expect(profile.stringify()).toEqual('{\"vs\":1,\"tp\":\"cex\",\"nm\":\"Bittrex\",\"ds\":\"World class exchange at your service\",\"av\":{\"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR\":\"image/gif\"},\"bg\":{\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\":\"image/jpeg\"},\"hp\":\"https://bittrex.com\",\"sr\":\"^[0-9a-fA-F]{24}$\",\"al\":\"somealias\",\"xt\":\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\",\"sc\":[\"https://twitter.com/bittrex\",\"https://twitter.com/bittrex2\"]}');
         });
         it('should parse as expected with custom properties', () => {
             const t = {...TestObject1, tw: 'Twitter account', xCustom: 1111};
@@ -65,7 +65,7 @@ describe('profileData', () => {
                 mimeType: 'image/jpeg'
             });
             expect(profile.description).toBe('World class exchange at your service');
-            expect(profile.alias).toBe('@somealias');
+            expect(profile.alias).toBe('somealias');
             expect(profile.homePage).toBe('https://bittrex.com');
             expect(profile.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(profile.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
@@ -92,7 +92,7 @@ describe('profileData', () => {
             };
             expect(() => {
                 ProfileData.parse(JSON.stringify(t));
-            }).toThrow('Maximum length of 1000 bytes allowed - Got 2263');
+            }).toThrow('Maximum length of 1000 bytes allowed - Got 2262');
         });
 
         it('should throw exception if object is not valid - 1', () => {
@@ -125,7 +125,7 @@ describe('profileData', () => {
                 mimeType: 'image/jpeg'
             });
             expect(profile.description).toBe('World class exchange at your service');
-            expect(profile.alias).toBe('@somealias');
+            expect(profile.alias).toBe('somealias');
             expect(profile.homePage).toBe('https://bittrex.com');
             expect(profile.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(profile.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
@@ -146,7 +146,7 @@ describe('profileData', () => {
                 mimeType: 'image/jpeg'
             });
             expect(profile.description).toBe('World class exchange at your service');
-            expect(profile.alias).toBe('@somealias');
+            expect(profile.alias).toBe('somealias');
             expect(profile.homePage).toBe('https://bittrex.com');
             expect(profile.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(profile.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
@@ -173,14 +173,14 @@ describe('profileData', () => {
             };
             expect(() => {
                 ProfileData.parse(JSON.stringify(t));
-            }).toThrow('Maximum length of 1000 bytes allowed - Got 2263');
+            }).toThrow('Maximum length of 1000 bytes allowed - Got 2262');
         });
 
         it('should throw exception if object is not valid - 1', () => {
             expect(() => {
                 ProfileData.parse(JSON.stringify({
                     'vs': 1,
-                    'al': '@somealias',
+                    'al': 'somealias',
                 }));
             }).toThrow('nm is required and must be at maximum 24 bytes - Got undefined');
         });
