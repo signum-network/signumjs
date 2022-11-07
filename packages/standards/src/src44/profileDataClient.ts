@@ -11,6 +11,26 @@ import {SetAliasProfileArgs} from './typings/args/setAliasProfileArgs';
 /**
  * Profile Data Client
  *
+ * ```ts
+ *  const ledger = LedgerClientFactory.create({nodeHost: "https://europe.signum.network"})
+ *  const client = new ProfileDataClient(ledger);
+ *  const profileData = ProfileDataBuilder
+ *                         .create('ohager')
+ *                         .setType('hum')
+ *                         .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
+ *                         .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
+ *                         .setSocialMediaLinks(['https://somelink.com'])
+ *                         .setDescription('Just a humble dev...')
+ *                         .setHomePage('https://digital-independence.dev')
+ *                         .build();
+ *  const transaction = await client.setAccountProfile({
+ *                  profileData: ProfileDataBuilder.create('profile').build(),
+ *                 feePlanck: '100',
+ *                 senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
+ *                 senderPrivateKey: '**********************************'
+ *                 });
+ * ```
+ *
  * A helper class to get Profile information from accounts, contracts, and/or aliases. It even resolves Profile data from referenced aliases.
  * Furthermore, it helps on updating profile data according to SRC44 specifications.
  * @module standards.SRC44

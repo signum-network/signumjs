@@ -144,7 +144,7 @@ describe('profileDataClient', () => {
             // @ts-ignore
             const client = new ProfileDataClient(MockLedger);
             const spy = spyOn(MockLedger.account, 'setAccountInfo' );
-            const profile = await client.setAccountProfile({
+            await client.setAccountProfile({
                 profileData: ProfileDataBuilder.create('profile').build(),
                 feePlanck: '100',
                 senderPublicKey: 'senderPublicKey'

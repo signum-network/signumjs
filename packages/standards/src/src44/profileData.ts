@@ -21,6 +21,10 @@ export class ProfileData {
         this.validate();
     }
 
+    /**
+     * Leaky abstarction to get access to the pure raw SRC44 profile data
+     * @return the raw SRC44 object.
+     */
     get raw() {
         return this.data;
     }
@@ -69,6 +73,10 @@ export class ProfileData {
         return this.data.sc ? this.data.sc.map(sanitizeUrl) : undefined;
     }
 
+    /**
+     * Creates a bare minimum SRC44 profile instance.
+     * @param name The name
+     */
     public static create(name: string) {
         return new ProfileData({
             vs: 1,
@@ -76,6 +84,10 @@ export class ProfileData {
         });
     }
 
+    /**
+     * Creates/Parses a SRC44 compliant profile string
+     * @param jsonString The SRC44 compliante string. See also [[stringify]]
+     */
     public static parse(jsonString: string) {
         try {
             const profile = JSON.parse(jsonString);
@@ -86,10 +98,17 @@ export class ProfileData {
         }
     }
 
+    /**
+     * Gets a custom field (inline extension)
+     * @param fieldName
+     */
     getCustomField(fieldName: string) {
         return this.data[fieldName];
     }
 
+    /**
+     * Gets a more human friendly version of the data
+     */
     get(): Profile {
         const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, ...custom} = this.data;
         return {
@@ -108,10 +127,18 @@ export class ProfileData {
         };
     }
 
+    /**
+     * Validates the current profile data.
+     * @throws in case of invalid data.
+     */
     public validate() {
         validateSRC44(this.raw);
     }
 
+    /**
+     * @return The SRC44 string to be set with Signum Accounts, Contracts and/or Aliases
+     * @throws if the string exceeds 1000 bytes.
+     */
     public stringify(): string {
         const MaxLength = 1000;
         const str = JSON.stringify(this.data);

@@ -78,13 +78,85 @@
 					<a href="standards_src44.html">standards.SRC44</a>
 				</li>
 			</ul>
-			<h1>standards.SRC44</h1>
+			<h1>External module standards.SRC44</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>SRC44: Standard for <a href="https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md">Profile Information</a></p>
+					</div>
+					<p>This (sub) package creates, parses and validates Signum Profile data.</p>
+					<p>To create SRC44 compatible profile data use <a href="../classes/standards_src44.profiledatabuilder.html">ProfileDataBuilder</a></p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+    .create(<span class="hljs-string">'Some name'</span>)
+    .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
+    .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
+    .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
+    .setAlias(<span class="hljs-string">'alias'</span>)
+    .setCustomField(<span class="hljs-string">'xc'</span>, <span class="hljs-string">'value'</span>)
+    .setDescription(<span class="hljs-string">'description'</span>)
+    .setExtension(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>)
+    .setHomePage(<span class="hljs-string">'https://homepage.com'</span>)
+    .setType(<span class="hljs-string">'oth'</span>)
+    .setSendRule(<span class="hljs-string">'^[a-Z]{3}$'</span>)
+    .build();</code></pre>
+					<p>Parsing/Validating Data is also easy:</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> profile = ProfileData.parse(profileDataString);
+<span class="hljs-built_in">console</span>.log(profile.get())</code></pre>
+					<p>which may result in:</p>
+					<pre><code class="language-json">
+{
+    &#39;alias&#39;: &#39;somealias&#39;,
+    &#39;avatar&#39;: {
+        &#39;ipfsCid&#39;: &#39;QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR&#39;,
+        &#39;mimeType&#39;: &#39;image/gif&#39;,
+    },
+    &#39;background&#39;: {
+        &#39;ipfsCid&#39;: &#39;QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc&#39;,
+        &#39;mimeType&#39;: &#39;image/jpeg&#39;,
+    },
+    &#39;description&#39;: &#39;World class exchange at your service&#39;,
+    &#39;extension&#39;: &#39;QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc&#39;,
+    &#39;homePage&#39;: &#39;https://bittrex.com&#39;,
+    &#39;name&#39;: &#39;Bittrex&#39;,
+    &#39;sendRule&#39;: /^[0-9a-fA-F]{24}$/,
+    &#39;socialMediaLinks&#39;: [
+        &#39;https://twitter.com/bittrex&#39;,
+        &#39;https://twitter.com/bittrex2&#39;,
+    ],
+    &#39;type&#39;: &#39;cex&#39;,
+    &#39;version&#39;: 1,
+}</code></pre>
+					<p>The recommended way is to use the <a href="../classes/standards_src44.profiledataclient.html">ProfileDataClient</a> to fetch or set profile data from Accounts, Smart Contracts and/or Aliases</p>
+					<p>Fetching profile data</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
+<span class="hljs-keyword">const</span> profile = <span class="hljs-keyword">await</span> client.getFromContract(<span class="hljs-string">'23589234982349852196'</span>);</code></pre>
+					<p>Setting profile data</p>
+					<pre><code class="language-ts"> <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
+ <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
+ <span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+                        .create(<span class="hljs-string">'ohager'</span>)
+                        .setType(<span class="hljs-string">'hum'</span>)
+                        .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
+                        .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
+                        .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
+                        .setDescription(<span class="hljs-string">'Just a humble dev...'</span>)
+                        .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
+                        .build();
+ <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
+                 profileData: ProfileDataBuilder.create(<span class="hljs-string">'profile'</span>).build(),
+                feePlanck: <span class="hljs-string">'100'</span>,
+                senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
+                senderPrivateKey: <span class="hljs-string">'**********************************'</span>
+                });</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -98,6 +170,7 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a></li>
 							</ul>
 						</section>
@@ -106,6 +179,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">SRC44<wbr>Profile<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"hum"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"smc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"biz"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"dex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"oth"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/typings/src44ProfileType.ts#L12">packages/standards/src/src44/typings/src44ProfileType.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/typings/src44ProfileType.ts#L12">packages/standards/src/src44/typings/src44ProfileType.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,6 +250,12 @@
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="../classes/standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>

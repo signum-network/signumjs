@@ -93,6 +93,19 @@
 					<div class="lead">
 						<p>Profile Data Builder</p>
 					</div>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+    .create(<span class="hljs-string">'Some name'</span>)
+    .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
+    .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
+    .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
+    .setAlias(<span class="hljs-string">'alias'</span>)
+    .setCustomField(<span class="hljs-string">'xc'</span>, <span class="hljs-string">'value'</span>)
+    .setDescription(<span class="hljs-string">'description'</span>)
+    .setExtension(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>)
+    .setHomePage(<span class="hljs-string">'https://homepage.com'</span>)
+    .setType(<span class="hljs-string">'oth'</span>)
+    .setSendRule(<span class="hljs-string">'^[a-Z]{3}$'</span>)
+    .build();</code></pre>
 					<p>Creates SRC44-compliant <a href="standards_src44.profiledata.html">ProfileData</a> object to be used as description in Smart Contracts, Account Info, and/or Aliases</p>
 				</div>
 			</section>
@@ -112,7 +125,6 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#build" class="tsd-kind-icon">build</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#setalias" class="tsd-kind-icon">set<wbr>Alias</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#setavatar" class="tsd-kind-icon">set<wbr>Avatar</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#setbackground" class="tsd-kind-icon">set<wbr>Background</a></li>
@@ -123,6 +135,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#setsendrule" class="tsd-kind-icon">set<wbr>Send<wbr>Rule</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#setsocialmedialinks" class="tsd-kind-icon">set<wbr>Social<wbr>Media<wbr>Links</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledatabuilder.html#settype" class="tsd-kind-icon">set<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="standards_src44.profiledatabuilder.html#create" class="tsd-kind-icon">create</a></li>
 							</ul>
 						</section>
 					</div>
@@ -140,33 +153,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L67">packages/standards/src/src44/profileDataBuilder.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L95">packages/standards/src/src44/profileDataBuilder.ts:95</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the final <a href="standards_src44.profiledata.html">ProfileData</a> instance. See also <a href="standards_src44.profiledatabuilder.html#create">ProfileDataBuilder.create</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="standards_src44.profiledata.html" class="tsd-signature-type">ProfileData</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="create" class="tsd-anchor"></a>
-					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L62">packages/standards/src/src44/profileDataBuilder.ts:62</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -180,7 +175,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L32">packages/standards/src/src44/profileDataBuilder.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L62">packages/standards/src/src44/profileDataBuilder.ts:62</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -203,7 +198,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L48">packages/standards/src/src44/profileDataBuilder.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L78">packages/standards/src/src44/profileDataBuilder.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -229,7 +224,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L55">packages/standards/src/src44/profileDataBuilder.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L85">packages/standards/src/src44/profileDataBuilder.ts:85</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -255,7 +250,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L77">packages/standards/src/src44/profileDataBuilder.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L105">packages/standards/src/src44/profileDataBuilder.ts:105</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -281,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L72">packages/standards/src/src44/profileDataBuilder.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L100">packages/standards/src/src44/profileDataBuilder.ts:100</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -304,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L43">packages/standards/src/src44/profileDataBuilder.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L73">packages/standards/src/src44/profileDataBuilder.ts:73</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -327,7 +322,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L22">packages/standards/src/src44/profileDataBuilder.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L52">packages/standards/src/src44/profileDataBuilder.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -350,7 +345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L17">packages/standards/src/src44/profileDataBuilder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L47">packages/standards/src/src44/profileDataBuilder.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -373,7 +368,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L27">packages/standards/src/src44/profileDataBuilder.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L57">packages/standards/src/src44/profileDataBuilder.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -396,7 +391,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3745df0/packages/standards/src/src44/profileDataBuilder.ts#L38">packages/standards/src/src44/profileDataBuilder.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L68">packages/standards/src/src44/profileDataBuilder.ts:68</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -406,6 +401,36 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="create" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="standards_src44.profiledatabuilder.html" class="tsd-signature-type">ProfileDataBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataBuilder.ts#L41">packages/standards/src/src44/profileDataBuilder.ts:41</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates the builder instance. See also <a href="standards_src44.profiledatabuilder.html#build">ProfileDataBuilder.build</a></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="standards_src44.profiledatabuilder.html" class="tsd-signature-type">ProfileDataBuilder</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -463,9 +488,6 @@
 								<a href="standards_src44.profiledatabuilder.html#build" class="tsd-kind-icon">build</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledatabuilder.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="standards_src44.profiledatabuilder.html#setalias" class="tsd-kind-icon">set<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -495,10 +517,19 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="standards_src44.profiledatabuilder.html#settype" class="tsd-kind-icon">set<wbr>Type</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="standards_src44.profiledatabuilder.html#create" class="tsd-kind-icon">create</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
 					</li>

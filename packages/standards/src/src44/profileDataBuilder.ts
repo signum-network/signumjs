@@ -8,6 +8,22 @@ import {ProfileData} from './profileData';
 /**
  * Profile Data Builder
  *
+ * ```ts
+ * const profileData = ProfileDataBuilder
+ *     .create('Some name')
+ *     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
+ *     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
+ *     .setSocialMediaLinks(['https://somelink.com'])
+ *     .setAlias('alias')
+ *     .setCustomField('xc', 'value')
+ *     .setDescription('description')
+ *     .setExtension('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc')
+ *     .setHomePage('https://homepage.com')
+ *     .setType('oth')
+ *     .setSendRule('^[a-Z]{3}$')
+ *     .build();
+ * ```
+ *
  * Creates SRC44-compliant [[ProfileData]] object to be used as description in Smart Contracts, Account Info, and/or Aliases
  * @module standards.SRC44
  */
@@ -18,6 +34,10 @@ export class ProfileDataBuilder {
 
     private data: ProfileData;
 
+    /**
+     * Creates the builder instance. See also [[ProfileDataBuilder.build]]
+     * @param name
+     */
     public static create(name: string) {
         const builder = new ProfileDataBuilder();
         builder.data = ProfileData.create(name);
@@ -69,6 +89,9 @@ export class ProfileDataBuilder {
         return this;
     }
 
+    /**
+     * Builds the final [[ProfileData]] instance. See also [[ProfileDataBuilder.create]]
+     */
     build() {
         this.data.validate();
         return this.data;

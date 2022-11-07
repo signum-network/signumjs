@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LocalStorageMonitorRepository
+	<title>ProfileDataClient
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/monitor.html">monitor</a>
+					<a href="../modules/standards_src44.html">standards.SRC44</a>
 				</li>
 				<li>
-					<a href="monitor.localstoragemonitorrepository.html">LocalStorageMonitorRepository</a>
+					<a href="standards_src44.profiledataclient.html">ProfileDataClient</a>
 				</li>
 			</ul>
-			<h1>Class LocalStorageMonitorRepository</h1>
+			<h1>Class ProfileDataClient</h1>
 		</div>
 	</div>
 </header>
@@ -91,22 +91,35 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A repository to persist a monitor in a <em>localStorage</em> like/compliant storage</p>
+						<p>Profile Data Client</p>
 					</div>
+					<pre><code class="language-ts"> <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
+ <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
+ <span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+                        .create(<span class="hljs-string">'ohager'</span>)
+                        .setType(<span class="hljs-string">'hum'</span>)
+                        .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
+                        .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
+                        .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
+                        .setDescription(<span class="hljs-string">'Just a humble dev...'</span>)
+                        .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
+                        .build();
+ <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
+                 profileData: ProfileDataBuilder.create(<span class="hljs-string">'profile'</span>).build(),
+                feePlanck: <span class="hljs-string">'100'</span>,
+                senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
+                senderPrivateKey: <span class="hljs-string">'**********************************'</span>
+                });</code></pre>
+					<p>A helper class to get Profile information from accounts, contracts, and/or aliases. It even resolves Profile data from referenced aliases.
+					Furthermore, it helps on updating profile data according to SRC44 specifications.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">LocalStorageMonitorRepository</span>
+						<span class="target">ProfileDataClient</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/monitor.monitorrepository.html" class="tsd-signature-type">MonitorRepository</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -116,16 +129,17 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="monitor.localstoragemonitorrepository.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="monitor.localstoragemonitorrepository.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="monitor.localstoragemonitorrepository.html#getall" class="tsd-kind-icon">get<wbr>All</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="monitor.localstoragemonitorrepository.html#insert" class="tsd-kind-icon">insert</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="monitor.localstoragemonitorrepository.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaccountprofile" class="tsd-kind-icon">set<wbr>Account<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a></li>
 							</ul>
 						</section>
 					</div>
@@ -137,40 +151,32 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Local<wbr>Storage<wbr>Monitor<wbr>Repository<span class="tsd-signature-symbol">(</span>storage<span class="tsd-signature-symbol">: </span><a href="../interfaces/monitor.localstorage.html" class="tsd-signature-type">LocalStorage</a>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="monitor.localstoragemonitorrepository.html" class="tsd-signature-type">LocalStorageMonitorRepository</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Profile<wbr>Data<wbr>Client<span class="tsd-signature-symbol">(</span>ledger<span class="tsd-signature-symbol">: </span><a href="../modules/core.html#ledger" class="tsd-signature-type">Ledger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="standards_src44.profiledataclient.html" class="tsd-signature-type">ProfileDataClient</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/monitor/src/repositories/localStorageMonitorRepository.ts#L30">packages/monitor/src/repositories/localStorageMonitorRepository.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L38">packages/standards/src/src44/profileDataClient.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Instantiates the client.
+									Mind the dependency of the ledger client.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>storage: <a href="../interfaces/monitor.localstorage.html" class="tsd-signature-type">LocalStorage</a></h5>
+									<h5>ledger: <a href="../modules/core.html#ledger" class="tsd-signature-type">Ledger</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>a <em>localStorage</em> compliant implementation
-											Usually, you will use the browser localStorage, so</p>
-											<p><code>new LocalStorageMonitorRepository(window.localStorage)</code></p>
-											<p>would be your way to go</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol"> = DefaultOptions</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Additional options</p>
 										</div>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="monitor.localstoragemonitorrepository.html" class="tsd-signature-type">LocalStorageMonitorRepository</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="standards_src44.profiledataclient.html" class="tsd-signature-type">ProfileDataClient</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -178,143 +184,164 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="get" class="tsd-anchor"></a>
-					<h3>get</h3>
+					<a name="getfromaccount" class="tsd-anchor"></a>
+					<h3>get<wbr>From<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">GenericMonitor</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Account<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/monitor.monitorrepository.html">MonitorRepository</a>.<a href="../interfaces/monitor.monitorrepository.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/monitor/src/repositories/localStorageMonitorRepository.ts#L50">packages/monitor/src/repositories/localStorageMonitorRepository.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L84">packages/standards/src/src44/profileDataClient.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets a specific monitor by key</p>
+									<p>Gets the profile data from an account. It also resolved referenced alias profile</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>note</dt>
-									<dd><p>The monitor will be deserialized and eventually started (see options)</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>key: <span class="tsd-signature-type">any</span></h5>
+									<h5>accountId: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The identifier of the monitor</p>
+										<p>The account id</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">GenericMonitor</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>the monitor instance, or null if not found</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The fetched Profile data. It might throw exceptions if it has no compatible data.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getall" class="tsd-anchor"></a>
-					<h3>get<wbr>All</h3>
+					<a name="getfromalias" class="tsd-anchor"></a>
+					<h3>get<wbr>From<wbr>Alias</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">GenericMonitor</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Alias<span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/monitor.monitorrepository.html">MonitorRepository</a>.<a href="../interfaces/monitor.monitorrepository.html#getall">getAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/monitor/src/repositories/localStorageMonitorRepository.ts#L61">packages/monitor/src/repositories/localStorageMonitorRepository.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L116">packages/standards/src/src44/profileDataClient.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets all stored monitors</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>note</dt>
-									<dd><p>The monitors will be deserialized and eventually started (see options)</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">GenericMonitor</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>the monitor instances</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="insert" class="tsd-anchor"></a>
-					<h3>insert</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">insert<span class="tsd-signature-symbol">(</span>monitor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GenericMonitor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/monitor.monitorrepository.html">MonitorRepository</a>.<a href="../interfaces/monitor.monitorrepository.html#insert">insert</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/monitor/src/repositories/localStorageMonitorRepository.ts#L76">packages/monitor/src/repositories/localStorageMonitorRepository.ts:76</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Inserts/Serializes a monitor, if not exists already</p>
+									<p>Gets profile data from an alias.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>If monitor already stored</p>
+									<dd><p>If the alias does not have compatible profile data</p>
 									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>monitor: <span class="tsd-signature-type">GenericMonitor</span></h5>
+									<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The monitor instance</p>
+										<p>The unique alias name</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="remove" class="tsd-anchor"></a>
-					<h3>remove</h3>
+					<a name="getfromcontract" class="tsd-anchor"></a>
+					<h3>get<wbr>From<wbr>Contract</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Contract<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/monitor.monitorrepository.html">MonitorRepository</a>.<a href="../interfaces/monitor.monitorrepository.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/monitor/src/repositories/localStorageMonitorRepository.ts#L89">packages/monitor/src/repositories/localStorageMonitorRepository.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L53">packages/standards/src/src44/profileDataClient.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Removes a monitor</p>
+									<p>Gets the profile data from a contract. It also resolved referenced alias profile</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>note</dt>
-									<dd><p>If no monitor with given key is stored, the method does nothing</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>key: <span class="tsd-signature-type">any</span></h5>
+									<h5>contractId: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The monitors key</p>
+										<p>The contract id</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The fetched Profile data. It might throw exceptions if it has no compatible data.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setaccountprofile" class="tsd-anchor"></a>
+					<h3>set<wbr>Account<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L66">packages/standards/src/src44/profileDataClient.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets an accounts profile data.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The arguments</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setaliasprofile" class="tsd-anchor"></a>
+					<h3>set<wbr>Alias<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/profileDataClient.ts#L98">packages/standards/src/src44/profileDataClient.ts:98</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets an alias profile data.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The arguments</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -344,10 +371,10 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/http.html">http</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/monitor.html">monitor</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/standards_src44.html">standards.SRC44</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -361,64 +388,46 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="monitor.consolelogger.html" class="tsd-kind-icon">Console<wbr>Logger</a>
+						<a href="standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="monitor.localstoragemonitorrepository.html" class="tsd-kind-icon">Local<wbr>Storage<wbr>Monitor<wbr>Repository</a>
+						<a href="standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="monitor.localstoragemonitorrepository.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="standards_src44.profiledataclient.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="monitor.localstoragemonitorrepository.html#get" class="tsd-kind-icon">get</a>
+								<a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="monitor.localstoragemonitorrepository.html#getall" class="tsd-kind-icon">get<wbr>All</a>
+								<a href="standards_src44.profiledataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="monitor.localstoragemonitorrepository.html#insert" class="tsd-kind-icon">insert</a>
+								<a href="standards_src44.profiledataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="monitor.localstoragemonitorrepository.html#remove" class="tsd-kind-icon">remove</a>
+								<a href="standards_src44.profiledataclient.html#setaccountprofile" class="tsd-kind-icon">set<wbr>Account<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="monitor.memorymonitorrepository.html" class="tsd-kind-icon">Memory<wbr>Monitor<wbr>Repository</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="monitor.monitor-1.html" class="tsd-kind-icon">Monitor</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="monitor.voidlogger.html" class="tsd-kind-icon">Void<wbr>Logger</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/monitor.localstorage.html" class="tsd-kind-icon">Local<wbr>Storage</a>
+						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/monitor.logger.html" class="tsd-kind-icon">Logger</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../interfaces/monitor.monitorargs.html" class="tsd-kind-icon">Monitor<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/monitor.monitorrepository.html" class="tsd-kind-icon">Monitor<wbr>Repository</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/monitor.html#monitorfetchfunction" class="tsd-kind-icon">Monitor<wbr>Fetch<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/monitor.html#monitorpredicatefunction" class="tsd-kind-icon">Monitor<wbr>Predicate<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/monitor.html#consolelogger-1" class="tsd-kind-icon">console<wbr>Logger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/monitor.html#voidlogger-1" class="tsd-kind-icon">void<wbr>Logger</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>
 					</li>
 				</ul>
 			</nav>
