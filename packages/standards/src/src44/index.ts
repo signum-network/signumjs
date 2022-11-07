@@ -80,8 +80,9 @@
  *                         .setDescription('Just a humble dev...')
  *                         .setHomePage('https://digital-independence.dev')
  *                         .build();
+ *
  *  const transaction = await client.setAccountProfile({
- *                  profileData: ProfileDataBuilder.create('profile').build(),
+ *                 profileData,
  *                 feePlanck: '100',
  *                 senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
  *                 senderPrivateKey: '**********************************'

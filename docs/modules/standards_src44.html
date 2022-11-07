@@ -149,8 +149,9 @@
                         .setDescription(<span class="hljs-string">'Just a humble dev...'</span>)
                         .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
                         .build();
+
  <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
-                 profileData: ProfileDataBuilder.create(<span class="hljs-string">'profile'</span>).build(),
+                profileData,
                 feePlanck: <span class="hljs-string">'100'</span>,
                 senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
                 senderPrivateKey: <span class="hljs-string">'**********************************'</span>
@@ -193,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">SRC44<wbr>Profile<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"hum"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"smc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"biz"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"dex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"oth"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/c63b131/packages/standards/src/src44/typings/src44ProfileType.ts#L12">packages/standards/src/src44/typings/src44ProfileType.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/typings/src44ProfileType.ts#L12">packages/standards/src/src44/typings/src44ProfileType.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
