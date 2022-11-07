@@ -1,4 +1,4 @@
-import {ProfileData} from './profileData';
+import {ProfileData} from '../../profileData';
 
 export interface SetAliasProfileArgs {
     aliasName: string;
