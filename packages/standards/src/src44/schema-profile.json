@@ -19,7 +19,7 @@
       },
       "hp": "https://bittrex.com",
       "sr": "^[0-9a-fA-F]{24}$",
-      "al": "@somealias",
+      "al": "somealias",
       "xt": "QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc",
       "sc": [
         "https://twitter.com/bittrex"
@@ -128,7 +128,7 @@
       "type": "string",
       "title": "The referenced Alias",
       "description": "An related alias of the Signum chain, that can mutable on-chain information",
-      "pattern": "^@\\w{1,100}$",
+      "pattern": "^\\w{1,100}$",
       "default": "",
       "examples": [
         "@myAlias123"
