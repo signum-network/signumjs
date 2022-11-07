@@ -12,7 +12,17 @@ import {ProfileData} from './profileData';
  * @module standards.SRC44
  */
 export class ProfileDataBuilder {
+
+    private constructor() {
+    }
+
     private data: ProfileData;
+
+    public static create(name: string) {
+        const builder = new ProfileDataBuilder();
+        builder.data = ProfileData.create(name);
+        return builder;
+    }
 
     setSendRule(regex: string) {
         this.data.raw.sr = regex;
@@ -24,13 +34,13 @@ export class ProfileDataBuilder {
         return this;
     }
 
-    setSocialMediaLinks( urls: string[]) {
+    setSocialMediaLinks(urls: string[]) {
         this.data.raw.sc = urls.map(sanitizeUrl);
         return this;
     }
 
     setAlias(a: string) {
-        this.data.raw.al = a;
+        this.data.raw.al = a.startsWith('@') ? a : `@${a}`;
         return this;
     }
 
@@ -56,11 +66,6 @@ export class ProfileDataBuilder {
         this.data.raw.bg = {
             [ipfsCid]: imageMimeTye
         };
-        return this;
-    }
-
-    create(name: string) {
-        this.data =  ProfileData.create(name);
         return this;
     }
 
