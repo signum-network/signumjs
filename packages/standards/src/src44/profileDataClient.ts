@@ -31,10 +31,10 @@ export class ProfileDataClient {
      * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
      */
     async getFromContract(contractId: string): Promise<Profile> {
-        const account = await this.ledger.contract.getContract(contractId);
-        const profile = ProfileData.parse(account.description).get();
+        const contract = await this.ledger.contract.getContract(contractId);
+        const profile = ProfileData.parse(contract.description).get();
         if (profile.alias) {
-            profile.resolvedAlias = await this.getFromAliasByName(profile.alias);
+            profile.resolvedAlias = await this.getFromAlias(profile.alias);
         }
         return profile;
     }
@@ -65,7 +65,7 @@ export class ProfileDataClient {
         const account = await this.ledger.account.getAccount({accountId, includeCommittedAmount: false, includeEstimatedCommitment: false});
         const profile = ProfileData.parse(account.description).get();
         if (profile.alias) {
-            profile.resolvedAlias = await this.getFromAliasByName(profile.alias);
+            profile.resolvedAlias = await this.getFromAlias(profile.alias);
         }
         return profile;
     }
@@ -93,7 +93,7 @@ export class ProfileDataClient {
      * @param aliasName The unique alias name
      * @throws If the alias does not have compatible profile data
      */
-    async getFromAliasByName(aliasName: string): Promise<Profile> {
+    async getFromAlias(aliasName: string): Promise<Profile> {
         const {aliasURI} = await this.ledger.alias.getAliasByName(aliasName);
         return ProfileData.parse(aliasURI).get();
     }
