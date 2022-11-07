@@ -3,6 +3,6 @@
  * @internal
  * @module core
  */
-interface Indexable {
-    nextIndex?: number
+export interface Indexable {
+    nextIndex?: number;
 }

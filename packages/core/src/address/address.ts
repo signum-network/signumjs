@@ -51,7 +51,8 @@ export class Address {
         try {
             tokenizeReedSolomonAddress(anyValidAddress);
             return Address.fromReedSolomonAddress(anyValidAddress);
-        } catch (e) {
+        // @ts-ignore
+        } catch (e:any) {
             try {
                 ensureValidPublicKey(anyValidAddress);
                 return Address.fromPublicKey(anyValidAddress, prefix);

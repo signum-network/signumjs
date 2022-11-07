@@ -1,0 +1,69 @@
+{
+  "name": "@signumjs/standards",
+  "description": "SignumJS Standards (SRC) tooling package",
+  "version": "1.0.0-rc.42",
+  "keywords": [
+    "signum",
+    "signum-network",
+    "blockchain",
+    "smartcontracts",
+    "http",
+    "signumjs"
+  ],
+  "contributors": [
+    "ohager"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/signum-network/signumjs"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "license": "Apache-2.0",
+  "main": "./out/index.js",
+  "typings": "./out/index.d.ts",
+  "private": false,
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "scripts": {
+    "test": "jest",
+    "tsc": "tsc",
+    "bundle": "bili"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "bili": "^4.10.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.24.2"
+  },
+  "dependencies": {
+    "@braintree/sanitize-url": "^6.0.1",
+    "@signumjs/core": "^1.0.0-rc.42",
+    "better-ajv-errors": "^1.2.0"
+  },
+  "peerDependencies": {
+    "@signumjs/core": "^1.0.0-rc.41"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
+  },
+  "gitHead": "0b88a2e0510f3f0d0a4f868e68129a42f9612ffa",
+  "publishConfig": {
+    "access": "public"
+  }
+}

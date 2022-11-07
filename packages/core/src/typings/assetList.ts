@@ -1,4 +1,5 @@
 import {Asset} from './asset';
+import {Indexable} from './indexable';
 
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
