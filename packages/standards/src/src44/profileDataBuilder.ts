@@ -40,7 +40,7 @@ export class ProfileDataBuilder {
     }
 
     setAlias(a: string) {
-        this.data.raw.al = a.startsWith('@') ? a : `@${a}`;
+        this.data.raw.al = a;
         return this;
     }
 

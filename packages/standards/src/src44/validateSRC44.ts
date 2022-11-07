@@ -42,8 +42,8 @@ export function validateSRC44(json: SRC44Profile) {
             throw new Error(`hp must be at maximum ${HpLength} bytes - Got ${json.hp.length}`);
         }
 
-        if (json.al && !/^@\w{1,100}$/.test(json.al)) {
-            throw new Error(`al must match /^@\\w{1,100}$/ - Got ${json.al}`);
+        if (json.al && !/^\w{1,100}$/.test(json.al)) {
+            throw new Error(`al must match /^\\w{1,100}$/ - Got ${json.al}`);
         }
 
         // xt is just a IPFS CID string

@@ -9,7 +9,7 @@ const TestObject1 = {
     'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
     'hp': 'https://bittrex.com',
     'sr': '^[0-9a-fA-F]{24}$',
-    'al': '@somealias',
+    'al': 'somealias',
     'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
     'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
 };

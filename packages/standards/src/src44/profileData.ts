@@ -2,7 +2,7 @@
  * Copyright (c) 2022 Signum Network
  */
 
-import {SRC44Profile, SRC44ProfileType} from './typings';
+import {Profile, SRC44Profile, SRC44ProfileType} from './typings';
 import {SRC44ParseException, SRC44ValidationException} from './exceptions';
 import {sanitizeUrl} from '@braintree/sanitize-url';
 import {validateSRC44} from './validateSRC44';
@@ -90,7 +90,7 @@ export class ProfileData {
         return this.data[fieldName];
     }
 
-    get() {
+    get(): Profile {
         const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, ...custom} = this.data;
         return {
             version: this.version,

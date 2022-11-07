@@ -8,57 +8,61 @@ interface MediaType {
 }
 
 /**
- * SRC44 Compliant profile structure
+ * Human friendly profile structure
  *
- * See [[ProfileData]] and [[ProfileDataBuilder]] to create, update this structure
+ * See [[SRC44Profile]], [[ProfileData]] and [[ProfileDataBuilder]] to create, update this structure
  *
  * @module standards.SRC44
  */
-export interface SRC44Profile {
+export interface Profile {
     /**
      * Version Number - Should be 1 for now
      */
-    vs: number;
+    version: number;
     /**
      * Name, maximal 24 characters
      */
-    nm: string;
+    name: string;
     /**
      * Description, maximal 384 characters
      */
-    ds?: string;
+    description?: string;
     /**
      * Profile type
      */
-    tp?: SRC44ProfileType;
+    type?: SRC44ProfileType;
     /**
      * IPFS Media Link for the Avatar
      */
-    av?: MediaType;
+    avatar?: MediaType;
     /**
      * IPFS Media Link for the background image
      */
-    bg?: MediaType;
+    background?: MediaType;
     /**
      * Hompage - maximal 128 characters
      */
-    hp?: string;
+    homePage?: string;
     /**
      * Send Rule - must be a valid regex expression (mind the correct escape sequences)
      */
-    sr?: string;
+    sendRule?: RegExp;
     /**
-     * A reference to a Signum Alias
+     * A reference to a Signum Signum Alias
      */
-    al?: string;
+    alias?: string;
+    /**
+     * The resolved Profile data from an referenced alias
+     */
+    resolvedAlias?: Profile;
     /**
      * An IPFS CID reference to more (off-chain) data
      */
-    xt?: string;
+    extension?: string;
     /**
      * A list of social media links, maximal 3 URLs, with at maximum 92 characters length
      */
-    sc?: string[];
+    socialMediaLinks?: string[];
 
     /**
      * Custom inline extensions...
