@@ -146,18 +146,34 @@ describe('profileDataClient', () => {
             const spy = spyOn(MockLedger.account, 'setAccountInfo' );
             await client.setAccountProfile({
                 profileData: ProfileDataBuilder.create('profile').build(),
-                feePlanck: '100',
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
                    description: '{"vs":1,"nm":"profile"}',
-                   feePlanck: '100',
+                   feePlanck: '1000000',
+                   name: 'profile',
+                   senderPublicKey: 'senderPublicKey',
+                 });
+        });
+
+        it('should resolve as expected - custom fee', async () => {
+            // @ts-ignore
+            const client = new ProfileDataClient(MockLedger);
+            const spy = spyOn(MockLedger.account, 'setAccountInfo' );
+            await client.setAccountProfile({
+                profileData: ProfileDataBuilder.create('profile').build(),
+                feePlanck: '200',
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                   description: '{"vs":1,"nm":"profile"}',
+                   feePlanck: '200',
                    name: 'profile',
                    senderPublicKey: 'senderPublicKey',
                  });
         });
     });
-    describe('setAccountProfile', () => {
+    describe('setAliasProfile', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
             const client = new ProfileDataClient(MockLedger);
@@ -165,16 +181,34 @@ describe('profileDataClient', () => {
             await client.setAliasProfile({
                 aliasName: 'aliasName',
                 profileData: ProfileDataBuilder.create('profile').build(),
-                feePlanck: '100',
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
                    aliasName: 'aliasName',
                    aliasURI: '{"vs":1,"nm":"profile"}',
-                   feePlanck: '100',
+                   feePlanck: '1000000',
                    senderPublicKey: 'senderPublicKey',
                  });
         });
+
+        it('should resolve as expected - custom fee', async () => {
+            // @ts-ignore
+            const client = new ProfileDataClient(MockLedger);
+            const spy = spyOn(MockLedger.alias, 'setAlias' );
+            await client.setAliasProfile({
+                aliasName: 'aliasName',
+                feePlanck: '200',
+                profileData: ProfileDataBuilder.create('profile').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                   aliasName: 'aliasName',
+                   aliasURI: '{"vs":1,"nm":"profile"}',
+                   feePlanck: '200',
+                   senderPublicKey: 'senderPublicKey',
+                 });
+        });
+
     });
     describe('getFromAlias', () => {
         it('should resolve as expected', async () => {
