@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/core",
-  "version": "1.0.0-rc.43",
+  "version": "1.0.0-rc.44",
   "description": "Principal package with functions and models for building Signum Network applications.",
   "keywords": [
     "signum",
@@ -56,10 +56,10 @@
     "readme": "jsdoc2md  --files ./src/**/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@signumjs/contracts": "^1.0.0-rc.43",
-    "@signumjs/crypto": "^1.0.0-rc.43",
-    "@signumjs/http": "^1.0.0-rc.43",
-    "@signumjs/util": "^1.0.0-rc.43"
+    "@signumjs/contracts": "^1.0.0-rc.44",
+    "@signumjs/crypto": "^1.0.0-rc.44",
+    "@signumjs/http": "^1.0.0-rc.44",
+    "@signumjs/util": "^1.0.0-rc.44"
   },
   "husky": {
     "hooks": {
