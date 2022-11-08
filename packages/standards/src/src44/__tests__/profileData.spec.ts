@@ -200,4 +200,47 @@ describe('profileData', () => {
             });
         });
     });
+    describe('estimateFeePlanck', () => {
+        it('should calculate correct fee', () => {
+            expect(ProfileData.create('Some name').estimateFeePlanck()).toEqual('1000000');
+            expect(ProfileData.parse(JSON.stringify(TestObject1)).estimateFeePlanck()).toEqual('3000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(50)
+            })).estimateFeePlanck()).toEqual('4000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(75)
+            })).estimateFeePlanck()).toEqual('5000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(90)
+            })).estimateFeePlanck()).toEqual('6000000');
+        });
+        it('should calculate correct fee - baseFee = 0.02', () => {
+            const BaseFee = 2000000;
+            expect(ProfileData.create('Some name').estimateFeePlanck(BaseFee)).toEqual('2000000');
+            expect(ProfileData.parse(JSON.stringify(TestObject1)).estimateFeePlanck(BaseFee)).toEqual('6000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(50)
+            })).estimateFeePlanck(BaseFee)).toEqual('8000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(75)
+            })).estimateFeePlanck(BaseFee)).toEqual('10000000');
+            expect(ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                'custom': 'custom'.repeat(90)
+            })).estimateFeePlanck(BaseFee)).toEqual('12000000');
+        });
+        it('should throw if 1000 bytes is exceeded', () => {
+            expect(() => {
+                ProfileData.parse(JSON.stringify({
+                ...TestObject1,
+                    'custom': 'some custom content'.repeat(100)
+                })).estimateFeePlanck();
+            }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed');
+        });
+    });
 });

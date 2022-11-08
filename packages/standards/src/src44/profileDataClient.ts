@@ -61,6 +61,7 @@ export class ProfileDataClient {
 
     /**
      * Sets an accounts profile data.
+     * If `feePlanck` is not given, the minimum costs will be calculated automatically
      * @param args The arguments
      */
     async setAccountProfile(args: SetAccountProfileArgs) {
@@ -68,7 +69,7 @@ export class ProfileDataClient {
         return this.ledger.account.setAccountInfo({
             name: name || profileData.name,
             description: profileData.stringify(),
-            feePlanck,
+            feePlanck: feePlanck || profileData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
@@ -93,6 +94,7 @@ export class ProfileDataClient {
 
     /**
      * Sets an alias profile data.
+     * If `feePlanck` is not given, the minimum costs will be calculated automatically
      * @param args The arguments
      */
     async setAliasProfile(args: SetAliasProfileArgs) {
@@ -100,7 +102,7 @@ export class ProfileDataClient {
         return this.ledger.alias.setAlias({
             aliasName,
             aliasURI: profileData.stringify(),
-            feePlanck,
+            feePlanck: feePlanck || profileData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
