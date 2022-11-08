@@ -150,10 +150,10 @@ export class ProfileData {
 
     /**
      * Estimates the minimum transaction fee for the given payload
-     * @param baseFee The baseFee for calculation in planck. It's set to minimum fee 0.01 SIGNA = 1000000 Planck
+     * @param baseFee The baseFee for calculation in planck. Default is 0.2 SIGNA = 20000000 Planck
      * @return fee in Planck
      */
-    public estimateFeePlanck(baseFee = 100_0000): string {
+    public estimateFeePlanck(baseFee = 2000_0000): string {
         return String(Math.ceil(this.stringify().length / 184) * baseFee);
     }
 }

@@ -29,12 +29,14 @@ export const MockLedger = {
     contract: {
         getContract: () => Promise.resolve({description: MockProfileStr})
     },
+    asset: {
+        getAsset: () => Promise.resolve({description: MockProfileStr})
+    },
     alias: {
         getAliasByName: () => Promise.resolve({aliasURI: MockProfileStr}),
         setAlias: (args: any) => Promise.resolve({transaction: 'id'})
     }
 };
-
 
 describe('profileDataClient', () => {
     describe('getFromContract', () => {
@@ -42,6 +44,57 @@ describe('profileDataClient', () => {
             // @ts-ignore
             const client = new ProfileDataClient(MockLedger);
             const profile = await client.getFromContract('1');
+            expect(profile).toEqual({
+                'alias': 'alias',
+                'avatar': {
+                    'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+                    'mimeType': 'image/gif'
+                },
+                'background': {
+                    'ipfsCid': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                    'mimeType': 'image/jpeg'
+                },
+                'description': 'description',
+                'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                'homePage': 'https://homepage.com',
+                'name': 'Some name',
+                'resolvedAlias': {
+                    'alias': 'alias',
+                    'avatar': {
+                        'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+                        'mimeType': 'image/gif'
+                    },
+                    'background': {
+                        'ipfsCid': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                        'mimeType': 'image/jpeg'
+                    },
+                    'description': 'description',
+                    'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                    'homePage': 'https://homepage.com',
+                    'name': 'Some name',
+                    'sendRule': /^[a-z]{3}$/,
+                    'socialMediaLinks': [
+                        'https://somelink.com'
+                    ],
+                    'type': 'oth',
+                    'version': 1,
+                    'xc': 'value'
+                },
+                'sendRule': /^[a-z]{3}$/,
+                'socialMediaLinks': [
+                    'https://somelink.com'
+                ],
+                'type': 'oth',
+                'version': 1,
+                'xc': 'value'
+            });
+        });
+    });
+    describe('getFromAsset', () => {
+        it('should resolve as expected', async () => {
+            // @ts-ignore
+            const client = new ProfileDataClient(MockLedger);
+            const profile = await client.getFromAsset('1');
             expect(profile).toEqual({
                 'alias': 'alias',
                 'avatar': {
@@ -150,7 +203,7 @@ describe('profileDataClient', () => {
             });
             expect(spy).toBeCalledWith({
                    description: '{"vs":1,"nm":"profile"}',
-                   feePlanck: '1000000',
+                   feePlanck: '20000000',
                    name: 'profile',
                    senderPublicKey: 'senderPublicKey',
                  });
@@ -186,7 +239,7 @@ describe('profileDataClient', () => {
             expect(spy).toBeCalledWith({
                    aliasName: 'aliasName',
                    aliasURI: '{"vs":1,"nm":"profile"}',
-                   feePlanck: '1000000',
+                   feePlanck: '20000000',
                    senderPublicKey: 'senderPublicKey',
                  });
         });

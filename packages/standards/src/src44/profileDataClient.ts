@@ -30,7 +30,8 @@ import {SetAliasProfileArgs} from './typings/args/setAliasProfileArgs';
  *                 });
  * ```
  *
- * A helper class to get Profile information from accounts, contracts, and/or aliases. It even resolves Profile data from referenced aliases.
+ * A helper class to get Profile information from accounts, contracts, assets, and/or aliases.
+ * It even resolves Profile data from referenced aliases.
  * Furthermore, it helps on updating profile data according to SRC44 specifications.
  * @module standards.SRC44
  */
@@ -46,12 +47,35 @@ export class ProfileDataClient {
 
     /**
      * Gets the profile data from a contract. It also resolved referenced alias profile
+     *
+     * Contract descriptions are immutable and can be set only on contract deployment.
+     * As this client does not deploy contracts, no setters/updaters for contracts are provided
+     *
      * @param contractId The contract id
      * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
      */
     async getFromContract(contractId: string): Promise<Profile> {
         const contract = await this.ledger.contract.getContract(contractId);
         const profile = ProfileData.parse(contract.description).get();
+        if (profile.alias) {
+            profile.resolvedAlias = await this.getFromAlias(profile.alias);
+        }
+        return profile;
+    }
+
+
+    /**
+     * Gets the profile data from an asset/token. It also resolved referenced alias profile
+     *
+     * Asset descriptions are immutable and can be set only on issuance.
+     * As this client does not issue assets, no setters/updaters are provided
+     *
+     * @param assetId The token/asset id
+     * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
+     */
+    async getFromAsset(assetId: string): Promise<Profile> {
+        const asset = await this.ledger.asset.getAsset({assetId});
+        const profile = ProfileData.parse(asset.description).get();
         if (profile.alias) {
             profile.resolvedAlias = await this.getFromAlias(profile.alias);
         }
@@ -89,7 +113,6 @@ export class ProfileDataClient {
         }
         return profile;
     }
-
 
     /**
      * Sets an alias profile data.

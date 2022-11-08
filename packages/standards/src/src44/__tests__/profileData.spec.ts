@@ -202,20 +202,20 @@ describe('profileData', () => {
     });
     describe('estimateFeePlanck', () => {
         it('should calculate correct fee', () => {
-            expect(ProfileData.create('Some name').estimateFeePlanck()).toEqual('1000000');
-            expect(ProfileData.parse(JSON.stringify(TestObject1)).estimateFeePlanck()).toEqual('3000000');
+            expect(ProfileData.create('Some name').estimateFeePlanck()).toEqual('20000000');
+            expect(ProfileData.parse(JSON.stringify(TestObject1)).estimateFeePlanck()).toEqual('60000000');
             expect(ProfileData.parse(JSON.stringify({
                 ...TestObject1,
                 'custom': 'custom'.repeat(50)
-            })).estimateFeePlanck()).toEqual('4000000');
+            })).estimateFeePlanck()).toEqual('80000000');
             expect(ProfileData.parse(JSON.stringify({
                 ...TestObject1,
                 'custom': 'custom'.repeat(75)
-            })).estimateFeePlanck()).toEqual('5000000');
+            })).estimateFeePlanck()).toEqual('100000000');
             expect(ProfileData.parse(JSON.stringify({
                 ...TestObject1,
                 'custom': 'custom'.repeat(90)
-            })).estimateFeePlanck()).toEqual('6000000');
+            })).estimateFeePlanck()).toEqual('120000000');
         });
         it('should calculate correct fee - baseFee = 0.02', () => {
             const BaseFee = 2000000;
