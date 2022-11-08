@@ -117,7 +117,7 @@
 					<li><a href="https://signum-network.github.io/signumjs/modules/monitor.html">@signumjs/monitor</a> A package providing a class to execute recurring async operations with
 					de/serialization feature, good for listening to blockchain transactions</li>
 					<li><a href="https://signum-network.github.io/signumjs/modules/wallets.html">@signumjs/wallets</a> This package provides the communication with SIP22 compatible deeplinkable </li>
-					<li>wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  </li>
+					<li><a href="https://signum-network.github.io/signumjs/modules/standards.html">@signumjs/standards</a> This package provides the communication with SIP22 compatible deeplinkable </li>
 				</ul>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
@@ -133,14 +133,16 @@
 <span class="hljs-built_in">npm</span> install @signumjs/util (optional)
 <span class="hljs-built_in">npm</span> install @signumjs/http (optional)
 <span class="hljs-built_in">npm</span> install @signumjs/monitor (optional)
-<span class="hljs-built_in">npm</span> install @signumjs/wallets (optional)</code></pre><p>or using <a href="https://yarnpkg.com/">yarn</a>:</p>
+<span class="hljs-built_in">npm</span> install @signumjs/wallets (optional)
+<span class="hljs-built_in">npm</span> install @signumjs/standards (optional)</code></pre><p>or using <a href="https://yarnpkg.com/">yarn</a>:</p>
 				<pre><code class="language-yarn">yarn add @signumjs/core
 yarn add @signumjs/contracts (optional)
 yarn add @signumjs/crypto (optional)
 yarn add @signumjs/util (optional)
 yarn add @signumjs/http (optional)
 yarn add @signumjs/monitor (optional)
-yarn add @signumjs/wallets (optional)</code></pre>
+yarn add @signumjs/wallets (optional)
+yarn add @signumjs/standards (optional)</code></pre>
 				<a href="#using-in-classic-ltscriptgt" id="using-in-classic-ltscriptgt" style="color: inherit; text-decoration: none;">
 					<h3>Using in classic <code>&lt;script&gt;</code></h3>
 				</a>
@@ -154,6 +156,7 @@ yarn add @signumjs/wallets (optional)</code></pre>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/monitor/dist/signumjs.monitor.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js&#39;&gt;&lt;/script&gt;</code></p>
+				<p><code>&lt;script src=&#39;https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js&#39;&gt;&lt;/script&gt;</code></p>
 				<p>Due to the way a package is imported following global variables are provided</p>
 				<table>
 					<thead>
@@ -190,6 +193,10 @@ yarn add @signumjs/wallets (optional)</code></pre>
 							<td>wallets</td>
 							<td><code>sig$wallets</code></td>
 						</tr>
+						<tr>
+							<td>wallets</td>
+							<td><code>sig$standards</code></td>
+						</tr>
 				</tbody></table>
 				<p>Examples:</p>
 				<pre><code class="language-js"><span class="hljs-comment">// using core</span>
@@ -216,6 +223,29 @@ client.get(<span class="hljs-string">'/todos/1'</span>).then(<span class="hljs-b
 })
 <span class="hljs-comment">// ...</span>
 subscription.unlisten()</code></pre>
+				<pre><code class="language-ts"><span class="hljs-comment">// using standards - depends on ledger </span>
+<span class="hljs-keyword">const</span> ledger = sig$.LedgerClientFactory.create({
+    nodeHost: <span class="hljs-string">"http://europe3.testnet.signum.network"</span>,
+});
+
+<span class="hljs-comment">// create Profile data object</span>
+<span class="hljs-keyword">const</span> profileData = sig$standards.ProfileDataBuilder
+    .create(<span class="hljs-string">'ohager'</span>)
+    .setType(<span class="hljs-string">'hum'</span>)
+    .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
+    .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
+    .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
+    .setDescription(<span class="hljs-string">'Just a humble dev...'</span>)
+    .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
+    .build();
+
+<span class="hljs-comment">// updates account profile</span>
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> sig$standards.ProfileDataClient(ledger)
+<span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
+    profileData,
+    senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
+    senderPrivateKey: <span class="hljs-string">'**********************************'</span>
+});</code></pre>
 				<pre><code class="language-ts"> <span class="hljs-comment">// using monitor</span>
 
 <span class="hljs-comment">// A method that checks if an account exists</span>
@@ -317,7 +347,7 @@ ledger.account.getAccountBalance(<span class="hljs-string">'13036514135565182944
 				<p>To publish all packages (using lerna and same version strategy) just run </p>
 				<pre><code class="language-bash">npm run publish</code></pre>
 				<blockquote>
-					<p>Note: Only with a valid npm token</p>
+					<p>Note: Only with a valid npm OTP token</p>
 				</blockquote>
 			</div>
 		</div>
