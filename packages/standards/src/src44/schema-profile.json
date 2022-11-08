@@ -49,6 +49,28 @@
         "MasterArtist"
       ]
     },
+    "ac": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "Account Id",
+      "description": "Account identifier to be used for account resolving",
+      "pattern": "^\\d{18,22}$",
+      "default": "",
+      "examples": [
+        "895212263565386113"
+      ]
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "An Identifier",
+      "description": "An arbitrary identifier as reference ",
+      "maxLength": 48,
+      "default": "",
+      "examples": [
+        "dfa51cee-7057-463c-90f3-031f416378c6", "Ref#102345", "1993993977435653"
+      ]
+    },
     "tp": {
       "$id": "#/properties/tp",
       "type": "string",

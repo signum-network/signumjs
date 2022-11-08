@@ -40,7 +40,7 @@ export interface Profile {
      */
     background?: MediaType;
     /**
-     * Hompage - maximal 128 characters
+     * Homepage - maximal 128 characters
      */
     homePage?: string;
     /**
@@ -48,9 +48,17 @@ export interface Profile {
      */
     sendRule?: RegExp;
     /**
-     * A reference to a Signum Signum Alias
+     * A reference to a Signum Alias
      */
     alias?: string;
+    /**
+     * A reference to a Signum Account
+     */
+    account?: string;
+    /**
+     * An arbitrary identifier, i.e. external reference - max 48 characters
+     */
+    id?: string;
     /**
      * The resolved Profile data from an referenced alias
      */

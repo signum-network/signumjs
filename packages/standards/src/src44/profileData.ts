@@ -22,7 +22,7 @@ export class ProfileData {
     }
 
     /**
-     * Leaky abstarction to get access to the pure raw SRC44 profile data
+     * Leaky abstraction to get access to the pure raw SRC44 profile data
      * @return the raw SRC44 object.
      */
     get raw() {
@@ -39,6 +39,14 @@ export class ProfileData {
 
     get alias() {
         return this.data.al;
+    }
+
+    get id() {
+        return this.data.id;
+    }
+
+    get account() {
+        return this.data.ac;
     }
 
     get description() {
@@ -110,7 +118,7 @@ export class ProfileData {
      * Gets a more human friendly version of the data
      */
     get(): Profile {
-        const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, ...custom} = this.data;
+        const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, id, ac, ...custom} = this.data;
         return {
             version: this.version,
             name: this.name,
@@ -123,6 +131,8 @@ export class ProfileData {
             sendRule: this.sendRule,
             extension: this.extension,
             alias: this.alias,
+            account: this.account,
+            id: this.id,
             ...custom
         };
     }

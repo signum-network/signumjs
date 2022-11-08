@@ -3,6 +3,8 @@ import {ProfileDataClient} from '../profileDataClient';
 
 const MockProfile = {
     'al': 'alias',
+    'ac': '895212263565386113',
+    'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
     'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
     'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
     'ds': 'description',
@@ -46,6 +48,8 @@ describe('profileDataClient', () => {
             const profile = await client.getFromContract('1');
             expect(profile).toEqual({
                 'alias': 'alias',
+                'account': '895212263565386113',
+                'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -60,6 +64,8 @@ describe('profileDataClient', () => {
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias',
+                    'account': '895212263565386113',
+                    'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif'
@@ -97,6 +103,8 @@ describe('profileDataClient', () => {
             const profile = await client.getFromAsset('1');
             expect(profile).toEqual({
                 'alias': 'alias',
+                'account': '895212263565386113',
+                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -111,6 +119,8 @@ describe('profileDataClient', () => {
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias',
+                    'account': '895212263565386113',
+                    "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif'
@@ -148,6 +158,9 @@ describe('profileDataClient', () => {
             const profile = await client.getFromAccount('1');
             expect(profile).toEqual({
                 'alias': 'alias',
+                'account': '895212263565386113',
+                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -162,6 +175,9 @@ describe('profileDataClient', () => {
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias',
+                    'account': '895212263565386113',
+                    "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif'
@@ -270,6 +286,8 @@ describe('profileDataClient', () => {
             const profile = await client.getFromAlias('alias');
             expect(profile).toEqual({
                 'alias': 'alias',
+                'account': '895212263565386113',
+                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'

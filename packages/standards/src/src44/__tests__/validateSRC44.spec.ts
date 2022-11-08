@@ -7,6 +7,8 @@ describe('validateSRC44', () => {
             validateSRC44({
                 'vs': 1,
                 'tp': 'cex',
+                'id': 'id',
+                'ac': '895212263565386113',
                 'nm': 'Bittrex',
                 'ds': 'World class exchange at your service',
                 'av': { 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif' },
@@ -122,6 +124,26 @@ describe('validateSRC44', () => {
         });
     });
 
+
+    describe('id', () => {
+        it('should be fine', () => {
+            validateSRC44({
+                vs: 1,
+                nm: 'name',
+                id: 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d'
+            });
+        });
+        it('throws error for being too large', () => {
+            expect(() => {
+                validateSRC44({
+                    vs: 1,
+                    nm: 'name',
+                    id: 'foo'.repeat(50)
+                });
+            }).toThrow('id must be at maximum 48 bytes - ');
+        });
+    });
+
     describe('tp', () => {
         it('should be fine', () => {
             validateSRC44({
@@ -167,6 +189,35 @@ describe('validateSRC44', () => {
                     al: 'alias'.repeat(30)
                 });
             }).toThrow('al must match /^\\w{1,100}$/');
+        });
+    });
+
+
+    describe('ac', () => {
+        it('should be fine', () => {
+            validateSRC44({
+                vs: 1,
+                nm: 'name',
+                ac: '895212263565386113'
+            });
+        });
+        it('throws error for wrong account Id', () => {
+            expect(() => {
+                validateSRC44({
+                    vs: 1,
+                    nm: 'name',
+                    ac: '12432452'
+                });
+            }).toThrow('ac must match /^\\d{18,22}$/ - Got 12432452');
+        });
+        it('throws error for beign too large', () => {
+            expect(() => {
+                validateSRC44({
+                    vs: 1,
+                    nm: 'name',
+                    ac: '74'.repeat(30)
+                });
+            }).toThrow('ac must match /^\\d{18,22}$/');
         });
     });
 

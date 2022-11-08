@@ -52,6 +52,14 @@ export interface SRC44Profile {
      */
     al?: string;
     /**
+     * A reference to a Signum Account Id
+     */
+    ac?: string;
+    /**
+     * A reference to an arbitrary identifer, i.e. external reference
+     */
+    id?: string;
+    /**
      * An IPFS CID reference to more (off-chain) data
      */
     xt?: string;
