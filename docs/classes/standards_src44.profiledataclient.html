@@ -106,7 +106,6 @@
                         .build();
  <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
                  profileData: ProfileDataBuilder.create(<span class="hljs-string">'profile'</span>).build(),
-                feePlanck: <span class="hljs-string">'100'</span>,
                 senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
                 senderPrivateKey: <span class="hljs-string">'**********************************'</span>
                 });</code></pre>
@@ -157,7 +156,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L38">packages/standards/src/src44/profileDataClient.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L37">packages/standards/src/src44/profileDataClient.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -193,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L84">packages/standards/src/src44/profileDataClient.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L84">packages/standards/src/src44/profileDataClient.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,7 +224,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L116">packages/standards/src/src44/profileDataClient.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L117">packages/standards/src/src44/profileDataClient.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L53">packages/standards/src/src44/profileDataClient.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L52">packages/standards/src/src44/profileDataClient.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,24 +286,25 @@
 					<a name="setaccountprofile" class="tsd-anchor"></a>
 					<h3>set<wbr>Account<wbr>Profile</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L66">packages/standards/src/src44/profileDataClient.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L66">packages/standards/src/src44/profileDataClient.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets an accounts profile data.</p>
+									<p>Sets an accounts profile data.
+									If <code>feePlanck</code> is not given, the minimum costs will be calculated automatically</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <a href="../interfaces/setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a></h5>
+									<h5>args: <a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments</p>
 									</div>
@@ -318,24 +318,25 @@
 					<a name="setaliasprofile" class="tsd-anchor"></a>
 					<h3>set<wbr>Alias<wbr>Profile</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/8ec05a5/packages/standards/src/src44/profileDataClient.ts#L98">packages/standards/src/src44/profileDataClient.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/60f9e9b/packages/standards/src/src44/profileDataClient.ts#L99">packages/standards/src/src44/profileDataClient.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets an alias profile data.</p>
+									<p>Sets an alias profile data.
+									If <code>feePlanck</code> is not given, the minimum costs will be calculated automatically</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <a href="../interfaces/setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a></h5>
+									<h5>args: <a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments</p>
 									</div>
@@ -425,6 +426,12 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Profile<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>

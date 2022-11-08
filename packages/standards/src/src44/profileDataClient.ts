@@ -25,7 +25,6 @@ import {SetAliasProfileArgs} from './typings/args/setAliasProfileArgs';
  *                         .build();
  *  const transaction = await client.setAccountProfile({
  *                  profileData: ProfileDataBuilder.create('profile').build(),
- *                 feePlanck: '100',
  *                 senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
  *                 senderPrivateKey: '**********************************'
  *                 });
