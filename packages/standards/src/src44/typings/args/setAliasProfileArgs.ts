@@ -10,7 +10,7 @@ export interface SetAliasProfileArgs {
     /**
      * If not given the minimum transaction fee is being calculated
      */
-    feePlanck: string;
+    feePlanck?: string;
     senderPublicKey: string;
     senderPrivateKey?: string;
     deadline?: number;
