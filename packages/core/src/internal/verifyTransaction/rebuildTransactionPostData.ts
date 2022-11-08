@@ -144,8 +144,15 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
     if (foundRequest.hasAttachment) {
         rebuiltData = parseAttachment(foundRequest.requestType, rebuiltData, trBytes);
         // Some exceptions
-        if (foundRequest.requestType === 'sendMoneyMultiSame') {
+        switch (foundRequest.requestType) {
+        case 'sendMoneyMultiSame':
             rebuiltData.amountNQT = (new BigNumber(rebuiltData.amountNQT)).dividedBy(rebuiltData.recipients.split(';').length).toFixed(0);
+            break;
+        case 'issueAsset':
+            if (rebuiltData.mintable === '1') {
+                rebuiltData.mintable = 'true';
+            }
+            break;
         }
     }
     // addAttachment()
@@ -180,6 +187,9 @@ function parseBaseTransaction(trByteBuffer: ByteBuffer): BaseTransaction {
         delete transactionJSON.recipient;
     }
     transactionJSON.amountNQT = trByteBuffer.readLong().toString();
+    if (transactionJSON.amountNQT === '0') {
+        delete transactionJSON.amountNQT;
+    }
     transactionJSON.feeNQT = trByteBuffer.readLong().toString();
     transactionJSON.referencedTransactionFullHash = trByteBuffer.readHexString(32);
     if (/^0+$/.test(transactionJSON.referencedTransactionFullHash)) {
@@ -267,7 +277,8 @@ function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
                 throw new Error('Internal error');
             }
         }
-        if (item.parameterName) {
+        if (item.parameterName && (currentValues.length !== 1 || currentValues[0] !== '0')) {
+            // Only add property if it is not zero!
             data[item.parameterName] = currentValues.join(';');
         }
         if (typeSpec === 'Delete') {
@@ -294,6 +305,9 @@ const decodeRequestType = [
     { type: 2, subtype: 3, requestType: 'placeBidOrder', hasAttachment: true },
     { type: 2, subtype: 4, requestType: 'cancelAskOrder', hasAttachment: true },
     { type: 2, subtype: 5, requestType: 'cancelBidOrder', hasAttachment: true },
+    { type: 2, subtype: 6, requestType: 'mintAsset', hasAttachment: true },
+    { type: 2, subtype: 7, requestType: 'addAssetTreasuryAccount', hasAttachment: false },
+    { type: 2, subtype: 8, requestType: 'distributeToAssetHolders', hasAttachment: true },
     { type: 2, subtype: 9, requestType: 'transferAssetMulti', hasAttachment: true },
     { type: 20, subtype: 0, requestType: 'setRewardRecipient', hasAttachment: false },
     { type: 20, subtype: 1, requestType: 'addCommitment', hasAttachment: true },
@@ -317,21 +331,58 @@ const attachmentSpecV1: AttachmentSpec[] = [
     { request: 'setAlias', fields: [
         { type: 'ByteString*1',  parameterName: 'aliasName' },
         { type: 'ShortString*1',  parameterName: 'aliasURI' },
-        { type: 'Delete*1',  parameterName: 'amountNQT' }
     ] },
     { request: 'setAccountInfo', fields: [
         { type: 'ByteString*1',  parameterName: 'name' },
         { type: 'ShortString*1',  parameterName: 'description' },
-        { type: 'Delete*1',  parameterName: 'amountNQT' }
     ] },
     { request: 'sellAlias', fields: [
         { type: 'ByteString*1',  parameterName: 'aliasName' },
         { type: 'Long*1',  parameterName: 'priceNQT' },
-        { type: 'Delete*1',  parameterName: 'amountNQT' }
     ] },
     { request: 'buyAlias', fields: [
         { type: 'ByteString*1',  parameterName: 'aliasName' },
         { type: 'Delete*1',  parameterName: 'recipient' }
+    ] },
+    { request:  'issueAsset', fields: [
+        { type: 'ByteString*1', parameterName: 'name' },
+        { type: 'ShortString*1', parameterName: 'description' },
+        { type: 'Long*1', parameterName: 'quantityQNT' },
+        { type: 'Byte*1', parameterName: 'decimals' },
+    ] },
+    { request:  'transferAsset', fields: [
+        { type: 'Long*1', parameterName: 'asset' },
+        { type: 'Long*1', parameterName: 'quantityQNT' }
+    ] },
+    { request:  'placeAskOrder', fields: [
+        { type: 'Long*1', parameterName: 'asset' },
+        { type: 'Long*1', parameterName: 'quantityQNT' },
+        { type: 'Long*1', parameterName: 'priceNQT' }
+    ] },
+    { request:  'placeBidOrder', fields: [
+        { type: 'Long*1', parameterName: 'asset' },
+        { type: 'Long*1', parameterName: 'quantityQNT' },
+        { type: 'Long*1', parameterName: 'priceNQT' }
+    ] },
+    { request:  'cancelAskOrder', fields: [
+        { type: 'Long*1', parameterName: 'order' }
+    ] },
+    { request:  'cancelBidOrder', fields: [
+        { type: 'Long*1', parameterName: 'order' }
+    ] },
+    { request:  'mintAsset', fields: [
+        { type: 'Long*1', parameterName: 'asset' },
+        { type: 'Long*1', parameterName: 'quantityQNT' },
+    ] },
+    { request:  'distributeToAssetHolders', fields: [
+        { type: 'Long*1', parameterName: 'asset' },
+        { type: 'Long*1', parameterName: 'quantityMinimumQNT' },
+        { type: 'Long*1', parameterName: 'assetToDistribute' },
+        { type: 'Long*1', parameterName: 'quantityQNT' }
+    ] },
+    { request:  'transferAssetMulti', fields: [
+        { type: 'Byte*1' },
+        { type: 'Long:Long*$0', parameterName: 'assetIdsAndQuantities' }
     ] }
 ];
 

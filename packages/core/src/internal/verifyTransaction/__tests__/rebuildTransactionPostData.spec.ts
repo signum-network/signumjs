@@ -160,4 +160,214 @@ describe('rebuildTransactionPostData', () => {
             expect(output.rebuiltData).toEqual(rebuiltData)
         })
     })
+    describe('issueAsset', () => {
+        const requestType = 'issueAsset'
+        it('should rebuild data correctly - Att. v1', () => {
+            const transactionBytes = '02205c64820f1700be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da8210000000000000000000000000000000000d6117e0300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c050070076f3e387bea91a6504cfe1531b543c7c010874323334353637380000a08601000000000002'
+            const rebuiltData = {
+                name: 't2345678',
+                description: '',
+                quantityQNT: '100000',
+                decimals: '2',
+                feeNQT: '15000000000',
+                publicKey: 'be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da821',
+                deadline: 23
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - Att. v2', () => {
+            const transactionBytes = '02200565820f1700be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da8210000000000000000000000000000000000d6117e0300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c150070007bec8ae677b275804cfe1531b543c7c020874323334353637380000a0860100000000000201'
+            const rebuiltData = {
+                name: 't2345678',
+                description: '',
+                quantityQNT: '100000',
+                decimals: '2',
+                mintable: 'true',
+                feeNQT: '15000000000',
+                publicKey: 'be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da821',
+                deadline: 23
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('transferAsset', () => {
+        const requestType = 'transferAsset'
+        it('should rebuild data correctly - Att. v1 (no amountNQT)', () => {
+            const transactionBytes = '0221fe6c820f080039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e7fd6799632e5828e000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000cb500700b6fa332af6e2cc4404cfe1531b543c7c01c72b7fc607c8f19c0100000000000000'
+            const rebuiltData = {
+                recipient: '10269022105793844863',
+                asset: '11309040075024575431',
+                quantityQNT: '1',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 8
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - Att. v1 (with amountNQT)', () => {
+            const transactionBytes = '0221b46d820f080039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e7fd6799632e5828e943f7e000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000cb500700b6fa332af6e2cc4404cfe1531b543c7c01c72b7fc607c8f19c0100000000000000'
+            const rebuiltData = {
+                recipient: '10269022105793844863',
+                asset: '11309040075024575431',
+                quantityQNT: '1',
+                amountNQT: '8273812',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 8
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('placeAskOrder', () => {
+        const requestType = 'placeAskOrder'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '02223c72820f170039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e0000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d0500700e79f2eda1d5e75da04cfe1531b543c7c01353218a0732b4bd40a000000000000001027000000000000'
+            const rebuiltData = {
+                asset: '15297368334901195317',
+                quantityQNT: '10',
+                priceNQT: '10000',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 23
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('placeBidOrder', () => {
+        const requestType = 'placeBidOrder'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '02230973820f180039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e0000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d150070022f25e4ec363e92304cfe1531b543c7c01353218a0732b4bd40a000000000000001027000000000000'
+            const rebuiltData = {
+                asset: '15297368334901195317',
+                quantityQNT: '10',
+                priceNQT: '10000',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('cancelAskOrder', () => {
+        const requestType = 'cancelAskOrder'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '02243279820fa005f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056620000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d850070094af54ecbe05fc9204cfe1531b543c7c012ee4682198295f6c'
+            const rebuiltData = {
+                order: '7809006012256019502',
+                feeNQT: '1000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 1440
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('cancelBidOrder', () => {
+        const requestType = 'cancelBidOrder'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '0225397a820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056620000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d95007006ecc1de4751d657f04cfe1531b543c7c01456c3755f57b575e'
+            const rebuiltData = {
+                order: '6798038456165952581',
+                feeNQT: '1000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('mintAsset', () => {
+        const requestType = 'mintAsset'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '02263c7c820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056620000000000000000000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000da5007006becfabbd469876204cfe1531b543c7c013f58ea3554c02d0f0100000000000000'
+            const rebuiltData = {
+                asset: '1093741752435234879',
+                quantityQNT: '1',
+                feeNQT: '1000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('addAssetTreasuryAccount', () => {
+        const requestType = 'addAssetTreasuryAccount'
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '0227457d820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662d7e7814f9268a5b9000000000000000040420f00000000003f58ea3554c02d0f45bd42f8cfb9e83986bec4ab61adace03e4bdb7cff2dc8500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000db5007007ea65d22d460df5504cfe1531b543c7c'
+            const rebuiltData = {
+                recipient: '13377213245782353879',
+                feeNQT: '1000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                referencedTransactionFullHash: '3f58ea3554c02d0f45bd42f8cfb9e83986bec4ab61adace03e4bdb7cff2dc850',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
+    describe('distributeToAssetHolders', () => {
+        const requestType = 'distributeToAssetHolders'
+        it('should rebuild data correctly: with amount and asset to distribute', () => {
+            const transactionBytes = '0228ed82820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662000000000000000000e40b540200000040771b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e15007008303ae26d5a1c99f04cfe1531b543c7c01353218a0732b4bd40a00000000000000cbfa7d7e71c42b486400000000000000'
+            const rebuiltData = {
+                asset: '15297368334901195317',
+                quantityMinimumQNT: '10',
+                amountNQT: '10000000000',
+                assetToDistribute: '5200466186461903563',
+                quantityQNT: '100',
+                feeNQT: '1800000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly: with amount and NO asset to distribute', () => {
+            const transactionBytes = '0228018d820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662000000000000000000e40b540200000040771b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ec5007009b9ac639082a225f04cfe1531b543c7c01353218a0732b4bd40a0000000000000000000000000000000000000000000000'
+            const rebuiltData = {
+                asset: '15297368334901195317',
+                quantityMinimumQNT: '10',
+                amountNQT: '10000000000',
+                feeNQT: '1800000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly: with asset to distribute and NO amount', () => {
+            const transactionBytes = '02282e8d820f1800f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056620000000000000000000000000000000040771b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ed5007004034ca0224e4cdbc04cfe1531b543c7c01353218a0732b4bd40a00000000000000cbfa7d7e71c42b486400000000000000'
+            const rebuiltData = {
+                asset: '15297368334901195317',
+                quantityMinimumQNT: '10',
+                assetToDistribute: '5200466186461903563',
+                quantityQNT: '100',
+                feeNQT: '1800000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 24
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+    })
 })

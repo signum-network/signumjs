@@ -5,9 +5,12 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 
 // Type 0 (payment): OK
 // Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
+// Type 2 (colored coins): Missing 'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders'
 const methodsToVerify = [
     'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
-    'setAlias', 'setAccountInfo'
+    'setAlias', 'setAccountInfo',
+    'issueAsset', 'transferAsset', 'placeAskOrder', 'placeBidOrder', 'cancelAskOrder',
+    'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti'
 ];
 
 /**

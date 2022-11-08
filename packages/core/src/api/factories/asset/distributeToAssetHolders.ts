@@ -27,7 +27,7 @@ export const distributeToAssetHolders = (service: ChainService) =>
             let parameters = {
                 asset: a.assetId,
                 quantityMinimumQNT: a.minimumHoldQuantity || '0',
-                amountNQT: a.totalAmountPlanck,
+                amountNQT: a.totalAmountPlanck || undefined,
                 assetToDistribute: a.additionalAssetId || undefined,
                 quantityQNT: a.additionalAssetQuantity || undefined,
                 feeNQT: a.feePlanck,
