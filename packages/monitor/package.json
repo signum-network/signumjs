@@ -1,7 +1,7 @@
 {
   "name": "@signumjs/monitor",
   "description": "Monitor transactions on Signum Network blockchain",
-  "version": "1.0.0-rc.45",
+  "version": "1.0.0-rc.44",
   "keywords": [
     "signum",
     "signum-network",
@@ -59,5 +59,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "0b88a2e0510f3f0d0a4f868e68129a42f9612ffa"
+  "gitHead": "1388156deae3a6d83b289377ad8e10f86e84dd3c"
 }
