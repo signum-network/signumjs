@@ -49,6 +49,16 @@ export class ProfileDataBuilder {
         return this;
     }
 
+    setAccount(accountId: string) {
+        this.data.raw.ac = accountId;
+        return this;
+    }
+
+    setId(id: string) {
+        this.data.raw.id = id;
+        return this;
+    }
+
     setHomePage(url: string) {
         this.data.raw.hp = sanitizeUrl(url);
         return this;

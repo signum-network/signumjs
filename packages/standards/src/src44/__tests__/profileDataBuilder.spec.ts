@@ -5,6 +5,8 @@ describe('profileDataBuilder', () => {
         it('should create/build as expected', () => {
             const profileData = ProfileDataBuilder
                 .create('Some name')
+                .setAccount('895212263565386113')
+                .setId('26f74a2e-91ce-47b7-83e2-16c2aed3ffc8')
                 .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
                 .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
                 .setSocialMediaLinks(['https://somelink.com'])
@@ -17,7 +19,28 @@ describe('profileDataBuilder', () => {
                 .setSendRule('^[a-Z]{3}$')
                 .build();
 
-            expect(profileData.raw).toEqual({'al': 'alias', 'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'}, 'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'}, 'ds': 'description', 'hp': 'https://homepage.com', 'nm': 'Some name', 'sc': ['https://somelink.com'], 'sr': '^[a-Z]{3}$', 'tp': 'oth', 'vs': 1, 'xc': 'value', 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'});
+            expect(profileData.raw).toEqual({
+                'ac': '895212263565386113',
+                'al': 'alias',
+                'av': {
+                    'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'
+                },
+                'bg': {
+                    'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'
+                },
+                'ds': 'description',
+                'hp': 'https://homepage.com',
+                'id': '26f74a2e-91ce-47b7-83e2-16c2aed3ffc8',
+                'nm': 'Some name',
+                'sc': [
+                    'https://somelink.com'
+                ],
+                'sr': '^[a-Z]{3}$',
+                'tp': 'oth',
+                'vs': 1,
+                'xc': 'value',
+                'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'
+            });
         });
 
         it('should throw exception on invalid data - wrong mime type', () => {
