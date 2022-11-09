@@ -37,6 +37,9 @@ export const MockLedger = {
     alias: {
         getAliasByName: () => Promise.resolve({aliasURI: MockProfileStr}),
         setAlias: (args: any) => Promise.resolve({transaction: 'id'})
+    },
+    service: {
+        query: () => Promise.resolve({account: 'accountId'})
     }
 };
 
@@ -104,7 +107,7 @@ describe('profileDataClient', () => {
             expect(profile).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
-                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+                'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -120,7 +123,7 @@ describe('profileDataClient', () => {
                 'resolvedAlias': {
                     'alias': 'alias',
                     'account': '895212263565386113',
-                    "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+                    'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif'
@@ -159,7 +162,7 @@ describe('profileDataClient', () => {
             expect(profile).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
-                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+                'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
 
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
@@ -176,7 +179,7 @@ describe('profileDataClient', () => {
                 'resolvedAlias': {
                     'alias': 'alias',
                     'account': '895212263565386113',
-                    "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+                    'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
 
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
@@ -287,7 +290,7 @@ describe('profileDataClient', () => {
             expect(profile).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
-                "id": "dc1de06b-a2a2-4a6e-b3e1-a5d97835667d",
+                'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -308,6 +311,30 @@ describe('profileDataClient', () => {
                 'version': 1,
                 'xc': 'value'
             });
+        });
+    });
+    describe('getAccountByAlias', () => {
+        it('should resolve as expected', async () => {
+            // @ts-ignore
+            const client = new ProfileDataClient(MockLedger);
+            const account = await client.getAccountByAlias('alias');
+            expect(account).toEqual({
+                   'description': '{"al":"alias","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
+                  'name': 'Account Name',
+            });
+        });
+        it('should return null, of not found', async () => {
+            const Ledger = {
+                ...MockLedger,
+                alias: {
+                    getAliasByName: () => Promise.reject('Not found'),
+                    setAlias: (args: any) => Promise.resolve({transaction: 'id'})
+                },
+            };
+            // @ts-ignore
+            const client = new ProfileDataClient(Ledger);
+            const account = await client.getAccountByAlias('alias');
+            expect(account).toBeNull();
         });
     });
 });
