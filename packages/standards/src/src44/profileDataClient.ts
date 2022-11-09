@@ -1,11 +1,13 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import {Ledger} from '@signumjs/core';
+import {Ledger, Account, Address} from '@signumjs/core';
 import {ProfileData} from './profileData';
 import {Profile} from './typings';
 import {SetAccountProfileArgs} from './typings/args/setAccountProfileArgs';
 import {SetAliasProfileArgs} from './typings/args/setAliasProfileArgs';
+import {SetAssetBrandingArgs} from './typings/args/setAssetBrandingArgs';
+import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
 
 
 /**
@@ -92,6 +94,185 @@ export class ProfileDataClient {
         return this.ledger.account.setAccountInfo({
             name: name || profileData.name,
             description: profileData.stringify(),
+            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            senderPublicKey,
+            senderPrivateKey,
+            deadline,
+            referencedTransactionFullHash
+        });
+    }
+
+    /**
+     * Tries to resolve an account by its alias Name
+     * @param aliasName
+     * @return The account, if resolvable (alias exists, and points to an account), or null
+     */
+    async getAccountByAlias(aliasName: string): Promise<Account | null> {
+        try {
+            const profile = await this.getFromAlias(aliasName);
+            if (profile.account) {
+                return this.ledger.account.getAccount({accountId: profile.account, includeCommittedAmount: true});
+            }
+            return null;
+            // @ts-ignore
+        } catch (e: any) {
+            return null;
+        }
+    }
+
+    /**
+     * Branded Assets are constructed indirectly to allow already existing Tokens/Assets to have additional
+     * (brand) data. Branded Assets link an alias with SRC44 compliant data checking for identity of issuer and alias owner.
+     * Only if those match, the profile data is being returned.
+     *
+     * If the token issuer is a contract, then the contracts creator is being used for identity matching
+     * Due to the indirection it's possible to have multiple brands.
+     *
+     * @param tokenId
+     * @returns An array of profiles/brands - can be empty
+     */
+    async getAssetBranding(tokenId: string): Promise<Profile[]> {
+        try {
+            let issuer = '';
+            const {account, publicKey} = await this.ledger.asset.getAsset({
+                assetId: tokenId
+            });
+            if (publicKey === '0000000000000000000000000000000000000000000000000000000000000000') {
+                const {creator} = await this.ledger.contract.getContract(account);
+                issuer = creator;
+            } else {
+                issuer = account;
+            }
+            const profiles: Profile[] = [];
+            const issuerAliases = await this.ledger.account.getAliases(issuer);
+            for (const alias of issuerAliases.aliases) {
+                try {
+                    const profileData = ProfileData.parse(alias.aliasURI);
+                    if (profileData.id === tokenId) {
+                        profiles.push(profileData.get());
+                    }
+                    // @ts-ignore
+                } catch (e: any) {
+                    // ignore non-SRC44 accounts
+                }
+            }
+            return profiles;
+            // @ts-ignore
+        } catch (e: any) {
+            return [] as Profile[];
+        }
+    }
+
+    /**
+     * Creates a brand for an asset.
+     * See also [[getAssetBranding]]
+     *
+     * If the asset is issued by a contract, the contracts creator is being checked for ownership.
+     *
+     * @param args The args
+     * @return Transaction Id if successful
+     * @throws Error on not found asset, or if sender is not owner of the asset
+     */
+    async setAssetBranding(args: SetAssetBrandingArgs) {
+        const {
+            aliasName,
+            assetId,
+            senderPublicKey,
+            senderPrivateKey,
+            feePlanck,
+            profileData,
+            deadline,
+            referencedTransactionFullHash
+        } = args;
+
+        const [asset, sender] = await Promise.all([
+            this.ledger.asset.getAsset({assetId}),
+            this.ledger.service.query<{ account: string }>('getAccountId', {publicKey: senderPublicKey})
+        ]);
+
+        // @ts-ignore
+        const {publicKey, account} = asset;
+        let assetOwner = '';
+        if (publicKey === '0000000000000000000000000000000000000000000000000000000000000000') {
+            const {creator} = await this.ledger.contract.getContract(account);
+            assetOwner = creator;
+        } else {
+            assetOwner = account;
+        }
+
+        if (sender.account !== assetOwner) {
+            throw new Error('Not your asset!');
+        }
+
+        profileData.raw.id = assetId;
+        return this.ledger.alias.setAlias({
+            aliasName: aliasName || `asset-brand-${assetId}`,
+            aliasURI: profileData.stringify(),
+            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            senderPublicKey,
+            senderPrivateKey,
+            deadline,
+            referencedTransactionFullHash
+        });
+    }
+
+    /**
+     * Branded Contracts are almost identical with Branded Assets. See [[getAssetBranding]]
+     * @param contractId The contract Id
+     * @returns An array of profiles/brands - can be empty
+     */
+    async getContractBranding(contractId: string): Promise<Profile[]> {
+        try {
+            const {creator} = await this.ledger.contract.getContract(contractId);
+            const profiles: Profile[] = [];
+            const issuerAliases = await this.ledger.account.getAliases(creator);
+            for (const alias of issuerAliases.aliases) {
+                try {
+                    const profileData = ProfileData.parse(alias.aliasURI);
+                    if (profileData.id === contractId) {
+                        profiles.push(profileData.get());
+                    }
+                    // @ts-ignore
+                } catch (e: any) {
+                    // ignore non-SRC44 accounts
+                }
+            }
+            return profiles;
+            // @ts-ignore
+        } catch (e: any) {
+            return [] as Profile[];
+        }
+    }
+
+    /**
+     * Set contract branding. See [[getContractBranding]]
+     * @param args The args
+     * @throws Error on not found contract, or if sender is not owner of the contract
+     * */
+    async setContractBranding(args: SetContractBrandingArgs) {
+        const {
+            aliasName,
+            contractId,
+            senderPublicKey,
+            senderPrivateKey,
+            feePlanck,
+            profileData,
+            deadline,
+            referencedTransactionFullHash
+        } = args;
+        const [contract, sender] = await Promise.all([
+            this.ledger.contract.getContract(contractId),
+            this.ledger.service.query<{ account: string }>('getAccountId', {publicKey: senderPublicKey})
+        ]);
+
+        if (sender.account !== contract.creator) {
+            throw new Error('Not your contract!');
+        }
+
+        profileData.raw.id = contractId;
+        return this.ledger.alias.setAlias({
+            aliasName: aliasName || `contract-brand-${contractId}`,
+            aliasURI: profileData.stringify(),
             feePlanck: feePlanck || profileData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
