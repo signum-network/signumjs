@@ -386,7 +386,7 @@ describe('profileDataClient', () => {
         });
         it('should get from contract', async () => {
 
-            const Ledger  = {
+            const Ledger = {
                 ...MockLedger,
                 asset: {
                     getAsset: () => Promise.resolve({
@@ -431,7 +431,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as no aliases are returned for that owner', async () => {
 
-            const Ledger  = {
+            const Ledger = {
                 ...MockLedger,
                 asset: {
                     getAsset: () => Promise.resolve({
@@ -462,7 +462,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as token does not exist', async () => {
 
-            const Ledger  = {
+            const Ledger = {
                 ...MockLedger,
                 asset: {
                     getAsset: () => Promise.reject('Not found')
@@ -514,7 +514,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as no aliases are returned for that owner', async () => {
 
-            const Ledger  = {
+            const Ledger = {
                 ...MockLedger,
                 asset: {
                     getAsset: () => Promise.resolve({
@@ -545,7 +545,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as token does not exist', async () => {
 
-            const Ledger  = {
+            const Ledger = {
                 ...MockLedger,
                 contract: {
                     getContract: () => Promise.reject('Not found')
@@ -558,4 +558,133 @@ describe('profileDataClient', () => {
             expect(brands).toHaveLength(0);
         });
     });
+    describe('setAssetBranding', () => {
+        it('should set as expected', async () => {
+            // @ts-ignore
+            const client = new ProfileDataClient(MockLedger);
+            const spy = spyOn(MockLedger.alias, 'setAlias');
+            await client.setAssetBranding({
+                assetId: 'assetId',
+                profileData: ProfileDataBuilder.create('asset').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'asset-brand-assetId',
+                aliasURI: '{"vs":1,"nm":"asset","id":"assetId"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
+        it('should set as expected for contract issued token', async () => {
+
+            const Ledger = {
+                ...MockLedger,
+                asset: {
+                    getAsset: () => Promise.resolve({
+                        account: '12243325345',
+                        publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
+                        description: MockProfileStr
+                    })
+                },
+                contract: {
+                    getContract: () => Promise.resolve({description: MockProfileStr, creator: '895212263565386113'})
+                },
+            };
+
+            // @ts-ignore
+            const client = new ProfileDataClient(Ledger);
+            const spy = spyOn(Ledger.alias, 'setAlias');
+            await client.setAssetBranding({
+                assetId: 'assetId',
+                profileData: ProfileDataBuilder.create('asset').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'asset-brand-assetId',
+                aliasURI: '{"vs":1,"nm":"asset","id":"assetId"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
+        it('should throw for not owning the asset', async () => {
+
+            const Ledger = {
+                ...MockLedger,
+                asset: {
+                    getAsset: () => Promise.resolve({
+                        account: '895212263565386113',
+                        publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
+                        description: MockProfileStr
+                    })
+                },
+            };
+
+            try {
+                // @ts-ignore
+                const client = new ProfileDataClient(Ledger);
+                await client.setAssetBranding({
+                    assetId: 'assetId',
+                    profileData: ProfileDataBuilder.create('asset').build(),
+                    senderPublicKey: 'senderPublicKey'
+                });
+                throw new Error('Should throw error');
+                // @ts-ignore
+            } catch (e: any) {
+                expect(e.message).toBe('Not your asset!');
+            }
+        });
+    });
+    describe('setContractBranding', () => {
+        it('should set as expected', async () => {
+            const Ledger = {
+                ...MockLedger,
+                contract: {
+                    getContract: () => Promise.resolve({description: MockProfileStr, creator: '895212263565386113'})
+                },
+            };
+            // @ts-ignore
+            const client = new ProfileDataClient(Ledger);
+            const spy = spyOn(Ledger.alias, 'setAlias');
+            await client.setContractBranding({
+                contractId: 'contractId',
+                profileData: ProfileDataBuilder.create('contract').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'contract-brand-contractId',
+                aliasURI: '{"vs":1,"nm":"contract","id":"contractId"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
+        it('should throw for not owning the contract', async () => {
+
+            const Ledger = {
+                ...MockLedger,
+                asset: {
+                    getAsset: () => Promise.resolve({
+                        account: '895212263565386113',
+                        publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
+                        description: MockProfileStr
+                    })
+                },
+            };
+
+            try {
+                // @ts-ignore
+                const client = new ProfileDataClient(MockLedger);
+
+                await client.setContractBranding({
+                    contractId: 'contractId',
+                    profileData: ProfileDataBuilder.create('contract').build(),
+                    senderPublicKey: 'senderPublicKey'
+                });
+                throw new Error('Should throw error');
+                // @ts-ignore
+            } catch (e: any) {
+                expect(e.message).toBe('Not your contract!');
+            }
+        });
+    });
+
 });

@@ -38,7 +38,7 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  * @module standards.SRC44
  */
 export class ProfileDataClient {
-
+    private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
     /**
      * Instantiates the client.
      * Mind the dependency of the ledger client.
@@ -137,7 +137,7 @@ export class ProfileDataClient {
             const {account, publicKey} = await this.ledger.asset.getAsset({
                 assetId: tokenId
             });
-            if (publicKey === '0000000000000000000000000000000000000000000000000000000000000000') {
+            if (publicKey === ProfileDataClient.SmartContractPublicKey) {
                 const {creator} = await this.ledger.contract.getContract(account);
                 issuer = creator;
             } else {
@@ -193,7 +193,7 @@ export class ProfileDataClient {
         // @ts-ignore
         const {publicKey, account} = asset;
         let assetOwner = '';
-        if (publicKey === '0000000000000000000000000000000000000000000000000000000000000000') {
+        if (publicKey === ProfileDataClient.SmartContractPublicKey) {
             const {creator} = await this.ledger.contract.getContract(account);
             assetOwner = creator;
         } else {
