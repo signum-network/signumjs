@@ -128,6 +128,7 @@ export class ProfileDataClient {
      * If the token issuer is a contract, then the contracts creator is being used for identity matching
      * Due to the indirection it's possible to have multiple brands.
      *
+     * See also [[setAssetBranding]]
      * @param tokenId
      * @returns An array of profiles/brands - can be empty
      */
@@ -217,7 +218,7 @@ export class ProfileDataClient {
     }
 
     /**
-     * Branded Contracts are almost identical with Branded Assets. See [[getAssetBranding]]
+     * Branded Contracts are almost identical with Branded Assets. See [[getAssetBranding]] and [[setContractBranding]]
      * @param contractId The contract Id
      * @returns An array of profiles/brands - can be empty
      */

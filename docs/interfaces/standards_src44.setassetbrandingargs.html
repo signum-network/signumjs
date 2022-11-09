@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CreateSubscriptionArgs
+	<title>SetAssetBrandingArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/core.html">core</a>
+					<a href="../modules/standards_src44.html">standards.SRC44</a>
 				</li>
 				<li>
-					<a href="core.createsubscriptionargs.html">CreateSubscriptionArgs</a>
+					<a href="standards_src44.setassetbrandingargs.html">SetAssetBrandingArgs</a>
 				</li>
 			</ul>
-			<h1>Interface CreateSubscriptionArgs</h1>
+			<h1>Interface SetAssetBrandingArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,46 +91,15 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The argument object for <a href="core_api.transactionapi.html#createsubscription">TransactionApi.createSubscription</a></p>
+						<p>Arguments for <a href="../classes/standards_src44.profiledataclient.html#setassetbranding">ProfileDataClient.setAssetBranding</a></p>
 					</div>
-					<dl class="tsd-comment-tags">
-						<dt>param</dt>
-						<dd><p>The amount to be sent as Planck value</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The fee as Planck value</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The frequency of the recurring payments in seconds. Minimum is 3600 seconds</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The id of the recipient</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The <em>optional</em> recipients public key in hex format.
-							Using this arg allows to activate a recipients account, if not activated yet</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The senders public key for sending an <em>unsigned</em> message</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The senders private key to <em>sign</em> the message</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>An <em>optional</em> attachment</p>
-						</dd>
-						<dt>param</dt>
-						<dd><p>The <em>optional</em> transactions deadline in minutes until it&#39;s being removed from mempool.
-							This may happen on low fees. Defaults to 1440 (maximum)</p>
-						</dd>
-					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CreateSubscriptionArgs</span>
+						<span class="target">SetAssetBrandingArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -141,15 +110,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#amountplanck" class="tsd-kind-icon">amount<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#attachment" class="tsd-kind-icon">attachment</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#frequency" class="tsd-kind-icon">frequency</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#recipientid" class="tsd-kind-icon">recipient<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#recipientpublickey" class="tsd-kind-icon">recipient<wbr>Public<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.createsubscriptionargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#aliasname" class="tsd-kind-icon">alias<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#deadline" class="tsd-kind-icon">deadline</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#profiledata" class="tsd-kind-icon">profile<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#referencedtransactionfullhash" class="tsd-kind-icon">referenced<wbr>Transaction<wbr>Full<wbr>Hash</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="standards_src44.setassetbrandingargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -158,24 +126,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="amountplanck" class="tsd-anchor"></a>
-					<h3>amount<wbr>Planck</h3>
-					<div class="tsd-signature tsd-kind-icon">amount<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="aliasname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> alias<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">alias<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L21">packages/core/src/typings/args/createSubscriptionArgs.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L11">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:11</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optional name for the used brand alias. If not given an auto-generated name will be used.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="attachment" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attachment</h3>
-					<div class="tsd-signature tsd-kind-icon">attachment<span class="tsd-signature-symbol">:</span> <a href="../classes/core.attachment.html" class="tsd-signature-type">Attachment</a></div>
+					<a name="assetid" class="tsd-anchor"></a>
+					<h3>asset<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L28">packages/core/src/typings/args/createSubscriptionArgs.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L15">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:15</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The related assetId</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="deadline" class="tsd-anchor"></a>
@@ -183,57 +161,57 @@
 					<div class="tsd-signature tsd-kind-icon">deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L29">packages/core/src/typings/args/createSubscriptionArgs.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L26">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="feeplanck" class="tsd-anchor"></a>
-					<h3>fee<wbr>Planck</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fee<wbr>Planck</h3>
 					<div class="tsd-signature tsd-kind-icon">fee<wbr>Planck<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L22">packages/core/src/typings/args/createSubscriptionArgs.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L23">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:23</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If not given the minimum transaction fee is being calculated</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="frequency" class="tsd-anchor"></a>
-					<h3>frequency</h3>
-					<div class="tsd-signature tsd-kind-icon">frequency<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="profiledata" class="tsd-anchor"></a>
+					<h3>profile<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">profile<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="../classes/standards_src44.profiledata.html" class="tsd-signature-type">ProfileData</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L23">packages/core/src/typings/args/createSubscriptionArgs.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L19">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:19</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Additional Profile Data. Mind, that id will be set to assetId.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="recipientid" class="tsd-anchor"></a>
-					<h3>recipient<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">recipient<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="referencedtransactionfullhash" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> referenced<wbr>Transaction<wbr>Full<wbr>Hash</h3>
+					<div class="tsd-signature tsd-kind-icon">referenced<wbr>Transaction<wbr>Full<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L24">packages/core/src/typings/args/createSubscriptionArgs.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="recipientpublickey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> recipient<wbr>Public<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">recipient<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L25">packages/core/src/typings/args/createSubscriptionArgs.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L27">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="senderprivatekey" class="tsd-anchor"></a>
-					<h3>sender<wbr>Private<wbr>Key</h3>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sender<wbr>Private<wbr>Key</h3>
 					<div class="tsd-signature tsd-kind-icon">sender<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L27">packages/core/src/typings/args/createSubscriptionArgs.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L25">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -243,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">sender<wbr>Public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/core/src/typings/args/createSubscriptionArgs.ts#L26">packages/core/src/typings/args/createSubscriptionArgs.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts#L24">packages/standards/src/src44/typings/args/setAssetBrandingArgs.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -258,7 +236,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/contracts.html">contracts</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -276,7 +254,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/monitor.html">monitor</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/standards_src44.html">standards.SRC44</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -289,42 +267,66 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="standards_src44.setaccountprofileargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Profile<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.createsubscriptionargs.html" class="tsd-kind-icon">Create<wbr>Subscription<wbr>Args</a>
+						<a href="standards_src44.setassetbrandingargs.html" class="tsd-kind-icon">Set<wbr>Asset<wbr>Branding<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#amountplanck" class="tsd-kind-icon">amount<wbr>Planck</a>
+								<a href="standards_src44.setassetbrandingargs.html#aliasname" class="tsd-kind-icon">alias<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#attachment" class="tsd-kind-icon">attachment</a>
+								<a href="standards_src44.setassetbrandingargs.html#assetid" class="tsd-kind-icon">asset<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#deadline" class="tsd-kind-icon">deadline</a>
+								<a href="standards_src44.setassetbrandingargs.html#deadline" class="tsd-kind-icon">deadline</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
+								<a href="standards_src44.setassetbrandingargs.html#feeplanck" class="tsd-kind-icon">fee<wbr>Planck</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#frequency" class="tsd-kind-icon">frequency</a>
+								<a href="standards_src44.setassetbrandingargs.html#profiledata" class="tsd-kind-icon">profile<wbr>Data</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#recipientid" class="tsd-kind-icon">recipient<wbr>Id</a>
+								<a href="standards_src44.setassetbrandingargs.html#referencedtransactionfullhash" class="tsd-kind-icon">referenced<wbr>Transaction<wbr>Full<wbr>Hash</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#recipientpublickey" class="tsd-kind-icon">recipient<wbr>Public<wbr>Key</a>
+								<a href="standards_src44.setassetbrandingargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#senderprivatekey" class="tsd-kind-icon">sender<wbr>Private<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.createsubscriptionargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
+								<a href="standards_src44.setassetbrandingargs.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="standards_src44.setcontractbrandingargs.html" class="tsd-kind-icon">Set<wbr>Contract<wbr>Branding<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

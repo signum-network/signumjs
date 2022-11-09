@@ -135,12 +135,17 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromasset" class="tsd-kind-icon">get<wbr>From<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaccountprofile" class="tsd-kind-icon">set<wbr>Account<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a></li>
 							</ul>
 						</section>
 					</div>
@@ -158,7 +163,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L38">packages/standards/src/src44/profileDataClient.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L41">packages/standards/src/src44/profileDataClient.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -185,6 +190,101 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getaccountbyalias" class="tsd-anchor"></a>
+					<h3>get<wbr>Account<wbr>ByAlias</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>ByAlias<span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Account</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L110">packages/standards/src/src44/profileDataClient.ts:110</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Tries to resolve an account by its alias Name</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Account</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The account, if resolvable (alias exists, and points to an account), or null</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getassetbranding" class="tsd-anchor"></a>
+					<h3>get<wbr>Asset<wbr>Branding</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Branding<span class="tsd-signature-symbol">(</span>tokenId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L135">packages/standards/src/src44/profileDataClient.ts:135</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Branded Assets are constructed indirectly to allow already existing Tokens/Assets to have additional
+										(brand) data. Branded Assets link an alias with SRC44 compliant data checking for identity of issuer and alias owner.
+									Only if those match, the profile data is being returned.</p>
+								</div>
+								<p>If the token issuer is a contract, then the contracts creator is being used for identity matching
+								Due to the indirection it&#39;s possible to have multiple brands.</p>
+								<p>See also <a href="standards_src44.profiledataclient.html#setassetbranding">setAssetBranding</a></p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tokenId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of profiles/brands - can be empty</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getcontractbranding" class="tsd-anchor"></a>
+					<h3>get<wbr>Contract<wbr>Branding</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Branding<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L225">packages/standards/src/src44/profileDataClient.ts:225</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Branded Contracts are almost identical with Branded Assets. See <a href="standards_src44.profiledataclient.html#getassetbranding">getAssetBranding</a> and <a href="standards_src44.profiledataclient.html#setcontractbranding">setContractBranding</a></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>contractId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The contract Id</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of profiles/brands - can be empty</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getfromaccount" class="tsd-anchor"></a>
 					<h3>get<wbr>From<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -194,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L108">packages/standards/src/src44/profileDataClient.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L290">packages/standards/src/src44/profileDataClient.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -226,7 +326,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L140">packages/standards/src/src44/profileDataClient.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L322">packages/standards/src/src44/profileDataClient.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,7 +362,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L76">packages/standards/src/src44/profileDataClient.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L78">packages/standards/src/src44/profileDataClient.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,7 +396,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L57">packages/standards/src/src44/profileDataClient.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L59">packages/standards/src/src44/profileDataClient.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,7 +430,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L90">packages/standards/src/src44/profileDataClient.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L92">packages/standards/src/src44/profileDataClient.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -362,7 +462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/eb21fca/packages/standards/src/src44/profileDataClient.ts#L122">packages/standards/src/src44/profileDataClient.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L304">packages/standards/src/src44/profileDataClient.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -377,6 +477,81 @@
 									<h5>args: <a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setassetbranding" class="tsd-anchor"></a>
+					<h3>set<wbr>Asset<wbr>Branding</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Asset<wbr>Branding<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-signature-type">SetAssetBrandingArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L177">packages/standards/src/src44/profileDataClient.ts:177</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a brand for an asset.
+									See also <a href="standards_src44.profiledataclient.html#getassetbranding">getAssetBranding</a></p>
+								</div>
+								<p>If the asset is issued by a contract, the contracts creator is being checked for ownership.</p>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>Error on not found asset, or if sender is not owner of the asset</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-signature-type">SetAssetBrandingArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The args</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Transaction Id if successful</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setcontractbranding" class="tsd-anchor"></a>
+					<h3>set<wbr>Contract<wbr>Branding</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Contract<wbr>Branding<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-signature-type">SetContractBrandingArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L253">packages/standards/src/src44/profileDataClient.ts:253</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set contract branding. See <a href="standards_src44.profiledataclient.html#getcontractbranding">getContractBranding</a></p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>Error on not found contract, or if sender is not owner of the contract</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-signature-type">SetContractBrandingArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The args</p>
 									</div>
 								</li>
 							</ul>
@@ -441,6 +616,15 @@
 								<a href="standards_src44.profiledataclient.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -458,6 +642,12 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="standards_src44.profiledataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -473,6 +663,12 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-kind-icon">Set<wbr>Asset<wbr>Branding<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-kind-icon">Set<wbr>Contract<wbr>Branding<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>
