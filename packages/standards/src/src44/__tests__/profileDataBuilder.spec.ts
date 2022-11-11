@@ -4,7 +4,8 @@ describe('profileDataBuilder', () => {
     describe('create/build', () => {
         it('should create/build as expected', () => {
             const profileData = ProfileDataBuilder
-                .create('Some name')
+                .create()
+                .setName('Some name')
                 .setAccount('895212263565386113')
                 .setId('26f74a2e-91ce-47b7-83e2-16c2aed3ffc8')
                 .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')

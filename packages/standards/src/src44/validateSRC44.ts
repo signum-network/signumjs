@@ -31,8 +31,8 @@ export function validateSRC44(json: SRC44Profile) {
             throw new Error(`vs is required and must be 1 - Got ${json.vs}`);
         }
 
-        if (!json.nm || json.nm.length > NmLength) {
-            throw new Error(`nm is required and must be at maximum ${NmLength} bytes - Got ${json.nm}`);
+        if (json.nm && json.nm.length > NmLength) {
+            throw new Error(`nm must be at maximum ${NmLength} bytes - Got ${json.nm}`);
         }
 
         if (json.ds && json.ds.length > DsLength) {

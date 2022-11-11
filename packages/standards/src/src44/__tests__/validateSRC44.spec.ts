@@ -76,13 +76,7 @@ describe('validateSRC44', () => {
                     vs: 1,
                     nm: 'name -akfjbsdgbksd gjbsdbwoebguowebguobwegowebgobweogbweog'
                 });
-            }).toThrow('nm is required and must be at maximum 24 bytes - Got name -akfjbsdgbksd gjbsdbwoebguowebguobwegowebgobweogbweog');
-        });
-        it('throws error for not being required', () => {
-            expect(() => {
-                // @ts-ignore
-                validateSRC44({vs: 1});
-            }).toThrow('nm is required and must be at maximum 24 bytes - Got undefined');
+            }).toThrow('nm must be at maximum 24 bytes - Got name -akfjbsdgbksd gjbsdbwoebguowebguobwegowebgobweogbweog');
         });
     });
 

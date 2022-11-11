@@ -36,12 +36,17 @@ export class ProfileDataBuilder {
 
     /**
      * Creates the builder instance. See also [[ProfileDataBuilder.build]]
-     * @param name
+     * @param name The name for the profile
      */
-    public static create(name: string) {
+    public static create(name?: string) {
         const builder = new ProfileDataBuilder();
         builder.data = ProfileData.create(name);
         return builder;
+    }
+
+    setName(name: string) {
+        this.data.raw.nm = name;
+        return this;
     }
 
     setSendRule(regex: string) {
@@ -99,14 +104,6 @@ export class ProfileDataBuilder {
         return this;
     }
 
-    /**
-     * Builds the final [[ProfileData]] instance. See also [[ProfileDataBuilder.create]]
-     */
-    build() {
-        this.data.validate();
-        return this.data;
-    }
-
     setDescription(d: string) {
         this.data.raw.ds = d;
         return this;
@@ -115,5 +112,13 @@ export class ProfileDataBuilder {
     setCustomField(fieldName: string, value: string) {
         this.data.raw[fieldName] = value;
         return this;
+    }
+
+    /**
+     * Builds the final [[ProfileData]] instance. See also [[ProfileDataBuilder.create]]
+     */
+    build() {
+        this.data.validate();
+        return this.data;
     }
 }

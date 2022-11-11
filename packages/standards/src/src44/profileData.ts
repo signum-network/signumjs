@@ -85,10 +85,10 @@ export class ProfileData {
      * Creates a bare minimum SRC44 profile instance.
      * @param name The name
      */
-    public static create(name: string) {
+    public static create(name?: string) {
         return new ProfileData({
             vs: 1,
-            nm: name,
+            nm: name
         });
     }
 

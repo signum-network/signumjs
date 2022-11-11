@@ -22,7 +22,7 @@ export interface SRC44Profile {
     /**
      * Name, maximal 24 characters
      */
-    nm: string;
+    nm?: string;
     /**
      * Description, maximal 384 characters
      */

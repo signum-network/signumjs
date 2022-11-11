@@ -101,7 +101,7 @@ describe('profileData', () => {
                     'vs': 1,
                     'al': '@somealias',
                 }));
-            }).toThrow('nm is required and must be at maximum 24 bytes - Got undefined');
+            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}$/ - Got @somealias');
         });
 
         it('should throw exception if object is not valid - 2', () => {
@@ -180,9 +180,9 @@ describe('profileData', () => {
             expect(() => {
                 ProfileData.parse(JSON.stringify({
                     'vs': 1,
-                    'al': 'somealias',
+                    'nm': 'foo'.repeat(20),
                 }));
-            }).toThrow('nm is required and must be at maximum 24 bytes - Got undefined');
+            }).toThrow('nm must be at maximum 24 bytes');
         });
 
         it('should throw exception if object is not valid - 2', () => {
@@ -193,10 +193,10 @@ describe('profileData', () => {
     });
     describe('create', () => {
         it('should create the minimum necessary profile data object', () => {
-            const profileData = ProfileData.create('Some name');
+            const profileData = ProfileData.create('Some Name');
             expect(profileData.raw).toEqual({
                 vs: 1,
-                nm: 'Some name'
+                nm: 'Some Name'
             });
         });
     });

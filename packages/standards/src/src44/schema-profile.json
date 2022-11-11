@@ -27,8 +27,7 @@
     }
   ],
   "required": [
-    "vs",
-    "nm"
+    "vs"
   ],
   "properties": {
     "vs": {

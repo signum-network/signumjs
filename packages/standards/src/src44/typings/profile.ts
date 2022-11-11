@@ -22,7 +22,7 @@ export interface Profile {
     /**
      * Name, maximal 24 characters
      */
-    name: string;
+    name?: string;
     /**
      * Description, maximal 384 characters
      */
