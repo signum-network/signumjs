@@ -228,8 +228,8 @@ subscription.unlisten()</code></pre>
     nodeHost: <span class="hljs-string">"http://europe3.testnet.signum.network"</span>,
 });
 
-<span class="hljs-comment">// create Profile data object</span>
-<span class="hljs-keyword">const</span> profileData = sig$standards.ProfileDataBuilder
+<span class="hljs-comment">// create Descriptor data object</span>
+<span class="hljs-keyword">const</span> descriptorData = sig$standards.DescriptorDataBuilder
     .create(<span class="hljs-string">'ohager'</span>)
     .setType(<span class="hljs-string">'hum'</span>)
     .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
@@ -239,10 +239,10 @@ subscription.unlisten()</code></pre>
     .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
     .build();
 
-<span class="hljs-comment">// updates account profile</span>
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> sig$standards.ProfileDataClient(ledger)
-<span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
-    profileData,
+<span class="hljs-comment">// updates account descriptor</span>
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> sig$standards.DescriptorDataClient(ledger)
+<span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountDescriptor({
+    descriptorData,
     senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
     senderPrivateKey: <span class="hljs-string">'**********************************'</span>
 });</code></pre>

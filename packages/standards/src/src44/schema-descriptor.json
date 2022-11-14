@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "src44",
   "type": "object",
-  "title": "Profile Descriptor (SRC44)",
-  "description": "This is the schema of the structure profile description of Signum Blockchain Network",
+  "title": "Signum Descriptor (SRC44)",
+  "description": "This is the schema of the structured description of Signum Blockchain Network",
   "default": {},
   "examples": [
     {
@@ -79,10 +79,11 @@
         "biz",
         "cex",
         "dex",
+        "tok",
         "oth"
       ],
       "title": "The type",
-      "description": "Defines a type of the profile"
+      "description": "Defines a type of the profile/descriptor"
     },
     "av": {
       "$id": "#/properties/av",

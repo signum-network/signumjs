@@ -1,20 +1,20 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import { SRC44ProfileType } from './src44ProfileType';
+import { SRC44DescriptorType } from './SRC44DescriptorType';
 
 interface MediaType {
     [key: string]: string;
 }
 
 /**
- * SRC44 Compliant profile structure
+ * SRC44 Compliant descriptor structure
  *
- * See [[ProfileData]] and [[ProfileDataBuilder]] to create, update this structure
+ * See [[DescriptorData]] and [[DescriptorDataBuilder]] to create, update this structure
  *
  * @module standards.SRC44
  */
-export interface SRC44Profile {
+export interface SRC44Descriptor {
     /**
      * Version Number - Should be 1 for now
      */
@@ -28,9 +28,9 @@ export interface SRC44Profile {
      */
     ds?: string;
     /**
-     * Profile type
+     * Descriptor type
      */
-    tp?: SRC44ProfileType;
+    tp?: SRC44DescriptorType;
     /**
      * IPFS Media Link for the Avatar
      */
@@ -40,7 +40,7 @@ export interface SRC44Profile {
      */
     bg?: MediaType;
     /**
-     * Hompage - maximal 128 characters
+     * Homepage - maximal 128 characters
      */
     hp?: string;
     /**

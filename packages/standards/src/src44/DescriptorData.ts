@@ -2,27 +2,27 @@
  * Copyright (c) 2022 Signum Network
  */
 
-import {Profile, SRC44Profile, SRC44ProfileType} from './typings';
+import {Descriptor, SRC44Descriptor, SRC44DescriptorType} from './typings';
 import {SRC44ParseException, SRC44ValidationException} from './exceptions';
 import {sanitizeUrl} from '@braintree/sanitize-url';
 import {validateSRC44} from './validateSRC44';
 import { parseIpfsMedia } from './parseIpfsMedia';
 
 /**
- * Profile Data
+ * Descriptor Data
  *
- * SRC44-compliant Profile Data to be used as description in Smart Contracts, Account Info, and/or Aliases.
- * Use [[ProfileDataBuilder]] to construct from the scratch, or use this to parse json data
+ * SRC44-compliant Descriptor Data to be used as description in Smart Contracts, Account Info, and/or Aliases.
+ * Use [[DescriptorDataBuilder]] to construct from the scratch, or use this to parse json data
  * @module standards.SRC44
  */
-export class ProfileData {
+export class DescriptorData {
 
-    private constructor(private data: SRC44Profile) {
+    private constructor(private data: SRC44Descriptor) {
         this.validate();
     }
 
     /**
-     * Leaky abstraction to get access to the pure raw SRC44 profile data
+     * Leaky abstraction to get access to the pure raw SRC44 descriptor data
      * @return the raw SRC44 object.
      */
     get raw() {
@@ -53,7 +53,7 @@ export class ProfileData {
         return this.data.ds;
     }
 
-    get type(): SRC44ProfileType {
+    get type(): SRC44DescriptorType {
         return this.data.tp;
     }
 
@@ -82,24 +82,23 @@ export class ProfileData {
     }
 
     /**
-     * Creates a bare minimum SRC44 profile instance.
+     * Creates a bare minimum SRC44 descriptor instance.
      * @param name The name
      */
     public static create(name?: string) {
-        return new ProfileData({
+        return new DescriptorData({
             vs: 1,
             nm: name
         });
     }
 
     /**
-     * Creates/Parses a SRC44 compliant profile string
-     * @param jsonString The SRC44 compliante string. See also [[stringify]]
+     * Creates/Parses a SRC44 compliant descriptor string
+     * @param jsonString The SRC44 compliant string. See also [[stringify]]
      */
     public static parse(jsonString: string) {
         try {
-            const profile = JSON.parse(jsonString);
-            return new ProfileData(profile);
+            return new DescriptorData(JSON.parse(jsonString));
         // @ts-ignore
         } catch (e: any) {
             throw new SRC44ParseException(e.message);
@@ -117,7 +116,7 @@ export class ProfileData {
     /**
      * Gets a more human friendly version of the data
      */
-    get(): Profile {
+    get(): Descriptor {
         const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, id, ac, ...custom} = this.data;
         return {
             version: this.version,
@@ -138,7 +137,7 @@ export class ProfileData {
     }
 
     /**
-     * Validates the current profile data.
+     * Validates the current descriptor data.
      * @throws in case of invalid data.
      */
     public validate() {
@@ -153,7 +152,7 @@ export class ProfileData {
         const MaxLength = 1000;
         const str = JSON.stringify(this.data);
         if (str.length > MaxLength) {
-            throw new SRC44ValidationException(`Profile data exceeds maximum allowed length of ${MaxLength} bytes - Got ${str.length}`);
+            throw new SRC44ValidationException(`Data exceeds maximum allowed length of ${MaxLength} bytes - Got ${str.length}`);
         }
         return str;
     }

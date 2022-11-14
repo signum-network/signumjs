@@ -2,14 +2,14 @@
  * Copyright (c) 2022 Signum Network
  */
 import {sanitizeUrl} from '@braintree/sanitize-url';
-import {SRC44ProfileType} from './typings';
-import {ProfileData} from './profileData';
+import {SRC44DescriptorType} from './typings';
+import {DescriptorData} from './DescriptorData';
 
 /**
- * Profile Data Builder
+ * Descriptor Data Builder
  *
  * ```ts
- * const profileData = ProfileDataBuilder
+ * const descriptorData = DescriptorDataBuilder
  *     .create('Some name')
  *     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
  *     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
@@ -24,23 +24,23 @@ import {ProfileData} from './profileData';
  *     .build();
  * ```
  *
- * Creates SRC44-compliant [[ProfileData]] object to be used as description in Smart Contracts, Account Info, and/or Aliases
+ * Creates SRC44-compliant [[DescriptorData]] object to be used as description in Smart Contracts, Account Info, and/or Aliases
  * @module standards.SRC44
  */
-export class ProfileDataBuilder {
+export class DescriptorDataBuilder {
 
     private constructor() {
     }
 
-    private data: ProfileData;
+    private data: DescriptorData;
 
     /**
-     * Creates the builder instance. See also [[ProfileDataBuilder.build]]
-     * @param name The name for the profile
+     * Creates the builder instance. See also [[DescriptorDataBuilder.build]]
+     * @param name The name for the descriptor/profile
      */
     public static create(name?: string) {
-        const builder = new ProfileDataBuilder();
-        builder.data = ProfileData.create(name);
+        const builder = new DescriptorDataBuilder();
+        builder.data = DescriptorData.create(name);
         return builder;
     }
 
@@ -80,7 +80,7 @@ export class ProfileDataBuilder {
     }
 
 
-    setType(t: SRC44ProfileType) {
+    setType(t: SRC44DescriptorType) {
         this.data.raw.tp = t;
         return this;
     }
@@ -115,7 +115,7 @@ export class ProfileDataBuilder {
     }
 
     /**
-     * Builds the final [[ProfileData]] instance. See also [[ProfileDataBuilder.create]]
+     * Builds the final [[DescriptorData]] instance. See also [[DescriptorDataBuilder.create]]
      */
     build() {
         this.data.validate();

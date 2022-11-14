@@ -1,7 +1,7 @@
-import {ProfileData} from '../../profileData';
+import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[ProfileDataClient.setAssetBranding]]
+ * Arguments for [[DescriptorDataClient.setAssetBranding]]
  * @module standards.SRC44
  */
 export interface SetAssetBrandingArgs {
@@ -14,9 +14,9 @@ export interface SetAssetBrandingArgs {
      */
     assetId: string;
     /**
-     * Additional Profile Data. Mind, that id will be set to assetId.
+     * Additional Descriptor Data. Mind, that id will be set to assetId.
      */
-    profileData: ProfileData;
+    descriptorData: DescriptorData;
     /**
      * If not given the minimum transaction fee is being calculated
      */

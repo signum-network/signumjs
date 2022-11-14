@@ -1,7 +1,7 @@
-import {ProfileData} from '../../profileData';
+import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[ProfileDataClient.setContractBranding]]
+ * Arguments for [[DescriptorDataClient.setContractBranding]]
  * @module standards.SRC44
  */
 export interface SetContractBrandingArgs {
@@ -14,9 +14,9 @@ export interface SetContractBrandingArgs {
      */
     contractId: string;
     /**
-     * Additional Profile Data. Mind, that id will be set to contractId.
+     * Additional Descriptor Data. Mind, that id will be set to contractId.
      */
-    profileData: ProfileData;
+    descriptorData: DescriptorData;
     /**
      * If not given the minimum transaction fee is being calculated
      */

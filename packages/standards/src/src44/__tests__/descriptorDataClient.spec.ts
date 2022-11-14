@@ -1,7 +1,7 @@
-import {ProfileDataBuilder} from '../profileDataBuilder';
-import {ProfileDataClient} from '../profileDataClient';
+import {DescriptorDataBuilder} from '../DescriptorDataBuilder';
+import {DescriptorDataClient} from '../DescriptorDataClient';
 
-const MockProfile = {
+const MockDescriptor = {
     'al': 'alias',
     'ac': '895212263565386113',
     'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
@@ -18,34 +18,34 @@ const MockProfile = {
     'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'
 };
 
-const MockProfileStr = JSON.stringify(MockProfile);
+const MockDescriptorStr = JSON.stringify(MockDescriptor);
 
 export const MockLedger = {
     account: {
         getAccount: () => Promise.resolve({
             name: 'Account Name',
-            description: MockProfileStr
+            description: MockDescriptorStr
         }),
         setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
         getAliases: () => Promise.resolve({
             aliases: [
-                {aliasURI: MockProfileStr},
+                {aliasURI: MockDescriptorStr},
                 {aliasURI: 'some other alias'}
             ]
         })
     },
     contract: {
-        getContract: () => Promise.resolve({description: MockProfileStr, creator: 'creator'})
+        getContract: () => Promise.resolve({description: MockDescriptorStr, creator: 'creator'})
     },
     asset: {
         getAsset: () => Promise.resolve({
             account: '895212263565386113',
             publicKey: 'publicKey',
-            description: MockProfileStr
+            description: MockDescriptorStr
         })
     },
     alias: {
-        getAliasByName: () => Promise.resolve({aliasURI: MockProfileStr}),
+        getAliasByName: () => Promise.resolve({aliasURI: MockDescriptorStr}),
         setAlias: (args: any) => Promise.resolve({transaction: 'id'})
     },
     service: {
@@ -53,13 +53,13 @@ export const MockLedger = {
     }
 };
 
-describe('profileDataClient', () => {
+describe('descriptorDataClient', () => {
     describe('getFromContract', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
-            const profile = await client.getFromContract('1');
-            expect(profile).toEqual({
+            const client = new DescriptorDataClient(MockLedger);
+            const descriptor = await client.getFromContract('1');
+            expect(descriptor).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
@@ -112,9 +112,9 @@ describe('profileDataClient', () => {
     describe('getFromAsset', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
-            const profile = await client.getFromAsset('1');
-            expect(profile).toEqual({
+            const client = new DescriptorDataClient(MockLedger);
+            const descriptor = await client.getFromAsset('1');
+            expect(descriptor).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
@@ -167,9 +167,9 @@ describe('profileDataClient', () => {
     describe('getFromAccount', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
-            const profile = await client.getFromAccount('1');
-            expect(profile).toEqual({
+            const client = new DescriptorDataClient(MockLedger);
+            const descriptor = await client.getFromAccount('1');
+            expect(descriptor).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
@@ -221,53 +221,53 @@ describe('profileDataClient', () => {
             });
         });
     });
-    describe('setAccountProfile', () => {
+    describe('setAccountDescriptor', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.account, 'setAccountInfo');
-            await client.setAccountProfile({
-                profileData: ProfileDataBuilder.create('profile').build(),
+            await client.setAccountDescriptor({
+                descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
-                description: '{"vs":1,"nm":"profile"}',
+                description: '{"vs":1,"nm":"descriptor"}',
                 feePlanck: '20000000',
-                name: 'profile',
+                name: 'descriptor',
                 senderPublicKey: 'senderPublicKey',
             });
         });
 
         it('should resolve as expected - custom fee', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.account, 'setAccountInfo');
-            await client.setAccountProfile({
-                profileData: ProfileDataBuilder.create('profile').build(),
+            await client.setAccountDescriptor({
+                descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 feePlanck: '200',
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
-                description: '{"vs":1,"nm":"profile"}',
+                description: '{"vs":1,"nm":"descriptor"}',
                 feePlanck: '200',
-                name: 'profile',
+                name: 'descriptor',
                 senderPublicKey: 'senderPublicKey',
             });
         });
     });
-    describe('setAliasProfile', () => {
+    describe('setAliasDescriptor', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.alias, 'setAlias');
-            await client.setAliasProfile({
+            await client.setAliasDescriptor({
                 aliasName: 'aliasName',
-                profileData: ProfileDataBuilder.create('profile').build(),
+                descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
                 aliasName: 'aliasName',
-                aliasURI: '{"vs":1,"nm":"profile"}',
+                aliasURI: '{"vs":1,"nm":"descriptor"}',
                 feePlanck: '20000000',
                 senderPublicKey: 'senderPublicKey',
             });
@@ -275,17 +275,17 @@ describe('profileDataClient', () => {
 
         it('should resolve as expected - custom fee', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.alias, 'setAlias');
-            await client.setAliasProfile({
+            await client.setAliasDescriptor({
                 aliasName: 'aliasName',
                 feePlanck: '200',
-                profileData: ProfileDataBuilder.create('profile').build(),
+                descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
                 aliasName: 'aliasName',
-                aliasURI: '{"vs":1,"nm":"profile"}',
+                aliasURI: '{"vs":1,"nm":"descriptor"}',
                 feePlanck: '200',
                 senderPublicKey: 'senderPublicKey',
             });
@@ -295,9 +295,9 @@ describe('profileDataClient', () => {
     describe('getFromAlias', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
-            const profile = await client.getFromAlias('alias');
-            expect(profile).toEqual({
+            const client = new DescriptorDataClient(MockLedger);
+            const descriptor = await client.getFromAlias('alias');
+            expect(descriptor).toEqual({
                 'alias': 'alias',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
@@ -326,7 +326,7 @@ describe('profileDataClient', () => {
     describe('getAccountByAlias', () => {
         it('should resolve as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const account = await client.getAccountByAlias('alias');
             expect(account).toEqual({
                 'description': '{"al":"alias","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
@@ -342,7 +342,7 @@ describe('profileDataClient', () => {
                 },
             };
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const account = await client.getAccountByAlias('alias');
             expect(account).toBeNull();
         });
@@ -350,7 +350,7 @@ describe('profileDataClient', () => {
     describe('getAssetBranding', () => {
         it('should get branding as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const brands = await client.getAssetBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
@@ -380,7 +380,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as tokenId does not match', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const brands = await client.getAssetBranding('1234');
             expect(brands).toHaveLength(0);
         });
@@ -392,16 +392,16 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '895212263565386113',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
                 contract: {
-                    getContract: () => Promise.resolve({description: MockProfileStr, creator: '895212263565386113'})
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: '895212263565386113'})
                 },
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const brands = await client.getAssetBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
@@ -437,13 +437,13 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '895212263565386113',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
                 account: {
                     getAccount: () => Promise.resolve({
                         name: 'Account Name',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     }),
                     setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
                     getAliases: () => Promise.resolve({
@@ -451,12 +451,12 @@ describe('profileDataClient', () => {
                     })
                 },
                 contract: {
-                    getContract: () => Promise.resolve({description: MockProfileStr, creator: 'otherCreator'})
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: 'otherCreator'})
                 },
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const brands = await client.getAssetBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(0);
         });
@@ -470,7 +470,7 @@ describe('profileDataClient', () => {
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const brands = await client.getAssetBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(0);
         });
@@ -478,7 +478,7 @@ describe('profileDataClient', () => {
     describe('getContractBranding', () => {
         it('should get branding as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const brands = await client.getContractBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
@@ -508,7 +508,7 @@ describe('profileDataClient', () => {
         });
         it('should get nothing as contractId does not match', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const brands = await client.getContractBranding('1234');
             expect(brands).toHaveLength(0);
         });
@@ -520,13 +520,13 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '895212263565386113',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
                 account: {
                     getAccount: () => Promise.resolve({
                         name: 'Account Name',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     }),
                     setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
                     getAliases: () => Promise.resolve({
@@ -534,12 +534,12 @@ describe('profileDataClient', () => {
                     })
                 },
                 contract: {
-                    getContract: () => Promise.resolve({description: MockProfileStr, creator: 'otherCreator'})
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: 'otherCreator'})
                 },
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const brands = await client.getContractBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(0);
         });
@@ -553,7 +553,7 @@ describe('profileDataClient', () => {
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const brands = await client.getContractBranding('dc1de06b-a2a2-4a6e-b3e1-a5d97835667d');
             expect(brands).toHaveLength(0);
         });
@@ -561,11 +561,11 @@ describe('profileDataClient', () => {
     describe('setAssetBranding', () => {
         it('should set as expected', async () => {
             // @ts-ignore
-            const client = new ProfileDataClient(MockLedger);
+            const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.alias, 'setAlias');
             await client.setAssetBranding({
                 assetId: 'assetId',
-                profileData: ProfileDataBuilder.create('asset').build(),
+                descriptorData: DescriptorDataBuilder.create('asset').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
@@ -583,20 +583,20 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '12243325345',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
                 contract: {
-                    getContract: () => Promise.resolve({description: MockProfileStr, creator: '895212263565386113'})
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: '895212263565386113'})
                 },
             };
 
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const spy = spyOn(Ledger.alias, 'setAlias');
             await client.setAssetBranding({
                 assetId: 'assetId',
-                profileData: ProfileDataBuilder.create('asset').build(),
+                descriptorData: DescriptorDataBuilder.create('asset').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
@@ -614,17 +614,17 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '895212263565386113',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
             };
 
             try {
                 // @ts-ignore
-                const client = new ProfileDataClient(Ledger);
+                const client = new DescriptorDataClient(Ledger);
                 await client.setAssetBranding({
                     assetId: 'assetId',
-                    profileData: ProfileDataBuilder.create('asset').build(),
+                    descriptorData: DescriptorDataBuilder.create('asset').build(),
                     senderPublicKey: 'senderPublicKey'
                 });
                 throw new Error('Should throw error');
@@ -639,15 +639,15 @@ describe('profileDataClient', () => {
             const Ledger = {
                 ...MockLedger,
                 contract: {
-                    getContract: () => Promise.resolve({description: MockProfileStr, creator: '895212263565386113'})
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: '895212263565386113'})
                 },
             };
             // @ts-ignore
-            const client = new ProfileDataClient(Ledger);
+            const client = new DescriptorDataClient(Ledger);
             const spy = spyOn(Ledger.alias, 'setAlias');
             await client.setContractBranding({
                 contractId: 'contractId',
-                profileData: ProfileDataBuilder.create('contract').build(),
+                descriptorData: DescriptorDataBuilder.create('contract').build(),
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
@@ -665,18 +665,18 @@ describe('profileDataClient', () => {
                     getAsset: () => Promise.resolve({
                         account: '895212263565386113',
                         publicKey: '0000000000000000000000000000000000000000000000000000000000000000',
-                        description: MockProfileStr
+                        description: MockDescriptorStr
                     })
                 },
             };
 
             try {
                 // @ts-ignore
-                const client = new ProfileDataClient(MockLedger);
+                const client = new DescriptorDataClient(MockLedger);
 
                 await client.setContractBranding({
                     contractId: 'contractId',
-                    profileData: ProfileDataBuilder.create('contract').build(),
+                    descriptorData: DescriptorDataBuilder.create('contract').build(),
                     senderPublicKey: 'senderPublicKey'
                 });
                 throw new Error('Should throw error');

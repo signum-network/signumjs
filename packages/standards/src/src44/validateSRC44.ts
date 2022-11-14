@@ -5,7 +5,7 @@
 // we do not use a schema validator yet, as we have problems with dependencies, i.e. ajv
 // for sake of simplicity we validate "manually" according the json-schema
 
-import {SRC44Profile} from './typings';
+import {SRC44Descriptor} from './typings';
 import {SRC44ValidationException} from './exceptions';
 import {parseIpfsMedia} from './parseIpfsMedia';
 
@@ -17,7 +17,7 @@ import {parseIpfsMedia} from './parseIpfsMedia';
  * @param json
  * @module standards.SRC44
  */
-export function validateSRC44(json: SRC44Profile) {
+export function validateSRC44(json: SRC44Descriptor) {
     const MaxLength = 1000;
     const DsLength = 384;
     const NmLength = 24;

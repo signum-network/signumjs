@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProfileDataClient
+	<title>DescriptorDataClient
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/standards_src44.html">standards.SRC44</a>
 				</li>
 				<li>
-					<a href="standards_src44.profiledataclient.html">ProfileDataClient</a>
+					<a href="standards_src44.descriptordataclient.html">DescriptorDataClient</a>
 				</li>
 			</ul>
-			<h1>Class ProfileDataClient</h1>
+			<h1>Class DescriptorDataClient</h1>
 		</div>
 	</div>
 </header>
@@ -91,11 +91,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Profile Data Client</p>
+						<p>Descriptor Data Client</p>
 					</div>
 					<pre><code class="language-ts"> <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
- <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
- <span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+ <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> DescriptorDataClient(ledger);
+ <span class="hljs-keyword">const</span> descriptorData = DescriptorDataBuilder
                         .create(<span class="hljs-string">'ohager'</span>)
                         .setType(<span class="hljs-string">'hum'</span>)
                         .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
@@ -104,21 +104,21 @@
                         .setDescription(<span class="hljs-string">'Just a humble dev...'</span>)
                         .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
                         .build();
- <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
-                 profileData: ProfileDataBuilder.create(<span class="hljs-string">'profile'</span>).build(),
+ <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountDescriptor({
+                 descriptorData: DescriptorDataBuilder.create(<span class="hljs-string">'descriptor'</span>).build(),
                 senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
                 senderPrivateKey: <span class="hljs-string">'**********************************'</span>
                 });</code></pre>
-					<p>A helper class to get Profile information from accounts, contracts, assets, and/or aliases.
-						It even resolves Profile data from referenced aliases.
-					Furthermore, it helps on updating profile data according to SRC44 specifications.</p>
+					<p>A helper class to get Descriptor information from accounts, contracts, assets, and/or aliases.
+						It even resolves Descriptor data from referenced aliases.
+					Furthermore, it helps on updating descriptor data according to SRC44 specifications.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ProfileDataClient</span>
+						<span class="target">DescriptorDataClient</span>
 					</li>
 				</ul>
 			</section>
@@ -129,23 +129,23 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromasset" class="tsd-kind-icon">get<wbr>From<wbr>Asset</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaccountprofile" class="tsd-kind-icon">set<wbr>Account<wbr>Profile</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.profiledataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getfromasset" class="tsd-kind-icon">get<wbr>From<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#setaccountdescriptor" class="tsd-kind-icon">set<wbr>Account<wbr>Descriptor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#setaliasdescriptor" class="tsd-kind-icon">set<wbr>Alias<wbr>Descriptor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="standards_src44.descriptordataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a></li>
 							</ul>
 						</section>
 					</div>
@@ -157,13 +157,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Profile<wbr>Data<wbr>Client<span class="tsd-signature-symbol">(</span>ledger<span class="tsd-signature-symbol">: </span><a href="../modules/core.html#ledger" class="tsd-signature-type">Ledger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="standards_src44.profiledataclient.html" class="tsd-signature-type">ProfileDataClient</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Descriptor<wbr>Data<wbr>Client<span class="tsd-signature-symbol">(</span>ledger<span class="tsd-signature-symbol">: </span><a href="../modules/core.html#ledger" class="tsd-signature-type">Ledger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="standards_src44.descriptordataclient.html" class="tsd-signature-type">DescriptorDataClient</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L41">packages/standards/src/src44/profileDataClient.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L41">packages/standards/src/src44/DescriptorDataClient.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -182,7 +182,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="standards_src44.profiledataclient.html" class="tsd-signature-type">ProfileDataClient</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="standards_src44.descriptordataclient.html" class="tsd-signature-type">DescriptorDataClient</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -199,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L110">packages/standards/src/src44/profileDataClient.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L110">packages/standards/src/src44/DescriptorDataClient.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,24 +222,24 @@
 					<a name="getassetbranding" class="tsd-anchor"></a>
 					<h3>get<wbr>Asset<wbr>Branding</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Branding<span class="tsd-signature-symbol">(</span>tokenId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Branding<span class="tsd-signature-symbol">(</span>tokenId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L135">packages/standards/src/src44/profileDataClient.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L135">packages/standards/src/src44/DescriptorDataClient.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Branded Assets are constructed indirectly to allow already existing Tokens/Assets to have additional
 										(brand) data. Branded Assets link an alias with SRC44 compliant data checking for identity of issuer and alias owner.
-									Only if those match, the profile data is being returned.</p>
+									Only if those match, the descriptor data is being returned.</p>
 								</div>
 								<p>If the token issuer is a contract, then the contracts creator is being used for identity matching
 								Due to the indirection it&#39;s possible to have multiple brands.</p>
-								<p>See also <a href="standards_src44.profiledataclient.html#setassetbranding">setAssetBranding</a></p>
+								<p>See also <a href="standards_src44.descriptordataclient.html#setassetbranding">setAssetBranding</a></p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -247,8 +247,8 @@
 									<h5>tokenId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of profiles/brands - can be empty</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of descriptors/brands - can be empty</p>
 						</li>
 					</ul>
 				</section>
@@ -256,18 +256,18 @@
 					<a name="getcontractbranding" class="tsd-anchor"></a>
 					<h3>get<wbr>Contract<wbr>Branding</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Branding<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Branding<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L225">packages/standards/src/src44/profileDataClient.ts:225</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L225">packages/standards/src/src44/DescriptorDataClient.ts:225</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Branded Contracts are almost identical with Branded Assets. See <a href="standards_src44.profiledataclient.html#getassetbranding">getAssetBranding</a> and <a href="standards_src44.profiledataclient.html#setcontractbranding">setContractBranding</a></p>
+									<p>Branded Contracts are almost identical with Branded Assets. See <a href="standards_src44.descriptordataclient.html#getassetbranding">getAssetBranding</a> and <a href="standards_src44.descriptordataclient.html#setcontractbranding">setContractBranding</a></p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -279,8 +279,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of profiles/brands - can be empty</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of descriptors/brands - can be empty</p>
 						</li>
 					</ul>
 				</section>
@@ -288,18 +288,18 @@
 					<a name="getfromaccount" class="tsd-anchor"></a>
 					<h3>get<wbr>From<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Account<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Account<span class="tsd-signature-symbol">(</span>accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L290">packages/standards/src/src44/profileDataClient.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L290">packages/standards/src/src44/DescriptorDataClient.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the profile data from an account. It also resolved referenced alias profile</p>
+									<p>Gets the descriptor data from an account. It also resolved referenced alias descriptor</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -311,8 +311,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The fetched Profile data. It might throw exceptions if it has no compatible data.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The fetched Descriptor data. It might throw exceptions if it has no compatible data.</p>
 						</li>
 					</ul>
 				</section>
@@ -320,22 +320,22 @@
 					<a name="getfromalias" class="tsd-anchor"></a>
 					<h3>get<wbr>From<wbr>Alias</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Alias<span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Alias<span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L322">packages/standards/src/src44/profileDataClient.ts:322</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L322">packages/standards/src/src44/DescriptorDataClient.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets profile data from an alias.</p>
+									<p>Gets descriptor data from an alias.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
-									<dd><p>If the alias does not have compatible profile data</p>
+									<dd><p>If the alias does not have compatible descriptor data</p>
 									</dd>
 								</dl>
 							</div>
@@ -348,7 +348,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -356,18 +356,18 @@
 					<a name="getfromasset" class="tsd-anchor"></a>
 					<h3>get<wbr>From<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Asset<span class="tsd-signature-symbol">(</span>assetId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Asset<span class="tsd-signature-symbol">(</span>assetId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L78">packages/standards/src/src44/profileDataClient.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L78">packages/standards/src/src44/DescriptorDataClient.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the profile data from an asset/token. It also resolved referenced alias profile</p>
+									<p>Gets the descriptor data from an asset/token. It also resolved referenced alias descriptor</p>
 								</div>
 								<p>Asset descriptions are immutable and can be set only on issuance.
 								As this client does not issue assets, no setters/updaters are provided</p>
@@ -381,8 +381,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The fetched Profile data. It might throw exceptions if it has no compatible data.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The fetched Descriptor data. It might throw exceptions if it has no compatible data.</p>
 						</li>
 					</ul>
 				</section>
@@ -390,18 +390,18 @@
 					<a name="getfromcontract" class="tsd-anchor"></a>
 					<h3>get<wbr>From<wbr>Contract</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Contract<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>From<wbr>Contract<span class="tsd-signature-symbol">(</span>contractId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L59">packages/standards/src/src44/profileDataClient.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L59">packages/standards/src/src44/DescriptorDataClient.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the profile data from a contract. It also resolved referenced alias profile</p>
+									<p>Gets the descriptor data from a contract. It also resolved referenced alias descriptor</p>
 								</div>
 								<p>Contract descriptions are immutable and can be set only on contract deployment.
 								As this client does not deploy contracts, no setters/updaters for contracts are provided</p>
@@ -415,34 +415,34 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.profile.html" class="tsd-signature-type">Profile</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The fetched Profile data. It might throw exceptions if it has no compatible data.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/standards_src44.descriptor.html" class="tsd-signature-type">Descriptor</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The fetched Descriptor data. It might throw exceptions if it has no compatible data.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setaccountprofile" class="tsd-anchor"></a>
-					<h3>set<wbr>Account<wbr>Profile</h3>
+					<a name="setaccountdescriptor" class="tsd-anchor"></a>
+					<h3>set<wbr>Account<wbr>Descriptor</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Descriptor<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaccountdescriptorargs.html" class="tsd-signature-type">SetAccountDescriptorArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L92">packages/standards/src/src44/profileDataClient.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L92">packages/standards/src/src44/DescriptorDataClient.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets an accounts profile data.
+									<p>Sets an accounts descriptor data.
 									If <code>feePlanck</code> is not given, the minimum costs will be calculated automatically</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-signature-type">SetAccountProfileArgs</a></h5>
+									<h5>args: <a href="../interfaces/standards_src44.setaccountdescriptorargs.html" class="tsd-signature-type">SetAccountDescriptorArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments</p>
 									</div>
@@ -453,28 +453,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setaliasprofile" class="tsd-anchor"></a>
-					<h3>set<wbr>Alias<wbr>Profile</h3>
+					<a name="setaliasdescriptor" class="tsd-anchor"></a>
+					<h3>set<wbr>Alias<wbr>Descriptor</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<wbr>Descriptor<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/standards_src44.setaliasdescriptorargs.html" class="tsd-signature-type">SetAliasDescriptorArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionId</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">UnsignedTransaction</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L304">packages/standards/src/src44/profileDataClient.ts:304</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L304">packages/standards/src/src44/DescriptorDataClient.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sets an alias profile data.
+									<p>Sets an alias descriptor data.
 									If <code>feePlanck</code> is not given, the minimum costs will be calculated automatically</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>args: <a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-signature-type">SetAliasProfileArgs</a></h5>
+									<h5>args: <a href="../interfaces/standards_src44.setaliasdescriptorargs.html" class="tsd-signature-type">SetAliasDescriptorArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments</p>
 									</div>
@@ -494,13 +494,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L177">packages/standards/src/src44/profileDataClient.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L177">packages/standards/src/src44/DescriptorDataClient.ts:177</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Creates a brand for an asset.
-									See also <a href="standards_src44.profiledataclient.html#getassetbranding">getAssetBranding</a></p>
+									See also <a href="standards_src44.descriptordataclient.html#getassetbranding">getAssetBranding</a></p>
 								</div>
 								<p>If the asset is issued by a contract, the contracts creator is being checked for ownership.</p>
 								<dl class="tsd-comment-tags">
@@ -533,12 +533,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/profileDataClient.ts#L253">packages/standards/src/src44/profileDataClient.ts:253</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/DescriptorDataClient.ts#L253">packages/standards/src/src44/DescriptorDataClient.ts:253</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set contract branding. See <a href="standards_src44.profiledataclient.html#getcontractbranding">getContractBranding</a></p>
+									<p>Set contract branding. See <a href="standards_src44.descriptordataclient.html#getcontractbranding">getContractBranding</a></p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
@@ -602,67 +602,67 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a>
+						<a href="standards_src44.descriptordata.html" class="tsd-kind-icon">Descriptor<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a>
+						<a href="standards_src44.descriptordatabuilder.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Builder</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
+						<a href="standards_src44.descriptordataclient.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Client</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="standards_src44.descriptordataclient.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a>
+								<a href="standards_src44.descriptordataclient.html#getaccountbyalias" class="tsd-kind-icon">get<wbr>Account<wbr>ByAlias</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a>
+								<a href="standards_src44.descriptordataclient.html#getassetbranding" class="tsd-kind-icon">get<wbr>Asset<wbr>Branding</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a>
+								<a href="standards_src44.descriptordataclient.html#getcontractbranding" class="tsd-kind-icon">get<wbr>Contract<wbr>Branding</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a>
+								<a href="standards_src44.descriptordataclient.html#getfromaccount" class="tsd-kind-icon">get<wbr>From<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a>
+								<a href="standards_src44.descriptordataclient.html#getfromalias" class="tsd-kind-icon">get<wbr>From<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getfromasset" class="tsd-kind-icon">get<wbr>From<wbr>Asset</a>
+								<a href="standards_src44.descriptordataclient.html#getfromasset" class="tsd-kind-icon">get<wbr>From<wbr>Asset</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a>
+								<a href="standards_src44.descriptordataclient.html#getfromcontract" class="tsd-kind-icon">get<wbr>From<wbr>Contract</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#setaccountprofile" class="tsd-kind-icon">set<wbr>Account<wbr>Profile</a>
+								<a href="standards_src44.descriptordataclient.html#setaccountdescriptor" class="tsd-kind-icon">set<wbr>Account<wbr>Descriptor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#setaliasprofile" class="tsd-kind-icon">set<wbr>Alias<wbr>Profile</a>
+								<a href="standards_src44.descriptordataclient.html#setaliasdescriptor" class="tsd-kind-icon">set<wbr>Alias<wbr>Descriptor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a>
+								<a href="standards_src44.descriptordataclient.html#setassetbranding" class="tsd-kind-icon">set<wbr>Asset<wbr>Branding</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="standards_src44.profiledataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a>
+								<a href="standards_src44.descriptordataclient.html#setcontractbranding" class="tsd-kind-icon">set<wbr>Contract<wbr>Branding</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
+						<a href="../interfaces/standards_src44.descriptor.html" class="tsd-kind-icon">Descriptor</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
+						<a href="../interfaces/standards_src44.src44descriptor.html" class="tsd-kind-icon">SRC44<wbr>Descriptor</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Profile<wbr>Args</a>
+						<a href="../interfaces/standards_src44.setaccountdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Descriptor<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a>
+						<a href="../interfaces/standards_src44.setaliasdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Descriptor<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-kind-icon">Set<wbr>Asset<wbr>Branding<wbr>Args</a>
@@ -671,7 +671,7 @@
 						<a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-kind-icon">Set<wbr>Contract<wbr>Branding<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>
+						<a href="../modules/standards_src44.html#src44descriptortype" class="tsd-kind-icon">SRC44<wbr>Descriptor<wbr>Type</a>
 					</li>
 				</ul>
 			</nav>

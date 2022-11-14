@@ -1,12 +1,12 @@
-import {ProfileData} from '../../profileData';
+import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[ProfileDataClient.setAliasProfile]]
+ * Arguments for [[DescriptorDataClient.setAliasDescriptor]]
  * @module standards.SRC44
  */
-export interface SetAliasProfileArgs {
+export interface SetAliasDescriptorArgs {
     aliasName: string;
-    profileData: ProfileData;
+    descriptorData: DescriptorData;
     /**
      * If not given the minimum transaction fee is being calculated
      */

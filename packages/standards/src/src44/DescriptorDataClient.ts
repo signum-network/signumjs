@@ -2,21 +2,21 @@
  * Copyright (c) 2022 Signum Network
  */
 import {Ledger, Account, Address} from '@signumjs/core';
-import {ProfileData} from './profileData';
-import {Profile} from './typings';
-import {SetAccountProfileArgs} from './typings/args/setAccountProfileArgs';
-import {SetAliasProfileArgs} from './typings/args/setAliasProfileArgs';
+import {DescriptorData} from './DescriptorData';
+import {Descriptor} from './typings';
+import {SetAccountDescriptorArgs} from './typings/args/setAccountDescriptorArgs';
+import {SetAliasDescriptorArgs} from './typings/args/setAliasDescriptorArgs';
 import {SetAssetBrandingArgs} from './typings/args/setAssetBrandingArgs';
 import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
 
 
 /**
- * Profile Data Client
+ * Descriptor Data Client
  *
  * ```ts
  *  const ledger = LedgerClientFactory.create({nodeHost: "https://europe.signum.network"})
- *  const client = new ProfileDataClient(ledger);
- *  const profileData = ProfileDataBuilder
+ *  const client = new DescriptorDataClient(ledger);
+ *  const descriptorData = DescriptorDataBuilder
  *                         .create('ohager')
  *                         .setType('hum')
  *                         .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
@@ -25,19 +25,19 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  *                         .setDescription('Just a humble dev...')
  *                         .setHomePage('https://digital-independence.dev')
  *                         .build();
- *  const transaction = await client.setAccountProfile({
- *                  profileData: ProfileDataBuilder.create('profile').build(),
+ *  const transaction = await client.setAccountDescriptor({
+ *                  descriptorData: DescriptorDataBuilder.create('descriptor').build(),
  *                 senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
  *                 senderPrivateKey: '**********************************'
  *                 });
  * ```
  *
- * A helper class to get Profile information from accounts, contracts, assets, and/or aliases.
- * It even resolves Profile data from referenced aliases.
- * Furthermore, it helps on updating profile data according to SRC44 specifications.
+ * A helper class to get Descriptor information from accounts, contracts, assets, and/or aliases.
+ * It even resolves Descriptor data from referenced aliases.
+ * Furthermore, it helps on updating descriptor data according to SRC44 specifications.
  * @module standards.SRC44
  */
-export class ProfileDataClient {
+export class DescriptorDataClient {
     private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
     /**
      * Instantiates the client.
@@ -48,53 +48,53 @@ export class ProfileDataClient {
     }
 
     /**
-     * Gets the profile data from a contract. It also resolved referenced alias profile
+     * Gets the descriptor data from a contract. It also resolved referenced alias descriptor
      *
      * Contract descriptions are immutable and can be set only on contract deployment.
      * As this client does not deploy contracts, no setters/updaters for contracts are provided
      *
      * @param contractId The contract id
-     * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
+     * @return The fetched Descriptor data. It might throw exceptions if it has no compatible data.
      */
-    async getFromContract(contractId: string): Promise<Profile> {
+    async getFromContract(contractId: string): Promise<Descriptor> {
         const contract = await this.ledger.contract.getContract(contractId);
-        const profile = ProfileData.parse(contract.description).get();
-        if (profile.alias) {
-            profile.resolvedAlias = await this.getFromAlias(profile.alias);
+        const descriptor = DescriptorData.parse(contract.description).get();
+        if (descriptor.alias) {
+            descriptor.resolvedAlias = await this.getFromAlias(descriptor.alias);
         }
-        return profile;
+        return descriptor;
     }
 
 
     /**
-     * Gets the profile data from an asset/token. It also resolved referenced alias profile
+     * Gets the descriptor data from an asset/token. It also resolved referenced alias descriptor
      *
      * Asset descriptions are immutable and can be set only on issuance.
      * As this client does not issue assets, no setters/updaters are provided
      *
      * @param assetId The token/asset id
-     * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
+     * @return The fetched Descriptor data. It might throw exceptions if it has no compatible data.
      */
-    async getFromAsset(assetId: string): Promise<Profile> {
+    async getFromAsset(assetId: string): Promise<Descriptor> {
         const asset = await this.ledger.asset.getAsset({assetId});
-        const profile = ProfileData.parse(asset.description).get();
-        if (profile.alias) {
-            profile.resolvedAlias = await this.getFromAlias(profile.alias);
+        const descriptor = DescriptorData.parse(asset.description).get();
+        if (descriptor.alias) {
+            descriptor.resolvedAlias = await this.getFromAlias(descriptor.alias);
         }
-        return profile;
+        return descriptor;
     }
 
     /**
-     * Sets an accounts profile data.
+     * Sets an accounts descriptor data.
      * If `feePlanck` is not given, the minimum costs will be calculated automatically
      * @param args The arguments
      */
-    async setAccountProfile(args: SetAccountProfileArgs) {
-        const {name, senderPublicKey, senderPrivateKey, feePlanck, profileData, deadline, referencedTransactionFullHash} = args;
+    async setAccountDescriptor(args: SetAccountDescriptorArgs) {
+        const {name, senderPublicKey, senderPrivateKey, feePlanck, descriptorData, deadline, referencedTransactionFullHash} = args;
         return this.ledger.account.setAccountInfo({
-            name: name || profileData.name,
-            description: profileData.stringify(),
-            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            name: name || descriptorData.name,
+            description: descriptorData.stringify(),
+            feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
@@ -109,9 +109,9 @@ export class ProfileDataClient {
      */
     async getAccountByAlias(aliasName: string): Promise<Account | null> {
         try {
-            const profile = await this.getFromAlias(aliasName);
-            if (profile.account) {
-                return this.ledger.account.getAccount({accountId: profile.account, includeCommittedAmount: true});
+            const descriptor = await this.getFromAlias(aliasName);
+            if (descriptor.account) {
+                return this.ledger.account.getAccount({accountId: descriptor.account, includeCommittedAmount: true});
             }
             return null;
             // @ts-ignore
@@ -123,44 +123,44 @@ export class ProfileDataClient {
     /**
      * Branded Assets are constructed indirectly to allow already existing Tokens/Assets to have additional
      * (brand) data. Branded Assets link an alias with SRC44 compliant data checking for identity of issuer and alias owner.
-     * Only if those match, the profile data is being returned.
+     * Only if those match, the descriptor data is being returned.
      *
      * If the token issuer is a contract, then the contracts creator is being used for identity matching
      * Due to the indirection it's possible to have multiple brands.
      *
      * See also [[setAssetBranding]]
      * @param tokenId
-     * @returns An array of profiles/brands - can be empty
+     * @returns An array of descriptors/brands - can be empty
      */
-    async getAssetBranding(tokenId: string): Promise<Profile[]> {
+    async getAssetBranding(tokenId: string): Promise<Descriptor[]> {
         try {
             let issuer = '';
             const {account, publicKey} = await this.ledger.asset.getAsset({
                 assetId: tokenId
             });
-            if (publicKey === ProfileDataClient.SmartContractPublicKey) {
+            if (publicKey === DescriptorDataClient.SmartContractPublicKey) {
                 const {creator} = await this.ledger.contract.getContract(account);
                 issuer = creator;
             } else {
                 issuer = account;
             }
-            const profiles: Profile[] = [];
+            const descriptors: Descriptor[] = [];
             const issuerAliases = await this.ledger.account.getAliases(issuer);
             for (const alias of issuerAliases.aliases) {
                 try {
-                    const profileData = ProfileData.parse(alias.aliasURI);
-                    if (profileData.id === tokenId) {
-                        profiles.push(profileData.get());
+                    const descriptorData = DescriptorData.parse(alias.aliasURI);
+                    if (descriptorData.id === tokenId) {
+                        descriptors.push(descriptorData.get());
                     }
                     // @ts-ignore
                 } catch (e: any) {
                     // ignore non-SRC44 accounts
                 }
             }
-            return profiles;
+            return descriptors;
             // @ts-ignore
         } catch (e: any) {
-            return [] as Profile[];
+            return [] as Descriptor[];
         }
     }
 
@@ -181,7 +181,7 @@ export class ProfileDataClient {
             senderPublicKey,
             senderPrivateKey,
             feePlanck,
-            profileData,
+            descriptorData,
             deadline,
             referencedTransactionFullHash
         } = args;
@@ -194,7 +194,7 @@ export class ProfileDataClient {
         // @ts-ignore
         const {publicKey, account} = asset;
         let assetOwner = '';
-        if (publicKey === ProfileDataClient.SmartContractPublicKey) {
+        if (publicKey === DescriptorDataClient.SmartContractPublicKey) {
             const {creator} = await this.ledger.contract.getContract(account);
             assetOwner = creator;
         } else {
@@ -205,11 +205,11 @@ export class ProfileDataClient {
             throw new Error('Not your asset!');
         }
 
-        profileData.raw.id = assetId;
+        descriptorData.raw.id = assetId;
         return this.ledger.alias.setAlias({
             aliasName: aliasName || `asset-brand-${assetId}`,
-            aliasURI: profileData.stringify(),
-            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            aliasURI: descriptorData.stringify(),
+            feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
@@ -220,28 +220,28 @@ export class ProfileDataClient {
     /**
      * Branded Contracts are almost identical with Branded Assets. See [[getAssetBranding]] and [[setContractBranding]]
      * @param contractId The contract Id
-     * @returns An array of profiles/brands - can be empty
+     * @returns An array of descriptors/brands - can be empty
      */
-    async getContractBranding(contractId: string): Promise<Profile[]> {
+    async getContractBranding(contractId: string): Promise<Descriptor[]> {
         try {
             const {creator} = await this.ledger.contract.getContract(contractId);
-            const profiles: Profile[] = [];
+            const descriptors: Descriptor[] = [];
             const issuerAliases = await this.ledger.account.getAliases(creator);
             for (const alias of issuerAliases.aliases) {
                 try {
-                    const profileData = ProfileData.parse(alias.aliasURI);
-                    if (profileData.id === contractId) {
-                        profiles.push(profileData.get());
+                    const descriptorData = DescriptorData.parse(alias.aliasURI);
+                    if (descriptorData.id === contractId) {
+                        descriptors.push(descriptorData.get());
                     }
                     // @ts-ignore
                 } catch (e: any) {
                     // ignore non-SRC44 accounts
                 }
             }
-            return profiles;
+            return descriptors;
             // @ts-ignore
         } catch (e: any) {
-            return [] as Profile[];
+            return [] as Descriptor[];
         }
     }
 
@@ -257,7 +257,7 @@ export class ProfileDataClient {
             senderPublicKey,
             senderPrivateKey,
             feePlanck,
-            profileData,
+            descriptorData,
             deadline,
             referencedTransactionFullHash
         } = args;
@@ -270,11 +270,11 @@ export class ProfileDataClient {
             throw new Error('Not your contract!');
         }
 
-        profileData.raw.id = contractId;
+        descriptorData.raw.id = contractId;
         return this.ledger.alias.setAlias({
             aliasName: aliasName || `contract-brand-${contractId}`,
-            aliasURI: profileData.stringify(),
-            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            aliasURI: descriptorData.stringify(),
+            feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
@@ -283,30 +283,30 @@ export class ProfileDataClient {
     }
 
     /**
-     * Gets the profile data from an account. It also resolved referenced alias profile
+     * Gets the descriptor data from an account. It also resolved referenced alias descriptor
      * @param accountId The account id
-     * @return The fetched Profile data. It might throw exceptions if it has no compatible data.
+     * @return The fetched Descriptor data. It might throw exceptions if it has no compatible data.
      */
-    async getFromAccount(accountId: string): Promise<Profile> {
+    async getFromAccount(accountId: string): Promise<Descriptor> {
         const account = await this.ledger.account.getAccount({accountId, includeCommittedAmount: false, includeEstimatedCommitment: false});
-        const profile = ProfileData.parse(account.description).get();
-        if (profile.alias) {
-            profile.resolvedAlias = await this.getFromAlias(profile.alias);
+        const descriptor = DescriptorData.parse(account.description).get();
+        if (descriptor.alias) {
+            descriptor.resolvedAlias = await this.getFromAlias(descriptor.alias);
         }
-        return profile;
+        return descriptor;
     }
 
     /**
-     * Sets an alias profile data.
+     * Sets an alias descriptor data.
      * If `feePlanck` is not given, the minimum costs will be calculated automatically
      * @param args The arguments
      */
-    async setAliasProfile(args: SetAliasProfileArgs) {
-        const {aliasName, senderPublicKey, senderPrivateKey, feePlanck, profileData, deadline, referencedTransactionFullHash} = args;
+    async setAliasDescriptor(args: SetAliasDescriptorArgs) {
+        const {aliasName, senderPublicKey, senderPrivateKey, feePlanck, descriptorData, deadline, referencedTransactionFullHash} = args;
         return this.ledger.alias.setAlias({
             aliasName,
-            aliasURI: profileData.stringify(),
-            feePlanck: feePlanck || profileData.estimateFeePlanck(),
+            aliasURI: descriptorData.stringify(),
+            feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
             senderPrivateKey,
             deadline,
@@ -315,13 +315,13 @@ export class ProfileDataClient {
     }
 
     /**
-     * Gets profile data from an alias.
+     * Gets descriptor data from an alias.
      * @param aliasName The unique alias name
-     * @throws If the alias does not have compatible profile data
+     * @throws If the alias does not have compatible descriptor data
      */
-    async getFromAlias(aliasName: string): Promise<Profile> {
+    async getFromAlias(aliasName: string): Promise<Descriptor> {
         const {aliasURI} = await this.ledger.alias.getAliasByName(aliasName);
-        return ProfileData.parse(aliasURI).get();
+        return DescriptorData.parse(aliasURI).get();
     }
 
 }

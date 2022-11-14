@@ -1,13 +1,13 @@
 /**
  *
- * SRC44: Standard for [Profile Information](https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md)
+ * SRC44: Standard for [Descriptor Information](https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md)
  *
- * This (sub) package creates, parses and validates Signum Profile data.
+ * This (sub) package creates, parses and validates Signum Descriptor data.
  *
- * To create SRC44 compatible profile data use [[ProfileDataBuilder]]
+ * To create SRC44 compatible descriptor data use [[DescriptorDataBuilder]]
  *
  * ```ts
- * const profileData = ProfileDataBuilder
+ * const descriptorData = DescriptorDataBuilder
  *     .create('Some name')
  *     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
  *     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
@@ -26,8 +26,8 @@
  * Parsing/Validating Data is also easy:
  *
  * ```ts
- * const profile = ProfileData.parse(profileDataString);
- * console.log(profile.get())
+ * const descriptor = DescriptorData.parse(descriptorDataString);
+ * console.log(descriptor.get())
  * ```
  *
  * which may result in:
@@ -57,21 +57,21 @@
  *     'version': 1,
  * }
  * ```
- * The recommended way is to use the [[ProfileDataClient]] to fetch or set profile data from Accounts, Smart Contracts and/or Aliases
+ * The recommended way is to use the [[DescriptorDataClient]] to fetch or set descriptor data from Accounts, Smart Contracts and/or Aliases
  *
- * Fetching profile data
+ * Fetching descriptor data
  * ```ts
  * const ledger = LedgerClientFactory.create({nodeHost: "https://europe.signum.network"})
- * const client = new ProfileDataClient(ledger);
- * const profile = await client.getFromContract('23589234982349852196');
+ * const client = new DescriptorDataClient(ledger);
+ * const descriptor = await client.getFromContract('23589234982349852196');
  * ```
  *
- * Setting profile data
+ * Setting descriptor data
  *
  * ```ts
  *  const ledger = LedgerClientFactory.create({nodeHost: "https://europe.signum.network"})
- *  const client = new ProfileDataClient(ledger);
- *  const profileData = ProfileDataBuilder
+ *  const client = new DescriptorDataClient(ledger);
+ *  const descriptorData = DescriptorDataBuilder
  *                         .create('ohager')
  *                         .setType('hum')
  *                         .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
@@ -81,8 +81,8 @@
  *                         .setHomePage('https://digital-independence.dev')
  *                         .build();
  *
- *  const transaction = await client.setAccountProfile({
- *                 profileData,
+ *  const transaction = await client.setAccountDescriptor({
+ *                 descriptorData,
  *                 feePlanck: '100',
  *                 senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
  *                 senderPrivateKey: '**********************************'
@@ -94,6 +94,6 @@
 
 export * from './typings';
 export * from './exceptions';
-export * from './profileData';
-export * from './profileDataBuilder';
-export * from './profileDataClient';
+export * from './DescriptorData';
+export * from './DescriptorDataClient';
+export * from './DescriptorDataBuilder';

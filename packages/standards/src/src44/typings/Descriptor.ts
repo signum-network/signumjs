@@ -1,20 +1,20 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import { SRC44ProfileType } from './src44ProfileType';
+import { SRC44DescriptorType } from './SRC44DescriptorType';
 
 interface MediaType {
     [key: string]: string;
 }
 
 /**
- * Human friendly profile structure
+ * Human friendly descriptor structure
  *
- * See [[SRC44Profile]], [[ProfileData]] and [[ProfileDataBuilder]] to create, update this structure
+ * See [[SRC44Descriptor]], [[DescriptorData]] and [[DescriptorDataBuilder]] to create, update this structure
  *
  * @module standards.SRC44
  */
-export interface Profile {
+export interface Descriptor {
     /**
      * Version Number - Should be 1 for now
      */
@@ -28,9 +28,9 @@ export interface Profile {
      */
     description?: string;
     /**
-     * Profile type
+     * Descriptor type
      */
-    type?: SRC44ProfileType;
+    type?: SRC44DescriptorType;
     /**
      * IPFS Media Link for the Avatar
      */
@@ -60,9 +60,9 @@ export interface Profile {
      */
     id?: string;
     /**
-     * The resolved Profile data from an referenced alias
+     * The resolved Descriptor data from a referenced alias
      */
-    resolvedAlias?: Profile;
+    resolvedAlias?: Descriptor;
     /**
      * An IPFS CID reference to more (off-chain) data
      */

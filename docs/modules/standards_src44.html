@@ -88,11 +88,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>SRC44: Standard for <a href="https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md">Profile Information</a></p>
+						<p>SRC44: Standard for <a href="https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md">Descriptor Information</a></p>
 					</div>
-					<p>This (sub) package creates, parses and validates Signum Profile data.</p>
-					<p>To create SRC44 compatible profile data use <a href="../classes/standards_src44.profiledatabuilder.html">ProfileDataBuilder</a></p>
-					<pre><code class="language-ts"><span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+					<p>This (sub) package creates, parses and validates Signum Descriptor data.</p>
+					<p>To create SRC44 compatible descriptor data use <a href="../classes/standards_src44.descriptordatabuilder.html">DescriptorDataBuilder</a></p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> descriptorData = DescriptorDataBuilder
     .create(<span class="hljs-string">'Some name'</span>)
     .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
     .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
@@ -106,8 +106,8 @@
     .setSendRule(<span class="hljs-string">'^[a-Z]{3}$'</span>)
     .build();</code></pre>
 					<p>Parsing/Validating Data is also easy:</p>
-					<pre><code class="language-ts"><span class="hljs-keyword">const</span> profile = ProfileData.parse(profileDataString);
-<span class="hljs-built_in">console</span>.log(profile.get())</code></pre>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> descriptor = DescriptorData.parse(descriptorDataString);
+<span class="hljs-built_in">console</span>.log(descriptor.get())</code></pre>
 					<p>which may result in:</p>
 					<pre><code class="language-json">
 {
@@ -132,15 +132,15 @@
     &#39;type&#39;: &#39;cex&#39;,
     &#39;version&#39;: 1,
 }</code></pre>
-					<p>The recommended way is to use the <a href="../classes/standards_src44.profiledataclient.html">ProfileDataClient</a> to fetch or set profile data from Accounts, Smart Contracts and/or Aliases</p>
-					<p>Fetching profile data</p>
+					<p>The recommended way is to use the <a href="../classes/standards_src44.descriptordataclient.html">DescriptorDataClient</a> to fetch or set descriptor data from Accounts, Smart Contracts and/or Aliases</p>
+					<p>Fetching descriptor data</p>
 					<pre><code class="language-ts"><span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
-<span class="hljs-keyword">const</span> profile = <span class="hljs-keyword">await</span> client.getFromContract(<span class="hljs-string">'23589234982349852196'</span>);</code></pre>
-					<p>Setting profile data</p>
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> DescriptorDataClient(ledger);
+<span class="hljs-keyword">const</span> descriptor = <span class="hljs-keyword">await</span> client.getFromContract(<span class="hljs-string">'23589234982349852196'</span>);</code></pre>
+					<p>Setting descriptor data</p>
 					<pre><code class="language-ts"> <span class="hljs-keyword">const</span> ledger = LedgerClientFactory.create({nodeHost: <span class="hljs-string">"https://europe.signum.network"</span>})
- <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> ProfileDataClient(ledger);
- <span class="hljs-keyword">const</span> profileData = ProfileDataBuilder
+ <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> DescriptorDataClient(ledger);
+ <span class="hljs-keyword">const</span> descriptorData = DescriptorDataBuilder
                         .create(<span class="hljs-string">'ohager'</span>)
                         .setType(<span class="hljs-string">'hum'</span>)
                         .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
@@ -150,8 +150,8 @@
                         .setHomePage(<span class="hljs-string">'https://digital-independence.dev'</span>)
                         .build();
 
- <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountProfile({
-                profileData,
+ <span class="hljs-keyword">const</span> transaction = <span class="hljs-keyword">await</span> client.setAccountDescriptor({
+                descriptorData,
                 feePlanck: <span class="hljs-string">'100'</span>,
                 senderPublicKey: <span class="hljs-string">'497d559d18d989b8....ed2716a4b2121902'</span>,
                 senderPrivateKey: <span class="hljs-string">'**********************************'</span>
@@ -165,16 +165,16 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="standards_src44.html#src44descriptortype" class="tsd-kind-icon">SRC44<wbr>Descriptor<wbr>Type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Profile<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.descriptor.html" class="tsd-kind-icon">Descriptor</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.src44descriptor.html" class="tsd-kind-icon">SRC44<wbr>Descriptor</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setaccountdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Descriptor<wbr>Args</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setaliasdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Descriptor<wbr>Args</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-kind-icon">Set<wbr>Asset<wbr>Branding<wbr>Args</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-kind-icon">Set<wbr>Contract<wbr>Branding<wbr>Args</a></li>
 							</ul>
@@ -182,9 +182,9 @@
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.descriptordata.html" class="tsd-kind-icon">Descriptor<wbr>Data</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.descriptordatabuilder.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Builder</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/standards_src44.descriptordataclient.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Client</a></li>
 							</ul>
 						</section>
 					</div>
@@ -193,19 +193,19 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="src44profiletype" class="tsd-anchor"></a>
-					<h3>SRC44<wbr>Profile<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">SRC44<wbr>Profile<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"hum"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"smc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"biz"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"dex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"oth"</span></div>
+					<a name="src44descriptortype" class="tsd-anchor"></a>
+					<h3>SRC44<wbr>Descriptor<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">SRC44<wbr>Descriptor<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"hum"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"smc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"biz"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"cex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"dex"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"tok"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"oth"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1ee268d/packages/standards/src/src44/typings/src44ProfileType.ts#L12">packages/standards/src/src44/typings/src44ProfileType.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/46e016b/packages/standards/src/src44/typings/SRC44DescriptorType.ts#L12">packages/standards/src/src44/typings/SRC44DescriptorType.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>SRC44 Compliant type slugs</p>
 						</div>
-						<p>See <a href="../classes/standards_src44.profiledata.html">ProfileData</a> and <a href="../classes/standards_src44.profiledatabuilder.html">ProfileDataBuilder</a> to create, update this structure</p>
+						<p>See <a href="../classes/standards_src44.descriptordata.html">DescriptorData</a> and <a href="../classes/standards_src44.descriptordatabuilder.html">DescriptorDataBuilder</a> to create, update this structure</p>
 					</div>
 				</section>
 			</section>
@@ -251,25 +251,25 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/standards_src44.profiledata.html" class="tsd-kind-icon">Profile<wbr>Data</a>
+						<a href="../classes/standards_src44.descriptordata.html" class="tsd-kind-icon">Descriptor<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/standards_src44.profiledatabuilder.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Builder</a>
+						<a href="../classes/standards_src44.descriptordatabuilder.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Builder</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/standards_src44.profiledataclient.html" class="tsd-kind-icon">Profile<wbr>Data<wbr>Client</a>
+						<a href="../classes/standards_src44.descriptordataclient.html" class="tsd-kind-icon">Descriptor<wbr>Data<wbr>Client</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.profile.html" class="tsd-kind-icon">Profile</a>
+						<a href="../interfaces/standards_src44.descriptor.html" class="tsd-kind-icon">Descriptor</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.src44profile.html" class="tsd-kind-icon">SRC44<wbr>Profile</a>
+						<a href="../interfaces/standards_src44.src44descriptor.html" class="tsd-kind-icon">SRC44<wbr>Descriptor</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.setaccountprofileargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Profile<wbr>Args</a>
+						<a href="../interfaces/standards_src44.setaccountdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Descriptor<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/standards_src44.setaliasprofileargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Profile<wbr>Args</a>
+						<a href="../interfaces/standards_src44.setaliasdescriptorargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Descriptor<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/standards_src44.setassetbrandingargs.html" class="tsd-kind-icon">Set<wbr>Asset<wbr>Branding<wbr>Args</a>
@@ -278,7 +278,7 @@
 						<a href="../interfaces/standards_src44.setcontractbrandingargs.html" class="tsd-kind-icon">Set<wbr>Contract<wbr>Branding<wbr>Args</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="standards_src44.html#src44profiletype" class="tsd-kind-icon">SRC44<wbr>Profile<wbr>Type</a>
+						<a href="standards_src44.html#src44descriptortype" class="tsd-kind-icon">SRC44<wbr>Descriptor<wbr>Type</a>
 					</li>
 				</ul>
 			</nav>

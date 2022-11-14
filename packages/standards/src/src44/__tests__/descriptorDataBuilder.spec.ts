@@ -1,9 +1,9 @@
-import {ProfileDataBuilder} from '../profileDataBuilder';
+import {DescriptorDataBuilder} from '../DescriptorDataBuilder';
 
-describe('profileDataBuilder', () => {
+describe('descriptorDataBuilder', () => {
     describe('create/build', () => {
         it('should create/build as expected', () => {
-            const profileData = ProfileDataBuilder
+            const descriptorData = DescriptorDataBuilder
                 .create()
                 .setName('Some name')
                 .setAccount('895212263565386113')
@@ -20,7 +20,7 @@ describe('profileDataBuilder', () => {
                 .setSendRule('^[a-Z]{3}$')
                 .build();
 
-            expect(profileData.raw).toEqual({
+            expect(descriptorData.raw).toEqual({
                 'ac': '895212263565386113',
                 'al': 'alias',
                 'av': {
@@ -46,7 +46,7 @@ describe('profileDataBuilder', () => {
 
         it('should throw exception on invalid data - wrong mime type', () => {
             expect(() => {
-                ProfileDataBuilder
+                DescriptorDataBuilder
                     .create('Some name')
                     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'application/ecmascript')
                     .build();
@@ -54,7 +54,7 @@ describe('profileDataBuilder', () => {
         });
         it('should throw exception on invalid data - too long description', () => {
             expect(() => {
-                ProfileDataBuilder
+                DescriptorDataBuilder
                     .create('Some name')
                     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
                     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
@@ -72,7 +72,7 @@ describe('profileDataBuilder', () => {
 
         it('should throw exception on invalid data - too long description', () => {
             expect(() => {
-                ProfileDataBuilder
+                DescriptorDataBuilder
                     .create('Some name')
                     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
                     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')

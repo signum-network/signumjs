@@ -157,8 +157,8 @@ const ledger = sig$.LedgerClientFactory.create({
     nodeHost: "http://europe3.testnet.signum.network",
 });
 
-// create Profile data object
-const profileData = sig$standards.ProfileDataBuilder
+// create Descriptor data object
+const descriptorData = sig$standards.DescriptorDataBuilder
     .create('ohager')
     .setType('hum')
     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
@@ -168,10 +168,10 @@ const profileData = sig$standards.ProfileDataBuilder
     .setHomePage('https://digital-independence.dev')
     .build();
 
-// updates account profile
-const client = new sig$standards.ProfileDataClient(ledger)
-const transaction = await client.setAccountProfile({
-    profileData,
+// updates account descriptor
+const client = new sig$standards.DescriptorDataClient(ledger)
+const transaction = await client.setAccountDescriptor({
+    descriptorData,
     senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
     senderPrivateKey: '**********************************'
 });

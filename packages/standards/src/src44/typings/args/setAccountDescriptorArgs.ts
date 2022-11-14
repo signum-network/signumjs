@@ -1,12 +1,12 @@
-import {ProfileData} from '../../profileData';
+import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[ProfileDataClient.setAccountProfile]]
+ * Arguments for [[DescriptorDataClient.setAccountDescriptor]]
  * @module standards.SRC44
  */
-export interface SetAccountProfileArgs {
+export interface SetAccountDescriptorArgs {
     name?: string;
-    profileData: ProfileData;
+    descriptorData: DescriptorData;
     /**
      * If not given the minimum transaction fee is being calculated
      */
