@@ -107,6 +107,7 @@ describe('Contract Api', () => {
             signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
+                broadcasted: true,
                 unsignedTransactionBytes: 'unsignedHexMessage'
             };
 
@@ -142,6 +143,7 @@ describe('Contract Api', () => {
             signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
+                broadcasted: true,
                 unsignedTransactionBytes: 'unsignedHexMessage'
             };
 
