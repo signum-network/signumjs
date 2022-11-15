@@ -54,6 +54,20 @@ class ByteBuffer {
         }
     }
 
+    /** If setValue is undefined, returns the current needle position.
+     * Else, sets current needle to that value.
+     */
+    position(setValue?: number): number | undefined {
+        if (setValue === undefined) {
+            return this.needle;
+        }
+        this.needle = setValue;
+    }
+
+    length(): number {
+        return this.transactionBytes.length
+    }
+
     readByte(): number {
         if (this.needle + 1 > this.transactionBytes.length) {
             throw new Error('Unexpected end of input.');
@@ -131,7 +145,7 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
     rebuiltData.feeNQT = transaction.feeNQT;
     rebuiltData.publicKey = transaction.senderPublicKey;
     rebuiltData.deadline = transaction.deadline;
-    rebuiltData.amountNQT = transaction.amountNQT;
+    if (transaction.amountNQT) { rebuiltData.amountNQT = transaction.amountNQT; }
     if (transaction.recipient) { rebuiltData.recipient = transaction.recipient; }
     if (transaction.referencedTransactionFullHash) {
         rebuiltData['referencedTransactionFullHash'] = transaction.referencedTransactionFullHash;
@@ -153,6 +167,16 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
                 rebuiltData.mintable = 'true';
             }
             break;
+        case 'createATProgram':
+            if (rebuiltData.referencedTransactionFullHash) {
+                delete rebuiltData.creationBytes
+                delete rebuiltData.code
+                if (rebuiltData.data === '') delete rebuiltData.data
+                delete rebuiltData.dpages
+                delete rebuiltData.cspages
+                delete rebuiltData.uspages
+                delete rebuiltData.minActivationAmountNQT
+            }
         }
     }
     // addAttachment()
@@ -273,6 +297,9 @@ function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
                 break;
             case 'Delete':
                 break;
+            case 'CreationBytes':
+                Object.assign(data, parseCreationBytes(trBytes));
+                break;
             default:
                 throw new Error('Internal error');
             }
@@ -287,6 +314,59 @@ function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
         pastValues.push(currentValues.toString());
     }
     return data;
+}
+
+function parseCreationBytes(trBytes: ByteBuffer) {
+    const initialPos = trBytes.position();
+
+    const version = trBytes.readShort();
+    if (version !== 3 && version !== 2) {
+        throw new Error('Incorrect version for creationBytes');
+    }
+
+    const _reserved = trBytes.readShort();
+    const codePages = trBytes.readShort();
+    const dpages = trBytes.readShort();
+    const cspages = trBytes.readShort();
+    const uspages = trBytes.readShort();
+    const minActivationAmountNQT = trBytes.readLong().toString();
+
+    let codeLen = (codePages <= 1) ? trBytes.readByte() : trBytes.readShort();
+    if (codeLen === 0 && codePages === 1 && version > 2) {
+        codeLen = 256;
+    }
+    const code = trBytes.readHexString(codeLen)
+
+    let dataLen = (dpages <= 1) ? trBytes.readByte() : trBytes.readShort();
+    if (dataLen === 0 && dpages === 1 && trBytes.length() - trBytes.position() === 256 && version > 2) {
+        // Note: Could not work if there are attachments: message, messagemessageToEncrypt
+        // encryptedMessageData, messageToEncryptToSelf or encryptToSelfMessageData.
+        // The problem is that creationBytes has no size information.
+        // This is not a problem in node because the attachments with flags are stored
+        // in different fields in the database, so the creationBytes size can be calculated.
+        dataLen = 256;
+    }
+    const data = trBytes.readHexString(dataLen)
+
+    const creationBytesLen = trBytes.position() - initialPos;
+    trBytes.position(initialPos)
+    const creationBytes = trBytes.readHexString(creationBytesLen)
+
+    const retObj = {
+        creationBytes,
+        code,
+        data,
+        dpages: dpages.toString(),
+        cspages: cspages.toString(),
+        uspages: cspages.toString(),
+        minActivationAmountNQT
+    }
+    if (retObj.code === '') delete retObj.code;
+    if (retObj.data === '') delete retObj.data;
+    if (retObj.dpages === '0') delete retObj.dpages
+    if (retObj.cspages === '0') delete retObj.cspages
+    if (retObj.uspages === '0') delete retObj.uspages
+    return retObj;
 }
 
 /** From a transaction type/subtype, returns the original requestType */
@@ -316,6 +396,7 @@ const decodeRequestType = [
     { type: 21, subtype: 1, requestType: 'escrowSign', hasAttachment: true },
     { type: 21, subtype: 3, requestType: 'sendMoneySubscription', hasAttachment: true },
     { type: 21, subtype: 4, requestType: 'subscriptionCancel', hasAttachment: true },
+    { type: 22, subtype: 0, requestType: 'createATProgram', hasAttachment: true },
 ];
 
 const attachmentSpecV1: AttachmentSpec[] = [
@@ -395,6 +476,11 @@ const attachmentSpecV1: AttachmentSpec[] = [
     ] },
     { request:  'subscriptionCancel', fields: [
         { type: 'Long*1', parameterName: 'subscription' }
+    ] },
+    { request:  'createATProgram', fields: [
+        { type: 'ByteString*1', parameterName: 'name' },
+        { type: 'ShortString*1', parameterName: 'description' },
+        { type: 'CreationBytes*1' },
     ] }
 ];
 

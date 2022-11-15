@@ -10,6 +10,7 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 // Type 4 (account control): deprecated (return error?)
 // Type 20 (mining): OK
 // Type 21 (advanced payment): Missing 'sendMoneyEscrow', 'escrowSign'
+// Type 22 (automated transactions): OK
 const methodsToVerify = [
     'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
     'setAlias', 'setAccountInfo',
@@ -17,6 +18,7 @@ const methodsToVerify = [
     'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti',
     'setRewardRecipient', 'addCommitment', 'removeCommitment',
     'sendMoneySubscription', 'subscriptionCancel',
+    'createATProgram'
 ];
 
 /**
