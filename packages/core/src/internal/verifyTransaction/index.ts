@@ -5,12 +5,18 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 
 // Type 0 (payment): OK
 // Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
-// Type 2 (colored coins): Missing 'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders'
+// Type 2 (colored coins): OK
+// Type 3 (digital goods): deprecated (return error?)
+// Type 4 (account control): deprecated (return error?)
+// Type 20 (mining): OK
+// Type 21 (advanced payment): Missing 'sendMoneyEscrow', 'escrowSign'
 const methodsToVerify = [
     'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
     'setAlias', 'setAccountInfo',
     'issueAsset', 'transferAsset', 'placeAskOrder', 'placeBidOrder', 'cancelAskOrder',
-    'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti'
+    'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti',
+    'setRewardRecipient', 'addCommitment', 'removeCommitment',
+    'sendMoneySubscription', 'subscriptionCancel',
 ];
 
 /**

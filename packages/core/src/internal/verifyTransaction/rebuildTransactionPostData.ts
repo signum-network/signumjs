@@ -383,6 +383,18 @@ const attachmentSpecV1: AttachmentSpec[] = [
     { request:  'transferAssetMulti', fields: [
         { type: 'Byte*1' },
         { type: 'Long:Long*$0', parameterName: 'assetIdsAndQuantities' }
+    ] },
+    { request:  'addCommitment', fields: [
+        { type: 'Long*1', parameterName: 'amountNQT' }
+    ] },
+    { request:  'removeCommitment', fields: [
+        { type: 'Long*1', parameterName: 'amountNQT' }
+    ] },
+    { request:  'sendMoneySubscription', fields: [
+        { type: 'Int*1', parameterName: 'frequency' }
+    ] },
+    { request:  'subscriptionCancel', fields: [
+        { type: 'Long*1', parameterName: 'subscription' }
     ] }
 ];
 
