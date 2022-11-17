@@ -122,7 +122,7 @@ describe('Alias Api', () => {
     describe('buyAlias', () => {
         it('should buyAlias', async () => {
             httpMock = HttpMockBuilder.create().onPostReply(200, {'transaction': 'transactionId'},
-                'relPath?requestType=buyAlias&aliasName=aliasName&aliasId=aliasId&deadline=1440&feeNQT=100000&amountNQT=500000000&publicKey=senderPublicKey'
+                'relPath?requestType=buyAlias&aliasName=aliasName&alias=aliasId&deadline=1440&feeNQT=100000&amountNQT=500000000&publicKey=senderPublicKey'
             ).build();
             const service = createChainService(httpMock, 'relPath');
             const asset = await buyAlias(service)({
