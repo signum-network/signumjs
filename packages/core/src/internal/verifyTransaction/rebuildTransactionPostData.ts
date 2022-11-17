@@ -179,11 +179,11 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
             }
         }
     }
-    // addAttachment()
-    // addMessage()
-    // addEncryptedMessage()
-    // addRecipientPublicKey()
-    // addEncryptToSelfMessage()
+
+    rebuiltData = parseMessage(transaction.flags, rebuiltData, trBytes)
+    rebuiltData = parseEncryptedMessage(transaction.flags, rebuiltData, trBytes)
+    rebuiltData = parseEncryptToSelfMessage(transaction.flags, rebuiltData, trBytes)
+
     return {
         requestType: foundRequest.requestType,
         rebuiltData,
@@ -367,6 +367,65 @@ function parseCreationBytes(trBytes: ByteBuffer) {
     if (retObj.cspages === '0') delete retObj.cspages
     if (retObj.uspages === '0') delete retObj.uspages
     return retObj;
+}
+
+
+function parseMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+    // flag for non-encrypted message
+    const flagBit = 0b1
+    if ((transactionFlags & flagBit) === 0) {
+        return data
+    }
+    const attachmentVersion = trBytes.readByte()
+    if (attachmentVersion !== 1) {
+        throw new Error(`Unsupported 'message' flag.`);
+    }
+    const lengthBytes = trBytes.readInt()
+    const messageIsText = (lengthBytes & 0x80000000) !== 0
+    const messageLength = (lengthBytes & 0x7fffffff)
+    if (messageIsText) {
+        data.message = trBytes.readString(messageLength)
+    } else {
+        data.message = trBytes.readHexString(messageLength)
+    }
+    data.messageIsText = messageIsText ? 'true' : 'false'
+    return data
+}
+
+function parseEncryptedMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+    // flag for encrypted note
+    const flagBit = 0b10
+    if ((transactionFlags & flagBit) === 0) {
+        return data
+    }
+    const attachmentVersion = trBytes.readByte()
+    if (attachmentVersion !== 1) {
+        throw new Error(`Unsupported 'EncryptedMessage' flag.`);
+    }
+    const lengthBytes = trBytes.readInt()
+    data.messageToEncryptIsText = (lengthBytes & 0x80000000) ? 'true' : 'false'
+    const messageLength = (lengthBytes & 0x7fffffff)
+
+    data.encryptedMessageData = trBytes.readHexString(messageLength)
+    data.encryptedMessageNonce = trBytes.readHexString(32)
+    return data
+}
+
+function parseEncryptToSelfMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+    const flagBit = 0b1000
+    if ((transactionFlags & flagBit) === 0) {
+        return data
+    }
+    const attachmentVersion = trBytes.readByte()
+    if (attachmentVersion !== 1) {
+        throw new Error(`Unsupported 'EncryptedMessage' flag.`);
+    }
+    const lengthBytes = trBytes.readInt()
+    data.messageToEncryptToSelfIsText = (lengthBytes & 0x80000000) ? 'true' : 'false'
+    const messageLength = (lengthBytes & 0x7fffffff)
+    data.encryptToSelfMessageData = trBytes.readHexString(messageLength)
+    data.encryptToSelfMessageNonce = trBytes.readHexString(32)
+    return data
 }
 
 /** From a transaction type/subtype, returns the original requestType */

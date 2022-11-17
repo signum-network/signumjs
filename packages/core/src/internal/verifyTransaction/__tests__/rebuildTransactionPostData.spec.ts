@@ -16,15 +16,68 @@ describe('rebuildTransactionPostData', () => {
             expect(output.requestType).toEqual(requestType)
             expect(output.rebuiltData).toEqual(rebuiltData)
         })
-        // TODO here check attachments from flags
-        // it('should rebuild data correctly - with message (text)', () => {
-        // })
-        // it('should rebuild data correctly - with message (binary)', () => {
-        // })
-        // it('should rebuild data correctly - with encrypted message', () => {
-        // })
-        // it('should rebuild data correctly - with note to self', () => {
-        // })
+        it('should rebuild data correctly - with message (text)', () => {
+            const transactionBytes = '0020a7708d0f3d0039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20ef2c4339212c389df4261bc000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000865c0700593d3a8ae31b7d5b04cfe1531b543c7c01160000805468697320697320612074657874206d657373616765'
+            const rebuiltData = {
+                recipient: '16107620026796983538',
+                amountNQT: '12345666',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 61,
+                message: 'This is a text message',
+                messageIsText: 'true'
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - with message (binary)', () => {
+            const transactionBytes = '0020d5738d0f3d0039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20ef2c4339212c389df4261bc000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000895c070029d32af9db24429e04cfe1531b543c7c01200000005374617274696e6720626174746c652120596f75203234342076732020303133'
+            const rebuiltData = {
+                recipient: '16107620026796983538',
+                amountNQT: '12345666',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 61,
+                message: '5374617274696e6720626174746c652120596f75203234342076732020303133',
+                messageIsText: 'false'
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - with encrypted message', () => {
+            const transactionBytes = '00206d738d0f3d0039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20ef2c4339212c389df4261bc000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000895c070029d32af9db24429e04cfe1531b543c7c0140000000b3c0d56f4d06bed3d86a6adc2ade127e1755964408fc32eb5103d2103788cddf5967901285e7229e5e8ac2da7b86a0b46230c173e767187becbb2a6ed339f20a7f31d24677e0bd630659fa5480773c3570df606c41d740a950e5ad4a6fd3f6f9'
+            const rebuiltData = {
+                recipient: '16107620026796983538',
+                amountNQT: '12345666',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 61,
+                encryptedMessageData: 'b3c0d56f4d06bed3d86a6adc2ade127e1755964408fc32eb5103d2103788cddf5967901285e7229e5e8ac2da7b86a0b46230c173e767187becbb2a6ed339f20a',
+                encryptedMessageNonce: '7f31d24677e0bd630659fa5480773c3570df606c41d740a950e5ad4a6fd3f6f9',
+                messageToEncryptIsText: 'false'
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
+        it('should rebuild data correctly - with encryptToSelf message', () => {
+            const transactionBytes = '0020e4758d0f3d0039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20ef2c4339212c389df4261bc000000000040420f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000008b5c0700b7f554c6be42d97004cfe1531b543c7c0150000080850bc7101dfe7332e36037eec4eed09b0441228b89fdb74f6f541909ad8e950144f3de3858e247af130a390d0db3931ff2dda98569fae65fb52e1a9bbf374a07f2db2aa38752d290268382b8fb8f72a1be6c0cf3e1813e745c8fd2aa1d6b440a6f1645054029eb540b40964960361309'
+            const rebuiltData = {
+                recipient: '16107620026796983538',
+                amountNQT: '12345666',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 61,
+                encryptToSelfMessageData: '850bc7101dfe7332e36037eec4eed09b0441228b89fdb74f6f541909ad8e950144f3de3858e247af130a390d0db3931ff2dda98569fae65fb52e1a9bbf374a07f2db2aa38752d290268382b8fb8f72a1',
+                messageToEncryptToSelfIsText: 'true',
+                encryptToSelfMessageNonce: 'be6c0cf3e1813e745c8fd2aa1d6b440a6f1645054029eb540b40964960361309'
+            }
+            const output = rebuildTransactionPostData(transactionBytes)
+            expect(output.requestType).toEqual(requestType)
+            expect(output.rebuiltData).toEqual(rebuiltData)
+        })
     })
     describe('sendMoneyMulti', () => {
         const requestType = 'sendMoneyMulti'
