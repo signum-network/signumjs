@@ -18,6 +18,7 @@ describe('Message Api', () => {
             jest.resetAllMocks();
 
             httpMock = HttpMockBuilder.create().onPostReply(200, {
+                broadcasted: true,
                 unsignedTransactionBytes: 'unsignedHexMessage'
             }).build();
             service = createChainService(httpMock, 'relPath');

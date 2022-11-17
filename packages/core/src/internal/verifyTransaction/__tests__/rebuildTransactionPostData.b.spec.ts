@@ -115,4 +115,23 @@ describe('rebuildTransactionPostData', () => {
             expect(output.rebuiltData).toEqual(rebuiltData)
         })
     })
+    describe('rebuildTransactionPostData', () => {
+        describe('sendMessage', () => {
+            const requestType = 'sendMessage'
+            it('should rebuild data correctly - simple message', () => {
+                const transactionBytes = '0120a1798d0f180039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e3788aa907b24f1d4000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000905c0700a81e9d02f3251e0e04cfe1531b543c7c01270000805468697320697320612074657874206d65737361676520666f722073656e644d6573736167652e'
+                const rebuiltData = {
+                    recipient: '15344085518554662967',
+                    feeNQT: '1000000',
+                    publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                    deadline: 24,
+                    message: 'This is a text message for sendMessage.',
+                    messageIsText: 'true'
+                }
+                const output = rebuildTransactionPostData(transactionBytes)
+                expect(output.requestType).toEqual(requestType)
+                expect(output.rebuiltData).toEqual(rebuiltData)
+            })
+        })
+    })
 })

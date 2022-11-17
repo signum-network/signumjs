@@ -13,7 +13,7 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 // Type 22 (automated transactions): OK
 const methodsToVerify = [
     'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
-    'setAlias', 'setAccountInfo',
+    'sendMessage', 'setAlias', 'setAccountInfo',
     'issueAsset', 'transferAsset', 'placeAskOrder', 'placeBidOrder', 'cancelAskOrder',
     'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti',
     'setRewardRecipient', 'addCommitment', 'removeCommitment',
