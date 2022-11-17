@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/wallets",
-  "version": "1.0.0-rc.48",
+  "version": "1.0.0-rc.49",
   "description": "Wallets communication package for DApps in the Signum Network",
   "keywords": [
     "signum",
@@ -57,7 +57,7 @@
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@signumjs/util": "^1.0.0-rc.48",
+    "@signumjs/util": "^1.0.0-rc.49",
     "uuid": "^8.3.2"
   },
   "husky": {
