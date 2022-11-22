@@ -182,6 +182,7 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
 
     rebuiltData = parseMessage(transaction.flags, rebuiltData, trBytes)
     rebuiltData = parseEncryptedMessage(transaction.flags, rebuiltData, trBytes)
+    rebuiltData = parseRecipientPublicKey(transaction.flags, rebuiltData, trBytes)
     rebuiltData = parseEncryptToSelfMessage(transaction.flags, rebuiltData, trBytes)
 
     return {
@@ -408,6 +409,20 @@ function parseEncryptedMessage (transactionFlags: number, data: any, trBytes: By
 
     data.encryptedMessageData = trBytes.readHexString(messageLength)
     data.encryptedMessageNonce = trBytes.readHexString(32)
+    return data
+}
+
+function parseRecipientPublicKey (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+    // flag for encrypted note
+    const flagBit = 0b100
+    if ((transactionFlags & flagBit) === 0) {
+        return data
+    }
+    const attachmentVersion = trBytes.readByte()
+    if (attachmentVersion !== 1) {
+        throw new Error(`Unsupported 'RecipientPublicKey' flag.`);
+    }
+    data.recipientPublicKey = trBytes.readHexString(32)
     return data
 }
 
