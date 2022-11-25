@@ -39,6 +39,7 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  */
 export class DescriptorDataClient {
     private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
+
     /**
      * Instantiates the client.
      * Mind the dependency of the ledger client.
@@ -145,7 +146,7 @@ export class DescriptorDataClient {
                 issuer = account;
             }
             const descriptors: Descriptor[] = [];
-            const issuerAliases = await this.ledger.account.getAliases(issuer);
+            const issuerAliases = await this.ledger.account.getAliases({accountId: issuer});
             for (const alias of issuerAliases.aliases) {
                 try {
                     const descriptorData = DescriptorData.parse(alias.aliasURI);
@@ -226,7 +227,7 @@ export class DescriptorDataClient {
         try {
             const {creator} = await this.ledger.contract.getContract(contractId);
             const descriptors: Descriptor[] = [];
-            const issuerAliases = await this.ledger.account.getAliases(creator);
+            const issuerAliases = await this.ledger.account.getAliases({accountId: creator});
             for (const alias of issuerAliases.aliases) {
                 try {
                     const descriptorData = DescriptorData.parse(alias.aliasURI);
