@@ -69,10 +69,15 @@ describe('Alias Api', () => {
                     ],
                     'requestProcessingTime': 35
                 },
-                'relPath?requestType=getAliasesOnSale&firstIndex=0&lastIndex=100'
+                'relPath?requestType=getAliasesOnSale&account=accountId&buyer=buyerId&firstIndex=0&lastIndex=100'
             ).build();
             const service = createChainService(httpMock, 'relPath');
-            const asset = await getAliasesOnSale(service)(0, 100);
+            const asset = await getAliasesOnSale(service)({
+                accountId: 'accountId',
+                buyerId: 'buyerId',
+                firstIndex: 0,
+                lastIndex: 100
+            });
             expect(asset).toEqual({
                     'aliases': [
                         {

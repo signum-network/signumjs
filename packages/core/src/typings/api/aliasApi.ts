@@ -4,7 +4,7 @@ import {UnsignedTransaction} from '../unsignedTransaction';
 import {SetAliasArgs} from '../args/setAliasArgs';
 import {AliasList} from '../aliasList';
 import {ChainService} from '../../service';
-import {BuyAliasArgs, SellAliasArgs} from '../args';
+import {BuyAliasArgs, GetAliasesOnSaleArgs, SellAliasArgs} from '../args';
 
 /**
  * Alias API
@@ -44,11 +44,10 @@ export interface AliasApi {
 
     /**
      * Get all aliases, which are on sale.
-     * @param {number} firstIndex The first index; use for pagination
-     * @param {number} lastIndex The last index to be returned;  use for pagination
+     * @param {GetAliasesOnSaleArgs} args The arguments
      * @return {Promise<Alias>} The Alias List (at maximum 500 per page)
      */
-    getAliasesOnSale: (firstIndex?: number, lastIndex?: number) => Promise<AliasList>;
+    getAliasesOnSale: (args: GetAliasesOnSaleArgs) => Promise<AliasList>;
 
     /**
      * Buys an Alias
