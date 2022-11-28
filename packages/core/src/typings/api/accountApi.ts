@@ -18,6 +18,7 @@ import {RewardRecipient} from '../rewardRecipient';
 import {BlockList} from '../blockList';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {TradeHistory} from '../tradeHistory';
+import {GetAliasesArgs} from '../args/getAliasesArgs';
 
 /**
  * Account API
@@ -110,10 +111,10 @@ export interface AccountApi {
 
     /**
      * Gets the aliases of an account
-     * @param {string} accountId
+     * @param {GetAliasesArgs} args
      * @return {Promise<AliasList>} A list of aliases of given account
      */
-    getAliases: (accountId: string) => Promise<AliasList>;
+    getAliases: (args: GetAliasesArgs) => Promise<AliasList>;
 
     /**
      * Sets or Updates an Alias
