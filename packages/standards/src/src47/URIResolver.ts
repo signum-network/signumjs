@@ -9,22 +9,25 @@ import {DescriptorData} from '../src44';
  * @ignore
  */
 const AllowedTLDs = [
-    'signum',
-    'signa',
-    'sig',
-    'sns',
-    'free',
-    'web3',
-    'crypto',
-    'p2p',
-    'wallet',
     'blockhain',
-    'dex',
+    'coin',
+    'crypto',
+    'dao',
     'decentral',
+    'dex',
+    'free',
+    'p2p',
+    'sig',
+    'signa',
+    'signum',
+    'sns',
     'w3',
+    'wallet',
+    'web3',
     'x',
     'y',
-    'z'];
+    'z',
+];
 
 /**
  * @ignore
