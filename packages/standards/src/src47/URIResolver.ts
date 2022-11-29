@@ -3,7 +3,7 @@
  */
 
 import {Ledger} from '@signumjs/core';
-import {DescriptorData, DescriptorDataClient} from '../src44';
+import {DescriptorData} from '../src44';
 
 /**
  * @ignore
@@ -128,7 +128,11 @@ export class URIResolver {
      * Tries to resolve the URI
      * @param uri A compliant URI
      * @return The URL, iff exists, otherwise empty string;
-     * @throws Error if an alias does not exist, or alias descriptor is not SRC44 compliant.
+     * @throws Error if
+     * - an alias does not exist
+     * - alias descriptor is not SRC44 compliant
+     * - URI cannot be resolved,
+     * - have circular dependencies
      */
     async resolve(uri: string): Promise<string> {
         try {
