@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AssetList
+	<title>GetAliasesOnSaleArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.assetlist.html">AssetList</a>
+					<a href="core.getaliasesonsaleargs.html">GetAliasesOnSaleArgs</a>
 				</li>
 			</ul>
-			<h1>Interface AssetList</h1>
+			<h1>Interface GetAliasesOnSaleArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Asset List</p>
+						<p>The argument object for <a href="core_api.aliasapi.html#getaliasesonsale">AliasApi.getAliasesOnSale</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,12 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">Indexable</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">AssetList</span>
-							</li>
-						</ul>
+						<span class="target">GetAliasesOnSaleArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -115,9 +110,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetlist.html#assets" class="tsd-kind-icon">assets</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="core.assetlist.html#nextindex" class="tsd-kind-icon">next<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.assetlist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaliasesonsaleargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaliasesonsaleargs.html#buyerid" class="tsd-kind-icon">buyer<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaliasesonsaleargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getaliasesonsaleargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
 							</ul>
 						</section>
 					</div>
@@ -126,35 +122,64 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="assets" class="tsd-anchor"></a>
-					<h3>assets</h3>
-					<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <a href="core.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="accountid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> account<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">account<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/assetList.ts#L13">packages/core/src/typings/assetList.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/args/getAliasesOnSaleArgs.ts#L10">packages/core/src/typings/args/getAliasesOnSaleArgs.ts:10</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="nextindex" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> next<wbr>Index</h3>
-					<div class="tsd-signature tsd-kind-icon">next<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Indexable.nextIndex</p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/indexable.ts#L7">packages/core/src/typings/indexable.ts:7</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The account id of the owner, to filter alias sales by owner</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requestprocessingtime" class="tsd-anchor"></a>
-					<h3>request<wbr>Processing<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">request<wbr>Processing<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="buyerid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> buyer<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">buyer<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/assetList.ts#L14">packages/core/src/typings/assetList.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/args/getAliasesOnSaleArgs.ts#L14">packages/core/src/typings/args/getAliasesOnSaleArgs.ts:14</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The account id of the buyer, to filter alias direct offers</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="firstindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/args/getAliasesOnSaleArgs.ts#L18">packages/core/src/typings/args/getAliasesOnSaleArgs.ts:18</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The first index to be returned. Use this for pagination. Starts at 0</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="lastindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/core/src/typings/args/getAliasesOnSaleArgs.ts#L22">packages/core/src/typings/args/getAliasesOnSaleArgs.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The last index to be returned. Use this for pagination. If not set, at maximum 500 items beginning at firstIndex will be returned</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -204,16 +229,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.assetlist.html" class="tsd-kind-icon">Asset<wbr>List</a>
+						<a href="core.getaliasesonsaleargs.html" class="tsd-kind-icon">Get<wbr>Aliases<wbr>OnSale<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.assetlist.html#assets" class="tsd-kind-icon">assets</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="core.assetlist.html#nextindex" class="tsd-kind-icon">next<wbr>Index</a>
+								<a href="core.getaliasesonsaleargs.html#accountid" class="tsd-kind-icon">account<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.assetlist.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a>
+								<a href="core.getaliasesonsaleargs.html#buyerid" class="tsd-kind-icon">buyer<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getaliasesonsaleargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getaliasesonsaleargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
 							</li>
 						</ul>
 					</li>

@@ -1,3 +1,8 @@
+/**
+ * The argument object for [[AliasApi.getAliasesOnSale]]
+ *
+ * @module core
+ */
 export interface GetAliasesOnSaleArgs {
     /**
      * The account id of the owner, to filter alias sales by owner

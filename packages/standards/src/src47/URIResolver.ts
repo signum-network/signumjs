@@ -29,7 +29,7 @@ const AllowedTLDs = [
  * @ignore
  */
 interface URI {
-    schema: 'http' | 'https' | 'signum';
+    schema: string;
     subdomain?: string;
     domain: string;
     tld?: string;
@@ -51,7 +51,7 @@ const assertTLD = (tld: string) => {
  *
  * ```ts
  * const resolver = new URIResolver(ledger);
- * const resolvedURL = await resolver.resolve("http://arts.johndoe");
+ * const resolvedURL = await resolver.resolve("signum://arts.johndoe");
  * ```
  *
  * @module standards.SRC47
