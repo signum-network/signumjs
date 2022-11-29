@@ -59,6 +59,12 @@ const assertTLD = (tld: string) => {
  * const resolvedURL = await resolver.resolve("signum://arts.johndoe");
  * ```
  *
+ * Or get the account Id (if set)
+ *
+ * ```ts
+ * const resolver = new URIResolver(ledger);
+ * const accountId = await resolver.resolve("signum://arts.johndoe/ac");
+ * ```
  * @module standards.SRC47
  */
 export class URIResolver {
