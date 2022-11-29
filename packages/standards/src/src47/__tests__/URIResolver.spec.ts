@@ -2,7 +2,7 @@ import {URIResolver} from '../URIResolver';
 
 const TestAliases = {
     'johndoe': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com'})
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
     // single hop
     'johndoe1': {
@@ -22,7 +22,7 @@ const TestAliases = {
         aliasURI: JSON.stringify({vs: 1, nm: 'arts', hp: 'https://signumart.io/profile/123456', al: 'jd00004'})
     },
     'jd00004': {
-        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337'})
+        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337', 'x-custom': {foo: 'bar'}})
     },
     // circular deps - #1
     'johndoe3': {
@@ -85,6 +85,14 @@ describe('URIResolver', () => {
                         expect(url).toEqual('https://johndoe.com');
                         // and all the other domains
                     });
+                    it('should resolve deeply', async () => {
+                        // @ts-ignore
+                        const resolver = new URIResolver(MockLedger);
+                        const accountId = await resolver.resolve('signum://johndoe/ac');
+                        expect(accountId).toEqual('1234567891011121314');
+                        const custom = await resolver.resolve('signum://johndoe/x-custom');
+                        expect(custom).toEqual({foo: 'bar'});
+                    });
                 }
             );
             describe('subdomain', () => {
@@ -107,6 +115,14 @@ describe('URIResolver', () => {
                         expect(url).toEqual('https://twitter.com/jd1337');
                         url = await resolver.resolve('http://$social.johndoe2');
                         expect(url).toEqual('https://twitter.com/jd1337');
+                    });
+                    it('should resolve deeply', async () => {
+                        // @ts-ignore
+                        const resolver = new URIResolver(MockLedger);
+                        const accountId = await resolver.resolve('signum://johndoe/ac');
+                        expect(accountId).toEqual('1234567891011121314');
+                        const custom = await resolver.resolve('http://$social.johndoe2/x-custom');
+                        expect(custom).toEqual({foo: 'bar'});
                     });
                 }
             );
@@ -181,6 +197,17 @@ describe('URIResolver', () => {
                         } catch (e) {
                             expect(e.message).toMatch('Could not resolve: https://meeeeh');
                         }
+                    });
+                    it('should throw when deep field not available', async () => {
+                        try {
+                            // @ts-ignore
+                            const resolver = new URIResolver(MockLedger);
+                            await resolver.resolve('signum://johndoe/invalid');
+                            fail('Expect exception');
+                        } catch (e) {
+                            expect(e.message).toMatch('Could not resolve: signum://johndoe/invalid');
+                        }
+
                     });
                 }
             );
