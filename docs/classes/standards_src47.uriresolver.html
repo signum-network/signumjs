@@ -96,6 +96,9 @@
 					<p>Resolves SRC47 compliant URIs via Signums Alias system to URLs</p>
 					<pre><code class="language-ts"><span class="hljs-keyword">const</span> resolver = <span class="hljs-keyword">new</span> URIResolver(ledger);
 <span class="hljs-keyword">const</span> resolvedURL = <span class="hljs-keyword">await</span> resolver.resolve(<span class="hljs-string">"signum://arts.johndoe"</span>);</code></pre>
+					<p>Or get the account Id (if set)</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> resolver = <span class="hljs-keyword">new</span> URIResolver(ledger);
+<span class="hljs-keyword">const</span> accountId = <span class="hljs-keyword">await</span> resolver.resolve(<span class="hljs-string">"signum://arts.johndoe/ac"</span>);</code></pre>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -138,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/standards/src/src47/URIResolver.ts#L59">packages/standards/src/src47/URIResolver.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fc13942/packages/standards/src/src47/URIResolver.ts#L70">packages/standards/src/src47/URIResolver.ts:70</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -164,7 +167,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/standards/src/src47/URIResolver.ts#L69">packages/standards/src/src47/URIResolver.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fc13942/packages/standards/src/src47/URIResolver.ts#L80">packages/standards/src/src47/URIResolver.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,13 +195,13 @@
 					<a name="resolve" class="tsd-anchor"></a>
 					<h3>resolve</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/a796cfc/packages/standards/src/src47/URIResolver.ts#L137">packages/standards/src/src47/URIResolver.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/fc13942/packages/standards/src/src47/URIResolver.ts#L153">packages/standards/src/src47/URIResolver.ts:153</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -226,8 +229,8 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The URL, iff exists, otherwise empty string;</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The URL or internal path, iff exists.</p>
 						</li>
 					</ul>
 				</section>
