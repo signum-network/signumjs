@@ -20,11 +20,6 @@ or using [yarn](https://yarnpkg.com/):
 yarn add @signumjs/standards
 ```
 
-#### Example
-
-```js
-```
-
 ### Using in classic `<script>`
 
 Each package is available as bundled standalone library using UMD.
@@ -35,10 +30,6 @@ Just import the package using the HTML `<script>` tag.
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js'></script>`
 
-#### Example
-
-```js
-```
 
 See more here:
 
