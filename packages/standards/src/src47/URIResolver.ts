@@ -21,6 +21,7 @@ const AllowedTLDs = [
     'blockhain',
     'dex',
     'decentral',
+    'w3',
     'x',
     'y',
     'z'];
