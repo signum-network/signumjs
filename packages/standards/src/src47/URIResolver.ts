@@ -133,6 +133,7 @@ export class URIResolver {
     async resolve(uri: string): Promise<string> {
         try {
 
+            const visitedAliases = new Set<string>();
             const {domain, subdomain} = this.parseURI(uri);
             let alias = await this.ledger.alias.getAliasByName(domain);
             let descriptor = DescriptorData.parse(alias.aliasURI);
@@ -140,8 +141,8 @@ export class URIResolver {
             if (!subdomain) {
                 return descriptor.homePage;
             }
+            visitedAliases.add(domain);
 
-            const visitedAliases = new Set<string>();
             let stopSearch = !descriptor.alias;
             while (!stopSearch) {
                 alias = await this.ledger.alias.getAliasByName(descriptor.alias);

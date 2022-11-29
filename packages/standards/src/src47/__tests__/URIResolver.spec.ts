@@ -4,12 +4,14 @@ const TestAliases = {
     'johndoe': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com'})
     },
+    // single hop
     'johndoe1': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001'})
     },
     'jd00001': {
         aliasURI: JSON.stringify({vs: 1, nm: 'arts', hp: 'https://signumart.io/profile/123456'})
     },
+    // multi hop
     'johndoe2': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
     },
@@ -21,6 +23,26 @@ const TestAliases = {
     },
     'jd00004': {
         aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337'})
+    },
+    // circular deps - #1
+    'johndoe3': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00005'})
+    },
+    'jd00005': {
+        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337', al: 'jd00006'})
+    },
+    'jd00006': {
+        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337', al: 'johndoe3'}) // refs to initial
+    },
+    // circular deps - #2
+    'johndoe4': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00007'})
+    },
+    'jd00007': {
+        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337', al: 'jd00008'})
+    },
+    'jd00008': {
+        aliasURI: JSON.stringify({vs: 1, nm: 'social', hp: 'https://twitter.com/jd1337', al: 'jd00007'}) // refs to previous
     }
 };
 
@@ -108,6 +130,26 @@ describe('URIResolver', () => {
                             fail('Expect exception');
                         } catch (e) {
                             expect(e.message).toMatch('Could not resolve: http://weird.johndoe1.x');
+                        }
+                    });
+                    it('stops circular dependency - to initial domain alias', async () => {
+                        try {
+                            // @ts-ignore
+                            const resolver = new URIResolver(MockLedger);
+                            await resolver.resolve('http://weird.johndoe3.x');
+                            fail('Expect exception');
+                        } catch (e) {
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe3.x');
+                        }
+                    });
+                    it('stops circular dependency - to some internal alias', async () => {
+                        try {
+                            // @ts-ignore
+                            const resolver = new URIResolver(MockLedger);
+                            await resolver.resolve('http://weird.johndoe4.x');
+                            fail('Expect exception');
+                        } catch (e) {
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe4.x');
                         }
                     });
                     it('invalid Uri - #1', async () => {
