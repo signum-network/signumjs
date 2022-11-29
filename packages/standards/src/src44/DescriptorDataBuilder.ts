@@ -79,7 +79,6 @@ export class DescriptorDataBuilder {
         return this;
     }
 
-
     setType(t: SRC44DescriptorType) {
         this.data.raw.tp = t;
         return this;

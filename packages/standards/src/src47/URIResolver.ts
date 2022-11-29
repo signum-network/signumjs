@@ -1,5 +1,13 @@
-import {Ledger} from '@signumjs/core';
+/**
+ * Copyright (c) 2022 Signum Network
+ */
 
+import {Ledger} from '@signumjs/core';
+import {DescriptorData, DescriptorDataClient} from '../src44';
+
+/**
+ * @ignore
+ */
 const AllowedTLDs = [
     'signum',
     'signa',
@@ -17,6 +25,9 @@ const AllowedTLDs = [
     'y',
     'z'];
 
+/**
+ * @ignore
+ */
 interface URI {
     schema: 'http' | 'https' | 'signum';
     subdomain?: string;
@@ -24,6 +35,9 @@ interface URI {
     tld?: string;
 }
 
+/**
+ * @ignore
+ */
 const assertTLD = (tld: string) => {
     if (AllowedTLDs.indexOf(tld) === -1) {
         throw new Error(`Invalid SRC47 URI - Unsupported TLD: ${tld}`);
@@ -31,12 +45,27 @@ const assertTLD = (tld: string) => {
 };
 
 /**
+ * URI Resolver
  *
+ * Resolves SRC47 compliant URIs via Signums Alias system to URLs
+ *
+ * ```ts
+ * const resolver = new URIResolver(ledger);
+ * const resolvedURL = await resolver.resolve("http://arts.johndoe");
+ * ```
+ *
+ * @module standards.SRC47
  */
 export class URIResolver {
     constructor(private ledger: Ledger) {
     }
 
+    /**
+     * Parses the URI
+     * @param uri
+     * @return The parsed URI components
+     * @throws Error if URI is not compliant
+     */
     public parseURI(uri: string): URI {
         const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(\.(?<tld>\w+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
@@ -95,12 +124,38 @@ export class URIResolver {
         };
     }
 
-    public assertValidURI(uri: string) {
-        const parsed = this.parseURI(uri);
-    }
+    /**
+     * Tries to resolve the URI
+     * @param uri A compliant URI
+     * @return The URL, iff exists, otherwise empty string;
+     * @throws Error if an alias does not exist, or alias descriptor is not SRC44 compliant.
+     */
+    async resolve(uri: string): Promise<string> {
+        try {
 
-    async resolve(uri: string): Promise<URL> {
+            const {domain, subdomain} = this.parseURI(uri);
+            let alias = await this.ledger.alias.getAliasByName(domain);
+            let descriptor = DescriptorData.parse(alias.aliasURI);
 
-        return new URL('http://ohager.com');
+            if (!subdomain) {
+                return descriptor.homePage;
+            }
+
+            const visitedAliases = new Set<string>();
+            let stopSearch = !descriptor.alias;
+            while (!stopSearch) {
+                alias = await this.ledger.alias.getAliasByName(descriptor.alias);
+                descriptor = DescriptorData.parse(alias.aliasURI);
+                if (descriptor.name === subdomain) {
+                    return descriptor.homePage;
+                }
+                stopSearch = visitedAliases.has(descriptor.alias) || !descriptor.alias;
+                visitedAliases.add(descriptor.alias);
+            }
+            throw new Error(); // cannot resolve
+        // @ts-ignore
+        } catch (e: any) {
+            throw new Error(`Could not resolve: ${uri}`);
+        }
     }
 }
