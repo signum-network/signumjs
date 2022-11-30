@@ -149,6 +149,7 @@ export class URIResolver {
      * - alias descriptor is not SRC44 compliant
      * - URI cannot be resolved,
      * - have circular dependencies
+     * - maxed out (>100 iterations
      */
     async resolve(uri: string): Promise<string | unknown> {
 
