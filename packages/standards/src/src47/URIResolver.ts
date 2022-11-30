@@ -173,13 +173,14 @@ export class URIResolver {
             visitedAliases.add(domain);
 
             let stopSearch = !descriptor.alias;
+            let iterationCount = 0;
             while (!stopSearch) {
                 alias = await this.ledger.alias.getAliasByName(descriptor.alias);
                 descriptor = DescriptorData.parse(alias.aliasURI);
                 if (descriptor.name === subdomain) {
                     return resolvePath(descriptor, path);
                 }
-                stopSearch = visitedAliases.has(descriptor.alias) || !descriptor.alias;
+                stopSearch = visitedAliases.has(descriptor.alias) || !descriptor.alias || ++iterationCount > 100;
                 visitedAliases.add(descriptor.alias);
             }
             throw new Error(); // cannot resolve
