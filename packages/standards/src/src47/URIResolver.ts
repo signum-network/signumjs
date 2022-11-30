@@ -72,12 +72,12 @@ export class URIResolver {
     }
 
     /**
-     * Parses the URI
+     * Parses the URI. This method can be used to check URI compliance
      * @param uri
      * @return The parsed URI components
      * @throws Error if URI is not compliant
      */
-    public parseURI(uri: string): URI {
+    public static parseURI(uri: string): URI {
         const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(\.(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
 
@@ -163,7 +163,7 @@ export class URIResolver {
         try {
 
             const visitedAliases = new Set<string>();
-            const {domain, subdomain, path = 'hp'} = this.parseURI(uri);
+            const {domain, subdomain, path = 'hp'} = URIResolver.parseURI(uri);
             let alias = await this.ledger.alias.getAliasByName(domain);
             let descriptor = DescriptorData.parse(alias.aliasURI);
 
