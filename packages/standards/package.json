@@ -51,8 +51,7 @@
   },
   "dependencies": {
     "@braintree/sanitize-url": "^6.0.1",
-    "@signumjs/core": "^1.0.0-rc.50",
-    "better-ajv-errors": "^1.2.0"
+    "@signumjs/core": "^1.0.0-rc.50"
   },
   "peerDependencies": {
     "@signumjs/core": "^1.0.0-rc.41"
