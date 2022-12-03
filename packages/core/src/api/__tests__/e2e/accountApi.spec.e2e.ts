@@ -75,7 +75,7 @@ describe(`[E2E] Account Api`, () => {
 
         it('should getAccountTransactions paged', async () => {
             const transactionList = await getAccountTransactions(service)({
-                accountId,
+                accountId: '13592187744525340181',
                 firstIndex: 0,
                 lastIndex: 3
             });
@@ -85,7 +85,10 @@ describe(`[E2E] Account Api`, () => {
         });
 
         it('should getAccountTransactions minimum confirmations', async () => {
-            const transactionList = await getAccountTransactions(service)({accountId, numberOfConfirmations: 1440});
+            const transactionList = await getAccountTransactions(service)({
+                accountId: '13592187744525340181',
+                numberOfConfirmations: 1440
+            });
             expect(transactionList).not.toBeUndefined();
             const {transactions} = transactionList;
             expect(transactions.length).toBeGreaterThanOrEqual(4);
@@ -108,7 +111,6 @@ describe(`[E2E] Account Api`, () => {
             const c = convertNQTStringToNumber;
             expect(c(balance.balanceNQT)).toBeGreaterThan(1);
             expect(c(balance.forgedBalanceNQT)).toBeGreaterThanOrEqual(0);
-            expect(c(balance.effectiveBalanceNXT)).toBeGreaterThan(1);
             expect(c(balance.guaranteedBalanceNQT)).toBeGreaterThan(1);
             expect(c(balance.unconfirmedBalanceNQT)).toBeGreaterThan(1);
         });

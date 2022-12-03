@@ -54,18 +54,15 @@ describe('[E2E] Contract Api', () => {
             // this is the test contract:
             // https://github.com/signum-network/signum-smartj/blob/master/src/main/java/bt/dapps/SignumArt.java
 
-            const transactionId = await publishContract(service)(
-                {
-                    codeHex: environment.testContractCodeHex,
-                    feePlanck: '',
-                    activationAmountPlanck: Amount.fromSigna(10).getPlanck(),
-                    senderPublicKey: senderKeys.publicKey,
-                    senderPrivateKey: senderKeys.signPrivateKey,
-                    description: '[E2E] SignumJS publishContract Test',
-                    name: 'Echo',
-                }
-            ) as TransactionId;
-            expect(transactionId.transaction).toBeDefined();
+            const response = await publishContract(service)({
+                codeHex: environment.testContractCodeHex,
+                feePlanck: '',
+                activationAmountPlanck: Amount.fromSigna(10).getPlanck(),
+                senderPublicKey: senderKeys.publicKey,
+                description: '[E2E] SignumJS publishContract Test',
+                name: 'Echo',
+            });
+            expect(response.unsignedTransactionBytes).toBeDefined();
         });
 
         it('should publishContract with initial data stack', async () => {
@@ -92,19 +89,16 @@ describe('[E2E] Contract Api', () => {
                 CurrentPrice
             ];
 
-            const transactionId = await publishContract(service)(
-                {
-                    codeHex: environment.testContractCodeHex,
-                    feePlanck: '',
-                    activationAmountPlanck: Amount.fromSigna(10).getPlanck(),
-                    senderPublicKey: senderKeys.publicKey,
-                    senderPrivateKey: senderKeys.signPrivateKey,
-                    description: '[E2E] SignumJS publishContract Test with initial datastack',
-                    name: 'E2ESignumJS',
-                    data: initialData
-                }
-            ) as TransactionId;
-            expect(transactionId.transaction).toBeDefined();
+            const transactionId = await publishContract(service)({
+                codeHex: environment.testContractCodeHex,
+                feePlanck: '',
+                activationAmountPlanck: Amount.fromSigna(10).getPlanck(),
+                senderPublicKey: senderKeys.publicKey,
+                description: '[E2E] SignumJS publishContract Test with initial datastack',
+                name: 'E2ESignumJS',
+                data: initialData
+            });
+            expect(transactionId.unsignedTransactionBytes).toBeDefined();
         });
 
         it('should publishContractByReference with initial data stack', async () => {
@@ -129,19 +123,15 @@ describe('[E2E] Contract Api', () => {
                 Status,
             ];
 
-            const transactionId = await publishContractByReference(service)(
-                {
-                    referencedTransactionHash: '874E9938B0B42192EAFD98CE069BAE96E6D6C2F2AFA0221614F926795520FE4A',
-                    feePlanck: '',
-                    activationAmountPlanck: Amount.fromSigna(10).getPlanck(),
-                    senderPublicKey: senderKeys.publicKey,
-                    senderPrivateKey: senderKeys.signPrivateKey,
-                    description: '[E2E] SignumJS publishContractByReference Test with initial datastack',
-                    name: 'E2ESignumJS',
-                    data: initialData
-                }
-            ) as TransactionId;
-            expect(transactionId.transaction).toBeDefined();
+            const transactionId = await publishContractByReference(service)({
+                referencedTransactionHash: '874E9938B0B42192EAFD98CE069BAE96E6D6C2F2AFA0221614F926795520FE4A',
+                feePlanck: '',
+                senderPublicKey: senderKeys.publicKey,
+                description: '[E2E] SignumJS publishContractByReference Test with initial datastack',
+                name: 'E2ESignumJS',
+                data: initialData
+            });
+            expect(transactionId.unsignedTransactionBytes).toBeDefined();
         });
     });
 });
