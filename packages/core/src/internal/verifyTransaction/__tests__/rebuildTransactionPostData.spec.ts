@@ -236,6 +236,7 @@ describe('rebuildTransactionPostData', () => {
                 description: '',
                 quantityQNT: '100000',
                 decimals: '2',
+                mintable: 'false',
                 feeNQT: '15000000000',
                 publicKey: 'be133a1d9975df01db57b664b9d5278e7f7273428b94a9a58f47060c780da821',
                 deadline: 23

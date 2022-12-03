@@ -165,11 +165,13 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
         case 'issueAsset':
             if (rebuiltData.mintable === '1') {
                 rebuiltData.mintable = 'true';
+            } else {
+                rebuiltData.mintable = 'false';
             }
             break;
         case 'createATProgram':
+            delete rebuiltData.creationBytes
             if (rebuiltData.referencedTransactionFullHash) {
-                delete rebuiltData.creationBytes
                 delete rebuiltData.code
                 if (rebuiltData.data === '') delete rebuiltData.data
                 delete rebuiltData.dpages

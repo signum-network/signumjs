@@ -44,16 +44,39 @@ export function verifyTransaction(method: string, parameters: any, response: any
     }
     let nParameters = 0;
     for (const prop in parameters) {
-        if (String(parameters[prop]) !== String(rebuiltObject.rebuiltData[prop])) {
-            throw new Error('Verification failed - Node Response does not match transaction parameters (B)');
+        switch (prop) {
+        case 'broadcast':
+            // properties to ignore 
+            continue;
+        case 'referencedTransactionFullHash':
+        case 'senderPublicKey':
+        case 'recipientPublicKey':
+        case 'data':
+        case 'code':
+        case 'encryptedMessageData':
+        case 'encryptedMessageNonce':
+        case 'encryptToSelfMessageData':
+        case 'encryptToSelfMessageNonce':
+            // case insensitive properties
+            if (String(parameters[prop]).toLocaleLowerCase() !== String(rebuiltObject.rebuiltData[prop]).toLocaleLowerCase()) {
+                throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
+            }
+            break;
+        default:
+            // case sensitive properties
+            if (String(parameters[prop]) !== String(rebuiltObject.rebuiltData[prop])) {
+                throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
+            }
         }
-        nParameters++;
+        if (parameters[prop] !== undefined) {
+            nParameters++;
+        }
     }
     let nRebuilt = 0;
     for (const _prop in rebuiltObject.rebuiltData) {
         nRebuilt++;
     }
     if (nParameters !== nRebuilt) {
-        throw new Error('Verification failed - Node Response does not match transaction parameters (C)');
+        throw new Error('Verification failed - Node Response has different number of parameters');
     }
 }
