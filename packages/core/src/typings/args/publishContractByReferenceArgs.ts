@@ -4,7 +4,6 @@ import {ContractData} from '@signumjs/contracts';
 /**
  * The argument object for [[ContractApi.publishContractByReference]]
  *
- * @param activationAmountPlanck {string} The amount in planck needed to execute the contract
  * @param referencedTransactionHash {string} Reference, i.e. Transactions Full Hash [[TransactionId.fullHash]],
  * to the already deployed contract
  * @param description {string} The description of your contract (max. 1000 chars)
@@ -16,7 +15,6 @@ import {ContractData} from '@signumjs/contracts';
  * @module core
  */
 export interface PublishContractByReferenceArgs extends DefaultSendArgs {
-    activationAmountPlanck: string;
     description: string;
     name: string;
     referencedTransactionHash: string;

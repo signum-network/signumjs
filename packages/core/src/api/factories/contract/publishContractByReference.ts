@@ -29,15 +29,10 @@ export const publishContractByReference = (service: ChainService) =>
                 deadline: a.deadline || DefaultDeadline,
                 description: a.description,
                 feeNQT,
-                minActivationAmountNQT: a.activationAmountPlanck,
                 referencedTransactionFullHash: a.referencedTransactionHash,
                 name: a.name,
                 publicKey: a.senderPublicKey,
                 data: dataHex || undefined,
-                // set to fixed values as they will be pulled by the original contract
-                cspages: 1,
-                dpages: 1,
-                uspages: 1,
                 broadcast: true,
             };
 
