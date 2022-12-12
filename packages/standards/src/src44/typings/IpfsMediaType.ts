@@ -5,7 +5,6 @@
 /**
  * Type for media data used in SRC44
  *
- * @internal
  * @module standards.SRC44
  */
 export interface IpfsMediaType {
