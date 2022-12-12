@@ -15,9 +15,10 @@ import {parseIpfsMedia} from './parseIpfsMedia';
  *
  * @internal
  * @param json
+ * @param strict
  * @module standards.SRC44
  */
-export function validateSRC44(json: SRC44Descriptor) {
+export function validateSRC44(json: SRC44Descriptor, strict = true) {
     const MaxLength = 1000;
     const DsLength = 384;
     const NmLength = 24;
@@ -25,9 +26,9 @@ export function validateSRC44(json: SRC44Descriptor) {
     const HpLength = 128;
     const ScItemLength = 3;
     const ScItemUrlLength = 92;
-    const AllowedTypes = ['hum', 'smc', 'biz', 'cex', 'dex', 'oth'];
+    const AllowedTypes = ['hum', 'smc', 'biz', 'cex', 'dex', 'oth', 'tok', 'bot'];
     try {
-        if (json.vs !== 1) {
+        if (strict && json.vs !== 1) {
             throw new Error(`vs is required and must be 1 - Got ${json.vs}`);
         }
 
@@ -51,15 +52,15 @@ export function validateSRC44(json: SRC44Descriptor) {
             throw new Error(`al must match /^\\w{1,100}$/ - Got ${json.al}`);
         }
 
-        if (json.ac && !/^\d{18,22}$/.test(json.ac)) {
-            throw new Error(`ac must match /^\\d{18,22}$/ - Got ${json.ac}`);
+        if (json.ac && !/^\d{10,22}$/.test(json.ac)) {
+            throw new Error(`ac must match /^\\d{10,22}$/ - Got ${json.ac}`);
         }
 
 
         // xt is just a IPFS CID string
         // sr is just a regex string
 
-        if (json.tp && AllowedTypes.indexOf(json.tp) < 0) {
+        if (strict && json.tp && AllowedTypes.indexOf(json.tp) < 0) {
             throw new Error(`tp must be one of [${AllowedTypes.join(',')}] - Got ${json.tp}`);
         }
 

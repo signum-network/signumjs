@@ -20,6 +20,28 @@ describe('validateSRC44', () => {
                 'sc': ['https://twitter.com/bittrex']
             });
         });
+
+        it('should be fine - less strict', () => {
+
+            // no vs and different type
+            validateSRC44({
+                // @ts-ignore
+                'tp': 'foo',
+                'id': 'id',
+                'ac': '895212263565386113',
+                'nm': 'Bittrex',
+                'ds': 'World class exchange at your service',
+                'av': { 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif' },
+                'bg': { 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg' },
+                'hp': 'https://bittrex.com',
+                'sr': '^[0-9a-fA-F]{24}$',
+                'al': 'somealias',
+                'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                'sc': ['https://twitter.com/bittrex'],
+                'x-custom': 'bla blubb'
+            }, false);
+        });
+
         it('throws error for too large object', () => {
             expect(() => {
                 validateSRC44({
@@ -154,7 +176,7 @@ describe('validateSRC44', () => {
                     // @ts-ignore
                     tp: 'foo'
                 });
-            }).toThrow('tp must be one of [hum,smc,biz,cex,dex,oth] - Got foo');
+            }).toThrow('tp must be one of [hum,smc,biz,cex,dex,oth,tok,bot] - Got foo');
         });
     });
 
@@ -202,7 +224,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     ac: '12432452'
                 });
-            }).toThrow('ac must match /^\\d{18,22}$/ - Got 12432452');
+            }).toThrow('ac must match /^\\d{10,22}$/ - Got 12432452');
         });
         it('throws error for beign too large', () => {
             expect(() => {
@@ -211,7 +233,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     ac: '74'.repeat(30)
                 });
-            }).toThrow('ac must match /^\\d{18,22}$/');
+            }).toThrow('ac must match /^\\d{10,22}$/');
         });
     });
 

@@ -1,7 +1,8 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import { SRC44ParseException } from "./exceptions";
+import { SRC44ParseException } from './exceptions';
+import {IpfsMediaType} from './typings';
 
 /**
  *
@@ -11,7 +12,7 @@ import { SRC44ParseException } from "./exceptions";
  * @param o
  * @module standards.SRC44
  */
-export function parseIpfsMedia(o: object) {
+export function parseIpfsMedia(o: object): IpfsMediaType {
     if (!o) {
         return undefined;
     }

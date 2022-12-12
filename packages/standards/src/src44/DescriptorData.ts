@@ -17,7 +17,7 @@ import { parseIpfsMedia } from './parseIpfsMedia';
  */
 export class DescriptorData {
 
-    private constructor(private data: SRC44Descriptor) {
+    private constructor(private data: SRC44Descriptor, private strict: boolean) {
         this.validate();
     }
 
@@ -82,23 +82,28 @@ export class DescriptorData {
     }
 
     /**
-     * Creates a bare minimum SRC44 descriptor instance.
+     * Creates a bare minimum, but strict, SRC44 descriptor instance.
      * @param name The name
      */
     public static create(name?: string) {
         return new DescriptorData({
             vs: 1,
             nm: name
-        });
+        }, true);
     }
 
     /**
      * Creates/Parses a SRC44 compliant descriptor string
      * @param jsonString The SRC44 compliant string. See also [[stringify]]
+     * @param strict If true, the standard check is more strictly
      */
-    public static parse(jsonString: string) {
+    public static parse(jsonString: string,  strict = true) {
         try {
-            return new DescriptorData(JSON.parse(jsonString));
+            const json = JSON.parse(jsonString);
+            if (!strict && !json.vs) {
+                json.vs = 1;
+            }
+            return new DescriptorData(json, strict);
         // @ts-ignore
         } catch (e: any) {
             throw new SRC44ParseException(e.message);
@@ -141,7 +146,7 @@ export class DescriptorData {
      * @throws in case of invalid data.
      */
     public validate() {
-        validateSRC44(this.raw);
+        validateSRC44(this.raw, this.strict);
     }
 
     /**
