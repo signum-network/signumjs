@@ -1,6 +1,19 @@
 import {DescriptorData} from '../DescriptorData';
 
-const TestObject1 = {
+const TestObjectNotStrict = {
+    'tp': 'foo',
+    'nm': 'Bittrex',
+    'ds': 'World class exchange at your service',
+    'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
+    'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
+    'hp': 'https://bittrex.com',
+    'sr': '^[0-9a-fA-F]{24}$',
+    'al': 'somealias',
+    'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+    'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
+};
+
+const TestObjectStrict = {
     'vs': 1,
     'tp': 'cex',
     'nm': 'Bittrex',
@@ -18,7 +31,7 @@ const TestObject1 = {
 describe('descriptorData', () => {
     describe('get', () => {
         it('should return a human friendly object', () => {
-            const descriptor = DescriptorData.parse(JSON.stringify(TestObject1));
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectStrict));
             expect(descriptor.get()).toEqual(
                 {
                     'alias': 'somealias',
@@ -47,11 +60,11 @@ describe('descriptorData', () => {
     });
     describe('stringify', () => {
         it('should stringify as expected', () => {
-            const descriptor = DescriptorData.parse(JSON.stringify(TestObject1));
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectStrict));
             expect(descriptor.stringify()).toEqual('{\"vs\":1,\"tp\":\"cex\",\"nm\":\"Bittrex\",\"ds\":\"World class exchange at your service\",\"av\":{\"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR\":\"image/gif\"},\"bg\":{\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\":\"image/jpeg\"},\"hp\":\"https://bittrex.com\",\"sr\":\"^[0-9a-fA-F]{24}$\",\"al\":\"somealias\",\"xt\":\"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc\",\"sc\":[\"https://twitter.com/bittrex\",\"https://twitter.com/bittrex2\"]}');
         });
         it('should parse as expected with custom properties', () => {
-            const t = {...TestObject1, tw: 'Twitter account', xCustom: 1111};
+            const t = {...TestObjectStrict, tw: 'Twitter account', xCustom: 1111};
             const descriptor = DescriptorData.parse(JSON.stringify(t));
             expect(descriptor.version).toBe(1);
             expect(descriptor.type).toBe('cex');
@@ -76,7 +89,7 @@ describe('descriptorData', () => {
 
         it('should throw exception if string is too long', () => {
             const t = {
-                ...TestObject1,
+                ...TestObjectStrict,
                 ds: 'x'.repeat(500)
             };
             expect(() => {
@@ -86,7 +99,7 @@ describe('descriptorData', () => {
 
         it('should throw exception if object is too large', () => {
             const t = {
-                ...TestObject1,
+                ...TestObjectStrict,
                 ds: 'x'.repeat(384),
                 xc: 'foo'.repeat(500)
             };
@@ -112,7 +125,7 @@ describe('descriptorData', () => {
     });
     describe('parse', () => {
         it('should parse as expected', () => {
-            const descriptor = DescriptorData.parse(JSON.stringify(TestObject1));
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectStrict));
             expect(descriptor.version).toBe(1);
             expect(descriptor.type).toBe('cex');
             expect(descriptor.name).toBe('Bittrex');
@@ -131,8 +144,28 @@ describe('descriptorData', () => {
             expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
             expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
         });
+        it('should parse as expected - less strict', () => {
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectNotStrict), false);
+            expect(descriptor.version).toBe(1);
+            expect(descriptor.type).toBe('foo');
+            expect(descriptor.name).toBe('Bittrex');
+            expect(descriptor.avatar).toEqual({
+                ipfsCid: 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+                mimeType: 'image/gif'
+            });
+            expect(descriptor.background).toEqual({
+                ipfsCid: 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                mimeType: 'image/jpeg'
+            });
+            expect(descriptor.description).toBe('World class exchange at your service');
+            expect(descriptor.alias).toBe('somealias');
+            expect(descriptor.homePage).toBe('https://bittrex.com');
+            expect(descriptor.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
+            expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
+            expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
+        });
         it('should parse as expected with custom properties', () => {
-            const t = {...TestObject1, tw: 'Twitter account', xCustom: 1111};
+            const t = {...TestObjectStrict, tw: 'Twitter account', xCustom: 1111};
             const descriptor = DescriptorData.parse(JSON.stringify(t));
             expect(descriptor.version).toBe(1);
             expect(descriptor.type).toBe('cex');
@@ -157,7 +190,7 @@ describe('descriptorData', () => {
 
         it('should throw exception if string is too long', () => {
             const t = {
-                ...TestObject1,
+                ...TestObjectStrict,
                 ds: 'x'.repeat(500)
             };
             expect(() => {
@@ -167,7 +200,7 @@ describe('descriptorData', () => {
 
         it('should throw exception if object is too large', () => {
             const t = {
-                ...TestObject1,
+                ...TestObjectStrict,
                 ds: 'x'.repeat(384),
                 xc: 'foo'.repeat(500)
             };
@@ -203,41 +236,41 @@ describe('descriptorData', () => {
     describe('estimateFeePlanck', () => {
         it('should calculate correct fee', () => {
             expect(DescriptorData.create('Some name').estimateFeePlanck()).toEqual('20000000');
-            expect(DescriptorData.parse(JSON.stringify(TestObject1)).estimateFeePlanck()).toEqual('60000000');
+            expect(DescriptorData.parse(JSON.stringify(TestObjectStrict)).estimateFeePlanck()).toEqual('60000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(50)
             })).estimateFeePlanck()).toEqual('80000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(75)
             })).estimateFeePlanck()).toEqual('100000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(90)
             })).estimateFeePlanck()).toEqual('120000000');
         });
         it('should calculate correct fee - baseFee = 0.02', () => {
             const BaseFee = 2000000;
             expect(DescriptorData.create('Some name').estimateFeePlanck(BaseFee)).toEqual('2000000');
-            expect(DescriptorData.parse(JSON.stringify(TestObject1)).estimateFeePlanck(BaseFee)).toEqual('6000000');
+            expect(DescriptorData.parse(JSON.stringify(TestObjectStrict)).estimateFeePlanck(BaseFee)).toEqual('6000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(50)
             })).estimateFeePlanck(BaseFee)).toEqual('8000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(75)
             })).estimateFeePlanck(BaseFee)).toEqual('10000000');
             expect(DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                 'custom': 'custom'.repeat(90)
             })).estimateFeePlanck(BaseFee)).toEqual('12000000');
         });
         it('should throw if 1000 bytes is exceeded', () => {
             expect(() => {
                 DescriptorData.parse(JSON.stringify({
-                ...TestObject1,
+                ...TestObjectStrict,
                     'custom': 'some custom content'.repeat(100)
                 })).estimateFeePlanck();
             }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed');

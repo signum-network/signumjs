@@ -1,11 +1,8 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import { SRC44DescriptorType } from './SRC44DescriptorType';
-
-interface MediaType {
-    [key: string]: string;
-}
+import {SRC44DescriptorType} from './SRC44DescriptorType';
+import {IpfsMediaType} from './IpfsMediaType';
 
 /**
  * Human friendly descriptor structure
@@ -34,11 +31,11 @@ export interface Descriptor {
     /**
      * IPFS Media Link for the Avatar
      */
-    avatar?: MediaType;
+    avatar?: IpfsMediaType;
     /**
      * IPFS Media Link for the background image
      */
-    background?: MediaType;
+    background?: IpfsMediaType;
     /**
      * Homepage - maximal 128 characters
      */
