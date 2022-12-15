@@ -44,6 +44,16 @@ export class DescriptorDataBuilder {
         return builder;
     }
 
+    /**
+     * Creates the builder instance from an existing [[DescriptorData]]
+     * @param descriptor The descriptor data
+     */
+    public static createWith(descriptor: DescriptorData) {
+        const builder = new DescriptorDataBuilder();
+        builder.data = descriptor;
+        return builder;
+    }
+
     setName(name: string) {
         this.data.raw.nm = name;
         return this;

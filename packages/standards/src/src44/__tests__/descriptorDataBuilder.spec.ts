@@ -1,4 +1,5 @@
 import {DescriptorDataBuilder} from '../DescriptorDataBuilder';
+import {DescriptorData} from '../DescriptorData';
 
 describe('descriptorDataBuilder', () => {
     describe('create/build', () => {
@@ -86,6 +87,30 @@ describe('descriptorDataBuilder', () => {
                     .setSendRule('^[a-Z]{3}$')
                     .build();
             }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed - Got 1552');
+        });
+    });
+
+    describe('createWith', () => {
+        it('should create from another Descriptor as expected', () => {
+            const builder = DescriptorDataBuilder.createWith(DescriptorData.parse(JSON.stringify({
+                'vs': 1,
+                'tp': 'cex',
+                'nm': 'Bittrex',
+                'ds': 'World class exchange at your service',
+                'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
+                'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
+                'hp': 'https://bittrex.com',
+                'sr': '^[0-9a-fA-F]{24}$',
+                'al': 'somealias',
+                'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
+            })));
+
+            const built = builder.setName('Another Name').build();
+
+            expect(built.name).toEqual('Another Name');
+            expect(built.type).toEqual('cex');
+            expect(built.alias).toEqual('somealias');
         });
     });
 });

@@ -276,4 +276,26 @@ describe('descriptorData', () => {
             }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed');
         });
     });
+    describe('clone', () => {
+        it('should clone as expected', () => {
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectStrict));
+            const cloned = descriptor.clone();
+            expect(cloned).not.toBe(descriptor);
+            expect(cloned.raw).toEqual(descriptor.raw);
+        });
+    });
+    describe('merge', () => {
+        it('should merge as expected', () => {
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectStrict));
+            const toMerge = DescriptorData.parse(JSON.stringify({
+                'vs': 1,
+                'nm': 'Another name',
+                'tp': 'hum'
+            }));
+            descriptor.merge(toMerge);
+            expect(descriptor.name).toEqual('Another name');
+            expect(descriptor.type).toEqual('hum');
+            expect(descriptor.description).toEqual('World class exchange at your service');
+        });
+    });
 });

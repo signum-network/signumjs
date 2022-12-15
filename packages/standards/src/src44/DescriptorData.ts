@@ -96,6 +96,8 @@ export class DescriptorData {
      * Creates/Parses a SRC44 compliant descriptor string
      * @param jsonString The SRC44 compliant string. See also [[stringify]]
      * @param strict If true, the standard check is more strictly
+     * @return A new instance of DescriptorData
+     * @throws SRC44ParseException in case of errors
      */
     public static parse(jsonString: string,  strict = true) {
         try {
@@ -108,6 +110,27 @@ export class DescriptorData {
         } catch (e: any) {
             throw new SRC44ParseException(e.message);
         }
+    }
+
+    /**
+     * Clones the current instance.
+     * @return A copied instance of DescriptorData
+     */
+    public clone() {
+        return new DescriptorData({...this.data}, true);
+    }
+
+    /**
+     * Merges another descriptor data instance into this one. This operation _mutates_ this instance.
+     * @param data data to be merged
+     * @return The merged result.
+     */
+    public merge(data: DescriptorData) {
+        this.data = {
+            ...this.data,
+            ...data.data
+        };
+        return this;
     }
 
     /**
