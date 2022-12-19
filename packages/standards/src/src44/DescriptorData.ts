@@ -146,7 +146,7 @@ export class DescriptorData {
      */
     get(): Descriptor {
         const {vs, nm, ds, tp, av, bg, hp, sc, sr, xt, al, id, ac, ...custom} = this.data;
-        return {
+        const result =  {
             version: this.version,
             name: this.name,
             description: this.description,
@@ -162,6 +162,15 @@ export class DescriptorData {
             id: this.id,
             ...custom
         };
+
+        return Object
+            .keys(result)
+            .reduce( (o, k) => {
+                if (result[k] !== undefined) {
+                    o[k] = result[k];
+                }
+                return o;
+            }, { version: 1});
     }
 
     /**

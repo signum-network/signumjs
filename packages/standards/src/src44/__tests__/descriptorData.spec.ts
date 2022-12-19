@@ -57,6 +57,17 @@ describe('descriptorData', () => {
                 }
             );
         });
+        it('should return a human friendly object - with correct amount of entries', () => {
+            const descriptor = DescriptorData.parse(JSON.stringify({ vs: 1, nm: 'name'}));
+            const d = descriptor.get();
+            expect(Object.entries(d)).toHaveLength(2);
+            expect(d).toEqual(
+                {
+                    'version': 1,
+                    'name': 'name',
+                }
+            );
+        });
     });
     describe('stringify', () => {
         it('should stringify as expected', () => {
