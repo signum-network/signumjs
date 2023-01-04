@@ -45,6 +45,7 @@ export * from './typings/distributionAmount';
 export * from './typings/miningInfo';
 export * from './typings/multioutRecipientAmount';
 export * from './typings/multioutAssetQuantities';
+export * from './typings/networkInfo';
 export * from './typings/peer';
 export * from './typings/peerAddressList';
 export * from './typings/rewardRecipient';
