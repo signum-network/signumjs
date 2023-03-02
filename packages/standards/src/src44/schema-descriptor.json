@@ -76,10 +76,11 @@
       "enum": [
         "hum",
         "smc",
+        "bot",
+        "tok",
         "biz",
         "cex",
         "dex",
-        "tok",
         "oth"
       ],
       "title": "The type",
