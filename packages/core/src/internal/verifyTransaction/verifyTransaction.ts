@@ -30,18 +30,13 @@ const methodsToVerify = new Set([
  * @module core
  */
 export function verifyTransaction(method: string, parameters: any, response: any) {
-    if (response.broadcasted === true || response.transactionBytes) {
+    if (response.broadcasted === true || response.transactionBytes || parameters.transactionBytes) {
         // Transaction already signed, nothing to do
         return;
     }
 
-    if (method === 'broadcastTransaction') {
-        // the broadcast can be ignored, as the real transaction was being verified already.
-        return;
-    }
-
     if (!methodsToVerify.has(method)) {
-        console.warn(`Deep verification for method '${method} is not supported yet - transaction accepted without further check`);
+        console.warn(`Deep verification for method '${method}' is not supported yet - transaction accepted without further check`);
         return;
     }
 
