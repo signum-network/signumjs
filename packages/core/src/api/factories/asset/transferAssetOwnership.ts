@@ -12,7 +12,7 @@ import {TransferAssetOwnershipArgs} from '../../../typings/args';
  *
  * Use with [[ApiComposer]] and belongs to [[AssetApi]].
  *
- * See details at [[AssetApi.transferAsset]]
+ * See details at [[AssetApi.transferAssetOwnership]]
  * @module core.api.factories
  *
  */
