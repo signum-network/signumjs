@@ -2,7 +2,7 @@ import {verifyTransaction} from '../index';
 
 describe('verifyTransaction', function () {
     it('should pass verification as expected', () => {
-        const requestType = 'sendMoney'
+        const requestType = 'sendMoney';
         const formData = {
             recipient: '16107620026796983538',
             amountNQT: '1234567',
@@ -20,8 +20,8 @@ describe('verifyTransaction', function () {
             verifyTransaction(requestType, formData, testResponse);
         }).not.toThrow();
     });
-    it('should throw error. Response is another transaction trype', () => {
-        const requestType = 'sendMoneyMultiSame'
+    it('should throw error. Response is another transaction type', () => {
+        const requestType = 'sendMoneyMultiSame';
         const formData = {
             recipients: '7009153596038865357;9285993178362147990',
             amountNQT: '112300000',
@@ -40,7 +40,7 @@ describe('verifyTransaction', function () {
         }).toThrow(/^Verification failed/);
     });
     it('should throw error. Response has field changed', () => {
-        const requestType = 'sendMoney'
+        const requestType = 'sendMoney';
         const formData = {
             recipient: '16107620026796983538',
             amountNQT: '17',
@@ -59,7 +59,7 @@ describe('verifyTransaction', function () {
         }).toThrow(/^Verification failed/);
     });
     it('should throw error. Response has more fields', () => {
-        const requestType = 'sendMoney'
+        const requestType = 'sendMoney';
         const formData = {
             recipient: '16107620026796983538',
             feeNQT: '1000000',
@@ -77,7 +77,7 @@ describe('verifyTransaction', function () {
         }).toThrow(/^Verification failed/);
     });
     it('should throw error. Response has less fields', () => {
-        const requestType = 'sendMoney'
+        const requestType = 'sendMoney';
         const formData = {
             recipient: '16107620026796983538',
             amountNQT: '112300000',

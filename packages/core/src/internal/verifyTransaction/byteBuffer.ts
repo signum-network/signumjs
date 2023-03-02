@@ -1,16 +1,21 @@
+/** @ignore */
+/** @internal */
+
 import BigNumber from 'bignumber.js';
 
 /**
- * Mini class to easily implement reading data sequentially. Expects hexstring
+ * Class to easily implement reading data sequentially. Expects hexstring
  * with big-endian bytes and methods return only positive values. Throws error
- * 
+ *
+ * @internal
+ * @module core
  */
 export default class ByteBuffer {
     private needle: number;
     private readonly transactionBytes: number[];
     private readonly hexTransactionBytes: string;
 
-    constructor (hexString: string) {
+    constructor(hexString: string) {
         this.needle = 0;
         this.transactionBytes = [];
         this.hexTransactionBytes = hexString.toLowerCase();
@@ -38,7 +43,7 @@ export default class ByteBuffer {
     }
 
     length(): number {
-        return this.transactionBytes.length
+        return this.transactionBytes.length;
     }
 
     readByte(): number {
@@ -67,7 +72,7 @@ export default class ByteBuffer {
             this.transactionBytes[this.needle + 1] * 256 +
             this.transactionBytes[this.needle + 2] * 65536 +
             this.transactionBytes[this.needle + 3] * 16777216;
-            this.needle += 4;
+        this.needle += 4;
         return intVal;
     }
 
@@ -98,7 +103,10 @@ export default class ByteBuffer {
         if (this.needle + nBytes > this.transactionBytes.length) {
             throw new Error('Unexpected end of input.');
         }
-        const escapedUTF8 = escape(String.fromCharCode.apply(null, this.transactionBytes.slice(this.needle, this.needle + nBytes)));
+        // keep escape, as this guarantees compatibility with old on-chain data
+        const escapedUTF8 = escape(
+            String.fromCharCode.apply(null, this.transactionBytes.slice(this.needle, this.needle + nBytes))
+        );
         this.needle += nBytes;
         return decodeURIComponent(escapedUTF8);
     }

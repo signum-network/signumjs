@@ -1,5 +1,8 @@
+/** @ignore */
+/** @internal */
+
 import BigNumber from 'bignumber.js';
-import ByteBuffer from './byteBuffer'
+import ByteBuffer from './byteBuffer';
 
 interface BaseTransaction {
     type?: number;
@@ -35,6 +38,7 @@ interface AttachmentSpec {
  * @param hexUnsignedBytes string with unsignedBytes
  * @returns Any object, expected to match the form data
  * @throws Error on failure
+ * @internal
  */
 export function rebuildTransactionPostData(hexUnsignedBytes: string) {
     const trBytes = new ByteBuffer(hexUnsignedBytes);
@@ -69,22 +73,22 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
             }
             break;
         case 'createATProgram':
-            delete rebuiltData.creationBytes
+            delete rebuiltData.creationBytes;
             if (rebuiltData.referencedTransactionFullHash) {
-                delete rebuiltData.code
-                if (rebuiltData.data === '') delete rebuiltData.data
-                delete rebuiltData.dpages
-                delete rebuiltData.cspages
-                delete rebuiltData.uspages
-                delete rebuiltData.minActivationAmountNQT
+                delete rebuiltData.code;
+                if (rebuiltData.data === '') { delete rebuiltData.data; }
+                delete rebuiltData.dpages;
+                delete rebuiltData.cspages;
+                delete rebuiltData.uspages;
+                delete rebuiltData.minActivationAmountNQT;
             }
         }
     }
 
-    rebuiltData = parseMessage(transaction.flags, rebuiltData, trBytes)
-    rebuiltData = parseEncryptedMessage(transaction.flags, rebuiltData, trBytes)
-    rebuiltData = parseRecipientPublicKey(transaction.flags, rebuiltData, trBytes)
-    rebuiltData = parseEncryptToSelfMessage(transaction.flags, rebuiltData, trBytes)
+    rebuiltData = parseMessage(transaction.flags, rebuiltData, trBytes);
+    rebuiltData = parseEncryptedMessage(transaction.flags, rebuiltData, trBytes);
+    rebuiltData = parseRecipientPublicKey(transaction.flags, rebuiltData, trBytes);
+    rebuiltData = parseEncryptToSelfMessage(transaction.flags, rebuiltData, trBytes);
 
     return {
         requestType: foundRequest.requestType,
@@ -161,7 +165,7 @@ function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
         let repetition: number;
         if (repetitionSpec.startsWith('$')) {
             // variable repetition, depending on previous element
-            const repVal = parseInt(repetitionSpec.substring(1));
+            const repVal = parseInt(repetitionSpec.substring(1), 10);
             repetition = parseInt(pastValues[repVal], 10);
         } else {
             // fixed repetition
@@ -237,7 +241,7 @@ function parseCreationBytes(trBytes: ByteBuffer) {
     if (codeLen === 0 && codePages === 1 && version > 2) {
         codeLen = 256;
     }
-    const code = trBytes.readHexString(codeLen)
+    const code = trBytes.readHexString(codeLen);
 
     let dataLen = (dpages <= 1) ? trBytes.readByte() : trBytes.readShort();
     if (dataLen === 0 && dpages === 1 && trBytes.length() - trBytes.position() === 256 && version > 2) {
@@ -248,11 +252,11 @@ function parseCreationBytes(trBytes: ByteBuffer) {
         // in different fields in the database, so the creationBytes size can be calculated.
         dataLen = 256;
     }
-    const data = trBytes.readHexString(dataLen)
+    const data = trBytes.readHexString(dataLen);
 
     const creationBytesLen = trBytes.position() - initialPos;
-    trBytes.position(initialPos)
-    const creationBytes = trBytes.readHexString(creationBytesLen)
+    trBytes.position(initialPos);
+    const creationBytes = trBytes.readHexString(creationBytesLen);
 
     const retObj = {
         creationBytes,
@@ -262,86 +266,86 @@ function parseCreationBytes(trBytes: ByteBuffer) {
         cspages: cspages.toString(),
         uspages: cspages.toString(),
         minActivationAmountNQT
-    }
-    if (retObj.code === '') delete retObj.code;
-    if (retObj.data === '') delete retObj.data;
-    if (retObj.dpages === '0') delete retObj.dpages
-    if (retObj.cspages === '0') delete retObj.cspages
-    if (retObj.uspages === '0') delete retObj.uspages
+    };
+    if (retObj.code === '') { delete retObj.code; }
+    if (retObj.data === '') { delete retObj.data; }
+    if (retObj.dpages === '0') { delete retObj.dpages; }
+    if (retObj.cspages === '0') { delete retObj.cspages; }
+    if (retObj.uspages === '0') { delete retObj.uspages; }
     return retObj;
 }
 
 
 function parseMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for non-encrypted message
-    const flagBit = 0b1
+    const flagBit = 0b1;
     if ((transactionFlags & flagBit) === 0) {
-        return data
+        return data;
     }
-    const attachmentVersion = trBytes.readByte()
+    const attachmentVersion = trBytes.readByte();
     if (attachmentVersion !== 1) {
         throw new Error(`Unsupported 'message' flag.`);
     }
-    const lengthBytes = trBytes.readInt()
-    const messageIsText = (lengthBytes & 0x80000000) !== 0
-    const messageLength = (lengthBytes & 0x7fffffff)
+    const lengthBytes = trBytes.readInt();
+    const messageIsText = (lengthBytes & 0x80000000) !== 0;
+    const messageLength = (lengthBytes & 0x7fffffff);
     if (messageIsText) {
-        data.message = trBytes.readString(messageLength)
+        data.message = trBytes.readString(messageLength);
     } else {
-        data.message = trBytes.readHexString(messageLength)
+        data.message = trBytes.readHexString(messageLength);
     }
-    data.messageIsText = messageIsText ? 'true' : 'false'
-    return data
+    data.messageIsText = messageIsText ? 'true' : 'false';
+    return data;
 }
 
 function parseEncryptedMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for encrypted note
-    const flagBit = 0b10
+    const flagBit = 0b10;
     if ((transactionFlags & flagBit) === 0) {
-        return data
+        return data;
     }
-    const attachmentVersion = trBytes.readByte()
+    const attachmentVersion = trBytes.readByte();
     if (attachmentVersion !== 1) {
         throw new Error(`Unsupported 'EncryptedMessage' flag.`);
     }
-    const lengthBytes = trBytes.readInt()
-    data.messageToEncryptIsText = (lengthBytes & 0x80000000) ? 'true' : 'false'
-    const messageLength = (lengthBytes & 0x7fffffff)
+    const lengthBytes = trBytes.readInt();
+    data.messageToEncryptIsText = (lengthBytes & 0x80000000) ? 'true' : 'false';
+    const messageLength = (lengthBytes & 0x7fffffff);
 
-    data.encryptedMessageData = trBytes.readHexString(messageLength)
-    data.encryptedMessageNonce = trBytes.readHexString(32)
-    return data
+    data.encryptedMessageData = trBytes.readHexString(messageLength);
+    data.encryptedMessageNonce = trBytes.readHexString(32);
+    return data;
 }
 
 function parseRecipientPublicKey (transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for encrypted note
-    const flagBit = 0b100
+    const flagBit = 0b100;
     if ((transactionFlags & flagBit) === 0) {
-        return data
+        return data;
     }
-    const attachmentVersion = trBytes.readByte()
+    const attachmentVersion = trBytes.readByte();
     if (attachmentVersion !== 1) {
         throw new Error(`Unsupported 'RecipientPublicKey' flag.`);
     }
-    data.recipientPublicKey = trBytes.readHexString(32)
-    return data
+    data.recipientPublicKey = trBytes.readHexString(32);
+    return data;
 }
 
 function parseEncryptToSelfMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
-    const flagBit = 0b1000
+    const flagBit = 0b1000;
     if ((transactionFlags & flagBit) === 0) {
-        return data
+        return data;
     }
-    const attachmentVersion = trBytes.readByte()
+    const attachmentVersion = trBytes.readByte();
     if (attachmentVersion !== 1) {
         throw new Error(`Unsupported 'EncryptedMessage' flag.`);
     }
-    const lengthBytes = trBytes.readInt()
-    data.messageToEncryptToSelfIsText = (lengthBytes & 0x80000000) ? 'true' : 'false'
-    const messageLength = (lengthBytes & 0x7fffffff)
-    data.encryptToSelfMessageData = trBytes.readHexString(messageLength)
-    data.encryptToSelfMessageNonce = trBytes.readHexString(32)
-    return data
+    const lengthBytes = trBytes.readInt();
+    data.messageToEncryptToSelfIsText = (lengthBytes & 0x80000000) ? 'true' : 'false';
+    const messageLength = (lengthBytes & 0x7fffffff);
+    data.encryptToSelfMessageData = trBytes.readHexString(messageLength);
+    data.encryptToSelfMessageNonce = trBytes.readHexString(32);
+    return data;
 }
 
 /** From a transaction type/subtype, returns the original requestType */
