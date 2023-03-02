@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2021,2022 Signum Network
+ * Modified (c) 2021,2022,2023 Signum Network
  */
 import {ChainService, ChainServiceSettings} from '../service';
 import {Api} from '../typings/api';
@@ -92,7 +92,7 @@ import {
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
     getOpenAskOrdersPerAccount,
-    burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName, transferMultipleAssets
+    burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName, transferMultipleAssets, transferAssetOwnership
 } from './factories/asset';
 import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
@@ -227,6 +227,7 @@ export function composeApi(settings: ApiSettings): Api {
             mintAsset,
             burnAsset,
             transferAsset,
+            transferAssetOwnership,
             transferMultipleAssets,
             placeAskOrder,
             placeBidOrder,

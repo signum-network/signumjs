@@ -20,7 +20,7 @@ import {
     GetAssetOpenOrdersPerAccountArgs,
     GetAssetOpenOrdersPerAssetArgs,
     GetTradeHistoryPerAccountArgs,
-    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs
+    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs, TransferAssetOwnershipArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -77,6 +77,13 @@ export interface AssetApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     transferAsset: (args: TransferAssetArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Transfer assets ownership
+     * @param args The argument object
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     */
+    transferAssetOwnership: (args: TransferAssetOwnershipArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
      * Transfer multiple (2-4) assets in one transaction.
