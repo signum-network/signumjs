@@ -2,7 +2,6 @@
 /** @internal */
 
 import {rebuildTransactionPostData} from './rebuildTransactionPostData';
-import {broadcastTransaction} from '../../api';
 
 // Type 0 (payment): OK
 // Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
