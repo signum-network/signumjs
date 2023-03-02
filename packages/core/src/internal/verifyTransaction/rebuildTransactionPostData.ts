@@ -23,15 +23,12 @@ interface BaseTransaction {
     cashBackId?: string;
 }
 
-interface AttachmentFields {
+interface AttachmentField {
     type: string;
     parameterName?: string;
 }
 
-interface AttachmentSpec {
-    request: string;
-    fields: AttachmentFields[];
-}
+type AttachmentSpec = Map<string, AttachmentField[]>;
 
 /**
  * Try to rebuild the form data based on unsignedBytes in a response.
@@ -48,8 +45,12 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
     rebuiltData.feeNQT = transaction.feeNQT;
     rebuiltData.publicKey = transaction.senderPublicKey;
     rebuiltData.deadline = transaction.deadline;
-    if (transaction.amountNQT) { rebuiltData.amountNQT = transaction.amountNQT; }
-    if (transaction.recipient) { rebuiltData.recipient = transaction.recipient; }
+    if (transaction.amountNQT) {
+        rebuiltData.amountNQT = transaction.amountNQT;
+    }
+    if (transaction.recipient) {
+        rebuiltData.recipient = transaction.recipient;
+    }
     if (transaction.referencedTransactionFullHash) {
         rebuiltData['referencedTransactionFullHash'] = transaction.referencedTransactionFullHash;
     }
@@ -62,26 +63,30 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
         rebuiltData = parseAttachment(foundRequest.requestType, rebuiltData, trBytes);
         // Some exceptions
         switch (foundRequest.requestType) {
-        case 'sendMoneyMultiSame':
-            rebuiltData.amountNQT = (new BigNumber(rebuiltData.amountNQT)).dividedBy(rebuiltData.recipients.split(';').length).toFixed(0);
-            break;
-        case 'issueAsset':
-            if (rebuiltData.mintable === '1') {
-                rebuiltData.mintable = 'true';
-            } else {
-                rebuiltData.mintable = 'false';
-            }
-            break;
-        case 'createATProgram':
-            delete rebuiltData.creationBytes;
-            if (rebuiltData.referencedTransactionFullHash) {
-                delete rebuiltData.code;
-                if (rebuiltData.data === '') { delete rebuiltData.data; }
-                delete rebuiltData.dpages;
-                delete rebuiltData.cspages;
-                delete rebuiltData.uspages;
-                delete rebuiltData.minActivationAmountNQT;
-            }
+            case 'sendMoneyMultiSame':
+                rebuiltData.amountNQT = new BigNumber(rebuiltData.amountNQT)
+                    .dividedBy(rebuiltData.recipients.split(';').length)
+                    .toFixed(0);
+                break;
+            case 'issueAsset':
+                if (rebuiltData.mintable === '1') {
+                    rebuiltData.mintable = 'true';
+                } else {
+                    rebuiltData.mintable = 'false';
+                }
+                break;
+            case 'createATProgram':
+                delete rebuiltData.creationBytes;
+                if (rebuiltData.referencedTransactionFullHash) {
+                    delete rebuiltData.code;
+                    if (rebuiltData.data === '') {
+                        delete rebuiltData.data;
+                    }
+                    delete rebuiltData.dpages;
+                    delete rebuiltData.cspages;
+                    delete rebuiltData.uspages;
+                    delete rebuiltData.minActivationAmountNQT;
+                }
         }
     }
 
@@ -143,22 +148,22 @@ function parseBaseTransaction(trByteBuffer: ByteBuffer): BaseTransaction {
  * @throw Error on failure
  */
 function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
-    let spec: AttachmentSpec;
+    let fields: AttachmentField[];
     const attachmentVersion = trBytes.readByte();
     switch (attachmentVersion) {
-    case 1:
-        spec = attachmentSpecV1.find(obj => obj.request === requestType);
-        break;
-    case 2:
-        spec = attachmentSpecV2.find(obj => obj.request === requestType);
-        break;
+        case 1:
+            fields = attachmentSpecV1.get(requestType);
+            break;
+        case 2:
+            fields = attachmentSpecV2.get(requestType);
+            break;
     }
-    if (!spec) {
+    if (!fields) {
         throw new Error(`Attachment specification not found for transaction type '${requestType}', version '${attachmentVersion}'.`);
     }
     const pastValues: string[] = [];
     let sizeOfString: number;
-    for (const item of spec.fields) {
+    for (const item of fields) {
         const itemType = item.type.split('*');
         const typeSpec = itemType[0];
         const repetitionSpec = itemType[1];
@@ -172,42 +177,42 @@ function parseAttachment(requestType: string, data: any, trBytes: ByteBuffer) {
             repetition = parseInt(repetitionSpec, 10);
         }
         const currentValues: string[] = [];
-        for (let amount = 0; amount < repetition; amount++ ) {
+        for (let amount = 0; amount < repetition; amount++) {
             switch (typeSpec) {
-            case 'ByteString':
-                sizeOfString = trBytes.readByte();
-                currentValues.push(trBytes.readString(sizeOfString));
-                break;
-            case 'ShortString':
-                sizeOfString = trBytes.readShort();
-                currentValues.push(trBytes.readString(sizeOfString));
-                break;
-            case 'Long:Long':
-                currentValues.push(
-                    trBytes.readLong().toString() +
-                    ':' +
-                    trBytes.readLong().toString()
-                );
-                break;
-            case 'Long':
-                currentValues.push(trBytes.readLong().toString());
-                break;
-            case 'Int':
-                currentValues.push(trBytes.readInt().toString());
-                break;
-            case 'Short':
-                currentValues.push(trBytes.readShort().toString());
-                break;
-            case 'Byte':
-                currentValues.push(trBytes.readByte().toString());
-                break;
-            case 'Delete':
-                break;
-            case 'CreationBytes':
-                Object.assign(data, parseCreationBytes(trBytes));
-                break;
-            default:
-                throw new Error('Internal error');
+                case 'ByteString':
+                    sizeOfString = trBytes.readByte();
+                    currentValues.push(trBytes.readString(sizeOfString));
+                    break;
+                case 'ShortString':
+                    sizeOfString = trBytes.readShort();
+                    currentValues.push(trBytes.readString(sizeOfString));
+                    break;
+                case 'Long:Long':
+                    currentValues.push(
+                        trBytes.readLong().toString() +
+                        ':' +
+                        trBytes.readLong().toString()
+                    );
+                    break;
+                case 'Long':
+                    currentValues.push(trBytes.readLong().toString());
+                    break;
+                case 'Int':
+                    currentValues.push(trBytes.readInt().toString());
+                    break;
+                case 'Short':
+                    currentValues.push(trBytes.readShort().toString());
+                    break;
+                case 'Byte':
+                    currentValues.push(trBytes.readByte().toString());
+                    break;
+                case 'Delete':
+                    break;
+                case 'CreationBytes':
+                    Object.assign(data, parseCreationBytes(trBytes));
+                    break;
+                default:
+                    throw new Error('Internal error');
             }
         }
         if (item.parameterName && (currentValues.length !== 1 || currentValues[0] !== '0')) {
@@ -267,16 +272,26 @@ function parseCreationBytes(trBytes: ByteBuffer) {
         uspages: uspages.toString(),
         minActivationAmountNQT
     };
-    if (retObj.code === '') { delete retObj.code; }
-    if (retObj.data === '') { delete retObj.data; }
-    if (retObj.dpages === '0') { delete retObj.dpages; }
-    if (retObj.cspages === '0') { delete retObj.cspages; }
-    if (retObj.uspages === '0') { delete retObj.uspages; }
+    if (retObj.code === '') {
+        delete retObj.code;
+    }
+    if (retObj.data === '') {
+        delete retObj.data;
+    }
+    if (retObj.dpages === '0') {
+        delete retObj.dpages;
+    }
+    if (retObj.cspages === '0') {
+        delete retObj.cspages;
+    }
+    if (retObj.uspages === '0') {
+        delete retObj.uspages;
+    }
     return retObj;
 }
 
 
-function parseMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+function parseMessage(transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for non-encrypted message
     const flagBit = 0b1;
     if ((transactionFlags & flagBit) === 0) {
@@ -298,7 +313,7 @@ function parseMessage (transactionFlags: number, data: any, trBytes: ByteBuffer)
     return data;
 }
 
-function parseEncryptedMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+function parseEncryptedMessage(transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for encrypted note
     const flagBit = 0b10;
     if ((transactionFlags & flagBit) === 0) {
@@ -317,7 +332,7 @@ function parseEncryptedMessage (transactionFlags: number, data: any, trBytes: By
     return data;
 }
 
-function parseRecipientPublicKey (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+function parseRecipientPublicKey(transactionFlags: number, data: any, trBytes: ByteBuffer) {
     // flag for encrypted note
     const flagBit = 0b100;
     if ((transactionFlags & flagBit) === 0) {
@@ -331,7 +346,7 @@ function parseRecipientPublicKey (transactionFlags: number, data: any, trBytes: 
     return data;
 }
 
-function parseEncryptToSelfMessage (transactionFlags: number, data: any, trBytes: ByteBuffer) {
+function parseEncryptToSelfMessage(transactionFlags: number, data: any, trBytes: ByteBuffer) {
     const flagBit = 0b1000;
     if ((transactionFlags & flagBit) === 0) {
         return data;
@@ -350,125 +365,127 @@ function parseEncryptToSelfMessage (transactionFlags: number, data: any, trBytes
 
 /** From a transaction type/subtype, returns the original requestType */
 const decodeRequestType = [
-    { type: 0, subtype: 0, requestType: 'sendMoney', hasAttachment: false },
-    { type: 0, subtype: 1, requestType: 'sendMoneyMulti', hasAttachment: true },
-    { type: 0, subtype: 2, requestType: 'sendMoneyMultiSame', hasAttachment: true },
-    { type: 1, subtype: 0, requestType: 'sendMessage', hasAttachment: false },
-    { type: 1, subtype: 1, requestType: 'setAlias', hasAttachment: true },
-    { type: 1, subtype: 5, requestType: 'setAccountInfo', hasAttachment: true },
-    { type: 1, subtype: 6, requestType: 'sellAlias', hasAttachment: true },
-    { type: 1, subtype: 7, requestType: 'buyAlias', hasAttachment: true },
-    { type: 2, subtype: 0, requestType: 'issueAsset', hasAttachment: true },
-    { type: 2, subtype: 1, requestType: 'transferAsset', hasAttachment: true },
-    { type: 2, subtype: 2, requestType: 'placeAskOrder', hasAttachment: true },
-    { type: 2, subtype: 3, requestType: 'placeBidOrder', hasAttachment: true },
-    { type: 2, subtype: 4, requestType: 'cancelAskOrder', hasAttachment: true },
-    { type: 2, subtype: 5, requestType: 'cancelBidOrder', hasAttachment: true },
-    { type: 2, subtype: 6, requestType: 'mintAsset', hasAttachment: true },
-    { type: 2, subtype: 7, requestType: 'addAssetTreasuryAccount', hasAttachment: false },
-    { type: 2, subtype: 8, requestType: 'distributeToAssetHolders', hasAttachment: true },
-    { type: 2, subtype: 9, requestType: 'transferAssetMulti', hasAttachment: true },
-    { type: 20, subtype: 0, requestType: 'setRewardRecipient', hasAttachment: false },
-    { type: 20, subtype: 1, requestType: 'addCommitment', hasAttachment: true },
-    { type: 20, subtype: 2, requestType: 'removeCommitment', hasAttachment: true },
-    { type: 21, subtype: 0, requestType: 'sendMoneyEscrow', hasAttachment: true },
-    { type: 21, subtype: 1, requestType: 'escrowSign', hasAttachment: true },
-    { type: 21, subtype: 3, requestType: 'sendMoneySubscription', hasAttachment: true },
-    { type: 21, subtype: 4, requestType: 'subscriptionCancel', hasAttachment: true },
-    { type: 22, subtype: 0, requestType: 'createATProgram', hasAttachment: true },
+    {type: 0, subtype: 0, requestType: 'sendMoney', hasAttachment: false},
+    {type: 0, subtype: 1, requestType: 'sendMoneyMulti', hasAttachment: true},
+    {type: 0, subtype: 2, requestType: 'sendMoneyMultiSame', hasAttachment: true},
+    {type: 1, subtype: 0, requestType: 'sendMessage', hasAttachment: false},
+    {type: 1, subtype: 1, requestType: 'setAlias', hasAttachment: true},
+    {type: 1, subtype: 5, requestType: 'setAccountInfo', hasAttachment: true},
+    {type: 1, subtype: 6, requestType: 'sellAlias', hasAttachment: true},
+    {type: 1, subtype: 7, requestType: 'buyAlias', hasAttachment: true},
+    {type: 2, subtype: 0, requestType: 'issueAsset', hasAttachment: true},
+    {type: 2, subtype: 1, requestType: 'transferAsset', hasAttachment: true},
+    {type: 2, subtype: 2, requestType: 'placeAskOrder', hasAttachment: true},
+    {type: 2, subtype: 3, requestType: 'placeBidOrder', hasAttachment: true},
+    {type: 2, subtype: 4, requestType: 'cancelAskOrder', hasAttachment: true},
+    {type: 2, subtype: 5, requestType: 'cancelBidOrder', hasAttachment: true},
+    {type: 2, subtype: 6, requestType: 'mintAsset', hasAttachment: true},
+    {type: 2, subtype: 7, requestType: 'addAssetTreasuryAccount', hasAttachment: false},
+    {type: 2, subtype: 8, requestType: 'distributeToAssetHolders', hasAttachment: true},
+    {type: 2, subtype: 9, requestType: 'transferAssetMulti', hasAttachment: true},
+    {type: 20, subtype: 0, requestType: 'setRewardRecipient', hasAttachment: false},
+    {type: 20, subtype: 1, requestType: 'addCommitment', hasAttachment: true},
+    {type: 20, subtype: 2, requestType: 'removeCommitment', hasAttachment: true},
+    {type: 21, subtype: 0, requestType: 'sendMoneyEscrow', hasAttachment: true},
+    {type: 21, subtype: 1, requestType: 'escrowSign', hasAttachment: true},
+    {type: 21, subtype: 3, requestType: 'sendMoneySubscription', hasAttachment: true},
+    {type: 21, subtype: 4, requestType: 'subscriptionCancel', hasAttachment: true},
+    {type: 22, subtype: 0, requestType: 'createATProgram', hasAttachment: true},
 ];
 
-const attachmentSpecV1: AttachmentSpec[] = [
-    { request: 'sendMoneyMulti', fields: [
-        { type: 'Byte*1' },
-        { type: 'Long:Long*$0',  parameterName: 'recipients' },
-        { type: 'Delete*1',  parameterName: 'amountNQT' }
-    ] },
-    { request: 'sendMoneyMultiSame', fields: [
-        { type: 'Byte*1' },
-        { type: 'Long*$0',  parameterName: 'recipients' },
-    ] },
-    { request: 'setAlias', fields: [
-        { type: 'ByteString*1',  parameterName: 'aliasName' },
-        { type: 'ShortString*1',  parameterName: 'aliasURI' },
-    ] },
-    { request: 'setAccountInfo', fields: [
-        { type: 'ByteString*1',  parameterName: 'name' },
-        { type: 'ShortString*1',  parameterName: 'description' },
-    ] },
-    { request: 'sellAlias', fields: [
-        { type: 'ByteString*1',  parameterName: 'aliasName' },
-        { type: 'Long*1',  parameterName: 'priceNQT' },
-    ] },
-    { request: 'buyAlias', fields: [
-        { type: 'ByteString*1',  parameterName: 'aliasName' },
-        { type: 'Delete*1',  parameterName: 'recipient' }
-    ] },
-    { request:  'issueAsset', fields: [
-        { type: 'ByteString*1', parameterName: 'name' },
-        { type: 'ShortString*1', parameterName: 'description' },
-        { type: 'Long*1', parameterName: 'quantityQNT' },
-        { type: 'Byte*1', parameterName: 'decimals' },
-    ] },
-    { request:  'transferAsset', fields: [
-        { type: 'Long*1', parameterName: 'asset' },
-        { type: 'Long*1', parameterName: 'quantityQNT' }
-    ] },
-    { request:  'placeAskOrder', fields: [
-        { type: 'Long*1', parameterName: 'asset' },
-        { type: 'Long*1', parameterName: 'quantityQNT' },
-        { type: 'Long*1', parameterName: 'priceNQT' }
-    ] },
-    { request:  'placeBidOrder', fields: [
-        { type: 'Long*1', parameterName: 'asset' },
-        { type: 'Long*1', parameterName: 'quantityQNT' },
-        { type: 'Long*1', parameterName: 'priceNQT' }
-    ] },
-    { request:  'cancelAskOrder', fields: [
-        { type: 'Long*1', parameterName: 'order' }
-    ] },
-    { request:  'cancelBidOrder', fields: [
-        { type: 'Long*1', parameterName: 'order' }
-    ] },
-    { request:  'mintAsset', fields: [
-        { type: 'Long*1', parameterName: 'asset' },
-        { type: 'Long*1', parameterName: 'quantityQNT' },
-    ] },
-    { request:  'distributeToAssetHolders', fields: [
-        { type: 'Long*1', parameterName: 'asset' },
-        { type: 'Long*1', parameterName: 'quantityMinimumQNT' },
-        { type: 'Long*1', parameterName: 'assetToDistribute' },
-        { type: 'Long*1', parameterName: 'quantityQNT' }
-    ] },
-    { request:  'transferAssetMulti', fields: [
-        { type: 'Byte*1' },
-        { type: 'Long:Long*$0', parameterName: 'assetIdsAndQuantities' }
-    ] },
-    { request:  'addCommitment', fields: [
-        { type: 'Long*1', parameterName: 'amountNQT' }
-    ] },
-    { request:  'removeCommitment', fields: [
-        { type: 'Long*1', parameterName: 'amountNQT' }
-    ] },
-    { request:  'sendMoneySubscription', fields: [
-        { type: 'Int*1', parameterName: 'frequency' }
-    ] },
-    { request:  'subscriptionCancel', fields: [
-        { type: 'Long*1', parameterName: 'subscription' }
-    ] },
-    { request:  'createATProgram', fields: [
-        { type: 'ByteString*1', parameterName: 'name' },
-        { type: 'ShortString*1', parameterName: 'description' },
-        { type: 'CreationBytes*1' },
-    ] }
-];
+const attachmentSpecV1: AttachmentSpec = new Map<string, AttachmentField[]>([
+    ['sendMoneyMulti', [
+        {type: 'Byte*1'},
+        {type: 'Long:Long*$0', parameterName: 'recipients'},
+        {type: 'Delete*1', parameterName: 'amountNQT'}
+    ]],
+    ['sendMoneyMultiSame', [
+        {type: 'Byte*1'},
+        {type: 'Long*$0', parameterName: 'recipients'},
+    ]],
+    ['setAlias', [
+        {type: 'ByteString*1', parameterName: 'aliasName'},
+        {type: 'ShortString*1', parameterName: 'aliasURI'},
+    ]],
+    ['setAccountInfo', [
+        {type: 'ByteString*1', parameterName: 'name'},
+        {type: 'ShortString*1', parameterName: 'description'},
+    ]],
+    ['sellAlias', [
+        {type: 'ByteString*1', parameterName: 'aliasName'},
+        {type: 'Long*1', parameterName: 'priceNQT'},
+    ]],
+    ['buyAlias', [
+        {type: 'ByteString*1', parameterName: 'aliasName'},
+        {type: 'Delete*1', parameterName: 'recipient'}
+    ]],
+    ['issueAsset', [
+        {type: 'ByteString*1', parameterName: 'name'},
+        {type: 'ShortString*1', parameterName: 'description'},
+        {type: 'Long*1', parameterName: 'quantityQNT'},
+        {type: 'Byte*1', parameterName: 'decimals'},
+    ]],
+    ['transferAsset', [
+        {type: 'Long*1', parameterName: 'asset'},
+        {type: 'Long*1', parameterName: 'quantityQNT'}
+    ]],
+    ['placeAskOrder', [
+        {type: 'Long*1', parameterName: 'asset'},
+        {type: 'Long*1', parameterName: 'quantityQNT'},
+        {type: 'Long*1', parameterName: 'priceNQT'}
+    ]],
+    ['placeBidOrder', [
+        {type: 'Long*1', parameterName: 'asset'},
+        {type: 'Long*1', parameterName: 'quantityQNT'},
+        {type: 'Long*1', parameterName: 'priceNQT'}
+    ]],
+    ['cancelAskOrder', [
+        {type: 'Long*1', parameterName: 'order'}
+    ]],
+    ['cancelBidOrder', [
+        {type: 'Long*1', parameterName: 'order'}
+    ]],
+    ['mintAsset', [
+        {type: 'Long*1', parameterName: 'asset'},
+        {type: 'Long*1', parameterName: 'quantityQNT'},
+    ]],
+    ['distributeToAssetHolders', [
+        {type: 'Long*1', parameterName: 'asset'},
+        {type: 'Long*1', parameterName: 'quantityMinimumQNT'},
+        {type: 'Long*1', parameterName: 'assetToDistribute'},
+        {type: 'Long*1', parameterName: 'quantityQNT'}
+    ]],
+    ['transferAssetMulti', [
+        {type: 'Byte*1'},
+        {type: 'Long:Long*$0', parameterName: 'assetIdsAndQuantities'}
+    ]],
+    ['addCommitment', [
+        {type: 'Long*1', parameterName: 'amountNQT'}
+    ]],
+    ['removeCommitment', [
+        {type: 'Long*1', parameterName: 'amountNQT'}
+    ]],
+    ['sendMoneySubscription', [
+        {type: 'Int*1', parameterName: 'frequency'}
+    ]],
+    ['subscriptionCancel', [
+        {type: 'Long*1', parameterName: 'subscription'}
+    ]],
+    ['createATProgram', [
+        {type: 'ByteString*1', parameterName: 'name'},
+        {type: 'ShortString*1', parameterName: 'description'},
+        {type: 'CreationBytes*1'},
+    ]],
+]);
 
-const attachmentSpecV2: AttachmentSpec[] = [
-    { request: 'issueAsset', fields: [
-        { type: 'ByteString*1', parameterName: 'name' },
-        { type: 'ShortString*1', parameterName: 'description' },
-        { type: 'Long*1', parameterName: 'quantityQNT' },
-        { type: 'Byte*1', parameterName: 'decimals' },
-        { type: 'Byte*1', parameterName: 'mintable' }
-    ] }
-];
+const attachmentSpecV2: AttachmentSpec = new Map<string, AttachmentField[]>([
+    [
+        'issueAsset', [
+            {type: 'ByteString*1', parameterName: 'name'},
+            {type: 'ShortString*1', parameterName: 'description'},
+            {type: 'Long*1', parameterName: 'quantityQNT'},
+            {type: 'Byte*1', parameterName: 'decimals'},
+            {type: 'Byte*1', parameterName: 'mintable'}
+        ]
+    ]
+]);
