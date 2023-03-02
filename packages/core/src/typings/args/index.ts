@@ -43,3 +43,4 @@ export * from './getAssetsByIssuerArgs';
 export * from './getAssetsByNameArgs';
 export * from './transferMultipleAssetsArgs';
 export * from './getAliasesOnSaleArgs';
+export * from './transferAssetOwnershipArgs';

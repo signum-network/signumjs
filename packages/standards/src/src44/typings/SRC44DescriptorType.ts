@@ -11,6 +11,7 @@
  */
 export type SRC44DescriptorType = 'hum' |
     'smc' |
+    'bot' |
     'biz' |
     'cex' |
     'dex' |

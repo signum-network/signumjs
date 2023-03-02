@@ -27,4 +27,5 @@ export * from './mintAsset';
 export * from './placeAskOrder';
 export * from './placeBidOrder';
 export * from './transferAsset';
+export * from './transferAssetOwnership';
 export * from './transferMultipleAssets';
