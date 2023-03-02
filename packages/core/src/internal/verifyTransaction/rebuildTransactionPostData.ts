@@ -264,7 +264,7 @@ function parseCreationBytes(trBytes: ByteBuffer) {
         data,
         dpages: dpages.toString(),
         cspages: cspages.toString(),
-        uspages: cspages.toString(),
+        uspages: uspages.toString(),
         minActivationAmountNQT
     };
     if (retObj.code === '') { delete retObj.code; }
