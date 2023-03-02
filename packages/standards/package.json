@@ -1,0 +1,68 @@
+{
+  "name": "@signumjs/standards",
+  "description": "SignumJS Standards (SRC) tooling package",
+  "version": "1.0.0-rc.55",
+  "keywords": [
+    "signum",
+    "signum-network",
+    "blockchain",
+    "smartcontracts",
+    "http",
+    "signumjs"
+  ],
+  "contributors": [
+    "ohager"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/signum-network/signumjs"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "license": "Apache-2.0",
+  "main": "./out/index.js",
+  "typings": "./out/index.d.ts",
+  "private": false,
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "scripts": {
+    "test": "jest",
+    "tsc": "tsc",
+    "bundle": "bili"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "bili": "^4.10.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.24.2"
+  },
+  "dependencies": {
+    "@braintree/sanitize-url": "^6.0.1",
+    "@signumjs/core": "^1.0.0-rc.55"
+  },
+  "peerDependencies": {
+    "@signumjs/core": "^1.0.0-rc.55"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
+  },
+  "gitHead": "1388156deae3a6d83b289377ad8e10f86e84dd3c",
+  "publishConfig": {
+    "access": "public"
+  }
+}

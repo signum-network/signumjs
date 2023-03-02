@@ -49,7 +49,7 @@
     "ts-jest": "^24.0.2",
     "tslint": "^5.20.1",
     "typedoc": "0.16.11",
-    "typescript": "3.8.3"
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "bootstrap": "lerna exec npm install && lerna bootstrap && lerna run tsc",
@@ -58,7 +58,7 @@
     "doc": "typedoc --options tsdoc.json --listInvalidSymbolLinks",
     "lint": "tslint -p tsconfig.json -t stylish -s node_modules/custom-tslint-formatters/formatters -t grouped",
     "postinstall": "npm run bootstrap",
-    "publish": "npm run build && npm run test && lerna publish --force-publish",
+    "publish": "npm run test && lerna exec npm run bundle && lerna publish --force-publish",
     "test": "npm run tsc && jest",
     "test:ci": "jest --coverage",
     "test:e2e": "jest --config jest.config.e2e.js --runInBand --detectOpenHandles --forceExit",

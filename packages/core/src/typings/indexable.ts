@@ -1,8 +1,7 @@
 /**
- * @ignore
- * @internal
+ * Interface extension for indexable responses
  * @module core
  */
-interface Indexable {
-    nextIndex?: number
+export interface Indexable {
+    nextIndex?: number;
 }

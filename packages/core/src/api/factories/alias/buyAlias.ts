@@ -19,7 +19,7 @@ export const buyAlias = (service: ChainService) =>  (args: BuyAliasArgs) => sign
 
         const parameters = {
             aliasName: a.aliasName,
-            aliasId: a.aliasId,
+            alias: a.aliasId,
             deadline: a.deadline || DefaultDeadline,
             feeNQT: a.feePlanck,
             amountNQT: a.amountPlanck,

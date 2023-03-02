@@ -27,7 +27,7 @@ interface PeerState {
  */
 export interface NetworkInfo {
     readonly genesisBlockId: string;
-    readonly genesisAccountId: number;
+    readonly genesisAccountId: string;
     readonly maxBlockPayloadLength: number;
     readonly maxArbitraryMessageLength: number;
     readonly ordinaryTransactionLength: number;
@@ -38,6 +38,9 @@ export interface NetworkInfo {
     readonly networkName: string;
     readonly feeQuantNQT: number;
     readonly transactionTypes: TransactionType[];
+    readonly cashBackId: string;
+    readonly cashBackFactor: number;
+
     peerStates: PeerState[];
     requestProcessingTime: number;
 }

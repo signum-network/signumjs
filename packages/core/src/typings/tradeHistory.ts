@@ -2,6 +2,7 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {AssetTrade} from './assetTrade';
+import {Indexable} from './indexable';
 
 
 /**

@@ -31,6 +31,7 @@ export class EventEmitter {
                     };
                     // @ts-ignore
                     window.addEventListener(name, (e) => {
+                        // @ts-ignore
                         singleCallback(e.detail);
                         // @ts-ignore
                         window.removeEventListener(name, singleCallback);

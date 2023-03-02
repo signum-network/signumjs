@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "src44",
+  "type": "object",
+  "title": "Signum Descriptor (SRC44)",
+  "description": "This is the schema of the structured description of Signum Blockchain Network",
+  "default": {},
+  "examples": [
+    {
+      "vs": 1,
+      "tp": "cex",
+      "nm": "Bittrex",
+      "ds": "World class exchange at your service",
+      "av": {
+        "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/gif"
+      },
+      "bg": {
+        "QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc": "image/jpeg"
+      },
+      "hp": "https://bittrex.com",
+      "sr": "^[0-9a-fA-F]{24}$",
+      "al": "somealias",
+      "xt": "QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc",
+      "sc": [
+        "https://twitter.com/bittrex"
+      ]
+    }
+  ],
+  "required": [
+    "vs"
+  ],
+  "properties": {
+    "vs": {
+      "$id": "#/properties/vs",
+      "type": "number",
+      "title": "The version",
+      "description": "This is the version number. Should be an integer number",
+      "default": 1
+    },
+    "nm": {
+      "$id": "#/properties/nm",
+      "type": "string",
+      "title": "The name",
+      "description": "This is the profiles name",
+      "maxLength": 24,
+      "default": "",
+      "examples": [
+        "MasterArtist"
+      ]
+    },
+    "ac": {
+      "$id": "#/properties/ac",
+      "type": "string",
+      "title": "Account Id",
+      "description": "Account identifier to be used for account resolving",
+      "pattern": "^\\d{18,22}$",
+      "default": "",
+      "examples": [
+        "895212263565386113"
+      ]
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "An Identifier",
+      "description": "An arbitrary identifier as reference",
+      "maxLength": 48,
+      "default": "",
+      "examples": [
+        "dfa51cee-7057-463c-90f3-031f416378c6", "Ref#102345", "1993993977435653"
+      ]
+    },
+    "tp": {
+      "$id": "#/properties/tp",
+      "type": "string",
+      "enum": [
+        "hum",
+        "smc",
+        "bot",
+        "tok",
+        "biz",
+        "cex",
+        "dex",
+        "oth"
+      ],
+      "title": "The type",
+      "description": "Defines a type of the profile/descriptor"
+    },
+    "av": {
+      "$id": "#/properties/av",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "title": "The link to the avatar stored on IPFS",
+      "description": "It's an IPFS CID with it respective mime type",
+      "default": {},
+      "examples": [
+        {
+          "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/webp"
+        }
+      ]
+    },
+    "bg": {
+      "$id": "#/properties/bg",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "title": "The link to the background stored on IPFS",
+      "description": "It's an IPFS CID with it respective mime type",
+      "default": {},
+      "examples": [
+        {
+          "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/gif"
+        }
+      ]
+    },
+    "ds": {
+      "$id": "#/properties/ds",
+      "type": "string",
+      "title": "The description",
+      "maxLength": 384,
+      "description": "A more detailed description about this account",
+      "default": "",
+      "examples": [
+        "I just do digital master art pieces"
+      ]
+    },
+    "hp": {
+      "$id": "#/properties/hp",
+      "type": "string",
+      "title": "The home page schema",
+      "description": "The URL to the creators home page",
+      "maxLength": 128,
+      "default": "",
+      "examples": [
+        "https://masterpiece.art"
+      ]
+    },
+    "sr": {
+      "$id": "#/properties/sr",
+      "type": "string",
+      "title": "The send rule",
+      "description": "A regex that needs to be matched when sending to this account, i.e. a memo for bots or exchanges",
+      "default": "",
+      "examples": [
+        "/^[0-9a-fA-F]{64}$/"
+      ]
+    },
+    "al": {
+      "$id": "#/properties/al",
+      "type": "string",
+      "title": "The referenced Alias",
+      "description": "An related alias of the Signum chain, that can mutable on-chain information",
+      "pattern": "^\\w{1,100}$",
+      "default": "",
+      "examples": [
+        "@myAlias123"
+      ]
+    },
+    "xt": {
+      "$id": "#/properties/xt",
+      "type": "string",
+      "title": "The extension reference",
+      "description": "The CID for extended (larger) information. The resulting document does not follow any format restrictions, as it completely use case dependent. Good formats are JSON, but also private information in encrypted formats is possible",
+      "default": "",
+      "examples": [
+        "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR",
+        "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi"
+      ]
+    },
+    "sc": {
+      "$id": "#/properties/sc",
+      "type": "array",
+      "title": "Social media links",
+      "maxItems": 3,
+      "description": "A list of at max. three (sanitized) URLs or IPFS CIDs of at maximum 92 characters each",
+      "default": [],
+      "examples": [
+        [
+          "https://discord.gg/ZGHgCyW4",
+          "https://t.me/@masterart666"
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/sc/items",
+        "type": "string",
+        "maxLength": 92
+      }
+    }
+  },
+  "additionalProperties": true
+}

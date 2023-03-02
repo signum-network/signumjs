@@ -20,7 +20,7 @@ import {
     getOpenBidOrdersPerAsset,
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
-    getOpenAskOrdersPerAccount, getAllAssets, getAssetsByIssuer, getAssetsByName, transferMultipleAssets,
+    getOpenAskOrdersPerAccount, getAllAssets, getAssetsByIssuer, getAssetsByName, transferMultipleAssets, transferAssetOwnership,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -276,6 +276,29 @@ describe('Asset Api', () => {
                 quantity: 100,
                 recipientId: 'recipientId',
                 amountPlanck: "100000000",
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+            }) as TransactionId;
+
+            expect(transaction).toBe('transactionId');
+        });
+    });
+
+
+    describe('transferAssetOwnership', () => {
+        it('should transferAssetOwnership', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, {
+                        unsignedTransactionBytes: 'unsignedHexMessage'
+                    },
+                    'relPath?requestType=transferAssetOwnership&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440&referencedTransactionFullHash=fullHash'
+                ).build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await transferAssetOwnership(service)({
+                referencedTransactionFullHash: "fullHash",
+                feePlanck: FeeQuantPlanck + '',
+                recipientId: 'recipientId',
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
             }) as TransactionId;

@@ -3,6 +3,7 @@
  */
 
 import {AssetTrade} from './assetTrade';
+import {Indexable} from './indexable';
 
 /**
  * Asset Trade List

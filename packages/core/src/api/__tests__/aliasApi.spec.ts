@@ -69,10 +69,15 @@ describe('Alias Api', () => {
                     ],
                     'requestProcessingTime': 35
                 },
-                'relPath?requestType=getAliasesOnSale&firstIndex=0&lastIndex=100'
+                'relPath?requestType=getAliasesOnSale&account=accountId&buyer=buyerId&firstIndex=0&lastIndex=100'
             ).build();
             const service = createChainService(httpMock, 'relPath');
-            const asset = await getAliasesOnSale(service)(0, 100);
+            const asset = await getAliasesOnSale(service)({
+                accountId: 'accountId',
+                buyerId: 'buyerId',
+                firstIndex: 0,
+                lastIndex: 100
+            });
             expect(asset).toEqual({
                     'aliases': [
                         {
@@ -122,7 +127,7 @@ describe('Alias Api', () => {
     describe('buyAlias', () => {
         it('should buyAlias', async () => {
             httpMock = HttpMockBuilder.create().onPostReply(200, {'transaction': 'transactionId'},
-                'relPath?requestType=buyAlias&aliasName=aliasName&aliasId=aliasId&deadline=1440&feeNQT=100000&amountNQT=500000000&publicKey=senderPublicKey'
+                'relPath?requestType=buyAlias&aliasName=aliasName&alias=aliasId&deadline=1440&feeNQT=100000&amountNQT=500000000&publicKey=senderPublicKey'
             ).build();
             const service = createChainService(httpMock, 'relPath');
             const asset = await buyAlias(service)({

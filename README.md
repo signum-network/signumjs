@@ -37,7 +37,7 @@ The SDK is separated in the following packages
 - [@signumjs/monitor](https://signum-network.github.io/signumjs/modules/monitor.html) A package providing a class to execute recurring async operations with
   de/serialization feature, good for listening to blockchain transactions
 - [@signumjs/wallets](https://signum-network.github.io/signumjs/modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
-- wallets (i.e. Phoenix Desktop and Mobile) and also browser extension (XT wallet)  
+- [@signumjs/standards](https://signum-network.github.io/signumjs/modules/standards.html) This package provides the communication with SIP22 compatible deeplinkable 
 
 ## Installation
 
@@ -55,6 +55,7 @@ npm install @signumjs/util (optional)
 npm install @signumjs/http (optional)
 npm install @signumjs/monitor (optional)
 npm install @signumjs/wallets (optional)
+npm install @signumjs/standards (optional)
 ```
 
 or using [yarn](https://yarnpkg.com/):
@@ -67,6 +68,7 @@ yarn add @signumjs/util (optional)
 yarn add @signumjs/http (optional)
 yarn add @signumjs/monitor (optional)
 yarn add @signumjs/wallets (optional)
+yarn add @signumjs/standards (optional)
 ```
 
 ### Using in classic `<script>`
@@ -90,6 +92,8 @@ Just import one of the packages using the HTML `<script>` tag.
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>`
 
+`<script src='https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js'></script>`
+
 Due to the way a package is imported following global variables are provided
 
 | Package   | Variable        |
@@ -101,6 +105,7 @@ Due to the way a package is imported following global variables are provided
 | monitor   | `sig$monitor`   |
 | util      | `sig$util`      |
 | wallets   | `sig$wallets`   |
+| wallets   | `sig$standards` |
 
 Examples:
 
@@ -144,6 +149,32 @@ const subscription = connection.listen({
 })
 // ...
 subscription.unlisten()
+```
+
+```ts
+// using standards - depends on ledger 
+const ledger = sig$.LedgerClientFactory.create({
+    nodeHost: "http://europe3.testnet.signum.network",
+});
+
+// create Descriptor data object
+const descriptorData = sig$standards.DescriptorDataBuilder
+    .create('ohager')
+    .setType('hum')
+    .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
+    .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
+    .setSocialMediaLinks(['https://somelink.com'])
+    .setDescription('Just a humble dev...')
+    .setHomePage('https://digital-independence.dev')
+    .build();
+
+// updates account descriptor
+const client = new sig$standards.DescriptorDataClient(ledger)
+const transaction = await client.setAccountDescriptor({
+    descriptorData,
+    senderPublicKey: '497d559d18d989b8....ed2716a4b2121902',
+    senderPrivateKey: '**********************************'
+});
 ```
 
 ```ts
@@ -262,4 +293,4 @@ To publish all packages (using lerna and same version strategy) just run
 npm run publish
 ```
 
-> Note: Only with a valid npm token
+> Note: Only with a valid npm OTP token

@@ -1,6 +1,6 @@
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
- * Modified work Copyright (c) 2022 Signum Network
+ * Modified work Copyright (c) 2023 Signum Network
  */
 
 /**
@@ -18,6 +18,7 @@ export enum TransactionAssetSubtype {
     AssetMint,
     AssetAddTreasureyAccount,
     AssetDistributeToHolders,
-    AssetMultiTransfer
+    AssetMultiTransfer,
+    AssetTransferOwnership
 }
 
