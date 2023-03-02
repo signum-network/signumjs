@@ -144,6 +144,7 @@ describe('Asset Api', () => {
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=placeAskOrder&asset=123&priceNQT=1000000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
@@ -169,6 +170,7 @@ describe('Asset Api', () => {
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=placeBidOrder&asset=123&priceNQT=10000000&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
@@ -194,6 +196,7 @@ describe('Asset Api', () => {
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=cancelAskOrder&order=123&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
@@ -216,6 +219,7 @@ describe('Asset Api', () => {
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=cancelBidOrder&order=123&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440')
@@ -237,6 +241,7 @@ describe('Asset Api', () => {
         it('should transferAsset', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
@@ -258,6 +263,7 @@ describe('Asset Api', () => {
         it('should transferAsset with amount', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&amountNQT=100000000&deadline=1440'
@@ -305,6 +311,7 @@ describe('Asset Api', () => {
         it('should transferMultipleAsset', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAssetMulti&assetIdsAndQuantities=1%3A123%3B2%3A234%3B3%3A345%3B4%3A456&amountNQT=10000000000&publicKey=senderPublicKey&recipient=recipientId&recipientPublicKey=recipientPublicKey&feeNQT=1000000&deadline=1440'
@@ -332,6 +339,7 @@ describe('Asset Api', () => {
         it('should throw exception - too few quantities', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
@@ -358,6 +366,7 @@ describe('Asset Api', () => {
         it('should throw exception - too many quantities', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
@@ -388,6 +397,7 @@ describe('Asset Api', () => {
         it('should throw exception - duplicated assets', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440'
@@ -417,6 +427,7 @@ describe('Asset Api', () => {
         it('should burnAsset', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAsset&asset=123&quantityQNT=100&publicKey=senderPublicKey&recipient=0&feeNQT=1000000&deadline=1440'
@@ -439,6 +450,7 @@ describe('Asset Api', () => {
         it('should issueAsset', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=issueAsset&name=assetName&description=description&quantityQNT=100&decimals=2&publicKey=senderPublicKey&feeNQT=1000000&mintable=true&deadline=1440'
@@ -463,6 +475,7 @@ describe('Asset Api', () => {
         it('should mintAsset', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=mintAsset&asset=assetId&quantityQNT=100&publicKey=senderPublicKey&feeNQT=1000000&deadline=1440'
@@ -628,6 +641,7 @@ describe('Asset Api', () => {
             it('should addAssetTreasuryAccount', async () => {
                 httpMock = HttpMockBuilder.create()
                     .onPostReply(200, {
+                            broadcasted: true,
                             unsignedTransactionBytes: 'unsignedHexMessage'
                         },
                         'relPath?requestType=addAssetTreasuryAccount&recipient=accountId&publicKey=senderPublicKey&referencedTransactionFullHash=hash&feeNQT=1000000&deadline=1440'
@@ -650,6 +664,7 @@ describe('Asset Api', () => {
             it('should distributeToAssetHolders', async () => {
                 httpMock = HttpMockBuilder.create()
                     .onPostReply(200, {
+                            broadcasted: true,
                             unsignedTransactionBytes: 'unsignedHexMessage'
                         },
                         'relPath?requestType=distributeToAssetHolders&asset=assetId&quantityMinimumQNT=1000&amountNQT=totalAmount&assetToDistribute=otherAssetId&quantityQNT=qnty&feeNQT=1000000&deadline=1440&publicKey=senderPublicKey'

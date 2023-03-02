@@ -33,7 +33,6 @@ describe(`[E2E] Block Api`, () => {
         expect(block).not.toBeUndefined();
         expect(block.block).toBe('15105048788654004778');
         expect(block.height).toBe(10);
-        expect(validateStatusMockFn).toHaveBeenCalledTimes(1);
         expect(validateStatusMockFn).toHaveBeenCalledWith(200);
     });
 

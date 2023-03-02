@@ -1,6 +1,11 @@
 /** @ignore */
 /** @internal */
 
+/**
+ * Copyright (c) 2022 Signum Network
+ */
+
+
 import {UnsignedTransaction} from '../typings/unsignedTransaction';
 import {TransactionId} from '../typings/transactionId';
 import {signAndBroadcastTransaction} from '../api/factories/transaction/signAndBroadcastTransaction';
@@ -14,6 +19,7 @@ export const signIfPrivateKey = async (service: ChainService,
                                        transactionFn: TransactionFn): Promise<TransactionId|UnsignedTransaction> => {
 
     const response = await transactionFn(txArgs);
+
     if (!txArgs.senderPrivateKey) {
         return response;
     }

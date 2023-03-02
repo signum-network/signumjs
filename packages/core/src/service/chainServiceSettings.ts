@@ -3,7 +3,6 @@
  * Modified (c) 2021 Signum Network
  */
 import {Http} from '@signumjs/http';
-import {AxiosRequestConfig} from 'axios';
 
 /**
  * The settings interface for the BurstService class
@@ -32,7 +31,7 @@ export interface ChainServiceSettings {
      * The default implementation uses axios. In case of a custom client pass your own options.
      * see [Axios Configuration](https://github.com/axios/axios#request-config)
      */
-    readonly httpClientOptions?: any | AxiosRequestConfig;
+    readonly httpClientOptions?: any;
 
     /**
      * If passed an client instance, it will be used instead of default HttpImpl.

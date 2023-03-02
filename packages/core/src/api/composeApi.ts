@@ -94,7 +94,6 @@ import {
     getOpenAskOrdersPerAccount,
     burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName, transferMultipleAssets, transferAssetOwnership
 } from './factories/asset';
-import {AxiosRequestConfig} from 'axios';
 import {Http} from '@signumjs/http';
 /**
  * Settings for API used in [[composeApi]]
@@ -106,7 +105,7 @@ export class ApiSettings {
      * @param nodeHost {string} The url of the peer/node
      * @param reliableNodeHosts A list of node/peer hosts that can be chosen of,
      * usually a list of reliable/trusted nodes. This is necessary for the automatic node selection.
-     * @param httpClientOptions {any | AxiosRequestSettings}   Optional http options, like additional header.
+     * @param httpClientOptions {any} The optional request configuration for the passed Http client
      * @param httpClient {Http} It's possible to add a custom Http client adapter. Default is an Axios based implementation
      * @param apiVersion {ApiVersion} For future usage.
      * The default implementation uses axios. In case of a custom client pass your own options.
@@ -115,7 +114,7 @@ export class ApiSettings {
     constructor(
         public nodeHost: string,
         public reliableNodeHosts?: string[],
-        public httpClientOptions?: any | AxiosRequestConfig,
+        public httpClientOptions?: any,
         public httpClient?: Http,
         public apiVersion?: ApiVersion,
     ) {

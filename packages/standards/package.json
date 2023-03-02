@@ -54,7 +54,7 @@
     "@signumjs/core": "^1.0.0-rc.55"
   },
   "peerDependencies": {
-    "@signumjs/core": "^1.0.0-rc.41"
+    "@signumjs/core": "^1.0.0-rc.55"
   },
   "husky": {
     "hooks": {

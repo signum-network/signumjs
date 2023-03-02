@@ -48,7 +48,7 @@ describe('[E2E] Transaction Api', () => {
             feePlanck: FeeQuantPlanck + '',
             senderPrivateKey: senderKeys.signPrivateKey,
             senderPublicKey: senderKeys.publicKey,
-            amountPlanck: Amount.fromSigna(1).getPlanck(),
+            amountPlanck: Amount.fromSigna(.01).getPlanck(),
             recipientId,
             recipientPublicKey: recipientKeys.publicKey
         }) as TransactionId;
@@ -59,7 +59,7 @@ describe('[E2E] Transaction Api', () => {
         const transaction = await sendAmountToSingleRecipient(service)({
             feePlanck: FeeQuantPlanck + '',
             senderPublicKey: senderKeys.publicKey,
-            amountPlanck: Amount.fromSigna(1).getPlanck(),
+            amountPlanck: Amount.fromSigna(.01).getPlanck(),
             recipientId,
             recipientPublicKey: recipientKeys.publicKey
         }) as UnsignedTransaction;

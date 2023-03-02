@@ -6,8 +6,8 @@
 import {Http, HttpError, HttpClientFactory, HttpResponse} from '@signumjs/http';
 import {asyncRetry} from '@signumjs/util';
 import {ChainServiceSettings} from './chainServiceSettings';
-import {AxiosRequestConfig} from 'axios';
 import {DefaultApiEndpoint} from '../constants';
+import {verifyTransaction} from '../internal/verifyTransaction';
 
 // Old API is inconsistent in its error responses
 interface ApiError {
@@ -87,13 +87,14 @@ export class ChainService {
 
     /**
      * Requests a query to the configured chain node
-     * @param {string} method The method according https://www.burstcoin.community/burst-api/
+     * @param {string} method The method according https://europe.signum.network/api-doc/
      * @param {any} args A JSON object which will be mapped to url params
-     * @param {any | AxiosRequestConfig} options The optional request configuration for the passed Http client
+     * @param {any} options The optional request configuration for the passed Http client
+     * (default is [AxiosRequestConfig](https://axios-http.com/docs/req_config) )
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
-    public async query<T>(method: string, args: any = {}, options?: any | AxiosRequestConfig): Promise<T> {
+    public async query<T>(method: string, args: any = {}, options?: any): Promise<T> {
         const endpoint = this.toApiEndpoint(method, args);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.get(endpoint, options));
@@ -111,11 +112,12 @@ export class ChainService {
      *        Note that there are only a few POST methods
      * @param {any} args A JSON object which will be mapped to url params
      * @param {any} body An object with key value pairs to submit as post body
-     * @param  {any | AxiosRequestConfig} options The optional request configuration for the passed Http client
+     * @param  {any} options The optional request configuration for the passed Http client
+     * (default is [AxiosRequestConfig](https://axios-http.com/docs/req_config) )
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
-    public async send<T>(method: string, args: object = {}, body?: object , options?: any | AxiosRequestConfig): Promise<T> {
+    public async send<T>(method: string, args: object = {}, body?: object , options?: any): Promise<T> {
         const endpoint = this.toApiEndpoint(method, args);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.post(endpoint, body, options));
@@ -123,6 +125,9 @@ export class ChainService {
         if (response.errorCode || response.error || response.errorDescription) {
             ChainService.throwAsHttpError(endpoint, response);
         }
+
+        verifyTransaction(method, args, response);
+
         return response;
     }
 
@@ -142,7 +147,8 @@ export class ChainService {
     }
 
     /**
-     * Automatically selects the best host, according to its response time, i.e. the fastest node host will be returned (and set as nodeHost internally)
+     * Automatically selects the best host, according to its response time,
+     * i.e. the fastest node host will be returned (and set as nodeHost internally)
      * @param reconfigure An optional flag to set automatic reconfiguration. Default is `false`
      * Attention: Reconfiguration works only, if you use the default http client. Otherwise, you need to reconfigure manually!
      * @param checkMethod The optional API method to be called. This applies only for GET methods. Default is `getBlockchainStatus`

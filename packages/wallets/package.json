@@ -70,7 +70,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@signumjs/core": "^1.0.0-rc.41",
-    "@signumjs/crypto": "^1.0.0-rc.41"
+    "@signumjs/core": "^1.0.0-rc.55",
+    "@signumjs/crypto": "^1.0.0-rc.55"
   }
 }

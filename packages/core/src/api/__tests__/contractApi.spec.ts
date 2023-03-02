@@ -107,6 +107,7 @@ describe('Contract Api', () => {
             signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
+                broadcasted: true,
                 unsignedTransactionBytes: 'unsignedHexMessage'
             };
 
@@ -142,15 +143,15 @@ describe('Contract Api', () => {
             signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
+                broadcasted: true,
                 unsignedTransactionBytes: 'unsignedHexMessage'
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&deadline=1440&description=description&feeNQT=feePlanck&minActivationAmountNQT=20000000&referencedTransactionFullHash=referencedTransactionId&name=testContract&publicKey=publickey&cspages=1&dpages=1&uspages=1&broadcast=true').build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&deadline=1440&description=description&feeNQT=feePlanck&referencedTransactionFullHash=referencedTransactionId&name=testContract&publicKey=publickey&broadcast=true').build();
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContractByReference(service)({
-                activationAmountPlanck: '20000000',
                 referencedTransactionHash: 'referencedTransactionId',
                 feePlanck: 'feePlanck',
                 description: 'description',
