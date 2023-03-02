@@ -2,6 +2,7 @@
 /** @internal */
 
 import {rebuildTransactionPostData} from './rebuildTransactionPostData';
+import {broadcastTransaction} from '../../api';
 
 // Type 0 (payment): OK
 // Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
@@ -34,8 +35,14 @@ export function verifyTransaction(method: string, parameters: any, response: any
         // Transaction already signed, nothing to do
         return;
     }
+
+    if (method === 'broadcastTransaction') {
+        // the broadcast can be ignored, as the real transaction was being verified already.
+        return;
+    }
+
     if (!methodsToVerify.has(method)) {
-        // Method not implemented yet
+        console.warn(`Deep verification for method '${method} is not supported yet - transaction accepted without further check`);
         return;
     }
 

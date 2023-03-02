@@ -112,7 +112,8 @@ export class ChainService {
      *        Note that there are only a few POST methods
      * @param {any} args A JSON object which will be mapped to url params
      * @param {any} body An object with key value pairs to submit as post body
-     * @param  {any | AxiosRequestConfig} options The optional request configuration for the passed Http client
+     * @param  {any} options The optional request configuration for the passed Http client
+     * (default is [AxiosRequestConfig](https://axios-http.com/docs/req_config) )
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
