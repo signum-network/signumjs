@@ -60,3 +60,4 @@ export * from './typings/unsignedTransaction';
 export * from './typings/unconfirmedTransactionList';
 export * from './typings/unconfirmedAssetBalance';
 export * from './typings/tradeHistory';
+export * from './typings/distributionFee';

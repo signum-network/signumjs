@@ -20,7 +20,7 @@ import {
     GetAssetOpenOrdersPerAccountArgs,
     GetAssetOpenOrdersPerAssetArgs,
     GetTradeHistoryPerAccountArgs,
-    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs, TransferAssetOwnershipArgs
+    GetAssetsByNameArgs, GetAssetsByIssuerArgs, TransferMultipleAssetsArgs, TransferAssetOwnershipArgs, CalculateDistributionFeeArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
 import {UnsignedTransaction} from '../unsignedTransaction';
@@ -32,11 +32,12 @@ import {AssetBidOrderList} from '../assetBidOrderList';
 import {AssetAskOrderList} from '../assetAskOrderList';
 import {TradeHistory} from '../tradeHistory';
 import {GetAllAssetsArgs} from '../args/getAllAssetsArgs';
+import {DistributionFee} from '../distributionFee';
 
 /**
  * Asset API
  *
- * Work in progress
+ * The Asset API provides all functions for Asset/Token operations
  *
  * @module core.api
  * */
@@ -210,6 +211,8 @@ export interface AssetApi {
      *
      * To inspect the share a token holder received you need to use [[TransactionApi.getDistributionAmountsFromTransaction]]
      *
+     * To calculate the fees upfront use [[AssetApi.calculateDistributionFee]].
+     *
      * @param args The distribution args object
      * @throws Error in case of unsuccessful transaction
      */
@@ -284,4 +287,13 @@ export interface AssetApi {
      * @param The asset list
      */
     getAssetsByName: (args: GetAssetsByNameArgs) => Promise<AssetList>;
+
+    /**
+     * Calculates the fee for [[AssetApi.distributeToAssetHolders]]
+     *
+     * @param {GetAssetsByNameArgs} args The args object
+     *
+     * @param The fee object with amount of eligible asset holders
+     */
+    calculateDistributionFee: (args: CalculateDistributionFeeArgs) => Promise<DistributionFee>;
 }

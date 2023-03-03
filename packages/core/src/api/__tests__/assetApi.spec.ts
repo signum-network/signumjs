@@ -25,6 +25,7 @@ import {
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
 import {TransactionId} from '../../typings/transactionId';
+import {calculateDistributionFee} from '../factories/asset/calculateDistributionFee';
 
 describe('Asset Api', () => {
 
@@ -913,6 +914,61 @@ describe('Asset Api', () => {
                 });
 
                 expect(result.askOrders.length).toBe(1);
+            });
+        });
+
+        describe('calculateDistributionFee', () => {
+            it('should get correct value for all holders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                        'numberOfAccounts': 10,
+                        },
+                        'relPath?requestType=getAsset&asset=1'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await calculateDistributionFee(service)({
+                    assetId: "1",
+                });
+
+                expect(result.numberOfAccounts).toBe(10);
+                expect(result.fee.getSigna()).toBe("0.1");
+            });
+
+            it('should get correct value for minimum holders', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                        'numberOfAccounts': 23,
+                        },
+                        'relPath?requestType=getAsset&asset=1&quantityMinimumQNT=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await calculateDistributionFee(service)({
+                    assetId: "1",
+                    minimumQuantity: 100
+                });
+
+                expect(result.numberOfAccounts).toBe(23);
+                expect(result.fee.getSigna()).toBe("0.23");
+            });
+
+            it('should get minimum value', async () => {
+                httpMock = HttpMockBuilder.create()
+                    .onGetReply(200, {
+                        'numberOfAccounts': 0,
+                        },
+                        'relPath?requestType=getAsset&asset=1&quantityMinimumQNT=100'
+                    ).build();
+
+                const service = createChainService(httpMock, 'relPath');
+                const result = await calculateDistributionFee(service)({
+                    assetId: "1",
+                    minimumQuantity: 100
+                });
+
+                expect(result.numberOfAccounts).toBe(0);
+                expect(result.fee.getSigna()).toBe("0.01");
             });
         });
     });

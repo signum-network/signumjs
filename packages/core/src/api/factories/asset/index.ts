@@ -29,3 +29,4 @@ export * from './placeBidOrder';
 export * from './transferAsset';
 export * from './transferAssetOwnership';
 export * from './transferMultipleAssets';
+export * from './calculateDistributionFee';

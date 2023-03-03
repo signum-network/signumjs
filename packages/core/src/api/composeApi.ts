@@ -92,7 +92,13 @@ import {
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
     getOpenAskOrdersPerAccount,
-    burnAsset, getTradeHistoryPerAccount, getAssetsByIssuer, getAssetsByName, transferMultipleAssets, transferAssetOwnership
+    burnAsset,
+    getTradeHistoryPerAccount,
+    getAssetsByIssuer,
+    getAssetsByName,
+    transferMultipleAssets,
+    transferAssetOwnership,
+    calculateDistributionFee
 } from './factories/asset';
 import {Http} from '@signumjs/http';
 /**
@@ -247,7 +253,8 @@ export function composeApi(settings: ApiSettings): Api {
             getOpenAskOrdersPerAccount,
             getTradeHistoryPerAccount,
             getAssetsByIssuer,
-            getAssetsByName
+            getAssetsByName,
+            calculateDistributionFee,
         })
         .compose();
 }
