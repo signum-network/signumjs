@@ -290,6 +290,7 @@ describe('Asset Api', () => {
         it('should transferAssetOwnership', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, {
+                        broadcasted: true,
                         unsignedTransactionBytes: 'unsignedHexMessage'
                     },
                     'relPath?requestType=transferAssetOwnership&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000000&deadline=1440&referencedTransactionFullHash=fullHash'
