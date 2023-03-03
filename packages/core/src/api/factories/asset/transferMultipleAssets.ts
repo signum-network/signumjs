@@ -6,7 +6,6 @@ import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {createParametersFromAttachment} from '../../../internal/createParametersFromAttachment';
-import {TransferAssetArgs} from '../../../typings/args/transferAssetArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {MultioutAssetQuantities} from '../../../typings/multioutAssetQuantities';
 import {TransferMultipleAssetsArgs} from '../../../typings/args';

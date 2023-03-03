@@ -4,7 +4,6 @@
  * Modified work Copyright (c) 2022 Signum Network
  */
 
-import { Transaction } from './transaction';
 import { AssetBalance } from './assetBalance';
 import { UnconfirmedAssetBalance } from './unconfirmedAssetBalance';
 

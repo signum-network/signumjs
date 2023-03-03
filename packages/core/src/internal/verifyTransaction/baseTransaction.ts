@@ -1,3 +1,5 @@
+/** @ignore */
+/** @internal */
 export interface BaseTransaction {
     type?: number;
     version?: number;

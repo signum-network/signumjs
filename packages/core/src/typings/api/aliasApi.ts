@@ -3,7 +3,6 @@ import {Alias} from '../alias';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {SetAliasArgs} from '../args/setAliasArgs';
 import {AliasList} from '../aliasList';
-import {ChainService} from '../../service';
 import {BuyAliasArgs, GetAliasesOnSaleArgs, SellAliasArgs} from '../args';
 
 /**

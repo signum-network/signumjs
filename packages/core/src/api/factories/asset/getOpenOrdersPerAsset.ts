@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {GetAssetOpenOrdersArgs, GetAssetOpenOrdersPerAssetArgs} from '../../../typings/args';
+import {GetAssetOpenOrdersPerAssetArgs} from '../../../typings/args';
 import {AssetAskOrderList} from '../../../typings/assetAskOrderList';
 import {AssetBidOrderList} from '../../../typings/assetBidOrderList';
 

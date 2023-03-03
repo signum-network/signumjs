@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2022 Signum Network
  */
-import {Ledger, Account, Address} from '@signumjs/core';
+import {Ledger, Account} from '@signumjs/core';
 import {DescriptorData} from './DescriptorData';
 import {Descriptor} from './typings';
 import {SetAccountDescriptorArgs} from './typings/args/setAccountDescriptorArgs';

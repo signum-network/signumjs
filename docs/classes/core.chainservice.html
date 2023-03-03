@@ -145,7 +145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L43">packages/core/src/service/chainService.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L43">packages/core/src/service/chainService.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">settings<span class="tsd-signature-symbol">:</span> <a href="../interfaces/core.chainservicesettings.html" class="tsd-signature-type">ChainServiceSettings</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L57">packages/core/src/service/chainService.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L57">packages/core/src/service/chainService.ts:57</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,13 +188,13 @@
 					<a name="query" class="tsd-anchor"></a>
 					<h3>query</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">query&lt;T&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">query&lt;T&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L96">packages/core/src/service/chainService.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L97">packages/core/src/service/chainService.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -218,7 +218,7 @@
 								<li>
 									<h5>method: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The method according <a href="https://www.burstcoin.community/burst-api/">https://www.burstcoin.community/burst-api/</a></p>
+										<p>The method according <a href="https://europe.signum.network/api-doc/">https://europe.signum.network/api-doc/</a></p>
 									</div>
 								</li>
 								<li>
@@ -228,9 +228,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The optional request configuration for the passed Http client</p>
+										<p>The optional request configuration for the passed Http client
+										(default is <a href="https://axios-http.com/docs/req_config">AxiosRequestConfig</a> )</p>
 									</div>
 								</li>
 							</ul>
@@ -249,12 +250,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L151">packages/core/src/service/chainService.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L157">packages/core/src/service/chainService.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Automatically selects the best host, according to its response time, i.e. the fastest node host will be returned (and set as nodeHost internally)</p>
+									<p>Automatically selects the best host, according to its response time,
+									i.e. the fastest node host will be returned (and set as nodeHost internally)</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>
@@ -286,13 +288,13 @@
 					<a name="send" class="tsd-anchor"></a>
 					<h3>send</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">send&lt;T&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">send&lt;T&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, body<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L118">packages/core/src/service/chainService.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L120">packages/core/src/service/chainService.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,9 +335,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AxiosRequestConfig</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The optional request configuration for the passed Http client</p>
+										<p>The optional request configuration for the passed Http client
+										(default is <a href="https://axios-http.com/docs/req_config">AxiosRequestConfig</a> )</p>
 									</div>
 								</li>
 							</ul>
@@ -354,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0f01ec6/packages/core/src/service/chainService.ts#L78">packages/core/src/service/chainService.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/632c059/packages/core/src/service/chainService.ts#L78">packages/core/src/service/chainService.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

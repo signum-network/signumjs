@@ -4,7 +4,6 @@
 
 /* globals window */
 import {ConfirmedTransaction, SendEncryptedMessageArgs, Wallet} from '../typings';
-import {ExtensionAdapter} from './extensionAdapter';
 import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
 

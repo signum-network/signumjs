@@ -2,8 +2,7 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 import {ChainService} from '../../../service';
-import {GetAssetTradesPerAccountArgs, GetTradeHistoryPerAccountArgs} from '../../../typings/args';
-import {getAssetTrades} from './getAssetTrades';
+import { GetTradeHistoryPerAccountArgs} from '../../../typings/args';
 import {TradeHistory} from '../../../typings/tradeHistory';
 
 /**

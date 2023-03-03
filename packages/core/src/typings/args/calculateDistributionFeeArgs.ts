@@ -1,5 +1,5 @@
 /**
- * The argument object for [[AssetApi.calculateDistributionFees]]
+ * The argument object for [[AssetApi.calculateDistributionFee]]
  * @module core
  */
 export interface CalculateDistributionFeeArgs {
