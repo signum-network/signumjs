@@ -23,6 +23,7 @@ const DecodeRequestType = [
     {type: 2, subtype: 7, requestType: 'addAssetTreasuryAccount', hasAttachment: false},
     {type: 2, subtype: 8, requestType: 'distributeToAssetHolders', hasAttachment: true},
     {type: 2, subtype: 9, requestType: 'transferAssetMulti', hasAttachment: true},
+    {type: 2, subtype: 10, requestType: 'transferAssetOwnership', hasAttachment: false},
     {type: 20, subtype: 0, requestType: 'setRewardRecipient', hasAttachment: false},
     {type: 20, subtype: 1, requestType: 'addCommitment', hasAttachment: true},
     {type: 20, subtype: 2, requestType: 'removeCommitment', hasAttachment: true},

@@ -294,6 +294,22 @@ describe('rebuildTransactionPostData', () => {
             expect(output.rebuiltData).toEqual(rebuiltData);
         });
     });
+    describe('transferAssetOwnership', () => {
+        const requestType = 'transferAssetOwnership';
+        it('should rebuild data correctly', () => {
+            const transactionBytes = '022a5538f60f140004d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a11b76cefe93cafb9000000000000000000d6117e0300000006d7348a6e1975874339de6e7637ee4de11e21bacfee106686758dd89ac9f710000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096cb070077dfcb12bbf713f804cfe1531b543c7c';
+            const rebuiltData = {
+                recipient: '13379979993382958865',
+                referencedTransactionFullHash: '06d7348a6e1975874339de6e7637ee4de11e21bacfee106686758dd89ac9f710',
+                feeNQT: '15000000000',
+                publicKey: '04d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a',
+                deadline: 20
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
+    });
     describe('placeAskOrder', () => {
         const requestType = 'placeAskOrder';
         it('should rebuild data correctly', () => {

@@ -5,7 +5,7 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 
 // Type 0 (payment): OK
 // Type 1 (messaging): Missing 'sellAlias', 'buyAlias' (issue)
-// Type 2 (colored coins): OK
+// Type 2 (colored coins/assets): OK
 // Type 3 (digital goods): deprecated (return error?)
 // Type 4 (account control): deprecated (return error?)
 // Type 20 (mining): OK
@@ -14,7 +14,7 @@ import {rebuildTransactionPostData} from './rebuildTransactionPostData';
 const methodsToVerify = new Set([
     'sendMoney', 'sendMoneyMulti', 'sendMoneyMultiSame',
     'sendMessage', 'setAlias', 'setAccountInfo',
-    'issueAsset', 'transferAsset', 'placeAskOrder', 'placeBidOrder', 'cancelAskOrder',
+    'issueAsset', 'transferAsset', 'transferAssetOwnership', 'placeAskOrder', 'placeBidOrder', 'cancelAskOrder',
     'mintAsset', 'addAssetTreasuryAccount', 'distributeToAssetHolders', 'cancelBidOrder', 'transferAssetMulti',
     'setRewardRecipient', 'addCommitment', 'removeCommitment',
     'sendMoneySubscription', 'subscriptionCancel',
