@@ -3,7 +3,7 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {Amount} from '@signumjs/util';
-import {getAsset} from './index';
+import {getAsset} from './getAsset';
 import {CalculateDistributionFeeArgs} from '../../../typings/args/calculateDistributionFeeArgs';
 import {DistributionFee} from '../../../typings/distributionFee';
 
