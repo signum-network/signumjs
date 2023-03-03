@@ -44,6 +44,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getTradeHistoryPerAccount`
   - `transferAssetOwnership`,
   - `getTransactionByReferenceHash`
+  - `calculateDistributionFee`
 
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 
