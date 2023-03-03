@@ -1,5 +1,6 @@
 export * from './broadcastTransaction';
 export * from './getTransaction';
+export * from './getTransactionByFullHash';
 export * from './sendAmountToSingleRecipient';
 export * from './getDistributionAmountsFromTransaction';
 export * from './sendSameAmountToMultipleRecipients';

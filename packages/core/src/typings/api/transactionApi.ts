@@ -38,6 +38,16 @@ export interface TransactionApi {
      */
     getTransaction: (transactionId: string) => Promise<Transaction>;
 
+
+    /**
+     * Get a transaction using the hash reference instead of the id
+     *
+     * @param fullhash The transactions full hash
+     * @return The Transaction
+     */
+    getTransactionByFullHash: (fullHash: string) => Promise<Transaction>;
+
+
     /**
      * Parses a transaction byte sequence to its JSON representation
      *

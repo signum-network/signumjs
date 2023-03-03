@@ -42,7 +42,8 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getOpenBidOrdersPerAsset`
   - `getOpenAskOrdersPerAsset`
   - `getTradeHistoryPerAccount`
-  - `transferAssetOwnership`
+  - `transferAssetOwnership`,
+  - `getTransactionByReferenceHash`
 
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 

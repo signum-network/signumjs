@@ -64,7 +64,7 @@ import {
     getSubscription,
     getUnconfirmedTransactions,
     signAndBroadcastTransaction,
-    parseTransactionBytes, getDistributionAmountsFromTransaction
+    parseTransactionBytes, getDistributionAmountsFromTransaction, getTransactionByFullHash
 } from './factories/transaction';
 import {
     cancelAskOrder,
@@ -168,6 +168,7 @@ export function composeApi(settings: ApiSettings): Api {
             getDistributionAmountsFromTransaction,
             getSubscription,
             getTransaction,
+            getTransactionByFullHash,
             getUnconfirmedTransactions,
             parseTransactionBytes,
             sendAmountToMultipleRecipients,

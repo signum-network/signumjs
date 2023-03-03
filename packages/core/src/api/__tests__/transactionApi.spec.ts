@@ -4,7 +4,7 @@ import {createChainService} from '../../__tests__/helpers/createChainService';
 import {
     Attachment,
     AttachmentEncryptedMessage,
-    AttachmentMessage, getUnconfirmedTransactions,
+    AttachmentMessage, getTransactionByFullHash, getUnconfirmedTransactions,
     MultioutRecipientAmount,
     Transaction,
     TransactionId
@@ -51,9 +51,24 @@ describe('TransactionApi', () => {
             httpMock = HttpMockBuilder.create().onGetReply(200, {
                 transaction: 'transactionId',
                 block: 'blockId'
-            }).build();
+            }, 'relPath?requestType=getTransaction&transaction=transactionId').build();
             const service = createChainService(httpMock, 'relPath');
             const status = await getTransaction(service)('transactionId');
+            expect(status.transaction).toBe('transactionId');
+            expect(status.block).toBe('blockId');
+        });
+
+    });
+
+
+    describe('getTransactionByFullHash', () => {
+        it('should getTransaction', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                transaction: 'transactionId',
+                block: 'blockId'
+            }, 'relPath?requestType=getTransaction&fullHash=fullhash').build();
+            const service = createChainService(httpMock, 'relPath');
+            const status = await getTransactionByFullHash(service)('fullhash');
             expect(status.transaction).toBe('transactionId');
             expect(status.block).toBe('blockId');
         });
