@@ -73,7 +73,7 @@ export class Address {
      * @param prefix The Reed-Solomon Address prefix
      */
     public static fromPublicKey(publicKey: string, prefix: string = AddressPrefix.MainNet): Address {
-        return new Address({publicKey: publicKey.toUpperCase(), prefix});
+        return new Address({publicKey, prefix});
     }
 
     /**
@@ -88,7 +88,7 @@ export class Address {
         const {extension, prefix} = tokenizeReedSolomonAddress(address);
 
         if (extension) {
-            const publicKey = convertBase36StringToHexString(extension);
+            const publicKey = convertBase36StringToHexString(extension).toLowerCase();
 
             if (convertReedSolomonAddressToNumericId(address) !== getAccountIdFromPublicKey(publicKey)) {
                 throw Error('Address and Public Key do not match');
@@ -103,7 +103,7 @@ export class Address {
      * @return Gets public key
      */
     getPublicKey(): string {
-        return this._publicKey;
+        return this._publicKey.toLowerCase();
     }
 
     /**
@@ -151,7 +151,7 @@ export class Address {
 
     private constructFromPublicKey(publicKey: string, prefix: string): void {
         ensureValidPublicKey(publicKey);
-        this._publicKey = publicKey;
+        this._publicKey = publicKey.toLowerCase();
         this._numericId = getAccountIdFromPublicKey(publicKey);
         this._rs = convertNumericIdToReedSolomonAddress(this._numericId, prefix);
     }
