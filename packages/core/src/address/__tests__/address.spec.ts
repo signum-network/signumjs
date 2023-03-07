@@ -5,7 +5,7 @@ const TestAddress = {
     rs: 'FOOBAR-K37B-9V85-FB95-793HN',
     ex: '2UCGWTUEEY66TN7RNC189PM19C4ATCEUGQV929IY1N24H0Y82Z',
     id: '6502115112683865257',
-    pk: '7210B8941929030324540238450E985899989A7AD0267E0C76F668FDE3B1016B'
+    pk: '7210b8941929030324540238450e985899989a7ad0267e0c76f668fde3b1016b'
 };
 
 describe('Address', () => {
@@ -22,7 +22,7 @@ describe('Address', () => {
         });
         it('should construct as expected with extended address', () => {
             const address = Address.fromReedSolomonAddress(`${TestAddress.rs}-${TestAddress.ex}`);
-            expect(address.getPublicKey().toUpperCase()).toBe(TestAddress.pk);
+            expect(address.getPublicKey()).toBe(TestAddress.pk);
         });
         it('should throw error on invalid address ', () => {
             expect(() => {
@@ -141,7 +141,7 @@ describe('Address', () => {
             const address = Address.create(TestAddress.rs + '-' + TestAddress.ex);
             expect(address.getReedSolomonAddress()).toEqual(TestAddress.rs);
             expect(address.getNumericId()).toEqual(TestAddress.id);
-            expect(address.getPublicKey().toUpperCase()).toEqual(TestAddress.pk);
+            expect(address.getPublicKey()).toEqual(TestAddress.pk);
         });
 
         it('should throw error on invalid address', () => {
