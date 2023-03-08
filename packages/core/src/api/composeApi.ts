@@ -98,7 +98,7 @@ import {
     getAssetsByName,
     transferMultipleAssets,
     transferAssetOwnership,
-    calculateDistributionFee
+    calculateDistributionFee, getAssetsByOwner
 } from './factories/asset';
 import {Http} from '@signumjs/http';
 /**
@@ -253,6 +253,7 @@ export function composeApi(settings: ApiSettings): Api {
             getOpenAskOrdersPerAccount,
             getTradeHistoryPerAccount,
             getAssetsByIssuer,
+            getAssetsByOwner,
             getAssetsByName,
             calculateDistributionFee,
         })

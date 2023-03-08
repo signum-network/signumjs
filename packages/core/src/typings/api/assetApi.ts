@@ -271,13 +271,22 @@ export interface AssetApi {
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 
     /**
-     * Gets all assets by given issuer
+     * Gets all assets by given issuer. So, if an ownership was transferred the asset won't be listed by this call.
      *
      * @param {GetAssetsByIssuerArgs} args The args object
      *
      * @param The asset list
      */
     getAssetsByIssuer: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
+
+    /**
+     * Gets all assets by given owner. So, if an ownership was transferred this new owner is considered byt this call.
+     *
+     * @param {GetAssetsByIssuerArgs} args The args object
+     *
+     * @param The asset list
+     */
+    getAssetsByOwner: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
 
     /**
      * Gets all assets by name (or parts of it)

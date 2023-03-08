@@ -20,7 +20,13 @@ import {
     getOpenBidOrdersPerAsset,
     getOpenAskOrdersPerAsset,
     getOpenBidOrdersPerAccount,
-    getOpenAskOrdersPerAccount, getAllAssets, getAssetsByIssuer, getAssetsByName, transferMultipleAssets, transferAssetOwnership,
+    getOpenAskOrdersPerAccount,
+    getAllAssets,
+    getAssetsByIssuer,
+    getAssetsByName,
+    transferMultipleAssets,
+    transferAssetOwnership,
+    getAssetsByOwner,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
@@ -111,6 +117,24 @@ describe('Asset Api', () => {
             ).build();
             const service = createChainService(httpMock, 'relPath');
             const assetList = await getAssetsByIssuer(service)({
+                accountId: 'accountId',
+                skipZeroVolume: true,
+                firstIndex: 0,
+                lastIndex: 1,
+                heightStart: 2,
+                heightEnd: 3
+            });
+            expect(assetList).toEqual([]);
+        });
+    });
+
+    describe('getAssetsByOwner', () => {
+        it('should getAssetsByOwner', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [],
+                'relPath?requestType=getAssetsByOwner&account=accountId&firstIndex=0&lastIndex=1&heightStart=2&heightEnd=3&skipZeroVolume=true'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const assetList = await getAssetsByOwner(service)({
                 accountId: 'accountId',
                 skipZeroVolume: true,
                 firstIndex: 0,

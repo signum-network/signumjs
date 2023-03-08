@@ -15,6 +15,8 @@
 export interface Asset {
     account: string;
     accountRS: string;
+    issuer: string;
+    issuerRS: string;
     publicKey: string;
     name: string;
     description: string;
