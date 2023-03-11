@@ -45,6 +45,7 @@ export function verifyTransaction(method: string, parameters: any, response: any
     if (method !== rebuiltObject.requestType) {
         throw new Error('Verification failed - Node Response does not match transaction parameters (A)');
     }
+
     let nParameters = 0;
     // tslint:disable-next-line:forin
     for (const prop in parameters) {
@@ -52,15 +53,20 @@ export function verifyTransaction(method: string, parameters: any, response: any
             case 'broadcast':
                 // properties to ignore
                 continue;
+            case 'recipientPublicKey':
+                if (!rebuiltObject.rebuiltData['recipientPublicKey']) {
+                    continue;
+                }
+            // tslint:disable-next-line:no-switch-case-fall-through
             case 'referencedTransactionFullHash':
             case 'senderPublicKey':
-            case 'recipientPublicKey':
             case 'data':
             case 'code':
             case 'encryptedMessageData':
             case 'encryptedMessageNonce':
             case 'encryptToSelfMessageData':
             case 'encryptToSelfMessageNonce':
+
                 // case insensitive properties
                 if (String(parameters[prop]).toLocaleLowerCase() !== String(rebuiltObject.rebuiltData[prop]).toLocaleLowerCase()) {
                     throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);

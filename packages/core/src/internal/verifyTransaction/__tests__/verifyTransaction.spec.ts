@@ -191,4 +191,52 @@ describe('verifyTransaction', function () {
             }).not.toThrow();
         });
     });
+    describe('sendMessage', function () {
+        it('should pass verification as expected - for encrypted messages', () => {
+            const requestType = 'sendMessage';
+            const formData = {
+                feeNQT: '1000000',
+                recipient: '16107620026796983538',
+                recipientPublicKey: '497d559d18d989b8e2d729eb6f69b70c1ddc3e554f75bef3ed2716a4b2121902',
+                publicKey: 'c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a',
+                encryptedMessageData: 'b7d249d7d46b1c516abd34c7cb1351e65a965c77b8bde9673145e25aefad6f86fb9ac7c42ca60409088e0cf9839a0352670828c7697bbbd19357cac406afb579',
+                encryptedMessageNonce: '909b32e23dc64dcfd1040fa3a533e6a269d5089bac27ac1048b9121cc9f36f47',
+                messageToEncryptIsText: true,
+                deadline: 1440
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '01203c852410a005c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4af2c4339212c389df000000000000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000acfc07004410d378004ac0b004cfe1531b543c7c0140000080b7d249d7d46b1c516abd34c7cb1351e65a965c77b8bde9673145e25aefad6f86fb9ac7c42ca60409088e0cf9839a0352670828c7697bbbd19357cac406afb579909b32e23dc64dcfd1040fa3a533e6a269d5089bac27ac1048b9121cc9f36f47',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
+        it('should pass verification as expected - with non-zero quantity and non-mintable', () => {
+            const requestType = 'issueAsset';
+            const formData = {
+                name: 'TESTZEE',
+                description: 'foo',
+                quantityQNT: '10000000',
+                decimals: '1',
+                mintable: 'false',
+                feeNQT: '15000000000',
+                publicKey: 'c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a',
+                deadline: 60
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '02206252270f3c00c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a0000000000000000000000000000000000d6117e0300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c8ef06001b1677b46e5d2a5a04cfe1531b543c7c0107544553545a45450300666f6f809698000000000001',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
+    });
 });
