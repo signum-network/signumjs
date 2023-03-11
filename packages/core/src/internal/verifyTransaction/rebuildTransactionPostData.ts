@@ -46,6 +46,9 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
             case 'issueAsset':
                 if (rebuiltData.mintable === '1') {
                     rebuiltData.mintable = 'true';
+                    if (!rebuiltData.quantityQNT) { // when initial supply is '0'
+                        rebuiltData.quantityQNT = '0';
+                    }
                 } else {
                     rebuiltData.mintable = 'false';
                 }

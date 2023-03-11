@@ -261,6 +261,22 @@ describe('rebuildTransactionPostData', () => {
             expect(output.requestType).toEqual(requestType);
             expect(output.rebuiltData).toEqual(rebuiltData);
         });
+        it('should rebuild data correctly - mintable with 0 quantity- Att. v2', () => {
+            const transactionBytes = '022053672410a0056e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e780000000000000000000000000000000000d6117e03000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008dfc07009b91f30fa55b0cf204cfe1531b543c7c020761736164617364060061736461736400000000000000000401';
+            const rebuiltData = {
+                name: 'asadasd',
+                description: 'asdasd',
+                quantityQNT: '0',
+                decimals: '4',
+                mintable: 'true',
+                feeNQT: '15000000000',
+                publicKey: '6e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e78',
+                deadline: 1440
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
     });
     describe('transferAsset', () => {
         const requestType = 'transferAsset';

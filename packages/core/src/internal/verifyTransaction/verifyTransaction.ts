@@ -49,28 +49,28 @@ export function verifyTransaction(method: string, parameters: any, response: any
     // tslint:disable-next-line:forin
     for (const prop in parameters) {
         switch (prop) {
-        case 'broadcast':
-            // properties to ignore
-            continue;
-        case 'referencedTransactionFullHash':
-        case 'senderPublicKey':
-        case 'recipientPublicKey':
-        case 'data':
-        case 'code':
-        case 'encryptedMessageData':
-        case 'encryptedMessageNonce':
-        case 'encryptToSelfMessageData':
-        case 'encryptToSelfMessageNonce':
-            // case insensitive properties
-            if (String(parameters[prop]).toLocaleLowerCase() !== String(rebuiltObject.rebuiltData[prop]).toLocaleLowerCase()) {
-                throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
-            }
-            break;
-        default:
-            // case sensitive properties
-            if (String(parameters[prop]) !== String(rebuiltObject.rebuiltData[prop])) {
-                throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
-            }
+            case 'broadcast':
+                // properties to ignore
+                continue;
+            case 'referencedTransactionFullHash':
+            case 'senderPublicKey':
+            case 'recipientPublicKey':
+            case 'data':
+            case 'code':
+            case 'encryptedMessageData':
+            case 'encryptedMessageNonce':
+            case 'encryptToSelfMessageData':
+            case 'encryptToSelfMessageNonce':
+                // case insensitive properties
+                if (String(parameters[prop]).toLocaleLowerCase() !== String(rebuiltObject.rebuiltData[prop]).toLocaleLowerCase()) {
+                    throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
+                }
+                break;
+            default:
+                // case sensitive properties
+                if (String(parameters[prop]) !== String(rebuiltObject.rebuiltData[prop])) {
+                    throw new Error(`Verification failed - Node Response does not match transaction parameter '${prop}'.`);
+                }
         }
         if (parameters[prop] !== undefined) {
             nParameters++;
