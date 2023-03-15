@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2021 Signum Network
+ * Modified (c) 2023 Signum Network
  */
 
 import {Http, HttpError, HttpClientFactory, HttpResponse} from '@signumjs/http';
@@ -8,6 +8,19 @@ import {asyncRetry} from '@signumjs/util';
 import {ChainServiceSettings} from './chainServiceSettings';
 import {DefaultApiEndpoint} from '../constants';
 import {verifyTransaction} from '../internal/verifyTransaction';
+
+interface SendArgs {
+
+    /**
+     * Setting this option to `true`, skips the additional security check, i.e. the verification of the
+     * unsigned transaction bytes, which detects tampered node responses. By default, the option is `false`.
+     * Usually, you won't use this option, but can be useful when a method cannot be verified,
+     * because the verification is not implemented yet.
+     *
+     */
+    skipAdditionalSecurityCheck?: boolean;
+    [key: string]: any;
+}
 
 // Old API is inconsistent in its error responses
 interface ApiError {
@@ -78,7 +91,7 @@ export class ChainService {
     public toApiEndpoint(method: string, data: object = {}): string {
         const request = `${this._relPath}?requestType=${method}`;
         const params = Object.keys(data)
-            .filter(k => data[k] !== undefined)
+            .filter(k => data[k] !== undefined && k !== 'skipAdditionalSecurityCheck')
             .map(k => `${k}=${encodeURIComponent(data[k])}`)
             .join('&');
         return params ? `${request}&${params}` : request;
@@ -108,16 +121,16 @@ export class ChainService {
 
     /**
      * Send data to chain node
-     * @param {string} method The method according https://www.burstcoin.community/burst-api/.
+     * @param {string} method The method according https://europe.signum.network/api-doc/.
      *        Note that there are only a few POST methods
-     * @param {any} args A JSON object which will be mapped to url params
+     * @param {SendArgs} args A JSON object which will be mapped to url params
      * @param {any} body An object with key value pairs to submit as post body
      * @param  {any} options The optional request configuration for the passed Http client
      * (default is [AxiosRequestConfig](https://axios-http.com/docs/req_config) )
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
-    public async send<T>(method: string, args: object = {}, body?: object , options?: any): Promise<T> {
+    public async send<T>(method: string, args: SendArgs = {}, body?: object , options?: any): Promise<T> {
         const endpoint = this.toApiEndpoint(method, args);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.post(endpoint, body, options));
@@ -126,7 +139,11 @@ export class ChainService {
             ChainService.throwAsHttpError(endpoint, response);
         }
 
-        verifyTransaction(method, args, response);
+
+        if (!args.skipAdditionalSecurityCheck) {
+            console.log('send verify')
+            verifyTransaction(method, args, response);
+        }
 
         return response;
     }

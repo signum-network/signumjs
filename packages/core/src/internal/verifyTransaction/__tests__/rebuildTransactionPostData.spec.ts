@@ -151,18 +151,51 @@ describe('rebuildTransactionPostData', () => {
     });
     describe('setAlias', () => {
         const requestType = 'setAlias';
-        it('should rebuild data correctly', () => {
-            const transactionBytes = '012152a47b0f4b00f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a00000000000000000000000000000000002d31010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a14907001461702d41ea3cf104cfe1531b543c7c010d4d79546573743235416c6961731500736f6d65206461746120696e666f726d6174696f6e';
-            const rebuiltData = {
-                aliasName: 'MyTest25Alias',
-                aliasURI: 'some data information',
-                feeNQT: '20000000',
-                publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
-                deadline: 75
-            };
-            const output = rebuildTransactionPostData(transactionBytes);
-            expect(output.requestType).toEqual(requestType);
-            expect(output.rebuiltData).toEqual(rebuiltData);
+
+        describe('Version 1', () => {
+            it('should rebuild data correctly', () => {
+                const transactionBytes = '012152a47b0f4b00f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a00000000000000000000000000000000002d31010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a14907001461702d41ea3cf104cfe1531b543c7c010d4d79546573743235416c6961731500736f6d65206461746120696e666f726d6174696f6e';
+                const rebuiltData = {
+                    aliasName: 'MyTest25Alias',
+                    aliasURI: 'some data information',
+                    feeNQT: '20000000',
+                    publicKey: 'f784e177ba7e566ff398f8281980d3fd092f755ab531ebded7f9df93b0fa611a',
+                    deadline: 75
+                };
+                const output = rebuildTransactionPostData(transactionBytes);
+                expect(output.requestType).toEqual(requestType);
+                expect(output.rebuiltData).toEqual(rebuiltData);
+            });
+        });
+
+        describe('Version 2', () => {
+            it('should rebuild data correctly for default domain', () => {
+                const transactionBytes = '012100e42810a0056e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e7800000000000000000000000000000000002d310100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004c010800f54aa052dcc9ace304cfe1531b543c7c0211383764666164736a396173386661646a680c0048656c6c6f20776f726c64210000000000000000';
+                const rebuiltData = {
+                    aliasName: '87dfadsj9as8fadjh',
+                    aliasURI: 'Hello world!',
+                    feeNQT: '20000000',
+                    publicKey: '6e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e78',
+                    deadline: 1440,
+                };
+                const output = rebuildTransactionPostData(transactionBytes);
+                expect(output.requestType).toEqual(requestType);
+                expect(output.rebuiltData).toEqual(rebuiltData);
+            });
+            it('should rebuild data correctly for other tld', () => {
+                const transactionBytes = '01214dbc2510140004d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a00000000000000000000000000000000002d31010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8fd07001c0f3df7ded9719b04cfe1531b543c7c020331323305007465737431da2f073e06f78938';
+                const rebuiltData = {
+                    aliasName: '123',
+                    aliasURI: 'test1',
+                    tld: '4074058944115847130',
+                    feeNQT: '20000000',
+                    publicKey: '04d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a',
+                    deadline: 20
+                };
+                const output = rebuildTransactionPostData(transactionBytes);
+                expect(output.requestType).toEqual(requestType);
+                expect(output.rebuiltData).toEqual(rebuiltData);
+            });
         });
     });
     describe('setAccountInfo', () => {

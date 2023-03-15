@@ -36,4 +36,13 @@ export interface DefaultSendArgs {
      * Using this field allows to make a transaction dependent on other transactions.
      */
     referencedTransactionFullHash?: string;
+
+    /**
+     * Setting this option to `true`, skips the additional security check, i.e. the verification of the
+     * unsigned transaction bytes, which detects tampered node responses. By default, the option is `false`.
+     * Usually, you won't use this option, but can be useful when a method cannot be verified,
+     * because the verification is not implemented yet.
+     *
+     */
+    skipAdditionalSecurityCheck?: boolean;
 }
