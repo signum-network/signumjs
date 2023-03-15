@@ -112,9 +112,12 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#buyalias" class="tsd-kind-icon">buy<wbr>Alias</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#buytopleveldomain" class="tsd-kind-icon">buy<wbr>Top<wbr>Level<wbr>Domain</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasbyid" class="tsd-kind-icon">get<wbr>Alias<wbr>ById</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasbyname" class="tsd-kind-icon">get<wbr>Alias<wbr>ByName</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#getaliasesonsale" class="tsd-kind-icon">get<wbr>Aliases<wbr>OnSale</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#gettopleveldomains" class="tsd-kind-icon">get<wbr>Top<wbr>Level<wbr>Domains</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#searchaliasesbyname" class="tsd-kind-icon">search<wbr>Aliases<wbr>ByName</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#sellalias" class="tsd-kind-icon">sell<wbr>Alias</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.aliasapi.html#setalias" class="tsd-kind-icon">set<wbr>Alias</a></li>
 							</ul>
@@ -130,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">buy<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L57">packages/core/src/typings/api/aliasApi.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L67">packages/core/src/typings/api/aliasApi.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -169,12 +172,53 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="buytopleveldomain" class="tsd-anchor"></a>
+					<h3>buy<wbr>Top<wbr>Level<wbr>Domain</h3>
+					<div class="tsd-signature tsd-kind-icon">buy<wbr>Top<wbr>Level<wbr>Domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L93">packages/core/src/typings/api/aliasApi.ts:93</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Buys a Top Level Domain (TLD)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The args</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.buytopleveldomainargs.html" class="tsd-signature-type">BuyTopLevelDomainArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.buytopleveldomainargs.html" class="tsd-signature-type">BuyTopLevelDomainArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionid.html" class="tsd-signature-type">TransactionId</a><span class="tsd-signature-symbol"> | </span><a href="core.unsignedtransaction.html" class="tsd-signature-type">UnsignedTransaction</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getaliasbyid" class="tsd-anchor"></a>
 					<h3>get<wbr>Alias<wbr>ById</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ById<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L22">packages/core/src/typings/api/aliasApi.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L30">packages/core/src/typings/api/aliasApi.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,7 +262,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ByName<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L32">packages/core/src/typings/api/aliasApi.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L41">packages/core/src/typings/api/aliasApi.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -228,6 +272,9 @@
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
 							<dd><p>The alias name</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>optional Top Level Domain. If not given, the default domain &#39;signum&#39; is being used</p>
 							</dd>
 							<dt>returns</dt>
 							<dd><p>The Alias object</p>
@@ -239,7 +286,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.alias.html" class="tsd-signature-type">Alias</a><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>aliasName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, tld<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.alias.html" class="tsd-signature-type">Alias</a><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -247,6 +294,9 @@
 										<ul class="tsd-parameters">
 											<li>
 												<h5>aliasName: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> tld: <span class="tsd-signature-type">string</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.alias.html" class="tsd-signature-type">Alias</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -262,7 +312,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Aliases<wbr>OnSale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L49">packages/core/src/typings/api/aliasApi.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L59">packages/core/src/typings/api/aliasApi.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -301,12 +351,94 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="gettopleveldomains" class="tsd-anchor"></a>
+					<h3>get<wbr>Top<wbr>Level<wbr>Domains</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Top<wbr>Level<wbr>Domains<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L87">packages/core/src/typings/api/aliasApi.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets all registered Top Level Domains</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The args</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.gettopleveldomainsargs.html" class="tsd-signature-type">GetTopLevelDomainsArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.topleveldomainlist.html" class="tsd-signature-type">TopLevelDomainList</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.gettopleveldomainsargs.html" class="tsd-signature-type">GetTopLevelDomainsArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.topleveldomainlist.html" class="tsd-signature-type">TopLevelDomainList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="searchaliasesbyname" class="tsd-anchor"></a>
+					<h3>search<wbr>Aliases<wbr>ByName</h3>
+					<div class="tsd-signature tsd-kind-icon">search<wbr>Aliases<wbr>ByName<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L82">packages/core/src/typings/api/aliasApi.ts:82</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Searches for aliases by their name or part of the name</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The args</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.searchaliasesbynameargs.html" class="tsd-signature-type">SearchAliasesByNameArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.aliaslist.html" class="tsd-signature-type">AliasList</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.searchaliasesbynameargs.html" class="tsd-signature-type">SearchAliasesByNameArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.aliaslist.html" class="tsd-signature-type">AliasList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="sellalias" class="tsd-anchor"></a>
 					<h3>sell<wbr>Alias</h3>
 					<div class="tsd-signature tsd-kind-icon">sell<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L66">packages/core/src/typings/api/aliasApi.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L76">packages/core/src/typings/api/aliasApi.ts:76</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -351,7 +483,7 @@
 					<div class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/922e2a2/packages/core/src/typings/api/aliasApi.ts#L42">packages/core/src/typings/api/aliasApi.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/3dcdc31/packages/core/src/typings/api/aliasApi.ts#L52">packages/core/src/typings/api/aliasApi.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -455,6 +587,9 @@
 								<a href="core_api.aliasapi.html#buyalias" class="tsd-kind-icon">buy<wbr>Alias</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.aliasapi.html#buytopleveldomain" class="tsd-kind-icon">buy<wbr>Top<wbr>Level<wbr>Domain</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#getaliasbyid" class="tsd-kind-icon">get<wbr>Alias<wbr>ById</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -462,6 +597,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#getaliasesonsale" class="tsd-kind-icon">get<wbr>Aliases<wbr>OnSale</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.aliasapi.html#gettopleveldomains" class="tsd-kind-icon">get<wbr>Top<wbr>Level<wbr>Domains</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.aliasapi.html#searchaliasesbyname" class="tsd-kind-icon">search<wbr>Aliases<wbr>ByName</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.aliasapi.html#sellalias" class="tsd-kind-icon">sell<wbr>Alias</a>
