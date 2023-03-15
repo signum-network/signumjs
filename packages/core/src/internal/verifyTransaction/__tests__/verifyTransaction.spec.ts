@@ -282,4 +282,26 @@ describe('verifyTransaction', function () {
             }).not.toThrow();
         });
     });
+    describe('setTLD', function () {
+        it('should pass verification as expected', () => {
+            const requestType = 'setTLD';
+            const formData = {
+                tld: '123spaceship',
+                amountNQT: '10000000000000',
+                feeNQT: '20000000',
+                publicKey: '04d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a',
+                deadline: 20
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '01289da31c10140004d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a000000000000000000a0724e18090000002d3101000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000055f4070086134aea12e0d25404cfe1531b543c7c010c313233737061636573686970',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
+    });
 });

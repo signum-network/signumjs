@@ -45,3 +45,6 @@ export * from './transferMultipleAssetsArgs';
 export * from './getAliasesOnSaleArgs';
 export * from './transferAssetOwnershipArgs';
 export * from './calculateDistributionFeeArgs';
+export * from './getTopLevelDomainsArgs';
+export * from './searchAliasesByNameArgs';
+export * from './buyTopLevelDomainArgs';

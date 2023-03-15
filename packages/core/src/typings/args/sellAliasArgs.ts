@@ -9,6 +9,7 @@ import {DefaultSendArgs} from './defaultSendArgs';
  * @param amountPlanck The sale amount  in Planck
  * @param recipientId The optional recipient Id. If given, then only that recipient can buy the alias.
  * @param recipientPublicKey The optional recipient public key.
+ * @param tld The name of the Top Level Domain (TLD) aka namespace where this alias belongs to
  * @module core
  */
 export interface SellAliasArgs extends DefaultSendArgs {
@@ -17,4 +18,5 @@ export interface SellAliasArgs extends DefaultSendArgs {
     amountPlanck: string;
     recipientId?: string;
     recipientPublicKey?: string;
+    tld?: string;
 }

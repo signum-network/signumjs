@@ -91,6 +91,9 @@ const AttachmentSpecV1: AttachmentSpec = new Map<string, AttachmentField[]>([
         {type: 'ShortString*1', parameterName: 'description'},
         {type: 'CreationBytes*1'},
     ]],
+    ['setTLD', [
+        {type: 'ByteString*1', parameterName: 'tld'},
+    ]],
 ]);
 
 const AttachmentSpecV2: AttachmentSpec = new Map<string, AttachmentField[]>([

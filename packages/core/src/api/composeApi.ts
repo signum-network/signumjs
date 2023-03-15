@@ -44,7 +44,16 @@ import {
     setRewardRecipient,
     getRewardRecipient, addCommitment, removeCommitment,
 } from './factories/account';
-import {getAliasById, getAliasByName, getAliasesOnSale, sellAlias, buyAlias} from './factories/alias';
+import {
+    getAliasById,
+    getAliasByName,
+    getAliasesOnSale,
+    sellAlias,
+    buyAlias,
+    searchAliasesByName,
+    getTopLevelDomains,
+    buyTopLevelDomain
+} from './factories/alias';
 import {
     callContractMethod,
     getAllContractIds,
@@ -213,6 +222,9 @@ export function composeApi(settings: ApiSettings): Api {
             buyAlias,
             sellAlias,
             getAliases,
+            searchAliasesByName,
+            getTopLevelDomains,
+            buyTopLevelDomain
         }).withContractApi({
             getContract,
             getContractsByAccount,

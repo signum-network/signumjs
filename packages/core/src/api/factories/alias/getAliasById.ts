@@ -13,5 +13,5 @@ import {AliasList} from '../../../typings/aliasList';
 export const getAliasById = (service: ChainService):
     (aliasId: string) => Promise<AliasList> =>
     (aliasId: string): Promise<AliasList> => service.query('getAlias', {
-        alias:aliasId,
+        alias: aliasId,
     });

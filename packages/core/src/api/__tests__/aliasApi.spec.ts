@@ -8,6 +8,7 @@ import {
     getAliasByName
 } from '../factories';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
+import {searchAliasesByName} from '../factories/alias/searchAliasesByName';
 
 describe('Alias Api', () => {
 
@@ -157,6 +158,22 @@ describe('Alias Api', () => {
                 recipientId: 'recipientId'
             });
             expect(asset).toEqual({'transaction': 'transactionId'});
+        });
+    });
+
+    describe('searchAliasesByName', () => {
+        it('should search as expected', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {'aliases': []},
+                'relPath?requestType=getAliasesByName&aliasName=aliasName&timestamp=10000&firstIndex=0&lastIndex=150'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const result = await searchAliasesByName(service)({
+                aliasName: 'aliasName',
+                timestamp: 10000,
+                firstIndex: 0,
+                lastIndex: 150
+            });
+            expect(result.aliases).toHaveLength(0);
         });
     });
 });

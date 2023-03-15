@@ -22,4 +22,9 @@ export interface GetAliasesArgs {
      * The last index of the list. At maximum 500 will be returned
      */
     lastIndex?: number;
+
+    /**
+     * The Top Level Domain. If it is given without further parameters all aliases of this tld are being returned.
+     */
+    tld?: string;
 }
