@@ -3,6 +3,7 @@ import {HttpError, HttpMockBuilder, HttpResponse, Http} from '@signumjs/http';
 import {ChainServiceSettings} from '../chainServiceSettings';
 import {DefaultApiEndpoint} from '../../constants';
 import {createChainService} from '../../__tests__/helpers';
+import {verifyTransaction} from '../../internal/verifyTransaction';
 
 class TestHttpClient implements Http {
     delete(url: string): Promise<HttpResponse> {
@@ -49,7 +50,7 @@ describe('ChainService', () => {
         });
     });
 
-    describe('toBRSEndpoint() relative Path', () => {
+    describe('toApiEndpoint() relative Path', () => {
 
         const settings: ChainServiceSettings = {
             nodeHost: 'localhost',
@@ -123,10 +124,25 @@ describe('ChainService', () => {
                 foo: 'someData'
             }).build();
             const service = createChainService(httpMock);
+            // @ts-ignore
+            verifyTransaction = jest.fn();
             const result = await service.send('someMethod');
 
             expect(result).toEqual({foo: 'someData'});
+            expect(verifyTransaction).toBeCalled();
+        });
+        it('should successfully send data and skip verifyTransaction', async () => {
+            const httpMock = HttpMockBuilder.create().onPostReply(200, {
+                foo: 'someData',
 
+            }).build();
+            const service = createChainService(httpMock);
+            // @ts-ignore
+            verifyTransaction = jest.fn();
+            const result = await service.send('someMethod', {skipAdditionalSecurityCheck: true});
+
+            expect(result).toEqual({foo: 'someData'});
+            expect(verifyTransaction).not.toBeCalled();
         });
 
         it('should throw normal Http error', async () => {

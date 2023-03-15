@@ -43,7 +43,6 @@ export interface DefaultSendArgs {
      * Usually, you won't use this option, but can be useful when a method cannot be verified,
      * because the verification is not implemented yet.
      *
-     * @see also [[]]
      */
     skipAdditionalSecurityCheck?: boolean;
 }
