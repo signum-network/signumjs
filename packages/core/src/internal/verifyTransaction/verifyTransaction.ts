@@ -53,6 +53,9 @@ export function verifyTransaction(method: string, parameters: any, response: any
             case 'broadcast':
                 // properties to ignore
                 continue;
+            case 'tld':
+                // tld is sent as name, but returned as id... so we need to skip the value comparison
+                break;
             case 'recipientPublicKey':
                 if (!rebuiltObject.rebuiltData['recipientPublicKey']) {
                     continue;

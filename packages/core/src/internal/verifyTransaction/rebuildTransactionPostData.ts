@@ -217,7 +217,7 @@ function parseCreationBytes(trBytes: ByteBuffer) {
 
     let dataLen = (dpages <= 1) ? trBytes.readByte() : trBytes.readShort();
     if (dataLen === 0 && dpages === 1 && trBytes.length() - trBytes.position() === 256 && version > 2) {
-        // Note: Could not work if there are attachments: message, messagemessageToEncrypt
+        // Note: Could not work if there are attachments: message, messageToEncrypt
         // encryptedMessageData, messageToEncryptToSelf or encryptToSelfMessageData.
         // The problem is that creationBytes has no size information.
         // This is not a problem in node because the attachments with flags are stored

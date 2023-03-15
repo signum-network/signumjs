@@ -239,4 +239,47 @@ describe('verifyTransaction', function () {
             }).not.toThrow();
         });
     });
+    describe('setAlias Version 2 (TLD)', function () {
+        it('should pass verification as expected - for default (non-given) tld', () => {
+            const requestType = 'setAlias';
+            const formData = {
+                aliasName: '87dfadsj9as8fadjh',
+                aliasURI: 'Hello world!',
+                feeNQT: '20000000',
+                publicKey: '6e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e78',
+                deadline: 1440
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '012100e42810a0056e1a0abea0cbacdc8c77a7de2868360d3e667b276a2f32bb847579d126d63e7800000000000000000000000000000000002d310100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004c010800f54aa052dcc9ace304cfe1531b543c7c0211383764666164736a396173386661646a680c0048656c6c6f20776f726c64210000000000000000',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
+        it('should pass verification as expected - for other tld', () => {
+            const requestType = 'setAlias';
+            const formData = {
+                aliasName: '123',
+                aliasURI: 'test1',
+                tld: 'crypto',
+                feeNQT: '20000000',
+                publicKey: '04d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a',
+                deadline: 20
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '01214dbc2510140004d794aa453a5bbdb8d580f1d9a76b6d7a25cde0ed38c098550ea0f784d9317a00000000000000000000000000000000002d31010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8fd07001c0f3df7ded9719b04cfe1531b543c7c020331323305007465737431da2f073e06f78938',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
+    });
 });

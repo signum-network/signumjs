@@ -94,15 +94,19 @@ const AttachmentSpecV1: AttachmentSpec = new Map<string, AttachmentField[]>([
 ]);
 
 const AttachmentSpecV2: AttachmentSpec = new Map<string, AttachmentField[]>([
-    [
-        'issueAsset', [
+    ['issueAsset', [
         {type: 'ByteString*1', parameterName: 'name'},
         {type: 'ShortString*1', parameterName: 'description'},
         {type: 'Long*1', parameterName: 'quantityQNT'},
         {type: 'Byte*1', parameterName: 'decimals'},
         {type: 'Byte*1', parameterName: 'mintable'}
-    ]
-    ]
+    ]],
+    ['setAlias', [
+        {type: 'ByteString*1', parameterName: 'aliasName'},
+        {type: 'ShortString*1', parameterName: 'aliasURI'},
+        // this is an id, while it is the name as parameter... need to be skipped on parameter comparison
+        {type: 'Long*1', parameterName: 'tld'},
+    ]],
 ]);
 
 
