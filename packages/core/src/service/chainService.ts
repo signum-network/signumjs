@@ -9,7 +9,12 @@ import {ChainServiceSettings} from './chainServiceSettings';
 import {DefaultApiEndpoint} from '../constants';
 import {verifyTransaction} from '../internal/verifyTransaction';
 
-interface SendArgs {
+/**
+ * The send arguments for [[ChainService.send]]
+ *
+ * @module core
+ */
+export interface SendArgs {
 
     /**
      * Setting this option to `true`, skips the additional security check, i.e. the verification of the
@@ -141,7 +146,7 @@ export class ChainService {
 
 
         if (!args.skipAdditionalSecurityCheck) {
-            console.log('send verify')
+            console.log('send verify');
             verifyTransaction(method, args, response);
         }
 

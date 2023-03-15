@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NotGrantedWalletError
+	<title>SendArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/wallets.html">wallets</a>
+					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="wallets.notgrantedwalleterror.html">NotGrantedWalletError</a>
+					<a href="core.sendargs.html">SendArgs</a>
 				</li>
 			</ul>
-			<h1>Class NotGrantedWalletError</h1>
+			<h1>Interface SendArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Error for rejected permissions, or similar permission errors</p>
+						<p>The send arguments for <a href="../classes/core.chainservice.html#send">ChainService.send</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,20 +99,18 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="wallets.extensionwalleterror.html" class="tsd-signature-type">ExtensionWalletError</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">NotGrantedWalletError</span>
-							</li>
-						</ul>
+						<span class="target">SendArgs</span>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">Error</span></li>
-				</ul>
+			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-external-module">
+				<h3 class="tsd-before-signature">Indexable</h3>
+				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The send arguments for <a href="../classes/core.chainservice.html#send">ChainService.send</a></p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
@@ -121,8 +119,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="wallets.notgrantedwalleterror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="wallets.notgrantedwalleterror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.sendargs.html#skipadditionalsecuritycheck" class="tsd-kind-icon">skip<wbr>Additional<wbr>Security<wbr>Check</a></li>
 							</ul>
 						</section>
 					</div>
@@ -130,27 +127,23 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Permission Not Granted&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="skipadditionalsecuritycheck" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Additional<wbr>Security<wbr>Check</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Additional<wbr>Security<wbr>Check<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="wallets.extensionwalleterror.html">ExtensionWalletError</a>.<a href="wallets.extensionwalleterror.html#message">message</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/wallets/src/extension/errors.ts#L18">packages/wallets/src/extension/errors.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/core/src/service/chainService.ts#L26">packages/core/src/service/chainService.ts:26</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;NotGrantedWalletError&quot;</span></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="wallets.extensionwalleterror.html">ExtensionWalletError</a>.<a href="wallets.extensionwalleterror.html#name">name</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/wallets/src/extension/errors.ts#L17">packages/wallets/src/extension/errors.ts:17</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Setting this option to <code>true</code>, skips the additional security check, i.e. the verification of the
+								unsigned transaction bytes, which detects tampered node responses. By default, the option is <code>false</code>.
+								Usually, you won&#39;t use this option, but can be useful when a method cannot be verified,
+							because the verification is not implemented yet.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -163,7 +156,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/contracts.html">contracts</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -190,109 +183,25 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/wallets.html">wallets</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.browserextensionadapter.html" class="tsd-kind-icon">Browser<wbr>Extension<wbr>Adapter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.consoleextensionadapter.html" class="tsd-kind-icon">Console<wbr>Extension<wbr>Adapter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.deeplinkablewallet.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.extensionadapterfactory.html" class="tsd-kind-icon">Extension<wbr>Adapter<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.extensionwalleterror.html" class="tsd-kind-icon">Extension<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.genericdeeplinkablewallet.html" class="tsd-kind-icon">Generic<wbr>Deeplinkable<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.genericextensionwallet.html" class="tsd-kind-icon">Generic<wbr>Extension<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.invalidnetworkerror.html" class="tsd-kind-icon">Invalid<wbr>Network<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.invalidparamswalleterror.html" class="tsd-kind-icon">Invalid<wbr>Params<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.notfoundwalleterror.html" class="tsd-kind-icon">Not<wbr>Found<wbr>Wallet<wbr>Error</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.notgrantedwalleterror.html" class="tsd-kind-icon">Not<wbr>Granted<wbr>Wallet<wbr>Error</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="core.sendargs.html" class="tsd-kind-icon">Send<wbr>Args</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-								<a href="wallets.notgrantedwalleterror.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-								<a href="wallets.notgrantedwalleterror.html#name" class="tsd-kind-icon">name</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.sendargs.html#skipadditionalsecuritycheck" class="tsd-kind-icon">skip<wbr>Additional<wbr>Security<wbr>Check</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="wallets.walletconnection.html" class="tsd-kind-icon">Wallet<wbr>Connection</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.confirmedtransaction.html" class="tsd-kind-icon">Confirmed<wbr>Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.deeplinkablewalletoptions.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.easywallet.html" class="tsd-kind-icon">Easy<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.easywalletpayargs.html" class="tsd-kind-icon">Easy<wbr>Wallet<wbr>Pay<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionnotificationaccountchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionnotificationhandler.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionnotificationnetworkchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Network<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.extensionnotificationpermissionremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Permission<wbr>Removed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.sendencryptedmessageargs.html" class="tsd-kind-icon">Send<wbr>Encrypted<wbr>Message<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/wallets.wallet.html" class="tsd-kind-icon">Wallet</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionnotification" class="tsd-kind-icon">Extension<wbr>Notification</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-kind-icon">Extension<wbr>Sent<wbr>Encrypted<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
