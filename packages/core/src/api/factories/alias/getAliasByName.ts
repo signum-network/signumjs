@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
+ * Modified (c) 2023 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
 import {AliasList} from '../../../typings/aliasList';
@@ -11,7 +12,8 @@ import {AliasList} from '../../../typings/aliasList';
  * @module core.api.factories
  */
 export const getAliasByName = (service: ChainService):
-    (aliasName: string) => Promise<AliasList> =>
-    (aliasName: string): Promise<AliasList> => service.query('getAlias', {
-        aliasName
+    (aliasName: string, tld?: string) => Promise<AliasList> =>
+    (aliasName: string, tld?: string): Promise<AliasList> => service.query('getAlias', {
+        aliasName,
+        tld
     });

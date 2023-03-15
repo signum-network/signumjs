@@ -32,4 +32,18 @@ export interface Alias {
      */
     aliasURI: string;
     timestamp: number;
+
+    /**
+     * The id of the Top Level Domain (tld) aka namespace for this alias. Default is '0', which points to 'signum'
+     */
+    tld?: string;
+    /**
+     * The name of the Top Level Domain (tld) aka namespace for this alias. Default is 'signum'
+     */
+    tldName?: string;
+
+    /**
+     * Numbers of aliases within the namespace/ top level domain.
+     */
+    numberOfAlias?: number;
 }

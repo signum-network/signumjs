@@ -1,9 +1,17 @@
 import {TransactionId} from '../transactionId';
 import {Alias} from '../alias';
 import {UnsignedTransaction} from '../unsignedTransaction';
-import {SetAliasArgs} from '../args/setAliasArgs';
 import {AliasList} from '../aliasList';
-import {BuyAliasArgs, GetAliasesOnSaleArgs, SellAliasArgs} from '../args';
+import {
+    BuyAliasArgs,
+    BuyTopLevelDomainArgs,
+    GetAliasesOnSaleArgs,
+    SellAliasArgs,
+    SetAliasArgs,
+    GetTopLevelDomainsArgs,
+    SearchAliasesByNameArgs
+} from '../args';
+import {TopLevelDomainList} from '../topLevelDomainList';
 
 /**
  * Alias API
@@ -27,10 +35,12 @@ export interface AliasApi {
     /**
      * Get alias by name, i.e. get basic account info for given alias name
      * @param {string} aliasName The alias name
+     * @param {string} tld optional Top Level Domain. If not given, the default domain 'signum' is being used
      * @return {Promise<Alias>} The Alias object
      */
     getAliasByName: (
         aliasName: string,
+        tld?: string,
     ) => Promise<Alias>;
 
     /**
@@ -64,4 +74,21 @@ export interface AliasApi {
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     sellAlias: (args: SellAliasArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Searches for aliases by their name or part of the name
+     * @param args The args
+     */
+    searchAliasesByName: (args: SearchAliasesByNameArgs) => Promise<AliasList>;
+    /**
+     * Gets all registered Top Level Domains
+     * @param args The args
+     */
+    getTopLevelDomains: (args: GetTopLevelDomainsArgs) => Promise<TopLevelDomainList>;
+
+    /**
+     * Buys a Top Level Domain (TLD)
+     * @param args The args
+     */
+    buyTopLevelDomain: (args: BuyTopLevelDomainArgs) => Promise<TransactionId | UnsignedTransaction>;
 }

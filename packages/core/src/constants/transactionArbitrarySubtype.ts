@@ -15,5 +15,6 @@ export enum TransactionArbitrarySubtype {
     AccountInfo,
     AliasSale,
     AliasBuy,
+    TopLevelDomainAssignment
 }
 

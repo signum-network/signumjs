@@ -13,6 +13,7 @@ const DecodeRequestType = [
     {type: 1, subtype: 5, requestType: 'setAccountInfo', hasAttachment: true},
     {type: 1, subtype: 6, requestType: 'sellAlias', hasAttachment: true},
     {type: 1, subtype: 7, requestType: 'buyAlias', hasAttachment: true},
+    {type: 1, subtype: 8, requestType: 'setTLD', hasAttachment: true},
     {type: 2, subtype: 0, requestType: 'issueAsset', hasAttachment: true},
     {type: 2, subtype: 1, requestType: 'transferAsset', hasAttachment: true},
     {type: 2, subtype: 2, requestType: 'placeAskOrder', hasAttachment: true},
