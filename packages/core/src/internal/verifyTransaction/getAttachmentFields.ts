@@ -104,7 +104,6 @@ const AttachmentSpecV2: AttachmentSpec = new Map<string, AttachmentField[]>([
     ['setAlias', [
         {type: 'ByteString*1', parameterName: 'aliasName'},
         {type: 'ShortString*1', parameterName: 'aliasURI'},
-        // this is an id, while it is the name as parameter... need to be skipped on parameter comparison
         {type: 'Long*1', parameterName: 'tld'},
     ]],
 ]);
