@@ -15,6 +15,11 @@ export class Attachment {
     constructor(public type: string) {}
 }
 
+interface AttachmentMessageArgs {
+    messageIsText?: boolean;
+    message?: string;
+}
+
 /**
 * Message class
 *
@@ -25,8 +30,7 @@ export class AttachmentMessage extends Attachment {
     public messageIsText: boolean;
     public message: string;
 
-    // TODO: make constructor attrs as single args to be more expressive
-    constructor(data: any = {}) {
+    constructor(data: AttachmentMessageArgs = {}) {
         super('message');
         this.messageIsText = data.messageIsText || false;
         this.message = data.message || undefined;

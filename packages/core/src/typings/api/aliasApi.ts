@@ -1,15 +1,17 @@
 import {TransactionId} from '../transactionId';
 import {Alias} from '../alias';
 import {UnsignedTransaction} from '../unsignedTransaction';
-import {SetAliasArgs} from '../args/setAliasArgs';
 import {AliasList} from '../aliasList';
-import {BuyAliasArgs, BuyTopLevelDomainArgs, GetAliasesOnSaleArgs, SellAliasArgs} from '../args';
-import {getTopLevelDomains} from '../../api/factories/alias/getTopLevelDomains';
-import {GetTopLevelDomainsArgs} from '../args/getTopLevelDomainsArgs';
+import {
+    BuyAliasArgs,
+    BuyTopLevelDomainArgs,
+    GetAliasesOnSaleArgs,
+    SellAliasArgs,
+    SetAliasArgs,
+    GetTopLevelDomainsArgs,
+    SearchAliasesByNameArgs
+} from '../args';
 import {TopLevelDomainList} from '../topLevelDomainList';
-import {ChainService} from '../../service';
-import {SearchAliasesByNameArgs} from '../args/searchAliasesByNameArgs';
-import {buyTopLevelDomain} from '../../api/factories/alias/buyTopLevelDomain';
 
 /**
  * Alias API
@@ -88,5 +90,5 @@ export interface AliasApi {
      * Buys a Top Level Domain (TLD)
      * @param args The args
      */
-    buyTopLevelDomain: (args: BuyTopLevelDomainArgs) => Promise<TransactionId | UnsignedTransaction>
+    buyTopLevelDomain: (args: BuyTopLevelDomainArgs) => Promise<TransactionId | UnsignedTransaction>;
 }
