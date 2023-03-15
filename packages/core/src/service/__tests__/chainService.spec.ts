@@ -57,22 +57,22 @@ describe('ChainService', () => {
 
         let service = new ChainService(settings);
 
-        it('should create BRS BURST url without any parameter', () => {
+        it('should create Signum API url without any parameter', () => {
             const url = service.toApiEndpoint('getBlockByHeight');
             expect(url).toBe('/api?requestType=getBlockByHeight');
         });
 
-        it('should create BRS BURST url with one parameter', () => {
+        it('should create Signum API url with one parameter', () => {
             const url = service.toApiEndpoint('getBlockByHeight', {id: 123});
             expect(url).toBe('/api?requestType=getBlockByHeight&id=123');
         });
 
-        it('should create BRS BURST url with many parameters', () => {
+        it('should create Signum API url with many parameters', () => {
             const url = service.toApiEndpoint('getBlockByHeight', {id: 123, includeTransactions: true});
             expect(url).toBe('/api?requestType=getBlockByHeight&id=123&includeTransactions=true');
         });
 
-        it('should create BRS BURST url with many parameters and encode correctly', () => {
+        it('should create Signum API url with many parameters and encode correctly', () => {
             const url = service.toApiEndpoint('getBlockByHeight', {
                 id: 123,
                 includeTransactions: true,
@@ -81,7 +81,7 @@ describe('ChainService', () => {
             expect(url).toBe('/api?requestType=getBlockByHeight&id=123&includeTransactions=true&data=%7B%22foo%22%3A%22some%20data%23%26%24%25-%22%3B%0A%09%22bar%22%3A%221234%22%7D');
         });
 
-        it('should create BRS BURST url with many parameters ignoring undefined', () => {
+        it('should create Signum API url with many parameters ignoring undefined', () => {
             const url = service.toApiEndpoint('getBlockByHeight',
                 {
                     id: 123,
@@ -92,13 +92,24 @@ describe('ChainService', () => {
             expect(url).toBe('/api?requestType=getBlockByHeight&id=123&includeTransactions=true');
         });
 
-        it('should create BRS BURST url with many parameters and relative Url', () => {
+        it('should create Signum API url with many parameters and relative Url', () => {
             service = new ChainService({
                     nodeHost: 'localhost',
                     apiRootUrl: '/api/' // chopps trailing slash
                 }
             );
             const url = service.toApiEndpoint('getBlockByHeight', {id: 123, includeTransactions: true});
+            expect(url).toBe('/api?requestType=getBlockByHeight&id=123&includeTransactions=true');
+        });
+
+
+        it('should create Signum API url with many parameters ignoring "skipAdditionalSecurityCheck" ', () => {
+            service = new ChainService({
+                    nodeHost: 'localhost',
+                    apiRootUrl: '/api/' // chopps trailing slash
+                }
+            );
+            const url = service.toApiEndpoint('getBlockByHeight', {id: 123, includeTransactions: true, skipAdditionalSecurityCheck: true});
             expect(url).toBe('/api?requestType=getBlockByHeight&id=123&includeTransactions=true');
         });
 

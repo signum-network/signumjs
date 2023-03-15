@@ -78,7 +78,7 @@ export class ChainService {
     public toApiEndpoint(method: string, data: object = {}): string {
         const request = `${this._relPath}?requestType=${method}`;
         const params = Object.keys(data)
-            .filter(k => data[k] !== undefined)
+            .filter(k => data[k] !== undefined && k !== 'skipAdditionalSecurityCheck')
             .map(k => `${k}=${encodeURIComponent(data[k])}`)
             .join('&');
         return params ? `${request}&${params}` : request;
@@ -108,7 +108,7 @@ export class ChainService {
 
     /**
      * Send data to chain node
-     * @param {string} method The method according https://www.burstcoin.community/burst-api/.
+     * @param {string} method The method according https://europe.signum.network/api-doc/.
      *        Note that there are only a few POST methods
      * @param {any} args A JSON object which will be mapped to url params
      * @param {any} body An object with key value pairs to submit as post body
@@ -126,7 +126,10 @@ export class ChainService {
             ChainService.throwAsHttpError(endpoint, response);
         }
 
-        verifyTransaction(method, args, response);
+        // @ts-ignore
+        if (!args.skipAdditionalSecurityCheck) {
+            verifyTransaction(method, args, response);
+        }
 
         return response;
     }
