@@ -24,7 +24,8 @@ export const setAlias = (service: ChainService) =>
                 deadline: a.deadline || DefaultDeadline,
                 feeNQT: a.feePlanck,
                 publicKey: a.senderPublicKey,
-                referencedTransactionFullHash: a.referencedTransactionFullHash
+                referencedTransactionFullHash: a.referencedTransactionFullHash,
+                tld: args.tld || undefined
             };
             return service.send<UnsignedTransaction>('setAlias', parameters);
         });
