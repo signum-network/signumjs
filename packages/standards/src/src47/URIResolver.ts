@@ -26,6 +26,12 @@ interface URI {
  * const resolvedURL = await resolver.resolve("signum://arts.johndoe");
  * ```
  *
+ * with TLD
+ * ```ts
+ * const resolver = new URIResolver(ledger);
+ * const resolvedURL = await resolver.resolve("signum://arts.johndoe.crypto");
+ * ```
+ *
  * Or get the account Id (if set)
  *
  * ```ts
