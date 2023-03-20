@@ -29,7 +29,7 @@ interface URI {
  * with TLD
  * ```ts
  * const resolver = new URIResolver(ledger);
- * const resolvedURL = await resolver.resolve("signum://arts.johndoe.crypto");
+ * const resolvedURL = await resolver.resolve("signum://arts.johndoe:crypto");
  * ```
  *
  * Or get the account Id (if set)
@@ -122,7 +122,8 @@ export class URIResolver {
             let stopSearch = !descriptor.alias;
             let iterationCount = 0;
             while (!stopSearch) {
-                alias = await this.ledger.alias.getAliasByName(descriptor.alias);
+                const [aliasName, topleveldomain] = descriptor.alias.split(':');
+                alias = await this.ledger.alias.getAliasByName(aliasName, topleveldomain);
                 descriptor = DescriptorData.parse(alias.aliasURI);
                 if (descriptor.name === subdomain) {
                     return resolvePath(descriptor, path);

@@ -7,33 +7,33 @@ const TestAliases = {
     'john_doe': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
-    'johndoe.signum': {
+    'johndoe:signum': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
-    'johndoe.crypto': {
+    'johndoe:crypto': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
-    'johndoe.web3': {
+    'johndoe:web3': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
     // single hop
     'johndoe1': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001'})
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
     },
-    'johndoe1.crypto': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001'})
+    'johndoe1:crypto': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
     },
-    'jd00001': {
+    'jd00001:web3': {
         aliasURI: JSON.stringify({vs: 1, nm: 'arts', hp: 'https://signumart.io/profile/123456'})
     },
     // multi hop
     'johndoe2': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
     },
-    'johndoe2.crypto': {
+    'johndoe2:crypto': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
     },
-    'johndoe2.web3': {
+    'johndoe2:web3': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
     },
     'jd00002': {
@@ -71,7 +71,7 @@ const TestAliases = {
 export const MockLedger = {
     alias: {
         getAliasByName: (name: string, tld?: string) => {
-            const alias = tld ? TestAliases[`${name}.${tld}`] : TestAliases[name];
+            const alias = tld ? TestAliases[`${name}:${tld}`] : TestAliases[name];
             // usually it returns an HttpError, but we mock that here
             return !alias ? Promise.reject('Unknown alias') : Promise.resolve(alias);
         }
@@ -157,40 +157,40 @@ describe('URIResolver', () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://janedoe.crypto');
+                            await resolver.resolve('http://janedoe:crypto');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://janedoe.crypto');
+                            expect(e.message).toMatch('Could not resolve: http://janedoe:crypto');
                         }
                     });
                     it('cannot find the subdomain', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe1.x');
+                            await resolver.resolve('http://weird.johndoe1:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe1.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe1:x');
                         }
                     });
                     it('stops circular dependency - to initial domain alias', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe3.x');
+                            await resolver.resolve('http://weird.johndoe3:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe3.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe3:x');
                         }
                     });
                     it('stops circular dependency - to some internal alias', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe4.x');
+                            await resolver.resolve('http://weird.johndoe4:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe4.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe4:x');
                         }
                     });
                     it('invalid Uri - #1', async () => {
@@ -330,9 +330,9 @@ describe('URIResolver', () => {
             });
 
             it('should throw on unsupported scheme', () => {
-                expect(() => URIResolver.parseURI('mailto://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: mailto://sub.johndoe.web3');
+                expect(() => URIResolver.parseURI('mailto://sub.johndoe:web3')).toThrow('Invalid SRC47 URI: mailto://sub.johndoe:web3');
             });
-            it('should throw on unsupported scheme', () => {
+            it('should throw on unsupported tld patterb', () => {
                 expect(() => URIResolver.parseURI('http://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: http://sub.johndoe.web3');
             });
         }
