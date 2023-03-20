@@ -98,7 +98,7 @@
     .setBackground(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>, <span class="hljs-string">'image/jpeg'</span>)
     .setAvatar(<span class="hljs-string">'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR'</span>, <span class="hljs-string">'image/gif'</span>)
     .setSocialMediaLinks([<span class="hljs-string">'https://somelink.com'</span>])
-    .setAlias(<span class="hljs-string">'alias'</span>)
+    .setAlias(<span class="hljs-string">'alias:tld'</span>) <span class="hljs-comment">// or just 'alias' (without tld - default: signum)</span>
     .setCustomField(<span class="hljs-string">'xc'</span>, <span class="hljs-string">'value'</span>)
     .setDescription(<span class="hljs-string">'description'</span>)
     .setExtension(<span class="hljs-string">'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'</span>)
@@ -157,7 +157,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L129">packages/standards/src/src44/DescriptorDataBuilder.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L129">packages/standards/src/src44/DescriptorDataBuilder.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -179,7 +179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L67">packages/standards/src/src44/DescriptorDataBuilder.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L67">packages/standards/src/src44/DescriptorDataBuilder.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -196,19 +196,22 @@
 					<a name="setalias" class="tsd-anchor"></a>
 					<h3>set<wbr>Alias</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, tld<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L87">packages/standards/src/src44/DescriptorDataBuilder.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L87">packages/standards/src/src44/DescriptorDataBuilder.ts:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>a: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> tld: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -225,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L102">packages/standards/src/src44/DescriptorDataBuilder.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L102">packages/standards/src/src44/DescriptorDataBuilder.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -251,7 +254,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L109">packages/standards/src/src44/DescriptorDataBuilder.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L109">packages/standards/src/src44/DescriptorDataBuilder.ts:109</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -277,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L121">packages/standards/src/src44/DescriptorDataBuilder.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L121">packages/standards/src/src44/DescriptorDataBuilder.ts:121</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -303,7 +306,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L116">packages/standards/src/src44/DescriptorDataBuilder.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L116">packages/standards/src/src44/DescriptorDataBuilder.ts:116</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -326,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L97">packages/standards/src/src44/DescriptorDataBuilder.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L97">packages/standards/src/src44/DescriptorDataBuilder.ts:97</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -349,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L77">packages/standards/src/src44/DescriptorDataBuilder.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L77">packages/standards/src/src44/DescriptorDataBuilder.ts:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -372,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L72">packages/standards/src/src44/DescriptorDataBuilder.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L72">packages/standards/src/src44/DescriptorDataBuilder.ts:72</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -395,7 +398,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L57">packages/standards/src/src44/DescriptorDataBuilder.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L57">packages/standards/src/src44/DescriptorDataBuilder.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -418,7 +421,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L62">packages/standards/src/src44/DescriptorDataBuilder.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L62">packages/standards/src/src44/DescriptorDataBuilder.ts:62</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -441,7 +444,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L82">packages/standards/src/src44/DescriptorDataBuilder.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L82">packages/standards/src/src44/DescriptorDataBuilder.ts:82</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -464,7 +467,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L92">packages/standards/src/src44/DescriptorDataBuilder.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L92">packages/standards/src/src44/DescriptorDataBuilder.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -487,7 +490,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L41">packages/standards/src/src44/DescriptorDataBuilder.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L41">packages/standards/src/src44/DescriptorDataBuilder.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -518,7 +521,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src44/DescriptorDataBuilder.ts#L51">packages/standards/src/src44/DescriptorDataBuilder.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src44/DescriptorDataBuilder.ts#L51">packages/standards/src/src44/DescriptorDataBuilder.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

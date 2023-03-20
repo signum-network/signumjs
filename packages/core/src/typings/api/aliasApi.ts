@@ -12,6 +12,7 @@ import {
     SearchAliasesByNameArgs
 } from '../args';
 import {TopLevelDomainList} from '../topLevelDomainList';
+import {GetAliasesArgs} from '../args/getAliasesArgs';
 
 /**
  * Alias API
@@ -91,4 +92,12 @@ export interface AliasApi {
      * @param args The args
      */
     buyTopLevelDomain: (args: BuyTopLevelDomainArgs) => Promise<TransactionId | UnsignedTransaction>;
+
+    /**
+     * Gets the aliases of an account
+     * @param {GetAliasesArgs} args
+     * @return {Promise<AliasList>} A list of aliases of given account
+     */
+    getAliases: (args: GetAliasesArgs) => Promise<AliasList>;
+
 }

@@ -96,6 +96,9 @@
 					<p>Resolves SRC47 compliant URIs via Signums Alias system to URLs</p>
 					<pre><code class="language-ts"><span class="hljs-keyword">const</span> resolver = <span class="hljs-keyword">new</span> URIResolver(ledger);
 <span class="hljs-keyword">const</span> resolvedURL = <span class="hljs-keyword">await</span> resolver.resolve(<span class="hljs-string">"signum://arts.johndoe"</span>);</code></pre>
+					<p>with TLD</p>
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> resolver = <span class="hljs-keyword">new</span> URIResolver(ledger);
+<span class="hljs-keyword">const</span> resolvedURL = <span class="hljs-keyword">await</span> resolver.resolve(<span class="hljs-string">"signum://arts.johndoe:crypto"</span>);</code></pre>
 					<p>Or get the account Id (if set)</p>
 					<pre><code class="language-ts"><span class="hljs-keyword">const</span> resolver = <span class="hljs-keyword">new</span> URIResolver(ledger);
 <span class="hljs-keyword">const</span> accountId = <span class="hljs-keyword">await</span> resolver.resolve(<span class="hljs-string">"signum://arts.johndoe/ac"</span>);</code></pre>
@@ -141,7 +144,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src47/URIResolver.ts#L70">packages/standards/src/src47/URIResolver.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src47/URIResolver.ts#L43">packages/standards/src/src47/URIResolver.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -167,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src47/URIResolver.ts#L154">packages/standards/src/src47/URIResolver.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src47/URIResolver.ts#L100">packages/standards/src/src47/URIResolver.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,12 +214,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/32548d3/packages/standards/src/src47/URIResolver.ts#L80">packages/standards/src/src47/URIResolver.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d9c84f1/packages/standards/src/src47/URIResolver.ts#L53">packages/standards/src/src47/URIResolver.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Parses the URI. This method can be used to check URI compliance</p>
+									<p>Parses the URI. This method can be used to check SRC47 URI compliance</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>throws</dt>

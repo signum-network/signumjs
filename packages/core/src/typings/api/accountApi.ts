@@ -110,13 +110,6 @@ export interface AccountApi {
     ) => Promise<string>;
 
     /**
-     * Gets the aliases of an account
-     * @param {GetAliasesArgs} args
-     * @return {Promise<AliasList>} A list of aliases of given account
-     */
-    getAliases: (args: GetAliasesArgs) => Promise<AliasList>;
-
-    /**
      * Sets or Updates an Alias
      * @param {SetAliasArgs} args The arguments
      *
