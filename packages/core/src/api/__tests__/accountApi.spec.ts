@@ -7,7 +7,6 @@ import {
     generateSendTransactionQRCodeAddress,
     generateSendTransactionQRCode,
     getAccountTransactions,
-    getAliases,
     setAccountInfo,
     setRewardRecipient,
     getSubscriptionsToAccount,
@@ -258,44 +257,6 @@ describe('AccountApi', () => {
             }
         });
     });
-
-    describe('getAliases', () => {
-
-        it('should getAliases per Account', async () => {
-            httpMock = HttpMockBuilder.create().onGetReply(200, {
-                    'account': '2402520554221019656',
-                    'accountRS': 'TS-QAJA-QW5Y-SWVP-4RVP4',
-                    'aliasName': 'superduperalias',
-                    'aliasURI': 'Contentchange....',
-                    'timestamp': 251224892,
-                    'alias': '8468600040485258181',
-                    'priceNQT': '500000000',
-                    'buyer': '6502115112683865257',
-                    'requestProcessingTime': 13
-                },
-                'relPath?requestType=getAliases&account=accountId&timestamp=1000&firstIndex=0&lastIndex=99'
-            ).build();
-            const service = createChainService(httpMock, 'relPath');
-            const asset = await getAliases(service)({
-                accountId: 'accountId',
-                timestamp: 1000,
-                firstIndex: 0,
-                lastIndex: 99,
-            });
-            expect(asset).toEqual({
-                'account': '2402520554221019656',
-                'accountRS': 'TS-QAJA-QW5Y-SWVP-4RVP4',
-                'aliasName': 'superduperalias',
-                'aliasURI': 'Contentchange....',
-                'timestamp': 251224892,
-                'alias': '8468600040485258181',
-                'priceNQT': '500000000',
-                'buyer': '6502115112683865257',
-                'requestProcessingTime': 13
-            });
-        });
-    });
-
 
     describe('setAccountInfo', () => {
         let service;

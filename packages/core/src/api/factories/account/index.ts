@@ -7,7 +7,6 @@ export * from './getAccountBlockIds';
 export * from './getAccountBlocks';
 export * from './getAccountSubscriptions';
 export * from './getAccountTransactions';
-export * from './getAliases';
 export * from './getRewardRecipient';
 export * from './getSubscriptionsToAccount';
 export * from './getUnconfirmedAccountTransactions';

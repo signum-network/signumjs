@@ -1,6 +1,7 @@
 export * from './getAliasById';
 export * from './getAliasByName';
 export * from './getAliasesOnSale';
+export * from './getAliases';
 export * from './buyAlias';
 export * from './sellAlias';
 export * from './getTopLevelDomains';
