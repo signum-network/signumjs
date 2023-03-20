@@ -119,7 +119,13 @@ const GetAttachmentFields = {
 export function getAttachmentFields(version: number, requestType: string): AttachmentField[] {
     const spec = GetAttachmentFields[version];
     if (!spec) {
+        throw new Error(`No attachment specification not found version '${version}'.`);
+    }
+
+    const requestSpec = spec.get(requestType);
+    if (!requestSpec) {
         throw new Error(`Attachment specification not found for transaction type '${requestType}', version '${version}'.`);
     }
-    return spec.get(requestType);
+
+    return requestSpec;
 }
