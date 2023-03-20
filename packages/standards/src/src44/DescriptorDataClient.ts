@@ -146,7 +146,7 @@ export class DescriptorDataClient {
                 issuer = account;
             }
             const descriptors: Descriptor[] = [];
-            const issuerAliases = await this.ledger.account.getAliases({accountId: issuer});
+            const issuerAliases = await this.ledger.alias.getAliases({accountId: issuer});
             for (const alias of issuerAliases.aliases) {
                 try {
                     const descriptorData = DescriptorData.parse(alias.aliasURI);
@@ -227,7 +227,7 @@ export class DescriptorDataClient {
         try {
             const {creator} = await this.ledger.contract.getContract(contractId);
             const descriptors: Descriptor[] = [];
-            const issuerAliases = await this.ledger.account.getAliases({accountId: creator});
+            const issuerAliases = await this.ledger.alias.getAliases({accountId: creator});
             for (const alias of issuerAliases.aliases) {
                 try {
                     const descriptorData = DescriptorData.parse(alias.aliasURI);

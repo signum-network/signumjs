@@ -27,12 +27,6 @@ export const MockLedger = {
             description: MockDescriptorStr
         }),
         setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
-        getAliases: () => Promise.resolve({
-            aliases: [
-                {aliasURI: MockDescriptorStr},
-                {aliasURI: 'some other alias'}
-            ]
-        })
     },
     contract: {
         getContract: () => Promise.resolve({description: MockDescriptorStr, creator: 'creator'})
@@ -46,7 +40,13 @@ export const MockLedger = {
     },
     alias: {
         getAliasByName: () => Promise.resolve({aliasURI: MockDescriptorStr}),
-        setAlias: (args: any) => Promise.resolve({transaction: 'id'})
+        setAlias: (args: any) => Promise.resolve({transaction: 'id'}),
+        getAliases: () => Promise.resolve({
+            aliases: [
+                {aliasURI: MockDescriptorStr},
+                {aliasURI: 'some other alias'}
+            ]
+        })
     },
     service: {
         query: () => Promise.resolve({account: '895212263565386113'})
