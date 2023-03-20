@@ -48,8 +48,8 @@ export function validateSRC44(json: SRC44Descriptor, strict = true) {
             throw new Error(`id must be at maximum ${IdLength} bytes - Got ${json.id.length}`);
         }
 
-        if (json.al && !/^\w{1,100}$/.test(json.al)) {
-            throw new Error(`al must match /^\\w{1,100}$/ - Got ${json.al}`);
+        if (json.al && !/^\w{1,100}(\:[a-zA-Z0-9]{1,40})?$/.test(json.al)) {
+            throw new Error(`al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/ - Got ${json.al}`);
         }
 
         if (json.ac && !/^\d{10,22}$/.test(json.ac)) {
