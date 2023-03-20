@@ -9,6 +9,11 @@ export interface SetContractBrandingArgs {
      * Optional name for the used brand alias. If not given an auto-generated name will be used.
      */
     aliasName?: string;
+
+    /**
+     * Optional Top Level Domain
+     */
+    tld?: string;
     /**
      * The related contractId
      */

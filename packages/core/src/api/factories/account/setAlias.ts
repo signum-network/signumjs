@@ -25,7 +25,8 @@ export const setAlias = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 publicKey: a.senderPublicKey,
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
-                tld: args.tld || undefined
+                // omit default tld
+                tld: !args.tld || args.tld === 'signum' ?  undefined : args.tld,
             };
             return service.send<UnsignedTransaction>('setAlias', parameters);
         });

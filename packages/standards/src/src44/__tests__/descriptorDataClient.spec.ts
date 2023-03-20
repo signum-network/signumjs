@@ -222,7 +222,7 @@ describe('descriptorDataClient', () => {
         });
     });
     describe('setAccountDescriptor', () => {
-        it('should resolve as expected', async () => {
+        it('should set as expected - default domain', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.account, 'setAccountInfo');
@@ -237,7 +237,6 @@ describe('descriptorDataClient', () => {
                 senderPublicKey: 'senderPublicKey',
             });
         });
-
         it('should resolve as expected - custom fee', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
@@ -256,7 +255,7 @@ describe('descriptorDataClient', () => {
         });
     });
     describe('setAliasDescriptor', () => {
-        it('should resolve as expected', async () => {
+        it('should set as expected', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.alias, 'setAlias');
@@ -272,8 +271,26 @@ describe('descriptorDataClient', () => {
                 senderPublicKey: 'senderPublicKey',
             });
         });
+        it('should set as expected - custom tld', async () => {
+            // @ts-ignore
+            const client = new DescriptorDataClient(MockLedger);
+            const spy = spyOn(MockLedger.alias, 'setAlias');
+            await client.setAliasDescriptor({
+                aliasName: 'aliasName',
+                tld: 'custom',
+                descriptorData: DescriptorDataBuilder.create('descriptor').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'aliasName',
+                tld: 'custom',
+                aliasURI: '{"vs":1,"nm":"descriptor"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
 
-        it('should resolve as expected - custom fee', async () => {
+        it('should set as expected - custom fee', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
             const spy = spyOn(MockLedger.alias, 'setAlias');
@@ -573,7 +590,26 @@ describe('descriptorDataClient', () => {
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
-                aliasName: 'asset-brand-assetId',
+                aliasName: 'asset_brand_assetId',
+                aliasURI: '{"vs":1,"nm":"asset","id":"assetId"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
+
+        it('should set as expected with custom tld', async () => {
+            // @ts-ignore
+            const client = new DescriptorDataClient(MockLedger);
+            const spy = spyOn(MockLedger.alias, 'setAlias');
+            await client.setAssetBranding({
+                assetId: 'assetId',
+                tld: 'custom',
+                descriptorData: DescriptorDataBuilder.create('asset').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'asset_brand_assetId',
+                tld: 'custom',
                 aliasURI: '{"vs":1,"nm":"asset","id":"assetId"}',
                 feePlanck: '20000000',
                 senderPublicKey: 'senderPublicKey',
@@ -604,7 +640,7 @@ describe('descriptorDataClient', () => {
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
-                aliasName: 'asset-brand-assetId',
+                aliasName: 'asset_brand_assetId',
                 aliasURI: '{"vs":1,"nm":"asset","id":"assetId"}',
                 feePlanck: '20000000',
                 senderPublicKey: 'senderPublicKey',
@@ -655,7 +691,32 @@ describe('descriptorDataClient', () => {
                 senderPublicKey: 'senderPublicKey'
             });
             expect(spy).toBeCalledWith({
-                aliasName: 'contract-brand-contractId',
+                aliasName: 'contract_brand_contractId',
+                aliasURI: '{"vs":1,"nm":"contract","id":"contractId"}',
+                feePlanck: '20000000',
+                senderPublicKey: 'senderPublicKey',
+            });
+        });
+        it('should set as expected with custom tld', async () => {
+            const Ledger = {
+                ...MockLedger,
+                contract: {
+                    getContract: () => Promise.resolve({description: MockDescriptorStr, creator: '895212263565386113'})
+                },
+            };
+            // @ts-ignore
+            const client = new DescriptorDataClient(Ledger);
+            const spy = spyOn(Ledger.alias, 'setAlias');
+            await client.setContractBranding({
+                contractId: 'contractId',
+                aliasName: 'alias',
+                tld: 'custom',
+                descriptorData: DescriptorDataBuilder.create('contract').build(),
+                senderPublicKey: 'senderPublicKey'
+            });
+            expect(spy).toBeCalledWith({
+                aliasName: 'alias',
+                tld: 'custom',
                 aliasURI: '{"vs":1,"nm":"contract","id":"contractId"}',
                 feePlanck: '20000000',
                 senderPublicKey: 'senderPublicKey',

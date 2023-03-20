@@ -181,6 +181,25 @@ describe('Alias Api', () => {
             });
             expect(asset).toEqual({'transaction': 'transactionId'});
         });
+
+        it('should setAlias using default TLD - and omit if set explicitely', async () => {
+            httpMock = HttpMockBuilder.create().onPostReply(200, {
+                broadcasted: true,
+                'transaction': 'transactionId'
+                },
+                'relPath?requestType=setAlias&aliasName=aliasName&aliasURI=aliasURI&deadline=1440&feeNQT=100000&publicKey=senderPublicKey'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const asset = await setAlias(service)({
+                feePlanck: '100000',
+                aliasName: 'aliasName',
+                aliasURI: "aliasURI",
+                tld: "signum",
+                senderPublicKey: 'senderPublicKey',
+                senderPrivateKey: 'senderPrivateKey',
+            });
+            expect(asset).toEqual({'transaction': 'transactionId'});
+        });
         it('should setAlias using custom TLD', async () => {
             httpMock = HttpMockBuilder.create().onPostReply(200, {
                 broadcasted: true,

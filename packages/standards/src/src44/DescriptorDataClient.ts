@@ -184,7 +184,8 @@ export class DescriptorDataClient {
             feePlanck,
             descriptorData,
             deadline,
-            referencedTransactionFullHash
+            referencedTransactionFullHash,
+            tld,
         } = args;
 
         const [asset, sender] = await Promise.all([
@@ -208,7 +209,8 @@ export class DescriptorDataClient {
 
         descriptorData.raw.id = assetId;
         return this.ledger.alias.setAlias({
-            aliasName: aliasName || `asset-brand-${assetId}`,
+            aliasName: aliasName || `asset_brand_${assetId}`,
+            tld,
             aliasURI: descriptorData.stringify(),
             feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
@@ -260,7 +262,8 @@ export class DescriptorDataClient {
             feePlanck,
             descriptorData,
             deadline,
-            referencedTransactionFullHash
+            referencedTransactionFullHash,
+            tld
         } = args;
         const [contract, sender] = await Promise.all([
             this.ledger.contract.getContract(contractId),
@@ -273,7 +276,8 @@ export class DescriptorDataClient {
 
         descriptorData.raw.id = contractId;
         return this.ledger.alias.setAlias({
-            aliasName: aliasName || `contract-brand-${contractId}`,
+            aliasName: aliasName || `contract_brand_${contractId}`,
+            tld,
             aliasURI: descriptorData.stringify(),
             feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
@@ -303,9 +307,10 @@ export class DescriptorDataClient {
      * @param args The arguments
      */
     async setAliasDescriptor(args: SetAliasDescriptorArgs) {
-        const {aliasName, senderPublicKey, senderPrivateKey, feePlanck, descriptorData, deadline, referencedTransactionFullHash} = args;
+        const {tld, aliasName, senderPublicKey, senderPrivateKey, feePlanck, descriptorData, deadline, referencedTransactionFullHash} = args;
         return this.ledger.alias.setAlias({
             aliasName,
+            tld,
             aliasURI: descriptorData.stringify(),
             feePlanck: feePlanck || descriptorData.estimateFeePlanck(),
             senderPublicKey,
