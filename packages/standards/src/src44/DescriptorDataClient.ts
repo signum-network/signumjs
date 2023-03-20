@@ -321,12 +321,8 @@ export class DescriptorDataClient {
      * @throws If the alias does not have compatible descriptor data
      */
     async getFromAlias(aliasName: string): Promise<Descriptor> {
-        const tldSeparator = aliasName.indexOf(':');
-        let tld;
-        if (tldSeparator !== -1) {
-            tld = aliasName.substr(tldSeparator + 1);
-        }
-        const {aliasURI} = await this.ledger.alias.getAliasByName(aliasName, tld);
+        const [name, tld] = aliasName.split(':');
+        const {aliasURI} = await this.ledger.alias.getAliasByName(name, tld);
         return DescriptorData.parse(aliasURI).get();
     }
 
