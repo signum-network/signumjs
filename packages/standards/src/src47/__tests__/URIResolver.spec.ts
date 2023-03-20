@@ -4,6 +4,9 @@ const TestAliases = {
     'johndoe': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
+    'john_doe': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
+    },
     'johndoe.signum': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
@@ -82,6 +85,12 @@ describe('URIResolver', () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
                         const url = await resolver.resolve('signum://johndoe');
+                        expect(url).toEqual('https://johndoe.com');
+                    });
+                    it('should resolve by signum:// scheme and alias with `_`', async () => {
+                        // @ts-ignore
+                        const resolver = new URIResolver(MockLedger);
+                        const url = await resolver.resolve('signum://john_doe');
                         expect(url).toEqual('https://johndoe.com');
                     });
                     it('should resolve by shortcut \"$\"', async () => {
