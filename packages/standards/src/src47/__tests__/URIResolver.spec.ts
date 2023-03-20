@@ -4,15 +4,36 @@ const TestAliases = {
     'johndoe': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
     },
+    'john_doe': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
+    },
+    'johndoe:signum': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
+    },
+    'johndoe:crypto': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
+    },
+    'johndoe:web3': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', ac: '1234567891011121314', 'x-custom': {foo: 'bar'}})
+    },
     // single hop
     'johndoe1': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001'})
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
     },
-    'jd00001': {
+    'johndoe1:crypto': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
+    },
+    'jd00001:web3': {
         aliasURI: JSON.stringify({vs: 1, nm: 'arts', hp: 'https://signumart.io/profile/123456'})
     },
     // multi hop
     'johndoe2': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
+    },
+    'johndoe2:crypto': {
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
+    },
+    'johndoe2:web3': {
         aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00002'})
     },
     'jd00002': {
@@ -49,8 +70,8 @@ const TestAliases = {
 
 export const MockLedger = {
     alias: {
-        getAliasByName: (name: string) => {
-            const alias = TestAliases[name];
+        getAliasByName: (name: string, tld?: string) => {
+            const alias = tld ? TestAliases[`${name}:${tld}`] : TestAliases[name];
             // usually it returns an HttpError, but we mock that here
             return !alias ? Promise.reject('Unknown alias') : Promise.resolve(alias);
         }
@@ -66,6 +87,12 @@ describe('URIResolver', () => {
                         const url = await resolver.resolve('signum://johndoe');
                         expect(url).toEqual('https://johndoe.com');
                     });
+                    it('should resolve by signum:// scheme and alias with `_`', async () => {
+                        // @ts-ignore
+                        const resolver = new URIResolver(MockLedger);
+                        const url = await resolver.resolve('signum://john_doe');
+                        expect(url).toEqual('https://johndoe.com');
+                    });
                     it('should resolve by shortcut \"$\"', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
@@ -75,13 +102,11 @@ describe('URIResolver', () => {
                     it('should resolve by TLDs', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://johndoe.crypto');
+                        let url = await resolver.resolve('http://johndoe:crypto');
                         expect(url).toEqual('https://johndoe.com');
-                        url = await resolver.resolve('http://johndoe.signa');
+                        url = await resolver.resolve('https://johndoe:signum');
                         expect(url).toEqual('https://johndoe.com');
-                        url = await resolver.resolve('https://johndoe.signum');
-                        expect(url).toEqual('https://johndoe.com');
-                        url = await resolver.resolve('https://johndoe.web3');
+                        url = await resolver.resolve('https://johndoe:web3');
                         expect(url).toEqual('https://johndoe.com');
                         // and all the other domains
                     });
@@ -96,10 +121,10 @@ describe('URIResolver', () => {
                 }
             );
             describe('subdomain', () => {
-                    it('should resolve by subdomain - single hop', async () => {
+                    it('should resolve by subdomain (with tld) - single hop', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://arts.johndoe1.crypto');
+                        let url = await resolver.resolve('http://arts.johndoe1:crypto');
                         expect(url).toEqual('https://signumart.io/profile/123456');
                         url = await resolver.resolve('http://$arts.johndoe1');
                         expect(url).toEqual('https://signumart.io/profile/123456');
@@ -107,11 +132,11 @@ describe('URIResolver', () => {
                     it('should resolve by subdomain - multi hop', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://arts.johndoe2.crypto');
+                        let url = await resolver.resolve('http://arts.johndoe2:crypto');
                         expect(url).toEqual('https://signumart.io/profile/123456');
                         url = await resolver.resolve('http://$arts.johndoe2');
                         expect(url).toEqual('https://signumart.io/profile/123456');
-                        url = await resolver.resolve('http://social.johndoe2.web3');
+                        url = await resolver.resolve('http://social.johndoe2:web3');
                         expect(url).toEqual('https://twitter.com/jd1337');
                         url = await resolver.resolve('http://$social.johndoe2');
                         expect(url).toEqual('https://twitter.com/jd1337');
@@ -132,40 +157,40 @@ describe('URIResolver', () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://janedoe.crypto');
+                            await resolver.resolve('http://janedoe:crypto');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://janedoe.crypto');
+                            expect(e.message).toMatch('Could not resolve: http://janedoe:crypto');
                         }
                     });
                     it('cannot find the subdomain', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe1.x');
+                            await resolver.resolve('http://weird.johndoe1:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe1.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe1:x');
                         }
                     });
                     it('stops circular dependency - to initial domain alias', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe3.x');
+                            await resolver.resolve('http://weird.johndoe3:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe3.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe3:x');
                         }
                     });
                     it('stops circular dependency - to some internal alias', async () => {
                         try {
                             // @ts-ignore
                             const resolver = new URIResolver(MockLedger);
-                            await resolver.resolve('http://weird.johndoe4.x');
+                            await resolver.resolve('http://weird.johndoe4:x');
                             fail('Expect exception');
                         } catch (e) {
-                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe4.x');
+                            expect(e.message).toMatch('Could not resolve: http://weird.johndoe4:x');
                         }
                     });
                     it('invalid Uri - #1', async () => {
@@ -251,58 +276,64 @@ describe('URIResolver', () => {
                 });
             });
             it('should resolve by TLDs', () => {
-                expect(URIResolver.parseURI('http://johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'signum',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'signum'
                 });
-                expect(URIResolver.parseURI('http://johndoe.signa')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:signa')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'signa',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'signum'
                 });
-                expect(URIResolver.parseURI('http://johndoe.free')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:free')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'free',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.crypto')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:crypto')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'crypto'
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.sig')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:sig')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'sig'
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.web3')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:web3')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'web3'
                 });
+                expect(URIResolver.parseURI('http://sub.johndoe:customtld')).toEqual({
+                    schema: 'http',
+                    domain: 'johndoe',
+                    subdomain: 'sub',
+                    tld: 'customtld'
+                });
             });
 
             it('should throw on unsupported scheme', () => {
-                expect(() => URIResolver.parseURI('mailto://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: mailto://sub.johndoe.web3');
+                expect(() => URIResolver.parseURI('mailto://sub.johndoe:web3')).toThrow('Invalid SRC47 URI: mailto://sub.johndoe:web3');
             });
-            it('should throw on unknown TLD - common URLs', () => {
-                expect(() => URIResolver.parseURI('http://sub.johndoe.de')).toThrow('Invalid SRC47 URI - Unsupported TLD: de');
+            it('should throw on unsupported tld patterb', () => {
+                expect(() => URIResolver.parseURI('http://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: http://sub.johndoe.web3');
             });
         }
     );

@@ -8,30 +8,6 @@ import {DescriptorData} from '../src44';
 /**
  * @ignore
  */
-const AllowedTLDs = [
-    'blockhain',
-    'coin',
-    'crypto',
-    'dao',
-    'decentral',
-    'dex',
-    'free',
-    'p2p',
-    'sig',
-    'signa',
-    'signum',
-    'sns',
-    'w3',
-    'wallet',
-    'web3',
-    'x',
-    'y',
-    'z',
-];
-
-/**
- * @ignore
- */
 interface URI {
     schema: string;
     subdomain?: string;
@@ -41,15 +17,6 @@ interface URI {
 }
 
 /**
- * @ignore
- */
-const assertTLD = (tld: string) => {
-    if (AllowedTLDs.indexOf(tld) === -1) {
-        throw new Error(`Invalid SRC47 URI - Unsupported TLD: ${tld}`);
-    }
-};
-
-/**
  * URI Resolver
  *
  * Resolves SRC47 compliant URIs via Signums Alias system to URLs
@@ -57,6 +24,12 @@ const assertTLD = (tld: string) => {
  * ```ts
  * const resolver = new URIResolver(ledger);
  * const resolvedURL = await resolver.resolve("signum://arts.johndoe");
+ * ```
+ *
+ * with TLD
+ * ```ts
+ * const resolver = new URIResolver(ledger);
+ * const resolvedURL = await resolver.resolve("signum://arts.johndoe:crypto");
  * ```
  *
  * Or get the account Id (if set)
@@ -72,13 +45,13 @@ export class URIResolver {
     }
 
     /**
-     * Parses the URI. This method can be used to check URI compliance
+     * Parses the URI. This method can be used to check SRC47 URI compliance
      * @param uri
      * @return The parsed URI components
      * @throws Error if URI is not compliant
      */
     public static parseURI(uri: string): URI {
-        const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(\.(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
+        const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(:(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
 
         // @ts-ignore
@@ -89,37 +62,10 @@ export class URIResolver {
         // @ts-ignore
         const {schema, body, tld, path} = result.groups;
 
-        const isShortcut = body.startsWith('$');
         const domains = body.replace('$', '').split('.');
 
         if (domains.length > 2 || domains.length === 0) {
             throw new Error(`Invalid SRC47 URI: ${uri}`);
-        }
-
-        if (isShortcut) {
-            return tld ? {
-                    domain: tld,
-                    subdomain: domains[0],
-                    schema,
-                    path
-                } :
-                {
-                    domain: domains[0],
-                    schema,
-                    path
-                };
-        }
-        if (schema === 'signum' && tld) {
-            return {
-                domain: tld,
-                subdomain: domains[0],
-                schema,
-                path
-            };
-        }
-
-        if (tld) {
-            assertTLD(tld);
         }
 
         if (domains.length === 2) {
@@ -164,8 +110,8 @@ export class URIResolver {
         try {
 
             const visitedAliases = new Set<string>();
-            const {domain, subdomain, path = 'hp'} = URIResolver.parseURI(uri);
-            let alias = await this.ledger.alias.getAliasByName(domain);
+            const {tld, domain, subdomain, path = 'hp'} = URIResolver.parseURI(uri);
+            let alias = await this.ledger.alias.getAliasByName(domain, tld);
             let descriptor = DescriptorData.parse(alias.aliasURI);
 
             if (!subdomain) {
@@ -176,7 +122,8 @@ export class URIResolver {
             let stopSearch = !descriptor.alias;
             let iterationCount = 0;
             while (!stopSearch) {
-                alias = await this.ledger.alias.getAliasByName(descriptor.alias);
+                const [aliasName, topleveldomain] = descriptor.alias.split(':');
+                alias = await this.ledger.alias.getAliasByName(aliasName, topleveldomain);
                 descriptor = DescriptorData.parse(alias.aliasURI);
                 if (descriptor.name === subdomain) {
                     return resolvePath(descriptor, path);
