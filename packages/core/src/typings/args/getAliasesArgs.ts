@@ -1,5 +1,5 @@
 /**
- * The argument object for [[AccountApi.getAliases]]
+ * The argument object for [[AliasApi.getAliases]]
  *
  * @module core
  */

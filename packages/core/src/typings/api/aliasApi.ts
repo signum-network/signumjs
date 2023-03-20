@@ -94,9 +94,9 @@ export interface AliasApi {
     buyTopLevelDomain: (args: BuyTopLevelDomainArgs) => Promise<TransactionId | UnsignedTransaction>;
 
     /**
-     * Gets the aliases of an account
+     * Gets the aliases
      * @param {GetAliasesArgs} args
-     * @return {Promise<AliasList>} A list of aliases of given account
+     * @return {Promise<AliasList>} A list of aliases according the matches
      */
     getAliases: (args: GetAliasesArgs) => Promise<AliasList>;
 
