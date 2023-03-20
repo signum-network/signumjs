@@ -7,16 +7,18 @@ import {AliasList} from '../../../typings/aliasList';
 import {GetAliasesArgs} from '../../../typings/args/getAliasesArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with [[ApiComposer]] and belongs to [[AliasApi]].
  *
- * See details at [[AccountApi.getAliases]]
+ * See details at [[AliasApi.getAliases]]
  * @module core.api.factories
  */
 export const getAliases = (service: ChainService):
     (args: GetAliasesArgs) => Promise<AliasList> =>
     (args: GetAliasesArgs): Promise<AliasList> => service.query('getAliases', {
         account: args.accountId,
+        tld: args.tld,
+        aliasName: args.aliasName,
         timestamp: args.timestamp,
         firstIndex: args.firstIndex,
-        lastIndex: args.lastIndex
+        lastIndex: args.lastIndex,
     });

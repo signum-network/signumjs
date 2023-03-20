@@ -5,7 +5,7 @@ import {
     getAliasesOnSale,
     buyAlias,
     sellAlias,
-    getAliasByName, buyTopLevelDomain, getTopLevelDomains, setAlias
+    getAliasByName, buyTopLevelDomain, getTopLevelDomains, setAlias, getAliases
 } from '../factories';
 import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
 import {searchAliasesByName} from '../factories/alias/searchAliasesByName';
@@ -229,6 +229,33 @@ describe('Alias Api', () => {
                 lastIndex: 150
             });
             expect(result.tlds).toHaveLength(0);
+        });
+    });
+
+
+    describe('getAliases', () => {
+        it('should get without any parameter', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {'aliases': []},
+                'relPath?requestType=getAliases'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const result = await getAliases(service)({});
+            expect(result.aliases).toHaveLength(0);
+        });
+        it('should get without all optional parameter', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {'aliases': []},
+                'relPath?requestType=getAliases&account=accountId&tld=tld&aliasName=aliasName&timestamp=10000&firstIndex=0&lastIndex=150'
+            ).build();
+            const service = createChainService(httpMock, 'relPath');
+            const result = await getAliases(service)({
+                accountId: 'accountId',
+                aliasName: 'aliasName',
+                tld: 'tld',
+                timestamp: 10000,
+                firstIndex: 0,
+                lastIndex: 150
+            });
+            expect(result.aliases).toHaveLength(0);
         });
     });
 
