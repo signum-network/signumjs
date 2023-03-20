@@ -8,30 +8,6 @@ import {DescriptorData} from '../src44';
 /**
  * @ignore
  */
-const AllowedTLDs = [
-    'blockhain',
-    'coin',
-    'crypto',
-    'dao',
-    'decentral',
-    'dex',
-    'free',
-    'p2p',
-    'sig',
-    'signa',
-    'signum',
-    'sns',
-    'w3',
-    'wallet',
-    'web3',
-    'x',
-    'y',
-    'z',
-];
-
-/**
- * @ignore
- */
 interface URI {
     schema: string;
     subdomain?: string;
@@ -39,15 +15,6 @@ interface URI {
     tld?: string;
     path?: string;
 }
-
-/**
- * @ignore
- */
-const assertTLD = (tld: string) => {
-    if (AllowedTLDs.indexOf(tld) === -1) {
-        throw new Error(`Invalid SRC47 URI - Unsupported TLD: ${tld}`);
-    }
-};
 
 /**
  * URI Resolver
@@ -118,10 +85,6 @@ export class URIResolver {
             };
         }
 
-        if (tld) {
-            assertTLD(tld);
-        }
-
         if (domains.length === 2) {
             return {
                 domain: domains[1],
@@ -164,8 +127,8 @@ export class URIResolver {
         try {
 
             const visitedAliases = new Set<string>();
-            const {domain, subdomain, path = 'hp'} = URIResolver.parseURI(uri);
-            let alias = await this.ledger.alias.getAliasByName(domain);
+            const {tld, domain, subdomain, path = 'hp'} = URIResolver.parseURI(uri);
+            let alias = await this.ledger.alias.getAliasByName(domain, tld);
             let descriptor = DescriptorData.parse(alias.aliasURI);
 
             if (!subdomain) {
