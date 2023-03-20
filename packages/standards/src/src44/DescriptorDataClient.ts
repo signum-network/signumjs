@@ -317,11 +317,11 @@ export class DescriptorDataClient {
 
     /**
      * Gets descriptor data from an alias.
-     * @param aliasName The unique alias name (can have a TLD attached, like myalias.mytld)
+     * @param aliasName The unique alias name (can have a TLD attached using `:`, like `myalias:mytld`)
      * @throws If the alias does not have compatible descriptor data
      */
     async getFromAlias(aliasName: string): Promise<Descriptor> {
-        const tldSeparator = aliasName.indexOf('.');
+        const tldSeparator = aliasName.indexOf(':');
         let tld;
         if (tldSeparator !== -1) {
             tld = aliasName.substr(tldSeparator + 1);

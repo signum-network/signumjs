@@ -52,7 +52,7 @@ describe('descriptorDataBuilder', () => {
                 .build();
 
             expect(descriptorData.raw).toEqual({
-                'al': 'alias.mytld',
+                'al': 'alias:mytld',
                 'nm': 'Some name',
                 'vs': 1,
             });
