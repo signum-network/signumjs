@@ -102,11 +102,11 @@ describe('URIResolver', () => {
                     it('should resolve by TLDs', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://johndoe.crypto');
+                        let url = await resolver.resolve('http://johndoe:crypto');
                         expect(url).toEqual('https://johndoe.com');
-                        url = await resolver.resolve('https://johndoe.signum');
+                        url = await resolver.resolve('https://johndoe:signum');
                         expect(url).toEqual('https://johndoe.com');
-                        url = await resolver.resolve('https://johndoe.web3');
+                        url = await resolver.resolve('https://johndoe:web3');
                         expect(url).toEqual('https://johndoe.com');
                         // and all the other domains
                     });
@@ -124,7 +124,7 @@ describe('URIResolver', () => {
                     it('should resolve by subdomain (with tld) - single hop', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://arts.johndoe1.crypto');
+                        let url = await resolver.resolve('http://arts.johndoe1:crypto');
                         expect(url).toEqual('https://signumart.io/profile/123456');
                         url = await resolver.resolve('http://$arts.johndoe1');
                         expect(url).toEqual('https://signumart.io/profile/123456');
@@ -132,11 +132,11 @@ describe('URIResolver', () => {
                     it('should resolve by subdomain - multi hop', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        let url = await resolver.resolve('http://arts.johndoe2.crypto');
+                        let url = await resolver.resolve('http://arts.johndoe2:crypto');
                         expect(url).toEqual('https://signumart.io/profile/123456');
                         url = await resolver.resolve('http://$arts.johndoe2');
                         expect(url).toEqual('https://signumart.io/profile/123456');
-                        url = await resolver.resolve('http://social.johndoe2.web3');
+                        url = await resolver.resolve('http://social.johndoe2:web3');
                         expect(url).toEqual('https://twitter.com/jd1337');
                         url = await resolver.resolve('http://$social.johndoe2');
                         expect(url).toEqual('https://twitter.com/jd1337');
@@ -276,55 +276,64 @@ describe('URIResolver', () => {
                 });
             });
             it('should resolve by TLDs', () => {
-                expect(URIResolver.parseURI('http://johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'signum',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'signum'
                 });
-                expect(URIResolver.parseURI('http://johndoe.signa')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:signa')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'signa',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.signum')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:signum')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'signum'
                 });
-                expect(URIResolver.parseURI('http://johndoe.free')).toEqual({
+                expect(URIResolver.parseURI('http://johndoe:free')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     tld: 'free',
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.crypto')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:crypto')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'crypto'
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.sig')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:sig')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'sig'
                 });
-                expect(URIResolver.parseURI('http://sub.johndoe.web3')).toEqual({
+                expect(URIResolver.parseURI('http://sub.johndoe:web3')).toEqual({
                     schema: 'http',
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'web3'
                 });
+                expect(URIResolver.parseURI('http://sub.johndoe:customtld')).toEqual({
+                    schema: 'http',
+                    domain: 'johndoe',
+                    subdomain: 'sub',
+                    tld: 'customtld'
+                });
             });
 
             it('should throw on unsupported scheme', () => {
                 expect(() => URIResolver.parseURI('mailto://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: mailto://sub.johndoe.web3');
+            });
+            it('should throw on unsupported scheme', () => {
+                expect(() => URIResolver.parseURI('http://sub.johndoe.web3')).toThrow('Invalid SRC47 URI: http://sub.johndoe.web3');
             });
         }
     );

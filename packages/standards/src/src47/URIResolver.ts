@@ -45,13 +45,13 @@ export class URIResolver {
     }
 
     /**
-     * Parses the URI. This method can be used to check URI compliance
+     * Parses the URI. This method can be used to check SRC47 URI compliance
      * @param uri
      * @return The parsed URI components
      * @throws Error if URI is not compliant
      */
     public static parseURI(uri: string): URI {
-        const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(\.(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
+        const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(:(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
 
         // @ts-ignore
@@ -62,33 +62,10 @@ export class URIResolver {
         // @ts-ignore
         const {schema, body, tld, path} = result.groups;
 
-        const isShortcut = body.startsWith('$');
         const domains = body.replace('$', '').split('.');
 
         if (domains.length > 2 || domains.length === 0) {
             throw new Error(`Invalid SRC47 URI: ${uri}`);
-        }
-
-        if (isShortcut) {
-            return tld ? {
-                    domain: tld,
-                    subdomain: domains[0],
-                    schema,
-                    path
-                } :
-                {
-                    domain: domains[0],
-                    schema,
-                    path
-                };
-        }
-        if (schema === 'signum' && tld) {
-            return {
-                domain: tld,
-                subdomain: domains[0],
-                schema,
-                path
-            };
         }
 
         if (domains.length === 2) {
