@@ -446,6 +446,8 @@ describe('descriptorDataClient', () => {
                         description: MockDescriptorStr
                     }),
                     setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
+                },
+                alias: {
                     getAliases: () => Promise.resolve({
                         aliases: []
                     })
@@ -529,6 +531,8 @@ describe('descriptorDataClient', () => {
                         description: MockDescriptorStr
                     }),
                     setAccountInfo: (args: any) => Promise.resolve({transaction: 'id'}),
+                },
+                alias: {
                     getAliases: () => Promise.resolve({
                         aliases: []
                     })
