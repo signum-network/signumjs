@@ -7,7 +7,12 @@ export interface GetAliasesArgs {
     /**
      * The accountId id
      */
-    accountId: string;
+    accountId?: string;
+
+    /**
+     * The alias name
+     */
+    aliasName?: string;
 
     /**
      * The timestamp (block time) you are looking for

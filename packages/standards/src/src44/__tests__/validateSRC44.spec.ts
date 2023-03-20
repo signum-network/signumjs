@@ -15,7 +15,7 @@ describe('validateSRC44', () => {
                 'bg': { 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg' },
                 'hp': 'https://bittrex.com',
                 'sr': '^[0-9a-fA-F]{24}$',
-                'al': 'somealias',
+                'al': 'somealias_newFormat',
                 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
                 'sc': ['https://twitter.com/bittrex']
             });
@@ -195,7 +195,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     al: '@invalid alias'
                 });
-            }).toThrow('al must match /^\\w{1,100}$/ - Got @invalid alias');
+            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/ - Got @invalid alias');
         });
         it('throws error for beign too large', () => {
             expect(() => {
@@ -204,7 +204,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     al: 'alias'.repeat(30)
                 });
-            }).toThrow('al must match /^\\w{1,100}$/');
+            }).toThrow('al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/');
         });
     });
 

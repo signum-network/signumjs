@@ -36,7 +36,6 @@ import {
     getAccountBlocks,
     getAccountSubscriptions,
     getAccountTransactions,
-    getAliases,
     getSubscriptionsToAccount,
     getUnconfirmedAccountTransactions,
     setAccountInfo,
@@ -46,6 +45,7 @@ import {
 } from './factories/account';
 import {
     getAliasById,
+    getAliases,
     getAliasByName,
     getAliasesOnSale,
     sellAlias,
@@ -203,7 +203,6 @@ export function composeApi(settings: ApiSettings): Api {
             getAccountBalance,
             generateSendTransactionQRCode,
             generateSendTransactionQRCodeAddress,
-            getAliases,
             setAlias,
             getAccount,
             getAccountBlocks,

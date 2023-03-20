@@ -2,7 +2,7 @@ import {DescriptorDataBuilder} from '../DescriptorDataBuilder';
 import {DescriptorDataClient} from '../DescriptorDataClient';
 
 const MockDescriptor = {
-    'al': 'alias',
+    'al': 'alias:tld',
     'ac': '895212263565386113',
     'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
     'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
@@ -60,7 +60,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const descriptor = await client.getFromContract('1');
             expect(descriptor).toEqual({
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
@@ -76,7 +76,7 @@ describe('descriptorDataClient', () => {
                 'homePage': 'https://homepage.com',
                 'name': 'Some name',
                 'resolvedAlias': {
-                    'alias': 'alias',
+                    'alias': 'alias:tld',
                     'account': '895212263565386113',
                     'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                     'avatar': {
@@ -115,7 +115,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const descriptor = await client.getFromAsset('1');
             expect(descriptor).toEqual({
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
@@ -131,7 +131,7 @@ describe('descriptorDataClient', () => {
                 'homePage': 'https://homepage.com',
                 'name': 'Some name',
                 'resolvedAlias': {
-                    'alias': 'alias',
+                    'alias': 'alias:tld',
                     'account': '895212263565386113',
                     'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                     'avatar': {
@@ -170,7 +170,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const descriptor = await client.getFromAccount('1');
             expect(descriptor).toEqual({
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
 
@@ -187,7 +187,7 @@ describe('descriptorDataClient', () => {
                 'homePage': 'https://homepage.com',
                 'name': 'Some name',
                 'resolvedAlias': {
-                    'alias': 'alias',
+                    'alias': 'alias:tld',
                     'account': '895212263565386113',
                     'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
 
@@ -298,7 +298,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const descriptor = await client.getFromAlias('alias');
             expect(descriptor).toEqual({
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'account': '895212263565386113',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'avatar': {
@@ -329,7 +329,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const account = await client.getAccountByAlias('alias');
             expect(account).toEqual({
-                'description': '{"al":"alias","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
+                'description': '{"al":"alias:tld","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
                 'name': 'Account Name',
             });
         });
@@ -355,7 +355,7 @@ describe('descriptorDataClient', () => {
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
                 'account': '895212263565386113',
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -406,7 +406,7 @@ describe('descriptorDataClient', () => {
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
                 'account': '895212263565386113',
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'
@@ -483,7 +483,7 @@ describe('descriptorDataClient', () => {
             expect(brands).toHaveLength(1);
             expect(brands[0]).toEqual({
                 'account': '895212263565386113',
-                'alias': 'alias',
+                'alias': 'alias:tld',
                 'avatar': {
                     'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                     'mimeType': 'image/gif'

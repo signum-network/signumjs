@@ -14,7 +14,7 @@ import {DescriptorData} from './DescriptorData';
  *     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
  *     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
  *     .setSocialMediaLinks(['https://somelink.com'])
- *     .setAlias('alias')
+ *     .setAlias('alias:tld') // or just 'alias' (without tld - default: signum)
  *     .setCustomField('xc', 'value')
  *     .setDescription('description')
  *     .setExtension('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc')
@@ -84,8 +84,8 @@ export class DescriptorDataBuilder {
         return this;
     }
 
-    setAlias(a: string) {
-        this.data.raw.al = a;
+    setAlias(a: string, tld?: string) {
+        this.data.raw.al = tld ? `${a}:${tld}` : a;
         return this;
     }
 
