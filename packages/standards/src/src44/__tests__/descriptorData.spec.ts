@@ -27,6 +27,20 @@ const TestObjectStrict = {
     'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
 };
 
+const TestObjectAliasTld = {
+    'vs': 1,
+    'tp': 'cex',
+    'nm': 'Bittrex',
+    'ds': 'World class exchange at your service',
+    'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
+    'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
+    'hp': 'https://bittrex.com',
+    'sr': '^[0-9a-fA-F]{24}$',
+    'al': 'somealias.mytld',
+    'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+    'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
+};
+
 
 describe('descriptorData', () => {
     describe('get', () => {
@@ -35,6 +49,33 @@ describe('descriptorData', () => {
             expect(descriptor.get()).toEqual(
                 {
                     'alias': 'somealias',
+                    'avatar': {
+                        'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
+                        'mimeType': 'image/gif',
+                    },
+                    'background': {
+                        'ipfsCid': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                        'mimeType': 'image/jpeg',
+                    },
+                    'description': 'World class exchange at your service',
+                    'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
+                    'homePage': 'https://bittrex.com',
+                    'name': 'Bittrex',
+                    'sendRule': /^[0-9a-fA-F]{24}$/,
+                    'socialMediaLinks': [
+                        'https://twitter.com/bittrex',
+                        'https://twitter.com/bittrex2',
+                    ],
+                    'type': 'cex',
+                    'version': 1,
+                }
+            );
+        });
+        it('should return a human friendly object with alias TLD', () => {
+            const descriptor = DescriptorData.parse(JSON.stringify(TestObjectAliasTld));
+            expect(descriptor.get()).toEqual(
+                {
+                    'alias': 'somealias.mytld',
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif',
@@ -125,7 +166,7 @@ describe('descriptorData', () => {
                     'vs': 1,
                     'al': '@somealias',
                 }));
-            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}$/ - Got @somealias');
+            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(\\.[a-zA-Z0-9]{1,40})?$/ - Got @somealias');
         });
 
         it('should throw exception if object is not valid - 2', () => {

@@ -44,6 +44,19 @@ describe('descriptorDataBuilder', () => {
                 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc'
             });
         });
+        it('should create/build as expected using tld', () => {
+            const descriptorData = DescriptorDataBuilder
+                .create()
+                .setName('Some name')
+                .setAlias('alias', 'mytld')
+                .build();
+
+            expect(descriptorData.raw).toEqual({
+                'al': 'alias.mytld',
+                'nm': 'Some name',
+                'vs': 1,
+            });
+        });
 
         it('should throw exception on invalid data - wrong mime type', () => {
             expect(() => {

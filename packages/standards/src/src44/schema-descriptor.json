@@ -151,7 +151,7 @@
       "type": "string",
       "title": "The referenced Alias",
       "description": "An related alias of the Signum chain, that can mutable on-chain information",
-      "pattern": "^\\w{1,100}$",
+      "pattern": "^\\w{1,100}(\\.[a-zA-Z0-9]{1,40})?$",
       "default": "",
       "examples": [
         "@myAlias123"
