@@ -4,7 +4,7 @@ import {Subscription} from '../subscription';
 import {UnconfirmedTransactionList} from '../unconfirmedTransactionList';
 import {
     CancelSubscriptionArgs,
-    CreateSubscriptionArgs,
+    CreateSubscriptionArgs, GetSubscriptionPaymentsArgs,
     SendAmountArgs,
     SendAmountToMultipleRecipientsArgs,
     SendSameAmountToMultipleRecipientsArgs,
@@ -12,6 +12,7 @@ import {
 } from '../args';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {DistributionAmount} from '../distributionAmount';
+import {TransactionList} from '../transactionList';
 
 /**
  * Transaction API
@@ -142,4 +143,13 @@ export interface TransactionApi {
      * @return the received income from an asset distribution payment
      */
     getDistributionAmountsFromTransaction: (transactionId: string, accountId: string) => Promise<DistributionAmount>;
+
+    /**
+     * Gets the payments from a specific subscription aka Auto-Payment
+     *
+     * @param args argument object
+     *
+     * @return a list of transactions which belong to the given subscription
+     * */
+    getSubscriptionPayments: (args: GetSubscriptionPaymentsArgs) => Promise<TransactionList>;
 }

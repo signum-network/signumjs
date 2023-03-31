@@ -14,6 +14,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
             attachment: {'version.MultiOutCreation': 1, recipients: ['123', '456']}
         };
 
+        // @ts-ignore
         const recipientAmounts = getRecipientAmountsFromMultiOutPayment(transaction);
         expect(recipientAmounts).toHaveLength(2);
         expect(recipientAmounts[0].recipient).toBe('123');
@@ -31,12 +32,13 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
             attachment: {'version.MultiOutCreation': 1, recipients: ['123', '456']}
         };
 
+        // @ts-ignore
         const recipientAmounts = getRecipientAmountsFromMultiOutPayment(transaction);
         expect(recipientAmounts).toHaveLength(2);
         expect(recipientAmounts[0].recipient).toBe('123');
-        expect(recipientAmounts[0].amountNQT).toBe("50");
+        expect(recipientAmounts[0].amountNQT).toBe('50');
         expect(recipientAmounts[1].recipient).toBe('456');
-        expect(recipientAmounts[1].amountNQT).toBe("50");
+        expect(recipientAmounts[1].amountNQT).toBe('50');
     });
 
     it('returns recipients for Multi Out Different Amount Payment', () => {
@@ -47,6 +49,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
             attachment: {'version.MultiOutCreation': 1, recipients: [['123', 'amountA'], ['456', 'amountB']]}
         };
 
+        // @ts-ignore
         const recipientAmounts = getRecipientAmountsFromMultiOutPayment(transaction);
         expect(recipientAmounts).toHaveLength(2);
         expect(recipientAmounts[0].recipient).toBe('123');
@@ -63,6 +66,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
         };
 
         try {
+            // @ts-ignore
             getRecipientAmountsFromMultiOutPayment(transaction);
             expect(false).toBe('Expected Exception');
         } catch (e) {
@@ -79,6 +83,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
         };
 
         try {
+            // @ts-ignore
             getRecipientAmountsFromMultiOutPayment(transaction);
             expect(false).toBe('Expected Exception');
         } catch (e) {

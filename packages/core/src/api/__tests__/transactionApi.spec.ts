@@ -19,6 +19,7 @@ import {
     sendAmountToSingleRecipient,
     sendSameAmountToMultipleRecipients,
     signAndBroadcastTransaction,
+    getSubscriptionPayments,
 } from '../factories/transaction';
 
 describe('TransactionApi', () => {
@@ -645,6 +646,21 @@ describe('TransactionApi', () => {
             expect(response.unconfirmedTransactions).toHaveLength(0);
         });
 
+    });
+    describe('getSubscriptionPayments', () => {
+        it('should getSubscriptionPayments', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, {
+                transactions: []
+            }, 'relPath?requestType=getSubscriptionPayments&subscription=subscriptionId&firstIndex=0&lastIndex=100').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const response = await getSubscriptionPayments(service)({
+                subscriptionId: 'subscriptionId',
+                lastIndex: 100,
+                firstIndex: 0
+            });
+            expect(response.transactions).toHaveLength(0);
+        });
     });
 
     describe('signAndBroadcastTransaction', () => {
