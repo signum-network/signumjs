@@ -59,6 +59,24 @@ describe('getRecipientsAmount', () => {
 
     });
 
+    it('receives correct amount from multi out same transaction with very low value', () => {
+
+        const transaction = {
+            transaction: '1',
+            amountNQT: 10,
+            type: TransactionType.Payment,
+            subtype: TransactionPaymentSubtype.MultiOutSameAmount,
+            attachment: {
+                'version.MultiSameOutCreation': 1,
+                recipients: [recipientId, '456', recipientId] // tests also multiple mentions
+            }
+        };
+
+        const amount = getRecipientsAmount(recipientId, transaction);
+        expect(amount).toBe((2 / 3) * 0.00000001);
+
+    });
+
     it('receives correct amount from multi out diff transaction', () => {
 
         const transaction = {

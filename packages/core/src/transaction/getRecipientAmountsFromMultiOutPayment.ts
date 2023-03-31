@@ -1,7 +1,7 @@
 import {Transaction, MultioutRecipientAmount} from '..';
 import {isMultiOutSameTransaction} from './isMultiOutSameTransaction';
 import {isMultiOutTransaction} from './isMultiOutTransaction';
-import {convertNQTStringToNumber, convertNumberToNQTString} from '@signumjs/util';
+import {Amount} from '@signumjs/util';
 
 /**
  * Tries to extract recipients and its amounts for multi out payments (different and same amount)
@@ -16,11 +16,11 @@ export function getRecipientAmountsFromMultiOutPayment(transaction: Transaction)
 
         const recipients = transaction.attachment.recipients;
 
-        const amount = recipients.length ? convertNQTStringToNumber(transaction.amountNQT) / recipients.length : 0;
-        const amountNQT = convertNumberToNQTString(amount);
+        const amount = recipients.length ? Amount.fromPlanck(transaction.amountNQT).divide(recipients.length) : Amount.Zero();
+
         return transaction.attachment.recipients.map(recipient => ({
             recipient,
-            amountNQT
+            amountNQT: amount.getPlanck()
         }));
     }
 
