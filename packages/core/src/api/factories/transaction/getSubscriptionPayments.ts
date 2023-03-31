@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2023 Signum Network
  */
 import {ChainService} from '../../../service';
-import {GetSubscriptionPaymentsArgs, Subscription, TransactionList} from '../../..';
+import {GetSubscriptionPaymentsArgs, TransactionList} from '../../..';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
