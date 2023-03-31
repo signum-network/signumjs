@@ -48,3 +48,4 @@ export * from './calculateDistributionFeeArgs';
 export * from './getTopLevelDomainsArgs';
 export * from './searchAliasesByNameArgs';
 export * from './buyTopLevelDomainArgs';
+export * from './getSubscriptionPaymentsArgs';

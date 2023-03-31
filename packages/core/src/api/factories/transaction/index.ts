@@ -11,3 +11,4 @@ export * from './getSubscription';
 export * from './getUnconfirmedTransactions';
 export * from './signAndBroadcastTransaction';
 export * from './parseTransactionBytes';
+export * from './getSubscriptionPayments';

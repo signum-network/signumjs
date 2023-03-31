@@ -19,6 +19,7 @@ describe('getRecipientsAmount', () => {
             subtype: TransactionPaymentSubtype.Ordinary,
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('100');
 
@@ -33,6 +34,7 @@ describe('getRecipientsAmount', () => {
             subtype: TransactionEscrowSubtype.EscrowCreation,
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('100');
 
@@ -51,6 +53,7 @@ describe('getRecipientsAmount', () => {
             }
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('100');
 
@@ -69,6 +72,7 @@ describe('getRecipientsAmount', () => {
             }
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('0.00000006');
 
@@ -92,6 +96,7 @@ describe('getRecipientsAmount', () => {
             }
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('150');
 
@@ -113,6 +118,7 @@ describe('getRecipientsAmount', () => {
             }
         };
 
+        // @ts-ignore
         const amount = getRecipientsAmount(recipientId, transaction);
         expect(amount.getSigna()).toBe('0');
 
