@@ -1,13 +1,10 @@
 import {
-    TransactionArbitrarySubtype,
     TransactionEscrowSubtype,
     TransactionPaymentSubtype,
     TransactionType
 } from '../../constants';
-import {Amount, convertNumberToNQTString} from '@signumjs/util';
+import {Amount} from '@signumjs/util';
 import {getRecipientsAmount} from '../getRecipientsAmount';
-
-const nqt = convertNumberToNQTString;
 
 describe('getRecipientsAmount', () => {
 
@@ -88,9 +85,9 @@ describe('getRecipientsAmount', () => {
                 'version.MultiOutCreation': 1,
                 // tests also multiple mentions
                 recipients: [
-                    [recipientId, nqt(100)],
-                    ['456', nqt(10)],
-                    [recipientId, nqt(50)],
+                    [recipientId, Amount.fromSigna(100).getPlanck()],
+                    ['456', Amount.fromSigna(10).getPlanck()],
+                    [recipientId, Amount.fromSigna(50).getPlanck()],
                 ]
             }
         };
@@ -110,8 +107,8 @@ describe('getRecipientsAmount', () => {
             attachment: {
                 'version.MultiOutCreation': 1,
                 recipients: [
-                    ['789', nqt(100)],
-                    ['456', nqt(10)],
+                    ['789', Amount.fromSigna(100).getPlanck()],
+                    ['456', Amount.fromSigna(10).getPlanck()],
                 ]
             }
         };
