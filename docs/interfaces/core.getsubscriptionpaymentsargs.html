@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ConfirmedTransaction
+	<title>GetSubscriptionPaymentsArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,13 +75,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/wallets.html">wallets</a>
+					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="wallets.confirmedtransaction.html">ConfirmedTransaction</a>
+					<a href="core.getsubscriptionpaymentsargs.html">GetSubscriptionPaymentsArgs</a>
 				</li>
 			</ul>
-			<h1>Interface ConfirmedTransaction</h1>
+			<h1>Interface GetSubscriptionPaymentsArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,15 +91,26 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Object returned from <a href="../classes/wallets.genericextensionwallet.html#confirm">GenericExtensionWallet.confirm</a></p>
+						<p>The argument object for <a href="core_api.transactionapi.html#getsubscriptionpayments">TransactionApi.getSubscriptionPayments</a></p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>The numeric subscription Id</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>The first index of the transaction list, beginning at 0</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>The last index of the transaction list (BRS does not return more than 500)</p>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ConfirmedTransaction</span>
+						<span class="target">GetSubscriptionPaymentsArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -110,8 +121,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.confirmedtransaction.html#fullhash" class="tsd-kind-icon">full<wbr>Hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="wallets.confirmedtransaction.html#transactionid" class="tsd-kind-icon">transaction<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getsubscriptionpaymentsargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getsubscriptionpaymentsargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getsubscriptionpaymentsargs.html#subscriptionid" class="tsd-kind-icon">subscription<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -120,34 +132,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="fullhash" class="tsd-anchor"></a>
-					<h3>full<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">full<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="firstindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5e64073/packages/wallets/src/typings/confirmedTransaction.ts#L17">packages/wallets/src/typings/confirmedTransaction.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5e64073/packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts#L12">packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts:12</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The hash of the transaction</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="transactionid" class="tsd-anchor"></a>
-					<h3>transaction<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">transaction<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="lastindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5e64073/packages/wallets/src/typings/confirmedTransaction.ts#L13">packages/wallets/src/typings/confirmedTransaction.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5e64073/packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts#L13">packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts:13</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The transaction id</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="subscriptionid" class="tsd-anchor"></a>
+					<h3>subscription<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">subscription<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/5e64073/packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts#L11">packages/core/src/typings/args/getSubscriptionPaymentsArgs.ts:11</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -160,7 +172,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/contracts.html">contracts</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -187,109 +199,31 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/util.html">util</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/wallets.html">wallets</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.browserextensionadapter.html" class="tsd-kind-icon">Browser<wbr>Extension<wbr>Adapter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.consoleextensionadapter.html" class="tsd-kind-icon">Console<wbr>Extension<wbr>Adapter</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.deeplinkablewallet.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.extensionadapterfactory.html" class="tsd-kind-icon">Extension<wbr>Adapter<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.extensionwalleterror.html" class="tsd-kind-icon">Extension<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.genericdeeplinkablewallet.html" class="tsd-kind-icon">Generic<wbr>Deeplinkable<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.genericextensionwallet.html" class="tsd-kind-icon">Generic<wbr>Extension<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.invalidnetworkerror.html" class="tsd-kind-icon">Invalid<wbr>Network<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.invalidparamswalleterror.html" class="tsd-kind-icon">Invalid<wbr>Params<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.notfoundwalleterror.html" class="tsd-kind-icon">Not<wbr>Found<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.notgrantedwalleterror.html" class="tsd-kind-icon">Not<wbr>Granted<wbr>Wallet<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/wallets.walletconnection.html" class="tsd-kind-icon">Wallet<wbr>Connection</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.confirmedtransaction.html" class="tsd-kind-icon">Confirmed<wbr>Transaction</a>
+						<a href="core.getsubscriptionpaymentsargs.html" class="tsd-kind-icon">Get<wbr>Subscription<wbr>Payments<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="wallets.confirmedtransaction.html#fullhash" class="tsd-kind-icon">full<wbr>Hash</a>
+								<a href="core.getsubscriptionpaymentsargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="wallets.confirmedtransaction.html#transactionid" class="tsd-kind-icon">transaction<wbr>Id</a>
+								<a href="core.getsubscriptionpaymentsargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core.getsubscriptionpaymentsargs.html#subscriptionid" class="tsd-kind-icon">subscription<wbr>Id</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.deeplinkablewalletoptions.html" class="tsd-kind-icon">Deeplinkable<wbr>Wallet<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.easywallet.html" class="tsd-kind-icon">Easy<wbr>Wallet</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.easywalletpayargs.html" class="tsd-kind-icon">Easy<wbr>Wallet<wbr>Pay<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionlistener.html" class="tsd-kind-icon">Extension<wbr>Listener</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionnotificationaccountchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionnotificationaccountremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Account<wbr>Removed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionnotificationhandler.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionnotificationnetworkchanged.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Network<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.extensionnotificationpermissionremoved.html" class="tsd-kind-icon">Extension<wbr>Notification<wbr>Permission<wbr>Removed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.sendencryptedmessageargs.html" class="tsd-kind-icon">Send<wbr>Encrypted<wbr>Message<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="wallets.wallet.html" class="tsd-kind-icon">Wallet</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionnotification" class="tsd-kind-icon">Extension<wbr>Notification</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionpermission" class="tsd-kind-icon">Extension<wbr>Permission</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionsentencryptedmessage" class="tsd-kind-icon">Extension<wbr>Sent<wbr>Encrypted<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/wallets.html#extensionsigned" class="tsd-kind-icon">Extension<wbr>Signed</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
