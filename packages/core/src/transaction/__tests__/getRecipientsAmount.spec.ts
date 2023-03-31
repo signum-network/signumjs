@@ -4,7 +4,7 @@ import {
     TransactionPaymentSubtype,
     TransactionType
 } from '../../constants';
-import {convertNumberToNQTString} from '@signumjs/util';
+import {Amount, convertNumberToNQTString} from '@signumjs/util';
 import {getRecipientsAmount} from '../getRecipientsAmount';
 
 const nqt = convertNumberToNQTString;
@@ -17,27 +17,27 @@ describe('getRecipientsAmount', () => {
 
         const transaction = {
             transaction: '1',
-            amountNQT: nqt(100),
+            amountNQT: Amount.fromSigna(100).getPlanck(),
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.Ordinary,
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe(100);
+        expect(amount.getSigna()).toBe('100');
 
     });
 
-    it('receives correct amount from any kind transaction, but multi ou', () => {
+    it('receives correct amount from any kind transaction, but multi out', () => {
 
         const transaction = {
             transaction: '1',
-            amountNQT: nqt(100),
+            amountNQT: Amount.fromSigna(100).getPlanck(),
             type: TransactionType.Escrow,
             subtype: TransactionEscrowSubtype.EscrowCreation,
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe(100);
+        expect(amount.getSigna()).toBe('100');
 
     });
 
@@ -45,7 +45,7 @@ describe('getRecipientsAmount', () => {
 
         const transaction = {
             transaction: '1',
-            amountNQT: nqt(150),
+            amountNQT: Amount.fromSigna(150).getPlanck(),
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.MultiOutSameAmount,
             attachment: {
@@ -55,7 +55,7 @@ describe('getRecipientsAmount', () => {
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe((2 / 3) * 150);
+        expect(amount.getSigna()).toBe('100');
 
     });
 
@@ -73,7 +73,7 @@ describe('getRecipientsAmount', () => {
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe((2 / 3) * 0.00000001);
+        expect(amount.getSigna()).toBe('0.00000006');
 
     });
 
@@ -81,7 +81,7 @@ describe('getRecipientsAmount', () => {
 
         const transaction = {
             transaction: '1',
-            amountNQT: nqt(160),
+            amountNQT: Amount.fromSigna(160).getPlanck(),
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.MultiOut,
             attachment: {
@@ -96,7 +96,7 @@ describe('getRecipientsAmount', () => {
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe(150);
+        expect(amount.getSigna()).toBe('150');
 
     });
 
@@ -104,7 +104,7 @@ describe('getRecipientsAmount', () => {
 
         const transaction = {
             transaction: '1',
-            amountNQT: nqt(110),
+            amountNQT: Amount.fromSigna(110).getPlanck(),
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.MultiOut,
             attachment: {
@@ -117,7 +117,7 @@ describe('getRecipientsAmount', () => {
         };
 
         const amount = getRecipientsAmount(recipientId, transaction);
-        expect(amount).toBe(0);
+        expect(amount.getSigna()).toBe('0');
 
     });
 
