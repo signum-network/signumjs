@@ -116,6 +116,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#createsubscription" class="tsd-kind-icon">create<wbr>Subscription</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#getdistributionamountsfromtransaction" class="tsd-kind-icon">get<wbr>Distribution<wbr>Amounts<wbr>From<wbr>Transaction</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#getsubscription" class="tsd-kind-icon">get<wbr>Subscription</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#getsubscriptionpayments" class="tsd-kind-icon">get<wbr>Subscription<wbr>Payments</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#gettransaction" class="tsd-kind-icon">get<wbr>Transaction</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#gettransactionbyfullhash" class="tsd-kind-icon">get<wbr>Transaction<wbr>ByFull<wbr>Hash</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.transactionapi.html#getunconfirmedtransactions" class="tsd-kind-icon">get<wbr>Unconfirmed<wbr>Transactions</a></li>
@@ -137,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">broadcast<wbr>Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L31">packages/core/src/typings/api/transactionApi.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L32">packages/core/src/typings/api/transactionApi.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -181,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L110">packages/core/src/typings/api/transactionApi.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L111">packages/core/src/typings/api/transactionApi.ts:111</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -225,7 +226,7 @@
 					<div class="tsd-signature tsd-kind-icon">create<wbr>Subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L101">packages/core/src/typings/api/transactionApi.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L102">packages/core/src/typings/api/transactionApi.ts:102</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -269,7 +270,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Distribution<wbr>Amounts<wbr>From<wbr>Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L144">packages/core/src/typings/api/transactionApi.ts:144</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L145">packages/core/src/typings/api/transactionApi.ts:145</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -324,7 +325,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L92">packages/core/src/typings/api/transactionApi.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L93">packages/core/src/typings/api/transactionApi.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -363,12 +364,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getsubscriptionpayments" class="tsd-anchor"></a>
+					<h3>get<wbr>Subscription<wbr>Payments</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Subscription<wbr>Payments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L154">packages/core/src/typings/api/transactionApi.ts:154</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets the payments from a specific subscription aka Auto-Payment</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>a list of transactions which belong to the given subscription</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.getsubscriptionpaymentsargs.html" class="tsd-signature-type">GetSubscriptionPaymentsArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionlist.html" class="tsd-signature-type">TransactionList</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.getsubscriptionpaymentsargs.html" class="tsd-signature-type">GetSubscriptionPaymentsArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.transactionlist.html" class="tsd-signature-type">TransactionList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="gettransaction" class="tsd-anchor"></a>
 					<h3>get<wbr>Transaction</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L39">packages/core/src/typings/api/transactionApi.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L40">packages/core/src/typings/api/transactionApi.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -412,7 +457,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Transaction<wbr>ByFull<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L48">packages/core/src/typings/api/transactionApi.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L49">packages/core/src/typings/api/transactionApi.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -456,7 +501,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Unconfirmed<wbr>Transactions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L117">packages/core/src/typings/api/transactionApi.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L118">packages/core/src/typings/api/transactionApi.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -491,7 +536,7 @@
 					<div class="tsd-signature tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L57">packages/core/src/typings/api/transactionApi.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L58">packages/core/src/typings/api/transactionApi.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -535,7 +580,7 @@
 					<div class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L74">packages/core/src/typings/api/transactionApi.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L75">packages/core/src/typings/api/transactionApi.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -579,7 +624,7 @@
 					<div class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToSingle<wbr>Recipient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L83">packages/core/src/typings/api/transactionApi.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L84">packages/core/src/typings/api/transactionApi.ts:84</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -623,7 +668,7 @@
 					<div class="tsd-signature tsd-kind-icon">send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L65">packages/core/src/typings/api/transactionApi.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L66">packages/core/src/typings/api/transactionApi.ts:66</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -667,7 +712,7 @@
 					<div class="tsd-signature tsd-kind-icon">sign<wbr>And<wbr>Broadcast<wbr>Transaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/501a812/packages/core/src/typings/api/transactionApi.ts#L129">packages/core/src/typings/api/transactionApi.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/d1af6d9/packages/core/src/typings/api/transactionApi.ts#L130">packages/core/src/typings/api/transactionApi.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -802,6 +847,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.transactionapi.html#getsubscription" class="tsd-kind-icon">get<wbr>Subscription</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.transactionapi.html#getsubscriptionpayments" class="tsd-kind-icon">get<wbr>Subscription<wbr>Payments</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.transactionapi.html#gettransaction" class="tsd-kind-icon">get<wbr>Transaction</a>

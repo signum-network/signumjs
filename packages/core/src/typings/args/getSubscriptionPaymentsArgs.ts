@@ -1,6 +1,6 @@
 
 /**
- * The argument object for [[AccountApi.getSubscriptionPayments]]
+ * The argument object for [[TransactionApi.getSubscriptionPayments]]
  *
  * @param {string} subscriptionId The numeric subscription Id
  * @param {number?} firstIndex The first index of the transaction list, beginning at 0
