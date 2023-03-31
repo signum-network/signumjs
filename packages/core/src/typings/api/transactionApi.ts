@@ -12,7 +12,6 @@ import {
 } from '../args';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {DistributionAmount} from '../distributionAmount';
-import {ChainService} from '../../service';
 import {TransactionList} from '../transactionList';
 
 /**
