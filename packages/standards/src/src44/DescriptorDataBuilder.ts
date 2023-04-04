@@ -14,7 +14,7 @@ import {DescriptorData} from './DescriptorData';
  *     .setBackground('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc', 'image/jpeg')
  *     .setAvatar('QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR', 'image/gif')
  *     .setSocialMediaLinks(['https://somelink.com'])
- *     .setAlias('alias:tld') // or just 'alias' (without tld - default: signum)
+ *     .setAlias('alias','tld') // or just 'alias' (without tld - default: signum)
  *     .setCustomField('xc', 'value')
  *     .setDescription('description')
  *     .setExtension('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc')

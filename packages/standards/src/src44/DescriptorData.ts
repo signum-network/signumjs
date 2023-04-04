@@ -37,6 +37,9 @@ export class DescriptorData {
         return this.data.nm;
     }
 
+    /**
+     * The alias may have a tld, which then returns the alias as `alias:tld`
+     */
     get alias() {
         return this.data.al;
     }
