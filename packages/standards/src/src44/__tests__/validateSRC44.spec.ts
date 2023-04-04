@@ -188,6 +188,13 @@ describe('validateSRC44', () => {
                 al: 'somealias'
             });
         });
+        it('should be fine with tld', () => {
+            validateSRC44({
+                vs: 1,
+                nm: 'name',
+                al: 'some_alias:mytld'
+            });
+        });
         it('throws error for wrong alias', () => {
             expect(() => {
                 validateSRC44({
