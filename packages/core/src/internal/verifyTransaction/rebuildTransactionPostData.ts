@@ -36,38 +36,9 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
     const requestRebuildInfo = getRequestRebuildInfo(transaction);
     if (requestRebuildInfo.hasAttachment) {
         rebuiltData = parseAttachment(requestRebuildInfo.requestType, rebuiltData, trBytes);
-        // Some exceptions
-        switch (requestRebuildInfo.requestType) {
-            case 'sendMoneyMultiSame':
-                rebuiltData.amountNQT = new BigNumber(rebuiltData.amountNQT)
-                    .dividedBy(rebuiltData.recipients.split(';').length)
-                    .toFixed(0);
-                break;
-            case 'issueAsset':
-                if (rebuiltData.mintable === '1') {
-                    rebuiltData.mintable = 'true';
-                    if (!rebuiltData.quantityQNT) { // when initial supply is '0'
-                        rebuiltData.quantityQNT = '0';
-                    }
-                } else {
-                    rebuiltData.mintable = 'false';
-                }
-                break;
-            case 'createATProgram':
-                delete rebuiltData.creationBytes;
-                if (rebuiltData.referencedTransactionFullHash) {
-                    delete rebuiltData.code;
-                    if (rebuiltData.data === '') {
-                        delete rebuiltData.data;
-                    }
-                    delete rebuiltData.dpages;
-                    delete rebuiltData.cspages;
-                    delete rebuiltData.uspages;
-                    delete rebuiltData.minActivationAmountNQT;
-                }
-        }
     }
 
+    rebuiltData = processSpecialCases(requestRebuildInfo.requestType, rebuiltData);
     rebuiltData = parseMessage(transaction.flags, rebuiltData, trBytes);
     rebuiltData = parseEncryptedMessage(transaction.flags, rebuiltData, trBytes);
     rebuiltData = parseRecipientPublicKey(transaction.flags, rebuiltData, trBytes);
@@ -77,6 +48,53 @@ export function rebuildTransactionPostData(hexUnsignedBytes: string) {
         requestType: requestRebuildInfo.requestType,
         rebuiltData,
     };
+}
+
+/**
+ * If needed, add here special cases (exceptions) to make further modifications
+ * on the rebuiltData properties.
+ * @return the updated object.
+ */
+function processSpecialCases(requestType: string, rebuiltData: any) {
+    switch (requestType) {
+        case 'sendMoney':
+        case 'sendMoneySubscription':
+        case 'transferAsset':
+        case 'transferAssetMulti':
+            // Fixes burning transactions
+            if (!rebuiltData.recipient) {
+                rebuiltData.recipient = '0';
+            }
+            break;
+        case 'sendMoneyMultiSame':
+            rebuiltData.amountNQT = new BigNumber(rebuiltData.amountNQT)
+                .dividedBy(rebuiltData.recipients.split(';').length)
+                .toFixed(0);
+            break;
+        case 'issueAsset':
+            if (rebuiltData.mintable === '1') {
+                rebuiltData.mintable = 'true';
+                if (!rebuiltData.quantityQNT) { // when initial supply is '0'
+                    rebuiltData.quantityQNT = '0';
+                }
+            } else {
+                rebuiltData.mintable = 'false';
+            }
+            break;
+        case 'createATProgram':
+            delete rebuiltData.creationBytes;
+            if (rebuiltData.referencedTransactionFullHash) {
+                delete rebuiltData.code;
+                if (rebuiltData.data === '') {
+                    delete rebuiltData.data;
+                }
+                delete rebuiltData.dpages;
+                delete rebuiltData.cspages;
+                delete rebuiltData.uspages;
+                delete rebuiltData.minActivationAmountNQT;
+            }
+    }
+    return rebuiltData;
 }
 
 /**

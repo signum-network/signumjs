@@ -92,6 +92,19 @@ describe('rebuildTransactionPostData', () => {
             expect(output.requestType).toEqual(requestType);
             expect(output.rebuiltData).toEqual(rebuiltData);
         });
+        it('should rebuild data correctly - burn', () => {
+            const transactionBytes = '002096a14a103d0039101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e000000000000000087d612000000000040420f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d23080038c1125958cec3cd04cfe1531b543c7c';
+            const rebuiltData = {
+                recipient: '0',
+                amountNQT: '1234567',
+                feeNQT: '1000000',
+                publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
+                deadline: 61
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
     });
     describe('sendMoneyMulti', () => {
         const requestType = 'sendMoneyMulti';
@@ -353,6 +366,22 @@ describe('rebuildTransactionPostData', () => {
                 feeNQT: '1000000',
                 publicKey: '39101b80470d65340bb094b80e3178b528d3194a97e20dbaba1ed966a06ac20e',
                 deadline: 8
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
+
+        it('should rebuild data correctly for burning - Att. v1', () => {
+            const transactionBytes = '02219ac44b103c00c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a000000000000000000e1f5050000000040420f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008724080086a5f588b889d4e604cfe1531b543c7c01ed0aa2ee04d50a2d6400000000000000';
+            const rebuiltData = {
+                recipient: '0',
+                asset: '3245640698634046189',
+                quantityQNT: '100',
+                amountNQT: '100000000',
+                feeNQT: '1000000',
+                publicKey: 'c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a',
+                deadline: 60
             };
             const output = rebuildTransactionPostData(transactionBytes);
             expect(output.requestType).toEqual(requestType);
