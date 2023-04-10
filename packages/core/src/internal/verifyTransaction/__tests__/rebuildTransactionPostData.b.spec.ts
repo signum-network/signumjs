@@ -47,6 +47,20 @@ describe('rebuildTransactionPostData', () => {
             expect(output.requestType).toEqual(requestType);
             expect(output.rebuiltData).toEqual(rebuiltData);
         });
+        it('should rebuild data correctly - burning', () => {
+            const transactionBytes = '1523ffc74b103c00c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a000000000000000000e1f5050000000040420f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008b240800d8e076b324a0231f04cfe1531b543c7c0180510100';
+            const rebuiltData = {
+                recipient: '0',
+                amountNQT: '100000000',
+                frequency: '86400',
+                feeNQT: '1000000',
+                publicKey: 'c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a',
+                deadline: 60
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
     });
     describe('subscriptionCancel', () => {
         const requestType = 'subscriptionCancel';
