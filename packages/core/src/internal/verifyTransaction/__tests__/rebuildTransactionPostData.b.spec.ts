@@ -146,4 +146,48 @@ describe('rebuildTransactionPostData', () => {
             expect(output.rebuiltData).toEqual(rebuiltData);
         });
     });
+    describe('transferAssetMulti', () => {
+        const requestType = 'transferAssetMulti';
+        it('should rebuild data correctly - sending two tokens', () => {
+            const transactionBytes = '0229b8ae4a101f00f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056625ca0d7757554e893000000000000000080841e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005b23080052bd7b82bcb5dae804cfe1531b543c7c0102353218a0732b4bd40c00000000000000cbfa7d7e71c42b48c800000000000000';
+            const rebuiltData = {
+                recipient: '10657861381637251164',
+                assetIdsAndQuantities: '15297368334901195317:12;5200466186461903563:200',
+                feeNQT: '2000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 31
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
+        it('should rebuild data correctly - burning two tokens', () => {
+            const transactionBytes = '02294eaf4a101f00f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056620000000000000000000000000000000080841e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c230800544c16bf0547e1fa04cfe1531b543c7c0102353218a0732b4bd40c00000000000000cbfa7d7e71c42b48c800000000000000';
+            const rebuiltData = {
+                recipient: '0',
+                assetIdsAndQuantities: '15297368334901195317:12;5200466186461903563:200',
+                feeNQT: '2000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 31
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
+        it('should rebuild data correctly - sending four tokens plus signa', () => {
+            const transactionBytes = '022916b14a10ff00f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb056625ca0d7757554e89301e1f5050000000080841e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005e230800b8821c792728bf7d04cfe1531b543c7c0104353218a0732b4bd40c00000000000000cbfa7d7e71c42b48c8000000000000002dd9484e5d898c24c180e30400000000e08c85ca788404d70100000000000000';
+            const rebuiltData = {
+                recipient: '10657861381637251164',
+                assetIdsAndQuantities: '15297368334901195317:12;5200466186461903563:200;2633630915943258413:82018497;15493654272390040800:1',
+                amountNQT: '100000001',
+                feeNQT: '2000000',
+                publicKey: 'f3b1ac892aa896a9cd25d7e6401f857c57f62c253207d043e90a19ef4fb05662',
+                deadline: 255
+            };
+            const output = rebuildTransactionPostData(transactionBytes);
+            expect(output.requestType).toEqual(requestType);
+            expect(output.rebuiltData).toEqual(rebuiltData);
+        });
+
+    });
 });
