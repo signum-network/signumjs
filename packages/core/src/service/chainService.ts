@@ -146,7 +146,6 @@ export class ChainService {
 
 
         if (!args.skipAdditionalSecurityCheck) {
-            console.log('send verify');
             verifyTransaction(method, args, response);
         }
 
