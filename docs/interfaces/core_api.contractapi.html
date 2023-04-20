@@ -113,6 +113,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#callcontractmethod" class="tsd-kind-icon">call<wbr>Contract<wbr>Method</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getallcontractids" class="tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getallcontractsbycodehash" class="tsd-kind-icon">get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontractmapvaluesbyfirstkey" class="tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_api.contractapi.html#getcontractsbyaccount" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a></li>
@@ -132,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L68">packages/core/src/typings/api/contractApi.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L69">packages/core/src/typings/api/contractApi.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L45">packages/core/src/typings/api/contractApi.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L46">packages/core/src/typings/api/contractApi.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,12 +216,56 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getallcontractsbycodehash" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L90">packages/core/src/typings/api/contractApi.ts:90</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets all contracts for a given machin code hash</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>The argument object</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>A list of contracts</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="core.getallcontractsbycodehashargs.html" class="tsd-signature-type">GetAllContractsByCodeHashArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractlist.html" class="tsd-signature-type">ContractList</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>args: <a href="core.getallcontractsbycodehashargs.html" class="tsd-signature-type">GetAllContractsByCodeHashArgs</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="core.contractlist.html" class="tsd-signature-type">ContractList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getcontract" class="tsd-anchor"></a>
 					<h3>get<wbr>Contract</h3>
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L30">packages/core/src/typings/api/contractApi.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L31">packages/core/src/typings/api/contractApi.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -264,7 +309,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L82">packages/core/src/typings/api/contractApi.ts:82</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L83">packages/core/src/typings/api/contractApi.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -308,7 +353,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L37">packages/core/src/typings/api/contractApi.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L38">packages/core/src/typings/api/contractApi.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -352,7 +397,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L75">packages/core/src/typings/api/contractApi.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L76">packages/core/src/typings/api/contractApi.ts:76</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -396,7 +441,7 @@
 					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L53">packages/core/src/typings/api/contractApi.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L54">packages/core/src/typings/api/contractApi.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -440,7 +485,7 @@
 					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b28d22a/packages/core/src/typings/api/contractApi.ts#L61">packages/core/src/typings/api/contractApi.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/api/contractApi.ts#L62">packages/core/src/typings/api/contractApi.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -555,6 +600,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.contractapi.html#getallcontractids" class="tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_api.contractapi.html#getallcontractsbycodehash" class="tsd-kind-icon">get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="core_api.contractapi.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Balance
+	<title>GetAllContractsByCodeHashArgs
 	| signumjs - The Javascript SDK for Signum Network</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,10 +78,10 @@
 					<a href="../modules/core.html">core</a>
 				</li>
 				<li>
-					<a href="core.balance.html">Balance</a>
+					<a href="core.getallcontractsbycodehashargs.html">GetAllContractsByCodeHashArgs</a>
 				</li>
 			</ul>
-			<h1>Interface Balance</h1>
+			<h1>Interface GetAllContractsByCodeHashArgs</h1>
 		</div>
 	</div>
 </header>
@@ -91,7 +91,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Account Balance</p>
+						<p>The argument object for <a href="core_api.contractapi.html#getallcontractsbycodehash">ContractApi.getAllContractsByCodeHash</a></p>
 					</div>
 				</div>
 			</section>
@@ -99,7 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Balance</span>
+						<span class="target">GetAllContractsByCodeHashArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -110,12 +110,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#balancenqt" class="tsd-kind-icon">balanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#effectivebalancenxt" class="tsd-kind-icon">effective<wbr>BalanceNXT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#forgedbalancenqt" class="tsd-kind-icon">forged<wbr>BalanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#guaranteedbalancenqt" class="tsd-kind-icon">guaranteed<wbr>BalanceNQT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.balance.html#unconfirmedbalancenqt" class="tsd-kind-icon">unconfirmed<wbr>BalanceNQT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getallcontractsbycodehashargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getallcontractsbycodehashargs.html#includedetails" class="tsd-kind-icon">include<wbr>Details</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getallcontractsbycodehashargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core.getallcontractsbycodehashargs.html#machinecodehash" class="tsd-kind-icon">machine<wbr>Code<wbr>Hash</a></li>
 							</ul>
 						</section>
 					</div>
@@ -124,64 +122,66 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="balancenqt" class="tsd-anchor"></a>
-					<h3>balanceNQT</h3>
-					<div class="tsd-signature tsd-kind-icon">balanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="firstindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L15">packages/core/src/typings/balance.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts#L22">packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts:22</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The first index of the list, beginning at 0</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="effectivebalancenxt" class="tsd-anchor"></a>
-					<h3>effective<wbr>BalanceNXT</h3>
-					<div class="tsd-signature tsd-kind-icon">effective<wbr>BalanceNXT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="includedetails" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Details</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Details<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L13">packages/core/src/typings/balance.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts#L18">packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If true all information, including byte code and initial data stack will be returned.
+								Note, that using <code>true</code> leads to significantly larger payloads
+							Default is <code>false</code></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="forgedbalancenqt" class="tsd-anchor"></a>
-					<h3>forged<wbr>BalanceNQT</h3>
-					<div class="tsd-signature tsd-kind-icon">forged<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="lastindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L14">packages/core/src/typings/balance.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts#L26">packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts:26</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The last index of the list. At maximum 500 will be returned</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="guaranteedbalancenqt" class="tsd-anchor"></a>
-					<h3>guaranteed<wbr>BalanceNQT</h3>
-					<div class="tsd-signature tsd-kind-icon">guaranteed<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="machinecodehash" class="tsd-anchor"></a>
+					<h3>machine<wbr>Code<wbr>Hash</h3>
+					<div class="tsd-signature tsd-kind-icon">machine<wbr>Code<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L12">packages/core/src/typings/balance.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts#L11">packages/core/src/typings/args/getAllContractsByCodeHashArgs.ts:11</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requestprocessingtime" class="tsd-anchor"></a>
-					<h3>request<wbr>Processing<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">request<wbr>Processing<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L16">packages/core/src/typings/balance.ts:16</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unconfirmedbalancenqt" class="tsd-anchor"></a>
-					<h3>unconfirmed<wbr>BalanceNQT</h3>
-					<div class="tsd-signature tsd-kind-icon">unconfirmed<wbr>BalanceNQT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/1352872/packages/core/src/typings/balance.ts#L11">packages/core/src/typings/balance.ts:11</a></li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The hash of the machine code</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -231,25 +231,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="core.balance.html" class="tsd-kind-icon">Balance</a>
+						<a href="core.getallcontractsbycodehashargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#balancenqt" class="tsd-kind-icon">balanceNQT</a>
+								<a href="core.getallcontractsbycodehashargs.html#firstindex" class="tsd-kind-icon">first<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#effectivebalancenxt" class="tsd-kind-icon">effective<wbr>BalanceNXT</a>
+								<a href="core.getallcontractsbycodehashargs.html#includedetails" class="tsd-kind-icon">include<wbr>Details</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#forgedbalancenqt" class="tsd-kind-icon">forged<wbr>BalanceNQT</a>
+								<a href="core.getallcontractsbycodehashargs.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#guaranteedbalancenqt" class="tsd-kind-icon">guaranteed<wbr>BalanceNQT</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#requestprocessingtime" class="tsd-kind-icon">request<wbr>Processing<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="core.balance.html#unconfirmedbalancenqt" class="tsd-kind-icon">unconfirmed<wbr>BalanceNQT</a>
+								<a href="core.getallcontractsbycodehashargs.html#machinecodehash" class="tsd-kind-icon">machine<wbr>Code<wbr>Hash</a>
 							</li>
 						</ul>
 					</li>
