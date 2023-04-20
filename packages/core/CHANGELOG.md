@@ -49,6 +49,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `searchAliasesByName`,
   - `getTopLevelDomains`
   - `buyTopLevelDomain`
+  - `getContractsByMachineCodeHash`
 
 - New Transaction Subtype Enums for Assets
 - `getAccountTransactions` can resolve asset distributions now! 
