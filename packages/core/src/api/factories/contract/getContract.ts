@@ -2,7 +2,8 @@
  * Copyright (c) 2019 Burst Apps Team
  */
 import {ChainService} from '../../../service/chainService';
-import {Contract} from '../../../typings/contract';
+import {Contract} from '@signumjs/contracts';
+// import {Contract} from '../../../typings/contract';
 
 /**
  * Use with [[ApiComposer]] and belongs to [[ContractApi]].

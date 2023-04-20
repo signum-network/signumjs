@@ -1,4 +1,4 @@
-import {Contract} from '../contract';
+import {Contract} from '@signumjs/contracts';
 import {ContractList} from '../contractList';
 import {ContractIdList} from '../contractIdList';
 import {

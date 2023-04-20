@@ -1,5 +1,5 @@
 import {Indexable} from './indexable';
-import {Contract} from './contract';
+import { Contract } from '@signumjs/contracts';
 
 /**
  * Copyright (c) 2019 Burst Apps Team
