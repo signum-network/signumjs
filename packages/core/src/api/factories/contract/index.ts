@@ -6,3 +6,4 @@ export * from './publishContractByReference';
 export * from './callContractMethod';
 export * from './getSingleContractMapValue';
 export * from './getContractMapValuesByFirstKey';
+export * from './getAllContractsByCodeHash';

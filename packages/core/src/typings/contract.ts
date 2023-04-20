@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2021 Signum Network
+ * Modified (c) 2021, 2023 Signum Network
  */
 
 /**
@@ -15,7 +15,8 @@ export interface Contract {
     atVersion: number;
     name: string;
     description: string;
-    machineCode: string;
+    machineCode?: string;
+    creationMachineData?: string;
     machineCodeHashId: string;
     machineData: string;
     balanceNQT: string;

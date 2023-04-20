@@ -49,3 +49,6 @@ export * from './getTopLevelDomainsArgs';
 export * from './searchAliasesByNameArgs';
 export * from './buyTopLevelDomainArgs';
 export * from './getSubscriptionPaymentsArgs';
+export * from './getAllContractsByCodeHashArgs';
+export * from './getAllContractIdsArgs';
+export * from './getContractsByAccountArgs';

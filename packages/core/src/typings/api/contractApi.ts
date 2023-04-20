@@ -5,12 +5,13 @@ import {
     GetContractMapValuesByFirstKeyArgs,
     GetSingleContractMapValueArgs,
     PublishContractArgs,
-    PublishContractByReferenceArgs
+    PublishContractByReferenceArgs,
+    CallContractMethodArgs,
+    GetAllContractIdsArgs,
+    GetContractsByAccountArgs,
+    GetAllContractsByCodeHashArgs
 } from '../args';
 import {TransactionId} from '../transactionId';
-import {CallContractMethodArgs} from '../args/callContractMethodArgs';
-import {GetAllContractIdsArgs} from '../args/getAllContractIdsArgs';
-import {GetContractsByAccountArgs} from '../args/getContractsByAccountArgs';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {ContractMapValueList} from '../contractMapValueList';
 
@@ -80,4 +81,11 @@ export interface ContractApi {
      * @return  A list of values
      */
     getContractMapValuesByFirstKey: (args: GetContractMapValuesByFirstKeyArgs) => Promise<ContractMapValueList>;
+
+    /**
+     * Gets all contracts for a given machin code hash
+     * @param args The argument object
+     * @return A list of contracts
+     */
+    getAllContractsByCodeHash: (args: GetAllContractsByCodeHashArgs) => Promise<ContractList>;
 }

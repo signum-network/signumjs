@@ -6,7 +6,7 @@ import {
     getContract,
     getContractsByAccount,
     publishContract,
-    getSingleContractMapValue, getContractMapValuesByFirstKey
+    getSingleContractMapValue, getContractMapValuesByFirstKey, getAllContractsByCodeHash
 } from '../factories/contract';
 import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 import {TransactionId} from '../../typings/transactionId';
@@ -198,6 +198,28 @@ describe('Contract Api', () => {
             const service = createChainService(httpMock, 'relPath');
             const mapValues = await getContractMapValuesByFirstKey(service)({ contractId: 'contractId', key1: 'key1'});
             expect(mapValues.keyValues[0].value).toEqual('42');
+        });
+    });
+
+    describe('getAllContractsByCodeHash', () => {
+
+        const mockResponse = {
+            ats: [],
+            requestProcessingTime: 1
+        };
+
+        it('should getContractMapValuesByFirstKey', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onGetReply(200, mockResponse, 'relPath?requestType=getATs&machineCodeHashId=machineCodeHash&includeDetails=true&firstIndex=100&lastIndex=600')
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contractList = await getAllContractsByCodeHash(service)({
+                machineCodeHash: 'machineCodeHash',
+                includeDetails: true,
+                firstIndex: 100,
+                lastIndex: 600
+            });
+            expect(contractList.ats).toHaveLength(0);
         });
     });
 });

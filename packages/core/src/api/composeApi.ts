@@ -60,7 +60,8 @@ import {
     getContract, getContractMapValuesByFirstKey,
     getContractsByAccount, getSingleContractMapValue,
     publishContract,
-    publishContractByReference
+    publishContractByReference,
+    getAllContractsByCodeHash
 } from './factories/contract';
 import {
     broadcastTransaction,
@@ -237,6 +238,7 @@ export function composeApi(settings: ApiSettings): Api {
             callContractMethod,
             getSingleContractMapValue,
             getContractMapValuesByFirstKey,
+            getAllContractsByCodeHash
         }).withAssetApi({
             getAsset,
             getAllTrades,
