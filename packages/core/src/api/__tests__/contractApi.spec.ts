@@ -208,7 +208,7 @@ describe('Contract Api', () => {
             requestProcessingTime: 1
         };
 
-        it('should getContractMapValuesByFirstKey', async () => {
+        it('should getAllContracts', async () => {
             httpMock = HttpMockBuilder.create()
                 .onGetReply(200, mockResponse, 'relPath?requestType=getATs&machineCodeHashId=machineCodeHash&includeDetails=true&firstIndex=100&lastIndex=600')
                 .build();

@@ -586,7 +586,7 @@ describe('TransactionApi', () => {
                 httpMock = HttpMockBuilder.create()
                     // tslint:disable:max-line-length
                     .onPostReply(200, mockBroadcastResponse,
-                        'relPath?requestType=sendMoneySubscription&amountNQT=2000&frequency=3600&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000&deadline=1440')
+                        'relPath?requestType=sendMoneySubscription&amountNQT=2000&frequency=3600&publicKey=senderPublicKey&recipient=recipientId&feeNQT=1000&deadline=1440&referencedTransactionFullHash=fullhash')
                     .onPostReply(200, mockTransaction.transaction,
                         'relPath?requestType=broadcastTransaction&transactionBytes=signedTransactionBytes')
                     .build();
@@ -600,6 +600,7 @@ describe('TransactionApi', () => {
                     recipientId: 'recipientId',
                     senderPublicKey: 'senderPublicKey',
                     senderPrivateKey: 'senderPrivateKey',
+                    referencedTransactionFullHash: 'fullhash'
                 });
                 expect(transactionId).toBe('transactionId');
                 expect(generateSignature).toBeCalledTimes(1);

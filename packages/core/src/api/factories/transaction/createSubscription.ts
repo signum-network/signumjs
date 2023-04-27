@@ -26,7 +26,8 @@ export const createSubscription = (service: ChainService) =>
                 recipient: a.recipientId,
                 recipientPublicKey: a.recipientPublicKey || undefined,
                 feeNQT: a.feePlanck,
-                deadline: a.deadline || DefaultDeadline
+                deadline: a.deadline || DefaultDeadline,
+                referencedTransactionFullHash: a.referencedTransactionFullHash,
             };
 
             if (a.attachment) {
