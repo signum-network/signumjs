@@ -72,7 +72,7 @@ async function sendSigna(args) {
         // Now, we execute the transaction
         // within the method the local signing flow is being executed, i.e.
         // the private key is used only locally for signinh, but never sent over the network
-        const {transaction} = await ledger.transaction.sendAmountToSingleRecipient(
+        const transactionData = await ledger.transaction.sendAmountToSingleRecipient(
             {
                 recipientId,
                 amountPlanck: Amount.fromSigna(amount).getPlanck(),
@@ -82,10 +82,13 @@ async function sendSigna(args) {
             }
         );
 
-        // now, some final nice message
-        const addressPrefix = ledgerType === 'MainNet' ? AddressPrefix.MainNet : AddressPrefix.TestNet
-        console.info(`Successfully sent ${amount} ${CurrencySymbol} to ${Address.create(recipientId, addressPrefix).getReedSolomonAddress()} - Transaction Id: ${transaction}`)
-        console.info(`You paid a total of ${Amount.fromSigna(amount).add(Amount.fromPlanck(selectedFeePlanck)).toString()}`)
+        if ('transaction' in transactionData)
+        {
+            // now, some final nice message
+            const addressPrefix = ledgerType === 'MainNet' ? AddressPrefix.MainNet : AddressPrefix.TestNet
+            console.info(`Successfully sent ${amount} ${CurrencySymbol} to ${Address.create(recipientId, addressPrefix).getReedSolomonAddress()} - Transaction Id: ${transaction}`)
+            console.info(`You paid a total of ${Amount.fromSigna(amount).add(Amount.fromPlanck(selectedFeePlanck)).toString()}`)            
+        }
     } catch (e) {
         // If the API returns an exception,
         // the return error object is of type HttpError
