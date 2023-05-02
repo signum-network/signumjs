@@ -72,7 +72,7 @@ async function sendSigna(args) {
         // Now, we execute the transaction
         // within the method the local signing flow is being executed, i.e.
         // the private key is used only locally for signinh, but never sent over the network
-        const {transaction} = await ledger.transaction.sendAmountToSingleRecipient(
+        const {transactionJSON} = await ledger.transaction.sendAmountToSingleRecipient(
             {
                 recipientId,
                 amountPlanck: Amount.fromSigna(amount).getPlanck(),
