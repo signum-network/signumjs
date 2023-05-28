@@ -38,6 +38,7 @@ export const callContractMethod = (service: ChainService) =>
             recipientId: args.contractId,
             senderPrivateKey: args.senderPrivateKey,
             senderPublicKey: args.senderPublicKey,
+            referencedTransactionFullHash: args.referencedTransactionFullHash
         };
 
         return sendAmountToSingleRecipient(service)(parameters);

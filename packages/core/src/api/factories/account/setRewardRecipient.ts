@@ -21,7 +21,8 @@ export const setRewardRecipient = (service: ChainService) =>
                     publicKey: a.senderPublicKey,
                     recipient: a.recipientId,
                     feeNQT: a.feePlanck,
-                    deadline: a.deadline || DefaultDeadline
+                    deadline: a.deadline || DefaultDeadline,
+                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
                 };
                 return service.send<UnsignedTransaction>('setRewardRecipient', parameters);
             }

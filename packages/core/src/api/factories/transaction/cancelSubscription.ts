@@ -23,7 +23,8 @@ export const cancelSubscription = (service: ChainService) =>
                 subscription: a.subscriptionId,
                 publicKey: a.senderPublicKey,
                 feeNQT: a.feePlanck,
-                deadline: a.deadline || DefaultDeadline
+                deadline: a.deadline || DefaultDeadline,
+                referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
             };
 
             if (a.attachment) {

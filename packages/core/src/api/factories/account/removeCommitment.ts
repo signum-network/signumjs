@@ -21,7 +21,8 @@ export const removeCommitment = (service: ChainService) =>
                 amountNQT: a.amountPlanck,
                 publicKey: a.senderPublicKey,
                 feeNQT: a.feePlanck,
-                deadline: a.deadline || DefaultDeadline
+                deadline: a.deadline || DefaultDeadline,
+                referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
             };
             return service.send<UnsignedTransaction>('removeCommitment', parameters);
         });

@@ -25,6 +25,7 @@ export const mintAsset = (service: ChainService) =>
                 publicKey: a.senderPublicKey,
                 feeNQT: a.feePlanck,
                 deadline: a.deadline || DefaultDeadline,
+                referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
             };
 
             if (a.attachment) {

@@ -35,6 +35,7 @@ export const sendEncryptedMessage = (service: ChainService) =>
                     publicKey: a.senderPublicKey,
                     recipient: a.recipientId,
                     recipientPublicKey: a.recipientPublicKey || undefined,
+                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
                 };
 
                 return service.send<UnsignedTransaction>('sendMessage', parameters);
