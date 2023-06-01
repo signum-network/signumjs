@@ -1,7 +1,10 @@
 /**
  * Original work Copyright (c) 2018 PoC-Consortium
  * Modified work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2023 Signum Network
  */
+
+import {Transaction} from './transaction';
 
 /**
  * Block
@@ -30,7 +33,10 @@ export interface Block {
     readonly timestamp: number;
     readonly totalAmountNQT: string;
     readonly totalFeeNQT: string;
-    readonly transactions: string[] ;
+    /**
+     * The block may return transaction ids only, or the entire transaction object, iff `includeTransactions=true`
+     */
+    readonly transactions: string[] | Transaction[];
     readonly version: number;
 }
 
