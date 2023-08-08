@@ -16,8 +16,8 @@ export class Attachment {
 }
 
 interface AttachmentMessageArgs {
-    messageIsText?: boolean;
-    message?: string;
+    messageIsText: boolean;
+    message: string;
 }
 
 /**
@@ -28,13 +28,19 @@ interface AttachmentMessageArgs {
 */
 export class AttachmentMessage extends Attachment {
     public messageIsText: boolean;
-    public message?: string;
+    public message: string;
 
-    constructor(data: AttachmentMessageArgs = {}) {
+    constructor(data: AttachmentMessageArgs) {
         super('message');
-        this.messageIsText = data.messageIsText || false;
-        this.message = data.message || undefined;
+        this.messageIsText = data.messageIsText;
+        this.message = data.message;
     }
+}
+
+interface AttachmentEncryptedMessageArgs {
+    data: string;
+    nonce: string;
+    isText: boolean;
 }
 
 /**
@@ -44,15 +50,14 @@ export class AttachmentMessage extends Attachment {
  * @module core
 */
 export class AttachmentEncryptedMessage extends Attachment {
-    public data?: string;
-    public nonce?: string;
-    public isText?: boolean;
+    public data: string;
+    public nonce: string;
+    public isText: boolean;
 
-    // TODO: make constructor attrs as single args to be more expressive
-    constructor(data: any = {}) {
+    constructor(data: AttachmentEncryptedMessageArgs) {
         super('encrypted_message');
-        this.data = data.data || undefined;
-        this.nonce = data.nonce || undefined;
-        this.isText = data.isText || false;
+        this.data = data.data;
+        this.nonce = data.nonce;
+        this.isText = data.isText;
     }
 }

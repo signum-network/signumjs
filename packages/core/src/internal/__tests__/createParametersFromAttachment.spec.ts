@@ -6,9 +6,10 @@ describe('createParametersFromAttachment', () => {
 
     it('should construct message attachment', () => {
 
-        const messageAttachment = new AttachmentMessage();
-        messageAttachment.message = 'message';
-        messageAttachment.messageIsText = true;
+        const messageAttachment = new AttachmentMessage({
+            message: 'message',
+            messageIsText: true,
+        });
 
         const params = createParametersFromAttachment(messageAttachment, {foo: 'bar'});
         expect(params).toEqual(
@@ -19,10 +20,11 @@ describe('createParametersFromAttachment', () => {
 
     it('should construct encrypted message attachment', () => {
 
-        const encryptedMessageAttachment = new AttachmentEncryptedMessage();
-        encryptedMessageAttachment.data = 'data';
-        encryptedMessageAttachment.nonce = 'nonce';
-        encryptedMessageAttachment.isText = true;
+        const encryptedMessageAttachment = new AttachmentEncryptedMessage({
+            data: 'data',
+            isText: true,
+            nonce: 'nonce'
+        });
 
         const params = createParametersFromAttachment(encryptedMessageAttachment, {foo: 'bar'});
         expect(params).toEqual(
