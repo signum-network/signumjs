@@ -23,6 +23,28 @@ describe('verifyTransaction', function () {
                 verifyTransaction(requestType, formData, testResponse);
             }).not.toThrow();
         });
+        it('should pass verification as expected - for non-text messages - case-insensitive', () => {
+            const requestType = 'sendMoney';
+            const formData = {
+                feeNQT: '2000000',
+                amountNQT: '30000000',
+                recipient: '4388562308859987170',
+                publicKey: '497d559d18d989b8e2d729eb6f69b70c1ddc3e554f75bef3ed2716a4b2121902',
+                message: 'C8AEA1C25FE7BFFE',
+                messageIsText: false,
+                deadline: 1440
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '0020195dea10a005497d559d18d989b8e2d729eb6f69b70c1ddc3e554f75bef3ed2716a4b2121902e28444162b4ee73c80c3c9010000000080841e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000eef21100d97ccce0e6e218e304cfe1531b543c7c0108000000c8aea1c25fe7bffe',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
         it('should throw error. Response is another transaction type', () => {
             const requestType = 'sendMoneyMultiSame';
             const formData = {
@@ -215,6 +237,7 @@ describe('verifyTransaction', function () {
                 verifyTransaction(requestType, formData, testResponse);
             }).not.toThrow();
         });
+
         it('should pass verification as expected - with non-zero quantity and non-mintable', () => {
             const requestType = 'issueAsset';
             const formData = {
