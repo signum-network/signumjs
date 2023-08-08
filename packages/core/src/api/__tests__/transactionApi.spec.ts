@@ -426,10 +426,11 @@ describe('TransactionApi', () => {
 
             const service = createChainService(httpMock, 'relPath');
 
-            const encryptedMessage = new AttachmentEncryptedMessage();
-            encryptedMessage.data = 'data';
-            encryptedMessage.isText = true;
-            encryptedMessage.nonce = 'nonce';
+            const encryptedMessage = new AttachmentEncryptedMessage({
+                data: 'data',
+                isText: true,
+                nonce: 'nonce',
+            });
 
             const status = await sendAmountToSingleRecipient(service)(
                 {
@@ -459,9 +460,10 @@ describe('TransactionApi', () => {
 
             const service = createChainService(httpMock, 'relPath');
 
-            const message = new AttachmentMessage();
-            message.message = 'message';
-            message.messageIsText = true;
+            const message = new AttachmentMessage({
+                message: 'message',
+                messageIsText: true,
+            });
 
             const status = await sendAmountToSingleRecipient(service)({
                     amountPlanck: '2000',
