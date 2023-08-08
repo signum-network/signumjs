@@ -28,7 +28,7 @@ interface AttachmentMessageArgs {
 */
 export class AttachmentMessage extends Attachment {
     public messageIsText: boolean;
-    public message: string;
+    public message?: string;
 
     constructor(data: AttachmentMessageArgs = {}) {
         super('message');
@@ -44,9 +44,9 @@ export class AttachmentMessage extends Attachment {
  * @module core
 */
 export class AttachmentEncryptedMessage extends Attachment {
-    public data: string;
-    public nonce: string;
-    public isText: boolean;
+    public data?: string;
+    public nonce?: string;
+    public isText?: boolean;
 
     // TODO: make constructor attrs as single args to be more expressive
     constructor(data: any = {}) {

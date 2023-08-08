@@ -8,12 +8,13 @@
  * Thrown on HTTP errors
  * @module http
  */
-export class HttpError {
+export class HttpError extends Error {
     public timestamp: number = Date.now();
 
     constructor(public requestUrl: string,
                 public status: number,
                 public message: string,
                 public data: any) {
+        super(message);
     }
 }
