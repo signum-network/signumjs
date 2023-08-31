@@ -5,6 +5,30 @@
 import {Ledger} from '@signumjs/core';
 import {DescriptorData} from '../src44';
 
+// extend this list from time to time...
+export const KnownTlds = [
+    'blockchain',
+    'coin',
+    'crypto',
+    'dao',
+    'decentral',
+    'dex',
+    'free',
+    'nft',
+    'p2p',
+    'signum',
+    'signa',
+    'sig',
+    'sns',
+    'w3',
+    'wallet',
+    'web3',
+    'x',
+    'y',
+    'z',
+    'nostr', // bought custom tld
+];
+
 /**
  * @ignore
  */
@@ -19,25 +43,28 @@ interface URI {
 /**
  * URI Resolver
  *
- * Resolves SRC47 compliant URIs via Signums Alias system to URLs
+ * Resolves SRC47 compliant URIs via Signums Alias system to URLs, or other internal fields
  *
  * ```ts
  * const resolver = new URIResolver(ledger);
- * const resolvedURL = await resolver.resolve("signum://arts.johndoe");
+ * const resolvedURL = await resolver.resolve("http://arts.johndoe@signum");
  * ```
  *
  * with TLD
  * ```ts
  * const resolver = new URIResolver(ledger);
- * const resolvedURL = await resolver.resolve("signum://arts.johndoe:crypto");
+ * const resolvedURL = await resolver.resolve("https://arts.johndoe@crypto");
  * ```
  *
  * Or get the account Id (if set)
  *
  * ```ts
  * const resolver = new URIResolver(ledger);
- * const accountId = await resolver.resolve("signum://arts.johndoe/ac");
+ * const accountId = await resolver.resolve("https://arts.johndoe@signum/ac");
  * ```
+ *
+ * Also considers known top-level domains and accepts the following format for those URIs: <subdomain>.<domain>.<tld> (instead of `@`)
+ *
  * @module standards.SRC47
  */
 export class URIResolver {
@@ -51,7 +78,9 @@ export class URIResolver {
      * @throws Error if URI is not compliant
      */
     public static parseURI(uri: string): URI {
-        const regex = /^(?<schema>http|https|signum):\/\/(?<body>\$?[\w.]+?)(:(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
+
+        uri = URIResolver.convertKnownTldUri(uri);
+        const regex = /^(?<schema>http|https):\/\/(?<body>\$?[\w.]+?)(@(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
 
         // @ts-ignore
@@ -84,6 +113,30 @@ export class URIResolver {
             schema,
             path
         };
+    }
+
+    /**
+     * Converts the given URI to a known top-level domain (TLD) format.
+     *
+     * @param {string} uri - The URI to be converted.
+     * @return {string} - The converted URI with a known TLD format.
+     */
+    public static convertKnownTldUri(uri: string): string {
+        uri = uri.toLowerCase();
+        for (const knownTld of KnownTlds) {
+            const index = uri.lastIndexOf('.' + knownTld);
+            if (index > -1) {
+                const pathIndex = uri.indexOf('/', index);
+                const path = pathIndex > -1 ? uri.substring(pathIndex) : '';
+                uri = uri.slice(0, index) + `@${knownTld}`;
+                if(path){
+                    uri += path;
+                }
+                break;
+            }
+        }
+
+        return uri;
     }
 
     /**
