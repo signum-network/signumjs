@@ -85,7 +85,7 @@ export class DescriptorDataBuilder {
     }
 
     setAlias(a: string, tld?: string) {
-        this.data.raw.al = tld ? `${a}:${tld}` : a;
+        this.data.raw.al = tld ? `${a}@${tld}` : a;
         return this;
     }
 

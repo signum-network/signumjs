@@ -36,7 +36,7 @@ const TestObjectAliasTld = {
     'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
     'hp': 'https://bittrex.com',
     'sr': '^[0-9a-fA-F]{24}$',
-    'al': 'somealias:mytld',
+    'al': 'somealias@mytld',
     'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
     'sc': ['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']
 };
@@ -75,7 +75,7 @@ describe('descriptorData', () => {
             const descriptor = DescriptorData.parse(JSON.stringify(TestObjectAliasTld));
             expect(descriptor.get()).toEqual(
                 {
-                    'alias': 'somealias:mytld',
+                    'alias': 'somealias@mytld',
                     'avatar': {
                         'ipfsCid': 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR',
                         'mimeType': 'image/gif',
@@ -166,7 +166,7 @@ describe('descriptorData', () => {
                     'vs': 1,
                     'al': '@somealias',
                 }));
-            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/ - Got @somealias');
+            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(@[a-zA-Z0-9]{1,40})?$/ - Got @somealias');
         });
 
         it('should throw exception if object is not valid - 2', () => {

@@ -18,13 +18,13 @@ const TestAliases = {
     },
     // single hop
     'johndoe1': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001@web3'})
     },
     'johndoe1@crypto': {
-        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001:web3'})
+        aliasURI: JSON.stringify({vs: 1, hp: 'https://johndoe.com', al: 'jd00001@web3'})
     },
     'jd00001@web3': {
-        aliasURI: JSON.stringify({vs: 1, nm: 'arts', hp: 'https://signumart.io/profile/123456'})
+        aliasURI: JSON.stringify({vs: 1, nm: 'arts', ac: '1234567891011121314', hp: 'https://signumart.io/profile/123456'})
     },
     // multi hop
     'johndoe2': {
@@ -74,7 +74,7 @@ const TestAliases = {
 export const MockLedger = {
     alias: {
         getAliasByName: (name: string, tld?: string) => {
-            const alias = tld ? TestAliases[`${name}@${tld}`] : TestAliases[name];
+            const alias = tld && tld !== 'signum' ? TestAliases[`${name}@${tld}`] : TestAliases[name];
             // usually it returns an HttpError, but we mock that here
             return !alias ? Promise.reject('Unknown alias') : Promise.resolve(alias);
         }
@@ -95,6 +95,8 @@ describe('URIResolver', () => {
                         expect(url).toEqual('https://johndoe.com');
                         url = await resolver.resolve('https://johndoe.web3');
                         expect(url).toEqual('https://johndoe.com');
+                        url = await resolver.resolve('https://johndoe');
+                        expect(url).toEqual('https://johndoe.com');
                         // and all the other domains
                     });
                     it('should resolve by TLDs using `@`', async () => {
@@ -111,7 +113,9 @@ describe('URIResolver', () => {
                     it('should resolve deeply', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        const accountId = await resolver.resolve('http://johndoe.signum/ac');
+                        let accountId = await resolver.resolve('http://johndoe.signum/ac');
+                        expect(accountId).toEqual('1234567891011121314');
+                        accountId = await resolver.resolve('http://johndoe/ac');
                         expect(accountId).toEqual('1234567891011121314');
                         const custom = await resolver.resolve('https://johndoe.signum/x-custom');
                         expect(custom).toEqual({foo: 'bar'});
@@ -136,8 +140,11 @@ describe('URIResolver', () => {
                     it('should resolve deeply', async () => {
                         // @ts-ignore
                         const resolver = new URIResolver(MockLedger);
-                        const accountId = await resolver.resolve('https://johndoe.signum/ac');
+                        let accountId = await resolver.resolve('https://johndoe.signum/ac');
                         expect(accountId).toEqual('1234567891011121314');
+                        accountId = await resolver.resolve('https://arts.johndoe1/ac');
+                        expect(accountId).toEqual('1234567891011121314');
+
                         let custom = await resolver.resolve('http://social.johndoe2/x-custom');
                         expect(custom).toEqual({foo: 'bar'});
                         custom = await resolver.resolve('http://social.johndoe2@signum/x-custom');
@@ -284,6 +291,26 @@ describe('URIResolver', () => {
                     domain: 'johndoe',
                     subdomain: 'sub',
                     tld: 'customtld'
+                });
+            });
+            it('should resolve without default TLD "signum"', () => {
+                expect(URIResolver.parseURI('http://johndoe')).toEqual({
+                    schema: 'http',
+                    domain: 'johndoe',
+                    tld: 'signum',
+                });
+                expect(URIResolver.parseURI('http://sub.johndoe')).toEqual({
+                    schema: 'http',
+                    domain: 'johndoe',
+                    subdomain: 'sub',
+                    tld: 'signum'
+                });
+                expect(URIResolver.parseURI('http://sub.johndoe/ac')).toEqual({
+                    schema: 'http',
+                    domain: 'johndoe',
+                    subdomain: 'sub',
+                    path: 'ac',
+                    tld: 'signum'
                 });
             });
 

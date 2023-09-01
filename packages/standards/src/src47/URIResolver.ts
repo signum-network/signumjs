@@ -89,7 +89,7 @@ export class URIResolver {
         }
 
         // @ts-ignore
-        const {schema, body, tld, path} = result.groups;
+        const {schema, body, tld = 'signum', path} = result.groups;
 
         const domains = body.replace('$', '').split('.');
 
@@ -175,7 +175,7 @@ export class URIResolver {
             let stopSearch = !descriptor.alias;
             let iterationCount = 0;
             while (!stopSearch) {
-                const [aliasName, topleveldomain] = descriptor.alias.split(':');
+                const [aliasName, topleveldomain] = descriptor.alias.split('@');
                 alias = await this.ledger.alias.getAliasByName(aliasName, topleveldomain);
                 descriptor = DescriptorData.parse(alias.aliasURI);
                 if (descriptor.name === subdomain) {

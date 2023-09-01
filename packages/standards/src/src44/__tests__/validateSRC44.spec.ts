@@ -192,7 +192,7 @@ describe('validateSRC44', () => {
             validateSRC44({
                 vs: 1,
                 nm: 'name',
-                al: 'some_alias:mytld'
+                al: 'some_alias@mytld'
             });
         });
         it('throws error for wrong alias', () => {
@@ -202,7 +202,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     al: '@invalid alias'
                 });
-            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/ - Got @invalid alias');
+            }).toThrow('[SRC44 Validation Error]: al must match /^\\w{1,100}(@[a-zA-Z0-9]{1,40})?$/ - Got @invalid alias');
         });
         it('throws error for beign too large', () => {
             expect(() => {
@@ -211,7 +211,7 @@ describe('validateSRC44', () => {
                     nm: 'name',
                     al: 'alias'.repeat(30)
                 });
-            }).toThrow('al must match /^\\w{1,100}(\\:[a-zA-Z0-9]{1,40})?$/');
+            }).toThrow('al must match /^\\w{1,100}(@[a-zA-Z0-9]{1,40})?$/');
         });
     });
 
