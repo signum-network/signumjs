@@ -123,19 +123,11 @@ export class URIResolver {
      */
     public static convertKnownTldUri(uri: string): string {
         uri = uri.toLowerCase();
-        for (const knownTld of KnownTlds) {
-            const index = uri.lastIndexOf('.' + knownTld);
-            if (index > -1) {
-                const pathIndex = uri.indexOf('/', index);
-                const path = pathIndex > -1 ? uri.substring(pathIndex) : '';
-                uri = uri.slice(0, index) + `@${knownTld}`;
-                if(path){
-                    uri += path;
-                }
-                break;
-            }
+        const expression = `\\.(${KnownTlds.join('|')})(/[a-zA-Z0-9_-]+)?$`;
+        const matches = new RegExp(expression).exec(uri);
+        if (matches) {
+            return uri.substring(0, matches.index) + '@' + uri.substring(matches.index + 1);
         }
-
         return uri;
     }
 

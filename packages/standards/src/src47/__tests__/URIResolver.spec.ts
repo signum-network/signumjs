@@ -353,6 +353,12 @@ describe('URIResolver', () => {
             expect(convertedUri).toEqual('http://example@com');
         });
 
+        it('should consider only extact TLDs', () => {
+            const uri = 'http://ohager.nfts.signum';
+            const convertedUri = URIResolver.convertKnownTldUri(uri);
+            expect(convertedUri).toEqual('http://ohager.nfts@signum');
+        });
+
         it('should handle append further (deep) field paths - domain only', () => {
             for (const tld of KnownTlds) {
                 const uri = `https://domain.${tld}/ac`;
