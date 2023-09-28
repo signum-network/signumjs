@@ -80,6 +80,9 @@ function processSpecialCases(requestType: string, rebuiltData: any) {
             } else {
                 rebuiltData.mintable = 'false';
             }
+            if(!rebuiltData.decimals) {
+                rebuiltData.decimals = '0';
+            }
             break;
         case 'createATProgram':
             delete rebuiltData.creationBytes;
