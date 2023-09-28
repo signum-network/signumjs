@@ -212,6 +212,29 @@ describe('verifyTransaction', function () {
                 verifyTransaction(requestType, formData, testResponse);
             }).not.toThrow();
         });
+        it('should pass verification as expected - with zero decimals', () => {
+            const requestType = 'issueAsset';
+            const formData = {
+                name: 'ZERODEC',
+                description: 'Non fractional test token',
+                quantityQNT: '100',
+                decimals: '0',
+                mintable: 'true',
+                feeNQT: '15000000000',
+                publicKey: 'c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a',
+                deadline: 1440
+            };
+
+            const testResponse = {
+                'broadcasted': false,
+                'unsignedTransactionBytes': '02209c392d11a005c213e4144ba84af94aae2458308fae1f0cb083870c8f3012eea58147f3b09d4a0000000000000000000000000000000000d6117e0300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000271409005d41bec0f8ba17a304cfe1531b543c7c02075a45524f44454319004e6f6e206672616374696f6e616c207465737420746f6b656e64000000000000000001',
+                'transactionJSON': {},
+                'requestProcessingTime': 8
+            };
+            expect(() => {
+                verifyTransaction(requestType, formData, testResponse);
+            }).not.toThrow();
+        });
     });
     describe('sendMessage', function () {
         it('should pass verification as expected - for encrypted messages', () => {
