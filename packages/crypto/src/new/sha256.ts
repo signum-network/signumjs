@@ -1,9 +1,9 @@
 import {crypto, Buffer} from './crypto';
 
 /**
- * Hash string into byte array
+ * Hash string into raw array buffer
  * @param input An arbitrary text (utf-8)
- * @return the hash for that string in Uint8Array
+ * @return the hash for that string in ArrayBuffer
  * @module crypto
  */
 export async function sha256Raw(input: string): Promise<ArrayBuffer> {
@@ -17,7 +17,7 @@ export async function sha256Raw(input: string): Promise<ArrayBuffer> {
  * @return the hash for that string in Uint8Array
  * @module crypto
  */
-export async function sha256AsByte(input: string): Promise<Uint8Array> {
+export async function sha256AsBytes(input: string): Promise<Uint8Array> {
     return new Uint8Array((await sha256Raw(input)));
 }
 

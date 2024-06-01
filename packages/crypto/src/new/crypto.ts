@@ -25,7 +25,7 @@ export async function getCryptoKey(rawKey: ArrayBuffer): Promise<CryptoKey> {
         'raw',
         rawKey,
         'AES-CBC',
-        false,
+        true,
         ['encrypt', 'decrypt']
     );
 }

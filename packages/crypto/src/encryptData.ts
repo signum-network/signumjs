@@ -4,7 +4,7 @@
  */
 
 import * as CryptoJS from 'crypto-js';
-import {gzip} from 'pako/lib/deflate';
+import {gzip} from 'pako';
 import {ECKCDSA} from './ec-kcdsa';
 import {Converter} from './converter';
 import {EncryptedData} from './typings/encryptedData';
@@ -55,7 +55,7 @@ export function encryptData(
             Converter.convertHexStringToByteArray(recipientPublicKeyHex)
         );
 
-    const compressedData = gzip(plaintext);
+    const compressedData = gzip(plaintext, {raw: true});
     const randomBytes = CryptoJS.lib.WordArray.random(SHARED_KEY_SIZE);
     const nonce = Converter.convertWordArrayToUint8Array(randomBytes);
     const data = Uint8Array.from(encrypt(compressedData, nonce, sharedKey));

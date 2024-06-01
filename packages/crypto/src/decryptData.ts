@@ -4,7 +4,7 @@
  */
 
 import * as CryptoJS from 'crypto-js';
-import {inflate} from 'pako/lib/inflate';
+import {inflate} from 'pako';
 import {ECKCDSA} from './ec-kcdsa';
 import {Converter} from './converter';
 import {EncryptedData} from './typings/encryptedData';
@@ -63,5 +63,5 @@ export function decryptData(
         );
 
     const compressedPlaintext = decrypt(encryptedData.data, encryptedData.nonce, sharedKey);
-    return inflate(compressedPlaintext);
+    return inflate(compressedPlaintext, {raw: true});
 }

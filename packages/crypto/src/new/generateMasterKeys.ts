@@ -1,6 +1,6 @@
 import { Keys } from '../typings/keys';
 import { ECKCDSA } from '../ec-kcdsa';
-import {sha256Raw} from './sha256';
+import {sha256AsBytes} from './sha256';
 import {Buffer} from './crypto';
 
 /**
@@ -10,7 +10,7 @@ import {Buffer} from './crypto';
  * @module crypto
  */
 export async function generateMasterKeys(passPhrase: string): Promise<Keys> {
-    const hashedPassPhrase = await sha256Raw(passPhrase);
+    const hashedPassPhrase = await sha256AsBytes(passPhrase);
     const keys = ECKCDSA.keygen(hashedPassPhrase);
     return {
         publicKey: Buffer.from(keys.p).toString('hex'),

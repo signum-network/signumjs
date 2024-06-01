@@ -7,7 +7,7 @@
 import {inflate} from 'pako';
 import {ECKCDSA} from '../ec-kcdsa';
 import {EncryptedData} from '../typings/encryptedData';
-import {getCryptoKey, CryptoParams} from './crypto';
+import {getCryptoKey, CryptoParams, crypto} from './crypto';
 
 async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
     if (ivCiphertext.length < CryptoParams.IvLength || ivCiphertext.length % CryptoParams.IvLength !== 0) {
@@ -25,7 +25,7 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
     const decryptedBuffer = await crypto.subtle.decrypt(
         {
             name: 'AES-CBC',
-            iv: iv
+            iv
         },
         key,
         ciphertext
@@ -54,5 +54,5 @@ export async function decryptData(
         );
 
     const compressedPlaintext = await decrypt(encryptedData.data, encryptedData.nonce, sharedKey);
-    return inflate(compressedPlaintext);
+    return inflate(compressedPlaintext, {raw: true});
 }

@@ -10,7 +10,7 @@ import {gzip} from 'pako';
 import {randomBytes} from './random';
 import {getCryptoKey, crypto, CryptoParams} from './crypto';
 
-async function __encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
+async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
 
     const sharedKey = new Uint8Array(sharedKeyOrig.slice(0));
     for (let i = 0; i < CryptoParams.SharedKeyLength; i++) {
@@ -19,6 +19,7 @@ async function __encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig
     const keyBuffer = await crypto.subtle.digest('SHA-256', sharedKey);
     const key = await getCryptoKey(keyBuffer);
     const iv = randomBytes(CryptoParams.IvLength);
+
     const ciphertextBuffer = await crypto.subtle.encrypt(
         {
             name: 'AES-CBC',
@@ -53,13 +54,13 @@ export async function encryptData(
 
     const sharedKey =
         ECKCDSA.sharedkey(
-            new Uint8Array(Buffer.from(senderPrivateKeyHex, 'hex')),
-            new Uint8Array(Buffer.from(recipientPublicKeyHex, 'hex')),
+            Buffer.from(senderPrivateKeyHex, 'hex'),
+            Buffer.from(recipientPublicKeyHex, 'hex'),
         );
 
-    const compressedData = gzip(plaintext);
+    const compressedData = gzip(plaintext, {raw: true});
     const nonce = randomBytes(CryptoParams.SharedKeyLength);
-    const data = await __encrypt(compressedData, nonce, sharedKey);
+    const data = await encrypt(compressedData, nonce, sharedKey);
     return {
         nonce,
         data
