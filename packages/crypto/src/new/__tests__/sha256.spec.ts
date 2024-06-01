@@ -1,8 +1,13 @@
-import {sha256} from '../sha256';
+import {sha256AsBase64, sha256AsHex} from '../sha256';
 
 describe('sha256', () => {
-    it('Should be able to generate sha256', async () => {
-        const hash = await sha256('Some Text');
+    // implicitely tests sha256Raw and sha256Byte
+    it('Should be able to generate sha256AsHex', async () => {
+        const hash = await sha256AsHex('Some Text');
         expect(hash).toEqual('a7fd4c665fbf6375d99046ef9c525e8578feb7a4794d119447282db151c12cae');
+    });
+    it('Should be able to generate sha256AsBase64', async () => {
+        const hash = await sha256AsBase64('Some Text');
+        expect(hash).toEqual('p/1MZl+/Y3XZkEbvnFJehXj+t6R5TRGURygtsVHBLK4=');
     });
 });
