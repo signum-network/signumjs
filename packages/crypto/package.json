@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.12",
+    "@types/node": "^12.0.0",
+    "@types/pako": "^1.0.7",
     "bili": "^4.10.1",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-typescript2": "^0.24.2"
@@ -53,14 +55,8 @@
   },
   "dependencies": {
     "@peculiar/webcrypto": "^1.5.0",
-    "@types/crypto-js": "^3.1.43",
-    "@types/node": "^12.0.0",
-    "@types/pako": "^1.0.7",
-    "@types/seedrandom": "^2.4.27",
     "buffer": "^6.0.3",
-    "crypto-js": "^3.1.9-1",
-    "pako": "^1.0.11",
-    "seedrandom": "^3.0.5"
+    "pako": "^1.0.11"
   },
   "husky": {
     "hooks": {

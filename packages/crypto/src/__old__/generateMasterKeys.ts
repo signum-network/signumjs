@@ -1,6 +1,6 @@
 import * as CryptoJS from 'crypto-js';
-import { Keys } from './typings/keys';
-import { ECKCDSA } from './ec-kcdsa';
+import { SignKeys } from '../typings/signKeys';
+import { ECKCDSA } from '../ec-kcdsa';
 import { Converter } from './converter';
 
 /**
@@ -9,7 +9,7 @@ import { Converter } from './converter';
  * @return EC-KCDSA sign key pair + agreement key
  * @module crypto
  */
-export const generateMasterKeys = (passPhrase: string): Keys => {
+export const generateMasterKeys = (passPhrase: string): SignKeys => {
     const hashedPassPhrase = CryptoJS.SHA256(passPhrase);
     const keys = ECKCDSA.keygen(Converter.convertWordArrayToByteArray(hashedPassPhrase));
     return {

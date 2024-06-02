@@ -4,7 +4,7 @@
 
 import {Converter} from './converter';
 import {encryptData} from './encryptData';
-import {EncryptedMessage} from './typings/encryptedMessage';
+import {EncryptedMessage} from '../typings/encryptedMessage';
 
 /**
  * Encrypts arbitrary message (UTF-8 compatible) for P2P message/data exchange using asymmetric encryption

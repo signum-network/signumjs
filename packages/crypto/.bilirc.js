@@ -12,11 +12,13 @@ module.exports = {
   plugins: {
     commonjs: {
       namedExports: {
-        'crypto-js': [
-          'enc',
-          'SHA256',
-          'AES',
-          'lib'
+        'crypto': [
+          'subtle',
+          'getRandomValues'
+        ],
+        'pako': [
+            'inflate',
+            'gzip'
         ]
       }
     }

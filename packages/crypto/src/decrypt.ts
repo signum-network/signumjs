@@ -5,12 +5,19 @@
  */
 
 import {inflate} from 'pako';
-import {ECKCDSA} from '../ec-kcdsa';
-import {EncryptedData} from '../typings/encryptedData';
+import {ECKCDSA} from './ec-kcdsa';
+import {EncryptedData} from './typings/encryptedData';
 import {getCryptoKey, CryptoParams, crypto} from './crypto';
-import {EncryptedMessage} from '../typings/encryptedMessage';
-import {CryptoError} from '../typings/cryptoError';
+import {EncryptedMessage} from './typings/encryptedMessage';
+import {CryptoError} from './typings/cryptoError';
 
+/**
+ *
+ * @ignore
+ * @internal
+ * @module crypto
+ *
+ */
 async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
     if (ivCiphertext.length < CryptoParams.IvLength || ivCiphertext.length % CryptoParams.IvLength !== 0) {
         throw new CryptoError('Invalid Ciphertext');
@@ -35,6 +42,7 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
 
         return new Uint8Array(decryptedBuffer);
     } catch (e) {
+        // @ts-ignore
         throw new CryptoError(e.message);
     }
 }
@@ -61,6 +69,7 @@ export async function decryptData(
         const compressedPlaintext = await decrypt(encryptedData.data, encryptedData.nonce, sharedKey);
         return inflate(compressedPlaintext);
     } catch (e) {
+        // @ts-ignore
         throw new CryptoError(e.message);
     }
 }
@@ -90,5 +99,4 @@ export async function decryptMessage(
 
     const decryptedBytes = await decryptData(encryptedData, senderPublicKeyHex, recipientPrivateKeyHex);
     return Buffer.from(decryptedBytes).toString('utf-8');
-    // Converter.convertByteArrayToString(decryptedBytes, 0, decryptedBytes.length);
 }

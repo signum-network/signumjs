@@ -1,5 +1,5 @@
-import {encryptAES} from '../encryptAES';
-import {decryptAES} from '../decryptAES';
+import {encryptAES} from '../__old__/encryptAES';
+import {decryptAES} from '../__old__/decryptAES';
 
 describe('AES', () => {
 

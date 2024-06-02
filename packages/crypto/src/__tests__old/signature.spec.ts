@@ -1,7 +1,7 @@
-import {generateMasterKeys} from '../generateMasterKeys';
-import {generateSignature} from '../generateSignature';
-import {Converter} from '../converter';
-import {verifySignature} from '../verifySignature';
+import {generateMasterKeys} from '../__old__/generateMasterKeys';
+import {generateSignature} from '../__old__/generateSignature';
+import {Converter} from '../__old__/converter';
+import {verifySignature} from '../__old__/verifySignature';
 
 describe('Signing and Verifying messages', () => {
 

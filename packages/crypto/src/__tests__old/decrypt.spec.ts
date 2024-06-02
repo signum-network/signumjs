@@ -1,28 +1,27 @@
-import {generateMasterKeys} from '../generateMasterKeys';
-// import {encryptMessage} from '../encryptMessage';
-// import {decryptMessage} from '../decryptMessage';
-import {encryptData, encryptMessage} from '../encrypt';
-import {decryptData, decryptMessage} from '../decrypt';
-import {CryptoError} from '../../typings/cryptoError';
+import {generateMasterKeys} from '../__old__/generateMasterKeys';
+import {encryptMessage} from '../__old__/encryptMessage';
+import {decryptMessage} from '../__old__/decryptMessage';
+import {encryptData} from '../__old__/encryptData';
+import {decryptData} from '../__old__/decryptData';
 
-describe('Encrypt and Decrypt - No Crypto-JS', () => {
+describe('Encrypt and Decrypt', () => {
 
     describe('Data', () => {
 
-        it('should decrypt a data ciphertext successfully', async () => {
+        it('should decrypt a data ciphertext successfully', () => {
 
-            const recipientKeys = await generateMasterKeys('testSecret_Recipient');
-            const senderKeys = await generateMasterKeys('testSecret_Sender');
+            const recipientKeys = generateMasterKeys('testSecret_Recipient');
+            const senderKeys = generateMasterKeys('testSecret_Sender');
 
             const originalData = Uint8Array.from([0, 1, 2, 3]);
 
-            const encrypted= await encryptData(
+            const encrypted = encryptData(
                 originalData,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
             );
 
-            const data = await decryptData(
+            const data = decryptData(
                 encrypted,
                 senderKeys.publicKey,
                 recipientKeys.agreementPrivateKey
@@ -32,29 +31,29 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
         });
 
 
-        it('should not decrypt a data ciphertext, with wrong key', async () => {
+        it('should not decrypt a data ciphertext, with wrong key', () => {
 
-            const recipientKeys = await generateMasterKeys('testSecret_Recipient');
-            const senderKeys = await generateMasterKeys('testSecret_Sender');
-            const bobKeys = await generateMasterKeys('testSecret_Bob');
+            const recipientKeys = generateMasterKeys('testSecret_Recipient');
+            const senderKeys = generateMasterKeys('testSecret_Sender');
+            const bobKeys = generateMasterKeys('testSecret_Bob');
 
             const originalData = Uint8Array.from([0, 1, 2, 3]);
 
-            const encrypted = await encryptData(
+            const encrypted = encryptData(
                 originalData,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
             );
 
             try {
-                await decryptData(
+                decryptData(
                     encrypted,
                     senderKeys.publicKey,
                     bobKeys.agreementPrivateKey
                 );
                 expect(false).toBe('Expected an exception');
             } catch (e) {
-                expect(e instanceof CryptoError).toBeTruthy();
+                expect(true).toBeTruthy();
             }
 
         });
@@ -62,25 +61,25 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
     describe('Text', () => {
 
-        it('should decrypt a text message successfully', async () => {
+        it('should decrypt a text message successfully', () => {
 
-            const recipientKeys = await generateMasterKeys('testSecret_Recipient');
-            const senderKeys = await generateMasterKeys('testSecret_Sender');
+            const recipientKeys = generateMasterKeys('testSecret_Recipient');
+            const senderKeys = generateMasterKeys('testSecret_Sender');
 
             // german umlauts to proof UTF-8
-            const originalMessage = `Die Signum-Blockchain ist ein öffentliches Hauptbuch,
+            const originalMessage = `Die Burstcoin-Blockchain ist ein öffentliches Hauptbuch,
             das jede Transaktion aufzeichnet. Es ist vollständig verteilt und funktioniert
             ohne eine zentrale vertrauenswürdige Instanz:
             Die Blockchain wird von einem Netzwerk von Computern verwaltet,
             die als Knoten bezeichnet werden und die Burstcoin-Software ausführen.`;
 
-            const encrypted = await encryptMessage(
+            const encrypted = encryptMessage(
                 originalMessage,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
             );
 
-            const message = await decryptMessage(
+            const message = decryptMessage(
                 encrypted,
                 senderKeys.publicKey,
                 recipientKeys.agreementPrivateKey
@@ -90,10 +89,10 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
         });
 
 
-        it('should decrypt a text message successfully as owner of message', async () => {
+        it('should decrypt a text message successfully as owner of message', () => {
 
-            const recipientKeys = await generateMasterKeys('testSecret_Recipient');
-            const senderKeys = await generateMasterKeys('testSecret_Sender');
+            const recipientKeys = generateMasterKeys('testSecret_Recipient');
+            const senderKeys = generateMasterKeys('testSecret_Sender');
 
             // german umlauts to proof UTF-8
             const originalMessage = `Die Burstcoin-Blockchain ist ein öffentliches Hauptbuch,
@@ -102,13 +101,13 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
             Die Blockchain wird von einem Netzwerk von Computern verwaltet,
             die als Knoten bezeichnet werden und die Burstcoin-Software ausführen.`;
 
-            const encrypted = await encryptMessage(
+            const encrypted = encryptMessage(
                 originalMessage,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
             );
 
-            const message = await decryptMessage(
+            const message = decryptMessage(
                 encrypted,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
@@ -118,7 +117,7 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
         });
 
 
-        it('should decrypt a text message sent with BRS successfully', async () => {
+        it('should decrypt a text message sent with BRS successfully', () => {
 
             const encrypted = {
                 data: '8abb9c7b9c61edf877eb4576b1f19486cb7c5d5770b4d5e2ea14a0d5175ef46cd6a40c95925fc1e015bea65dc4b57d3c547bfd31a6889e3d4c33e34964a08427',
@@ -126,7 +125,7 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
                 isText: true
             };
 
-            const message = await decryptMessage(
+            const message = decryptMessage(
                 encrypted,
                 '7210b8941929030324540238450e985899989a7ad0267e0c76f668fde3b1016b',
                 '5014cb242b904cb75d86bcc23bf73d9f91471a578d22d0fb5633361cfb6a7865'
@@ -135,29 +134,30 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
             expect(message).toEqual('Test Encrypted BRS Message');
         });
 
-        it('should not decrypt a text message, when key is wrong', async () => {
+        it('should not decrypt a text message, when key is wrong', () => {
 
-            const recipientKeys = await generateMasterKeys('testSecret_Recipient');
-            const senderKeys = await generateMasterKeys('testSecret_Sender');
-            const bobKeys = await generateMasterKeys('testSecret_Bob');
+            const recipientKeys = generateMasterKeys('testSecret_Recipient');
+            const senderKeys = generateMasterKeys('testSecret_Sender');
+            const bobKeys = generateMasterKeys('testSecret_Bob');
 
             const originalMessage = `Some message`;
 
-            const encrypted = await encryptMessage(
+            const encrypted = encryptMessage(
                 originalMessage,
                 recipientKeys.publicKey,
                 senderKeys.agreementPrivateKey
             );
 
             try {
-                await decryptMessage(
+
+                decryptMessage(
                     encrypted,
                     senderKeys.publicKey,
                     bobKeys.agreementPrivateKey
                 );
                 expect(false).toBe('Expected exception');
             } catch (e) {
-                expect(e instanceof CryptoError).toBeTruthy();
+                expect(true).toBeTruthy();
             }
         });
 

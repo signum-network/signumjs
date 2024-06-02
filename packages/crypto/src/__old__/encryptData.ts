@@ -5,9 +5,9 @@
 
 import * as CryptoJS from 'crypto-js';
 import {gzip} from 'pako';
-import {ECKCDSA} from './ec-kcdsa';
+import {ECKCDSA} from '../ec-kcdsa';
 import {Converter} from './converter';
-import {EncryptedData} from './typings/encryptedData';
+import {EncryptedData} from '../typings/encryptedData';
 
 const IV_LENGTH = 16;
 const SHARED_KEY_SIZE = 32;

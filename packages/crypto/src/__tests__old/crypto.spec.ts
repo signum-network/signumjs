@@ -1,5 +1,5 @@
-import {generateMasterKeys} from '../generateMasterKeys';
-import {getAccountIdFromPublicKey} from '../getAccountIdFromPublicKey';
+import {generateMasterKeys} from '../__old__/generateMasterKeys';
+import {getAccountIdFromPublicKey} from '../__old__/getAccountIdFromPublicKey';
 
 describe('Crypto', () => {
 

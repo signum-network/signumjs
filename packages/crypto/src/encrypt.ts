@@ -4,14 +4,21 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA} from '../ec-kcdsa';
-import {EncryptedData} from '../typings/encryptedData';
+import {ECKCDSA} from './ec-kcdsa';
+import {EncryptedData} from './typings/encryptedData';
 import {gzip} from 'pako';
 import {getRandomBytes} from './random';
 import {getCryptoKey, crypto, CryptoParams, Buffer} from './crypto';
-import {EncryptedMessage} from '../typings/encryptedMessage';
-import {CryptoError} from '../typings/cryptoError';
+import {EncryptedMessage} from './typings/encryptedMessage';
+import {CryptoError} from './typings/cryptoError';
 
+/**
+ *
+ * @ignore
+ * @internal
+ * @module crypto
+ *
+ */
 async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
     try {
         const sharedKey = new Uint8Array(sharedKeyOrig.slice(0));
@@ -38,6 +45,7 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
 
         return ivAndCiphertext;
     } catch (e) {
+        // @ts-ignore
         throw new CryptoError(e.message);
     }
 }
@@ -73,6 +81,7 @@ export async function encryptData(
             data
         };
     } catch (e) {
+        // @ts-ignore
         throw new CryptoError(e.message);
     }
 }

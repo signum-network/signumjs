@@ -1,16 +1,17 @@
 /**
  * Original work Copyright (c) 2018 PoC-Consortium
  * Modified work Copyright (c) 2019 Burst Apps Team
+ * Modified work Copyright (c) 2024 Signum Network
  */
 
 /**
- * Keys interface
+ * Sign Keys interface
  *
  * The Keys class is used to encompass keys associated to an account.
  *
  * @module crypto
  */
-export interface Keys {
+export interface SignKeys {
     /**
      * The private key used for P2P message encryption
      */

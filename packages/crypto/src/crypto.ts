@@ -1,5 +1,6 @@
 /**
- * Original work Copyright (c) 2024 Signum Network
+ * Original work Copyright (c) 2018 PoC-Consortium
+ * Modified work Copyright (c) 2024 Signum Network
  * @module crypto
  * @internal
  * @ignore
