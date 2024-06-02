@@ -55,11 +55,11 @@
     "@peculiar/webcrypto": "^1.5.0",
     "@types/crypto-js": "^3.1.43",
     "@types/node": "^12.0.0",
-    "@types/pako": "^2.0.3",
+    "@types/pako": "^1.0.7",
     "@types/seedrandom": "^2.4.27",
     "buffer": "^6.0.3",
     "crypto-js": "^3.1.9-1",
-    "pako": "^2.1.0",
+    "pako": "^1.0.11",
     "seedrandom": "^3.0.5"
   },
   "husky": {
