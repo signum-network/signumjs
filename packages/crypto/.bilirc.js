@@ -11,16 +11,7 @@ module.exports = {
   },
   plugins: {
     commonjs: {
-      namedExports: {
-        'crypto': [
-          'subtle',
-          'getRandomValues'
-        ],
-        'pako': [
-            'inflate',
-            'gzip'
-        ]
-      }
+      namedExports: {}
     }
   }
 };

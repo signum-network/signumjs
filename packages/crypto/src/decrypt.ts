@@ -4,12 +4,12 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {inflate} from 'pako';
-import {ECKCDSA} from './ec-kcdsa';
+import {inflate} from 'pako/lib/inflate';
+import {ECKCDSA, crypto} from './crypto';
 import {EncryptedData} from './typings/encryptedData';
-import {getCryptoKey, CryptoParams, crypto} from './crypto';
 import {EncryptedMessage} from './typings/encryptedMessage';
 import {CryptoError} from './typings/cryptoError';
+import {CryptoParams} from './crypto/cryptoParams';
 
 /**
  *
@@ -27,20 +27,10 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
         sharedKey[i] ^= nonce[i];
     }
     try {
-        const keyBuffer = await crypto.subtle.digest('SHA-256', sharedKey);
-        const key = await getCryptoKey(keyBuffer);
-        const iv = ivCiphertext.slice(0, CryptoParams.IvLength);
-        const ciphertext = ivCiphertext.slice(CryptoParams.IvLength);
-        const decryptedBuffer = await crypto.subtle.decrypt(
-            {
-                name: 'AES-CBC',
-                iv
-            },
-            key,
-            ciphertext
-        );
 
-        return new Uint8Array(decryptedBuffer);
+        const cp = crypto.provider;
+        const key = await cp.sha256(sharedKey);
+        return await cp.decryptAesCbc(ivCiphertext, key);
     } catch (e) {
         // @ts-ignore
         throw new CryptoError(e.message);

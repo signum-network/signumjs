@@ -2,10 +2,9 @@
  * Original work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA} from './ec-kcdsa';
-import {Buffer} from './crypto';
 import {sha256AsBytes, sha256Binary} from './sha256';
 import {SignKeys} from './typings/signKeys';
+import {ECKCDSA} from './crypto';
 
 function toBytes(hex: string): Uint8Array {
     return new Uint8Array(Buffer.from(hex, 'hex'));

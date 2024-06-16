@@ -4,13 +4,13 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA} from './ec-kcdsa';
+import {ECKCDSA, crypto, Buffer} from './crypto';
 import {EncryptedData} from './typings/encryptedData';
-import {gzip} from 'pako';
+import {deflate} from 'pako/lib/deflate';
 import {getRandomBytes} from './random';
-import {getCryptoKey, crypto, CryptoParams, Buffer} from './crypto';
 import {EncryptedMessage} from './typings/encryptedMessage';
 import {CryptoError} from './typings/cryptoError';
+import {CryptoParams} from './crypto/cryptoParams';
 
 /**
  *
@@ -25,25 +25,9 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
         for (let i = 0; i < CryptoParams.SharedKeyLength; i++) {
             sharedKey[i] ^= nonce[i];
         }
-        const keyBuffer = await crypto.subtle.digest('SHA-256', sharedKey);
-        const key = await getCryptoKey(keyBuffer);
-        const iv = getRandomBytes(CryptoParams.IvLength);
-
-        const ciphertextBuffer = await crypto.subtle.encrypt(
-            {
-                name: 'AES-CBC',
-                iv
-            },
-            key,
-            plaintext
-        );
-
-        const ciphertext = new Uint8Array(ciphertextBuffer);
-        const ivAndCiphertext = new Uint8Array(iv.length + ciphertext.length);
-        ivAndCiphertext.set(iv);
-        ivAndCiphertext.set(ciphertext, iv.length);
-
-        return ivAndCiphertext;
+        const cp = crypto.provider;
+        const key = await cp.sha256(sharedKey);
+        return await cp.encryptAesCbc(plaintext, key);
     } catch (e) {
         // @ts-ignore
         throw new CryptoError(e.message);
@@ -73,7 +57,7 @@ export async function encryptData(
                 Buffer.from(recipientPublicKeyHex, 'hex'),
             );
 
-        const compressedData = gzip(plaintext);
+        const compressedData = deflate(plaintext);
         const nonce = getRandomBytes(CryptoParams.SharedKeyLength);
         const data = await encrypt(compressedData, nonce, sharedKey);
         return {

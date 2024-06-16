@@ -12,7 +12,7 @@ import {crypto} from './crypto';
  */
 export type RandomValuesProvider = <T extends ArrayBufferView>(buffer: T) => T;
 
-const DefaultRandomProvider = crypto.getRandomValues as RandomValuesProvider;
+const DefaultRandomProvider = crypto.provider.getRandomValues.bind(crypto.provider) as RandomValuesProvider;
 
 /**
  * Gets am Array of random bytes

@@ -54,7 +54,6 @@
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@peculiar/webcrypto": "^1.5.0",
     "buffer": "^6.0.3",
     "pako": "^1.0.11"
   },
