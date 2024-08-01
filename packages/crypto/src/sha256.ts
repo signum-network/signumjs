@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2024 Signum Network
  */
 
-import {crypto, Buffer} from './crypto';
+import {Crypto, Buffer} from './crypto';
 
 export type InputEncoding = 'utf8' | 'hex' | 'base64';
 /**
@@ -13,7 +13,7 @@ export type InputEncoding = 'utf8' | 'hex' | 'base64';
  * @module crypto
  */
 export async function sha256Raw(input: string, encoding: InputEncoding ): Promise<ArrayBuffer> {
-    return crypto.provider.sha256(Buffer.from(input, encoding));
+    return Crypto.getInstance().provider.sha256(Buffer.from(input, encoding));
 }
 
 
@@ -58,5 +58,5 @@ export async function sha256AsBase64(input: string, encoding: InputEncoding = 'u
  */
 export async function sha256Binary(data: string | Uint8Array): Promise<Uint8Array> {
     const b: Uint8Array = typeof data === 'string' ? Buffer.from(data, 'hex') : data;
-    return new Uint8Array(await crypto.provider.sha256(b));
+    return new Uint8Array(await Crypto.getInstance().provider.sha256(b));
 }

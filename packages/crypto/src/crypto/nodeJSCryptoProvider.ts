@@ -14,7 +14,7 @@ export class NodeJSCryptoProvider implements CryptoProvider {
     }
 
 
-    async decryptAesCbc(ciphertext: Uint8Array, key: Uint8Array) {
+    async decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array) {
         return new Promise<Uint8Array>((resolve, reject) => {
             try {
                 const iv = ciphertext.slice(0, CryptoParams.IvLength); // Assuming IvLength is 16
@@ -32,7 +32,7 @@ export class NodeJSCryptoProvider implements CryptoProvider {
         });
     }
 
-    async encryptAesCbc(plaintext: Uint8Array, key: Uint8Array) {
+    async encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array) {
         return new Promise<Uint8Array>((resolve, reject) => {
             try {
                 const iv = this.getRandomValues(new Uint8Array(CryptoParams.IvLength));

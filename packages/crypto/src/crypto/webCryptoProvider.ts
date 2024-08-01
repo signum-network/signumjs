@@ -1,6 +1,5 @@
 import {CryptoProvider} from './cryptoProvider';
 import {CryptoParams} from './cryptoParams';
-import {getRandomBytes} from '../random';
 
 export class WebCryptoProvider implements CryptoProvider {
     private crypto: Crypto;
@@ -23,7 +22,7 @@ export class WebCryptoProvider implements CryptoProvider {
         );
     }
 
-    async decryptAesCbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
+    async decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
         const cryptoKey = await this.getKey(key);
         const iv = ciphertext.slice(0, CryptoParams.IvLength);
         const decryptedBuffer = await this.crypto.subtle.decrypt(
@@ -38,9 +37,9 @@ export class WebCryptoProvider implements CryptoProvider {
         return new Uint8Array(decryptedBuffer);
     }
 
-    async encryptAesCbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
+    async encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
         const cryptoKey = await this.getKey(key);
-        const iv = getRandomBytes(CryptoParams.IvLength);
+        const iv = this.getRandomValues(new Uint8Array(CryptoParams.IvLength));
 
         const ciphertextBuffer = await this.crypto.subtle.encrypt(
             {

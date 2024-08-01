@@ -4,7 +4,7 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA, crypto, Buffer} from './crypto';
+import {ECKCDSA, Crypto, Buffer} from './crypto';
 import {EncryptedData} from './typings/encryptedData';
 import {deflate} from 'pako/lib/deflate';
 import {getRandomBytes} from './random';
@@ -25,9 +25,9 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
         for (let i = 0; i < CryptoParams.SharedKeyLength; i++) {
             sharedKey[i] ^= nonce[i];
         }
-        const cp = crypto.provider;
+        const cp = Crypto.getInstance().provider;
         const key = await cp.sha256(sharedKey);
-        return await cp.encryptAesCbc(plaintext, key);
+        return await cp.encryptAes256Cbc(plaintext, key);
     } catch (e) {
         // @ts-ignore
         throw new CryptoError(e.message);

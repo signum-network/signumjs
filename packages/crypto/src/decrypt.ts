@@ -5,7 +5,7 @@
  */
 
 import {inflate} from 'pako/lib/inflate';
-import {ECKCDSA, crypto} from './crypto';
+import {ECKCDSA, Crypto, Buffer} from './crypto';
 import {EncryptedData} from './typings/encryptedData';
 import {EncryptedMessage} from './typings/encryptedMessage';
 import {CryptoError} from './typings/cryptoError';
@@ -27,10 +27,9 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
         sharedKey[i] ^= nonce[i];
     }
     try {
-
-        const cp = crypto.provider;
+        const cp = Crypto.getInstance().provider;
         const key = await cp.sha256(sharedKey);
-        return await cp.decryptAesCbc(ivCiphertext, key);
+        return await cp.decryptAes256Cbc(ivCiphertext, key);
     } catch (e) {
         // @ts-ignore
         throw new CryptoError(e.message);
