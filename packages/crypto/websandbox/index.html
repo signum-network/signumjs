@@ -5,55 +5,56 @@
 <html lang="en">
 <script type="module" src="https://cdn.skypack.dev/twind/shim"></script>
 
-<body>
-<div class="relative w-full h-full bg-gradient-to-br from-[#f1f5f9] to-[#e2e8f0]">
-    <div class="absolute inset-0 z-[-1] bg-[url('/tech-background.svg')] bg-cover bg-center opacity-20"></div>
+<body class="bg-[#f1f5f9]">
+<div class="relative w-full h-full ">
     <div class="space-y-8 p-8 max-w-2xl mx-auto">
         <div class="space-y-2">
             <h1 class="text-3xl font-bold">SignumJS Crypto Module Sandbox</h1>
-            <h2 class="text-2xl font-bold">SHA256</h2>
-            <input
-                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-                    placeholder="Enter some text here"
-                    onkeyup="generateSHA256(event)"
-            />
-            <p id="hash-output" class="mt-2 text-sm">[HASH APPEARS HERE]</p>
+            <section class="bg-white p-10 rounded border ">
+                <h2 class="text-2xl font-bold mb-6">SHA256</h2>
+                <input
+                        class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                        placeholder="Enter some text here"
+                        onkeyup="generateSHA256(event)"
+                />
+                <p id="hash-output" class="mt-8 text-sm font-mono">[HASH APPEARS HERE]</p>
+            </section>
         </div>
-        <hr/>
-        <div class="space-y-2">
-            <h2 class="text-2xl font-bold mb-6">Generate Mnemonic</h2>
-            <div class="text-center">
-                <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 bg-green-500 hover:bg-green-600 text-white"
-                        onclick="generateMnemonicAndKeys()">
-                    Generate Mnemonic
-                </button>
-            </div>
-        </div>
-        <div class="space-y-2">
-            <h2 class="text-xl font-semibold">Mnemonic</h2>
-            <p id="mnemonic-output"
-               class="mt-2 text-sm"></p>
-        </div>
-        <div class="space-y-2">
-            <h2 class="text-xl font-semibold">Public Key</h2>
-            <p id="pubkey-output" class="mt-2 text-sm"></p>
-        </div>
-        <div class="space-y-2">
-            <h2 class="text-xl font-semibold">Sign Key</h2>
-            <p id="signkey-output" class="mt-2 text-sm"></p>
-        </div>
-        <div class="space-y-2">
-            <h2 class="text-xl font-semibold">Agreement Key (P2P Messages)</h2>
-            <p id="agreekey-output" class="mt-2 text-sm"></p>
-        </div>
-        <div class="space-y-2">
-            <h2 class="text-xl font-semibold">Account Id</h2>
-            <p id="accountid-output" class="mt-2 text-sm">235972307079023634</p>
-            <h2 class="text-xl font-semibold">Signum Address</h2>
-            <p id="address-output" class="mt-2 text-sm">S-DQB6-6L4C-3UM3-E6FAN</p>
-        </div>
-        <hr/>
-        <div class="space-y-2">
+        <section class="space-y-2 bg-white p-10 rounded border">
+            <section class="">
+                <h2 class="text-2xl font-bold mb-6">Generate Mnemonic</h2>
+                <div class="text-center">
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 bg-green-500 hover:bg-green-600 text-white"
+                            onclick="generateMnemonicAndKeys()">
+                        Generate Mnemonic
+                    </button>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-xl font-semibold">Mnemonic</h2>
+                    <p id="mnemonic-output"
+                       class="mt-2 text-sm font-italic"></p>
+                </div>
+                <hr class="my-4"/>
+                <div class="space-y-2 mb-2">
+                    <h3 class="text-lg">Public Key</h3>
+                    <p id="pubkey-output" class="mt-2 text-sm font-mono"></p>
+                </div>
+                <div class="space-y-2 mb-2">
+                    <h3 class="text-lg">Sign Key</h3>
+                    <p id="signkey-output" class="mt-2 text-sm font-mono"></p>
+                </div>
+                <div class="space-y-2 mb-2">
+                    <h3 class="text-lg">Agreement Key (P2P Messages)</h3>
+                    <p id="agreekey-output" class="mt-2 text-sm font-mono"></p>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-lg">Account Id</h3>
+                    <p id="accountid-output" class="mt-2 text-sm font-mono"></p>
+                </div>
+            </section>
+        </section>
+
+        <section class="space-y-2 bg-white p-10 rounded border">
             <h2 class="text-2xl font-bold">Encrypt</h2>
             <input
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
@@ -67,8 +68,8 @@
                 encrypt
             </button>
             <p class="mt-2 text-sm">77515e174cbdb13a9d74d2a8767022aa061475eefbe719e40aa4436b71bc5669f6 566</p>
-        </div>
-        <div class="space-y-2">
+        </section>
+        <section class="space-y-2 bg-white p-10 rounded border">
             <h2 class="text-2xl font-bold">Decrypt</h2>
             <input
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
@@ -78,7 +79,7 @@
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"
                     placeholder="Enter cipher text here"
             />
-        </div>
+        </section>
     </div>
 </div>
 

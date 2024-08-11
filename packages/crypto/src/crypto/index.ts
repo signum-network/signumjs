@@ -9,4 +9,5 @@ export {
 };
 
 // browser polyfill!
+// @ts-ignore
 globalThis.Buffer = Buffer;

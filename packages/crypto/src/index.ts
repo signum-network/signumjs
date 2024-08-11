@@ -11,6 +11,7 @@ export * from './random';
 export * from './mnemonic';
 export * from './sha256';
 export * from './sign';
+export {Buffer} from './crypto'; // export as very useful!
 export * from './typings/cryptoError';
 export * from './typings/signKeys';
 export * from './typings/encryptedMessage';

@@ -6,6 +6,7 @@ async function generateMnemonicAndKeys(){
     document.getElementById('pubkey-output').textContent = keys.publicKey;
     document.getElementById('signkey-output').textContent = keys.signPrivateKey;
     document.getElementById('agreekey-output').textContent = keys.agreementPrivateKey;
+    document.getElementById('accountid-output').textContent = await crypto.getAccountIdFromPublicKey(keys.publicKey);
 }
 
 async function generateSHA256(event) {
@@ -16,3 +17,7 @@ async function generateSHA256(event) {
     }
     document.getElementById('hash-output').textContent = hash;
 }
+
+(() => {
+    generateMnemonicAndKeys();
+})()

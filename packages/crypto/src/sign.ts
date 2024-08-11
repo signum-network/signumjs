@@ -6,6 +6,23 @@ import {sha256AsBytes, sha256Binary} from './sha256';
 import {SignKeys} from './typings/signKeys';
 import {ECKCDSA} from './crypto';
 
+function hexToDec(s: string): string {
+    const digits = [0];
+    for (let i = 0; i < s.length; i += 1) {
+        let carry = parseInt(s.charAt(i), 16);
+        for (let j = 0; j < digits.length; j += 1) {
+            digits[j] = digits[j] * 16 + carry;
+            carry = digits[j] / 10 | 0;
+            digits[j] %= 10;
+        }
+        while (carry > 0) {
+            digits.push(carry % 10);
+            carry = carry / 10 | 0;
+        }
+    }
+    return digits.reverse().join('');
+}
+
 function toBytes(hex: string): Uint8Array {
     return new Uint8Array(Buffer.from(hex, 'hex'));
 }
@@ -31,6 +48,17 @@ export async function generateSignKeys(passPhrase: string): Promise<SignKeys> {
         signPrivateKey: Buffer.from(keys.s).toString('hex'),
         agreementPrivateKey: Buffer.from(keys.k).toString('hex')
     };
+}
+
+/**
+ * Computes the Account ID from Public Key
+ * @param publicKey The public Key generated with [[generateSignKeys]]
+ * @return A numeric string - The Account ID
+ */
+export async function getAccountIdFromPublicKey(publicKey: string): Promise<string> {
+    const hashedArray = await sha256Binary(publicKey);
+    const slicedArray = hashedArray.slice(0, 8).reverse();
+    return hexToDec(Buffer.from(slicedArray).toString('hex'));
 }
 
 /**
@@ -62,7 +90,6 @@ export async function generateSignature(messageHex: string, privateKeyHex: strin
 }
 
 
-
 /**
  * Verify a signature for given message
  *
@@ -91,9 +118,13 @@ export async function verifySignature(signature: string, messageHex: string, pub
     const h2 = await sha256Binary(m_y);
 
     // fast comparison
-    if (h1.length !== h2.length) { return false; }
+    if (h1.length !== h2.length) {
+        return false;
+    }
     for (let i = 0; i < h1.length; i++) {
-        if (h1[i] !== h2[i]) { return false; }
+        if (h1[i] !== h2[i]) {
+            return false;
+        }
     }
     return true;
 }
