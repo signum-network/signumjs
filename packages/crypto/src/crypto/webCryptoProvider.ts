@@ -5,7 +5,11 @@ export class WebCryptoProvider implements CryptoProvider {
     private crypto: Crypto;
 
     constructor() {
-        this.crypto = global.crypto;
+        if (typeof window !== 'undefined') {
+            this.crypto = window.crypto;
+        } else {
+            throw new Error('WebCryptoProvider: Looks like you are not in a web environment...');
+        }
     }
 
     getRandomValues(array: Uint8Array): Uint8Array {

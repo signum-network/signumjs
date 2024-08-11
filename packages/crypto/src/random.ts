@@ -25,6 +25,8 @@ export function getRandomBytes(length: number): Uint8Array {
 /**
  * Gets an array of random words from a dictionary
  *
+ * @note Usually 2048 words are sufficient. This method does not support dictionaries with more than 65536 words
+ *
  * @param count The number of words generated
  * @param dictionary An array of strings from where the random words are picked
  *
@@ -36,11 +38,17 @@ export function getRandomWords(count: number, dictionary: string[]): string[] {
     if (count > dictionary.length) {
         throw new Error('Too few words in dictionary');
     }
+    if (dictionary.length > 2 ** 32) {
+        throw new Error('Dictionary must have less than 65536 words');
+    }
+
     const indices = new Set<number>();
-    const uint16 = new Uint8Array(1);
+    const randomBytes = new Uint8Array(4);
     const cp = Crypto.getInstance().provider;
     while (indices.size < count) {
-        const randomIndex = cp.getRandomValues(uint16)[0] % dictionary.length;
+        cp.getRandomValues(randomBytes);
+        const randomUint32 = ((randomBytes[0] << 24) | (randomBytes[1] << 16) | (randomBytes[2] << 8) | randomBytes[3]) >>> 0;
+        const randomIndex = randomUint32 % dictionary.length;
         indices.add(randomIndex);
     }
     return Array.from(indices).map(index => dictionary[index]);
