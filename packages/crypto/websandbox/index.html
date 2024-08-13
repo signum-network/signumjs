@@ -57,28 +57,56 @@
         <section class="space-y-2 bg-white p-10 rounded border">
             <h2 class="text-2xl font-bold">Encrypt</h2>
             <input
+                    id="encrypt-secret1-input"
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-                    placeholder="Enter secret here"
+                    placeholder="Enter senders secret here"
             />
             <input
+                    id="encrypt-secret2-input"
+                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                    placeholder="Enter receivers secret here"
+            />
+            <input
+                    id="encrypt-text-input"
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"
                     placeholder="Enter some text here"
             />
-            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-green-500 hover:bg-green-600 text-white">
-                encrypt
+            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-green-500 hover:bg-green-600 text-white"
+                onclick="encrypt(event)"
+            >
+                Encrypt
             </button>
-            <p class="mt-2 text-sm">77515e174cbdb13a9d74d2a8767022aa061475eefbe719e40aa4436b71bc5669f6 566</p>
+            <p id="encrypt-cipher-output" class="my-4 text-sm font-mono break-all"></p>
+            <button id="encrypt-copy-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-gray-500 hover:bg-gray-600 text-gray-200 hidden"
+                    onclick="copyToClipboard('encrypt-cipher-output')"
+            >
+                Copy
+            </button>
+
         </section>
         <section class="space-y-2 bg-white p-10 rounded border">
             <h2 class="text-2xl font-bold">Decrypt</h2>
             <input
+                    id="decrypt-secret1-input"
                     class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
-                    placeholder="Enter secret here"
+                    placeholder="Enter senders secret here"
             />
             <input
-                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"
-                    placeholder="Enter cipher text here"
+                    id="decrypt-secret2-input"
+                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                    placeholder="Enter senders secret here"
             />
+            <textarea
+                    id="decrypt-cipher-textarea"
+                    rows=6
+                    class="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"
+            >[Enter Ciphertext here]</textarea>
+            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-green-500 hover:bg-green-600 text-white"
+                    onclick="decrypt(event)"
+            >
+                Decrypt
+            </button>
+            <p id="decrypt-plaintext-output" class="my-4 text-sm font-mono break-all"></p>
         </section>
     </div>
 </div>

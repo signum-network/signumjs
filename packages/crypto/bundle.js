@@ -7,7 +7,7 @@ function createBuildSettings(options) {
         outfile: './dist/signumjs.crypto.min.js',
         globalName: 'sig$crypto',
         minify: true,
-        sourcemap: false,
+        sourcemap: true,
         format: 'iife',
         bundle: true,
         plugins: [

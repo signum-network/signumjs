@@ -18,6 +18,59 @@ async function generateSHA256(event) {
     document.getElementById('hash-output').textContent = hash;
 }
 
+async function encrypt() {
+    const secret1 = document.getElementById('encrypt-secret1-input').value
+    const secret2 = document.getElementById('encrypt-secret2-input').value
+    const plaintext = document.getElementById('encrypt-text-input').value
+
+    
+    const [senderKeys, recipientKeys] = await Promise.all([
+        crypto.generateSignKeys(secret1), //sender
+        crypto.generateSignKeys(secret2) //recipient
+    ]);
+
+    console.log("Sender Public Key", senderKeys.publicKey);
+    console.log("Recipient Public Key", recipientKeys.publicKey);
+    
+    const ciphertextJson = await crypto.encryptMessage(plaintext, recipientKeys.publicKey, senderKeys.agreementPrivateKey);
+    const ciphertext = JSON.stringify(ciphertextJson, null, "   ")
+    document.getElementById('encrypt-cipher-output').textContent = ciphertext 
+    document.getElementById('encrypt-copy-btn').classList.remove('hidden') 
+    
+    document.getElementById('decrypt-secret1-input').value = secret1
+    document.getElementById('decrypt-secret2-input').value = secret2
+    document.getElementById('decrypt-cipher-textarea').textContent = ciphertext
+
+}
+
+
+async function decrypt() {
+    const secret1 = document.getElementById('decrypt-secret1-input').value
+    const secret2 = document.getElementById('decrypt-secret2-input').value
+    const cipher = document.getElementById('decrypt-cipher-textarea').textContent
+
+    const [senderKeys, recipientKeys] = await Promise.all([
+        crypto.generateSignKeys(secret1), // sender
+        crypto.generateSignKeys(secret2) // recipient
+    ]);
+
+    console.log("Sender Public Key", senderKeys.publicKey);
+    console.log("Recipient Public Key", recipientKeys.publicKey);
+    document.getElementById('decrypt-plaintext-output').textContent = plaintext;
+    try {
+
+        const plaintext = await crypto.decryptMessage(JSON.parse(cipher), senderKeys.publicKey, recipientKeys.agreementPrivateKey)
+        document.getElementById('decrypt-plaintext-output').textContent = plaintext;
+    }catch (error) {
+
+    }
+}
+
+async function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId)
+    await navigator.clipboard.writeText(element.textContent)
+}
+
 (() => {
     generateMnemonicAndKeys();
 })()

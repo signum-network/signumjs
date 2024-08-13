@@ -35,7 +35,7 @@ export class WebCryptoProvider implements CryptoProvider {
                 iv
             },
             cryptoKey,
-            ciphertext
+            ciphertext.slice(CryptoParams.IvLength)
         );
 
         return new Uint8Array(decryptedBuffer);
