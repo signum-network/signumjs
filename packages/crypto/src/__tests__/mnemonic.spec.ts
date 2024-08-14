@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import {generateMnemonic, Strength} from '../mnemonic';
 import {words} from '../dictionaries/en';
 

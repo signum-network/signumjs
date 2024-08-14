@@ -50,7 +50,7 @@
     "tslib": "^2.6.3"
   },
   "scripts": {
-    "test": "jest",
+    "test": "vitest run",
     "tsc": "tsc",
     "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"

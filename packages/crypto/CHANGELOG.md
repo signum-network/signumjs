@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 - Rebranding
 - Patched AES.decrypt method to throw concise error
+- Removed crypto-js. Refactored complete interface
 
 ----------------------------------------------------
 > Before Rebranding

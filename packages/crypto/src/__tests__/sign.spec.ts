@@ -1,8 +1,10 @@
+import { describe, it, expect, test } from 'vitest';
+
 import {generateSignature, verifySignature, generateSignKeys, getAccountIdFromPublicKey} from '../sign';
 
 describe('Signing and Verifying messages', () => {
 
-    it('Verify a signed message successfully', async () => {
+    test('Verify a signed message successfully', async () => {
 
         const keys = await generateSignKeys('testSecret');
         const hexMessage = Buffer.from('Some Test Message', 'utf-8').toString('hex');
@@ -12,7 +14,7 @@ describe('Signing and Verifying messages', () => {
 
     });
 
-    it('Verify a signed message failure - with modified message', async () => {
+    test('Verify a signed message failure - with modified message', async () => {
 
         const keys = await generateSignKeys('testSecret');
         const hexMessage = Buffer.from('Some Test Message').toString('hex');
@@ -22,7 +24,7 @@ describe('Signing and Verifying messages', () => {
 
     });
 
-    it('Verify a signed message failure - with different public key', async () => {
+    test('Verify a signed message failure - with different public key', async () => {
 
         const keys = await generateSignKeys('testSecret');
         const hexMessage = Buffer.from('Some Test Message').toString('hex');
@@ -37,7 +39,7 @@ describe('Signing and Verifying messages', () => {
 
 describe('Get Account Id from Public Key', () => {
 
-    it('should compute the correct Account ID', async () => {
+    test('should compute the correct Account ID', async () => {
         let accountId = await getAccountIdFromPublicKey('7210b8941929030324540238450e985899989a7ad0267e0c76f668fde3b1016b');
         expect(accountId).toEqual('6502115112683865257');
         accountId = await getAccountIdFromPublicKey('FCA79015A1E13C0ACF30C50CD459FDE91C4F6D488E85AB7200F7DF763580537B');

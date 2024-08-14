@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import {generateSignKeys} from '../sign';
 import {encryptData, encryptMessage} from '../encrypt';
 import {decryptData, decryptMessage} from '../decrypt';

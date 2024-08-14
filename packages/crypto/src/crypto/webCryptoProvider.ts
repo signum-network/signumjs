@@ -1,4 +1,4 @@
-import {CryptoProvider} from './cryptoProvider';
+import {CryptoProvider} from '../typings/cryptoProvider';
 import {CryptoParams} from './cryptoParams';
 
 export class WebCryptoProvider implements CryptoProvider {

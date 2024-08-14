@@ -1,4 +1,4 @@
-import {CryptoProvider} from './cryptoProvider';
+import {CryptoProvider} from 'src/typings/cryptoProvider';
 import {CryptoParams} from './cryptoParams';
 import {CryptoError} from '../typings/cryptoError';
 
