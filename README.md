@@ -140,7 +140,7 @@ console.log(dataView.getVariable(2))
 
 ```js
 // using crypto
-console.log(sig$crypto.hashSHA256("test"))
+console.log(sig$crypto.sha256AsHex("test"))
 ```
 
 ```js

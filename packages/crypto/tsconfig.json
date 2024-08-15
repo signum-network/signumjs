@@ -3,7 +3,8 @@
     "outDir": "./out",
     "types": [
       "jest",
-      "node"
+      "node",
+      "vitest/globals"
     ]
   },
   "typeRoots": [
