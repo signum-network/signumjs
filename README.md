@@ -19,6 +19,20 @@
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
 technology.
 
+---------------------------------------
+
+👷‍♂️👷‍♂️👷‍♂️ 🏗️🏗️🏗️ MODERNIZATION IN PROGRESS 🏗️🏗️🏗️ 👷‍♂️👷‍♂️👷‍♂️
+
+- [ ] CONTRACTS
+- [ ] CORE
+- [x] CRYPTO
+- [ ] HTTP
+- [ ] UTILS
+- [ ] STANDARDS
+- [ ] WALLET
+
+
+
 ----------------------------
 
 Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs)
