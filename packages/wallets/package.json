@@ -52,13 +52,13 @@
   },
   "scripts": {
     "test": "jest",
-    "tsc": "tsc",
-    "bundle": "bili",
+    "compile": "tsc",
+    "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@signumjs/util": "^1.0.0",
-    "uuid": "^8.3.2"
+    "@signumjs/util": "*",
+    "uuid": "^10.0.0"
   },
   "husky": {
     "hooks": {
@@ -70,7 +70,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@signumjs/core": "^1.0.0-rc.55",
-    "@signumjs/crypto": "^1.0.0-rc.55"
+    "@signumjs/core": "^1.0.0",
+    "@signumjs/crypto": "^1.0.0"
   }
 }

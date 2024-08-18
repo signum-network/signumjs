@@ -46,15 +46,15 @@
   },
   "scripts": {
     "test": "vitest run",
-    "tsc": "tsc",
+    "compile": "tsc",
     "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/**/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "@signumjs/contracts": "^1.0.0",
-    "@signumjs/crypto": "^1.0.0",
-    "@signumjs/http": "^1.0.0",
-    "@signumjs/util": "^1.0.0",
+    "@signumjs/contracts": "*",
+    "@signumjs/crypto": "*",
+    "@signumjs/http": "*",
+    "@signumjs/util": "*",
     "bignumber.js": "^9.1.2"
   },
   "husky": {

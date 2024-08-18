@@ -11,8 +11,8 @@ class TestCryptoProvider implements CryptoProvider {
     decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
         return Promise.resolve(new Uint8Array([10, 20, 30, 40, 50]));
     }
-    sha256(data: ArrayBuffer): Promise<Uint8Array> {
-        return Promise.resolve(new Uint8Array([11, 12, 13, 14, 15]));
+    sha256(data: ArrayBuffer): Uint8Array {
+        return new Uint8Array([11, 12, 13, 14, 15]);
     }
     getRandomValues(array: Uint8Array): Uint8Array {
         return new Uint8Array([21, 22, 23, 24, 25]);
@@ -21,15 +21,15 @@ class TestCryptoProvider implements CryptoProvider {
 }
 
 describe('Crypto', () => {
-    test('should use custom crypto provider', async () => {
+    test('should use custom crypto provider', () => {
         const crypto = Crypto.getInstance();
         crypto.setCustomProvider(new TestCryptoProvider());
-        const testHash = await crypto.provider.sha256(new Uint8Array([12, 23, 54, 46]));
+        const testHash = crypto.provider.sha256(new Uint8Array([12, 23, 54, 46]));
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
-    test('should use custom crypto provider', async () => {
+    test('should use custom crypto provider', () => {
         Crypto.getInstance().setCustomProvider(new TestCryptoProvider());
-        const testHash = await sha256AsBytes('foo', 'utf8');
+        const testHash = sha256AsBytes('foo', 'utf8');
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
 });

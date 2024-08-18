@@ -1,4 +1,4 @@
-import {CryptoProvider} from 'src/typings/cryptoProvider';
+import {CryptoProvider} from '../typings/cryptoProvider';
 import {CryptoParams} from './cryptoParams';
 import {CryptoError} from '../typings/cryptoError';
 
@@ -52,8 +52,8 @@ export class NodeJSCryptoProvider implements CryptoProvider {
         });
     }
 
-    sha256(data: ArrayBuffer): Promise<Uint8Array> {
+    sha256(data: ArrayBuffer): Uint8Array {
         const hash = this.crypto.createHash('SHA256').update(Buffer.from(data)).digest();
-        return Promise.resolve(new Uint8Array(hash));
+        return new Uint8Array(hash);
     }
 }

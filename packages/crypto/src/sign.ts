@@ -40,8 +40,8 @@ function mergeArrays(a: Uint8Array, b: Uint8Array): Uint8Array {
  * @return EC-KCDSA sign key pair + agreement key
  * @module crypto
  */
-export async function generateSignKeys(passPhrase: string): Promise<SignKeys> {
-    const hashedPassPhrase = await sha256AsBytes(passPhrase);
+export function generateSignKeys(passPhrase: string): SignKeys {
+    const hashedPassPhrase = sha256AsBytes(passPhrase);
     const keys = ECKCDSA.keygen(hashedPassPhrase);
     return {
         publicKey: Buffer.from(keys.p).toString('hex'),
@@ -55,8 +55,8 @@ export async function generateSignKeys(passPhrase: string): Promise<SignKeys> {
  * @param publicKey The public Key generated with [[generateSignKeys]]
  * @return A numeric string - The Account ID
  */
-export async function getAccountIdFromPublicKey(publicKey: string): Promise<string> {
-    const hashedArray = await sha256Binary(publicKey);
+export function getAccountIdFromPublicKey(publicKey: string): string {
+    const hashedArray = sha256Binary(publicKey);
     const slicedArray = hashedArray.slice(0, 8).reverse();
     return hexToDec(Buffer.from(slicedArray).toString('hex'));
 }
@@ -77,14 +77,14 @@ export async function getAccountIdFromPublicKey(publicKey: string): Promise<stri
  * @return The signature in hexadecimal format
  * @module crypto
  */
-export async function generateSignature(messageHex: string, privateKeyHex: string): Promise<string> {
-    const m = await sha256Binary(messageHex);
+export function generateSignature(messageHex: string, privateKeyHex: string): string {
+    const m = sha256Binary(messageHex);
     const s = toBytes(privateKeyHex);
     const m_s = mergeArrays(m, s);
-    const x = await sha256Binary(m_s);
+    const x = sha256Binary(m_s);
     const y = Buffer.from(ECKCDSA.keygen(x).p);
     const m_y = mergeArrays(m, y);
-    const h = await sha256Binary(m_y);
+    const h = sha256Binary(m_y);
     const v = Buffer.from(ECKCDSA.sign(h, x, s));
     return Buffer.from(mergeArrays(v, h)).toString('hex');
 }
@@ -106,16 +106,16 @@ export async function generateSignature(messageHex: string, privateKeyHex: strin
  * @return _true_, if signature is valid, otherwise _false_
  * @module crypto
  */
-export async function verifySignature(signature: string, messageHex: string, publicKeyHex: string): Promise<boolean> {
+export function verifySignature(signature: string, messageHex: string, publicKeyHex: string): boolean {
     const signatureBytes = toBytes(signature);
     const publicKeyBytes = toBytes(publicKeyHex);
     const v = signatureBytes.slice(0, 32);
     const h1 = signatureBytes.slice(32);
     const y = Buffer.from(ECKCDSA.verify(v, h1, publicKeyBytes));
 
-    const m = await sha256Binary(messageHex);
+    const m = sha256Binary(messageHex);
     const m_y = mergeArrays(m, y);
-    const h2 = await sha256Binary(m_y);
+    const h2 = sha256Binary(m_y);
 
     // fast comparison
     if (h1.length !== h2.length) {

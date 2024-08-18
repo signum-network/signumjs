@@ -4,7 +4,7 @@ const esbuild = require('esbuild');
 function createBuildSettings(options) {
     return {
         entryPoints: ['./src/index.ts'],
-        outfile: './dist.bak/signumjs.min.js',
+        outfile: './dist/signumjs.min.js',
         globalName: 'sig$',
         minify: true,
         sourcemap: true,

@@ -4,13 +4,12 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA, Crypto, Buffer} from './crypto';
+import {ECKCDSA, Crypto, Buffer,CryptoParams} from './crypto';
 import {EncryptedData} from './typings/encryptedData';
 import {deflate} from 'pako/lib/deflate';
 import {getRandomBytes} from './random';
 import {EncryptedMessage} from './typings/encryptedMessage';
 import {CryptoError} from './typings/cryptoError';
-import {CryptoParams} from './crypto/cryptoParams';
 
 /**
  *
@@ -26,7 +25,7 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
             sharedKey[i] ^= nonce[i];
         }
         const cp = Crypto.getInstance().provider;
-        const key = await cp.sha256(sharedKey);
+        const key = cp.sha256(sharedKey);
         return await cp.encryptAes256Cbc(plaintext, key);
     } catch (e) {
         // @ts-ignore

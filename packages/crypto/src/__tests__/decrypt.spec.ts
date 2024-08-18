@@ -10,8 +10,8 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
         it('should decrypt a data ciphertext successfully', async () => {
 
-            const recipientKeys = await generateSignKeys('testSecret_Recipient');
-            const senderKeys = await generateSignKeys('testSecret_Sender');
+            const recipientKeys = generateSignKeys('testSecret_Recipient');
+            const senderKeys = generateSignKeys('testSecret_Sender');
 
             const originalData = Uint8Array.from([0, 1, 2, 3]);
 
@@ -33,9 +33,9 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
         it('should not decrypt a data ciphertext, with wrong key', async () => {
 
-            const recipientKeys = await generateSignKeys('testSecret_Recipient');
-            const senderKeys = await generateSignKeys('testSecret_Sender');
-            const bobKeys = await generateSignKeys('testSecret_Bob');
+            const recipientKeys = generateSignKeys('testSecret_Recipient');
+            const senderKeys = generateSignKeys('testSecret_Sender');
+            const bobKeys = generateSignKeys('testSecret_Bob');
 
             const originalData = Uint8Array.from([0, 1, 2, 3]);
 
@@ -63,8 +63,8 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
         it('should decrypt a text message successfully', async () => {
 
-            const recipientKeys = await generateSignKeys('testSecret_Recipient');
-            const senderKeys = await generateSignKeys('testSecret_Sender');
+            const recipientKeys = generateSignKeys('testSecret_Recipient');
+            const senderKeys = generateSignKeys('testSecret_Sender');
 
             // german umlauts to proof UTF-8
             const originalMessage = `Die Signum-Blockchain ist ein öffentliches Hauptbuch,
@@ -91,8 +91,8 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
         it('should decrypt a text message successfully as owner of message', async () => {
 
-            const recipientKeys = await generateSignKeys('testSecret_Recipient');
-            const senderKeys = await generateSignKeys('testSecret_Sender');
+            const recipientKeys = generateSignKeys('testSecret_Recipient');
+            const senderKeys = generateSignKeys('testSecret_Sender');
 
             // german umlauts to proof UTF-8
             const originalMessage = `Die Burstcoin-Blockchain ist ein öffentliches Hauptbuch,
@@ -136,9 +136,9 @@ describe('Encrypt and Decrypt - No Crypto-JS', () => {
 
         it('should not decrypt a text message, when key is wrong', async () => {
 
-            const recipientKeys = await generateSignKeys('testSecret_Recipient');
-            const senderKeys = await generateSignKeys('testSecret_Sender');
-            const bobKeys = await generateSignKeys('testSecret_Bob');
+            const recipientKeys = generateSignKeys('testSecret_Recipient');
+            const senderKeys = generateSignKeys('testSecret_Sender');
+            const bobKeys = generateSignKeys('testSecret_Bob');
 
             const originalMessage = `Some message`;
 

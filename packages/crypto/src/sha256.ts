@@ -12,7 +12,7 @@ export type InputEncoding = 'utf8' | 'hex' | 'base64';
  * @return the hash for that string in ArrayBuffer
  * @module crypto
  */
-export async function sha256Raw(input: string, encoding: InputEncoding ): Promise<ArrayBuffer> {
+export function sha256Raw(input: string, encoding: InputEncoding ): ArrayBuffer {
     return Crypto.getInstance().provider.sha256(Buffer.from(input, encoding));
 }
 
@@ -24,8 +24,8 @@ export async function sha256Raw(input: string, encoding: InputEncoding ): Promis
  * @return the hash for that string in Uint8Array
  * @module crypto
  */
-export async function sha256AsBytes(input: string, encoding: InputEncoding = 'utf8' ): Promise<Uint8Array> {
-    return new Uint8Array((await sha256Raw(input, encoding)));
+export function sha256AsBytes(input: string, encoding: InputEncoding = 'utf8' ): Uint8Array {
+    return new Uint8Array(sha256Raw(input, encoding));
 }
 
 /**
@@ -35,8 +35,8 @@ export async function sha256AsBytes(input: string, encoding: InputEncoding = 'ut
  * @return the hash for that string in hex format
  * @module crypto
  */
-export async function sha256AsHex(input: string, encoding: InputEncoding = 'utf8'): Promise<string> {
-    return Buffer.from((await sha256Raw(input, encoding))).toString('hex');
+export function sha256AsHex(input: string, encoding: InputEncoding = 'utf8'): string {
+    return Buffer.from(sha256Raw(input, encoding)).toString('hex');
 }
 
 /**
@@ -46,8 +46,8 @@ export async function sha256AsHex(input: string, encoding: InputEncoding = 'utf8
  * @return the hash for that string in base64 format
  * @module crypto
  */
-export async function sha256AsBase64(input: string, encoding: InputEncoding = 'utf8'): Promise<string> {
-    return Buffer.from((await sha256Raw(input, encoding))).toString('base64');
+export function sha256AsBase64(input: string, encoding: InputEncoding = 'utf8'): string {
+    return Buffer.from(sha256Raw(input, encoding)).toString('base64');
 }
 
 /**
@@ -56,7 +56,7 @@ export async function sha256AsBase64(input: string, encoding: InputEncoding = 'u
  * @return the hash for that as byte array
  * @module crypto
  */
-export async function sha256Binary(data: string | Uint8Array): Promise<Uint8Array> {
+export function sha256Binary(data: string | Uint8Array): Uint8Array {
     const b: Uint8Array = typeof data === 'string' ? Buffer.from(data, 'hex') : data;
-    return new Uint8Array(await Crypto.getInstance().provider.sha256(b));
+    return Crypto.getInstance().provider.sha256(b);
 }

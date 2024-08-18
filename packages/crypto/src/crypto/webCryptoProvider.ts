@@ -1,5 +1,6 @@
 import {CryptoProvider} from '../typings/cryptoProvider';
 import {CryptoParams} from './cryptoParams';
+import {sha256 as sha256JS} from 'js-sha256'
 
 export class WebCryptoProvider implements CryptoProvider {
     private crypto: Crypto;
@@ -62,8 +63,9 @@ export class WebCryptoProvider implements CryptoProvider {
         return ivAndCiphertext;
     }
 
-    async sha256(data: ArrayBuffer): Promise<Uint8Array> {
-        const hashBuffer = await this.crypto.subtle.digest('SHA-256', data);
-        return new Uint8Array(hashBuffer);
+    sha256(data: ArrayBuffer): Uint8Array {
+        return Uint8Array.from(sha256JS.digest(data));
+        // const hashBuffer = await this.crypto.subtle.digest('SHA-256', data);
+        // return new Uint8Array(hashBuffer);
     }
 }

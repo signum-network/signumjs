@@ -11,7 +11,7 @@
 export interface CryptoProvider {
     encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array>;
     decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array>;
-    sha256(data: ArrayBuffer): Promise<Uint8Array>;
+    sha256(data: ArrayBuffer): Uint8Array;
     getRandomValues(array: Uint8Array): Uint8Array;
 }
 

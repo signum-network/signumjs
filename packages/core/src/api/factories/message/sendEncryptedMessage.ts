@@ -20,7 +20,7 @@ export const sendEncryptedMessage = (service: ChainService) =>
     (args: SendEncryptedMessageArgs) =>
         signIfPrivateKey(service, args, async (a: SendEncryptedMessageArgs) => {
 
-                const encryptedMessage = encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
+                const encryptedMessage = await encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
 
                 if (encryptedMessage.data.length > MAX_MESSAGE_LENGTH) {
                     throw new Error(`The encrypted message exceeds allowed limit of ${MAX_MESSAGE_LENGTH} bytes`);
