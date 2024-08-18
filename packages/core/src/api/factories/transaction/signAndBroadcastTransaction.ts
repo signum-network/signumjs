@@ -2,7 +2,7 @@
  * Copyright (c) 2019 Burst Apps Team
  */
 
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
+import {generateSignature, generateSignedTransactionBytes, verifySignature, } from '@signumjs/crypto';
 import {broadcastTransaction} from './broadcastTransaction';
 import {ChainService} from '../../../service';
 import {TransactionId} from '../../../typings/transactionId';
@@ -21,8 +21,9 @@ export const signAndBroadcastTransaction = (chainService: ChainService):
 
         const {unsignedHexMessage, senderPrivateKey, senderPublicKey} = unsignedTransaction;
 
-        const signature = generateSignature(unsignedHexMessage, senderPrivateKey);
-        if (!verifySignature(signature, unsignedHexMessage, senderPublicKey)) {
+        const signature = await generateSignature(unsignedHexMessage, senderPrivateKey);
+        const isValid = await verifySignature(signature, unsignedHexMessage, senderPublicKey);
+        if (!isValid) {
             throw new Error('The signed message could not be verified! Transaction not broadcasted!');
         }
 

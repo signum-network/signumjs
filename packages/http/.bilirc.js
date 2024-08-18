@@ -4,7 +4,7 @@ module.exports = {
     moduleName: "sig$http",
     fileName: "signumjs.http[min].js",
     format: ["umd", "umd-min"],
-    dir: "./dist"
+    dir: "./dist.bak"
   },
   env: {
     NODE_ENV: "production"

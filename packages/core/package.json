@@ -42,18 +42,12 @@
   },
   "devDependencies": {
     "@types/bignumber.js": "^5.0.0",
-    "@types/jest": "^24.0.12",
-    "bili": "^4.10.1",
-    "dotenv": "^8.2.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-typescript2": "^0.24.2"
+    "dotenv": "^8.2.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "vitest run",
     "tsc": "tsc",
-    "bundle": "bili",
+    "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/**/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
@@ -61,7 +55,7 @@
     "@signumjs/crypto": "^1.0.0",
     "@signumjs/http": "^1.0.0",
     "@signumjs/util": "^1.0.0",
-    "bignumber.js": "^9.0.0"
+    "bignumber.js": "^9.1.2"
   },
   "husky": {
     "hooks": {

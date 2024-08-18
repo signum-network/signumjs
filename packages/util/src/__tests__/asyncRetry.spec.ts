@@ -1,16 +1,17 @@
+import {vi} from "vitest"
 import {asyncRetry} from '../asyncRetry';
 
 describe('asyncRetry', () => {
     it('should retry as expected, with success', async () => {
         let calledFirstTime = true;
-        const asyncFn = jest.fn().mockImplementation(() => {
+        const asyncFn = vi.fn().mockImplementation(() => {
             if (calledFirstTime) {
                 calledFirstTime = !calledFirstTime;
                 return Promise.reject('First Run Error');
             }
             return Promise.resolve('All fine');
         });
-        const onFailureAsync = jest.fn().mockImplementation((e, retryCount) => {
+        const onFailureAsync = vi.fn().mockImplementation((e, retryCount) => {
             return retryCount < 3;
         });
 
@@ -23,8 +24,8 @@ describe('asyncRetry', () => {
     });
 
     it('should stop on max retrials reached', async () => {
-        const asyncFn = jest.fn().mockRejectedValue('AsyncFn Error');
-        const onFailureAsync = jest.fn().mockResolvedValue(true); // would retry infinitely
+        const asyncFn = vi.fn().mockRejectedValue('AsyncFn Error');
+        const onFailureAsync = vi.fn().mockResolvedValue(true); // would retry infinitely
         try {
             await asyncRetry<void>({
                 asyncFn,
@@ -38,8 +39,8 @@ describe('asyncRetry', () => {
     });
 
     it('should stop when onFailureAsync throws error', async () => {
-        const asyncFn = jest.fn().mockRejectedValue('AsyncFn Error');
-        const onFailureAsync = jest.fn().mockRejectedValue('onFailureAsync Error'); // would retry infinitely
+        const asyncFn = vi.fn().mockRejectedValue('AsyncFn Error');
+        const onFailureAsync = vi.fn().mockRejectedValue('onFailureAsync Error'); // would retry infinitely
         try {
             await asyncRetry<void>({
                 asyncFn,

@@ -4,7 +4,7 @@ module.exports = {
     moduleName: "sig$",
     fileName: "signumjs[min].js",
     format: ["umd", "umd-min"],
-    dir: "./dist"
+    dir: "./dist.bak"
   },
   extendRollupConfig: (conf) => {
     conf.inputConfig.preserveSymlinks = true;

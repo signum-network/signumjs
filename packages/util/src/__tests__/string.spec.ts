@@ -47,11 +47,6 @@ describe('String Conversions', () => {
         });
 
     });
-
-    describe('convertBase36ToString', () => {
-
-    });
-
 });
 
 
