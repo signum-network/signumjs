@@ -1,4 +1,4 @@
-import {vi} from "vitest"
+import {vi} from 'vitest';
 import {asyncRetry} from '../asyncRetry';
 
 describe('asyncRetry', () => {

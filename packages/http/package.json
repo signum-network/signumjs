@@ -19,40 +19,26 @@
     "url": "https://github.com/signum-network/signumjs"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20"
   },
   "license": "Apache-2.0",
   "main": "./out/index.js",
   "typings": "./out/index.d.ts",
   "private": false,
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
-  },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "bili": "^4.10.1",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-typescript2": "^0.24.2"
+    "@types/node": "^20.16.0",
+    "esbuild": "^0.23.1",
+    "esbuild-plugin-tsc": "^0.4.0",
+    "typescript": "^5.5.4"
   },
   "scripts": {
-    "test": "jest",
+    "test": "vitest run",
     "tsc": "tsc",
-    "bundle": "bili",
+    "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "dependencies": {
-    "axios": "^0.21.4"
+    "axios": "^1.7.4"
   },
   "husky": {
     "hooks": {

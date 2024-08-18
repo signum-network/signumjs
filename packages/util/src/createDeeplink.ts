@@ -3,7 +3,7 @@
  * Modified work Copyright (c) 2021 Signum Network
  */
 
-import {CreateDeeplinkArgs, EncoderFormat} from './typings/args/createDeeplinkArgs';
+import {CreateDeeplinkArgs, EncoderFormat} from './typings';
 import {convertStringToHexString} from './convertStringToHexString';
 import {convertStringToBase64String} from './convertStringToBase64String';
 
