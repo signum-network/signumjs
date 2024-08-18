@@ -15,7 +15,7 @@ describe('Message Api', () => {
         let service: ChainService;
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             httpMock = HttpMockBuilder.create().onPostReply(200, {
                 broadcasted: true,
@@ -23,7 +23,7 @@ describe('Message Api', () => {
             }).build();
             service = createChainService(httpMock, 'relPath');
             // @ts-ignore
-            service.send = jest.fn(() => ({unsignedTransactionBytes: 'unsignedTransactionBytes'}));
+            service.send = vi.fn(() => ({unsignedTransactionBytes: 'unsignedTransactionBytes'}));
         });
 
         afterEach(() => {
@@ -33,7 +33,7 @@ describe('Message Api', () => {
 
         it('should sendMessage', async () => {
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.resolve({
+            signAndBroadcastTransaction = vi.fn().mockImplementation(s => (_) => Promise.resolve({
                 fullHash: 'fullHash',
                 transaction: 'transaction'
             }));
@@ -62,7 +62,7 @@ describe('Message Api', () => {
 
         it('should return unsigned bytes when sendMessage called without private key', async () => {
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
 
             const unsignedTx = await sendMessage(service)({
                 message: 'Message Text',
@@ -79,14 +79,14 @@ describe('Message Api', () => {
         it('should sendEncryptedMessage', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.resolve({
+            signAndBroadcastTransaction = vi.fn().mockImplementation(s => (_) => Promise.resolve({
                 fullHash: 'fullHash',
                 transaction: 'transaction'
             }));
 
 
             // @ts-ignore
-            encryptMessage = jest.fn(
+            encryptMessage = vi.fn(
                 () =>
                     ({
                         data: 'encryptedMessage',
@@ -121,11 +121,11 @@ describe('Message Api', () => {
         it('should return unsigneBytes when sendEncryptedMessage is called without private key', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
 
 
             // @ts-ignore
-            encryptMessage = jest.fn(
+            encryptMessage = vi.fn(
                 () =>
                     ({
                         data: 'encryptedMessage',

@@ -14,7 +14,7 @@ import {
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe(`[E2E] Account Api`, () => {
 

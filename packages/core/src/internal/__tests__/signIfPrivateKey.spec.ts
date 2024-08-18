@@ -9,9 +9,9 @@ import {UnsignedTransaction} from '../../typings/unsignedTransaction';
 describe('signIfPrivateKey', () => {
 
     beforeEach(() => {
-        jest.resetAllMocks();
+        vi.resetAllMocks();
         // @ts-ignore
-        signAndBroadcastTransaction = jest.fn((service: ChainService) => (unsigned: string) => Promise.resolve({transaction: 'transaction'}));
+        signAndBroadcastTransaction = vi.fn((service: ChainService) => (unsigned: string) => Promise.resolve({transaction: 'transaction'}));
     });
 
     it('should call signAndBroadcast if a private key is given', async () => {

@@ -97,14 +97,14 @@ describe('Contract Api', () => {
     describe('publishContract', () => {
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
 
         it('should publishContract', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
                 broadcasted: true,
@@ -133,14 +133,14 @@ describe('Contract Api', () => {
     describe('publishContractByReference', () => {
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
 
         it('should publish contract', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
                 broadcasted: true,

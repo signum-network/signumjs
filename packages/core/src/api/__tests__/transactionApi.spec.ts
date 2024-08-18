@@ -94,14 +94,14 @@ describe('TransactionApi', () => {
         };
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
 
         });
 
@@ -222,14 +222,14 @@ describe('TransactionApi', () => {
         };
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
 
         });
 
@@ -348,13 +348,13 @@ describe('TransactionApi', () => {
         };
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
         });
 
         afterEach(() => {
@@ -547,13 +547,13 @@ describe('TransactionApi', () => {
         };
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
         });
 
         afterEach(() => {
@@ -669,11 +669,11 @@ describe('TransactionApi', () => {
     describe('signAndBroadcastTransaction', () => {
         beforeEach(() => {
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
 
         });
 
@@ -682,7 +682,7 @@ describe('TransactionApi', () => {
                 // @ts-ignore
                 httpMock.reset();
             }
-            jest.restoreAllMocks();
+            vi.restoreAllMocks();
         });
 
         it('should sign as expected', async () => {
@@ -712,7 +712,7 @@ describe('TransactionApi', () => {
             }).build();
 
             // @ts-ignore
-            verifySignature = jest.fn(() => false);
+            verifySignature = vi.fn(() => false);
 
             const service = createChainService(httpMock, 'relPath');
             try {

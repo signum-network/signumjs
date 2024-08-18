@@ -42,7 +42,7 @@ describe('LedgerClientFactory', () => {
 
     it('should work with a custom http adapter', async () => {
         const httpAdapter = new TestHttpAdapter();
-        const spied = jest.spyOn(httpAdapter, 'get');
+        const spied = vi.spyOn(httpAdapter, 'get');
         const ledger = LedgerClientFactory.createClient({
             nodeHost: 'nodeHost',
             httpClient: httpAdapter

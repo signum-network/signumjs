@@ -9,7 +9,7 @@ import {TransactionId} from '../../../typings/transactionId';
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe('[E2E] Contract Api', () => {
 
@@ -23,7 +23,7 @@ describe('[E2E] Contract Api', () => {
     let recipientId;
 
     beforeAll(() => {
-        jest.setTimeout(environment.timeout);
+        vi.setTimeout(environment.timeout);
 
         senderKeys = generateMasterKeys(environment.testPassphrase);
         recipientKeys = generateMasterKeys(environment.testRecipientPassphrase);

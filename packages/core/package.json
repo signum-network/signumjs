@@ -42,7 +42,11 @@
   },
   "devDependencies": {
     "@types/bignumber.js": "^5.0.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "esbuild": "^0.23.1",
+    "esbuild-plugin-tsc": "^0.4.0",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.4"
   },
   "scripts": {
     "test": "vitest run",

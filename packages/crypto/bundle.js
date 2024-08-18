@@ -6,8 +6,10 @@ function createBuildSettings(options) {
         entryPoints: ['./src/index.ts'],
         outfile: './dist/signumjs.crypto.min.js',
         globalName: 'sig$crypto',
+        external: ["crypto"],
         minify: true,
         sourcemap: true,
+        platform: "browser",
         format: 'iife',
         bundle: true,
         plugins: [
@@ -23,7 +25,6 @@ const settings = createBuildSettings();
 
 esbuild.build({
     ...settings,
-    external: ["crypto"]
 }).catch( (reason) => {
     console.error("Bundling failed:", reason);
     process.exit(1)

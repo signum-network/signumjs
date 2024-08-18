@@ -15,7 +15,7 @@ import {TransactionId} from '../../../typings/transactionId';
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe('[E2E] Transaction Api', () => {
 

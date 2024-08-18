@@ -268,14 +268,14 @@ describe('AccountApi', () => {
 
         beforeEach(() => {
 
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
 
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
@@ -318,14 +318,14 @@ describe('AccountApi', () => {
 
         beforeEach(() => {
 
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
+            generateSignature = vi.fn(() => 'signature');
             // @ts-ignore
-            verifySignature = jest.fn(() => true);
+            verifySignature = vi.fn(() => true);
             // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
+            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
 
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
@@ -495,10 +495,10 @@ describe('AccountApi', () => {
 
         beforeEach(() => {
 
-            jest.resetAllMocks();
+            vi.resetAllMocks();
 
             // @ts-ignore
-            signAndBroadcastTransaction = () => jest.fn(() => Promise.resolve('transactionId'));
+            signAndBroadcastTransaction = () => vi.fn(() => Promise.resolve('transactionId'));
 
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, mockBroadcastResponse,

@@ -22,7 +22,7 @@ describe('[E2E] Message Api', () => {
             nodeHost: environment.testNetHost,
             apiRootUrl: environment.testNetApiPath
         });
-        jest.setTimeout(environment.timeout);
+        vi.setTimeout(environment.timeout);
 
         senderKeys = generateMasterKeys(environment.testPassphrase);
         recipientKeys = generateMasterKeys(environment.testRecipientPassphrase);

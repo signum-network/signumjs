@@ -125,7 +125,7 @@ describe('ChainService', () => {
             }).build();
             const service = createChainService(httpMock);
             // @ts-ignore
-            verifyTransaction = jest.fn();
+            verifyTransaction = vi.fn();
             const result = await service.send('someMethod');
 
             expect(result).toEqual({foo: 'someData'});
@@ -138,7 +138,7 @@ describe('ChainService', () => {
             }).build();
             const service = createChainService(httpMock);
             // @ts-ignore
-            verifyTransaction = jest.fn();
+            verifyTransaction = vi.fn();
             const result = await service.send('someMethod', {skipAdditionalSecurityCheck: true});
 
             expect(result).toEqual({foo: 'someData'});
@@ -253,7 +253,7 @@ describe('ChainService', () => {
         it('should return some host', async () => {
 
             const testClient = new TestHttpClient();
-            testClient.get = jest.fn().mockResolvedValue('get');
+            testClient.get = vi.fn().mockResolvedValue('get');
 
             const service = new ChainService({
                 nodeHost: 'nodeHost',
@@ -271,7 +271,7 @@ describe('ChainService', () => {
         it('should reconfigure the host', async () => {
 
             const testClient = new TestHttpClient();
-            testClient.get = jest.fn().mockResolvedValue('get');
+            testClient.get = vi.fn().mockResolvedValue('get');
 
             const service = new ChainService({
                 nodeHost: 'nodeHost',

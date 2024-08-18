@@ -3,7 +3,7 @@ import {ChainService} from '../../../service/chainService';
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe('[E2E] ChainService', () => {
 
@@ -29,7 +29,7 @@ describe('[E2E] ChainService', () => {
     });
 
     it('should fail on entirely invalid hosts without reconfiguration', async () => {
-        jest.setTimeout(15 * 1000);
+        vi.setTimeout(15 * 1000);
         const service = new ChainService({
             nodeHost: environment.testNetHost,
             reliableNodeHosts: [
@@ -46,6 +46,6 @@ describe('[E2E] ChainService', () => {
             expect(service.settings.httpClient._clientImpl.defaults.baseURL).toBe(environment.testNetHost);
             expect(service.settings.nodeHost).toBe(environment.testNetHost);
         }
-        jest.setTimeout(environment.timeout);
+        vi.setTimeout(environment.timeout);
     });
 });

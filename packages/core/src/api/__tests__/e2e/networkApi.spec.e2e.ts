@@ -5,7 +5,7 @@ import {FeeQuantPlanck} from '@signumjs/util';
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe('[E2E] Network Api', () => {
 

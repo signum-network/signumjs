@@ -23,6 +23,7 @@ const settings = createBuildSettings();
 
 esbuild.build({
     ...settings,
+    external: ["crypto"]
 }).catch( (reason) => {
     console.error("Bundling failed:", reason);
     process.exit(1)

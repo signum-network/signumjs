@@ -3,5 +3,5 @@ import {signAndBroadcastTransaction} from '../../api/factories/transaction/signA
 
 export const mockSignAndBroadcastTransaction = () => {
     // @ts-ignore
-    signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+    signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 };
