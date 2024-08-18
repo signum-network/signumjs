@@ -89,6 +89,10 @@ export class Address {
 
         if (extension) {
             const publicKey = convertBase36StringToHexString(extension).toLowerCase();
+
+            if (convertReedSolomonAddressToNumericId(address) !== getAccountIdFromPublicKey(publicKey)) {
+                throw Error('Address and Public Key do not match');
+            }
             return new Address({publicKey, prefix});
         }
 

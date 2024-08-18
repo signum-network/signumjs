@@ -9,6 +9,9 @@
       "dependsOn": ["^compile"],
       "outputs": ["out/**"]
     },
+    "test": {
+      "dependsOn": ["^test"]
+    },
     "dev": {
       "persistent": true,
       "cache": false

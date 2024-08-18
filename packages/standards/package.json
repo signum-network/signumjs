@@ -26,6 +26,7 @@
   "private": false,
   "scripts": {
     "test": "vitest run",
+    "test:ci": "vitest run --coverage",
     "compile": "tsc",
     "bundle": "node bundle.js"
   },

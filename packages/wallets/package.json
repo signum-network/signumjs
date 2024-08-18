@@ -42,16 +42,11 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/node": "^17.0.8",
-    "bili": "^4.10.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-typescript2": "^0.24.2"
+    "@types/node": "^20.16.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
     "compile": "tsc",
     "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"

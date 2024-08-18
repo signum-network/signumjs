@@ -59,7 +59,7 @@ describe('descriptorData', () => {
                     },
                     'description': 'World class exchange at your service',
                     'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                    'homePage': 'https://bittrex.com',
+                    'homePage': 'https://bittrex.com/',
                     'name': 'Bittrex',
                     'sendRule': /^[0-9a-fA-F]{24}$/,
                     'socialMediaLinks': [
@@ -86,7 +86,7 @@ describe('descriptorData', () => {
                     },
                     'description': 'World class exchange at your service',
                     'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                    'homePage': 'https://bittrex.com',
+                    'homePage': 'https://bittrex.com/',
                     'name': 'Bittrex',
                     'sendRule': /^[0-9a-fA-F]{24}$/,
                     'socialMediaLinks': [
@@ -131,7 +131,7 @@ describe('descriptorData', () => {
             });
             expect(descriptor.description).toBe('World class exchange at your service');
             expect(descriptor.alias).toBe('somealias');
-            expect(descriptor.homePage).toBe('https://bittrex.com');
+            expect(descriptor.homePage).toBe('https://bittrex.com/');
             expect(descriptor.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
             expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
@@ -191,7 +191,7 @@ describe('descriptorData', () => {
             });
             expect(descriptor.description).toBe('World class exchange at your service');
             expect(descriptor.alias).toBe('somealias');
-            expect(descriptor.homePage).toBe('https://bittrex.com');
+            expect(descriptor.homePage).toBe('https://bittrex.com/');
             expect(descriptor.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
             expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
@@ -211,7 +211,7 @@ describe('descriptorData', () => {
             });
             expect(descriptor.description).toBe('World class exchange at your service');
             expect(descriptor.alias).toBe('somealias');
-            expect(descriptor.homePage).toBe('https://bittrex.com');
+            expect(descriptor.homePage).toBe('https://bittrex.com/');
             expect(descriptor.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
             expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
@@ -232,7 +232,7 @@ describe('descriptorData', () => {
             });
             expect(descriptor.description).toBe('World class exchange at your service');
             expect(descriptor.alias).toBe('somealias');
-            expect(descriptor.homePage).toBe('https://bittrex.com');
+            expect(descriptor.homePage).toBe('https://bittrex.com/');
             expect(descriptor.sendRule).toEqual(new RegExp('^[0-9a-fA-F]{24}$'));
             expect(descriptor.extension).toBe('QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc');
             expect(descriptor.socialMediaLinks).toEqual(['https://twitter.com/bittrex', 'https://twitter.com/bittrex2']);
