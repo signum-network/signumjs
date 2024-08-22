@@ -1,3 +1,4 @@
+import {describe, it, expect} from 'vitest';
 import {convertReedSolomonAddressToNumericId} from '../convertReedSolomonAddressToNumericId';
 
 describe('convertReedSolomonAddressToNumericId', () => {

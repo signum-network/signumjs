@@ -1,4 +1,5 @@
 /* tslint:disable:quotemark */
+import {vi, expect, describe, it, afterEach} from "vitest"
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
 import {getAsset} from '../factories/asset/getAsset';
@@ -29,24 +30,30 @@ import {
     getAssetsByOwner,
 } from '../factories';
 import {Amount, FeeQuantPlanck} from '@signumjs/util';
-import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
+import {createChainService} from '../../__tests__/helpers';
 import {TransactionId} from '../../typings/transactionId';
 import {calculateDistributionFee} from '../factories/asset/calculateDistributionFee';
+
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
 
 describe('Asset Api', () => {
 
     let httpMock: Http;
-
-    beforeAll(() => {
-        // @ts-ignore
-        mockSignAndBroadcastTransaction();
-    });
 
     afterEach(() => {
         if (httpMock) {
             // @ts-ignore
             httpMock.reset();
         }
+        vi.clearAllMocks();
     });
 
     describe('getAsset', () => {
@@ -88,7 +95,7 @@ describe('Asset Api', () => {
                 const service = createChainService(httpMock, 'relPath');
                 await getBlockchainStatus(service)();
                 expect(true).toBe('Exception expected');
-            } catch (error) {
+            } catch (error: any) {
                 expect(error.status).toBe(500);
             }
         });

@@ -1,7 +1,11 @@
-// path must not be shortened, or mocking fails
-import {signAndBroadcastTransaction} from '../../api/factories/transaction/signAndBroadcastTransaction';
+// Import the function to be mocked
+import {vi, Mock} from "vitest"
 
-export const mockSignAndBroadcastTransaction = () => {
-    // @ts-ignore
-    signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
-};
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});

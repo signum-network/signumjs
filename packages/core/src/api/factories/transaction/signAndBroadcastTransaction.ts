@@ -21,8 +21,8 @@ export const signAndBroadcastTransaction = (chainService: ChainService):
 
         const {unsignedHexMessage, senderPrivateKey, senderPublicKey} = unsignedTransaction;
 
-        const signature = await generateSignature(unsignedHexMessage, senderPrivateKey);
-        const isValid = await verifySignature(signature, unsignedHexMessage, senderPublicKey);
+        const signature = generateSignature(unsignedHexMessage, senderPrivateKey);
+        const isValid = verifySignature(signature, unsignedHexMessage, senderPublicKey);
         if (!isValid) {
             throw new Error('The signed message could not be verified! Transaction not broadcasted!');
         }
