@@ -19,10 +19,11 @@ jobs:
       - name: Install turbo
         run: npm install turbo -g
 
+      - name: Install Deps
+        run: npm ci
+
       - name: Compile, Test and Bundle SignumJS packages
-        run:
-          npm ci
-          npm run build:ci
+        run: npm run build:ci
 
       - name: fix code coverage paths
         working-directory: ./coverage
