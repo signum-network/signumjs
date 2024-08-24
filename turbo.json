@@ -12,6 +12,9 @@
     "test": {
       "dependsOn": ["^test"]
     },
+    "test:ci": {
+      "dependsOn": ["^test:ci"]
+    },
     "dev": {
       "persistent": true,
       "cache": false

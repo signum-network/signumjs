@@ -4,6 +4,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
     test: {
         globals: true,
-        include: process.env.TEST_ENV === 'e2e' ? ['**/*.spec.e2e.ts'] : ['**/*.spec.ts'],
+        coverage: {
+            reporter: [['json', {file : "http-coverage.json"}]],
+            include: ["src/**"],
+        }
     }
 })

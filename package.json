@@ -26,10 +26,11 @@
   "license": "Apache-2.0",
   "private": false,
   "devDependencies": {
+    "@vitest/coverage-v8": "^2.0.5",
+    "turbo": "^2.0.14",
     "typedoc": "0.16.11",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5",
-    "turbo": "^2.0.14"
+    "vitest": "^2.0.5"
   },
   "scripts": {
     "compile": "turbo run compile",
@@ -39,11 +40,15 @@
     "publish": "turbo run compile test bundle && echo 'TODO: run publisher' ",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
+    "posttest:ci": "./generate-coverage-report.sh",
     "test:e2e": "TEST_ENV=e2e turbo run test",
     "build:ci": "turbo run compile test:ci bundle"
   },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "npm@10.0.0",
   "dependencies": {
-  },
-  "workspaces": [ "packages/*" ],
-  "packageManager": "npm@10.0.0"
+    "nyc": "^17.0.0"
+  }
 }
