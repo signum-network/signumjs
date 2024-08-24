@@ -29,7 +29,9 @@
   "typings": "./out/index.d.ts",
   "private": false,
   "devDependencies": {
-    "@types/node": "^20.16.0"
+    "@types/node": "^20.16.0",
+    "@signumjs/core": "*",
+    "@signumjs/crypto": "*"
   },
   "scripts": {
     "test": "vitest run",
