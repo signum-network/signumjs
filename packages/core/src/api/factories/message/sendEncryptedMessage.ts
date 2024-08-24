@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
  */
+import {encryptMessage} from '@signumjs/crypto';
 import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
-import {encryptMessage} from '@signumjs/crypto';
 import {SendEncryptedMessageArgs} from '../../../typings/args/sendEncryptedMessageArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 

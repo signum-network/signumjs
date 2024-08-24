@@ -390,8 +390,8 @@ describe('Asset Api', () => {
                     senderPrivateKey: 'senderPrivateKey',
                     senderPublicKey: 'senderPublicKey',
                 }) as TransactionId;
-                fail('should throw error');
-            } catch (e) {
+                expect("should throw error").toBeFalsy()
+            } catch (e:any) {
                 expect(e.message).toBe('At least 2 asset-quantities are needed');
             }
         });
@@ -421,8 +421,8 @@ describe('Asset Api', () => {
                     senderPrivateKey: 'senderPrivateKey',
                     senderPublicKey: 'senderPublicKey',
                 }) as TransactionId;
-                fail('should throw error');
-            } catch (e) {
+                expect('should throw error').toBeFalsy();
+            } catch (e: any) {
                 expect(e.message).toBe('At maximum 4 asset-quantities are allowed');
             }
         });
@@ -449,8 +449,8 @@ describe('Asset Api', () => {
                     senderPrivateKey: 'senderPrivateKey',
                     senderPublicKey: 'senderPublicKey',
                 }) as TransactionId;
-                fail('should throw error');
-            } catch (e) {
+                expect('should throw error').toBeFalsy();
+            } catch (e:any) {
                 expect(e.message).toBe('Duplicate assetId found');
             }
         });

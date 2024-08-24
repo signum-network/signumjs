@@ -1,3 +1,5 @@
+import {describe, vi, expect, it, afterEach} from  "vitest"
+
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {getBlockchainStatus} from '../factories/network/getBlockchainStatus';
 import {getServerStatus} from '../factories/network/getServerStatus';
@@ -5,6 +7,17 @@ import {getTime} from '../factories/network/getTime';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {getMiningInfo, getSuggestedFees} from '../factories/network';
 import {FeeQuantPlanck} from '@signumjs/util';
+
+// mocking
+import {signAndBroadcastTransaction} from '../../api/factories/transaction/signAndBroadcastTransaction';
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({transaction: 'transactionId'})
+        ),
+    };
+});
+
 
 describe('Network Api', () => {
 
@@ -15,6 +28,7 @@ describe('Network Api', () => {
             // @ts-ignore
             httpMock.reset();
         }
+        vi.clearAllMocks();
     });
 
     describe('getBlockchainStatus', () => {
@@ -36,7 +50,7 @@ describe('Network Api', () => {
                 const service = createChainService(httpMock, 'relPath');
                 await getBlockchainStatus(service)();
                 expect(true).toBe('Exception expected');
-            } catch (error) {
+            } catch (error: any) {
                 expect(error.status).toBe(500);
             }
         });
@@ -78,7 +92,7 @@ describe('Network Api', () => {
                 const service = createChainService(httpMock, 'relPath');
                 await getServerStatus(service)();
                 expect(true).toBe('Exception expected');
-            } catch (error) {
+            } catch (error: any) {
                 expect(error.status).toBe(500);
             }
         });

@@ -1,17 +1,25 @@
+import {describe, afterEach, it, expect, vi} from "vitest"
 import {signIfPrivateKey} from '../signIfPrivateKey';
 import {HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers';
-import {signAndBroadcastTransaction} from '../../api/factories/transaction/signAndBroadcastTransaction';
 import {TransactionId} from '../../typings/transactionId';
-import {ChainService} from '../../service';
 import {UnsignedTransaction} from '../../typings/unsignedTransaction';
+
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
+
 
 describe('signIfPrivateKey', () => {
 
-    beforeEach(() => {
-        vi.resetAllMocks();
-        // @ts-ignore
-        signAndBroadcastTransaction = vi.fn((service: ChainService) => (unsigned: string) => Promise.resolve({transaction: 'transaction'}));
+    afterEach(() => {
+        vi.clearAllMocks();
     });
 
     it('should call signAndBroadcast if a private key is given', async () => {
@@ -30,7 +38,7 @@ describe('signIfPrivateKey', () => {
             });
         }) as TransactionId;
 
-        expect(result).toEqual({transaction: 'transaction'});
+        expect(result).toEqual({transaction: 'transactionId'});
     });
     it('should not call signAndBroadcast if a private key is given', async () => {
         const httpMock = HttpMockBuilder.create().build();

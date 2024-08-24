@@ -1,13 +1,12 @@
+import {describe,afterEach, it, expect, vi, beforeEach} from "vitest"
+
 import {Http, HttpMockBuilder} from '@signumjs/http';
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {
     Attachment,
     AttachmentEncryptedMessage,
     AttachmentMessage, getTransactionByFullHash, getUnconfirmedTransactions,
     MultioutRecipientAmount,
-    Transaction,
-    TransactionId
 } from '../..';
 import {
     broadcastTransaction,
@@ -21,6 +20,16 @@ import {
     signAndBroadcastTransaction,
     getSubscriptionPayments,
 } from '../factories/transaction';
+
+import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
+vi.mock('@signumjs/crypto', () => {
+    return {
+        generateSignature: vi.fn().mockImplementation(() => 'signature'),
+        generateSignedTransactionBytes: vi.fn().mockImplementation(() => "signedTransactionBytes"),
+        verifySignature: vi.fn().mockImplementation(() => true)
+    };
+});
+
 
 describe('TransactionApi', () => {
 
@@ -80,7 +89,7 @@ describe('TransactionApi', () => {
 
         let service;
 
-        const mockTransaction: Transaction = {
+        const mockTransaction: any = {
             transaction: 'transactionId',
             requestProcessingTime: 4,
             feeNQT: '1000',
@@ -93,21 +102,10 @@ describe('TransactionApi', () => {
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
-        beforeEach(() => {
-            vi.resetAllMocks();
-
-            // @ts-ignore
-            generateSignature = vi.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = vi.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
-
-        });
-
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
         it('should send money to multiple recipients', async () => {
@@ -148,7 +146,7 @@ describe('TransactionApi', () => {
                     senderPrivateKey: 'senderPrivateKey',
                     recipientIds: recipients,
                 });
-            } catch (e) {
+            } catch (e:any) {
                 hasThrown = e.message === 'Duplicate Recipients found';
             }
 
@@ -199,7 +197,7 @@ describe('TransactionApi', () => {
                     recipientIds: recipients
                 });
                 expect(false).toBe('Expected exception');
-            } catch (e) {
+            } catch (e: any) {
                 expect(e.message).toContain('No recipients given');
             }
         });
@@ -210,7 +208,7 @@ describe('TransactionApi', () => {
 
         let service;
 
-        const mockTransaction: Transaction = {
+        const mockTransaction: any = {
             transaction: 'transactionId',
             requestProcessingTime: 4,
             fullHash: '808d5c32b12f4d4b963404c19523b6391ddf7a04a96ec4a495703aeead76c6ff',
@@ -221,21 +219,10 @@ describe('TransactionApi', () => {
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
-        beforeEach(() => {
-            vi.resetAllMocks();
-
-            // @ts-ignore
-            generateSignature = vi.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = vi.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
-
-        });
-
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
         it('should send arbitrary amounts to multiple recipients', async () => {
@@ -304,7 +291,7 @@ describe('TransactionApi', () => {
                         senderPrivateKey: 'senderPrivateKey'
                     }
                 );
-            } catch (e) {
+            } catch (e:any) {
                 hasThrown = e.message === 'Duplicate Recipients found';
             }
             expect(hasThrown).toBeTruthy();
@@ -328,7 +315,7 @@ describe('TransactionApi', () => {
                     }
                 );
                 expect(false).toBe('Expected exception');
-            } catch (e) {
+            } catch (e: any) {
                 expect(e.message).toContain('No recipients given');
             }
         });
@@ -336,7 +323,7 @@ describe('TransactionApi', () => {
 
     describe('sendAmountToSingleRecipient', () => {
 
-        const mockTransaction: Transaction = {
+        const mockTransaction: any = {
             transaction: 'transactionId',
             requestProcessingTime: 4,
             fullHash: '808d5c32b12f4d4b963404c19523b6391ddf7a04a96ec4a495703aeead76c6ff',
@@ -347,19 +334,10 @@ describe('TransactionApi', () => {
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
-        beforeEach(() => {
-            vi.resetAllMocks();
-            // @ts-ignore
-            generateSignature = vi.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = vi.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
-        });
-
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
         it('should send amount without attachment', async () => {
@@ -505,7 +483,7 @@ describe('TransactionApi', () => {
                     }
                 );
                 expect(false).toBe('Expect Exception');
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.message).toContain('Unknown attachment type');
             }
         });
@@ -536,7 +514,7 @@ describe('TransactionApi', () => {
 
     describe('Subscriptions ', () => {
 
-        const mockTransaction: TransactionId = {
+        const mockTransaction: any = {
             transaction: 'transactionId',
             fullHash: 'fullHash',
         };
@@ -546,19 +524,10 @@ describe('TransactionApi', () => {
             unsignedTransactionBytes: 'unsignedHexMessage'
         };
 
-        beforeEach(() => {
-            vi.resetAllMocks();
-            // @ts-ignore
-            generateSignature = vi.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = vi.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
-        });
-
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
 
@@ -667,22 +636,12 @@ describe('TransactionApi', () => {
     });
 
     describe('signAndBroadcastTransaction', () => {
-        beforeEach(() => {
-            // @ts-ignore
-            generateSignature = vi.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = vi.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = vi.fn(() => 'signedTransactionBytes');
-
-        });
-
         afterEach(() => {
             if (httpMock) {
                 // @ts-ignore
                 httpMock.reset();
             }
-            vi.restoreAllMocks();
+            vi.clearAllMocks();
         });
 
         it('should sign as expected', async () => {
@@ -723,7 +682,7 @@ describe('TransactionApi', () => {
                     senderPublicKey: 'senderPublicKey',
                 });
                 expect(false).toBe('Expected Exception');
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.message).toBe('The signed message could not be verified! Transaction not broadcasted!');
             }
 
