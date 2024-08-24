@@ -32,13 +32,15 @@
     "turbo": "^2.0.14"
   },
   "scripts": {
-    "bootstrap": "lerna exec npm install && lerna bootstrap && lerna run tsc",
-    "build": "turbo run bundle",
+    "compile": "turbo run compile",
+    "bundle": "turbo run bundle",
     "doc": "typedoc --options tsdoc.json --listInvalidSymbolLinks",
-    "publish": "npm run test && lerna exec npm run bundle && lerna publish --force-publish",
+    "publish:old": "npm run test && lerna exec npm run bundle && lerna publish --force-publish",
+    "publish": "turbo run compile test bundle && echo 'TODO: run publisher' ",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
-    "test:e2e": "TEST_ENV=e2e turbo run test"
+    "test:e2e": "TEST_ENV=e2e turbo run test",
+    "build:ci": "turbo run compile test:ci bundle"
   },
   "dependencies": {
   },

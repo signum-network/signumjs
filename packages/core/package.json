@@ -27,19 +27,6 @@
   "main": "./out/index.js",
   "typings": "./out/index.d.ts",
   "private": false,
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
-  },
   "devDependencies": {
     "@types/bignumber.js": "^5.0.0",
     "dotenv": "^8.2.0",

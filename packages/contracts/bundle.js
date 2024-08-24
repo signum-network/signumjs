@@ -5,7 +5,7 @@ function createBuildSettings(options) {
     return {
         entryPoints: ['./src/index.ts'],
         outfile: './dist/signumjs.contracts.min.js',
-        globalName: 'sig$http',
+        globalName: 'sig$contracts',
         minify: true,
         sourcemap: true,
         format: 'iife',

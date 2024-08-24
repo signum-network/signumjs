@@ -35,8 +35,8 @@
   "scripts": {
     "test": "vitest run",
     "test:ci": "vitest run --coverage",
-    "build": "tsc",
-    "bundle": "npm run build && node bundle.js",
+    "compile": "tsc",
+    "bundle": "node bundle.js",
     "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
   },
   "husky": {

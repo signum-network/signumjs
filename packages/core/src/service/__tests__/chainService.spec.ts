@@ -304,7 +304,7 @@ describe('ChainService', () => {
             try {
                 await service.selectBestHost();
                 expect('Expected exception').toBeFalsy();
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.message).toBe('No reliableNodeHosts configured');
             }
         });
