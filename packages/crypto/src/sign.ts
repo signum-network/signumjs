@@ -20,7 +20,7 @@ function hexToDec(s: string): string {
             carry = carry / 10 | 0;
         }
     }
-    return digits.reverse().join('');
+    return digits.toReversed().join('');
 }
 
 function toBytes(hex: string): Uint8Array {

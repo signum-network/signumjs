@@ -44,10 +44,6 @@ export class Crypto {
     /**
      * @return true, if environment is nodejs (or similar)
      */
-    // public static isNode() {
-    //     return typeof global.process !== 'undefined' && global.process.versions != null && global.process.versions.node != null;
-    // }
-
     public static isNode() {
         return typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
     }

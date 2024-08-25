@@ -27,7 +27,7 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
     }
     try {
         const cp = Crypto.getInstance().provider;
-        const key = await cp.sha256(sharedKey);
+        const key = cp.sha256(sharedKey);
         return await cp.decryptAes256Cbc(ivCiphertext, key);
     } catch (e) {
         // @ts-ignore

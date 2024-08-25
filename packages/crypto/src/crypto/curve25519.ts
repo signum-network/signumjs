@@ -20,13 +20,13 @@ export class Curve25519 {
 
     //region Constants
 
-    public static KEY_SIZE: number = 32;
+    public static readonly KEY_SIZE: number = 32;
 
     /* array length */
-    public static UNPACKED_SIZE: number = 16;
+    public static readonly UNPACKED_SIZE: number = 16;
 
     /* group order (a prime near 2^252+2^124) */
-    public static ORDER: number[] = [
+    public static readonly ORDER: number[] = [
         237, 211, 245, 92,
         26, 99, 18, 88,
         214, 156, 247, 162,
@@ -38,7 +38,7 @@ export class Curve25519 {
     ];
 
     /* smallest multiple of the order that's >= 2^255 */
-    public static ORDER_TIMES_8: number[] = [
+    public static readonly ORDER_TIMES_8: number[] = [
         104, 159, 174, 231,
         210, 24, 147, 192,
         178, 230, 188, 23,
@@ -50,27 +50,27 @@ export class Curve25519 {
     ];
 
     /* constants 2Gy and 1/(2Gy) */
-    public static BASE_2Y: number[] = [
+    public static readonly BASE_2Y: number[] = [
         22587, 610, 29883, 44076,
         15515, 9479, 25859, 56197,
         23910, 4462, 17831, 16322,
         62102, 36542, 52412, 16035
     ];
 
-    public static BASE_R2Y: number[] = [
+    public static readonly BASE_R2Y: number[] = [
         5744, 16384, 61977, 54121,
         8776, 18501, 26522, 34893,
         23833, 5823, 55924, 58749,
         24147, 14085, 13606, 6080
     ];
 
-    public static C1: number[] = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    public static C9: number[] = [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    public static C486671 = [0x6D0F, 0x0007, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    public static C39420360 = [0x81C8, 0x0259, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    public static readonly C1: number[] = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    public static readonly C9: number[] = [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    public static readonly C486671 = [0x6D0F, 0x0007, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    public static readonly C39420360 = [0x81C8, 0x0259, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    public static P25: number = 33554431; /* (1 << 25) - 1 */
-    public static P26: number = 67108863; /* (1 << 26) - 1 */
+    public static readonly P25: number = 33554431; /* (1 << 25) - 1 */
+    public static readonly P26: number = 67108863; /* (1 << 26) - 1 */
 
     //#endregion
 

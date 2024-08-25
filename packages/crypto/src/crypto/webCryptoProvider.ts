@@ -65,7 +65,5 @@ export class WebCryptoProvider implements CryptoProvider {
 
     sha256(data: ArrayBuffer): Uint8Array {
         return Uint8Array.from(sha256JS.digest(data));
-        // const hashBuffer = await this.crypto.subtle.digest('SHA-256', data);
-        // return new Uint8Array(hashBuffer);
     }
 }
