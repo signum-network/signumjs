@@ -2,7 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "bundle": {
-      "dependsOn": ["^bundle"],
+      "dependsOn": ["^compile","^bundle"],
       "outputs": ["dist/**"]
     },
     "compile": {
