@@ -42,7 +42,7 @@
     "test:ci": "turbo run test:ci",
     "posttest:ci": "./generate-coverage-report.sh",
     "test:e2e": "TEST_ENV=e2e turbo run test",
-    "build:ci": "turbo run compile test:ci bundle"
+    "build:ci": "turbo run bundle test:ci"
   },
   "workspaces": [
     "packages/*"
