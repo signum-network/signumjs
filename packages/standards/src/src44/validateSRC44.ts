@@ -16,7 +16,7 @@ import {parseIpfsMedia} from './parseIpfsMedia';
  * @internal
  * @param json
  * @param strict
- * @category SRC44
+ * 
  */
 export function validateSRC44(json: SRC44Descriptor, strict = true) {
     const MaxLength = 1000;

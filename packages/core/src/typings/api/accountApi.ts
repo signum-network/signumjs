@@ -158,7 +158,7 @@ export interface AccountApi {
      *
      * So you can see, if an account is bound to a pool.
      *
-     * @param {string} account The account Id
+     * @param {string} accountId The account Id
      * @return The Reward Recipient
      */
     getRewardRecipient: ( accountId: string ) => Promise<RewardRecipient>;
@@ -193,7 +193,7 @@ export interface AccountApi {
      *
      * @param {GetTradeHistoryPerAccountArgs} args The args object
      *
-     * @param The trade history
+     * @return The trade history
      */
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 }

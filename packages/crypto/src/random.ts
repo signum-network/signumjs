@@ -16,7 +16,9 @@ import {Crypto, Buffer} from './crypto';
  * @param length Length of array
  *
  * @return An array of bytes of given length
- * @module crypto
+ *
+ *
+ * @category random
  */
 export function getRandomBytes(length: number): Uint8Array {
     return Crypto.getInstance().provider.getRandomValues(new Uint8Array(length));
@@ -25,14 +27,15 @@ export function getRandomBytes(length: number): Uint8Array {
 /**
  * Gets an array of random words from a dictionary
  *
- * @note Usually 2048 words are sufficient. This method does not support dictionaries with more than 65536 words
+ * > Usually 2048 words are sufficient. This method does not support dictionaries with more than 65536 words
  *
  * @param count The number of words generated
  * @param dictionary An array of strings from where the random words are picked
  *
  * @return An array with _count_ words
  * @throws An error if dictionary's length is smaller than _count_
- * @module crypto
+ *
+ * @category random
  */
 export function getRandomWords(count: number, dictionary: string[]): string[] {
     if (count > dictionary.length) {
@@ -57,7 +60,8 @@ export function getRandomWords(count: number, dictionary: string[]): string[] {
 /**
  * Default Alphabet
  * @see {@link getRandomString}
- * @module crypto
+ *
+ * @category random
  */
 export const DefaultAlphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' as string;
 
@@ -69,7 +73,8 @@ export const DefaultAlphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV
  *
  * @return A string with random characters of given length
  * @throws An error if alphabet is empty or too large (2^16 chars is limit)
- * @module crypto
+ *
+ * @category random
  */
 export function getRandomString(length: number, alphabet: string = DefaultAlphabet): string {
     if (alphabet.length === 0) {

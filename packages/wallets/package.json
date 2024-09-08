@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@signumjs/util": "*",
+    "@signumjs/standards": "*",
     "uuid": "^10.0.0"
   },
   "husky": {

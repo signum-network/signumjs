@@ -9,15 +9,15 @@ import {Attachment} from '../attachment';
 export interface DefaultSendArgs {
     /**
      * The fee expressed in Planck
-     * @note It's recommended to use {@link util.Amount}
+     * > It's recommended to use {@link util.Amount}
      */
     feePlanck: string;
     /**
-     * The senders public key,  i.e. the {@link crypto.Keys.publicKey}
+     * The senders public key,  i.e. the {@link crypto.SignKeys.publicKey}
      */
     senderPublicKey: string;
     /**
-     * The senders private key, i.e. the {@link crypto.Keys.signPrivateKey}
+     * The senders private key, i.e. the {@link crypto.SignKeys.signPrivateKey}
      * If the private key is not given, then the transaction method will return the unsigned byte string.
      * The transaction won't be processed until the unsigned bytes are being signed and broadcasted using
      * {@link TransactionApi.signAndBroadcastTransaction}

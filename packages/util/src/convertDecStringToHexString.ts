@@ -10,14 +10,16 @@ import {twosComplementBinary} from './internal/twosComplementBinary';
 /**
  * Arbitrary length decimal to hexadecimal conversion
  *
- * @note: Negative numbers are expressed as Two's Complement (https://en.wikipedia.org/wiki/Two%27s_complement)
+ * >  Negative numbers are expressed as Two's Complement (https://en.wikipedia.org/wiki/Two%27s_complement)
+ *
  * Credits to AJ ONeal for the two's complements stuff
  * https://coolaj86.com/articles/convert-decimal-to-hex-with-js-bigints/
  *
  * @param decimal A decimal string or BigNumber representation
  * @param padding If set the hex string will be padded to given number, 8 or 16 or more
  * @return A hexadecimal string
- * @module util
+ *
+ * @category conversion
  */
 export const convertDecStringToHexString = (decimal: BigNumber | string, padding: number = 2 ): string => {
     let bn = typeof decimal === 'string' ? new BigNumber(decimal) : decimal;

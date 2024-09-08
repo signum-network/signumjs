@@ -2,8 +2,8 @@
  * Original work Copyright (c) 2022 Signum Network
  */
 
+import {src22} from '@signumjs/standards';
 /* globals window */
-import {createDeeplink} from '@signumjs/util';
 import {SendEncryptedMessageArgs, Wallet} from '../typings';
 import {isNodeJS} from '../isNodeJS';
 
@@ -27,7 +27,7 @@ interface DeeplinkableWalletOpts {
 }
 
 /**
- * This wallet (proxy) allows interacting with CIP22 compatible deep linkable wallets.
+ * This wallet (proxy) allows interacting with SIP22 compatible deep linkable wallets.
  *
  * The call of one its methods in nodejs just returns the generated urls, while in browser (also mobile) environments
  * it tries to open the deep link and though the wallet if installed on the system.
@@ -56,7 +56,7 @@ export class GenericDeeplinkableWallet implements Wallet {
 
 
     protected mountDeeplink(action: string, payload: object): string {
-        const link = createDeeplink({
+        const link = src22.createDeeplink({
             action,
             payload
         });

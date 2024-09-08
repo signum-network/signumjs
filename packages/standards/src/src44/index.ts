@@ -1,6 +1,6 @@
 /**
  * @module standards
- * @category SRC44
+ * 
  *
  * SRC44: Standard for [Descriptor Information](https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md)
  *

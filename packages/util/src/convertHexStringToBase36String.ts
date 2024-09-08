@@ -9,7 +9,8 @@ import BigNumber from 'bignumber.js';
  * Inverse function {@link convertBase36StringToHexString}
  * @param hex The string to be decoded (either URI encoded or not)
  * @return {string} The hex representation of input string
- * @module util
+ *
+ * @category conversion
  */
 export  const convertHexStringToBase36String = (hex: string): string => {
     return new BigNumber(hex, 16).toString(36);

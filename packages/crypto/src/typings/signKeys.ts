@@ -9,7 +9,8 @@
  *
  * The Keys class is used to encompass keys associated to an account.
  *
- * @module crypto
+ *
+ * @category signing
  */
 export interface SignKeys {
     /**

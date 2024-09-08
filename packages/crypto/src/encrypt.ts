@@ -15,8 +15,6 @@ import {CryptoError} from './typings/cryptoError';
  *
  * @ignore
  * @internal
- * @module crypto
- *
  */
 async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
     try {
@@ -41,7 +39,8 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
  * @param recipientPublicKeyHex The recipients public key in hexadecimal format
  * @param senderPrivateKeyHex The senders private (agreement) key hexadecimal format
  * @return The encrypted Data
- * @module crypto
+ *
+ * @category en/decryption
  */
 export async function encryptData(
     plaintext: Uint8Array,
@@ -77,7 +76,8 @@ export async function encryptData(
  * @param recipientPublicKeyHex The recipients public key hexadecimal format
  * @param senderPrivateKeyHex The senders private (agreement) key hexadecimal format
  * @return The encrypted Message
- * @module crypto
+ *
+ * @category en/decryption
  */
 export async function encryptMessage(plaintext: string, recipientPublicKeyHex: string, senderPrivateKeyHex: string)
     : Promise<EncryptedMessage> {

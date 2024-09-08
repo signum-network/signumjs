@@ -6,7 +6,7 @@
 /**
  * Args object for {@link asyncRetry}
  *
- * @module util
+ * 
  */
 export interface AsyncRetryArgs<T> {
     /**

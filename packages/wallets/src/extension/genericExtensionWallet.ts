@@ -52,7 +52,8 @@ interface GenericExtensionWalletConnectArgs {
  *  }).catch(console.error)
  * ```
  *
- * @note At this time, this wallet does only work in the browser
+ * > At this time, this wallet does only work in the browser
+ *
  * @module wallets
  */
 export class GenericExtensionWallet implements Wallet {

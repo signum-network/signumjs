@@ -25,7 +25,7 @@ import {DescriptorData} from './DescriptorData';
  * ```
  *
  * Creates SRC44-compliant {@link DescriptorData} object to be used as description in Smart Contracts, Account Info, and/or Aliases
- * @category SRC44
+ * 
  */
 export class DescriptorDataBuilder {
 

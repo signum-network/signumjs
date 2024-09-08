@@ -22,7 +22,7 @@ import {GetAliasesArgs} from '../args/getAliasesArgs';
  * Aliases are Data Containers with ownership. They can carry up to 1KB of arbitrary data which can be updated and are also transferable.
  * Aliases are very powerful and be used for a various applications:
  * - Updateable NFTs
- * - DNS like resolution (see also {@link SRC47:URIResolver})
+ * - DNS like resolution (see also {@link standards.src47.URIResolver})
  * - RWA linkage
  * - ...
  *

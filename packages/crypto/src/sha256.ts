@@ -10,7 +10,8 @@ export type InputEncoding = 'utf8' | 'hex' | 'base64';
  * @param input An arbitrary text
  * @param encoding The encoding of input type (default: 'utf8')
  * @return the hash for that string in ArrayBuffer
- * @module crypto
+ *
+ * @category sha256
  */
 export function sha256Raw(input: string, encoding: InputEncoding ): ArrayBuffer {
     return Crypto.getInstance().provider.sha256(Buffer.from(input, encoding));
@@ -22,7 +23,9 @@ export function sha256Raw(input: string, encoding: InputEncoding ): ArrayBuffer 
  * @param input An arbitrary text
  * @param encoding The encoding of input type (default: 'utf8')
  * @return the hash for that string in Uint8Array
- * @module crypto
+ *
+ *
+ * @category sha256
  */
 export function sha256AsBytes(input: string, encoding: InputEncoding = 'utf8' ): Uint8Array {
     return new Uint8Array(sha256Raw(input, encoding));
@@ -33,7 +36,8 @@ export function sha256AsBytes(input: string, encoding: InputEncoding = 'utf8' ):
  * @param input An arbitrary text (utf-8)
  * @param encoding The encoding of input type (default: 'utf8')
  * @return the hash for that string in hex format
- * @module crypto
+ *
+ * @category sha256
  */
 export function sha256AsHex(input: string, encoding: InputEncoding = 'utf8'): string {
     return Buffer.from(sha256Raw(input, encoding)).toString('hex');
@@ -44,7 +48,8 @@ export function sha256AsHex(input: string, encoding: InputEncoding = 'utf8'): st
  * @param input An arbitrary text (utf-8)
  * @param encoding The encoding of input type (default: 'utf8')
  * @return the hash for that string in base64 format
- * @module crypto
+ *
+ * @category sha256
  */
 export function sha256AsBase64(input: string, encoding: InputEncoding = 'utf8'): string {
     return Buffer.from(sha256Raw(input, encoding)).toString('base64');
@@ -54,7 +59,8 @@ export function sha256AsBase64(input: string, encoding: InputEncoding = 'utf8'):
  * Hashes binary data into byte array
  * @param data A hex data string or byte array
  * @return the hash for that as byte array
- * @module crypto
+ *
+ * @category sha256
  */
 export function sha256Binary(data: string | Uint8Array): Uint8Array {
     const b: Uint8Array = typeof data === 'string' ? Buffer.from(data, 'hex') : data;

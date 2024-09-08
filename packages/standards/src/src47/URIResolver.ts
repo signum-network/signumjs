@@ -9,7 +9,7 @@ import {DescriptorData} from '../src44';
 /**
  * @internal
  * @ignore
- * @category SRC47
+ * 
  */
 export const KnownTlds = [
     'blockchain',
@@ -70,7 +70,7 @@ interface URI {
  *
  * Also considers known top-level domains and accepts the following format for those URIs: <subdomain>.<domain>.<tld> (instead of `@`)
  *
- * @category SRC47
+ * 
  */
 export class URIResolver {
     constructor(private ledger: Ledger) {

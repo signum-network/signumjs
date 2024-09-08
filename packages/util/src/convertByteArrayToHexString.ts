@@ -9,7 +9,8 @@
  * @param bytes The (unsigned) byte array to be converted
  * @param uppercase If _true_, converts hex string with uppercase characters (Default: false)
  * @return {string} A hex string representing the byte array input
- * @module util
+ *
+ * @category conversion
  */
 export const convertByteArrayToHexString = (bytes: Uint8Array, uppercase = false): string => {
     const hex = [];

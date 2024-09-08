@@ -6,7 +6,6 @@
  *
  * One might need to implement this interface for other environments, i.e. React Native and use {@link Crypto.setCustomProvider}
  *
- * @module crypto
  */
 export interface CryptoProvider {
     encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array>;

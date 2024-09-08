@@ -14,7 +14,6 @@ import {CryptoError} from './typings/cryptoError';
  *
  * @ignore
  * @internal
- * @module crypto
  *
  */
 async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: any[]) {
@@ -41,7 +40,8 @@ async function decrypt(ivCiphertext: Uint8Array, nonce: Uint8Array, sharedKeyOri
  * @param senderPublicKeyHex The senders public key in hex format
  * @param recipientPrivateKeyHex The recipients private (agreement) key in hex format
  * @return The original plain text
- * @module crypto
+ *
+ * @category en/decryption
  */
 export async function decryptData(
     encryptedData: EncryptedData,
@@ -69,7 +69,8 @@ export async function decryptData(
  * @param senderPublicKeyHex The senders public key in hex format
  * @param recipientPrivateKeyHex The recipients private (agreement) key in hex format
  * @return The original message
- * @module crypto
+ *
+ * @category en/decryption
  */
 export async function decryptMessage(
     encryptedMessage: EncryptedMessage,

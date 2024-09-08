@@ -52,7 +52,7 @@ export interface TransactionApi {
      * @param fullhash The transactions full hash
      * @return The Transaction
      */
-    getTransactionByFullHash: (fullHash: string) => Promise<Transaction>;
+    getTransactionByFullHash: (fullhash: string) => Promise<Transaction>;
 
 
     /**

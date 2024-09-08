@@ -117,7 +117,7 @@ export interface AssetApi {
     /**
      * Cancel Ask Order
      * @param args The argument object
-     * @returnThe Transaction Id or Unsigned Bytes as Hex String if no private key was sent
+     * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
      */
     cancelAskOrder: (args: CancelOrderArgs) => Promise<TransactionId | UnsignedTransaction>;
 
@@ -207,7 +207,7 @@ export interface AssetApi {
     /**
      * Distributes Signa and/or another asset to the holders of a given asset.
      * Just pass the total amount to be distributed and it will be sent/distributed proportionally
-     * (at very high transation rate, i.e. 5K TPS) to all holders.
+     * (at very high transaction rate, i.e. 5K TPS) to all holders.
      *
      * To inspect the share a token holder received you need to use {@link TransactionApi.getDistributionAmountsFromTransaction}
      *
@@ -266,7 +266,7 @@ export interface AssetApi {
      *
      * @param {GetTradeHistoryPerAccountArgs} args The args object
      *
-     * @param The trade history
+     * @return The trade history
      */
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 
@@ -275,7 +275,7 @@ export interface AssetApi {
      *
      * @param {GetAssetsByIssuerArgs} args The args object
      *
-     * @param The asset list
+     * @return The asset list
      */
     getAssetsByIssuer: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
 
@@ -284,7 +284,7 @@ export interface AssetApi {
      *
      * @param {GetAssetsByIssuerArgs} args The args object
      *
-     * @param The asset list
+     * @return The asset list
      */
     getAssetsByOwner: (args: GetAssetsByIssuerArgs) => Promise<AssetList>;
 
@@ -293,7 +293,7 @@ export interface AssetApi {
      *
      * @param {GetAssetsByNameArgs} args The args object
      *
-     * @param The asset list
+     * @return The asset list
      */
     getAssetsByName: (args: GetAssetsByNameArgs) => Promise<AssetList>;
 
@@ -302,7 +302,7 @@ export interface AssetApi {
      *
      * @param {GetAssetsByNameArgs} args The args object
      *
-     * @param The fee object with amount of eligible asset holders
+     * @return The fee object with amount of eligible asset holders
      */
     calculateDistributionFee: (args: CalculateDistributionFeeArgs) => Promise<DistributionFee>;
 }

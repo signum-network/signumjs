@@ -12,7 +12,7 @@
  *  const url = await resolver.resolve('http://arts.johndoe.crypto');
  *  ```
  *
- * @category SRC47
+ * 
  */
 
 export * from './URIResolver';

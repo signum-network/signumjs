@@ -30,11 +30,11 @@ export interface BlockApi {
 
     /**
      * Get a block by given id
-     * @param id The block id
+     * @param blockId The block id
      * @param includeTransactions _true_, if transactions shall be included
      * @return The Block
      */
-    getBlockById: (block: string, includeTransactions: boolean) => Promise<Block>;
+    getBlockById: (blockId: string, includeTransactions: boolean) => Promise<Block>;
 
     /**
      * Get a block id by given height

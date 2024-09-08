@@ -23,13 +23,15 @@ technology.
 
 👷‍♂️👷‍♂️👷‍♂️ 🏗️🏗️🏗️ MODERNIZATION IN PROGRESS 🏗️🏗️🏗️ 👷‍♂️👷‍♂️👷‍♂️
 
-- [ ] CONTRACTS
-- [ ] CORE
+- [X] CONTRACTS
+- [X] CORE
 - [x] CRYPTO
-- [ ] HTTP
-- [ ] UTILS
-- [ ] STANDARDS
-- [ ] WALLET
+- [X] HTTP
+- [X] UTILS
+- [X] STANDARDS
+- [X] WALLET
+- [ ] DOCUMENTATION
+- [ ] EXAMPLES
 
 
 

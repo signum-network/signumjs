@@ -38,7 +38,8 @@ function mergeArrays(a: Uint8Array, b: Uint8Array): Uint8Array {
  * Generate the Signum Sign Keys from an initial Passphrase.
  * @param passPhrase The passphrase
  * @return EC-KCDSA sign key pair + agreement key
- * @module crypto
+ *
+ * @category signing
  */
 export function generateSignKeys(passPhrase: string): SignKeys {
     const hashedPassPhrase = sha256AsBytes(passPhrase);
@@ -75,7 +76,8 @@ export function getAccountIdFromPublicKey(publicKey: string): string {
  * @param messageHex The data in hexadecimal representation
  * @param privateKeyHex The private key for signing in hexadecimal representation
  * @return The signature in hexadecimal format
- * @module crypto
+ *
+ * @category signing
  */
 export function generateSignature(messageHex: string, privateKeyHex: string): string {
     const m = sha256Binary(messageHex);
@@ -104,7 +106,8 @@ export function generateSignature(messageHex: string, privateKeyHex: string): st
  * @param messageHex The message data in hexadecimal representation
  * @param publicKeyHex The public key
  * @return _true_, if signature is valid, otherwise _false_
- * @module crypto
+ *
+ * @category signing
  */
 export function verifySignature(signature: string, messageHex: string, publicKeyHex: string): boolean {
     const signatureBytes = toBytes(signature);
@@ -137,7 +140,8 @@ export function verifySignature(signature: string, messageHex: string, publicKey
  * @param unsignedTransactionHex The unsigned message
  * @param signature The signature
  * @return The signed message digest
- * @module crypto
+ *
+ * @category signing
  */
 export const generateSignedTransactionBytes = (unsignedTransactionHex: string, signature: string): string =>
     unsignedTransactionHex.substr(0, 192) + signature + unsignedTransactionHex.substr(320);

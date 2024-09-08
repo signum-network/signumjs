@@ -4,7 +4,7 @@
 
 /**
  * ChainTime Interface
- * @see {@link util:ChainTime} to convert between chains timestamp and Date
+ * @see {@link util.ChainTime} to convert between chains timestamp and Date
  * @category entities
  * */
 export interface ChainTimestamp {

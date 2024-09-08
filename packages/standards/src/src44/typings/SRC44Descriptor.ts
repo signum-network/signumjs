@@ -12,7 +12,7 @@ interface MediaType {
  *
  * See {@link DescriptorData} and {@link DescriptorDataBuilder} to create, update this structure
  *
- * @category SRC44
+ * 
  */
 export interface SRC44Descriptor {
     /**

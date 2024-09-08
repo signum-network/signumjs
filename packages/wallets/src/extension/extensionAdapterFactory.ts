@@ -10,7 +10,8 @@ import {ConsoleExtensionAdapter} from './consoleExtensionAdapter';
 /**
  * Factory to select the correct extension adapter for the used environment
  *
- * @note The factory is used by the {@link GenericExtensionWallet} - usually, you don't need to use this factory
+ * > The factory is used by the {@link GenericExtensionWallet} - usually, you don't need to use this factory
+ *
  * @module wallets
  */
 export class ExtensionAdapterFactory {

@@ -9,7 +9,7 @@ const GenesisBlockTime = Date.UTC(2014, 7, 11, 2, 0, 0, 0) / 1000;
 /**
  * A Value Object to facilitate Chain Timestamp conversions.
  *
- * @module util
+ * @category value-objects
  */
 export class ChainTime {
 

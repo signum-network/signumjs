@@ -9,7 +9,7 @@ import {IpfsMediaType} from './IpfsMediaType';
  *
  * See {@link SRC44Descriptor}, {@link DescriptorData} and {@link DescriptorDataBuilder} to create, update this structure
  *
- * @category SRC44
+ * 
  */
 export interface Descriptor {
     /**

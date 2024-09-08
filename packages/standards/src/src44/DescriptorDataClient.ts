@@ -35,7 +35,7 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  * A helper class to get Descriptor information from accounts, contracts, assets, and/or aliases.
  * It even resolves Descriptor data from referenced aliases.
  * Furthermore, it helps on updating descriptor data according to SRC44 specifications.
- * @category SRC44
+ * 
  */
 export class DescriptorDataClient {
     private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';

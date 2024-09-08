@@ -2,7 +2,7 @@ import {DescriptorData} from '../../DescriptorData';
 
 /**
  * Arguments for {@link DescriptorDataClient.setAccountDescriptor}
- * @category SRC44
+ * 
  */
 export interface SetAccountDescriptorArgs {
     name?: string;

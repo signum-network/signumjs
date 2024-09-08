@@ -7,7 +7,8 @@
  * https://stackoverflow.com/questions/21667377/javascript-hexadecimal-string-to-decimal-string
  * @param hexStr A hexadecimal string
  * @return A decimal string
- * @module util
+ *
+ * @category conversion
  */
 export const convertHexStringToDecString = (hexStr: string): string => {
     const digits = [0];
