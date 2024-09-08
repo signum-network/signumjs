@@ -1,5 +1,6 @@
 import {DeeplinkableWallet} from '../deeplinkable';
-import {Amount, parseDeeplink} from '@signumjs/util';
+import {Amount} from '@signumjs/util';
+import {src22} from '@signumjs/standards';
 
 describe('DeeplinkableWallet', () => {
     describe('pay', () => {
@@ -7,7 +8,7 @@ describe('DeeplinkableWallet', () => {
             const wallet = new DeeplinkableWallet();
             const link = await wallet.pay({to: '16107620026796983538'});
             const decodedLink = decodeURIComponent(link.replace(wallet.redirectProxy, ''));
-            const parsed = parseDeeplink(decodedLink);
+            const parsed = src22.parseDeeplink(decodedLink);
             expect(parsed.action).toEqual('pay');
             expect(parsed.decodedPayload).toEqual({
                 recipient: '16107620026796983538',
@@ -31,7 +32,7 @@ describe('DeeplinkableWallet', () => {
                 deadline: 100
             });
             const decodedLink = decodeURIComponent(link.replace(wallet.redirectProxy, ''));
-            const parsed = parseDeeplink(decodedLink);
+            const parsed = src22.parseDeeplink(decodedLink);
             expect(parsed.action).toEqual('pay');
             expect(parsed.decodedPayload).toEqual({
                 recipient: '16107620026796983538',
@@ -56,7 +57,7 @@ describe('DeeplinkableWallet', () => {
                 deadline: 100
             });
             const decodedLink = decodeURIComponent(link.replace(wallet.redirectProxy, ''));
-            const parsed = parseDeeplink(decodedLink);
+            const parsed = src22.parseDeeplink(decodedLink);
             expect(parsed.action).toEqual('pay');
             expect(parsed.decodedPayload).toEqual({
                 recipient: '16107620026796983538',

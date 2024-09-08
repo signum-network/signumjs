@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@signumjs/util": "*",
+    "js-base64": "^3.7.7",
     "@braintree/sanitize-url": "^7.1.0"
   },
   "peerDependencies": {
