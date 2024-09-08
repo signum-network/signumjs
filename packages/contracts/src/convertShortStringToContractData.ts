@@ -10,7 +10,7 @@ import {convertHexEndianess, convertHexStringToDecString, convertStringToHexStri
  *
  * @param {string} shortString A short alphanumerical string of at maximum 8 characters (bytes) length.
  * @return A compatible numerical representation which can be used as string in a smart contract.
- * @module contracts
+ * 
  */
 export function convertShortStringToContractData(shortString: string): ContractData {
     const MaxChars = 8;

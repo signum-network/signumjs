@@ -13,7 +13,7 @@ import {CalculateMinimumCreationFeeArgs} from './typings';
  *
  * @param args The arguments
  * @return The minimum fee
- * @module contracts
+ * 
  */
 export function calculateMinimumCreationFee(args: CalculateMinimumCreationFeeArgs): Amount {
 

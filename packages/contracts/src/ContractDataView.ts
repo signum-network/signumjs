@@ -12,9 +12,35 @@ import {countCodePages} from './countCodePages';
  *
  * A contract owns additional data, which is split in 8 byte blocks.
  * The content is encoded in hexadecimal representation and big endianness.
- * This class facilitates access to these data
+ * This class facilitates access to these data. The term "index" is used to address
+ * these 8 byte blocks
  *
- * @module contracts
+ * @example
+ * A contract may have the following data
+ *
+ * ```
+ * 010000000000000000e1f5050000000000000000000000003eba832d8f2c82fe0048e80100000000
+ * ```
+ *
+ * Then it can be split into five data sections each 8 bytes (16 chars in hex) and indexed like shown
+ *
+ * ```
+ * 0100000000000000 00e1f50500000000 0000000000000000 3eba832d8f2c82fe 0048e80100000000
+ *
+ * |------ 0 ------|------ 1 -------|------ 2 -------|------ 3 -------|------ 4 ------| = Indices
+ *
+ * ```
+ *
+ * @example Usage
+ *
+ * ```ts
+ * const client = LedgerClientFactory.createClient({nodehost: "https://europe.signum.network"});
+ * const nft = await client.contracts.getContract("9482276719950823724");
+ * const dataView - new ContractDataView(nft);
+ * const ownerId = dataView.getVariableAsDecimal(0);
+ * const currentPrice = Amount.fromPlanck(dataview.getVariableAsDecimal(2));
+ * ```
+ *
  */
 export class ContractDataView {
 

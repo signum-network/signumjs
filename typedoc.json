@@ -1,7 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": [
-    "packages/**/src/*.ts"
+    "packages/**/src/index.ts"
   ],
   "exclude": [
     "**/*.spec.ts"

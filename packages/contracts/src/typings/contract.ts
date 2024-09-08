@@ -4,8 +4,8 @@
  */
 
 /**
- * The contract interface returned from Signum Node API {@link ContractApi.getContract}
- * @module contracts
+ * The contract interface returned from Signum Node API {@link core.ContractApi.getContract}
+ *
  */
 export interface Contract {
     creator: string;

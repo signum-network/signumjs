@@ -17,10 +17,10 @@ interface DataStack {
 
 /**
  * Generates a data stack message of a contracts, which can be used as initialization. The message can be used on a contract's creation with
- * {@link ContractApi.publishContract} or {@link ContractApi.publishContractByReference}
+ * {@link core.ContractApi.publishContract} or {@link core.ContractApi.publishContractByReference}
  * @param data A list of variables forming the data stack
  * @return The data stack
- * @module contracts
+ * 
  */
 export const generateDataStack = (data: ContractData[]): DataStack => {
 

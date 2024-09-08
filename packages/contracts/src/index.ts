@@ -5,6 +5,8 @@
  *
  * @module contracts
  * */
+
+
 export * from './getContractDatablock';
 export * from './convertShortStringToContractData';
 export * from './ContractDataView';

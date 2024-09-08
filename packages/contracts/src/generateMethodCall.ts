@@ -12,17 +12,12 @@ import {convertContractData} from './internal/convertContractData';
 
 /**
  * Generates a method call message of a contracts public method. The message can be sent using for example
- * {@link MessageApi.sendMessage} with `messageIsText = false` or {@link ContractApi.callContractMethod}]
+ * {@link core.MessageApi.sendMessage} with `messageIsText = false` or {@link core.ContractApi.callContractMethod}]
  * @param args The argument object
  * @return A hex string that can be used as contracts transaction message
- * @module contracts
  */
 export const generateMethodCall = (args: GenerateMethodCallArgs): string => {
-    const MaxArgs = 3;
     const argArray = args.methodArgs ? [args.methodHash, ...args.methodArgs] : [args.methodHash];
-    if (argArray.length > MaxArgs + 1) {
-        throw new Error(`At maximum ${MaxArgs} are supported`);
-    }
     return argArray
         .map(convertContractData)
         .map(long => convertDecStringToHexString(long, 16))
