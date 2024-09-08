@@ -8,7 +8,8 @@ import {BlockList} from '../blockList';
 
 /**
  * Block API
- * @module core.api
+ *
+ * @category api
  */
 export interface BlockApi {
     /**

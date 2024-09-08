@@ -27,7 +27,6 @@ const methodsToVerify = new Set([
  * @param response an HttpResponse
  * @throws Error on failure
  * @internal
- * @module core
  */
 export function verifyTransaction(method: string, parameters: any, response: any) {
     if (response.broadcasted === true || response.transactionBytes || parameters.transactionBytes) {

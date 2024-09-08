@@ -39,7 +39,7 @@ import {DistributionFee} from '../distributionFee';
  *
  * The Asset API provides all functions for Asset/Token operations
  *
- * @module core.api
+ * @category api
  * */
 export interface AssetApi {
 
@@ -145,7 +145,7 @@ export interface AssetApi {
 
     /**
      * Get all asset transfers by accountId and/or assetId
-     * @see also [[AssetApi.getAssetTransfersPerAsset]] or [[AssetApi.getAssetTransfersPerAccount]]
+     * @see also {@link AssetApi.getAssetTransfersPerAsset} or {@link AssetApi.getAssetTransfersPerAccount}
      * @param args The argument object
      * @return The list of asset transfers
      * @throws Error if not at least assetId or accountId was giveb
@@ -154,7 +154,7 @@ export interface AssetApi {
 
     /**
      * A convenience function to get all asset transfers by assetId
-     * @see also [[AssetApi.getAssetTransfers]]
+     * @see also {@link AssetApi.getAssetTransfers}
      * @param args The argument object
      * @return The list of asset transfers
      */
@@ -162,7 +162,7 @@ export interface AssetApi {
 
     /**
      * A convenience function to get all asset transfers by accountId
-     * @see also [[AssetApi.getAssetTransfers]]
+     * @see also {@link AssetApi.getAssetTransfers}
      * @param args The argument object
      * @return The list of asset transfers
      */
@@ -170,7 +170,7 @@ export interface AssetApi {
 
     /**
      * Get all asset trades by accountId and/or assetId
-     * @see also [[AssetApi.getAssetTradesPerAsset]] or [[AssetApi.getAssetTradesPerAccount]]
+     * @see also {@link AssetApi.getAssetTradesPerAsset} or {@link AssetApi.getAssetTradesPerAccount}
      * @param args The argument object
      * @return The list of asset trades
      * @throws Error if not at least assetId or accountId was giveb
@@ -179,7 +179,7 @@ export interface AssetApi {
 
     /**
      * A convenience function to get all asset transfers by assetId
-     * @see also [[AssetApi.getAssetTrades]]
+     * @see also {@link AssetApi.getAssetTrades}
      * @param args The argument object
      * @return The list of asset trades
      */
@@ -187,7 +187,7 @@ export interface AssetApi {
 
     /**
      * A convenience function to get all asset transfers by accountId
-     * @see also [[AssetApi.getAssetTrades]]
+     * @see also {@link AssetApi.getAssetTrades}
      * @param args The argument object
      * @return The list of asset trades
      */
@@ -209,9 +209,9 @@ export interface AssetApi {
      * Just pass the total amount to be distributed and it will be sent/distributed proportionally
      * (at very high transation rate, i.e. 5K TPS) to all holders.
      *
-     * To inspect the share a token holder received you need to use [[TransactionApi.getDistributionAmountsFromTransaction]]
+     * To inspect the share a token holder received you need to use {@link TransactionApi.getDistributionAmountsFromTransaction}
      *
-     * To calculate the fees upfront use [[AssetApi.calculateDistributionFee]].
+     * To calculate the fees upfront use {@link AssetApi.calculateDistributionFee}.
      *
      * @param args The distribution args object
      * @throws Error in case of unsuccessful transaction
@@ -298,7 +298,7 @@ export interface AssetApi {
     getAssetsByName: (args: GetAssetsByNameArgs) => Promise<AssetList>;
 
     /**
-     * Calculates the fee for [[AssetApi.distributeToAssetHolders]]
+     * Calculates the fee for {@link AssetApi.distributeToAssetHolders}
      *
      * @param {GetAssetsByNameArgs} args The args object
      *

@@ -3,7 +3,7 @@
  *
  * WIP: This documentation is still under construction. Comprehensive examples will be provided soon
  *
- * @moduledefinition wallets
+ * @module wallets
  * */
 export * from './typings';
 export * from './deeplinkable';

@@ -77,7 +77,7 @@ const FormatCommaDecimal: AmountFormat = {
 };
 
 /**
- * Amount formatting presets, see [[Amount.toString]]
+ * Amount formatting presets, see {@link Amount.toString}
  * @module util
  */
 export const AmountFormats = {
@@ -94,7 +94,7 @@ export const AmountFormats = {
 /**
  * A Value Object to facilitate SIGNA and Planck conversions/calculations.
  *
- * This class is a convenient wrapper around [[ChainValue]] with `decimals = 8`
+ * This class is a convenient wrapper around {@link ChainValue} with `decimals = 8`
  *
  * Note: This class uses a big number representation (ES5 compatible) under the hood, so
  * number limits and numeric calculations are much more precise than JS number type
@@ -110,10 +110,7 @@ export class Amount {
 
     /**
      * @return The Signa Currency Symbol
-     * @deprecated
-     * <div class='deprecated'>
-     *     Due to Multiverse feature it's not recommended to use this hard coded stuff.
-     * </div>
+     * @deprecated Due to Multiverse feature it's not recommended to use this hard coded stuff.
      * @module util
      */
     public static CurrencySymbol(): string {
@@ -276,7 +273,7 @@ export class Amount {
 
     /**
      * Gets a string representation in form `Ꞩ 100`
-     * @param format The format object, Default: [[AmountFormats.DotDecimal]]
+     * @param format The format object, Default: {@link AmountFormats.DotDecimal}
      * @return The formatted string
      */
     public toString(format: AmountFormat = AmountFormats.DotDecimal): string {

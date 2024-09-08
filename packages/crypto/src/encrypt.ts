@@ -36,7 +36,7 @@ async function encrypt(plaintext: Uint8Array, nonce: Uint8Array, sharedKeyOrig: 
 /**
  * Encrypts arbitrary data for P2P message/data exchange using asymmetric encryption
  *
- * @see [[decryptData]]
+ * @see {@link decryptData}
  * @param plaintext Data to be encrypted
  * @param recipientPublicKeyHex The recipients public key in hexadecimal format
  * @param senderPrivateKeyHex The senders private (agreement) key hexadecimal format
@@ -72,7 +72,7 @@ export async function encryptData(
 
 /**
  * Encrypts arbitrary message (UTF-8 compatible) for P2P message/data exchange using asymmetric encryption
- * @see [[decryptMessage]]
+ * @see {@link decryptMessage}
  * @param plaintext Message to be encrypted
  * @param recipientPublicKeyHex The recipients public key hexadecimal format
  * @param senderPrivateKeyHex The senders private (agreement) key hexadecimal format

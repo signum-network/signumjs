@@ -73,7 +73,7 @@ const FormatCommaDecimal: ChainValueFormat = {
 };
 
 /**
- * Amount formatting presets, see [[ChainValue.toFormat]]
+ * Amount formatting presets, see {@link ChainValue.toFormat}
  * @module util
  */
 export const ChainValueFormats = {
@@ -292,9 +292,9 @@ export class ChainValue {
     }
 
     /**
-     * Gets a string representation according to [[ChainValueFormat]]
+     * Gets a string representation according to {@link ChainValueFormat}
      * @param prefix The prefix for value
-     * @param format The format object, Default: [[ChainValueFormats.DotDecimal]]
+     * @param format The format object, Default: {@link ChainValueFormats.DotDecimal}
      * @return The formatted string
      */
     public toFormat(prefix: string, format: ChainValueFormat = ChainValueFormats.DotDecimal): string {

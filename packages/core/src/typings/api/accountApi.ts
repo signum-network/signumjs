@@ -23,7 +23,7 @@ import {GetAliasesArgs} from '../args/getAliasesArgs';
 /**
  * Account API
  *
- * @module core.api
+ * @category api
  */
 export interface AccountApi {
 
@@ -171,7 +171,7 @@ export interface AccountApi {
      *
      * @param {CommitmentArgs} args The args
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
-     * @see [[AccountApi.removeCommitment]]
+     * @see {@link AccountApi.removeCommitment}
      */
     addCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 
@@ -183,7 +183,7 @@ export interface AccountApi {
      *
      * @param {CommitmentArgs} args The args
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
-     * @see [[AccountApi.addCommitment]]
+     * @see {@link AccountApi.addCommitment}
      */
     removeCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 

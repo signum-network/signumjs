@@ -12,11 +12,12 @@ import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.publishContract]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.publishContract}
+*
+* @category factories
+*/
 export const publishContract = (service: ChainService) =>
     (args: PublishContractArgs) => signIfPrivateKey(service, args, async (a: PublishContractArgs) => {
 

@@ -9,11 +9,12 @@ import {SetAccountInfoArgs} from '../../../typings/args/setAccountInfoArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.setAccountInfo]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.setAccountInfo}
+*
+* @category factories
+*/
 export const setAccountInfo = (service: ChainService) =>
     (args: SetAccountInfoArgs) =>
         signIfPrivateKey(service, args, async (a: SetAccountInfoArgs) => {

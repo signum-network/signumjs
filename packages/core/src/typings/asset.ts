@@ -10,7 +10,8 @@
  * It allows fast, secure, and decentralized trading of cryptographic digital tokens.
  * Because of its decentralized nature, there’s no need for outside organizations or agencies
  * to meddle with its affairs, resulting in improved efficiency and reduced costs.
- * @module core
+ *
+ * @category entities
  */
 export interface Asset {
     account: string;

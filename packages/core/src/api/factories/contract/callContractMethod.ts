@@ -12,11 +12,12 @@ import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.callContractMethod]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.callContractMethod}
+*
+* @category factories
+*/
 export const callContractMethod = (service: ChainService) =>
     async (args: CallContractMethodArgs): Promise<TransactionId | UnsignedTransaction> => {
 

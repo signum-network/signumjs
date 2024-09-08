@@ -24,8 +24,8 @@ import {DescriptorData} from './DescriptorData';
  *     .build();
  * ```
  *
- * Creates SRC44-compliant [[DescriptorData]] object to be used as description in Smart Contracts, Account Info, and/or Aliases
- * @module standards.SRC44
+ * Creates SRC44-compliant {@link DescriptorData} object to be used as description in Smart Contracts, Account Info, and/or Aliases
+ * @category SRC44
  */
 export class DescriptorDataBuilder {
 
@@ -35,7 +35,7 @@ export class DescriptorDataBuilder {
     private data: DescriptorData;
 
     /**
-     * Creates the builder instance. See also [[DescriptorDataBuilder.build]]
+     * Creates the builder instance. See also {@link DescriptorDataBuilder.build}
      * @param name The name for the descriptor/profile
      */
     public static create(name?: string) {
@@ -45,7 +45,7 @@ export class DescriptorDataBuilder {
     }
 
     /**
-     * Creates the builder instance from an existing [[DescriptorData]]
+     * Creates the builder instance from an existing {@link DescriptorData}
      * @param descriptor The descriptor data
      */
     public static createWith(descriptor: DescriptorData) {
@@ -124,7 +124,7 @@ export class DescriptorDataBuilder {
     }
 
     /**
-     * Builds the final [[DescriptorData]] instance. See also [[DescriptorDataBuilder.create]]
+     * Builds the final {@link DescriptorData} instance. See also {@link DescriptorDataBuilder.create}
      */
     build() {
         this.data.validate();

@@ -7,11 +7,12 @@ import {GetAccountTransactionsArgs} from '../../../typings/args';
 import {SubscriptionList} from '../../../typings/subscriptionList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getSubscriptionsToAccount]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getSubscriptionsToAccount}
+*
+* @category factories
+*/
 export const getSubscriptionsToAccount = (service: ChainService):
     (accountId: string) => Promise<SubscriptionList> =>
     (accountId: string): Promise<SubscriptionList> => {

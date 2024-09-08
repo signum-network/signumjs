@@ -8,7 +8,6 @@ import BigNumber from 'bignumber.js';
  * with big-endian bytes and methods return only positive values. Throws error
  *
  * @internal
- * @module core
  */
 export default class ByteBuffer {
     private needle: number;

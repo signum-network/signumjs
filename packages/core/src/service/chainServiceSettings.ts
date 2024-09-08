@@ -6,7 +6,7 @@ import {Http} from '@signumjs/http';
 
 /**
  * The settings interface for the BurstService class
- * @module core
+ *
  */
 export interface ChainServiceSettings {
     /**

@@ -56,7 +56,7 @@ export function getRandomWords(count: number, dictionary: string[]): string[] {
 
 /**
  * Default Alphabet
- * @see [[getRandomString]]
+ * @see {@link getRandomString}
  * @module crypto
  */
 export const DefaultAlphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789' as string;

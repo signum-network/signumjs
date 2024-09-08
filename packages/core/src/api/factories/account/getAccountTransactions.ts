@@ -9,11 +9,12 @@ import {TransactionAssetSubtype, TransactionType} from '../../../constants';
 import {getDistributionAmountsFromTransaction} from '../transaction';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getAccountTransactions]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getAccountTransactions}
+*
+* @category factories
+*/
 export const getAccountTransactions = (service: ChainService):
     (args: GetAccountTransactionsArgs) => Promise<TransactionList> =>
     async (args: GetAccountTransactionsArgs): Promise<TransactionList> => {

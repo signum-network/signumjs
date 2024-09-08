@@ -7,11 +7,12 @@ import {Block} from '../../../typings/block';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[BlockApi]].
+ * Use with {@link ApiComposer} and belongs to {@link BlockApi}.
  *
- * See details at [[BlockApi.getBlockById]]
- * @module core.api.factories
- */
+ * See details at {@link BlockApi.getBlockById}
+*
+* @category factories
+*/
 export const getBlockById = (service: ChainService):
     (block: string, includeTransactions: boolean) => Promise<Block> =>
     (block: string, includeTransactions: boolean): Promise<Block> =>

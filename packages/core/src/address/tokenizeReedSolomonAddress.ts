@@ -14,7 +14,7 @@ interface AddressParts {
  * @param address The address in Reed-Solomon format
  * @return object with prefix, address and eventual extension
  * @throws Error in case of invalid format
- * @module core
+ *
  */
 export const tokenizeReedSolomonAddress = (address: string): AddressParts => {
     const tokens = address.split('-');

@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getAssetTransfersPerAsset]]
+ * The argument object for {@link AssetApi.getAssetTransfersPerAsset}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetTransfersPerAssetArgs {
     assetId: string;
     firstIndex?: number;

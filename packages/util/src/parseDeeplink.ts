@@ -13,7 +13,7 @@ const MandatoryPattern = /^signum.?(.+)?:\/\/(v.+?)\??/i;
  *
  * `signum[.domain]://v1?action=[action]&payload=[encodedData]`
  *
- * @see [[createDeeplink]] as inverse function
+ * @see {@link createDeeplink} as inverse function
  * @param {string} deeplink The deeplink to be parsed
  * @param encoderFormat Optional encoding format, used to decode the payload. Default: Base64
  * @return The parsed deeplink parts.

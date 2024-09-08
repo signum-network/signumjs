@@ -11,11 +11,12 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 const MAX_MESSAGE_LENGTH = 1024;
 
 /**
- * Use with [[ApiComposer]] and belongs to [[MessageApi]].
+ * Use with {@link ApiComposer} and belongs to {@link MessageApi}.
  *
- * See details at [[MessageApi.sendEncryptedMessage]]
- * @module core.api.factories
- */
+ * See details at {@link MessageApi.sendEncryptedMessage}
+*
+* @category factories
+*/
 export const sendEncryptedMessage = (service: ChainService) =>
     (args: SendEncryptedMessageArgs) =>
         signIfPrivateKey(service, args, async (a: SendEncryptedMessageArgs) => {

@@ -1,6 +1,6 @@
 /**
  *
- * The resulting structure of [[parseDeeplink]]
+ * The resulting structure of {@link parseDeeplink}
  *
  * @module util
  */

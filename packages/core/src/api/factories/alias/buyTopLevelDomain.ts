@@ -9,12 +9,13 @@ import {BuyTopLevelDomainArgs} from '../../../typings/args';
 import {createParametersFromAttachment} from '../../../internal';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AliasApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AliasApi}.
  *
- * See details at [[AliasApi.buyTopLevelDomain]]
+ * See details at {@link AliasApi.buyTopLevelDomain}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const buyTopLevelDomain = (service: ChainService) =>
     (args: BuyTopLevelDomainArgs) =>
         signIfPrivateKey(service, args, async (a: BuyTopLevelDomainArgs) => {

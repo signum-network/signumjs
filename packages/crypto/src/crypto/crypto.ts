@@ -7,7 +7,7 @@ import {WebCryptoProvider} from './webCryptoProvider';
  * Unified isomorphic Crypto Class for common crypto operations needed for Signum.
  *
  * Usually, you want to use the comfort functions like
- * [[encryptData]], [[encryptMessage]], [[decryptData]], [[decryptData]], [[getRandomValues]], etc.
+ * {@link encryptData}, {@link encryptMessage}, {@link decryptData}, {@link decryptData}, {@link getRandomValues}, etc.
  *
  * Interacting with this class maybe necessary in cases where the underlying crypto implementations need to be
  * customized, i.e. React Native

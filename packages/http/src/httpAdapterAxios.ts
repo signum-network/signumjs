@@ -6,9 +6,9 @@ import {Http} from './http';
 const DefaultAxiosOptions = {};
 
 /**
- * Http Implementation of [[Http]] using https://github.com/axios/axios
+ * Http Implementation of {@link Http} using https://github.com/axios/axios
  *
- * Prefer [[HttpClientFactory.createHttpClient]] to create an instance
+ * Prefer {@link HttpClientFactory.createHttpClient} to create an instance
  *
  * @module http
  */

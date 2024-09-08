@@ -2,10 +2,11 @@ import {ContractData} from '@signumjs/contracts';
 import {DefaultSendArgs} from './defaultSendArgs';
 
 /**
- * The argument object for [[ContractApi.callContractMethod]]
+ * The argument object for {@link ContractApi.callContractMethod}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface CallContractMethodArgs extends DefaultSendArgs {
     amountPlanck: string;
     contractId: string;

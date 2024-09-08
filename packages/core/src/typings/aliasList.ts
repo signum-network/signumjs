@@ -7,7 +7,7 @@ import {Indexable} from './indexable';
 /**
  * Alias List
  *
- * @module core
+ * @category entities
  */
 export interface AliasList extends Indexable{
     aliases: Alias[];

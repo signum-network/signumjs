@@ -3,7 +3,7 @@
  * to interact with Signum Smart Contracts, i.e. generate method calls
  * and inspect contract data
  *
- * @moduledefinition contracts
+ * @module contracts
  * */
 export * from './getContractDatablock';
 export * from './convertShortStringToContractData';

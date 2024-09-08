@@ -1,8 +1,9 @@
 /**
- * The argument object for [[AliasApi.searchAliasesByName]]
+ * The argument object for {@link AliasApi.searchAliasesByName}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface SearchAliasesByNameArgs {
     /**
      * The name or part of the name to search for.
@@ -19,7 +20,7 @@ export interface SearchAliasesByNameArgs {
 
     /**
      * The timestamp in seconds since genesis block.
-     * @see [[util.ChainTime]]
+     * @see {@link util.ChainTime}
      */
     timestamp?: number;
 }

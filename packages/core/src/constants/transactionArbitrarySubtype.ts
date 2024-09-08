@@ -4,7 +4,8 @@
 
 /**
  * Constants for arbitrary subtypes
- * @module core
+ *
+ * @category transaction-types
  */
 export enum TransactionArbitrarySubtype {
     Message = 0,

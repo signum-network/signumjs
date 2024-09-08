@@ -5,11 +5,12 @@ import {ChainService} from '../../../service/chainService';
 import {UnconfirmedTransactionList} from '../../../typings/unconfirmedTransactionList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getUnconfirmedAccountTransactions]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getUnconfirmedAccountTransactions}
+*
+* @category factories
+*/
 export const getUnconfirmedAccountTransactions = (service: ChainService):
     (
         accountId: string,

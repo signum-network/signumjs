@@ -1,8 +1,8 @@
 import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[DescriptorDataClient.setAccountDescriptor]]
- * @module standards.SRC44
+ * Arguments for {@link DescriptorDataClient.setAccountDescriptor}
+ * @category SRC44
  */
 export interface SetAccountDescriptorArgs {
     name?: string;

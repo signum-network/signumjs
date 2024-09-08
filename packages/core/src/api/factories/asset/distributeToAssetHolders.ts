@@ -10,12 +10,13 @@ import {DistributeToAssetHoldersArgs} from '../../../typings/args';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.distributeToAssetHolders]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.distributeToAssetHolders}
+ * 
+*
+* @category factories
+*/
 export const distributeToAssetHolders = (service: ChainService) =>
     (args: DistributeToAssetHoldersArgs) => signIfPrivateKey(service, args, async (a: DistributeToAssetHoldersArgs) => {
 

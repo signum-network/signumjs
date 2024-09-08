@@ -1,8 +1,9 @@
 /**
- * The argument object for [[AssetApi.getAllAssets]]
+ * The argument object for {@link AssetApi.getAllAssets}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAllAssetsArgs {
     /**
      * The first index to be returned. Use this for pagination. Starts at 0

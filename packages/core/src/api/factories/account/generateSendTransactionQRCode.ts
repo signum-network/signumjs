@@ -4,12 +4,13 @@
 import {ChainService} from '../../../service/chainService';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.generateSendTransactionQRCode]]
+ * See details at {@link AccountApi.generateSendTransactionQRCode}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const generateSendTransactionQRCode = (service: ChainService):
     (
         receiverId: string,

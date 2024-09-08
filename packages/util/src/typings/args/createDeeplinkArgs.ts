@@ -1,6 +1,6 @@
 /**
  * Encoder format constants
- * @see [[createDeeplink]] and [[CreateDeeplinkArgs]]
+ * @see {@link createDeeplink} and {@link CreateDeeplinkArgs}
  * @module util
  */
 export enum EncoderFormat {
@@ -10,7 +10,7 @@ export enum EncoderFormat {
 }
 
 /**
- * The argument object for [[createDeeplink]]
+ * The argument object for {@link createDeeplink}
  *
  * @param {string?} domain The domain used in the protocol
  * @param {string?} action The actions name

@@ -5,11 +5,12 @@ import {ChainService} from '../../../service/chainService';
 import {Transaction} from '../../../typings/transaction';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.getTransactionByFullHash]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.getTransactionByFullHash}
+*
+* @category factories
+*/
 export const getTransactionByFullHash = (service: ChainService):
     (fullHash: string) => Promise<Transaction> =>
     (fullHash: string): Promise<Transaction> =>

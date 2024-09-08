@@ -4,7 +4,7 @@
 
 
 /**
- * Args object for [[asyncRetry]]
+ * Args object for {@link asyncRetry}
  *
  * @module util
  */

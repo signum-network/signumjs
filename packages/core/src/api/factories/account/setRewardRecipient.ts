@@ -9,11 +9,12 @@ import {DefaultDeadline} from '../../../constants';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.setRewardRecipient]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.setRewardRecipient}
+*
+* @category factories
+*/
 export const setRewardRecipient = (service: ChainService) =>
     (args: SetRewardRecipientArgs) =>
         signIfPrivateKey(service, args, async (a: SetRewardRecipientArgs) => {

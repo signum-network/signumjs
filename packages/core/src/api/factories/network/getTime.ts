@@ -6,11 +6,12 @@ import {ChainService} from '../../../service/chainService';
 import {ChainTimestamp} from '../../../typings/chainTimestamp';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getTime]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getTime}
+*
+* @category factories
+*/
 export const getTime = (service: ChainService): () => Promise<ChainTimestamp> =>
     async (): Promise<ChainTimestamp> => service.query('getTime');
 

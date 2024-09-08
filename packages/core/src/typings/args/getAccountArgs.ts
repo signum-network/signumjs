@@ -1,5 +1,5 @@
 /**
- * The argument object for [[AccountApi.getAccount]]
+ * The argument object for {@link AccountApi.getAccount}
  *
  * @param {string} accountId The numeric accountId
  * @param {number?} commitmentAtHeight The height for the commitment, if one wants to see the commitment in the past
@@ -9,8 +9,9 @@
  * @param {boolean?} includeEstimatedCommitment Includes the estimated commitment in BURST/Terabyte. This is a relatively costly operation,
  * and should be set true only if you really need that info.
  * For BRS Versions before 3.0 this must be `undefined`*
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAccountArgs {
     accountId: string;
     commitmentAtHeight?: number;

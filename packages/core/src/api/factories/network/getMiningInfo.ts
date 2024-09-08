@@ -6,10 +6,11 @@ import {MiningInfo} from '../../../typings/miningInfo';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getMiningInfo]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getMiningInfo}
+*
+* @category factories
+*/
 export const getMiningInfo = (service: ChainService): () => Promise<MiningInfo> =>
     (): Promise<MiningInfo> => service.query('getMiningInfo');

@@ -5,7 +5,7 @@
 
 /**
  * Converts byte array to hexadecimal string
- * Inverse operation of [[convertHexStringToByteArray]]
+ * Inverse operation of {@link convertHexStringToByteArray}
  * @param bytes The (unsigned) byte array to be converted
  * @param uppercase If _true_, converts hex string with uppercase characters (Default: false)
  * @return {string} A hex string representing the byte array input

@@ -22,7 +22,7 @@ function ensureValidPublicKey(publicKey: string): void {
 /**
  * A Value Object to facilitate Address conversions.
  *
- * @module core
+ *
  */
 export class Address {
 
@@ -43,7 +43,7 @@ export class Address {
     /**
      * Tries to create the address from whatever input is given
      * @param anyValidAddress Any valid address, may it be Reed Solomon address, numeric ID, or public key
-     * @param prefix An optional prefix, which can be used to substitute the default [[AddressPrefix.MainNet]]
+     * @param prefix An optional prefix, which can be used to substitute the default {@link AddressPrefix.MainNet}
      * @return The new address, if the input was valid
      * @throws when no valid format
      */
@@ -117,7 +117,7 @@ export class Address {
      * Gets as Reed Solomon representation
      * @param withPrefix If false, the address without prefix will be returned. Default: true
      * @return Reed Solomon Address Format
-     * @see [[Address.getReedSolomonAddressExtended]]
+     * @see {@link Address.getReedSolomonAddressExtended}
      */
     getReedSolomonAddress(withPrefix = true): string {
         return withPrefix ? this._rs : this._rs.substr(this._rs.indexOf('-') + 1);
@@ -131,7 +131,7 @@ export class Address {
      * @param withPrefix If false, the address without prefix will be returned. Default: true
      * @return Extended Reed Solomon Address Format
      * @throws if no public key is available
-     * @see [[Address.getReedSolomonAddress]]
+     * @see {@link Address.getReedSolomonAddress}
      */
     getReedSolomonAddressExtended(withPrefix = true): string {
         if (!this._publicKey) {

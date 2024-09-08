@@ -2,7 +2,7 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AliasApi.sellAlias]]
+ * The argument object for {@link AliasApi.sellAlias}
  *
  * @param aliasId The alias Id
  * @param aliasName The alias name as an alternative for alias Id
@@ -10,8 +10,9 @@ import {DefaultSendArgs} from './defaultSendArgs';
  * @param recipientId The optional recipient Id. If given, then only that recipient can buy the alias.
  * @param recipientPublicKey The optional recipient public key.
  * @param tld The name of the Top Level Domain (TLD) aka namespace where this alias belongs to
- * @module core
- */
+*
+* @category args
+*/
 export interface SellAliasArgs extends DefaultSendArgs {
     aliasId?: string;
     aliasName?: string;

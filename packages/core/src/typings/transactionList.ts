@@ -10,7 +10,7 @@ import {Indexable} from './indexable';
 /**
  * Transaction List
  *
- * @module core
+ * @category entities
  * */
 export interface TransactionList extends Indexable {
     readonly requestProcessingTime: number;

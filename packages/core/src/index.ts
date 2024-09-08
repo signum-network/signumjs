@@ -2,9 +2,9 @@
  * This is the main package, and almost all you may need to interact with
  * the Signum Node API
  *
- * @see Get started with [[composeApi]] or [[LedgerClientFactory]]
+ * Get started with {@link composeApi} or {@link LedgerClientFactory}
  *
- * @moduledefinition core
+ * @module core
  * */
 
 // order alphabetically, please :)

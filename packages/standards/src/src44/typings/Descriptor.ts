@@ -7,9 +7,9 @@ import {IpfsMediaType} from './IpfsMediaType';
 /**
  * Human friendly descriptor structure
  *
- * See [[SRC44Descriptor]], [[DescriptorData]] and [[DescriptorDataBuilder]] to create, update this structure
+ * See {@link SRC44Descriptor}, {@link DescriptorData} and {@link DescriptorDataBuilder} to create, update this structure
  *
- * @module standards.SRC44
+ * @category SRC44
  */
 export interface Descriptor {
     /**

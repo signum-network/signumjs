@@ -7,7 +7,7 @@
  * SRC44 Validation Exception
  *
  * @internal
- * @module standards.SRC44
+ * @category SRC44
  */
 export class SRC44ValidationException extends Error {
     constructor(message: string) {

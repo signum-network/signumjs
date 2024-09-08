@@ -6,11 +6,12 @@ import {ChainService} from '../../../service';
 import {Subscription} from '../../..';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.getSubscription]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.getSubscription}
+*
+* @category factories
+*/
 export const getSubscription = (service: ChainService):
     (subscriptionId: string) => Promise<Subscription> =>
     (subscriptionId: string): Promise<Subscription> =>

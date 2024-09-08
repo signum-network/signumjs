@@ -9,7 +9,7 @@
  *
  * This is being returned from transaction methods, if no private key was given
  *
- * @module core
+ * @category entities
  * */
 export interface UnsignedTransaction {
     readonly signatureHash: string;

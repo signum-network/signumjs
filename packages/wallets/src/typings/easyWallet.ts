@@ -7,7 +7,7 @@ import {EasyWalletPayArgs} from './args';
 /**
  * A more specific Wallet interface for easier usage.
  *
- * The difference to the generic [[Wallet]] interface is that the
+ * The difference to the generic {@link Wallet} interface is that the
  * easy wallet implements most commonly used methods out of the box
  * and no additional hassle with additional API calls is needed.
  *

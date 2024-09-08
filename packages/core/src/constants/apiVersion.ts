@@ -1,6 +1,6 @@
 
 /**
- * @module core
+ *
  * */
 export enum ApiVersion {
     /**

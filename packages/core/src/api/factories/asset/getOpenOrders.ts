@@ -16,9 +16,10 @@ interface GetGenericAssetOpenOrders extends GetAssetOpenOrdersArgs {
 /**
  * @ignore
  * This is an internal helper
- * See details at [[AssetApi.getOpenAskOrders]] [[AssetApi.getOpenBidOrders]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getOpenAskOrders} {@link AssetApi.getOpenBidOrders}
+*
+* @category factories
+*/
 export const getOpenOrders = (service: ChainService):
     (args: GetGenericAssetOpenOrders) => Promise<AssetAskOrderList | AssetBidOrderList> =>
     async (args: GetGenericAssetOpenOrders): Promise<AssetAskOrderList | AssetBidOrderList> => {

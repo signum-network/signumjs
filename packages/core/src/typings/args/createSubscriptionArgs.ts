@@ -1,10 +1,11 @@
 import {DefaultSendArgs} from './defaultSendArgs';
 
 /**
- * The argument object for [[TransactionApi.createSubscription]]
+ * The argument object for {@link TransactionApi.createSubscription}
  **
- * @module core
- */
+*
+* @category args
+*/
 export interface CreateSubscriptionArgs extends DefaultSendArgs {
     /**
      * The amount in planck to be paid periodically

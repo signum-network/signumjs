@@ -4,7 +4,7 @@
 /**
  * AssetBalance
  *
- * @module core
+ * @category entities
  */
 export interface AssetBalance {
     balanceQNT: string;

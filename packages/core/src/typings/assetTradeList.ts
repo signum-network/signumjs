@@ -7,7 +7,8 @@ import {Indexable} from './indexable';
 
 /**
  * Asset Trade List
- * @module core
+ *
+ * @category entities
  */
 export interface AssetTradeList extends Indexable {
     trades: AssetTrade[];

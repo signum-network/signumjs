@@ -7,6 +7,6 @@
  * SRC44 Parse Exception
  *
  * @internal
- * @module standards.SRC44
+ * @category SRC44
  */
 export class SRC44ParseException extends Error {}

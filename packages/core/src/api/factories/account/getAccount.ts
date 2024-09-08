@@ -7,11 +7,12 @@ import {Account} from '../../../typings/account';
 import {GetAccountArgs} from '../../../typings/args/getAccountArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getAccount]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getAccount}
+*
+* @category factories
+*/
 export const getAccount = (service: ChainService):
     (args: GetAccountArgs) => Promise<Account> =>
     (args: GetAccountArgs): Promise<Account> => {

@@ -2,7 +2,7 @@
  * The Http Module is a thin wrapper around the isomorhpic Http Implementation [axios](https://github.com/axios/axios)
  * It mainly unifies responses such that its use is consistent
  *
- * @moduledefinition http
+ * @module http
  */
 
 import {Http} from './http';

@@ -7,7 +7,7 @@ import {Transaction} from './transaction';
 
 /**
  * Unconfirmed Transaction List
- * @module core
+ * @category entities
  * */
 export interface UnconfirmedTransactionList {
     readonly requestProcessingTime: number;

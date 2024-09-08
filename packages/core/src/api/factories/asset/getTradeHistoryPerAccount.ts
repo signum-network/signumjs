@@ -6,11 +6,12 @@ import { GetTradeHistoryPerAccountArgs} from '../../../typings/args';
 import {TradeHistory} from '../../../typings/tradeHistory';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetTransfersPerAccount]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetTransfersPerAccount}
+*
+* @category factories
+*/
 export const getTradeHistoryPerAccount = (service: ChainService):
     (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory> =>
     (args: GetTradeHistoryPerAccountArgs): Promise<TradeHistory> => {

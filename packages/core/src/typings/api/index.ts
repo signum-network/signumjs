@@ -20,11 +20,19 @@ export {
 };
 
 /**
- * The API structure returned by [[composeApi]]
+ * The API structure returned by {@link LedgerClientFactory} (or older style {@link composeApi})
  *
  * The programming interface uses a _builder pattern_ to mount an API.
- * For sake of simplicity the [[composeApi]] method mounts the __entire__ API, i.e.
- * all available methods are mounted using this class
+ *
+ * @example Using recommended LedgerClientFactory
+ *
+ * ```ts
+ * const api = LedgerClientFactory.createClient({
+ *   nodeHost: 'https://europe.signum.network', // one of the mainnet nodes
+ * })
+ * ```
+
+ * @example Using older composeApi style
  *
  * ```ts
  * const api = composeApi({
@@ -32,16 +40,18 @@ export {
  * })
  * ```
  *
- * While this is a straightforward way to have access to all API functionality, this methods
- * has the disadvantage of including all needed dependencies, thus leading to a bigger bundle, for those
- * who use bundlers like [webpack](https://webpack.js.org/). To reduce the bundle size, one may mount the API
- * conforming his needs using the [[ApiComposer]] class.
+ * ### Customize API
  *
- * @module core.api
+ * While this is a straightforward way to have access to _all_ API functionality, this methods
+ * has the disadvantage of including all needed dependencies, thus leading to a bigger bundle, for those
+ * who use bundlers like [webpack](https://webpack.js.org/). To reduce the bundle size, one may mount a subset of the API
+ * conforming their needs using the {@link ApiComposer} class.
+ *
+ * @category api
  */
 export class Api {
     /**
-     * This leaks the underlying service instance to interact with the chain nodes API directly, e.g. to use an API method that
+     * This leaks the underlying {@link ChainService } instance to interact with the chain nodes API directly, e.g. to use an API method that
      * is not supported by SignumJS yet.
      */
     readonly service: ChainService;

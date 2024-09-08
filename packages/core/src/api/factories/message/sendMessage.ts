@@ -9,11 +9,12 @@ import {SendMessageArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[MessageApi]].
+ * Use with {@link ApiComposer} and belongs to {@link MessageApi}.
  *
- * See details at [[MessageApi.sendMessage]]
- * @module core.api.factories
- */
+ * See details at {@link MessageApi.sendMessage}
+*
+* @category factories
+*/
 export const sendMessage = (service: ChainService) =>
     (args: SendMessageArgs) =>
         signIfPrivateKey(service, args, async (a: SendMessageArgs) => {

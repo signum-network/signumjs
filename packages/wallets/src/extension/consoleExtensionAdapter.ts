@@ -8,7 +8,7 @@ import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessag
  * The extension client for console
  *
  * @note This client is not implemented yet. Extension interaction works only in browser at this time.
- * You might want to use [[DeeplinkableWallet]] to get the deeplinks and open them with https://www.npmjs.com/package/open
+ * You might want to use {@link DeeplinkableWallet} to get the deeplinks and open them with https://www.npmjs.com/package/open
  * @module wallets
  */
 export class ConsoleExtensionAdapter implements ExtensionAdapter {

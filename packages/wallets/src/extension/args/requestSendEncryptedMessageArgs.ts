@@ -1,5 +1,5 @@
 /**
- * Arguments for [[ExtensionAdapter.requestSign]]
+ * Arguments for {@link ExtensionAdapter.requestSign}
  * @internal
  * @module wallets
  */

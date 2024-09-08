@@ -13,7 +13,7 @@ import {tokenizeReedSolomonAddress} from './tokenizeReedSolomonAddress';
  * Converts <Prefix>-XXXX-XXXX-XXXX-XXXXX into numeric Id
  * @param address The Reed-Solomon address
  * @return The numeric id, or undefined if address is invalid
- * @module core
+ * 
  */
 export const convertReedSolomonAddressToNumericId = (address: string): string => {
 

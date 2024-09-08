@@ -4,8 +4,8 @@
 
 /**
  * Reward Recipient
- *
- * @module core */
+ * @category entities
+ *  */
 export interface RewardRecipient {
     rewardRecipient: string;
     requestProcessingTime: number;

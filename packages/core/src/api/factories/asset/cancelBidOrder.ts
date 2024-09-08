@@ -8,12 +8,13 @@ import {cancelOrder} from './cancelOrder';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi.cancelBidOrder]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi.cancelBidOrder}.
  *
- * See details at [[AssetApi.cancelBidOrder]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.cancelBidOrder}
+ * 
+*
+* @category factories
+*/
 export const cancelBidOrder = (service: ChainService) =>
     async (args: CancelOrderArgs) =>
         cancelOrder(service)({

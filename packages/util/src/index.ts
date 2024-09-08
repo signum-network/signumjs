@@ -1,7 +1,7 @@
 /**
  * The utility package for SignumJS, with loads of convenience methods
  *
- * @moduledefinition util
+ * @module util
  * */
 export * from './asyncRetry';
 export * from './chainTime';

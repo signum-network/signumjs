@@ -11,11 +11,12 @@ import {calculateMinimumCreationFee} from '@signumjs/contracts';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.publishContractByReference]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.publishContractByReference}
+*
+* @category factories
+*/
 export const publishContractByReference = (service: ChainService) =>
     (args: PublishContractByReferenceArgs) =>
         signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {

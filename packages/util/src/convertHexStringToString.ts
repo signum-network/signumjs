@@ -8,7 +8,7 @@ import {convertHexStringToByteArray} from './convertHexStringToByteArray';
 
 /**
  * Converts a Hexadecimally encoded string into String
- * Inverse function [[convertStringToHexString]]
+ * Inverse function {@link convertStringToHexString}
  * @param hex The Hex string to be converted
  * @return {string} The string represented by the Hex String
  * @module util

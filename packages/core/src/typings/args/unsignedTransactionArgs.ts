@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[TransactionApi.signAndBroadcastTransaction]]
+ * The argument object for {@link TransactionApi.signAndBroadcastTransaction}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface UnsignedTransactionArgs {
     unsignedHexMessage: string;
     senderPrivateKey: string;

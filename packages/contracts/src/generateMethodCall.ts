@@ -12,7 +12,7 @@ import {convertContractData} from './internal/convertContractData';
 
 /**
  * Generates a method call message of a contracts public method. The message can be sent using for example
- * [[MessageApi.sendMessage]] with `messageIsText = false` or [[ContractApi.callContractMethod]]]
+ * {@link MessageApi.sendMessage} with `messageIsText = false` or {@link ContractApi.callContractMethod}]
  * @param args The argument object
  * @return A hex string that can be used as contracts transaction message
  * @module contracts

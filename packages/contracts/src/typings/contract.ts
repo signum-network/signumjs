@@ -4,7 +4,7 @@
  */
 
 /**
- * The contract interface returned from Signum Node API [[ContractApi.getContract]]
+ * The contract interface returned from Signum Node API {@link ContractApi.getContract}
  * @module contracts
  */
 export interface Contract {

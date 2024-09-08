@@ -6,7 +6,7 @@
 /**
  * Unconfirmed Asset Balance
  *
- * @module core
+ * @category entities
  * */
 export interface UnconfirmedAssetBalance {
     unconfirmedBalanceQNT: string;

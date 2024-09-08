@@ -52,7 +52,7 @@ export function generateSignKeys(passPhrase: string): SignKeys {
 
 /**
  * Computes the Account ID from Public Key
- * @param publicKey The public Key generated with [[generateSignKeys]]
+ * @param publicKey The public Key generated with {@link generateSignKeys}
  * @return A numeric string - The Account ID
  */
 export function getAccountIdFromPublicKey(publicKey: string): string {
@@ -71,7 +71,7 @@ export function getAccountIdFromPublicKey(publicKey: string): string {
  *          privateKey)
  *  p = sha256(sha256(transactionHex)_keygen(sha256(transactionHex_privateKey)).publicKey)
  * ```
- * @see [[verifySignature]]
+ * @see {@link verifySignature}
  * @param messageHex The data in hexadecimal representation
  * @param privateKeyHex The private key for signing in hexadecimal representation
  * @return The signature in hexadecimal format
@@ -99,7 +99,7 @@ export function generateSignature(messageHex: string, privateKeyHex: string): st
  * ==
  * sha256(sha256(transactionHex)_verify(v, h1, publickey)) = h2
  * ```
- * @see [[generateSignature]]
+ * @see {@link generateSignature}
  * @param signature The signature to be verified
  * @param messageHex The message data in hexadecimal representation
  * @param publicKeyHex The public key
@@ -133,7 +133,7 @@ export function verifySignature(signature: string, messageHex: string, publicKey
 /**
  * Generates a signed message digest, which can be sent to Signum Node API then
  *
- * @see [[generateSignature]]
+ * @see {@link generateSignature}
  * @param unsignedTransactionHex The unsigned message
  * @param signature The signature
  * @return The signed message digest

@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getAsset]]
+ * The argument object for {@link AssetApi.getAsset}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetArgs {
     /**
      * The assets/token id

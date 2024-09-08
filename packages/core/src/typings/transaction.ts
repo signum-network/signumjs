@@ -8,7 +8,7 @@ import {DistributionAmount} from './distributionAmount';
 /**
  * The mighty transaction
  *
- * @module core
+ * @category entities
  * */
 export interface Transaction {
     amountNQT: string;

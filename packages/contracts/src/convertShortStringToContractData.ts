@@ -6,7 +6,7 @@ import {ContractData} from './typings';
 import {convertHexEndianess, convertHexStringToDecString, convertStringToHexString} from '@signumjs/util';
 
 /**
- * Converts a short string into [[ContractData]] to be used as argument for smart contract calls, i.e. [[generateMethodCall]]
+ * Converts a short string into {@link ContractData} to be used as argument for smart contract calls, i.e. {@link generateMethodCall}
  *
  * @param {string} shortString A short alphanumerical string of at maximum 8 characters (bytes) length.
  * @return A compatible numerical representation which can be used as string in a smart contract.

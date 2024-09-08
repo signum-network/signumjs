@@ -6,11 +6,12 @@ import {Contract} from '@signumjs/contracts';
 // import {Contract} from '../../../typings/contract';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getContract]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getContract}
+*
+* @category factories
+*/
 export const getContract = (service: ChainService):
     (id: string) => Promise<Contract> =>
     (id: string): Promise<Contract> =>

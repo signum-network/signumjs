@@ -4,7 +4,7 @@
 
 /**
  * Suggested fees (in Planck)
- * @module core
+ * @category entities
  * */
 export interface SuggestedFees {
     minimum: number;

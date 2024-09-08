@@ -10,11 +10,12 @@ import {UnsignedTransactionArgs} from '../../../typings/args/unsignedTransaction
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.signAndBroadcastTransaction]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.signAndBroadcastTransaction}
+*
+* @category factories
+*/
 export const signAndBroadcastTransaction = (chainService: ChainService):
     (unsignedTransaction: UnsignedTransactionArgs) => Promise<TransactionId> =>
     async (unsignedTransaction): Promise<TransactionId> => {

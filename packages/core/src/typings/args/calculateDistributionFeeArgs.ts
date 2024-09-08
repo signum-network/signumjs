@@ -1,7 +1,8 @@
 /**
- * The argument object for [[AssetApi.calculateDistributionFee]]
- * @module core
- */
+ * The argument object for {@link AssetApi.calculateDistributionFee}
+*
+* @category args
+*/
 export interface CalculateDistributionFeeArgs {
     /**
      * The asset Id

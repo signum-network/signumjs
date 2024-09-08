@@ -2,7 +2,7 @@
  * This package contains all cryptographic functions
  * needed for Burstcoin/Signum.
  *
- * @moduledefinition crypto
+ * @module crypto
  * */
 
 export * from './decrypt';

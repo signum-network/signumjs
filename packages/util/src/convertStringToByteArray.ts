@@ -5,7 +5,7 @@
 
 /**
  * Converts a string into byte array
- * Inverse function [[convertByteArrayToString]]
+ * Inverse function {@link convertByteArrayToString}
  * @param str The string  to be converted
  * @return {number[]} A byte array representing the string input
  * @module util

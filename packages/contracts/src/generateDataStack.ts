@@ -17,7 +17,7 @@ interface DataStack {
 
 /**
  * Generates a data stack message of a contracts, which can be used as initialization. The message can be used on a contract's creation with
- * [[ContractApi.publishContract]] or [[ContractApi.publishContractByReference]]
+ * {@link ContractApi.publishContract} or {@link ContractApi.publishContractByReference}
  * @param data A list of variables forming the data stack
  * @return The data stack
  * @module contracts

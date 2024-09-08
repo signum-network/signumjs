@@ -5,11 +5,12 @@ import {ChainService} from '../../../service';
 import {RewardRecipient} from '../../..';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getRewardRecipient]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getRewardRecipient}
+*
+* @category factories
+*/
 export const getRewardRecipient = (service: ChainService):
     (accountId: string) => Promise<RewardRecipient> =>
     async (accountId: string): Promise<RewardRecipient> => {

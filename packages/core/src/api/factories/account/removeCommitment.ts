@@ -9,11 +9,12 @@ import {CommitmentArgs} from '../../../typings/args/commitmentArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.removeCommitment]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.removeCommitment}
+*
+* @category factories
+*/
 export const removeCommitment = (service: ChainService) =>
     (args: CommitmentArgs) =>
         signIfPrivateKey(service, args, async (a: CommitmentArgs) => {

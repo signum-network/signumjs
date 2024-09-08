@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getTradeHistoryPerAccount]]
+ * The argument object for {@link AssetApi.getTradeHistoryPerAccount}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetTradeHistoryPerAccountArgs {
     accountId: string;
     assetId?: string;

@@ -8,7 +8,7 @@ import {Subscription} from './subscription';
 /**
  * Subscription List
  *
- * @module core
+ * @category entities
  * */
 export interface SubscriptionList {
     readonly requestProcessingTime: number;

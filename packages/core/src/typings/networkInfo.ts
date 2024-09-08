@@ -23,7 +23,7 @@ interface PeerState {
 
 /**
  * Network Info
- * @module core
+ * @category entities
  */
 export interface NetworkInfo {
     readonly genesisBlockId: string;

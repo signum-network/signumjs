@@ -115,9 +115,8 @@ import {
 } from './factories/asset';
 import {Http} from '@signumjs/http';
 /**
- * Settings for API used in [[composeApi]]
+ * Settings for API used in {@link composeApi}
  *
- * @module core.api
  * */
 export class ApiSettings {
     /**
@@ -148,13 +147,12 @@ export class ApiSettings {
  * const api = composeApi(new ApiSettings('https://europe.signum.network')), // one of the mainnet nodes
  * ```
  *
- * > Note, that this method mounts the __entire__ API, i.e. all available methods. One may also customize the API composition
- * using [[ApiComposer]].
+ * Note, that this method mounts the __entire__ API, i.e. all available methods. One may also customize the API composition
+ * using {@link ApiComposer}.
  *
  * @param settings necessary execution context
  * @return The _complete_ API
  *
- * @module core.api
  */
 export function composeApi(settings: ApiSettings): Api {
 

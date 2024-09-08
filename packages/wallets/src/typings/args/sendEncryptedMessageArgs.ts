@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Signum Network
- * @see [[Wallet.sendEncryptedMessage]]
+ * @see {@link Wallet.sendEncryptedMessage}
  * @module wallets
  */
 export interface SendEncryptedMessageArgs {

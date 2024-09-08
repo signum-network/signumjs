@@ -6,10 +6,7 @@
 /**
  * @param n the number
  * @return a NQT number string
- * @deprecated
- * <div class="deprecated">
- *     Use [[Amount]] instead
- * </div>
+ * @deprecated Use {@link Amount} instead
  * Helper method to Number to String(8 decimals) representation
  * @module util
  */

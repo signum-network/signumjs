@@ -6,11 +6,12 @@ import {ChainService} from '../../../service/chainService';
 import {AliasList} from '../../../typings/aliasList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AliasApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AliasApi}.
  *
- * See details at [[AliasApi.getAliasByName]]
- * @module core.api.factories
- */
+ * See details at {@link AliasApi.getAliasByName}
+*
+* @category factories
+*/
 export const getAliasByName = (service: ChainService):
     (aliasName: string, tld?: string) => Promise<AliasList> =>
     (aliasName: string, tld?: string): Promise<AliasList> => service.query('getAlias', {

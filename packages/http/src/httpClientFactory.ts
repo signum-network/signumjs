@@ -2,7 +2,7 @@ import {Http} from './http';
 import {HttpAdapterAxios} from './httpAdapterAxios';
 
 /**
- * Factory for clients of [[Http]]
+ * Factory for clients of {@link Http}
  *
  * @module http
  */

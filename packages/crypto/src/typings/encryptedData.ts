@@ -4,7 +4,7 @@
 
 /**
  * The interface for encrypted raw data
- * @see [[encryptData]]
+ * @see {@link encryptData}
  * @module crypto
  */
 export interface EncryptedData {

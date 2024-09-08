@@ -8,7 +8,8 @@ import {Indexable} from './indexable';
 
 /**
  * Asset Account List
- * @module core
+ *
+ * @category entities
  */
 export interface AssetAccountList extends Indexable {
     accountAssets: AssetAccount[];

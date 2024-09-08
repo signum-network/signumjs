@@ -13,7 +13,7 @@ import {isDeeplyValidAddress} from './internal';
  * Ensures a valid Reed Solomon address format, like <Prefix>-XXXX-XXXX-XXXX-XXXXX
  * @param {string} address The address string
  * @throws if is not a valid address
- * @module core
+ *
  */
 export const ensureReedSolomonAddress = (address: string): void => {
     const tokens = tokenizeReedSolomonAddress(address);

@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[ContractApi.getAllContractsByCodeHash]]
+ * The argument object for {@link ContractApi.getAllContractsByCodeHash}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAllContractsByCodeHashArgs {
     /**
      * The hash of the machine code

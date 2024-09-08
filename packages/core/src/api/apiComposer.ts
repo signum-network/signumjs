@@ -35,7 +35,7 @@ class ApiImpl implements Api {
 /**
  * The API composer mounts the API for given service and selected methods
  *
- * Usually you would use [[composeApi]], which gives you _all_ available API methods.
+ * Usually you would use{@link LedgerClientFactory} (or older style {@link composeApi}), which gives you _all_ available API methods.
  * Unfortunately, this will import almost all dependencies, even if you need only a fraction
  * of the methods. To take advantage of tree-shaking (dead code elimination) you can
  * compose your own API with the methods you need. This can reduce your final bundle significantly.
@@ -64,7 +64,7 @@ class ApiImpl implements Api {
  *
  * The `with<section>Api` uses factory methods from the [api.core.factories](/phoenix/docs/modules/core_api_factories.html) package
  *
- * @module core.api
+ * 
  * */
 export class ApiComposer {
     private readonly api: Api;
@@ -92,7 +92,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[BlockApi]] to be composed
+     * Adds the {@link BlockApi} to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withBlockApi(creatorMap: any): ApiComposer {
@@ -101,7 +101,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[AccountApi]]  to be composed
+     * Adds the {@link AccountApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withAccountApi(creatorMap: any): ApiComposer {
@@ -110,7 +110,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[NetworkApi]]  to be composed
+     * Adds the {@link NetworkApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withNetworkApi(creatorMap: any): ApiComposer {
@@ -119,7 +119,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[MessageApi]]  to be composed
+     * Adds the {@link MessageApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withMessageApi(creatorMap: any): ApiComposer {
@@ -128,7 +128,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[TransactionApi]]  to be composed
+     * Adds the {@link TransactionApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withTransactionApi(creatorMap: any): ApiComposer {
@@ -137,7 +137,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[AliasApi]]  to be composed
+     * Adds the {@link AliasApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withAliasApi(creatorMap: any): ApiComposer {
@@ -146,7 +146,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[AssetApi]]  to be composed
+     * Adds the {@link AssetApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withAssetApi(creatorMap: any): ApiComposer {
@@ -155,7 +155,7 @@ export class ApiComposer {
     }
 
     /**
-     * Adds the [[ContractApi]]  to be composed
+     * Adds the {@link ContractApi}  to be composed
      * @param creatorMap A map of creator/factory functions for the endpoints
      */
     public withContractApi(creatorMap: any): ApiComposer {

@@ -46,7 +46,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
             transaction: '123',
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.MultiOut,
-            attachment: {'version.MultiOutCreation': 1, recipients: [['123', 'amountA'], ['456', 'amountB']]}
+            attachment: {'version.MultiOutCreation': 1, recipients: {@link '123', 'amountA'], ['456', 'amountB'}}
         };
 
         // @ts-ignore
@@ -62,7 +62,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
         const transaction = {
             transaction: '123',
             type: TransactionType.Arbitrary,
-            attachment: {'version.MultiOutCreation': 1, recipients: [['123', 'ammountA'], ['456', 'amountB']]}
+            attachment: {'version.MultiOutCreation': 1, recipients: {@link '123', 'ammountA'], ['456', 'amountB'}}
         };
 
         try {
@@ -79,7 +79,7 @@ describe('getRecipientAmountsFromMultiOutPayment', () => {
             transaction: '123',
             type: TransactionType.Payment,
             subtype: TransactionPaymentSubtype.Ordinary,
-            attachment: {'version.MultiOutCreation': 1, recipients: [['123', 'ammountA'], ['456', 'amountB']]}
+            attachment: {'version.MultiOutCreation': 1, recipients: {@link '123', 'ammountA'], ['456', 'amountB'}}
         };
 
         try {

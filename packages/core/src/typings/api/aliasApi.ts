@@ -17,9 +17,16 @@ import {GetAliasesArgs} from '../args/getAliasesArgs';
 /**
  * Alias API
  *
- * Work in Progress
+ * The Alias API
  *
- * @module core.api
+ * Aliases are Data Containers with ownership. They can carry up to 1KB of arbitrary data which can be updated and are also transferable.
+ * Aliases are very powerful and be used for a various applications:
+ * - Updateable NFTs
+ * - DNS like resolution (see also {@link SRC47:URIResolver})
+ * - RWA linkage
+ * - ...
+ *
+ * @category api
  */
 export interface AliasApi {
 

@@ -6,7 +6,7 @@
 
 /**
  * Subscription
- * @module core
+ * @category entities
  * */
 export interface Subscription {
     readonly id: string;

@@ -2,9 +2,9 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.addAssetTreasuryAccount]]
+ * The argument object for {@link AssetApi.addAssetTreasuryAccount}
  *
- * @module core
+ * @category args
  */
 export interface AddAssetTreasuryAccountArgs extends DefaultSendArgs {
     /**

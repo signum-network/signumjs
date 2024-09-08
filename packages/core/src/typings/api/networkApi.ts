@@ -12,7 +12,7 @@ import {NetworkInfo} from '../networkInfo';
  *
  * This module provides methods about the network itself
  *
- * @module core.api
+ * @category api
  */
 export interface NetworkApi {
     /**

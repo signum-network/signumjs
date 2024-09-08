@@ -6,10 +6,11 @@ import {ChainService} from '../../../service/chainService';
 import {ServerStatus} from '../../../typings/serverStatus';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getServerStatus]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getServerStatus}
+*
+* @category factories
+*/
 export const getServerStatus = (service: ChainService): () => Promise<ServerStatus> =>
     (): Promise<ServerStatus> => service.query('getState');

@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.transferAsset]]
+ * The argument object for {@link AssetApi.transferAsset}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface TransferAssetArgs extends DefaultSendArgs {
     /**
      * The assets id to be transferred

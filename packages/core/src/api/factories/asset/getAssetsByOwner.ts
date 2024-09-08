@@ -6,11 +6,12 @@ import {AssetList} from '../../../typings/assetList';
 import {GetAssetsByIssuerArgs} from '../../../typings/args';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetsByOwner]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetsByOwner}
+*
+* @category factories
+*/
 export const getAssetsByOwner = (service: ChainService):
     (args: GetAssetsByIssuerArgs) => Promise<AssetList> =>
     (args: GetAssetsByIssuerArgs): Promise<AssetList> => {

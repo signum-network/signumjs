@@ -37,7 +37,7 @@ function encodePayload(payload: any, encoderFormat: EncoderFormat): string {
  * Deeplinks are a way to call/open applications and do certain actions within it, e.g. Phoenix wallet
  * can redirect to the "Send Burst" screen a fill out the form according the passed payload.
  *
- * @see [[parseDeeplink]] as inverse function
+ * @see {@link parseDeeplink} as inverse function
  * @param {CreateDeeplinkArgs} args The arguments for the deeplink
  * @return The Deeplink
  * @module util

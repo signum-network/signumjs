@@ -1,8 +1,6 @@
 /** @ignore */
 /** @internal */
 
-/** @module wallets */
-
 /**
  * Just a superficial check, if address seems valid
  * @param address The accountId or address

@@ -9,7 +9,8 @@ import { UnconfirmedAssetBalance } from './unconfirmedAssetBalance';
 
 /**
 * The Signum account interface
- * @module core
+ *
+ * @category entities
 */
 export interface Account {
     account: string;

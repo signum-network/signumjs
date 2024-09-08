@@ -9,7 +9,7 @@ interface KeyValue {
 
 /**
  * Contract Map Value List
- * @module core
+ * @category entities
  */
 export interface ContractMapValueList {
     keyValues: KeyValue[];

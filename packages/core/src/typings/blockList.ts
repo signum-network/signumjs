@@ -7,7 +7,7 @@ import {Indexable} from './indexable';
 
 /**
  * Block List
- * @module core
+ * @category entities
  */
 export interface BlockList extends Indexable {
     blocks: Block[];

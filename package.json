@@ -28,14 +28,14 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^2.0.5",
     "turbo": "^2.0.14",
-    "typedoc": "0.16.11",
+    "typedoc": "0.26.6",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
   "scripts": {
     "compile": "turbo run compile",
     "bundle": "turbo run bundle",
-    "doc": "typedoc --options tsdoc.json --listInvalidSymbolLinks",
+    "doc": "typedoc",
     "publish:old": "npm run test && lerna exec npm run bundle && lerna publish --force-publish",
     "publish": "turbo run compile test bundle && echo 'TODO: run publisher' ",
     "test": "turbo run test",

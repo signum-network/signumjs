@@ -5,7 +5,7 @@
 
 /**
  * Blockchain Status
- * @module core
+ * @category entities
  */
 export interface BlockchainStatus {
     readonly application: string;

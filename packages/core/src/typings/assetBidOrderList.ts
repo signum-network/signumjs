@@ -7,7 +7,8 @@ import {Indexable} from './indexable';
 
 /**
  * Asset Bid Order List
- * @module core
+ *
+ * @category entities
  */
 export interface AssetBidOrderList extends Indexable {
     bidOrders: AssetOrder[];

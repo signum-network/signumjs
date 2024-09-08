@@ -1,7 +1,7 @@
 /**
  * MultioutAssetQuantities interface
- * @see [[transferMultipleAssets]]
- * @module core
+ * @see {@link transferMultipleAssets}
+ * @category entities
  */
 export interface MultioutAssetQuantities {
     readonly assetId: string;

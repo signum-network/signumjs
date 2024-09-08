@@ -6,11 +6,12 @@ import {ContractIdList} from '../../../typings/contractIdList';
 import {GetAllContractIdsArgs} from '../../../typings/args/getAllContractIdsArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getAllContractIds]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getAllContractIds}
+*
+* @category factories
+*/
 export const getAllContractIds = (service: ChainService):
     (args?: GetAllContractIdsArgs) => Promise<ContractIdList> =>
     (args?: GetAllContractIdsArgs): Promise<ContractIdList> => {

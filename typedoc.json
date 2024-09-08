@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/**/src/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "out": "docs_new",
+  "tsconfig": "./tsconfig.json",
+  "navigation": {
+    "includeCategories": true
+  }
+}

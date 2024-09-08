@@ -5,7 +5,7 @@
 /**
  * Constants for payment subtypes
  *
- * @module core
+ * @category transaction-types
  */
 export enum TransactionPaymentSubtype {
     Ordinary = 0,

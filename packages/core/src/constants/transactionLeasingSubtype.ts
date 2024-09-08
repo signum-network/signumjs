@@ -5,7 +5,7 @@
 /**
  * Constants for leasing subtypes
  *
- * @module core
+ * @category transaction-types
  */
 export enum TransactionLeasingSubtype {
     Ordinary = 0

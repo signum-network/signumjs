@@ -6,11 +6,12 @@ import {ChainService} from '../../../service/chainService';
 import {Block} from '../../../typings/block';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[BlockApi]].
+ * Use with {@link ApiComposer} and belongs to {@link BlockApi}.
  *
- * See details at [[BlockApi.getBlockByHeight]]
- * @module core.api.factories
- */
+ * See details at {@link BlockApi.getBlockByHeight}
+*
+* @category factories
+*/
 export const getBlockByHeight = (service: ChainService):
     (height: number, includeTransactions: boolean) => Promise<Block> =>
     (height: number, includeTransactions: boolean): Promise<Block> =>

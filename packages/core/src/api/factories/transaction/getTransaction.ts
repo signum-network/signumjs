@@ -7,11 +7,12 @@ import {ChainService} from '../../../service/chainService';
 import {Transaction} from '../../../typings/transaction';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.getTransaction]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.getTransaction}
+*
+* @category factories
+*/
 export const getTransaction = (service: ChainService):
     (transactionId: string) => Promise<Transaction> =>
     (transactionId: string): Promise<Transaction> =>

@@ -5,8 +5,8 @@
 
 /**
  * Constants for asset subtypes
- * @module core
- *
+ * 
+ * @category transaction-types
  */
 export enum TransactionAssetSubtype {
     AssetIssuance = 0,

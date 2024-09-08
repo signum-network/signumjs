@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[ContractApi.getContractsByAccount]]
+ * The argument object for {@link ContractApi.getContractsByAccount}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetContractsByAccountArgs {
     /**
      * Account Id

@@ -12,8 +12,8 @@ import { parseIpfsMedia } from './parseIpfsMedia';
  * Descriptor Data
  *
  * SRC44-compliant Descriptor Data to be used as description in Smart Contracts, Account Info, and/or Aliases.
- * Use [[DescriptorDataBuilder]] to construct from the scratch, or use this to parse json data
- * @module standards.SRC44
+ * Use {@link DescriptorDataBuilder} to construct from the scratch, or use this to parse json data
+ * @category SRC44
  */
 export class DescriptorData {
 
@@ -97,7 +97,7 @@ export class DescriptorData {
 
     /**
      * Creates/Parses a SRC44 compliant descriptor string
-     * @param jsonString The SRC44 compliant string. See also [[stringify]]
+     * @param jsonString The SRC44 compliant string. See also {@link stringify}
      * @param strict If true, the standard check is more strictly
      * @return A new instance of DescriptorData
      * @throws SRC44ParseException in case of errors

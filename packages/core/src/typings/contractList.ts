@@ -7,7 +7,7 @@ import { Contract } from '@signumjs/contracts';
 
 /**
  * The Contract Id List
- * @module core
+ * @category entities
  */
 export interface ContractList extends Indexable {
     ats: Contract[];

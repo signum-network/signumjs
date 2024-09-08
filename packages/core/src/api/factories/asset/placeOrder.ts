@@ -18,9 +18,10 @@ interface GenericPlaceOrderArgs extends PlaceOrderArgs {
 /**
  * @ignore
  * This is an internal helper
- * See details at [[AssetApi.placeAskOrder]] [[AssetApi.placeBidOrder]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.placeAskOrder} {@link AssetApi.placeBidOrder}
+*
+* @category factories
+*/
 export const placeOrder = (service: ChainService) =>
     (args: GenericPlaceOrderArgs) =>
         signIfPrivateKey(service, args, async (a: GenericPlaceOrderArgs) => {

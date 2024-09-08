@@ -4,7 +4,7 @@
 
 /**
  * Contract Id List
- * @module core
+ * @category entities
  */
 export interface ContractIdList {
     atIds: string[];

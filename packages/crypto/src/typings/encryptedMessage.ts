@@ -4,7 +4,7 @@
 
 /**
  * The interface for encrypted message
- * @see [[encryptMessage]]
+ * @see {@link encryptMessage}
  * @module crypto
  */
 export interface EncryptedMessage {

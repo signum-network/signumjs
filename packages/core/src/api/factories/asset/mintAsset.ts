@@ -10,12 +10,13 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.mintAsset]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.mintAsset}
+ * 
+*
+* @category factories
+*/
 export const mintAsset = (service: ChainService) =>
     (args: MintAssetArgs) => signIfPrivateKey(service, args,
         async (a: MintAssetArgs) => {

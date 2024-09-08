@@ -9,7 +9,7 @@ import {getRandomWords} from './random';
  * The Strength of the generated mnemonic
  * Ranging from 128 bit (12 Words) to 256 bit (24 Words)
  *
- * @see [[generateMnemonic]]
+ * @see {@link generateMnemonic}
  * @module crypto
  */
 export enum Strength {

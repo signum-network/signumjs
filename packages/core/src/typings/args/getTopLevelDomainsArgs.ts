@@ -1,8 +1,9 @@
 /**
- * The argument object for [[AliasApi.getTopLevelDomains]]
+ * The argument object for {@link AliasApi.getTopLevelDomains}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetTopLevelDomainsArgs {
     /**
      * The first index to be returned. Use this for pagination. Starts at 0
@@ -14,7 +15,7 @@ export interface GetTopLevelDomainsArgs {
     lastIndex?: number;
     /**
      * The timestamp in seconds since genesis block
-     * @see [[util.ChainTime]]
+     * @see {@link util.ChainTime}
      */
     timestamp?: number;
 }

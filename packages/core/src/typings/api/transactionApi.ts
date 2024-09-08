@@ -19,7 +19,13 @@ import {TransactionList} from '../transactionList';
  *
  * This module provides methods related to blockchain transactions
  *
- * @module core.api
+ * @example Usage
+ *
+ * ```ts
+ * const client = LedgerClientFactory.createClient({nodehost: "https://europe.signum.network" })
+ * const account = await client.transaction.getAccount( { accountId: '7661432345798605326' })
+ *
+ * @category api
  */
 export interface TransactionApi {
 
@@ -122,9 +128,9 @@ export interface TransactionApi {
      *
      * Usually, you don't need this, as all sending methods in SignumJS sign and broadcast.
      * As not all BRS API functions are implemented yet in SignumJS this method is handy for those,
-     * i.e. all direct calls to [[ChainService.send]]
+     * i.e. all direct calls to {@link ChainService.send}
      *
-     * @param unsignedTransaction The unsigned Transaction Object (returned by [[ChainService.send]])
+     * @param unsignedTransaction The unsigned Transaction Object (returned by {@link ChainService.send})
      * @return The TransactionId
      */
     signAndBroadcastTransaction: (unsignedTransaction: UnsignedTransactionArgs) => Promise<TransactionId>;
@@ -136,7 +142,7 @@ export interface TransactionApi {
      * Distribution to token holders is very efficient at very high transaction rate, so one need explicitely
      * query the node for the underlying amounts of a run distribution.
      *
-     * @see [[AssetApi.distributeToAssetHolders]]
+     * @see {@link AssetApi.distributeToAssetHolders}
      * @param transactionId The transaction Id of the distribution
      * @param accountId The relevant account
      *

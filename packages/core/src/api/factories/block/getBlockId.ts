@@ -6,11 +6,12 @@ import {ChainService} from '../../../service/chainService';
 import {BlockId} from '../../..';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[BlockApi]].
+ * Use with {@link ApiComposer} and belongs to {@link BlockApi}.
  *
- * See details at [[BlockApi.getBlockId]]
- * @module core.api.factories
- */
+ * See details at {@link BlockApi.getBlockId}
+*
+* @category factories
+*/
 export const getBlockId = (service: ChainService):
     (height: number) => Promise<BlockId> =>
     (height: number): Promise<BlockId> =>

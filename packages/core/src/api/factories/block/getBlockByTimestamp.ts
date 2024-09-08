@@ -5,11 +5,12 @@ import {ChainService} from '../../../service/chainService';
 import {Block} from '../../../typings/block';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[BlockApi]].
+ * Use with {@link ApiComposer} and belongs to {@link BlockApi}.
  *
- * See details at [[BlockApi.getBlockByTimestamp]]
- * @module core.api.factories
- */
+ * See details at {@link BlockApi.getBlockByTimestamp}
+*
+* @category factories
+*/
 export const getBlockByTimestamp = (service: ChainService):
     (timestamp: number, includeTransactions: boolean) => Promise<Block> =>
     (timestamp: number, includeTransactions: boolean): Promise<Block> =>

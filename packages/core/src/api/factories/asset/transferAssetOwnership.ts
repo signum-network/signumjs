@@ -10,12 +10,13 @@ import {TransferAssetOwnershipArgs} from '../../../typings/args';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.transferAssetOwnership]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.transferAssetOwnership}
+ * 
+*
+* @category factories
+*/
 export const transferAssetOwnership = (service: ChainService) =>
     (args: TransferAssetOwnershipArgs) => signIfPrivateKey(service, args, async (a: TransferAssetOwnershipArgs) => {
             let parameters = {
