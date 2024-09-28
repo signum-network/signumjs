@@ -10,7 +10,10 @@
     <div class="space-y-8 p-8 max-w-2xl mx-auto">
         <div class="space-y-2">
             <h1 class="text-3xl font-bold">SignumJS Core Module Sandbox</h1>
-            <small>This is playground to test and check SignumJS Core Bundle</small>
+            <small>This is a playground to test and check SignumJS Core Bundle</small>
+            <small>Connected Node:
+                <span id="connected-node"></span>
+            </small>
             <section class="bg-white p-10 rounded border">
                 <h2 class="text-2xl font-bold mb-6">Address</h2>
                 <input
@@ -32,17 +35,50 @@
                         <span id="address-output-rs" class="text-sm font-mono"></span>
                     </div>
                     <span id="address-output-error" class="text-sm my-2 font-mono text-red-700"></span>
+                </div>
+            </section>
+            <section class="bg-white p-10 rounded border">
+                <h2 class="text-2xl font-bold mb-6">Send Message</h2>
+                <form id="send-message-form" class="flex flex-col gap-4">
+                    <label for="send-message-recipient-input">
+                        <input
+                                id="send-message-recipient-input"
+                                class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                                placeholder="Enter Address, Account or Public Key of recipient here"
+                        />
+                    </label>
+                    <label for="send-message-text-input">
+                    <textarea
+                            id="send-message-text-input"
+                            class="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                            placeholder="Enter Text To Send (Max 1000 chars)"
+                            maxlength="1000"
+                            rows=4
+                    ></textarea>
+                    </label>
+                        <label for="send-message-sender-mnemonic">
+                        <input
+                                id="send-message-sender-mnemonic"
+                                class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                                placeholder="Enter the passphrase/mnemonic of the sending account"
+                        />
+                    </label>
+                    <div class="text-center">
+                        <button id="send-button"
+                                type="submit"
+                                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 bg-green-500 hover:bg-green-600 text-white">
+                            Send Message
+                        </button>
+                    </div>
+                    <span id="send-result-message" class="text-sm font-mono"></span>
+                    <a id="transaction-sent" class="text-sm text-blue-500 underline"  rel="noopener noreferral" target="_blank" href="#" ></a>
+                </form>
             </section>
         </div>
         <!--        <section class="space-y-2 bg-white p-10 rounded border">-->
         <!--            <section class="">-->
         <!--                <h2 class="text-2xl font-bold mb-6">Generate Mnemonic</h2>-->
-        <!--                <div class="text-center">-->
-        <!--                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 bg-green-500 hover:bg-green-600 text-white"-->
-        <!--                            onclick="generateMnemonicAndKeys()">-->
-        <!--                        Generate Mnemonic-->
-        <!--                    </button>-->
-        <!--                </div>-->
+
         <!--                <div class="space-y-2">-->
         <!--                    <h2 class="text-xl font-semibold">Mnemonic</h2>-->
         <!--                    <p id="mnemonic-output"-->
@@ -126,6 +162,8 @@
 </div>
 
 <script src="./signumjs.min.js"></script>
+<script src="./signumjs.crypto.min.js"></script>
+<script src="./signumjs.util.min.js"></script>
 <script src="./main.js" defer></script>
 
 </body>
