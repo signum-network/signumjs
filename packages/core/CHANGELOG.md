@@ -1,5 +1,44 @@
 # Change Log
-All notable changes to this project will be documented in this file.
+
+## 2.0.0
+
+### Major Changes
+
+- 14f4944: This new version uses a completely modernized stack (turborepo, vite, vitest). Furthermore, the crypto package was rewritten to remove deprecated crypto-js library and being extensible. The standards (SRC) packages were reorganized and finally the monitor package was removed
+
+  Breaking Changes:
+
+  1. `@signumjs/monitor` was removed, as not really used
+  2. `@signumjs/crypto` was completely rewritten, mainly due to the deprecation of `crypto-js` and certain security implications
+  3. `@signumjs/standards` were reorganized respecting the Signum Request for Comment (SRC) numbering
+
+  How to update from 1.0 to 2.0
+
+  1. Monitor was removed
+
+  Drop `signumjs/monitor` (no replacement here) - if you used the monitor you can copy the code from the repo and include it manually in your code base
+
+  2. Adjust Crypto
+
+  - Passphrase generator was dropped, use `generateMnemonic` instead
+  - `generateMasterKeys` was renamed to `generateSignKeys`
+  - `hashSHA256` was renamed to `sha256AsHex` (and more sha256 hashers are available)
+  - `encryptAES` and `decryptAES` were dropped - use native crypto methods for AES encryption. Signum uses for their P2P encryption a AES based algorithm using the shared key (`encryptMessage` and `encryptData`)
+
+  > The new crypto package offers more secure random and sha256 functions and is much more flexible. Check the docs for more info
+
+  3. Using SRC based standards
+
+  Actually, not much to do here. It's just that the internal structure is organized by the SRC numbering.
+
+### Patch Changes
+
+- Updated dependencies [14f4944]
+  - @signumjs/contracts@2.0.0
+  - @signumjs/crypto@2.0.0
+  - @signumjs/http@2.0.0
+  - @signumjs/util@2.0.0
+    All notable changes to this project will be documented in this file.
 
 ## 1.0.0 (TBR)
 
@@ -17,6 +56,7 @@ This version is a major breakthrough with a lots of significant and breaking cha
 - Multiouts with duplicate id checks now, i.e. automatic dedupe for same multiout
 - Support for Contract References aka Carbon Contracts/Green Smart Contracts
 - New Functions/Classes:
+
   - `getMiningInfo`
   - `publishContractByReference`
   - `getNetworkInfo`
@@ -52,24 +92,26 @@ This version is a major breakthrough with a lots of significant and breaking cha
   - `getContractsByMachineCodeHash`
 
 - New Transaction Subtype Enums for Assets
-- `getAccountTransactions` can resolve asset distributions now! 
+- `getAccountTransactions` can resolve asset distributions now!
 - Account class converted to interface and follows now the Nodes response
 - Minor bug fixes
 
-----------------------------------------------------
-> Before Rebranding
+---
 
+> Before Rebranding
 
 ## 0.6.0
 
-__Breaking Changes__
+**Breaking Changes**
 
 - `getAccount` accepts an argument object now
 - `TransactionRewardRecipentSubtype` renamed to `TransactionMiningSubtype`
 - `setAccountInfo` accepts an argument object now
-------------------------
 
-__New__
+---
+
+**New**
+
 - Added `BurstService.selectBestNode`
 - deprecated `suggestFee`
   - use `getSuggestedFees`
@@ -87,94 +129,109 @@ __New__
 - `Api` interface "leaks" the underlying BRS service instance
 
 ---
-__Fixes__
+
+**Fixes**
+
 - Fixed return types of Block Api (`BlockIdList` and `BlockList`)
 - Fixed `getAccountBlocks` and `getAccountBlockIds`
 - Fixed missing export for `AssetList`
+
 ---
 
 ## 0.5.0
 
-___
-__Breaking Changes__
+---
+
+**Breaking Changes**
+
 - `ContractHelper`, `getContractDatablock` moved into new package `contracts`
-- `FeeQuantNQT`removed 
-    - moved to `FeeQuantPlanck` in `@signumjs/util`
+- `FeeQuantNQT`removed
+  - moved to `FeeQuantPlanck` in `@signumjs/util`
 - `setRewardRecipient` with argument object now
-___
+
+---
 
 - added new methods to contract Api
-    - `callContractMethod`
-    - `publishContract`
+
+  - `callContractMethod`
+  - `publishContract`
 
 - added new methods to transaction Api
-    - `createSubscription`
-    - `cancelSubscription`
-    - `getSubscription`
-    - `getUnconfirmedTransactions`
+
+  - `createSubscription`
+  - `cancelSubscription`
+  - `getSubscription`
+  - `getUnconfirmedTransactions`
 
 - added new methods to account Api
-    - `getAccountSubscriptions`
-    - `getSubscriptionsToAccount`
-    - `getRewardRecipient`
+  - `getAccountSubscriptions`
+  - `getSubscriptionsToAccount`
+  - `getRewardRecipient`
 
 ## 0.4.3
-___
-__Breaking Changes__
+
+---
+
+**Breaking Changes**
+
 - `getAccountTransactions` uses an argument object now
-___
+
+---
 
 - deprecated `sendTextMessage`
-    - will be removed in next version (0.5)
-    - use `sendMessage`
+  - will be removed in next version (0.5)
+  - use `sendMessage`
 - deprecated `sendEncryptedTextMessage`
-    - will be removed in next version (0.5)
-    - use `sendEncryptedMessage`
+  - will be removed in next version (0.5)
+  - use `sendEncryptedMessage`
 
 ## 0.4.1
+
 - Initiated work on assets Api
-    - added `getAsset`
-    - added `getAllAssets`
+  - added `getAsset`
+  - added `getAllAssets`
 - Fixed encoding issue on BRS requests (#826)
 - Added `getAllContractIds` to contract Api
-    
-- Added Http Options for `BurstService`/`composeApi` 
+- Added Http Options for `BurstService`/`composeApi`
 
 ## 0.4.0
+
 - Changed License: From GPL-3.0 to Apache 2.0
 - `isAttachmentVersion` returns `true` or `false` consistently
 - added `sendAmountToSingleRecipient` using new argument objects
-    - allows sending with public key, to enable recipients account activation
+  - allows sending with public key, to enable recipients account activation
 - removed `sendMoneyMultiOut`
-    - use `sendSameAmountToMultipleRecipients`
-    - use `sendAmountToMultipleRecipients`
+  - use `sendSameAmountToMultipleRecipients`
+  - use `sendAmountToMultipleRecipients`
 - removed `sendMoney`
-    - use `sendAmount`, or better `sendAmountToSingleRecipient` 
+  - use `sendAmount`, or better `sendAmountToSingleRecipient`
 - deprecated `sendAmount`
-    - will be removed in next major version (0.5)
-    - use `sendAmountToSingleRecipient`    
-    
+  - will be removed in next major version (0.5)
+  - use `sendAmountToSingleRecipient`
+
 ## 0.3.0
 
-___
-__Breaking Changes__
+---
+
+**Breaking Changes**
 
 - removed `assertAttachmentVersion`
-    - use `isAttachmentVersion` instead
+  - use `isAttachmentVersion` instead
 - deprecated `sendMoneyMultiOut`
-    - will be removed in next major version (0.4)
-    - use `sendSameAmountToMultipleRecipients`
-    - use `sendAmountToMultipleRecipients`
+  - will be removed in next major version (0.4)
+  - use `sendSameAmountToMultipleRecipients`
+  - use `sendAmountToMultipleRecipients`
 - deprecated `sendMoney`
-    - will be removed in next major version (0.4)
-    - use `sendAmount`
-___
+  - will be removed in next major version (0.4)
+  - use `sendAmount`
+
+---
 
 - added `isAttachmentVersion`
 - added `getAttachmentVersion`
-- splitted `sendMoneyMultiOut` into 
-    - `sendSameAmountToMultipleRecipients`
-    - `sendAmountToMultipleRecipients`
+- splitted `sendMoneyMultiOut` into
+  - `sendSameAmountToMultipleRecipients`
+  - `sendAmountToMultipleRecipients`
 - added `sendAmount`
 - minor refactoring leading to slightly smaller code
 
@@ -184,47 +241,57 @@ ___
 - adjusted error response for inconsistent BRS error responses
 
 ## 0.2.0
-- introduced first Contract API functions
-    - `getContract`
-    - `getContractsByAccount`
-- `ContractHelper` class for easier contract inspection
-- fixed symlink bundling issue 
 
+- introduced first Contract API functions
+  - `getContract`
+  - `getContractsByAccount`
+- `ContractHelper` class for easier contract inspection
+- fixed symlink bundling issue
 
 ## 0.1.3
+
 - now available as standalone bundle (iife)
 
 ## 0.1.2
+
 - added `confirmed` property to `Account` model
 - added `alias` api
 - added `setRewardRecipient` for assigning reward recipients for miners
 
 ## 0.1.1
+
 - added FeeQuant for `suggestFees`
 
 ## 0.1.0
+
 - changed BurstService creation parameter
-- added sendEncryptedTextMessage 
+- added sendEncryptedTextMessage
 - Export of Api Interface Types
 - Entirely removed BigNumber
 
 ## 0.1.0-rc.3
+
 ### General
+
 - BRS exceptions thrown as `HttpError` now
 
 ### Account
-- Modified `Account` type to better reflect what is returned from BRS API. This is a breaking change, please see the `Account` for the new property names.  
+
+- Modified `Account` type to better reflect what is returned from BRS API. This is a breaking change, please see the `Account` for the new property names.
 - Added `setAccountInfo` for setting account name and description
 
 ### Block
+
 - Added `getBlocks`
 
-
 ## 0.1.0-rc1
+
 ### Network
+
 - Added `suggestFees` for getting suggested fees.
 - Added `sendMoney` for generating the unsigned transaction, signing it, and broadcasting it.
 
 ### Account
+
 - Added `getAliases` to retrieve aliases for an account
 - Added `generateSendTransactionQRCode` and `generateSendTransactionQRCodeAddress` methods for generating a QR code image or URL, respectively.
