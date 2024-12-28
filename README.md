@@ -28,10 +28,11 @@ technology.
 - [X] UTILS
 - [X] STANDARDS
 - [X] WALLET
-- [ ] DOCUMENTATION
+- [X] DOCUMENTATION
 - [ ] EXAMPLES
 
-
+Version 2 is now live. There are some major changes especially for the crypto package. Check more details [here](./packages/crypto/README.md)
+Consider this version as not stable yet.
 
 ----------------------------
 
@@ -48,8 +49,6 @@ The SDK is separated in the following packages
 - [@signumjs/util](https://signum-network.github.io/signumjs/modules/util.html) A package providing useful functions, e.g. common conversion functions
 - [@signumjs/http](https://signum-network.github.io/signumjs/modules/http.html) A package providing a _simplified_ Http layer, with consistent response types,
   and exception handling
-- [@signumjs/monitor](https://signum-network.github.io/signumjs/modules/monitor.html) A package providing a class to execute recurring async operations with
-  de/serialization feature, good for listening to blockchain transactions
 - [@signumjs/wallets](https://signum-network.github.io/signumjs/modules/wallets.html) This package provides the communication with SIP22 compatible deeplinkable 
 - [@signumjs/standards](https://signum-network.github.io/signumjs/modules/standards.html) This package provides the communication with SIP22 compatible deeplinkable 
 
@@ -67,7 +66,6 @@ npm install @signumjs/contracts (optional)
 npm install @signumjs/crypto (optional)
 npm install @signumjs/util (optional)
 npm install @signumjs/http (optional)
-npm install @signumjs/monitor (optional)
 npm install @signumjs/wallets (optional)
 npm install @signumjs/standards (optional)
 ```
@@ -80,7 +78,6 @@ yarn add @signumjs/contracts (optional)
 yarn add @signumjs/crypto (optional)
 yarn add @signumjs/util (optional)
 yarn add @signumjs/http (optional)
-yarn add @signumjs/monitor (optional)
 yarn add @signumjs/wallets (optional)
 yarn add @signumjs/standards (optional)
 ```
@@ -102,8 +99,6 @@ Just import one of the packages using the HTML `<script>` tag.
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js'></script>`
 
-`<script src='https://cdn.jsdelivr.net/npm/@signumjs/monitor/dist/signumjs.monitor.min.js'></script>`
-
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>`
 
 `<script src='https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js'></script>`
@@ -116,7 +111,6 @@ Due to the way a package is imported following global variables are provided
 | contracts | `sig$contracts` |
 | crypto    | `sig$crypto`    |
 | http      | `sig$http`      |
-| monitor   | `sig$monitor`   |
 | util      | `sig$util`      |
 | wallets   | `sig$wallets`   |
 | wallets   | `sig$standards` |
@@ -191,48 +185,6 @@ const transaction = await client.setAccountDescriptor({
 });
 ```
 
-```ts
- // using monitor
-
-// A method that checks if an account exists
-// > IMPORTANT: Do not use closures, when you need to serialize the monitor
-import {LedgerClientFactory} from './ledgerClientFactory';
-
-async function tryFetchAccount() {
-    try {
-        const ledger = LedgerClientFactory.create({nodeHost: 'https://europe3.testnet.signum.network/'})
-        const {account} = await ledger.account.getAccount('1234')
-        return account;
-    } catch (e) {
-        // ignore error
-        return null;
-    }
-}
-
-// A comparing function to check if a certain condition for the returned data from fetch function
-// is true. If it's true the monitor stops
-function checkIfAccountExists(account) {
-    return account !== null;
-}
-
-// Create your monitor
-const monitor = new Monitor<Account>({
-    asyncFetcherFn: tryFetchAccount,
-    compareFn: checkIfAccountExists,
-    intervalSecs: 10, // polling interval in seconds
-    key: 'monitor-account',
-    timeoutSecs: 2 * 240 // when reached timeout the monitor stops
-})
-    .onFulfilled(() => {
-        // called when `checkIfAccountExists` returns true
-        console.log('Yay, account active');
-    })
-    .onTimeout(() => {
-        // called when `timeoutSecs` is reached
-        console.log('Hmm, something went wrong');
-    }).start();
-```
-
 ## Usage
 
 The following example shows how to interact with the blockchain, i.e. getting the balance of a specific account
@@ -299,12 +251,12 @@ npm run build
    | Keep in mind that these tests are slow as they run against true servers. And therefore, it cannot be guaranteed
    that all E2E tests always work
 
-## Publish
+## Versioning and Publishing
 
-To publish all packages (using lerna and same version strategy) just run 
+This monorepo uses [changeset](https://github.com/changesets/changesets) to manage the versions and publish the package. We use one version for all packages.
 
-```bash
-npm run publish
-```
+1. Create a changeset: `npx changeset`
+2. Bump version: `npx changeset version`
+3. Publish `npx changeset publish`
 
 > Note: Only with a valid npm OTP token
