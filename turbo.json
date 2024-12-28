@@ -10,10 +10,10 @@
       "outputs": ["out/**"]
     },
     "test": {
-      "dependsOn": ["^test"]
+      "dependsOn": ["^compile", "^test"]
     },
     "test:ci": {
-      "dependsOn": ["^test:ci"]
+      "dependsOn": ["^compile","^test:ci"]
     },
     "dev": {
       "persistent": true,
