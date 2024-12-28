@@ -30,7 +30,8 @@
     "turbo": "^2.0.14",
     "typedoc": "0.26.6",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "nyc": "^17.0.0"
   },
   "scripts": {
     "compile": "turbo run compile",
@@ -46,8 +47,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "npm@10.0.0",
-  "dependencies": {
-    "nyc": "^17.0.0"
-  }
+  "packageManager": "npm@10.0.0"
 }
