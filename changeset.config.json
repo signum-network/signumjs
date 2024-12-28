@@ -1,8 +1,0 @@
-{
-    "baseBranch": "main",
-    "changelog": "@changesets/changelog",
-    "commit": false,
-    "linked": [["@signumjs/*"]],
-    "access": "public",
-    "updateInternalDependencies": "patch"
-}
