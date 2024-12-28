@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getAssetTransfersPerAccount]]
+ * The argument object for {@link AssetApi.getAssetTransfersPerAccount}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetTransfersPerAccountArgs {
     accountId: string;
     firstIndex?: number;

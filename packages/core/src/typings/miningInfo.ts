@@ -4,7 +4,7 @@
 
 /**
  * Mining Info
- * @module core
+ * @category entities
  */
 export interface MiningInfo {
     readonly height: string;

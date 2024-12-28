@@ -5,7 +5,7 @@
 
 /**
  * Block Id
- * @module core
+ * @category entities
  */
 export interface BlockId {
     readonly block: string;

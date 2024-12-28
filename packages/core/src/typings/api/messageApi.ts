@@ -5,7 +5,8 @@ import {UnsignedTransaction} from '../unsignedTransaction';
 
 /**
  * The Message API
- * @module core.api
+ *
+ * @category api
  */
 export interface MessageApi {
 

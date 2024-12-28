@@ -1,1934 +1,239 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>core
-	| signumjs - The Javascript SDK for Signum Network</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="robots" content="index, follow">
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<link rel="stylesheet" href="../assets/css/custom.css">
-</head>
-<body>
-<a href="https://github.com/signum-network/signumjs/tree/master" class="github-corner" aria-label="View source on GitHub">
-	<svg width="80" height="80" viewBox="0 0 250 250"
-	style="fill:rgba(3, 155, 229, 0.90); color:#fff; position: absolute; top: 0; border: 0; left: 0; z-index: 2; transform: scale(-1, 1);"
-	aria-hidden="true">
-	<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-	<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-	fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-	<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-	fill="currentColor" class="octo-body"></path>
-	</svg>
-</a>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="tsd-logo-wrapper">
-				<a href="../index.html" class="title">
-					<img id="tsd-signumjs-logo" alt="signumjs" src="../assets/images/signumjs.png">
-				</a>
-				<a href="https://www.npmjs.com/package/@signumjs/core">
-					<img id="tsd-npm-badge" alt="npm"
-					src="https://img.shields.io/npm/v/@signumjs/core.svg?style=for-the-badge">
-				</a>
-			</div>
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js"
-				data-base="..">
-				<div class="field">
-					<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-					<input id="tsd-search-field" type="text"/>
-				</div>
-				<ul class="results">
-					<li class="state loading">Preparing search index...</li>
-					<li class="state failure">The search index is not available</li>
-				</ul>
-			</div>
-			<div class="table-cell" id="tsd-widgets">
-				<div id="tsd-filter">
-					<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-					<div class="tsd-filter-group">
-						<div class="tsd-select" id="tsd-filter-visibility">
-							<span class="tsd-select-label">All</span>
-							<ul class="tsd-select-list">
-								<li data-value="public">Public</li>
-								<li data-value="protected">Public/Protected</li>
-								<li data-value="private" class="selected">All</li>
-							</ul>
-						</div>
-						<input type="checkbox" id="tsd-filter-inherited" checked/>
-						<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-					</div>
-				</div>
-				<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-			</div>
-		</div>
-	</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="../globals.html">Globals</a>
-				</li>
-				<li>
-					<a href="core.html">core</a>
-				</li>
-			</ul>
-			<h1>External module core</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This is the main package, and almost all you may need to interact with
-						the Signum Node API</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p>Get started with <a href="core_api.html#composeapi">composeApi</a> or <a href="../classes/core.ledgerclientfactory.html">LedgerClientFactory</a></p>
-						</dd>
-					</dl>
-				</div>
-			</section>
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>References</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Account<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Alias<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Api<wbr>Composer</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Api<wbr>Settings</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Asset<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Block<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Contract<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Message<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Network<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">Transaction<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">add<wbr>Asset<wbr>Treasury<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">add<wbr>Commitment</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">broadcast<wbr>Transaction</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">burn<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">buy<wbr>Alias</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">buy<wbr>Top<wbr>Level<wbr>Domain</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">calculate<wbr>Distribution<wbr>Fee</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">call<wbr>Contract<wbr>Method</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">cancel<wbr>Ask<wbr>Order</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">cancel<wbr>Bid<wbr>Order</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">cancel<wbr>Subscription</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">compose<wbr>Api</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">create<wbr>Subscription</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">distribute<wbr>ToAsset<wbr>Holders</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">generate<wbr>Send<wbr>TransactionQRCode</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">generate<wbr>Send<wbr>TransactionQRCode<wbr>Address</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account<wbr>Balance</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account<wbr>Block<wbr>Ids</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account<wbr>Blocks</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account<wbr>Subscriptions</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Account<wbr>Transactions</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Alias<wbr>ById</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Alias<wbr>ByName</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Aliases</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Aliases<wbr>OnSale</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>All<wbr>Assets</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>All<wbr>Trades</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Holders</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Trades</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Transfers</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Assets<wbr>ByIssuer</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Assets<wbr>ByName</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Assets<wbr>ByOwner</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Block<wbr>ByHeight</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Block<wbr>ById</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Block<wbr>ByTimestamp</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Block<wbr>Id</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Blockchain<wbr>Status</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Blocks</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Contract</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Distribution<wbr>Amounts<wbr>From<wbr>Transaction</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Mining<wbr>Info</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Network<wbr>Info</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Peer</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Peers</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Reward<wbr>Recipient</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Server<wbr>Status</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Subscription</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Subscription<wbr>Payments</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Subscriptions<wbr>ToAccount</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Suggested<wbr>Fees</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Time</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Top<wbr>Level<wbr>Domains</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Trade<wbr>History<wbr>Per<wbr>Account</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Transaction</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Transaction<wbr>ByFull<wbr>Hash</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Unconfirmed<wbr>Account<wbr>Transactions</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">get<wbr>Unconfirmed<wbr>Transactions</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">issue<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">mint<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">place<wbr>Ask<wbr>Order</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">place<wbr>Bid<wbr>Order</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">publish<wbr>Contract</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">publish<wbr>Contract<wbr>ByReference</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">remove<wbr>Commitment</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">search<wbr>Aliases<wbr>ByName</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">sell<wbr>Alias</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">send<wbr>Amount<wbr>ToMultiple<wbr>Recipients</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">send<wbr>Amount<wbr>ToSingle<wbr>Recipient</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">send<wbr>Encrypted<wbr>Message</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">send<wbr>Message</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">set<wbr>Account<wbr>Info</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">set<wbr>Alias</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">set<wbr>Reward<wbr>Recipient</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">sign<wbr>And<wbr>Broadcast<wbr>Transaction</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">transfer<wbr>Asset</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">transfer<wbr>Asset<wbr>Ownership</a></li>
-								<li class="tsd-kind-reference tsd-parent-kind-external-module"><a href="" class="tsd-kind-icon">transfer<wbr>Multiple<wbr>Assets</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.addressprefix.html" class="tsd-kind-icon">Address<wbr>Prefix</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.apiversion.html" class="tsd-kind-icon">Api<wbr>Version</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionarbitrarysubtype.html" class="tsd-kind-icon">Transaction<wbr>Arbitrary<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionassetsubtype.html" class="tsd-kind-icon">Transaction<wbr>Asset<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionescrowsubtype.html" class="tsd-kind-icon">Transaction<wbr>Escrow<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionleasingsubtype.html" class="tsd-kind-icon">Transaction<wbr>Leasing<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionmarketplacesubtype.html" class="tsd-kind-icon">Transaction<wbr>Marketplace<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionminingsubtype.html" class="tsd-kind-icon">Transaction<wbr>Mining<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionpaymentsubtype.html" class="tsd-kind-icon">Transaction<wbr>Payment<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactionsmartcontractsubtype.html" class="tsd-kind-icon">Transaction<wbr>Smart<wbr>Contract<wbr>Subtype</a></li>
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core.transactiontype.html" class="tsd-kind-icon">Transaction<wbr>Type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="core.html#defaultapiendpoint" class="tsd-kind-icon">Default<wbr>Api<wbr>Endpoint</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="core.html#defaultdeadline" class="tsd-kind-icon">Default<wbr>Deadline</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.address.html" class="tsd-kind-icon">Address</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.attachment.html" class="tsd-kind-icon">Attachment</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.attachmentencryptedmessage.html" class="tsd-kind-icon">Attachment<wbr>Encrypted<wbr>Message</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.attachmentmessage.html" class="tsd-kind-icon">Attachment<wbr>Message</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.chainservice.html" class="tsd-kind-icon">Chain<wbr>Service</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core.ledgerclientfactory.html" class="tsd-kind-icon">Ledger<wbr>Client<wbr>Factory</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.account.html" class="tsd-kind-icon">Account</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.addassettreasuryaccountargs.html" class="tsd-kind-icon">Add<wbr>Asset<wbr>Treasury<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.alias.html" class="tsd-kind-icon">Alias</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.aliaslist.html" class="tsd-kind-icon">Alias<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.asset.html" class="tsd-kind-icon">Asset</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetaccount.html" class="tsd-kind-icon">Asset<wbr>Account</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetaccountlist.html" class="tsd-kind-icon">Asset<wbr>Account<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetaskorderlist.html" class="tsd-kind-icon">Asset<wbr>Ask<wbr>Order<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetbalance.html" class="tsd-kind-icon">Asset<wbr>Balance</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetbidorderlist.html" class="tsd-kind-icon">Asset<wbr>Bid<wbr>Order<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetlist.html" class="tsd-kind-icon">Asset<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assetorder.html" class="tsd-kind-icon">Asset<wbr>Order</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assettrade.html" class="tsd-kind-icon">Asset<wbr>Trade</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assettradelist.html" class="tsd-kind-icon">Asset<wbr>Trade<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assettransfer.html" class="tsd-kind-icon">Asset<wbr>Transfer</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.assettransferlist.html" class="tsd-kind-icon">Asset<wbr>Transfer<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.balance.html" class="tsd-kind-icon">Balance</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.block.html" class="tsd-kind-icon">Block</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.blockid.html" class="tsd-kind-icon">Block<wbr>Id</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.blockidlist.html" class="tsd-kind-icon">Block<wbr>IdList</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.blocklist.html" class="tsd-kind-icon">Block<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.blockchainstatus.html" class="tsd-kind-icon">Blockchain<wbr>Status</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.buyaliasargs.html" class="tsd-kind-icon">Buy<wbr>Alias<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.buytopleveldomainargs.html" class="tsd-kind-icon">Buy<wbr>Top<wbr>Level<wbr>Domain<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.calculatedistributionfeeargs.html" class="tsd-kind-icon">Calculate<wbr>Distribution<wbr>Fee<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.callcontractmethodargs.html" class="tsd-kind-icon">Call<wbr>Contract<wbr>Method<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.cancelorderargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.cancelsubscriptionargs.html" class="tsd-kind-icon">Cancel<wbr>Subscription<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.chainservicesettings.html" class="tsd-kind-icon">Chain<wbr>Service<wbr>Settings</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.chaintimestamp.html" class="tsd-kind-icon">Chain<wbr>Timestamp</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.commitmentargs.html" class="tsd-kind-icon">Commitment<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.contractidlist.html" class="tsd-kind-icon">Contract<wbr>IdList</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.contractlist.html" class="tsd-kind-icon">Contract<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.contractmapvaluelist.html" class="tsd-kind-icon">Contract<wbr>Map<wbr>Value<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.createsubscriptionargs.html" class="tsd-kind-icon">Create<wbr>Subscription<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.defaultsendargs.html" class="tsd-kind-icon">Default<wbr>Send<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.distributetoassetholdersargs.html" class="tsd-kind-icon">Distribute<wbr>ToAsset<wbr>Holders<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.distributionamount.html" class="tsd-kind-icon">Distribution<wbr>Amount</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.distributionfee.html" class="tsd-kind-icon">Distribution<wbr>Fee</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getaccountargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getaccountblocksargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Blocks<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getaccounttransactionsargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Transactions<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getaliasesargs.html" class="tsd-kind-icon">Get<wbr>Aliases<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getaliasesonsaleargs.html" class="tsd-kind-icon">Get<wbr>Aliases<wbr>OnSale<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getallassetsargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Assets<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getallcontractidsargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Contract<wbr>Ids<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getallcontractsbycodehashargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getalltradesargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Trades<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetholdersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Holders<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetopenordersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetopenordersperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Per<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetopenordersperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Per<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettradesargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettradesperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettradesperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettransfersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettransfersperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassettransfersperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetsbyissuerargs.html" class="tsd-kind-icon">Get<wbr>Assets<wbr>ByIssuer<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getassetsbynameargs.html" class="tsd-kind-icon">Get<wbr>Assets<wbr>ByName<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getcontractmapvaluesbyfirstkeyargs.html" class="tsd-kind-icon">Get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getcontractsbyaccountargs.html" class="tsd-kind-icon">Get<wbr>Contracts<wbr>ByAccount<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getsinglecontractmapvalueargs.html" class="tsd-kind-icon">Get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.getsubscriptionpaymentsargs.html" class="tsd-kind-icon">Get<wbr>Subscription<wbr>Payments<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.gettopleveldomainsargs.html" class="tsd-kind-icon">Get<wbr>Top<wbr>Level<wbr>Domains<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.gettradehistoryperaccountargs.html" class="tsd-kind-icon">Get<wbr>Trade<wbr>History<wbr>Per<wbr>Account<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.indexable.html" class="tsd-kind-icon">Indexable</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.issueassetargs.html" class="tsd-kind-icon">Issue<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.journalentry.html" class="tsd-kind-icon">Journal<wbr>Entry</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.ledgersettings.html" class="tsd-kind-icon">Ledger<wbr>Settings</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.mininginfo.html" class="tsd-kind-icon">Mining<wbr>Info</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.mintassetargs.html" class="tsd-kind-icon">Mint<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.multioutassetquantities.html" class="tsd-kind-icon">Multiout<wbr>Asset<wbr>Quantities</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.multioutrecipientamount.html" class="tsd-kind-icon">Multiout<wbr>Recipient<wbr>Amount</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.networkinfo.html" class="tsd-kind-icon">Network<wbr>Info</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.peer.html" class="tsd-kind-icon">Peer</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.peeraddresslist.html" class="tsd-kind-icon">Peer<wbr>Address<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.placeorderargs.html" class="tsd-kind-icon">Place<wbr>Order<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.publishcontractargs.html" class="tsd-kind-icon">Publish<wbr>Contract<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.publishcontractbyreferenceargs.html" class="tsd-kind-icon">Publish<wbr>Contract<wbr>ByReference<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.rewardrecipient.html" class="tsd-kind-icon">Reward<wbr>Recipient</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.searchaliasesbynameargs.html" class="tsd-kind-icon">Search<wbr>Aliases<wbr>ByName<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sellaliasargs.html" class="tsd-kind-icon">Sell<wbr>Alias<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendamountargs.html" class="tsd-kind-icon">Send<wbr>Amount<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendamounttomultiplerecipientsargs.html" class="tsd-kind-icon">Send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendargs.html" class="tsd-kind-icon">Send<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendencryptedmessageargs.html" class="tsd-kind-icon">Send<wbr>Encrypted<wbr>Message<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendmessageargs.html" class="tsd-kind-icon">Send<wbr>Message<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.sendsameamounttomultiplerecipientsargs.html" class="tsd-kind-icon">Send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.serverstatus.html" class="tsd-kind-icon">Server<wbr>Status</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.setaccountinfoargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Info<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.setaliasargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.setrewardrecipientargs.html" class="tsd-kind-icon">Set<wbr>Reward<wbr>Recipient<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.subscription.html" class="tsd-kind-icon">Subscription</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.subscriptionlist.html" class="tsd-kind-icon">Subscription<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.suggestedfees.html" class="tsd-kind-icon">Suggested<wbr>Fees</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.topleveldomain.html" class="tsd-kind-icon">Top<wbr>Level<wbr>Domain</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.topleveldomainlist.html" class="tsd-kind-icon">Top<wbr>Level<wbr>Domain<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.tradehistory.html" class="tsd-kind-icon">Trade<wbr>History</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transaction.html" class="tsd-kind-icon">Transaction</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transactionid.html" class="tsd-kind-icon">Transaction<wbr>Id</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transactionlist.html" class="tsd-kind-icon">Transaction<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transferassetargs.html" class="tsd-kind-icon">Transfer<wbr>Asset<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transferassetownershipargs.html" class="tsd-kind-icon">Transfer<wbr>Asset<wbr>Ownership<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.transfermultipleassetsargs.html" class="tsd-kind-icon">Transfer<wbr>Multiple<wbr>Assets<wbr>Args</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.unconfirmedassetbalance.html" class="tsd-kind-icon">Unconfirmed<wbr>Asset<wbr>Balance</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.unconfirmedtransactionlist.html" class="tsd-kind-icon">Unconfirmed<wbr>Transaction<wbr>List</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.unsignedtransaction.html" class="tsd-kind-icon">Unsigned<wbr>Transaction</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core.unsignedtransactionargs.html" class="tsd-kind-icon">Unsigned<wbr>Transaction<wbr>Args</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Functions</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#getattachmentversion" class="tsd-kind-icon">get<wbr>Attachment<wbr>Version</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#getrecipientamountsfrommultioutpayment" class="tsd-kind-icon">get<wbr>Recipient<wbr>Amounts<wbr>From<wbr>Multi<wbr>Out<wbr>Payment</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#getrecipientsamount" class="tsd-kind-icon">get<wbr>Recipients<wbr>Amount</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#isattachmentversion" class="tsd-kind-icon">is<wbr>Attachment<wbr>Version</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#ismultioutsametransaction" class="tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Same<wbr>Transaction</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core.html#ismultiouttransaction" class="tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Transaction</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Type aliases</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core.html#ledger" class="tsd-kind-icon">Ledger</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>References</h2>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Account<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Account<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Alias<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Alias<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Api<wbr>Composer</h3>
-					<div class="tsd-signature tsd-kind-icon">Api<wbr>Composer<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Api<wbr>Settings</h3>
-					<div class="tsd-signature tsd-kind-icon">Api<wbr>Settings<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Asset<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Asset<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Block<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Block<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Contract<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Contract<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Message<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Message<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Network<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Network<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>Transaction<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">Transaction<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>add<wbr>Asset<wbr>Treasury<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">add<wbr>Asset<wbr>Treasury<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>add<wbr>Commitment</h3>
-					<div class="tsd-signature tsd-kind-icon">add<wbr>Commitment<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>broadcast<wbr>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">broadcast<wbr>Transaction<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>burn<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">burn<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>buy<wbr>Alias</h3>
-					<div class="tsd-signature tsd-kind-icon">buy<wbr>Alias<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>buy<wbr>Top<wbr>Level<wbr>Domain</h3>
-					<div class="tsd-signature tsd-kind-icon">buy<wbr>Top<wbr>Level<wbr>Domain<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>calculate<wbr>Distribution<wbr>Fee</h3>
-					<div class="tsd-signature tsd-kind-icon">calculate<wbr>Distribution<wbr>Fee<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>call<wbr>Contract<wbr>Method</h3>
-					<div class="tsd-signature tsd-kind-icon">call<wbr>Contract<wbr>Method<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>cancel<wbr>Ask<wbr>Order</h3>
-					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>cancel<wbr>Bid<wbr>Order</h3>
-					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>cancel<wbr>Subscription</h3>
-					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Subscription<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>compose<wbr>Api</h3>
-					<div class="tsd-signature tsd-kind-icon">compose<wbr>Api<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>create<wbr>Subscription</h3>
-					<div class="tsd-signature tsd-kind-icon">create<wbr>Subscription<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>distribute<wbr>ToAsset<wbr>Holders</h3>
-					<div class="tsd-signature tsd-kind-icon">distribute<wbr>ToAsset<wbr>Holders<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>generate<wbr>Send<wbr>TransactionQRCode</h3>
-					<div class="tsd-signature tsd-kind-icon">generate<wbr>Send<wbr>TransactionQRCode<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>generate<wbr>Send<wbr>TransactionQRCode<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">generate<wbr>Send<wbr>TransactionQRCode<wbr>Address<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account<wbr>Balance</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>Balance<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account<wbr>Block<wbr>Ids</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>Block<wbr>Ids<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account<wbr>Blocks</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>Blocks<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account<wbr>Subscriptions</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>Subscriptions<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Account<wbr>Transactions</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Account<wbr>Transactions<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Alias<wbr>ById</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ById<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Alias<wbr>ByName</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Alias<wbr>ByName<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Aliases</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Aliases<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Aliases<wbr>OnSale</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Aliases<wbr>OnSale<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>All<wbr>Assets</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Assets<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>All<wbr>Contract<wbr>Ids</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contract<wbr>Ids<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>All<wbr>Trades</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Trades<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Holders</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Holders<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Trades</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Transfers</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Assets<wbr>ByIssuer</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Assets<wbr>ByIssuer<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Assets<wbr>ByName</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Assets<wbr>ByName<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Assets<wbr>ByOwner</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Assets<wbr>ByOwner<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Block<wbr>ByHeight</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Block<wbr>ByHeight<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Block<wbr>ById</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Block<wbr>ById<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Block<wbr>ByTimestamp</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Block<wbr>ByTimestamp<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Block<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Block<wbr>Id<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Blockchain<wbr>Status</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Blockchain<wbr>Status<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Blocks</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Blocks<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Contract</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Contracts<wbr>ByAccount</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Contracts<wbr>ByAccount<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Distribution<wbr>Amounts<wbr>From<wbr>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Distribution<wbr>Amounts<wbr>From<wbr>Transaction<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Mining<wbr>Info</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Mining<wbr>Info<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Network<wbr>Info</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Network<wbr>Info<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Ask<wbr>Orders</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Ask<wbr>Orders<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Bid<wbr>Orders</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Open<wbr>Bid<wbr>Orders<wbr>Per<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Peer</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Peer<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Peers</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Peers<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Reward<wbr>Recipient</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Reward<wbr>Recipient<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Server<wbr>Status</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Server<wbr>Status<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Subscription</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Subscription<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Subscription<wbr>Payments</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Subscription<wbr>Payments<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Subscriptions<wbr>ToAccount</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Subscriptions<wbr>ToAccount<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Suggested<wbr>Fees</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Suggested<wbr>Fees<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Time<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Top<wbr>Level<wbr>Domains</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Top<wbr>Level<wbr>Domains<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Trade<wbr>History<wbr>Per<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Trade<wbr>History<wbr>Per<wbr>Account<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Transaction<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Transaction<wbr>ByFull<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Transaction<wbr>ByFull<wbr>Hash<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Unconfirmed<wbr>Account<wbr>Transactions</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Unconfirmed<wbr>Account<wbr>Transactions<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>get<wbr>Unconfirmed<wbr>Transactions</h3>
-					<div class="tsd-signature tsd-kind-icon">get<wbr>Unconfirmed<wbr>Transactions<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>issue<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">issue<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>mint<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">mint<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>parse<wbr>Transaction<wbr>Bytes</h3>
-					<div class="tsd-signature tsd-kind-icon">parse<wbr>Transaction<wbr>Bytes<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>place<wbr>Ask<wbr>Order</h3>
-					<div class="tsd-signature tsd-kind-icon">place<wbr>Ask<wbr>Order<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>place<wbr>Bid<wbr>Order</h3>
-					<div class="tsd-signature tsd-kind-icon">place<wbr>Bid<wbr>Order<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>publish<wbr>Contract</h3>
-					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>publish<wbr>Contract<wbr>ByReference</h3>
-					<div class="tsd-signature tsd-kind-icon">publish<wbr>Contract<wbr>ByReference<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>remove<wbr>Commitment</h3>
-					<div class="tsd-signature tsd-kind-icon">remove<wbr>Commitment<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>search<wbr>Aliases<wbr>ByName</h3>
-					<div class="tsd-signature tsd-kind-icon">search<wbr>Aliases<wbr>ByName<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>sell<wbr>Alias</h3>
-					<div class="tsd-signature tsd-kind-icon">sell<wbr>Alias<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>send<wbr>Amount<wbr>ToMultiple<wbr>Recipients</h3>
-					<div class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>send<wbr>Amount<wbr>ToSingle<wbr>Recipient</h3>
-					<div class="tsd-signature tsd-kind-icon">send<wbr>Amount<wbr>ToSingle<wbr>Recipient<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>send<wbr>Encrypted<wbr>Message</h3>
-					<div class="tsd-signature tsd-kind-icon">send<wbr>Encrypted<wbr>Message<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>send<wbr>Message</h3>
-					<div class="tsd-signature tsd-kind-icon">send<wbr>Message<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients</h3>
-					<div class="tsd-signature tsd-kind-icon">send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>set<wbr>Account<wbr>Info</h3>
-					<div class="tsd-signature tsd-kind-icon">set<wbr>Account<wbr>Info<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>set<wbr>Alias</h3>
-					<div class="tsd-signature tsd-kind-icon">set<wbr>Alias<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>set<wbr>Reward<wbr>Recipient</h3>
-					<div class="tsd-signature tsd-kind-icon">set<wbr>Reward<wbr>Recipient<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>sign<wbr>And<wbr>Broadcast<wbr>Transaction</h3>
-					<div class="tsd-signature tsd-kind-icon">sign<wbr>And<wbr>Broadcast<wbr>Transaction<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>transfer<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">transfer<wbr>Asset<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>transfer<wbr>Asset<wbr>Ownership</h3>
-					<div class="tsd-signature tsd-kind-icon">transfer<wbr>Asset<wbr>Ownership<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-reference tsd-parent-kind-external-module">
-					<a name="" class="tsd-anchor"></a>
-					<h3>transfer<wbr>Multiple<wbr>Assets</h3>
-					<div class="tsd-signature tsd-kind-icon">transfer<wbr>Multiple<wbr>Assets<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="defaultapiendpoint" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Default<wbr>Api<wbr>Endpoint</h3>
-					<div class="tsd-signature tsd-kind-icon">Default<wbr>Api<wbr>Endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"/api"</span><span class="tsd-signature-symbol"> = &quot;/api&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/constants/index.ts#L22">packages/core/src/constants/index.ts:22</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The default endpoint for <a href="../classes/core_api.apisettings.html">ApiSettings</a></p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="defaultdeadline" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Default<wbr>Deadline</h3>
-					<div class="tsd-signature tsd-kind-icon">Default<wbr>Deadline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">1440</span><span class="tsd-signature-symbol"> = 1440</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/constants/index.ts#L16">packages/core/src/constants/index.ts:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The default deadline (in minutes) for Transactions</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="getattachmentversion" class="tsd-anchor"></a>
-					<h3>get<wbr>Attachment<wbr>Version</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Attachment<wbr>Version<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/attachment/getAttachmentVersion.ts#L12">packages/core/src/attachment/getAttachmentVersion.ts:12</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get the transaction attachment version identifier</p>
-								</div>
-								<p>Attachment types are identified by a field <em>version.<Identifier></em></p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The transaction to be checked</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>return <em>Identifier</em>, if exists, otherwise <code>undefined</code></p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="getrecipientamountsfrommultioutpayment" class="tsd-anchor"></a>
-					<h3>get<wbr>Recipient<wbr>Amounts<wbr>From<wbr>Multi<wbr>Out<wbr>Payment</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Recipient<wbr>Amounts<wbr>From<wbr>Multi<wbr>Out<wbr>Payment<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.multioutrecipientamount.html" class="tsd-signature-type">MultioutRecipientAmount</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/transaction/getRecipientAmountsFromMultiOutPayment.ts#L13">packages/core/src/transaction/getRecipientAmountsFromMultiOutPayment.ts:13</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Tries to extract recipients and its amounts for multi out payments (different and same amount)</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>An exception in case of wrong transaction types</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The transaction</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core.multioutrecipientamount.html" class="tsd-signature-type">MultioutRecipientAmount</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A list of recipients and their payed amount (in NQT)</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="getrecipientsamount" class="tsd-anchor"></a>
-					<h3>get<wbr>Recipients<wbr>Amount</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Recipients<wbr>Amount<span class="tsd-signature-symbol">(</span>recipientId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Amount</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/transaction/getRecipientsAmount.ts#L14">packages/core/src/transaction/getRecipientsAmount.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the amount from a transaction, considering ordinary and multi out transactions (with same and different payments)</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>recipientId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The numeric id of the recipient</p>
-									</div>
-								</li>
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The payment transaction</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Amount</span></h4>
-							<p>the amount value object</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="isattachmentversion" class="tsd-anchor"></a>
-					<h3>is<wbr>Attachment<wbr>Version</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Attachment<wbr>Version<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a>, versionIdentifier<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/attachment/isAttachmentVersion.ts#L10">packages/core/src/attachment/isAttachmentVersion.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks if a transaction attachment is of specific version</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The transaction to be checked</p>
-									</div>
-								</li>
-								<li>
-									<h5>versionIdentifier: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The version string, i.e. MultiOutCreation</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p><em>true</em>, if version string matches</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="ismultioutsametransaction" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Multi<wbr>Out<wbr>Same<wbr>Transaction</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Same<wbr>Transaction<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/transaction/isMultiOutSameTransaction.ts#L10">packages/core/src/transaction/isMultiOutSameTransaction.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks if a transaction is a multi out transaction with same amounts for each recipient</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Transaction to be checked</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>true, if is a multi out transaction</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="ismultiouttransaction" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Multi<wbr>Out<wbr>Transaction</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Transaction<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/transaction/isMultiOutTransaction.ts#L10">packages/core/src/transaction/isMultiOutTransaction.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks if a transaction is a multi out transaction (with different amounts)</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>transaction: <a href="../interfaces/core.transaction.html" class="tsd-signature-type">Transaction</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Transaction to be checked</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>true, if is a multi out transaction</p>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
-					<a name="ledger" class="tsd-anchor"></a>
-					<h3>Ledger</h3>
-					<div class="tsd-signature tsd-kind-icon">Ledger<span class="tsd-signature-symbol">:</span> <a href="../classes/core_api.api.html" class="tsd-signature-type">Api</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/signum-network/signumjs/blob/0c3da61/packages/core/src/ledgerClient/ledgerClientFactory.ts#L8">packages/core/src/ledgerClient/ledgerClientFactory.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Alias for <a href="../classes/core_api.api.html">Api</a></p>
-						</div>
-					</div>
-				</section>
-			</section>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="contracts.html">contracts</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="core.html">core</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="core_api.html">core.api</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="core_api_factories.html">core.api.factories</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="crypto.html">crypto</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="http.html">http</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="monitor.html">monitor</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="standards_src44.html">standards.SRC44</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="standards_src47.html">standards.SRC47</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="util.html">util</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="wallets.html">wallets</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.addressprefix.html" class="tsd-kind-icon">Address<wbr>Prefix</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.apiversion.html" class="tsd-kind-icon">Api<wbr>Version</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionarbitrarysubtype.html" class="tsd-kind-icon">Transaction<wbr>Arbitrary<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionassetsubtype.html" class="tsd-kind-icon">Transaction<wbr>Asset<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionescrowsubtype.html" class="tsd-kind-icon">Transaction<wbr>Escrow<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionleasingsubtype.html" class="tsd-kind-icon">Transaction<wbr>Leasing<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionmarketplacesubtype.html" class="tsd-kind-icon">Transaction<wbr>Marketplace<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionminingsubtype.html" class="tsd-kind-icon">Transaction<wbr>Mining<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionpaymentsubtype.html" class="tsd-kind-icon">Transaction<wbr>Payment<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactionsmartcontractsubtype.html" class="tsd-kind-icon">Transaction<wbr>Smart<wbr>Contract<wbr>Subtype</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core.transactiontype.html" class="tsd-kind-icon">Transaction<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.address.html" class="tsd-kind-icon">Address</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.attachment.html" class="tsd-kind-icon">Attachment</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.attachmentencryptedmessage.html" class="tsd-kind-icon">Attachment<wbr>Encrypted<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.attachmentmessage.html" class="tsd-kind-icon">Attachment<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.chainservice.html" class="tsd-kind-icon">Chain<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core.ledgerclientfactory.html" class="tsd-kind-icon">Ledger<wbr>Client<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.account.html" class="tsd-kind-icon">Account</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.addassettreasuryaccountargs.html" class="tsd-kind-icon">Add<wbr>Asset<wbr>Treasury<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.alias.html" class="tsd-kind-icon">Alias</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.aliaslist.html" class="tsd-kind-icon">Alias<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.asset.html" class="tsd-kind-icon">Asset</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetaccount.html" class="tsd-kind-icon">Asset<wbr>Account</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetaccountlist.html" class="tsd-kind-icon">Asset<wbr>Account<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetaskorderlist.html" class="tsd-kind-icon">Asset<wbr>Ask<wbr>Order<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetbalance.html" class="tsd-kind-icon">Asset<wbr>Balance</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetbidorderlist.html" class="tsd-kind-icon">Asset<wbr>Bid<wbr>Order<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetlist.html" class="tsd-kind-icon">Asset<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assetorder.html" class="tsd-kind-icon">Asset<wbr>Order</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assettrade.html" class="tsd-kind-icon">Asset<wbr>Trade</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assettradelist.html" class="tsd-kind-icon">Asset<wbr>Trade<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assettransfer.html" class="tsd-kind-icon">Asset<wbr>Transfer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.assettransferlist.html" class="tsd-kind-icon">Asset<wbr>Transfer<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.balance.html" class="tsd-kind-icon">Balance</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.block.html" class="tsd-kind-icon">Block</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.blockid.html" class="tsd-kind-icon">Block<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.blockidlist.html" class="tsd-kind-icon">Block<wbr>IdList</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.blocklist.html" class="tsd-kind-icon">Block<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.blockchainstatus.html" class="tsd-kind-icon">Blockchain<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.buyaliasargs.html" class="tsd-kind-icon">Buy<wbr>Alias<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.buytopleveldomainargs.html" class="tsd-kind-icon">Buy<wbr>Top<wbr>Level<wbr>Domain<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.calculatedistributionfeeargs.html" class="tsd-kind-icon">Calculate<wbr>Distribution<wbr>Fee<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.callcontractmethodargs.html" class="tsd-kind-icon">Call<wbr>Contract<wbr>Method<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.cancelorderargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.cancelsubscriptionargs.html" class="tsd-kind-icon">Cancel<wbr>Subscription<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.chainservicesettings.html" class="tsd-kind-icon">Chain<wbr>Service<wbr>Settings</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.chaintimestamp.html" class="tsd-kind-icon">Chain<wbr>Timestamp</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.commitmentargs.html" class="tsd-kind-icon">Commitment<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.contractidlist.html" class="tsd-kind-icon">Contract<wbr>IdList</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.contractlist.html" class="tsd-kind-icon">Contract<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.contractmapvaluelist.html" class="tsd-kind-icon">Contract<wbr>Map<wbr>Value<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.createsubscriptionargs.html" class="tsd-kind-icon">Create<wbr>Subscription<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.defaultsendargs.html" class="tsd-kind-icon">Default<wbr>Send<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.distributetoassetholdersargs.html" class="tsd-kind-icon">Distribute<wbr>ToAsset<wbr>Holders<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.distributionamount.html" class="tsd-kind-icon">Distribution<wbr>Amount</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.distributionfee.html" class="tsd-kind-icon">Distribution<wbr>Fee</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getaccountargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getaccountblocksargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Blocks<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getaccounttransactionsargs.html" class="tsd-kind-icon">Get<wbr>Account<wbr>Transactions<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getaliasesargs.html" class="tsd-kind-icon">Get<wbr>Aliases<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getaliasesonsaleargs.html" class="tsd-kind-icon">Get<wbr>Aliases<wbr>OnSale<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getallassetsargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Assets<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getallcontractidsargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Contract<wbr>Ids<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getallcontractsbycodehashargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Contracts<wbr>ByCode<wbr>Hash<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getalltradesargs.html" class="tsd-kind-icon">Get<wbr>All<wbr>Trades<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetholdersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Holders<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetopenordersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetopenordersperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Per<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetopenordersperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Open<wbr>Orders<wbr>Per<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettradesargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettradesperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettradesperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Trades<wbr>Per<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettransfersargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettransfersperaccountargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassettransfersperassetargs.html" class="tsd-kind-icon">Get<wbr>Asset<wbr>Transfers<wbr>Per<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetsbyissuerargs.html" class="tsd-kind-icon">Get<wbr>Assets<wbr>ByIssuer<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getassetsbynameargs.html" class="tsd-kind-icon">Get<wbr>Assets<wbr>ByName<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getcontractmapvaluesbyfirstkeyargs.html" class="tsd-kind-icon">Get<wbr>Contract<wbr>Map<wbr>Values<wbr>ByFirst<wbr>Key<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getcontractsbyaccountargs.html" class="tsd-kind-icon">Get<wbr>Contracts<wbr>ByAccount<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getsinglecontractmapvalueargs.html" class="tsd-kind-icon">Get<wbr>Single<wbr>Contract<wbr>Map<wbr>Value<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.getsubscriptionpaymentsargs.html" class="tsd-kind-icon">Get<wbr>Subscription<wbr>Payments<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.gettopleveldomainsargs.html" class="tsd-kind-icon">Get<wbr>Top<wbr>Level<wbr>Domains<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.gettradehistoryperaccountargs.html" class="tsd-kind-icon">Get<wbr>Trade<wbr>History<wbr>Per<wbr>Account<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.indexable.html" class="tsd-kind-icon">Indexable</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.issueassetargs.html" class="tsd-kind-icon">Issue<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.journalentry.html" class="tsd-kind-icon">Journal<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.ledgersettings.html" class="tsd-kind-icon">Ledger<wbr>Settings</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.mininginfo.html" class="tsd-kind-icon">Mining<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.mintassetargs.html" class="tsd-kind-icon">Mint<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.multioutassetquantities.html" class="tsd-kind-icon">Multiout<wbr>Asset<wbr>Quantities</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.multioutrecipientamount.html" class="tsd-kind-icon">Multiout<wbr>Recipient<wbr>Amount</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.networkinfo.html" class="tsd-kind-icon">Network<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.peer.html" class="tsd-kind-icon">Peer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.peeraddresslist.html" class="tsd-kind-icon">Peer<wbr>Address<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.placeorderargs.html" class="tsd-kind-icon">Place<wbr>Order<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.publishcontractargs.html" class="tsd-kind-icon">Publish<wbr>Contract<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.publishcontractbyreferenceargs.html" class="tsd-kind-icon">Publish<wbr>Contract<wbr>ByReference<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.rewardrecipient.html" class="tsd-kind-icon">Reward<wbr>Recipient</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.searchaliasesbynameargs.html" class="tsd-kind-icon">Search<wbr>Aliases<wbr>ByName<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sellaliasargs.html" class="tsd-kind-icon">Sell<wbr>Alias<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendamountargs.html" class="tsd-kind-icon">Send<wbr>Amount<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendamounttomultiplerecipientsargs.html" class="tsd-kind-icon">Send<wbr>Amount<wbr>ToMultiple<wbr>Recipients<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendargs.html" class="tsd-kind-icon">Send<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendencryptedmessageargs.html" class="tsd-kind-icon">Send<wbr>Encrypted<wbr>Message<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendmessageargs.html" class="tsd-kind-icon">Send<wbr>Message<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.sendsameamounttomultiplerecipientsargs.html" class="tsd-kind-icon">Send<wbr>Same<wbr>Amount<wbr>ToMultiple<wbr>Recipients<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.serverstatus.html" class="tsd-kind-icon">Server<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.setaccountinfoargs.html" class="tsd-kind-icon">Set<wbr>Account<wbr>Info<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.setaliasargs.html" class="tsd-kind-icon">Set<wbr>Alias<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.setrewardrecipientargs.html" class="tsd-kind-icon">Set<wbr>Reward<wbr>Recipient<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.subscription.html" class="tsd-kind-icon">Subscription</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.subscriptionlist.html" class="tsd-kind-icon">Subscription<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.suggestedfees.html" class="tsd-kind-icon">Suggested<wbr>Fees</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.topleveldomain.html" class="tsd-kind-icon">Top<wbr>Level<wbr>Domain</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.topleveldomainlist.html" class="tsd-kind-icon">Top<wbr>Level<wbr>Domain<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.tradehistory.html" class="tsd-kind-icon">Trade<wbr>History</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transactionid.html" class="tsd-kind-icon">Transaction<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transactionlist.html" class="tsd-kind-icon">Transaction<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transferassetargs.html" class="tsd-kind-icon">Transfer<wbr>Asset<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transferassetownershipargs.html" class="tsd-kind-icon">Transfer<wbr>Asset<wbr>Ownership<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.transfermultipleassetsargs.html" class="tsd-kind-icon">Transfer<wbr>Multiple<wbr>Assets<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.unconfirmedassetbalance.html" class="tsd-kind-icon">Unconfirmed<wbr>Asset<wbr>Balance</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.unconfirmedtransactionlist.html" class="tsd-kind-icon">Unconfirmed<wbr>Transaction<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.unsignedtransaction.html" class="tsd-kind-icon">Unsigned<wbr>Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/core.unsignedtransactionargs.html" class="tsd-kind-icon">Unsigned<wbr>Transaction<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="core.html#ledger" class="tsd-kind-icon">Ledger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="core.html#defaultapiendpoint" class="tsd-kind-icon">Default<wbr>Api<wbr>Endpoint</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="core.html#defaultdeadline" class="tsd-kind-icon">Default<wbr>Deadline</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#getattachmentversion" class="tsd-kind-icon">get<wbr>Attachment<wbr>Version</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#getrecipientamountsfrommultioutpayment" class="tsd-kind-icon">get<wbr>Recipient<wbr>Amounts<wbr>From<wbr>Multi<wbr>Out<wbr>Payment</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#getrecipientsamount" class="tsd-kind-icon">get<wbr>Recipients<wbr>Amount</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#isattachmentversion" class="tsd-kind-icon">is<wbr>Attachment<wbr>Version</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#ismultioutsametransaction" class="tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Same<wbr>Transaction</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core.html#ismultiouttransaction" class="tsd-kind-icon">is<wbr>Multi<wbr>Out<wbr>Transaction</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer>
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="overlay"></div>
-<script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>core | signumjs</title><meta name="description" content="Documentation for signumjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">signumjs</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">signumjs</a></li><li><a href="core.html">core</a></li></ul><h1>Module core</h1></div><section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography"><p>This is the main package, and almost all you may need to interact with
+the Signum Node API</p>
+<p>Get started with <a href="../functions/core.composeApi.html" class="tsd-kind-function">composeApi</a> or <a href="../classes/core.LedgerClientFactory.html" class="tsd-kind-class">LedgerClientFactory</a></p>
+</div><div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/signum-network/signumjs/blob/b49c1c6dc6bc715e30ccac26588587acfb4acff4/packages/core/src/index.ts#L1">packages/core/src/index.ts:1</a></li></ul></aside><section class="tsd-panel-group tsd-index-group"><section class="tsd-panel tsd-index-panel"><h3 class="tsd-index-heading uppercase">Index</h3><section class="tsd-index-section"><h3 class="tsd-index-heading">Other</h3><div class="tsd-index-list"><a href="../enums/core.AddressPrefix.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Address<wbr/>Prefix</span></a>
+<a href="../enums/core.ApiVersion.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Api<wbr/>Version</span></a>
+<a href="../classes/core.Address.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Address</span></a>
+<a href="../classes/core.ApiComposer.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Api<wbr/>Composer</span></a>
+<a href="../classes/core.ApiSettings.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Api<wbr/>Settings</span></a>
+<a href="../classes/core.Attachment.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Attachment</span></a>
+<a href="../classes/core.AttachmentEncryptedMessage.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Attachment<wbr/>Encrypted<wbr/>Message</span></a>
+<a href="../classes/core.AttachmentMessage.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Attachment<wbr/>Message</span></a>
+<a href="../classes/core.ChainService.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Chain<wbr/>Service</span></a>
+<a href="../classes/core.LedgerClientFactory.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Ledger<wbr/>Client<wbr/>Factory</span></a>
+<a href="../interfaces/core.ChainServiceSettings.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Chain<wbr/>Service<wbr/>Settings</span></a>
+<a href="../interfaces/core.LedgerSettings.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Ledger<wbr/>Settings</span></a>
+<a href="../interfaces/core.TransactionApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transaction<wbr/>Api</span></a>
+<a href="../types/core.Ledger.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-2097152"></use></svg><span>Ledger</span></a>
+<a href="../variables/core.DefaultApiEndpoint.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-32"></use></svg><span>Default<wbr/>Api<wbr/>Endpoint</span></a>
+<a href="../variables/core.DefaultDeadline.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-32"></use></svg><span>Default<wbr/>Deadline</span></a>
+<a href="../functions/core.composeApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>compose<wbr/>Api</span></a>
+<a href="../functions/core.getAttachmentVersion.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Attachment<wbr/>Version</span></a>
+<a href="../functions/core.getRecipientAmountsFromMultiOutPayment.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Recipient<wbr/>Amounts<wbr/>From<wbr/>Multi<wbr/>Out<wbr/>Payment</span></a>
+<a href="../functions/core.getRecipientsAmount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Recipients<wbr/>Amount</span></a>
+<a href="../functions/core.isAttachmentVersion.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>is<wbr/>Attachment<wbr/>Version</span></a>
+<a href="../functions/core.isMultiOutSameTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>is<wbr/>Multi<wbr/>Out<wbr/>Same<wbr/>Transaction</span></a>
+<a href="../functions/core.isMultiOutTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>is<wbr/>Multi<wbr/>Out<wbr/>Transaction</span></a>
+</div></section><section class="tsd-index-section"><h3 class="tsd-index-heading">api</h3><div class="tsd-index-list"><a href="../classes/core.Api.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-128"></use></svg><span>Api</span></a>
+<a href="../interfaces/core.AccountApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Account<wbr/>Api</span></a>
+<a href="../interfaces/core.AliasApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Alias<wbr/>Api</span></a>
+<a href="../interfaces/core.AssetApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Api</span></a>
+<a href="../interfaces/core.BlockApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Block<wbr/>Api</span></a>
+<a href="../interfaces/core.ContractApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Contract<wbr/>Api</span></a>
+<a href="../interfaces/core.MessageApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Message<wbr/>Api</span></a>
+<a href="../interfaces/core.NetworkApi.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Network<wbr/>Api</span></a>
+</div></section><section class="tsd-index-section"><h3 class="tsd-index-heading">args</h3><div class="tsd-index-list"><a href="../interfaces/core.AddAssetTreasuryAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Add<wbr/>Asset<wbr/>Treasury<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.BuyAliasArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Buy<wbr/>Alias<wbr/>Args</span></a>
+<a href="../interfaces/core.BuyTopLevelDomainArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Buy<wbr/>Top<wbr/>Level<wbr/>Domain<wbr/>Args</span></a>
+<a href="../interfaces/core.CalculateDistributionFeeArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Calculate<wbr/>Distribution<wbr/>Fee<wbr/>Args</span></a>
+<a href="../interfaces/core.CallContractMethodArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Call<wbr/>Contract<wbr/>Method<wbr/>Args</span></a>
+<a href="../interfaces/core.CancelOrderArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Cancel<wbr/>Order<wbr/>Args</span></a>
+<a href="../interfaces/core.CancelSubscriptionArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Cancel<wbr/>Subscription<wbr/>Args</span></a>
+<a href="../interfaces/core.CommitmentArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Commitment<wbr/>Args</span></a>
+<a href="../interfaces/core.CreateSubscriptionArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Create<wbr/>Subscription<wbr/>Args</span></a>
+<a href="../interfaces/core.DistributeToAssetHoldersArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Distribute<wbr/>To<wbr/>Asset<wbr/>Holders<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAccountBlocksArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Account<wbr/>Blocks<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAccountTransactionsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Account<wbr/>Transactions<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAliasesOnSaleArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Aliases<wbr/>On<wbr/>Sale<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAllContractIdsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>All<wbr/>Contract<wbr/>Ids<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAllContractsByCodeHashArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>All<wbr/>Contracts<wbr/>By<wbr/>Code<wbr/>Hash<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetHoldersArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Holders<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetOpenOrdersArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Open<wbr/>Orders<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetOpenOrdersPerAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Open<wbr/>Orders<wbr/>Per<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetOpenOrdersPerAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Open<wbr/>Orders<wbr/>Per<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTradesArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Trades<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTradesPerAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Trades<wbr/>Per<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTradesPerAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Trades<wbr/>Per<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTransfersArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Transfers<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTransfersPerAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Transfers<wbr/>Per<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetTransfersPerAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Asset<wbr/>Transfers<wbr/>Per<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetsByIssuerArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Assets<wbr/>By<wbr/>Issuer<wbr/>Args</span></a>
+<a href="../interfaces/core.GetAssetsByNameArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Assets<wbr/>By<wbr/>Name<wbr/>Args</span></a>
+<a href="../interfaces/core.GetContractMapValuesByFirstKeyArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Contract<wbr/>Map<wbr/>Values<wbr/>By<wbr/>First<wbr/>Key<wbr/>Args</span></a>
+<a href="../interfaces/core.GetContractsByAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Contracts<wbr/>By<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.GetSingleContractMapValueArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Single<wbr/>Contract<wbr/>Map<wbr/>Value<wbr/>Args</span></a>
+<a href="../interfaces/core.GetSubscriptionPaymentsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Subscription<wbr/>Payments<wbr/>Args</span></a>
+<a href="../interfaces/core.GetTopLevelDomainsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Top<wbr/>Level<wbr/>Domains<wbr/>Args</span></a>
+<a href="../interfaces/core.GetTradeHistoryPerAccountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Get<wbr/>Trade<wbr/>History<wbr/>Per<wbr/>Account<wbr/>Args</span></a>
+<a href="../interfaces/core.IssueAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Issue<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.MintAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Mint<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.PlaceOrderArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Place<wbr/>Order<wbr/>Args</span></a>
+<a href="../interfaces/core.PublishContractArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Publish<wbr/>Contract<wbr/>Args</span></a>
+<a href="../interfaces/core.PublishContractByReferenceArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Publish<wbr/>Contract<wbr/>By<wbr/>Reference<wbr/>Args</span></a>
+<a href="../interfaces/core.SearchAliasesByNameArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Search<wbr/>Aliases<wbr/>By<wbr/>Name<wbr/>Args</span></a>
+<a href="../interfaces/core.SellAliasArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Sell<wbr/>Alias<wbr/>Args</span></a>
+<a href="../interfaces/core.SendAmountArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Amount<wbr/>Args</span></a>
+<a href="../interfaces/core.SendAmountToMultipleRecipientsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Amount<wbr/>To<wbr/>Multiple<wbr/>Recipients<wbr/>Args</span></a>
+<a href="../interfaces/core.SendArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Args</span></a>
+<a href="../interfaces/core.SendEncryptedMessageArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Encrypted<wbr/>Message<wbr/>Args</span></a>
+<a href="../interfaces/core.SendMessageArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Message<wbr/>Args</span></a>
+<a href="../interfaces/core.SendSameAmountToMultipleRecipientsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Send<wbr/>Same<wbr/>Amount<wbr/>To<wbr/>Multiple<wbr/>Recipients<wbr/>Args</span></a>
+<a href="../interfaces/core.SetAccountInfoArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Set<wbr/>Account<wbr/>Info<wbr/>Args</span></a>
+<a href="../interfaces/core.SetAliasArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Set<wbr/>Alias<wbr/>Args</span></a>
+<a href="../interfaces/core.SetRewardRecipientArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Set<wbr/>Reward<wbr/>Recipient<wbr/>Args</span></a>
+<a href="../interfaces/core.TransferAssetArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transfer<wbr/>Asset<wbr/>Args</span></a>
+<a href="../interfaces/core.TransferAssetOwnershipArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transfer<wbr/>Asset<wbr/>Ownership<wbr/>Args</span></a>
+<a href="../interfaces/core.TransferMultipleAssetsArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transfer<wbr/>Multiple<wbr/>Assets<wbr/>Args</span></a>
+<a href="../interfaces/core.UnsignedTransactionArgs.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Unsigned<wbr/>Transaction<wbr/>Args</span></a>
+</div></section><section class="tsd-index-section"><h3 class="tsd-index-heading">entities</h3><div class="tsd-index-list"><a href="../interfaces/core.Account.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Account</span></a>
+<a href="../interfaces/core.Alias.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Alias</span></a>
+<a href="../interfaces/core.AliasList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Alias<wbr/>List</span></a>
+<a href="../interfaces/core.Asset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset</span></a>
+<a href="../interfaces/core.AssetAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Account</span></a>
+<a href="../interfaces/core.AssetAccountList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Account<wbr/>List</span></a>
+<a href="../interfaces/core.AssetAskOrderList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Ask<wbr/>Order<wbr/>List</span></a>
+<a href="../interfaces/core.AssetBalance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Balance</span></a>
+<a href="../interfaces/core.AssetBidOrderList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Bid<wbr/>Order<wbr/>List</span></a>
+<a href="../interfaces/core.AssetList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>List</span></a>
+<a href="../interfaces/core.AssetOrder.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Order</span></a>
+<a href="../interfaces/core.AssetTrade.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Trade</span></a>
+<a href="../interfaces/core.AssetTradeList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Trade<wbr/>List</span></a>
+<a href="../interfaces/core.AssetTransfer.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Transfer</span></a>
+<a href="../interfaces/core.AssetTransferList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Asset<wbr/>Transfer<wbr/>List</span></a>
+<a href="../interfaces/core.Balance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Balance</span></a>
+<a href="../interfaces/core.Block.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Block</span></a>
+<a href="../interfaces/core.BlockId.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Block<wbr/>Id</span></a>
+<a href="../interfaces/core.BlockIdList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Block<wbr/>Id<wbr/>List</span></a>
+<a href="../interfaces/core.BlockList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Block<wbr/>List</span></a>
+<a href="../interfaces/core.BlockchainStatus.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Blockchain<wbr/>Status</span></a>
+<a href="../interfaces/core.ChainTimestamp.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Chain<wbr/>Timestamp</span></a>
+<a href="../interfaces/core.ContractMapValueList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Contract<wbr/>Map<wbr/>Value<wbr/>List</span></a>
+<a href="../interfaces/core.DistributionAmount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Distribution<wbr/>Amount</span></a>
+<a href="../interfaces/core.DistributionFee.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Distribution<wbr/>Fee</span></a>
+<a href="../interfaces/core.JournalEntry.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Journal<wbr/>Entry</span></a>
+<a href="../interfaces/core.MiningInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Mining<wbr/>Info</span></a>
+<a href="../interfaces/core.MultioutAssetQuantities.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Multiout<wbr/>Asset<wbr/>Quantities</span></a>
+<a href="../interfaces/core.MultioutRecipientAmount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Multiout<wbr/>Recipient<wbr/>Amount</span></a>
+<a href="../interfaces/core.NetworkInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Network<wbr/>Info</span></a>
+<a href="../interfaces/core.Peer.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Peer</span></a>
+<a href="../interfaces/core.PeerAddressList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Peer<wbr/>Address<wbr/>List</span></a>
+<a href="../interfaces/core.RewardRecipient.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Reward<wbr/>Recipient</span></a>
+<a href="../interfaces/core.ServerStatus.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Server<wbr/>Status</span></a>
+<a href="../interfaces/core.Subscription.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Subscription</span></a>
+<a href="../interfaces/core.SubscriptionList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Subscription<wbr/>List</span></a>
+<a href="../interfaces/core.SuggestedFees.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Suggested<wbr/>Fees</span></a>
+<a href="../interfaces/core.TradeHistory.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Trade<wbr/>History</span></a>
+<a href="../interfaces/core.Transaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transaction</span></a>
+<a href="../interfaces/core.TransactionId.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transaction<wbr/>Id</span></a>
+<a href="../interfaces/core.TransactionList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Transaction<wbr/>List</span></a>
+<a href="../interfaces/core.UnconfirmedAssetBalance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Unconfirmed<wbr/>Asset<wbr/>Balance</span></a>
+<a href="../interfaces/core.UnconfirmedTransactionList.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Unconfirmed<wbr/>Transaction<wbr/>List</span></a>
+<a href="../interfaces/core.UnsignedTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-256"></use></svg><span>Unsigned<wbr/>Transaction</span></a>
+</div></section><section class="tsd-index-section"><h3 class="tsd-index-heading">factories</h3><div class="tsd-index-list"><a href="../functions/core.addAssetTreasuryAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>add<wbr/>Asset<wbr/>Treasury<wbr/>Account</span></a>
+<a href="../functions/core.addCommitment.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>add<wbr/>Commitment</span></a>
+<a href="../functions/core.broadcastTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>broadcast<wbr/>Transaction</span></a>
+<a href="../functions/core.burnAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>burn<wbr/>Asset</span></a>
+<a href="../functions/core.buyAlias.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>buy<wbr/>Alias</span></a>
+<a href="../functions/core.buyTopLevelDomain.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>buy<wbr/>Top<wbr/>Level<wbr/>Domain</span></a>
+<a href="../functions/core.calculateDistributionFee.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>calculate<wbr/>Distribution<wbr/>Fee</span></a>
+<a href="../functions/core.callContractMethod.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>call<wbr/>Contract<wbr/>Method</span></a>
+<a href="../functions/core.cancelAskOrder.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>cancel<wbr/>Ask<wbr/>Order</span></a>
+<a href="../functions/core.cancelBidOrder.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>cancel<wbr/>Bid<wbr/>Order</span></a>
+<a href="../functions/core.cancelSubscription.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>cancel<wbr/>Subscription</span></a>
+<a href="../functions/core.createSubscription.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>create<wbr/>Subscription</span></a>
+<a href="../functions/core.distributeToAssetHolders.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>distribute<wbr/>To<wbr/>Asset<wbr/>Holders</span></a>
+<a href="../functions/core.generateSendTransactionQRCode.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>generate<wbr/>Send<wbr/>TransactionQRCode</span></a>
+<a href="../functions/core.generateSendTransactionQRCodeAddress.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>generate<wbr/>Send<wbr/>TransactionQRCode<wbr/>Address</span></a>
+<a href="../functions/core.getAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account</span></a>
+<a href="../functions/core.getAccountBalance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account<wbr/>Balance</span></a>
+<a href="../functions/core.getAccountBlockIds.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account<wbr/>Block<wbr/>Ids</span></a>
+<a href="../functions/core.getAccountBlocks.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account<wbr/>Blocks</span></a>
+<a href="../functions/core.getAccountSubscriptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account<wbr/>Subscriptions</span></a>
+<a href="../functions/core.getAccountTransactions.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Account<wbr/>Transactions</span></a>
+<a href="../functions/core.getAliasById.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Alias<wbr/>By<wbr/>Id</span></a>
+<a href="../functions/core.getAliasByName.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Alias<wbr/>By<wbr/>Name</span></a>
+<a href="../functions/core.getAliases.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Aliases</span></a>
+<a href="../functions/core.getAliasesOnSale.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Aliases<wbr/>On<wbr/>Sale</span></a>
+<a href="../functions/core.getAllAssets.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>All<wbr/>Assets</span></a>
+<a href="../functions/core.getAllContractIds.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>All<wbr/>Contract<wbr/>Ids</span></a>
+<a href="../functions/core.getAllContractsByCodeHash.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>All<wbr/>Contracts<wbr/>By<wbr/>Code<wbr/>Hash</span></a>
+<a href="../functions/core.getAllTrades.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>All<wbr/>Trades</span></a>
+<a href="../functions/core.getAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset</span></a>
+<a href="../functions/core.getAssetHolders.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Holders</span></a>
+<a href="../functions/core.getAssetTrades.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Trades</span></a>
+<a href="../functions/core.getAssetTradesPerAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Trades<wbr/>Per<wbr/>Account</span></a>
+<a href="../functions/core.getAssetTradesPerAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Trades<wbr/>Per<wbr/>Asset</span></a>
+<a href="../functions/core.getAssetTransfers.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Transfers</span></a>
+<a href="../functions/core.getAssetTransfersPerAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Transfers<wbr/>Per<wbr/>Account</span></a>
+<a href="../functions/core.getAssetTransfersPerAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Asset<wbr/>Transfers<wbr/>Per<wbr/>Asset</span></a>
+<a href="../functions/core.getAssetsByIssuer.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Assets<wbr/>By<wbr/>Issuer</span></a>
+<a href="../functions/core.getAssetsByName.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Assets<wbr/>By<wbr/>Name</span></a>
+<a href="../functions/core.getAssetsByOwner.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Assets<wbr/>By<wbr/>Owner</span></a>
+<a href="../functions/core.getBlockByHeight.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Block<wbr/>By<wbr/>Height</span></a>
+<a href="../functions/core.getBlockById.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Block<wbr/>By<wbr/>Id</span></a>
+<a href="../functions/core.getBlockByTimestamp.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Block<wbr/>By<wbr/>Timestamp</span></a>
+<a href="../functions/core.getBlockId.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Block<wbr/>Id</span></a>
+<a href="../functions/core.getBlockchainStatus.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Blockchain<wbr/>Status</span></a>
+<a href="../functions/core.getBlocks.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Blocks</span></a>
+<a href="../functions/core.getContract.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Contract</span></a>
+<a href="../functions/core.getContractMapValuesByFirstKey.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Contract<wbr/>Map<wbr/>Values<wbr/>By<wbr/>First<wbr/>Key</span></a>
+<a href="../functions/core.getContractsByAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Contracts<wbr/>By<wbr/>Account</span></a>
+<a href="../functions/core.getDistributionAmountsFromTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Distribution<wbr/>Amounts<wbr/>From<wbr/>Transaction</span></a>
+<a href="../functions/core.getMiningInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Mining<wbr/>Info</span></a>
+<a href="../functions/core.getNetworkInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Network<wbr/>Info</span></a>
+<a href="../functions/core.getOpenAskOrders.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Ask<wbr/>Orders</span></a>
+<a href="../functions/core.getOpenAskOrdersPerAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Ask<wbr/>Orders<wbr/>Per<wbr/>Account</span></a>
+<a href="../functions/core.getOpenAskOrdersPerAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Ask<wbr/>Orders<wbr/>Per<wbr/>Asset</span></a>
+<a href="../functions/core.getOpenBidOrders.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Bid<wbr/>Orders</span></a>
+<a href="../functions/core.getOpenBidOrdersPerAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Bid<wbr/>Orders<wbr/>Per<wbr/>Account</span></a>
+<a href="../functions/core.getOpenBidOrdersPerAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Open<wbr/>Bid<wbr/>Orders<wbr/>Per<wbr/>Asset</span></a>
+<a href="../functions/core.getPeer.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Peer</span></a>
+<a href="../functions/core.getPeers.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Peers</span></a>
+<a href="../functions/core.getRewardRecipient.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Reward<wbr/>Recipient</span></a>
+<a href="../functions/core.getServerStatus.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Server<wbr/>Status</span></a>
+<a href="../functions/core.getSingleContractMapValue.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Single<wbr/>Contract<wbr/>Map<wbr/>Value</span></a>
+<a href="../functions/core.getSubscription.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Subscription</span></a>
+<a href="../functions/core.getSubscriptionPayments.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Subscription<wbr/>Payments</span></a>
+<a href="../functions/core.getSubscriptionsToAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Subscriptions<wbr/>To<wbr/>Account</span></a>
+<a href="../functions/core.getSuggestedFees.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Suggested<wbr/>Fees</span></a>
+<a href="../functions/core.getTime.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Time</span></a>
+<a href="../functions/core.getTopLevelDomains.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Top<wbr/>Level<wbr/>Domains</span></a>
+<a href="../functions/core.getTradeHistoryPerAccount.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Trade<wbr/>History<wbr/>Per<wbr/>Account</span></a>
+<a href="../functions/core.getTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Transaction</span></a>
+<a href="../functions/core.getTransactionByFullHash.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Transaction<wbr/>By<wbr/>Full<wbr/>Hash</span></a>
+<a href="../functions/core.getUnconfirmedAccountTransactions.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Unconfirmed<wbr/>Account<wbr/>Transactions</span></a>
+<a href="../functions/core.getUnconfirmedTransactions.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>get<wbr/>Unconfirmed<wbr/>Transactions</span></a>
+<a href="../functions/core.issueAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>issue<wbr/>Asset</span></a>
+<a href="../functions/core.mintAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>mint<wbr/>Asset</span></a>
+<a href="../functions/core.parseTransactionBytes.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>parse<wbr/>Transaction<wbr/>Bytes</span></a>
+<a href="../functions/core.placeAskOrder.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>place<wbr/>Ask<wbr/>Order</span></a>
+<a href="../functions/core.placeBidOrder.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>place<wbr/>Bid<wbr/>Order</span></a>
+<a href="../functions/core.publishContract.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>publish<wbr/>Contract</span></a>
+<a href="../functions/core.publishContractByReference.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>publish<wbr/>Contract<wbr/>By<wbr/>Reference</span></a>
+<a href="../functions/core.removeCommitment.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>remove<wbr/>Commitment</span></a>
+<a href="../functions/core.searchAliasesByName.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>search<wbr/>Aliases<wbr/>By<wbr/>Name</span></a>
+<a href="../functions/core.sellAlias.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>sell<wbr/>Alias</span></a>
+<a href="../functions/core.sendAmountToMultipleRecipients.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>send<wbr/>Amount<wbr/>To<wbr/>Multiple<wbr/>Recipients</span></a>
+<a href="../functions/core.sendAmountToSingleRecipient.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>send<wbr/>Amount<wbr/>To<wbr/>Single<wbr/>Recipient</span></a>
+<a href="../functions/core.sendEncryptedMessage.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>send<wbr/>Encrypted<wbr/>Message</span></a>
+<a href="../functions/core.sendMessage.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>send<wbr/>Message</span></a>
+<a href="../functions/core.sendSameAmountToMultipleRecipients.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>send<wbr/>Same<wbr/>Amount<wbr/>To<wbr/>Multiple<wbr/>Recipients</span></a>
+<a href="../functions/core.setAccountInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>set<wbr/>Account<wbr/>Info</span></a>
+<a href="../functions/core.setAlias.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>set<wbr/>Alias</span></a>
+<a href="../functions/core.setRewardRecipient.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>set<wbr/>Reward<wbr/>Recipient</span></a>
+<a href="../functions/core.signAndBroadcastTransaction.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>sign<wbr/>And<wbr/>Broadcast<wbr/>Transaction</span></a>
+<a href="../functions/core.transferAsset.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>transfer<wbr/>Asset</span></a>
+<a href="../functions/core.transferAssetOwnership.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>transfer<wbr/>Asset<wbr/>Ownership</span></a>
+<a href="../functions/core.transferMultipleAssets.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-64"></use></svg><span>transfer<wbr/>Multiple<wbr/>Assets</span></a>
+</div></section><section class="tsd-index-section"><h3 class="tsd-index-heading">transaction-types</h3><div class="tsd-index-list"><a href="../enums/core.TransactionArbitrarySubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Arbitrary<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionAssetSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Asset<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionEscrowSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Escrow<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionLeasingSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Leasing<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionMarketplaceSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Marketplace<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionMiningSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Mining<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionPaymentSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Payment<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionSmartContractSubtype.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Smart<wbr/>Contract<wbr/>Subtype</span></a>
+<a href="../enums/core.TransactionType.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-8"></use></svg><span>Transaction<wbr/>Type</span></a>
+</div></section></section></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>signumjs</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

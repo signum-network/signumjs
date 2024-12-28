@@ -10,7 +10,7 @@ import {CodePageSize} from './constants';
  * @param hexCode The contracts code in hex form
  * @return The number of code pages for the passed code
  *
- * @module contracts
+ * 
  */
 export function countCodePages(hexCode: string ): number {
     return Math.ceil((hexCode.length / 2) / CodePageSize);

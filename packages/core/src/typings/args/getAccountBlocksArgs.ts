@@ -1,5 +1,5 @@
 /**
- * The argument object for [[AccountApi.getAccountBlocks]] and [[AccountApi.getAccountBlockIds]]
+ * The argument object for {@link AccountApi.getAccountBlocks} and {@link AccountApi.getAccountBlockIds}
  *
  * @param {string} accountId The numeric accountId
  * @param {number} firstIndex The first index of a chunk of the list you want fetch. Use indices to paginate your calls
@@ -9,8 +9,9 @@
  * @see https://github.com/burst-apps-team/burstcoin/issues/477
  *
  * @param {boolean?} includeTransactions Includes the transactions also. Note, that this is call may take time
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAccountBlocksArgs {
     accountId: string;
     firstIndex?: number;

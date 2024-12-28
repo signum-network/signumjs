@@ -9,11 +9,12 @@ import {DefaultDeadline} from '../../../constants';
 import { BuyAliasArgs } from '../../../typings/args';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AliasApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AliasApi}.
  *
- * See details at [[AliasApi.buyAlias]]
- * @module core.api.factories
- */
+ * See details at {@link AliasApi.buyAlias}
+*
+* @category factories
+*/
 export const buyAlias = (service: ChainService) =>  (args: BuyAliasArgs) => signIfPrivateKey(service, args,
     async (a: BuyAliasArgs) => {
 

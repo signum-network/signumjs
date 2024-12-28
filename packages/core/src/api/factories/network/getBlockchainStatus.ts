@@ -7,10 +7,11 @@ import {BlockchainStatus} from '../../../typings/blockchainStatus';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getBlockchainStatus]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getBlockchainStatus}
+*
+* @category factories
+*/
 export const getBlockchainStatus = (service: ChainService): () => Promise<BlockchainStatus> =>
     (): Promise<BlockchainStatus> => service.query('getBlockchainStatus');

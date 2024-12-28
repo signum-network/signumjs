@@ -1,4 +1,4 @@
-/* tslint:disable:quotemark */
+import {vi, describe, beforeAll, afterEach, expect, it} from "vitest"
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {
     getAliasById,
@@ -7,17 +7,25 @@ import {
     sellAlias,
     getAliasByName, buyTopLevelDomain, getTopLevelDomains, setAlias, getAliases
 } from '../factories';
-import {mockSignAndBroadcastTransaction, createChainService} from '../../__tests__/helpers';
+import {createChainService} from '../../__tests__/helpers';
 import {searchAliasesByName} from '../factories/alias/searchAliasesByName';
 import {AttachmentMessage} from '../../typings/attachment';
+
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
 
 describe('Alias Api', () => {
 
     let httpMock: Http;
 
     beforeAll(() => {
-        // @ts-ignore
-        mockSignAndBroadcastTransaction();
     });
 
     afterEach(() => {
@@ -25,6 +33,7 @@ describe('Alias Api', () => {
             // @ts-ignore
             httpMock.reset();
         }
+        vi.clearAllMocks();
     });
 
     describe('getAlias', () => {

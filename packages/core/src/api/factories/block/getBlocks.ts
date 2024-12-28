@@ -5,12 +5,13 @@ import {ChainService} from '../../../service/chainService';
 import {BlockList} from '../../../typings/blockList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[BlockApi]].
+ * Use with {@link ApiComposer} and belongs to {@link BlockApi}.
  *
- * See details at [[BlockApi.getBlocks]]
+ * See details at {@link BlockApi.getBlocks}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const getBlocks = (service: ChainService):
     (firstIndex?: number, lastIndex?: number, includeTransactions?: boolean) => Promise<BlockList> =>
     (firstIndex?: number, lastIndex?: number, includeTransactions?: boolean): Promise<BlockList> =>

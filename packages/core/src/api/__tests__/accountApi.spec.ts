@@ -1,3 +1,4 @@
+import {describe, afterEach, it, expect, vi, beforeEach } from 'vitest';
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {
     getUnconfirmedAccountTransactions,
@@ -12,11 +13,28 @@ import {
     getSubscriptionsToAccount,
     getAccountSubscriptions, getRewardRecipient, addCommitment, removeCommitment
 } from '../factories/account';
-import {Alias, AliasList} from '../..';
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {Amount} from '@signumjs/util';
-import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
+
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
+
+import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
+vi.mock('@signumjs/crypto', () => {
+    return {
+        generateSignature: vi.fn().mockImplementation(() => 'signature'),
+        generateSignedTransactionBytes: vi.fn().mockImplementation(() => "signedTransactionBytes"),
+        verifySignature: vi.fn().mockImplementation(() => true)
+    };
+});
+
 
 describe('AccountApi', () => {
 
@@ -27,6 +45,7 @@ describe('AccountApi', () => {
             // @ts-ignore
             httpMock.reset();
         }
+        vi.clearAllMocks();
     });
 
     describe('GetAccountTransactions()', () => {
@@ -108,7 +127,7 @@ describe('AccountApi', () => {
             try {
                 const args = {accountId: 'accountId'};
                 await getAccountTransactions(service)(args);
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -185,7 +204,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await getUnconfirmedAccountTransactions(service)('accountId');
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -220,7 +239,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await getAccountBalance(service)('accountId');
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -251,7 +270,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await generateSendTransactionQRCode(service)(mockAddress);
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -267,16 +286,6 @@ describe('AccountApi', () => {
         };
 
         beforeEach(() => {
-
-            jest.resetAllMocks();
-
-            // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = jest.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
-
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, mockBroadcastResponse,
@@ -301,10 +310,8 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
                 senderPrivateKey: 'senderPrivateKey'
             });
-            expect(status).toBe('fakeTransaction');
-            expect(generateSignature).toBeCalledTimes(1);
-            expect(verifySignature).toBeCalledTimes(1);
-            expect(generateSignedTransactionBytes).toBeCalledTimes(1);
+            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(signAndBroadcastTransaction).toBeCalledTimes(1);
         });
     });
 
@@ -317,16 +324,6 @@ describe('AccountApi', () => {
         };
 
         beforeEach(() => {
-
-            jest.resetAllMocks();
-
-            // @ts-ignore
-            generateSignature = jest.fn(() => 'signature');
-            // @ts-ignore
-            verifySignature = jest.fn(() => true);
-            // @ts-ignore
-            generateSignedTransactionBytes = jest.fn(() => 'signedTransactionBytes');
-
             httpMock = HttpMockBuilder.create()
                 // tslint:disable:max-line-length
                 .onPostReply(200, mockBroadcastResponse,
@@ -341,6 +338,7 @@ describe('AccountApi', () => {
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
         it('should setRewardRecipient', async () => {
@@ -351,10 +349,8 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
             });
 
-            expect(status).toBe('fakeTransaction');
-            expect(generateSignature).toBeCalledTimes(1);
-            expect(verifySignature).toBeCalledTimes(1);
-            expect(generateSignedTransactionBytes).toBeCalledTimes(1);
+            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(signAndBroadcastTransaction).toBeCalledTimes(1);
         });
 
         it('should throw error if response contains one', async () => {
@@ -370,7 +366,7 @@ describe('AccountApi', () => {
                         senderPublicKey: 'senderPublicKey',
                     }
                 );
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.message).toBe('error');
                 expect(generateSignature).toBeCalledTimes(0);
                 expect(verifySignature).toBeCalledTimes(0);
@@ -495,11 +491,6 @@ describe('AccountApi', () => {
 
         beforeEach(() => {
 
-            jest.resetAllMocks();
-
-            // @ts-ignore
-            signAndBroadcastTransaction = () => jest.fn(() => Promise.resolve('transactionId'));
-
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, mockBroadcastResponse,
                     'relPath?requestType=addCommitment&amountNQT=10000000000&publicKey=senderPublicKey&feeNQT=100000000&deadline=1440')
@@ -513,6 +504,7 @@ describe('AccountApi', () => {
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            vi.clearAllMocks();
         });
 
         it('should add commitment', async () => {
@@ -525,7 +517,7 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
             });
 
-            expect(status).toBe('transactionId');
+            expect(status).toEqual({ transaction: 'transactionId'});
         });
 
         it('should remove commitment', async () => {
@@ -537,8 +529,7 @@ describe('AccountApi', () => {
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
             });
-
-            expect(status).toBe('transactionId');
+            expect(status).toEqual({ transaction: 'transactionId'});
         });
 
     });

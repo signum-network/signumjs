@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.transferAssetOwnership]]
+ * The argument object for {@link AssetApi.transferAssetOwnership}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface TransferAssetOwnershipArgs extends DefaultSendArgs {
     /**
      * The id of the recipient, i.e. new owner

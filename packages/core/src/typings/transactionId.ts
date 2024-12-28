@@ -11,9 +11,8 @@ import {Transaction} from './transaction';
  *
  * This object is being returned by a signed and broadcasted transaction, i.e. when passed a private key to
  * transactional methods.
- *
- * @module core
- * */
+ * @category entities
+ */
 export interface TransactionId {
     readonly fullHash: string;
     readonly transaction: string;

@@ -5,11 +5,12 @@ import {ChainService} from '../../../service';
 import {GetAllTradesArgs} from '../../../typings/args/getAllTradesArgs';
 import {AssetTradeList} from '../../../typings/assetTradeList';
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAllTrades]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAllTrades}
+*
+* @category factories
+*/
 export const getAllTrades = (service: ChainService):
     (args: GetAllTradesArgs) => Promise<AssetTradeList> =>
     async (args: GetAllTradesArgs): Promise<AssetTradeList> => {

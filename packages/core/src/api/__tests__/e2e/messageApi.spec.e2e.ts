@@ -1,6 +1,6 @@
 import {loadEnvironment} from './helpers/environment';
 import {ChainService} from '../../../service/chainService';
-import {decryptMessage, generateMasterKeys, getAccountIdFromPublicKey, Keys} from '@signumjs/crypto';
+import {decryptMessage, generateMasterKeys, getAccountIdFromPublicKey, SignKeys} from '@signumjs/crypto';
 import {getTransaction} from '../../factories/transaction/getTransaction';
 import {isAttachmentVersion} from '../../../attachment';
 import {sendEncryptedMessage, sendMessage} from '../../factories/message';
@@ -12,7 +12,7 @@ describe('[E2E] Message Api', () => {
 
     let environment;
     let service;
-    let senderKeys: Keys;
+    let senderKeys: SignKeys;
     let recipientKeys;
     let recipientId;
 
@@ -22,7 +22,7 @@ describe('[E2E] Message Api', () => {
             nodeHost: environment.testNetHost,
             apiRootUrl: environment.testNetApiPath
         });
-        jest.setTimeout(environment.timeout);
+        vi.setTimeout(environment.timeout);
 
         senderKeys = generateMasterKeys(environment.testPassphrase);
         recipientKeys = generateMasterKeys(environment.testRecipientPassphrase);

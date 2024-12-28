@@ -5,7 +5,7 @@
 /**
  * Constants for smart contract (aka AT) subtypes
  *
- * @module core
+ * @category transaction-types
  */
 export enum TransactionSmartContractSubtype {
     SmartContractCreation = 0,

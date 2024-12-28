@@ -7,11 +7,12 @@ import {ChainService} from '../../../service/chainService';
 import {TransactionId} from '../../../typings/transactionId';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.broadcastTransaction]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.broadcastTransaction}
+*
+* @category factories
+*/
 export const broadcastTransaction = (service: ChainService):
     (signedTransactionPayload: string) => Promise<TransactionId> =>
     (signedTransactionPayload: string): Promise<TransactionId> =>

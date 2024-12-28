@@ -4,7 +4,7 @@
 
 
 /**
- * @module core
+ * @category entities
  */
 export interface DistributionAmount {
     /**

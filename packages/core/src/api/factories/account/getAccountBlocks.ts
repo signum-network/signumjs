@@ -6,11 +6,12 @@ import {BlockList} from '../../../typings/blockList';
 import {GetAccountBlocksArgs} from '../../../typings/args/getAccountBlocksArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getAccountBlocks]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getAccountBlocks}
+*
+* @category factories
+*/
 export const getAccountBlocks = (service: ChainService):
     (args: GetAccountBlocksArgs) => Promise<BlockList> =>
     (args): Promise<BlockList> => {

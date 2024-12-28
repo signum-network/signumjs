@@ -6,6 +6,11 @@ import {Ledger} from '@signumjs/core';
 import {DescriptorData} from '../src44';
 
 // extend this list from time to time...
+/**
+ * @internal
+ * @ignore
+ * 
+ */
 export const KnownTlds = [
     'blockchain',
     'coin',
@@ -65,7 +70,7 @@ interface URI {
  *
  * Also considers known top-level domains and accepts the following format for those URIs: <subdomain>.<domain>.<tld> (instead of `@`)
  *
- * @module standards.SRC47
+ * 
  */
 export class URIResolver {
     constructor(private ledger: Ledger) {

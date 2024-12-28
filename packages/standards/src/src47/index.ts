@@ -12,7 +12,7 @@
  *  const url = await resolver.resolve('http://arts.johndoe.crypto');
  *  ```
  *
- * @moduledefinition standards.SRC47
+ * 
  */
 
 export * from './URIResolver';

@@ -7,11 +7,12 @@ import {getAssetTrades} from './getAssetTrades';
 import {AssetTradeList} from '../../../typings/assetTradeList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetTradesPerAsset]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetTradesPerAsset}
+*
+* @category factories
+*/
 export const getAssetTradesPerAsset = (service: ChainService):
     (args: GetAssetTradesPerAssetArgs) => Promise<AssetTradeList> =>
     (args: GetAssetTradesPerAssetArgs): Promise<AssetTradeList> => getAssetTrades(service)({

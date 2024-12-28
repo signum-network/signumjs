@@ -4,7 +4,8 @@
 
 /**
  * Constants for escrow subtypes
- * @module core
+ *
+ * @category transaction-types
  */
 export enum TransactionEscrowSubtype {
     EscrowCreation = 0,

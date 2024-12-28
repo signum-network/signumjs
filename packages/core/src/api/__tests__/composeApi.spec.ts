@@ -1,3 +1,4 @@
+import {it, describe, expect, vi} from  "vitest"
 import {ApiSettings, composeApi} from '../composeApi';
 import {Http, HttpResponse} from '@signumjs/http';
 
@@ -46,7 +47,7 @@ describe('composeApi', () => {
 
     it('should work with a custom http adapter', async () => {
         const httpAdapter = new TestHttpAdapter();
-        const spied = jest.spyOn(httpAdapter, 'get');
+        const spied = vi.spyOn(httpAdapter, 'get');
         const api = composeApi(new ApiSettings(
             'nodeHost',
             [],

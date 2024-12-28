@@ -6,11 +6,12 @@ import {GetTopLevelDomainsArgs} from '../../../typings/args/getTopLevelDomainsAr
 import {TopLevelDomainList} from '../../../typings/topLevelDomainList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AliasApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AliasApi}.
  *
- * See details at [[AliasApi.getTopLevelDomains]]
- * @module core.api.factories
- */
+ * See details at {@link AliasApi.getTopLevelDomains}
+*
+* @category factories
+*/
 export const getTopLevelDomains = (service: ChainService):
     (args: GetTopLevelDomainsArgs) => Promise<TopLevelDomainList> =>
     (args: GetTopLevelDomainsArgs): Promise<TopLevelDomainList> => service.query('getTLDs', args);

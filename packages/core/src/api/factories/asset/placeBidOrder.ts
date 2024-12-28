@@ -8,12 +8,13 @@ import {placeOrder} from './placeOrder';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi.placeBidOrder]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi.placeBidOrder}.
  *
- * See details at [[AssetApi.placeBidOrder]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.placeBidOrder}
+ * 
+*
+* @category factories
+*/
 export const placeBidOrder = (service: ChainService) =>
     async (args: PlaceOrderArgs) =>
         placeOrder(service)({

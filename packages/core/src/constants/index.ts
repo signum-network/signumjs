@@ -11,21 +11,21 @@ import {TransactionSmartContractSubtype} from './transactionSmartContractSubtype
 
 /**
  * The default deadline (in minutes) for Transactions
- * @module core
+ * 
  */
 const DefaultDeadline = 1440;
 
 /**
- * The default endpoint for [[ApiSettings]]
- * @module core
+ * The default endpoint for {@link ApiSettings}
+ * 
  */
 const DefaultApiEndpoint = '/api';
 
 
 /**
  *
- * Address prefixes used in [[Address]]
- * @module core
+ * Address prefixes used in {@link Address}
+ * 
  * */
 enum AddressPrefix {
     MainNet = 'S',

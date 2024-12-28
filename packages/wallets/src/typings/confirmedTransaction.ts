@@ -3,7 +3,7 @@
  */
 
 /**
- * Object returned from [[GenericExtensionWallet.confirm]]
+ * Object returned from {@link GenericExtensionWallet.confirm}
  * @module wallets
  */
 export interface ConfirmedTransaction {

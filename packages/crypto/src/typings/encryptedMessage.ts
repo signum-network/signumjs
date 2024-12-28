@@ -4,8 +4,9 @@
 
 /**
  * The interface for encrypted message
- * @see [[encryptMessage]]
- * @module crypto
+ * @see {@link encryptMessage}
+ *
+ * @category en/decryption
  */
 export interface EncryptedMessage {
     data: string;

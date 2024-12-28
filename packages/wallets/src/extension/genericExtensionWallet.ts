@@ -8,7 +8,7 @@ import {ExtensionAdapterFactory} from './extensionAdapterFactory';
 import {WalletConnection} from './walletConnection';
 
 /**
- * Connection parameters for [[GenericExtensionWallet.connect]]
+ * Connection parameters for {@link GenericExtensionWallet.connect}
  */
 interface GenericExtensionWalletConnectArgs {
     /**
@@ -52,7 +52,8 @@ interface GenericExtensionWalletConnectArgs {
  *  }).catch(console.error)
  * ```
  *
- * @note At this time, this wallet does only work in the browser
+ * > At this time, this wallet does only work in the browser
+ *
  * @module wallets
  */
 export class GenericExtensionWallet implements Wallet {
@@ -61,8 +62,8 @@ export class GenericExtensionWallet implements Wallet {
 
     /**
      * Instantiates the extension wallet proxy.
-     * @param adapter The adapter according your environment. See [[ExtensionAdapterFactory]].
-     * It uses the default [[ExtensionAdapterFactory]] to determine the correct adapter.
+     * @param adapter The adapter according your environment. See {@link ExtensionAdapterFactory}.
+     * It uses the default {@link ExtensionAdapterFactory} to determine the correct adapter.
      */
     constructor(private adapter = ExtensionAdapterFactory.getAdapter()) {
     }

@@ -10,9 +10,9 @@ interface MediaType {
 /**
  * SRC44 Compliant descriptor structure
  *
- * See [[DescriptorData]] and [[DescriptorDataBuilder]] to create, update this structure
+ * See {@link DescriptorData} and {@link DescriptorDataBuilder} to create, update this structure
  *
- * @module standards.SRC44
+ * 
  */
 export interface SRC44Descriptor {
     /**

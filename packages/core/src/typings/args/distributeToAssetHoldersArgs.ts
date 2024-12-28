@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.distributeToAssetHolders]]
+ * The argument object for {@link AssetApi.distributeToAssetHolders}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface DistributeToAssetHoldersArgs extends DefaultSendArgs {
     /**
      * The related asset

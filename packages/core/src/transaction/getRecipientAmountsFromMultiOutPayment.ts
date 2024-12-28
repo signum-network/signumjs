@@ -8,7 +8,7 @@ import {Amount} from '@signumjs/util';
  * @param transaction The transaction
  * @return A list of recipients and their payed amount (in NQT)
  * @throws An exception in case of wrong transaction types
- * @module core
+ *
  */
 export function getRecipientAmountsFromMultiOutPayment(transaction: Transaction): Array<MultioutRecipientAmount> {
 

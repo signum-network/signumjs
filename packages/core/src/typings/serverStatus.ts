@@ -5,7 +5,7 @@
 /**
  * Server Status
  *
- * @module core
+ * @category entities
  * */
 export interface ServerStatus {
     readonly application: string;

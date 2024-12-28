@@ -1,26 +1,27 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
  */
+import {encryptMessage} from '@signumjs/crypto';
 import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
-import {encryptMessage} from '@signumjs/crypto';
 import {SendEncryptedMessageArgs} from '../../../typings/args/sendEncryptedMessageArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 const MAX_MESSAGE_LENGTH = 1024;
 
 /**
- * Use with [[ApiComposer]] and belongs to [[MessageApi]].
+ * Use with {@link ApiComposer} and belongs to {@link MessageApi}.
  *
- * See details at [[MessageApi.sendEncryptedMessage]]
- * @module core.api.factories
- */
+ * See details at {@link MessageApi.sendEncryptedMessage}
+*
+* @category factories
+*/
 export const sendEncryptedMessage = (service: ChainService) =>
     (args: SendEncryptedMessageArgs) =>
         signIfPrivateKey(service, args, async (a: SendEncryptedMessageArgs) => {
 
-                const encryptedMessage = encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
+                const encryptedMessage = await encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
 
                 if (encryptedMessage.data.length > MAX_MESSAGE_LENGTH) {
                     throw new Error(`The encrypted message exceeds allowed limit of ${MAX_MESSAGE_LENGTH} bytes`);

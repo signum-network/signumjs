@@ -1,3 +1,4 @@
+import {describe,afterEach, it, expect} from "vitest"
 import {HttpMockBuilder, Http} from '@signumjs/http';
 
 import {getBlockByTimestamp} from '../factories/block/getBlockByTimestamp';
@@ -47,7 +48,7 @@ describe('Block Api', () => {
             try {
                 await getBlockById(service)('123abc', false);
                 expect(true).toBe('Expected Exception');
-            } catch (error) {
+            } catch (error: any) {
                 expect(error.message).toBe('Test Error');
                 expect(error.status).toBe(500);
             }

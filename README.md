@@ -19,6 +19,22 @@
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
 technology.
 
+---------------------------------------
+
+👷‍♂️👷‍♂️👷‍♂️ 🏗️🏗️🏗️ MODERNIZATION IN PROGRESS 🏗️🏗️🏗️ 👷‍♂️👷‍♂️👷‍♂️
+
+- [X] CONTRACTS
+- [X] CORE
+- [x] CRYPTO
+- [X] HTTP
+- [X] UTILS
+- [X] STANDARDS
+- [X] WALLET
+- [ ] DOCUMENTATION
+- [ ] EXAMPLES
+
+
+
 ----------------------------
 
 Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs)
@@ -126,7 +142,7 @@ console.log(dataView.getVariable(2))
 
 ```js
 // using crypto
-console.log(sig$crypto.hashSHA256("test"))
+console.log(sig$crypto.sha256AsHex("test"))
 ```
 
 ```js

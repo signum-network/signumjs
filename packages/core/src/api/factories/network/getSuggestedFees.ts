@@ -6,11 +6,12 @@ import {SuggestedFees} from '../../../typings/suggestedFees';
 import {FeeQuantPlanck} from '@signumjs/util';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getSuggestedFees]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getSuggestedFees}
+*
+* @category factories
+*/
 export const getSuggestedFees = (service: ChainService): () => Promise<SuggestedFees> => {
     return async (): Promise<SuggestedFees> => {
         const suggestedFees: SuggestedFees = await service.query('suggestFee');

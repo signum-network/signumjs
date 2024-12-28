@@ -1,7 +1,7 @@
 import {DefaultSendArgs} from './defaultSendArgs';
 
 /**
- * The argument object for [[TransactionApi.sendAmountToSingleRecipient]]
+ * The argument object for {@link TransactionApi.sendAmountToSingleRecipient}
  *
  * @param amountPlanck The amount to be sent as Planck value
  * @param feePlanck The fee as Planck value
@@ -13,8 +13,9 @@ import {DefaultSendArgs} from './defaultSendArgs';
  * @param attachment An _optional_ attachment
  * @param deadline The _optional_ transactions deadline in minutes until it's being removed from mempool.
  * This may happen on low fees. Defaults to 1440 (maximum)
- * @module core
- */
+*
+* @category args
+*/
 export interface CommitmentArgs extends DefaultSendArgs {
     amountPlanck: string;
 }

@@ -10,12 +10,13 @@ import {AddAssetTreasuryAccountArgs} from '../../../typings/args';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.addAssetTreasuryAccount]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.addAssetTreasuryAccount}
+ * 
+*
+* @category factories
+*/
 export const addAssetTreasuryAccount = (service: ChainService) =>
     (args: AddAssetTreasuryAccountArgs) => signIfPrivateKey(service, args, async (a: AddAssetTreasuryAccountArgs) => {
             let parameters = {

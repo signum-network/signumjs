@@ -5,7 +5,7 @@
 
 /**
  * Peer Interface
- * @module core
+ * @category entities
  * */
 export interface Peer {
     announcedAddress: string;

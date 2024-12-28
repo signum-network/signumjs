@@ -11,11 +11,12 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 const SmartContractPublickey = '0000000000000000000000000000000000000000000000000000000000000000';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.sendAmountToSingleRecipient]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.sendAmountToSingleRecipient}
+*
+* @category factories
+*/
 export const sendAmountToSingleRecipient = (service: ChainService) =>
     (args: SendAmountArgs) =>
     signIfPrivateKey(

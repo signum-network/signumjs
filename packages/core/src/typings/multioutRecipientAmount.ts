@@ -1,7 +1,7 @@
 /**
  * MultioutRecipientAmount interface
- * @see [[getRecipientAmountsFromMultiOutPayment]]
- * @module core
+ * @see {@link getRecipientAmountsFromMultiOutPayment}
+ * @category entities
  */
 export interface MultioutRecipientAmount {
     readonly recipient: string;

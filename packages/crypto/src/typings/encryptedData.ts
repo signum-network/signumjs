@@ -4,8 +4,9 @@
 
 /**
  * The interface for encrypted raw data
- * @see [[encryptData]]
- * @module crypto
+ * @see {@link encryptData}
+ *
+ * @category en/decryption
  */
 export interface EncryptedData {
     data: Uint8Array;

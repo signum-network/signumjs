@@ -14,7 +14,7 @@ import {initialCodeword, base32Length, gmult, alphabet, cwmap} from './internal'
  * @param numericId The numeric Id
  * @param prefix The prefix for the address
  * @return the Reed-Solomon address encoding, or undefined if passed null, undefined
- * @module core
+ *
  */
 export const convertNumericIdToReedSolomonAddress = (numericId: string, prefix: string): string => {
 

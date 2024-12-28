@@ -1,6 +1,6 @@
 /** @ignore */
 /** @internal */
-/** @module util */
+/**  */
 import BigNumber from 'bignumber.js';
 
 export const twosComplementBinary = (bn: BigNumber) => {

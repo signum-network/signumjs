@@ -1,10 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./out",
-        "types": [
-            "axios",
-            "jest"
-        ]
+        "types": ["axios","vitest/globals"]
     },
     "typeRoots": [ 
         "typings", 

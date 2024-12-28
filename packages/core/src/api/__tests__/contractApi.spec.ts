@@ -1,3 +1,4 @@
+import {vi, expect, afterEach, describe, it, beforeEach} from "vitest";
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {
@@ -8,8 +9,17 @@ import {
     publishContract,
     getSingleContractMapValue, getContractMapValuesByFirstKey, getAllContractsByCodeHash
 } from '../factories/contract';
-import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 import {TransactionId} from '../../typings/transactionId';
+
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
 
 describe('Contract Api', () => {
 
@@ -97,14 +107,14 @@ describe('Contract Api', () => {
     describe('publishContract', () => {
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
 
         it('should publishContract', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
                 broadcasted: true,
@@ -133,14 +143,14 @@ describe('Contract Api', () => {
     describe('publishContractByReference', () => {
 
         beforeEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
 
         it('should publish contract', async () => {
 
             // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+            signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
 
             const testResponse = {
                 broadcasted: true,

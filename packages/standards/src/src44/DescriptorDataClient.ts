@@ -35,7 +35,7 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  * A helper class to get Descriptor information from accounts, contracts, assets, and/or aliases.
  * It even resolves Descriptor data from referenced aliases.
  * Furthermore, it helps on updating descriptor data according to SRC44 specifications.
- * @module standards.SRC44
+ * 
  */
 export class DescriptorDataClient {
     private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
@@ -129,7 +129,7 @@ export class DescriptorDataClient {
      * If the token issuer is a contract, then the contracts creator is being used for identity matching
      * Due to the indirection it's possible to have multiple brands.
      *
-     * See also [[setAssetBranding]]
+     * See also {@link setAssetBranding}
      * @param tokenId
      * @returns An array of descriptors/brands - can be empty
      */
@@ -167,7 +167,7 @@ export class DescriptorDataClient {
 
     /**
      * Creates a brand for an asset.
-     * See also [[getAssetBranding]]
+     * See also {@link getAssetBranding}
      *
      * If the asset is issued by a contract, the contracts creator is being checked for ownership.
      *
@@ -221,7 +221,7 @@ export class DescriptorDataClient {
     }
 
     /**
-     * Branded Contracts are almost identical with Branded Assets. See [[getAssetBranding]] and [[setContractBranding]]
+     * Branded Contracts are almost identical with Branded Assets. See {@link getAssetBranding} and {@link setContractBranding}
      * @param contractId The contract Id
      * @returns An array of descriptors/brands - can be empty
      */
@@ -249,7 +249,7 @@ export class DescriptorDataClient {
     }
 
     /**
-     * Set contract branding. See [[getContractBranding]]
+     * Set contract branding. See {@link getContractBranding}
      * @param args The args
      * @throws Error on not found contract, or if sender is not owner of the contract
      * */

@@ -8,10 +8,11 @@ import {convertByteArrayToHexString} from './convertByteArrayToHexString';
 
 /**
  * Converts/Encode a String into Hexadecimally encoded
- * Inverse function [[convertHexStringToString]]
+ * Inverse function {@link convertHexStringToString}
  * @param str The Hex string to be converted
  * @return {string} The Hex String representing the input string
- * @module util
+ *
+ * @category conversion
  */
 export const convertStringToHexString = (str: string): string => {
     return convertByteArrayToHexString(convertStringToByteArray(str));

@@ -10,11 +10,12 @@ import {CancelSubscriptionArgs} from '../../../typings/args/cancelSubscriptionAr
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.cancelSubscription]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.cancelSubscription}
+*
+* @category factories
+*/
 export const cancelSubscription = (service: ChainService) =>
     (args: CancelSubscriptionArgs) => signIfPrivateKey(service, args,
         async (a: CancelSubscriptionArgs) => {

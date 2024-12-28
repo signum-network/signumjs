@@ -1,9 +1,17 @@
+import {vi, it, describe, expect, afterEach} from 'vitest';
 import {ChainService} from '../chainService';
 import {HttpError, HttpMockBuilder, HttpResponse, Http} from '@signumjs/http';
 import {ChainServiceSettings} from '../chainServiceSettings';
 import {DefaultApiEndpoint} from '../../constants';
 import {createChainService} from '../../__tests__/helpers';
 import {verifyTransaction} from '../../internal/verifyTransaction';
+vi.mock('../../internal/verifyTransaction', () => {
+    return {
+        verifyTransaction: vi.fn()
+    };
+});
+
+
 
 class TestHttpClient implements Http {
     delete(url: string): Promise<HttpResponse> {
@@ -119,13 +127,15 @@ describe('ChainService', () => {
 
     describe('send()', () => {
 
+        afterEach(() => {
+            vi.clearAllMocks();
+        })
+
         it('should successfully send data', async () => {
             const httpMock = HttpMockBuilder.create().onPostReply(200, {
                 foo: 'someData'
             }).build();
             const service = createChainService(httpMock);
-            // @ts-ignore
-            verifyTransaction = jest.fn();
             const result = await service.send('someMethod');
 
             expect(result).toEqual({foo: 'someData'});
@@ -137,8 +147,6 @@ describe('ChainService', () => {
 
             }).build();
             const service = createChainService(httpMock);
-            // @ts-ignore
-            verifyTransaction = jest.fn();
             const result = await service.send('someMethod', {skipAdditionalSecurityCheck: true});
 
             expect(result).toEqual({foo: 'someData'});
@@ -253,7 +261,7 @@ describe('ChainService', () => {
         it('should return some host', async () => {
 
             const testClient = new TestHttpClient();
-            testClient.get = jest.fn().mockResolvedValue('get');
+            testClient.get = vi.fn().mockResolvedValue('get');
 
             const service = new ChainService({
                 nodeHost: 'nodeHost',
@@ -271,7 +279,7 @@ describe('ChainService', () => {
         it('should reconfigure the host', async () => {
 
             const testClient = new TestHttpClient();
-            testClient.get = jest.fn().mockResolvedValue('get');
+            testClient.get = vi.fn().mockResolvedValue('get');
 
             const service = new ChainService({
                 nodeHost: 'nodeHost',
@@ -296,7 +304,7 @@ describe('ChainService', () => {
             try {
                 await service.selectBestHost();
                 expect('Expected exception').toBeFalsy();
-            } catch (e) {
+            } catch (e:any) {
                 expect(e.message).toBe('No reliableNodeHosts configured');
             }
         });

@@ -8,13 +8,13 @@ import {Contract} from './typings/contract';
 /**
  * Extracts a variables value as hexadecimal string from a contract's machine data
  *
- * This is a generic function to extract arbitrary data from a contract. It's recommended to use the [[ContractDataView]] class instead
+ * This is a generic function to extract arbitrary data from a contract. It's recommended to use the {@link ContractDataView} class instead
  *
  * @param contract The contract
  * @param position The variables position
  * @param length The length of data to be extracted
  * @return The value as hexadecimal string (already considering endianness)
- * @module contracts
+ *
  */
 export function getContractDatablock(contract: Contract, position: number, length: number = 16): string {
 

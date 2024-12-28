@@ -8,21 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
 
-      - name: Run SignumJS Tests
-        run: |
-          npm ci
-          npm run test:ci
+      - name: Install turbo
+        run: npm install turbo -g
 
-      - name: Build/Bundle SignumJS
-        run: npm run build
+      - name: Install Deps
+        run: npm ci
+
+      - name: Compile and Bundle SignumJS packages
+        run: npm run bundle
+
+      - name: Test SignumJS packages
+        run: npm run test:ci
 
       - name: fix code coverage paths
         working-directory: ./coverage

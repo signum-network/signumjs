@@ -1,13 +1,14 @@
 
 /**
- * The argument object for [[AssetApi.getAllTrades]]
+ * The argument object for {@link AssetApi.getAllTrades}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAllTradesArgs {
     /**
      * The timestamp in seconds since genesis block
-     * @see [[util.ChainTime]]
+     * @see {@link util.ChainTime}
      */
     timestamp?: number;
     firstIndex?: number;

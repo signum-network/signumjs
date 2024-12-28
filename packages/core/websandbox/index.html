@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SignumJS Core Websandbox</title>
+</head>
+<script type="module" src="https://cdn.skypack.dev/twind/shim"></script>
+
+<body class="bg-[#f1f5f9]">
+<div class="relative w-full h-full ">
+    <div class="space-y-8 p-8 max-w-2xl mx-auto">
+        <div class="space-y-2">
+            <h1 class="text-3xl font-bold">SignumJS Core Module Sandbox</h1>
+            <small>This is a playground to test and check SignumJS Core Bundle</small>
+            <small>Connected Node:
+                <span id="connected-node"></span>
+            </small>
+            <section class="bg-white p-10 rounded border">
+                <h2 class="text-2xl font-bold mb-6">Address</h2>
+                <input
+                        class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                        placeholder="Enter Address, Account or Public Key here"
+                        onkeyup="convertToAddress(event)"
+                />
+                <div class="flex flex-col mt-4 gap-4">
+                    <div class="flex flex-col">
+                        <span class="font-[8px] font-medium">PubKey</span>
+                        <span id="address-output-pk" class="text-sm font-mono"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-[8px] font-medium">Account ID</span>
+                        <span id="address-output-id" class="text-sm font-mono"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-[8px] font-medium">RS Address:</span>
+                        <span id="address-output-rs" class="text-sm font-mono"></span>
+                    </div>
+                    <span id="address-output-error" class="text-sm my-2 font-mono text-red-700"></span>
+                </div>
+            </section>
+            <section class="bg-white p-10 rounded border">
+                <h2 class="text-2xl font-bold mb-6">Send Message</h2>
+                <form id="send-message-form" class="flex flex-col gap-4">
+                    <label for="send-message-recipient-input">
+                        <input
+                                id="send-message-recipient-input"
+                                class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                                placeholder="Enter Address, Account or Public Key of recipient here"
+                        />
+                    </label>
+                    <label for="send-message-text-input">
+                    <textarea
+                            id="send-message-text-input"
+                            class="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                            placeholder="Enter Text To Send (Max 1000 chars)"
+                            maxlength="1000"
+                            rows=4
+                    ></textarea>
+                    </label>
+                        <label for="send-message-sender-mnemonic">
+                        <input
+                                id="send-message-sender-mnemonic"
+                                class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+                                placeholder="Enter the passphrase/mnemonic of the sending account"
+                        />
+                    </label>
+                    <div class="text-center">
+                        <button id="send-button"
+                                type="submit"
+                                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 bg-green-500 hover:bg-green-600 text-white">
+                            Send Message
+                        </button>
+                    </div>
+                    <span id="send-result-message" class="text-sm font-mono"></span>
+                    <a id="transaction-sent" class="text-sm text-blue-500 underline"  rel="noopener noreferral" target="_blank" href="#" ></a>
+                </form>
+            </section>
+        </div>
+        <!--        <section class="space-y-2 bg-white p-10 rounded border">-->
+        <!--            <section class="">-->
+        <!--                <h2 class="text-2xl font-bold mb-6">Generate Mnemonic</h2>-->
+
+        <!--                <div class="space-y-2">-->
+        <!--                    <h2 class="text-xl font-semibold">Mnemonic</h2>-->
+        <!--                    <p id="mnemonic-output"-->
+        <!--                       class="mt-2 text-sm font-italic"></p>-->
+        <!--                </div>-->
+        <!--                <hr class="my-4"/>-->
+        <!--                <div class="space-y-2 mb-2">-->
+        <!--                    <h3 class="text-lg">Public Key</h3>-->
+        <!--                    <p id="pubkey-output" class="mt-2 text-sm font-mono"></p>-->
+        <!--                </div>-->
+        <!--                <div class="space-y-2 mb-2">-->
+        <!--                    <h3 class="text-lg">Sign Key</h3>-->
+        <!--                    <p id="signkey-output" class="mt-2 text-sm font-mono"></p>-->
+        <!--                </div>-->
+        <!--                <div class="space-y-2 mb-2">-->
+        <!--                    <h3 class="text-lg">Agreement Key (P2P Messages)</h3>-->
+        <!--                    <p id="agreekey-output" class="mt-2 text-sm font-mono"></p>-->
+        <!--                </div>-->
+        <!--                <div class="space-y-2">-->
+        <!--                    <h3 class="text-lg">Account Id</h3>-->
+        <!--                    <p id="accountid-output" class="mt-2 text-sm font-mono"></p>-->
+        <!--                </div>-->
+        <!--            </section>-->
+        <!--        </section>-->
+
+        <!--        <section class="space-y-2 bg-white p-10 rounded border">-->
+        <!--            <h2 class="text-2xl font-bold">Encrypt</h2>-->
+        <!--            <input-->
+        <!--                    id="encrypt-secret1-input"-->
+        <!--                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"-->
+        <!--                    placeholder="Enter senders secret here"-->
+        <!--            />-->
+        <!--            <input-->
+        <!--                    id="encrypt-secret2-input"-->
+        <!--                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"-->
+        <!--                    placeholder="Enter receivers secret here"-->
+        <!--            />-->
+        <!--            <input-->
+        <!--                    id="encrypt-text-input"-->
+        <!--                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"-->
+        <!--                    placeholder="Enter some text here"-->
+        <!--            />-->
+        <!--            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-green-500 hover:bg-green-600 text-white"-->
+        <!--                onclick="encrypt(event)"-->
+        <!--            >-->
+        <!--                Encrypt-->
+        <!--            </button>-->
+        <!--            <p id="encrypt-cipher-output" class="my-4 text-sm font-mono break-all"></p>-->
+        <!--            <button id="encrypt-copy-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-gray-500 hover:bg-gray-600 text-gray-200 hidden"-->
+        <!--                    onclick="copyToClipboard('encrypt-cipher-output')"-->
+        <!--            >-->
+        <!--                Copy-->
+        <!--            </button>-->
+
+        <!--        </section>-->
+        <!--        <section class="space-y-2 bg-white p-10 rounded border">-->
+        <!--            <h2 class="text-2xl font-bold">Decrypt</h2>-->
+        <!--            <input-->
+        <!--                    id="decrypt-secret1-input"-->
+        <!--                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"-->
+        <!--                    placeholder="Enter senders secret here"-->
+        <!--            />-->
+        <!--            <input-->
+        <!--                    id="decrypt-secret2-input"-->
+        <!--                    class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"-->
+        <!--                    placeholder="Enter senders secret here"-->
+        <!--            />-->
+        <!--            <textarea-->
+        <!--                    id="decrypt-cipher-textarea"-->
+        <!--                    rows=6-->
+        <!--                    class="flex rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full mt-2"-->
+        <!--            >[Enter Ciphertext here]</textarea>-->
+        <!--            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-4 py-2 h-10 mt-2 bg-green-500 hover:bg-green-600 text-white"-->
+        <!--                    onclick="decrypt(event)"-->
+        <!--            >-->
+        <!--                Decrypt-->
+        <!--            </button>-->
+        <!--            <p id="decrypt-plaintext-output" class="my-4 text-sm font-mono break-all"></p>-->
+        <!--        </section>-->
+    </div>
+</div>
+
+<script src="./signumjs.min.js"></script>
+<script src="./signumjs.crypto.min.js"></script>
+<script src="./signumjs.util.min.js"></script>
+<script src="./main.js" defer></script>
+
+</body>
+</html>

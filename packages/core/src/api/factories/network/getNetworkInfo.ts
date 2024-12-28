@@ -6,10 +6,11 @@ import {NetworkInfo} from '../../../typings/networkInfo';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[NetworkApi]].
+ * Use with {@link ApiComposer} and belongs to {@link NetworkApi}.
  *
- * See details at [[NetworkApi.getNetworkInfo]]
- * @module core.api.factories
- */
+ * See details at {@link NetworkApi.getNetworkInfo}
+*
+* @category factories
+*/
 export const getNetworkInfo = (service: ChainService): () => Promise<NetworkInfo> =>
     (): Promise<NetworkInfo> => service.query('getConstants');

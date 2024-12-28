@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.placeAskOrder]] and [[AssetApi.placeBidOrder]]
+ * The argument object for {@link AssetApi.placeAskOrder} and {@link AssetApi.placeBidOrder}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface PlaceOrderArgs extends DefaultSendArgs {
     /**
      * The assets id

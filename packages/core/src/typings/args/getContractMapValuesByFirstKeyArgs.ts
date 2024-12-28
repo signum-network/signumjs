@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[ContractApi.getContractMapValuesByFirstKey]]
+ * The argument object for {@link ContractApi.getContractMapValuesByFirstKey}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetContractMapValuesByFirstKeyArgs {
     /**
      * The id of the contract

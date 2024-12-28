@@ -6,11 +6,12 @@ import {GetAssetHoldersArgs} from '../../../typings/args/';
 import {AssetAccountList} from '../../../typings/assetAccountList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetHolders]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetHolders}
+*
+* @category factories
+*/
 export const getAssetHolders = (service: ChainService):
     (args: GetAssetHoldersArgs) => Promise<AssetAccountList> =>
     (args: GetAssetHoldersArgs): Promise<AssetAccountList> => {

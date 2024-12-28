@@ -10,9 +10,9 @@ import {DefaultApiEndpoint} from '../constants';
 import {verifyTransaction} from '../internal/verifyTransaction';
 
 /**
- * The send arguments for [[ChainService.send]]
+ * The send arguments for {@link ChainService.send}
  *
- * @module core
+ * @category args
  */
 export interface SendArgs {
 
@@ -56,7 +56,7 @@ class SettingsImpl implements ChainServiceSettings {
  *
  *
  *
- * @module core
+ *
  */
 export class ChainService {
     /**

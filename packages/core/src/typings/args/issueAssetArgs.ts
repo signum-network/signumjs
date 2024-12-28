@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.issueAsset]]
+ * The argument object for {@link AssetApi.issueAsset}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface IssueAssetArgs extends DefaultSendArgs {
     /**
      * The decimals supported for this asset.

@@ -12,7 +12,8 @@
  * substituted for another, so that keywords or keyphrases can be used to represent
  * other things – names, telephone numbers, physical addresses, web sites, account
  * numbers, email addresses, product SKU codes... almost anything you can think of.
- * @module core
+ *
+ * @category entities
  */
 export interface Alias {
     account: string;

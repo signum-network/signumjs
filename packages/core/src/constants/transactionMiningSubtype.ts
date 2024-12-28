@@ -5,7 +5,7 @@
 /**
  * Constants for mining subtypes
  *
- * @module core
+ * @category transaction-types
  */
 export enum TransactionMiningSubtype {
     RewardRecipientAssignment = 0,

@@ -1,3 +1,4 @@
+import {describe, beforeEach, afterEach, it, expect, vi} from "vitest"
 import {ApiComposer} from '../apiComposer';
 import {getBlockById} from '../factories/block/getBlockById';
 import {getBlockByHeight} from '../factories/block/getBlockByHeight';
@@ -33,6 +34,16 @@ import {getAllAssets} from '../factories/asset';
 import {sendMessage} from '../factories';
 
 
+// mocking
+import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({ transaction: 'transactionId' })
+        ),
+    };
+});
+
 describe('ApiComposer', () => {
     const burstService = createChainService();
     let apiComposer;
@@ -41,6 +52,9 @@ describe('ApiComposer', () => {
         apiComposer = ApiComposer.create(burstService);
     });
 
+    afterEach(() => {
+        vi.clearAllMocks();
+    })
 
     describe('mapCreators (private)', () => {
 

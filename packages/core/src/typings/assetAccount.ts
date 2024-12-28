@@ -4,7 +4,8 @@
 
 /**
  * Asset Account
- * @module core
+ *
+ * @category entities
  */
 export interface AssetAccount {
     account: string;

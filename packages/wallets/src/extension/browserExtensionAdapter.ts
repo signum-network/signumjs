@@ -22,9 +22,10 @@ import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessag
 
 
 /**
- * Extension Adapter for Browser based wallet access, to use with [[GenericExtensionWallet]]
+ * Extension Adapter for Browser based wallet access, to use with {@link GenericExtensionWallet}
  *
- * @note This adapter is automatically chosen in browser environments - Usually, you won't use this adapter directly.
+ * This adapter is automatically chosen in browser environments - Usually, you won't use this adapter directly.
+ *
  * @module wallets
  */
 export class BrowserExtensionAdapter implements ExtensionAdapter {
@@ -118,7 +119,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
      * Generic request method, to request various operations
      * @param payload The payload object for the respective operation
      * @return The response from the wallet in case of success
-     * @throws An error object in case of failures, see also [[ExtensionWalletError]]
+     * @throws An error object in case of failures, see also {@link ExtensionWalletError}
      */
     request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
         return new Promise<ExtensionResponse>((resolve, reject) => {
@@ -148,7 +149,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
     /**
      * Requests the permission of a compatible wallet.
      * A permission is based on _one_ network, e.g. Signum, Signum-TESTNET, etc. and the url of the requesting application.
-     * The wallet should have selected a node of the required network, otherwise permission request fails with [[InvalidNetworkError]]
+     * The wallet should have selected a node of the required network, otherwise permission request fails with {@link InvalidNetworkError}
      * @param args The argument object
      */
     async requestPermission(args: RequestPermissionArgs): Promise<ExtensionPermission> {

@@ -24,11 +24,12 @@ function assertDuplicates(recipientAmounts: MultioutRecipientAmount[]) {
 }
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.sendAmountToMultipleRecipients]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.sendAmountToMultipleRecipients}
+*
+* @category factories
+*/
 export const sendAmountToMultipleRecipients = (service: ChainService) =>
     (args: SendAmountToMultipleRecipientsArgs) =>
         signIfPrivateKey(service, args, async (a: SendAmountToMultipleRecipientsArgs) => {

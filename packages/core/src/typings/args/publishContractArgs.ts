@@ -1,7 +1,7 @@
 import {DefaultSendArgs} from './defaultSendArgs';
 import {ContractData} from '@signumjs/contracts';
 /**
- * The argument object for [[ContractApi.publishContract]]
+ * The argument object for {@link ContractApi.publishContract}
  *
  * @param activationAmountPlanck {string} The amount in planck needed to execute the contract
  * @param codeHex {string} The compiled program in hex form (recommend to use [BlockTalk](https://github.com/burst-apps-team/blocktalk smart contracts compiler)
@@ -12,11 +12,12 @@ import {ContractData} from '@signumjs/contracts';
  * @param data {string} is optional here, the initial data for the contract (must be according to your data stack in your contract and in BE hex code)
  * @param dataPages {number} is optional here, the number of pages to store contracts data. If not given, it's set to 1 or calculated from the eventually passed initial `data`.
  * You can roughly say that if each data page holds 32 variables, i.e. the number of data pages is _(variableCount/32) + 1_
- * @module core
+ * 
  *
- * @see Consider publishing by reference also, which is way cheaper: [[ContractApi.publishContractByReference]]
+ * @see Consider publishing by reference also, which is way cheaper: {@link ContractApi.publishContractByReference}
+ *
+ * @category args
  */
-
 export interface PublishContractArgs extends DefaultSendArgs {
     activationAmountPlanck: string;
     codeHex: string;

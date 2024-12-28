@@ -1,8 +1,8 @@
 import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[DescriptorDataClient.setContractBranding]]
- * @module standards.SRC44
+ * Arguments for {@link DescriptorDataClient.setContractBranding}
+ * 
  */
 export interface SetContractBrandingArgs {
     /**

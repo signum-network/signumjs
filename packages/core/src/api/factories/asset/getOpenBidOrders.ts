@@ -8,12 +8,13 @@ import {getOpenOrders} from './getOpenOrders';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi.getOpenBidOrders]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi.getOpenBidOrders}.
  *
- * See details at [[AssetApi.getOpenBidOrders]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.getOpenBidOrders}
+ * 
+*
+* @category factories
+*/
 export const getOpenBidOrders = (service: ChainService):
     (args: GetAssetOpenOrdersArgs) => Promise<AssetBidOrderList> =>
     (args: GetAssetOpenOrdersArgs): Promise<AssetBidOrderList> =>

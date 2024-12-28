@@ -35,12 +35,13 @@ function assertCorrectAssetQuantities(assetQuantities: MultioutAssetQuantities[]
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.transferMultipleAssets]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.transferMultipleAssets}
+ * 
+*
+* @category factories
+*/
 export const transferMultipleAssets = (service: ChainService) =>
     (args: TransferMultipleAssetsArgs) => signIfPrivateKey(service, args, async (a: TransferMultipleAssetsArgs) => {
 

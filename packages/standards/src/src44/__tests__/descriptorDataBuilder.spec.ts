@@ -31,11 +31,11 @@ describe('descriptorDataBuilder', () => {
                     'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'
                 },
                 'ds': 'description',
-                'hp': 'https://homepage.com',
+                'hp': 'https://homepage.com/',
                 'id': '26f74a2e-91ce-47b7-83e2-16c2aed3ffc8',
                 'nm': 'Some name',
                 'sc': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'sr': '^[a-Z]{3}$',
                 'tp': 'oth',
@@ -99,7 +99,7 @@ describe('descriptorDataBuilder', () => {
                     .setType('oth')
                     .setSendRule('^[a-Z]{3}$')
                     .build();
-            }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed - Got 1552');
+            }).toThrow('[SRC44 Validation Error]: Maximum length of 1000 bytes allowed - Got 1554');
         });
     });
 
@@ -112,7 +112,7 @@ describe('descriptorDataBuilder', () => {
                 'ds': 'World class exchange at your service',
                 'av': {'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR': 'image/gif'},
                 'bg': {'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc': 'image/jpeg'},
-                'hp': 'https://bittrex.com',
+                'hp': 'https://bittrex.com/',
                 'sr': '^[0-9a-fA-F]{24}$',
                 'al': 'somealias',
                 'xt': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',

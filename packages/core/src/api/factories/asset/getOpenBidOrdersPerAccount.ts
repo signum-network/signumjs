@@ -8,12 +8,13 @@ import {getOpenOrdersPerAccount} from './getOpenOrdersPerAccount';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi.getOpenBidOrdersPerAccount]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi.getOpenBidOrdersPerAccount}.
  *
- * See details at [[AssetApi.getOpenBidOrdersPerAccount]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.getOpenBidOrdersPerAccount}
+ * 
+*
+* @category factories
+*/
 export const getOpenBidOrdersPerAccount = (service: ChainService):
     (args: GetAssetOpenOrdersPerAccountArgs) => Promise<AssetBidOrderList> =>
     (args: GetAssetOpenOrdersPerAccountArgs): Promise<AssetBidOrderList> =>

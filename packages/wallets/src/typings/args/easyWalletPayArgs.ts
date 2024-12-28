@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Signum Network
- * @see [[EasyWallet.pay]]
+ * @see {@link EasyWallet.pay}
  * @module wallets
  */
 export interface EasyWalletPayArgs {

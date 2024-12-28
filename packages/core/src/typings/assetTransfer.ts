@@ -4,7 +4,8 @@
 
 /**
  * Asset Transfer
- * @module core
+ *
+ * @category entities
  */
 export interface AssetTransfer {
     assetTransfer: string;

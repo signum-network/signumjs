@@ -4,12 +4,13 @@
 
 /**
  * Asset Trade
- * @module core
+ *
+ * @category entities
  */
 export interface AssetTrade {
     /**
      * The price in planck per one token quantity. To get the right Planck expression use either price field or this formula: (priceNQT * 10^8) * 10^(decimals-8)
-     * @see [[util.convertAssetPriceToPlanck]]
+     * @see {@link util:convertAssetPriceToPlanck}
      */
     priceNQT: string;
     /**

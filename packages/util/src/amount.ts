@@ -8,7 +8,8 @@ import {ChainValue} from './chainValue';
 
 /**
  * Structure to determine the representation format of [Amount] string
- * @module util
+ *
+ * @category value-objects
  */
 export interface AmountFormat {
     /**
@@ -48,7 +49,8 @@ export interface AmountFormat {
 
 /**
  * Amount formatting preset for dot decimal formatting 'Ꞩ 1,000,000.123456'
- * @module util
+ *
+ * @category value-objects
  */
 export const FormatDotDecimal: AmountFormat = {
     prefix: CurrencySymbol + ' ',
@@ -63,9 +65,10 @@ export const FormatDotDecimal: AmountFormat = {
 
 /**
  * Amount formatting preset for comma decimal formatting 'Ꞩ 1.000.000,123456'
- * @module util
+ *
+ * @category value-objects
  */
-const FormatCommaDecimal: AmountFormat = {
+export const FormatCommaDecimal: AmountFormat = {
     prefix: CurrencySymbol + ' ',
     decimalSeparator: ',',
     groupSeparator: '.',
@@ -77,8 +80,9 @@ const FormatCommaDecimal: AmountFormat = {
 };
 
 /**
- * Amount formatting presets, see [[Amount.toString]]
- * @module util
+ * Amount formatting presets, see {@link Amount.toString}
+ *
+ * @category value-objects
  */
 export const AmountFormats = {
     /**
@@ -94,12 +98,12 @@ export const AmountFormats = {
 /**
  * A Value Object to facilitate SIGNA and Planck conversions/calculations.
  *
- * This class is a convenient wrapper around [[ChainValue]] with `decimals = 8`
+ * This class is a convenient wrapper around {@link ChainValue} with `decimals = 8`
  *
  * Note: This class uses a big number representation (ES5 compatible) under the hood, so
  * number limits and numeric calculations are much more precise than JS number type
  *
- * @module util
+ * @category value-objects
  */
 export class Amount {
     private _value: ChainValue;
@@ -110,11 +114,8 @@ export class Amount {
 
     /**
      * @return The Signa Currency Symbol
-     * @deprecated
-     * <div class='deprecated'>
-     *     Due to Multiverse feature it's not recommended to use this hard coded stuff.
-     * </div>
-     * @module util
+     * @deprecated Due to Multiverse feature it's not recommended to use this hard coded stuff.
+     * 
      */
     public static CurrencySymbol(): string {
         return CurrencySymbol;
@@ -122,7 +123,6 @@ export class Amount {
 
     /**
      * Same as `Amount.fromPlanck(0)` or `Amount.fromSigna(0)`
-     * @constructor
      */
     public static Zero(): Amount {
         return new Amount(0);
@@ -276,7 +276,7 @@ export class Amount {
 
     /**
      * Gets a string representation in form `Ꞩ 100`
-     * @param format The format object, Default: [[AmountFormats.DotDecimal]]
+     * @param format The format object, Default: {@link AmountFormats.DotDecimal}
      * @return The formatted string
      */
     public toString(format: AmountFormat = AmountFormats.DotDecimal): string {

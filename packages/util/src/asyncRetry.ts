@@ -7,7 +7,7 @@ import {AsyncRetryArgs} from './typings';
  * Utility function to retry async functions.
  *
  * @param args The argument object*
- * @module util
+ * 
  */
 export async function asyncRetry<T>(args: AsyncRetryArgs<T>): Promise<T> {
     const {asyncFn, onFailureAsync, retryCount = 1, maxRetrials = 20} = args;

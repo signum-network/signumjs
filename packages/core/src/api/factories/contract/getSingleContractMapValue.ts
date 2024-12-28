@@ -5,11 +5,12 @@ import {ChainService} from '../../../service/chainService';
 import {GetSingleContractMapValueArgs} from '../../../typings/args';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getSingleContractMapValue]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getSingleContractMapValue}
+*
+* @category factories
+*/
 export const getSingleContractMapValue = (service: ChainService):
     (args: GetSingleContractMapValueArgs) => Promise<{value: string}> =>
     (args: GetSingleContractMapValueArgs): Promise<{value: string}> => {

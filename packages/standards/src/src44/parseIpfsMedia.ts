@@ -10,7 +10,7 @@ import {IpfsMediaType} from './typings';
  *
  * @internal
  * @param o
- * @module standards.SRC44
+ * 
  */
 export function parseIpfsMedia(o: object): IpfsMediaType {
     if (!o) {

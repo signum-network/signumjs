@@ -5,8 +5,8 @@ import {Amount} from '@signumjs/util';
 
 /**
  * Distribution Fee
- * See [assetApi.calculateDistributionFee]
- * @module core
+ * See {@link calculateDistributionFee}
+ * @category entities
  */
 export interface DistributionFee {
     fee: Amount;

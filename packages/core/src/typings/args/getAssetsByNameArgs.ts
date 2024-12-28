@@ -1,10 +1,11 @@
 import {GetAllAssetsArgs} from './getAllAssetsArgs';
 
 /**
- * The argument object for [[AssetApi.getAssetsByName]]
+ * The argument object for {@link AssetApi.getAssetsByName}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetsByNameArgs extends GetAllAssetsArgs {
     name: string;
 }

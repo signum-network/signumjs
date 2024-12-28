@@ -7,11 +7,12 @@ import {GetAssetTransfersPerAssetArgs} from '../../../typings/args';
 import {getAssetTransfers} from './getAssetTransfers';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetTransfersPerAsset]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetTransfersPerAsset}
+*
+* @category factories
+*/
 export const getAssetTransfersPerAsset = (service: ChainService):
     (args: GetAssetTransfersPerAssetArgs) => Promise<AssetTransferList> =>
     (args: GetAssetTransfersPerAssetArgs): Promise<AssetTransferList> => getAssetTransfers(service)({

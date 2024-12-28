@@ -5,7 +5,7 @@
 /**
  * Constants for marketplace subtypes
  *
- * @module core
+ * @category transaction-types
  */
 export enum TransactionMarketplaceSubtype {
     MarketplaceListing = 0,

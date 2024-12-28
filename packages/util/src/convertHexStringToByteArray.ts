@@ -7,7 +7,8 @@
  * Converts an hexadecimal string to byte array
  * @param hex The hexadecimal string to be converted
  * @return {number[]} An byte array representing the hexadecimal input
- * @module util
+ *
+ * @category conversion
  */
 export const convertHexStringToByteArray = (hex: string): Uint8Array => {
     if (hex.length % 2) {

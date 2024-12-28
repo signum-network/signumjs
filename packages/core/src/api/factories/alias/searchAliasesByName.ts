@@ -7,11 +7,12 @@ import {AliasList} from '../../../typings/aliasList';
 import { SearchAliasesByNameArgs } from '../../../typings/args/searchAliasesByNameArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AliasApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AliasApi}.
  *
- * See details at [[AliasApi.searchAliasesByName]]
- * @module core.api.factories
- */
+ * See details at {@link AliasApi.searchAliasesByName}
+*
+* @category factories
+*/
 export const searchAliasesByName = (service: ChainService):
     (args: SearchAliasesByNameArgs) => Promise<AliasList> =>
     (args): Promise<AliasList> => service.query('getAliasesByName', args);

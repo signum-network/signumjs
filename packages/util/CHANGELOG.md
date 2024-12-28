@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## 1.0.0 (TBR)
 
 - Rebranding
+- Modernized Build Pipeline (NodeJS 20, ESBuild, Vitest)
 
 ### Breaking changes
 

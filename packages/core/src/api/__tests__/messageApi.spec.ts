@@ -1,12 +1,34 @@
+import {vi, describe, expect, it, beforeEach, afterEach, afterAll, Mock} from 'vitest';
+import {FeeQuantPlanck} from '@signumjs/util';
 import {HttpMockBuilder, Http} from '@signumjs/http';
 import {ChainService} from '../../service/chainService';
-import {encryptMessage} from '@signumjs/crypto';
-import {signAndBroadcastTransaction} from '../factories/transaction/signAndBroadcastTransaction';
 import {createChainService} from '../../__tests__/helpers/createChainService';
-import {sendMessage} from '../factories/message';
 import {sendEncryptedMessage} from '../factories/message/sendEncryptedMessage';
-import {FeeQuantPlanck} from '@signumjs/util';
 import {UnsignedTransaction} from '../../typings/unsignedTransaction';
+import {sendMessage} from '../factories/message';
+
+// mocking
+import {signAndBroadcastTransaction} from '../../api/factories/transaction/signAndBroadcastTransaction';
+
+vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
+    return {
+        signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
+            () => Promise.resolve({transaction: 'transactionId'})
+        ),
+    };
+});
+
+import {encryptMessage} from '@signumjs/crypto';
+vi.mock('@signumjs/crypto', () => {
+    return {
+        encryptMessage: vi.fn().mockImplementation(() => Promise.resolve(
+            ({
+                data: 'encryptedMessage',
+                nonce: 'nonce'
+            })
+        ))
+    };
+});
 
 describe('Message Api', () => {
     describe('sendMessage', () => {
@@ -15,7 +37,6 @@ describe('Message Api', () => {
         let service: ChainService;
 
         beforeEach(() => {
-            jest.resetAllMocks();
 
             httpMock = HttpMockBuilder.create().onPostReply(200, {
                 broadcasted: true,
@@ -23,20 +44,20 @@ describe('Message Api', () => {
             }).build();
             service = createChainService(httpMock, 'relPath');
             // @ts-ignore
-            service.send = jest.fn(() => ({unsignedTransactionBytes: 'unsignedTransactionBytes'}));
+            service.send = vi.fn(() => ({unsignedTransactionBytes: 'unsignedTransactionBytes'}));
         });
 
         afterEach(() => {
             // @ts-ignore
             httpMock.reset();
+            (signAndBroadcastTransaction as Mock).mockClear()
         });
 
+        afterAll(() => {
+            vi.resetAllMocks();
+        })
+
         it('should sendMessage', async () => {
-            // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.resolve({
-                fullHash: 'fullHash',
-                transaction: 'transaction'
-            }));
 
             await sendMessage(service)({
                 message: 'Message Text',
@@ -61,9 +82,6 @@ describe('Message Api', () => {
         });
 
         it('should return unsigned bytes when sendMessage called without private key', async () => {
-            // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
-
             const unsignedTx = await sendMessage(service)({
                 message: 'Message Text',
                 feePlanck: '' + FeeQuantPlanck,
@@ -77,22 +95,6 @@ describe('Message Api', () => {
         });
 
         it('should sendEncryptedMessage', async () => {
-
-            // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.resolve({
-                fullHash: 'fullHash',
-                transaction: 'transaction'
-            }));
-
-
-            // @ts-ignore
-            encryptMessage = jest.fn(
-                () =>
-                    ({
-                        data: 'encryptedMessage',
-                        nonce: 'nonce'
-                    })
-            );
 
             await sendEncryptedMessage(service)({
                 message: 'Message Text',
@@ -119,20 +121,6 @@ describe('Message Api', () => {
 
 
         it('should return unsigneBytes when sendEncryptedMessage is called without private key', async () => {
-
-            // @ts-ignore
-            signAndBroadcastTransaction = jest.fn().mockImplementation(s => (_) => Promise.reject('Should not call this method'));
-
-
-            // @ts-ignore
-            encryptMessage = jest.fn(
-                () =>
-                    ({
-                        data: 'encryptedMessage',
-                        nonce: 'nonce'
-                    })
-            );
-
             const unsignedTx = await sendEncryptedMessage(service)({
                 message: 'Message Text',
                 feePlanck: '' + FeeQuantPlanck,

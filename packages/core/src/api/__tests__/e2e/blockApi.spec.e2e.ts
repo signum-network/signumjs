@@ -8,11 +8,11 @@ import {HttpError} from '@signumjs/http';
 
 const environment = loadEnvironment();
 
-jest.setTimeout(environment.timeout);
+vi.setTimeout(environment.timeout);
 
 describe(`[E2E] Block Api`, () => {
 
-    const validateStatusMockFn = jest.fn( status => true );
+    const validateStatusMockFn = vi.fn( status => true );
 
     const service = new ChainService({
         nodeHost: environment.testNetHost,

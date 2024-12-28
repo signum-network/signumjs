@@ -1,6 +1,6 @@
 /** @ignore */
 /** @internal */
-/** @module core */
+/**  */
 
 // tslint:disable:max-line-length
 // tslint:disable:no-bitwise

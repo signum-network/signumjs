@@ -10,7 +10,6 @@ import {Attachment, AttachmentEncryptedMessage, AttachmentMessage} from '../typi
  * @param attachment The attachment
  * @param params Any object
  * @return HttpParams
- * @module core
  */
 export const createParametersFromAttachment = (attachment: Attachment, params: any) => {
     if (attachment instanceof AttachmentEncryptedMessage) {

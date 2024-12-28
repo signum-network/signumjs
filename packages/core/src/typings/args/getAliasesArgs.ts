@@ -1,7 +1,7 @@
 /**
- * The argument object for [[AliasApi.getAliases]]
+ * The argument object for {@link AliasApi.getAliases}
  *
- * @module core
+ * @category args
  */
 export interface GetAliasesArgs {
     /**

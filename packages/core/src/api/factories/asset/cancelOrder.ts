@@ -16,9 +16,10 @@ interface GenericCancelOrderArgs extends CancelOrderArgs {
 /**
  * @ignore
  * This is an internal helper
- * See details at [[AssetApi.cancelAskOrder]] [[AssetApi.cancelBidOrder]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.cancelAskOrder} {@link AssetApi.cancelBidOrder}
+*
+* @category factories
+*/
 export const cancelOrder = (service: ChainService) =>
     (args: GenericCancelOrderArgs) => signIfPrivateKey(service, args, async (a: GenericCancelOrderArgs) => {
 

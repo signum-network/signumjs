@@ -4,7 +4,9 @@
 
 /**
  * @internal
+ * @ignore
+ *
  * Size of Code Pages in bytes
- * @module contracts
+ *
  */
 export const CodePageSize = 256;

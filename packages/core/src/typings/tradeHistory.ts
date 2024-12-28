@@ -6,8 +6,8 @@ import {Indexable} from './indexable';
 
 
 /**
- * Journal Entry of [[TradeHistory]]
- * @module core
+ * Journal Entry of {@link TradeHistory}
+ * @category entities
  */
 export interface JournalEntry {
     order: string;
@@ -30,7 +30,7 @@ export interface JournalEntry {
 
 /**
  * Trade History
- * @module core
+ * @category entities
  */
 export interface TradeHistory extends Indexable {
     account: string;

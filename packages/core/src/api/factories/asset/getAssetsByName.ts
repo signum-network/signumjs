@@ -6,11 +6,12 @@ import {AssetList} from '../../../typings/assetList';
 import {GetAssetsByNameArgs} from '../../../typings/args';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetsByName]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetsByName}
+*
+* @category factories
+*/
 export const getAssetsByName = (service: ChainService):
     (args: GetAssetsByNameArgs) => Promise<AssetList> =>
     (args: GetAssetsByNameArgs): Promise<AssetList> => {

@@ -16,9 +16,10 @@ interface GetGenericAssetOpenOrdersPerAccount extends GetAssetOpenOrdersPerAccou
 /**
  * @ignore
  * This is an internal helper
- * See details at [[AssetApi.getOpenAskOrders]] [[AssetApi.getOpenBidOrders]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getOpenAskOrders} {@link AssetApi.getOpenBidOrders}
+*
+* @category factories
+*/
 export const getOpenOrdersPerAccount = (service: ChainService):
     (args: GetGenericAssetOpenOrdersPerAccount) => Promise<AssetAskOrderList | AssetBidOrderList> =>
     async (args: GetGenericAssetOpenOrdersPerAccount): Promise<AssetAskOrderList | AssetBidOrderList> => {

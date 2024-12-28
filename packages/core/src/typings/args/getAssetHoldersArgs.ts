@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getAssetHolders]]
+ * The argument object for {@link AssetApi.getAssetHolders}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetHoldersArgs {
     assetId: string;
     ignoreTreasuryAccount?: boolean;

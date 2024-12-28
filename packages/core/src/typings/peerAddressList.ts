@@ -5,8 +5,8 @@
 
 /**
  * Peer Address List
- *
- * @module core */
+ * @category entities
+ *  */
 export interface PeerAddressList {
     peers: string[];
     requestProcessingTime: number;

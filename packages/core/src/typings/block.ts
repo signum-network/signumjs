@@ -8,7 +8,7 @@ import {Transaction} from './transaction';
 
 /**
  * Block
- * @module core
+ * @category entities
  */
 export interface Block {
     readonly baseTarget: number;

@@ -3,10 +3,11 @@ import {MultioutAssetQuantities} from '../multioutAssetQuantities';
 
 
 /**
- * The argument object for [[AssetApi.transferMultipleAssets]]
+ * The argument object for {@link AssetApi.transferMultipleAssets}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface TransferMultipleAssetsArgs extends DefaultSendArgs {
     /**
      * The list of assets and its quantities. Maximum 4 are allowed

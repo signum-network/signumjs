@@ -1,8 +1,8 @@
 import {DescriptorData} from '../../DescriptorData';
 
 /**
- * Arguments for [[DescriptorDataClient.setAliasDescriptor]]
- * @module standards.SRC44
+ * Arguments for {@link DescriptorDataClient.setAliasDescriptor}
+ * 
  */
 export interface SetAliasDescriptorArgs {
     aliasName: string;

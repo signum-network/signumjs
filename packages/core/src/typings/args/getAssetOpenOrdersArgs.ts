@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getOpenAskOrders]] and [[AssetApi.getOpenBidOrders]]
+ * The argument object for {@link AssetApi.getOpenAskOrders} and {@link AssetApi.getOpenBidOrders}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetOpenOrdersArgs {
     firstIndex?: number;
     lastIndex?: number;

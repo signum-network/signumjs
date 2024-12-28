@@ -7,11 +7,12 @@ import {ContractList} from '../../../typings/contractList';
 import {GetContractsByAccountArgs} from '../../../typings/args/getContractsByAccountArgs';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getContractsByAccount]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getContractsByAccount}
+*
+* @category factories
+*/
 export const getContractsByAccount = (service: ChainService):
     (args: GetContractsByAccountArgs) => Promise<ContractList> =>
     (args: GetContractsByAccountArgs): Promise<ContractList> => {

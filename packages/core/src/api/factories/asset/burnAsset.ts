@@ -8,12 +8,13 @@ import {transferAsset} from './transferAsset';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.burnAsset]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.burnAsset}
+ * 
+*
+* @category factories
+*/
 export const burnAsset = (service: ChainService) =>
     (args: Omit<TransferAssetArgs, 'recipientPublicKey' | 'recipientId'>) => transferAsset(service)({
         ...args,

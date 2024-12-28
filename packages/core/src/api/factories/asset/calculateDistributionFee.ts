@@ -9,13 +9,14 @@ import {DistributionFee} from '../../../typings/distributionFee';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.calculateDistributionFee]]
- * @see also [[AssetApi.distributeToAssetHolders]]
+ * See details at {@link AssetApi.calculateDistributionFee}
+ * @see also {@link AssetApi.distributeToAssetHolders}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const calculateDistributionFee = (service: ChainService):
     (args: CalculateDistributionFeeArgs) => Promise<DistributionFee> =>
     async (args): Promise<DistributionFee> => {

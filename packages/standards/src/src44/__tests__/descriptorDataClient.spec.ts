@@ -1,3 +1,4 @@
+import {vi} from "vitest"
 import {DescriptorDataBuilder} from '../DescriptorDataBuilder';
 import {DescriptorDataClient} from '../DescriptorDataClient';
 
@@ -10,7 +11,7 @@ const MockDescriptor = {
     'ds': 'description',
     'hp': 'https://homepage.com',
     'nm': 'Some name',
-    'sc': ['https://somelink.com'],
+    'sc': ['https://somelink.com/'],
     'sr': '^[a-z]{3}$',
     'tp': 'oth',
     'vs': 1,
@@ -73,7 +74,7 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias@tld',
@@ -89,11 +90,11 @@ describe('descriptorDataClient', () => {
                     },
                     'description': 'description',
                     'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                    'homePage': 'https://homepage.com',
+                    'homePage': 'https://homepage.com/',
                     'name': 'Some name',
                     'sendRule': /^[a-z]{3}$/,
                     'socialMediaLinks': [
-                        'https://somelink.com'
+                        'https://somelink.com/'
                     ],
                     'type': 'oth',
                     'version': 1,
@@ -101,7 +102,7 @@ describe('descriptorDataClient', () => {
                 },
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -128,7 +129,7 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias@tld',
@@ -144,11 +145,11 @@ describe('descriptorDataClient', () => {
                     },
                     'description': 'description',
                     'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                    'homePage': 'https://homepage.com',
+                    'homePage': 'https://homepage.com/',
                     'name': 'Some name',
                     'sendRule': /^[a-z]{3}$/,
                     'socialMediaLinks': [
-                        'https://somelink.com'
+                        'https://somelink.com/'
                     ],
                     'type': 'oth',
                     'version': 1,
@@ -156,7 +157,7 @@ describe('descriptorDataClient', () => {
                 },
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -184,7 +185,7 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'name': 'Some name',
                 'resolvedAlias': {
                     'alias': 'alias@tld',
@@ -201,11 +202,11 @@ describe('descriptorDataClient', () => {
                     },
                     'description': 'description',
                     'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                    'homePage': 'https://homepage.com',
+                    'homePage': 'https://homepage.com/',
                     'name': 'Some name',
                     'sendRule': /^[a-z]{3}$/,
                     'socialMediaLinks': [
-                        'https://somelink.com'
+                        'https://somelink.com/'
                     ],
                     'type': 'oth',
                     'version': 1,
@@ -213,7 +214,7 @@ describe('descriptorDataClient', () => {
                 },
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -225,7 +226,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected - default domain', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.account, 'setAccountInfo');
+            const spy = vi.spyOn(MockLedger.account, 'setAccountInfo');
             await client.setAccountDescriptor({
                 descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 senderPublicKey: 'senderPublicKey'
@@ -240,7 +241,7 @@ describe('descriptorDataClient', () => {
         it('should resolve as expected - custom fee', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.account, 'setAccountInfo');
+            const spy = vi.spyOn(MockLedger.account, 'setAccountInfo');
             await client.setAccountDescriptor({
                 descriptorData: DescriptorDataBuilder.create('descriptor').build(),
                 feePlanck: '200',
@@ -258,7 +259,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.alias, 'setAlias');
+            const spy = vi.spyOn(MockLedger.alias, 'setAlias');
             await client.setAliasDescriptor({
                 aliasName: 'aliasName',
                 descriptorData: DescriptorDataBuilder.create('descriptor').build(),
@@ -274,7 +275,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected - custom tld', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.alias, 'setAlias');
+            const spy = vi.spyOn(MockLedger.alias, 'setAlias');
             await client.setAliasDescriptor({
                 aliasName: 'aliasName',
                 tld: 'custom',
@@ -293,7 +294,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected - custom fee', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.alias, 'setAlias');
+            const spy = vi.spyOn(MockLedger.alias, 'setAlias');
             await client.setAliasDescriptor({
                 aliasName: 'aliasName',
                 feePlanck: '200',
@@ -328,11 +329,11 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'name': 'Some name',
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -346,7 +347,7 @@ describe('descriptorDataClient', () => {
             const client = new DescriptorDataClient(MockLedger);
             const account = await client.getAccountByAlias('alias');
             expect(account).toEqual({
-                'description': '{"al":"alias@tld","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
+                'description': '{"al":"alias@tld","ac":"895212263565386113","id":"dc1de06b-a2a2-4a6e-b3e1-a5d97835667d","av":{"QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR":"image/gif"},"bg":{"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc":"image/jpeg"},"ds":"description","hp":"https://homepage.com","nm":"Some name","sc":["https://somelink.com/"],"sr":"^[a-z]{3}$","tp":"oth","vs":1,"xc":"value","xt":"QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc"}',
                 'name': 'Account Name',
             });
         });
@@ -383,12 +384,12 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'name': 'Some name',
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -434,12 +435,12 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'name': 'Some name',
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -513,12 +514,12 @@ describe('descriptorDataClient', () => {
                 },
                 'description': 'description',
                 'extension': 'QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc',
-                'homePage': 'https://homepage.com',
+                'homePage': 'https://homepage.com/',
                 'id': 'dc1de06b-a2a2-4a6e-b3e1-a5d97835667d',
                 'name': 'Some name',
                 'sendRule': /^[a-z]{3}$/,
                 'socialMediaLinks': [
-                    'https://somelink.com'
+                    'https://somelink.com/'
                 ],
                 'type': 'oth',
                 'version': 1,
@@ -583,7 +584,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.alias, 'setAlias');
+            const spy = vi.spyOn(MockLedger.alias, 'setAlias');
             await client.setAssetBranding({
                 assetId: 'assetId',
                 descriptorData: DescriptorDataBuilder.create('asset').build(),
@@ -600,7 +601,7 @@ describe('descriptorDataClient', () => {
         it('should set as expected with custom tld', async () => {
             // @ts-ignore
             const client = new DescriptorDataClient(MockLedger);
-            const spy = spyOn(MockLedger.alias, 'setAlias');
+            const spy = vi.spyOn(MockLedger.alias, 'setAlias');
             await client.setAssetBranding({
                 assetId: 'assetId',
                 tld: 'custom',
@@ -633,7 +634,7 @@ describe('descriptorDataClient', () => {
 
             // @ts-ignore
             const client = new DescriptorDataClient(Ledger);
-            const spy = spyOn(Ledger.alias, 'setAlias');
+            const spy = vi.spyOn(Ledger.alias, 'setAlias');
             await client.setAssetBranding({
                 assetId: 'assetId',
                 descriptorData: DescriptorDataBuilder.create('asset').build(),
@@ -684,7 +685,7 @@ describe('descriptorDataClient', () => {
             };
             // @ts-ignore
             const client = new DescriptorDataClient(Ledger);
-            const spy = spyOn(Ledger.alias, 'setAlias');
+            const spy = vi.spyOn(Ledger.alias, 'setAlias');
             await client.setContractBranding({
                 contractId: 'contractId',
                 descriptorData: DescriptorDataBuilder.create('contract').build(),
@@ -706,7 +707,7 @@ describe('descriptorDataClient', () => {
             };
             // @ts-ignore
             const client = new DescriptorDataClient(Ledger);
-            const spy = spyOn(Ledger.alias, 'setAlias');
+            const spy = vi.spyOn(Ledger.alias, 'setAlias');
             await client.setContractBranding({
                 contractId: 'contractId',
                 aliasName: 'alias',

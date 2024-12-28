@@ -5,13 +5,14 @@ import {ChainService} from '../../../service/chainService';
 import {DistributionAmount} from '../../../typings/distributionAmount';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.getDistributionAmountsFromTransaction]]
- * @see also [[AssetApi.distributeToAssetHolders]]
+ * See details at {@link TransactionApi.getDistributionAmountsFromTransaction}
+ * @see also {@link AssetApi.distributeToAssetHolders}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const getDistributionAmountsFromTransaction = (service: ChainService):
     (transactionId: string, accountId: string) => Promise<DistributionAmount> =>
     async (transactionId: string, accountId: string): Promise<DistributionAmount> => {

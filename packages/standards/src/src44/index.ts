@@ -1,10 +1,12 @@
 /**
+ * @module standards
+ * 
  *
  * SRC44: Standard for [Descriptor Information](https://github.com/signum-network/SIPs/blob/master/SIP/sip-44.md)
  *
  * This (sub) package creates, parses and validates Signum Descriptor data.
  *
- * To create SRC44 compatible descriptor data use [[DescriptorDataBuilder]]
+ * To create SRC44 compatible descriptor data use {@link DescriptorDataBuilder}
  *
  * ```ts
  * const descriptorData = DescriptorDataBuilder
@@ -57,7 +59,7 @@
  *     'version': 1,
  * }
  * ```
- * The recommended way is to use the [[DescriptorDataClient]] to fetch or set descriptor data from Accounts, Smart Contracts and/or Aliases
+ * The recommended way is to use the {@link DescriptorDataClient} to fetch or set descriptor data from Accounts, Smart Contracts and/or Aliases
  *
  * Fetching descriptor data
  * ```ts
@@ -89,7 +91,6 @@
  *                 });
  * ```
  *
- * @moduledefinition standards.SRC44
  */
 
 export * from './typings';

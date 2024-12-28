@@ -2,15 +2,13 @@ import {Api} from '../typings/api';
 import {composeApi} from '../api';
 import {Http} from '@signumjs/http';
 /**
- * Alias for [[Api]]
- * @module core
+ * Alias for {@link Api}
  */
 export declare type Ledger = Api;
 
 
 /**
- * The LedgerSettings to use for [[LedgerClientFactory]]
- * @module core
+ * The LedgerSettings to use for {@link LedgerClientFactory}
  */
 export interface LedgerSettings {
     /**
@@ -35,10 +33,12 @@ export interface LedgerSettings {
 
 /**
  * Factory for the ledger clients to access a nodes API
+ * ```ts
+ *  const signumClient = LedgerClientFactory.createClient({nodeHost: "https://europe.signum.network"});
+ * ```
  *
- * At the current state it's merely an alias for [[composeApi]]
+ * The client gives you access to the Signum {@link Api}
  *
- * @module core
  */
 export class LedgerClientFactory {
     /**

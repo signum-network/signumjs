@@ -6,11 +6,12 @@ import {GetAllContractsByCodeHashArgs} from '../../../typings/args';
 import {ContractList} from '../../../typings/contractList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getAllContractIds]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getAllContractIds}
+*
+* @category factories
+*/
 export const getAllContractsByCodeHash = (service: ChainService):
     (args: GetAllContractsByCodeHashArgs) => Promise<ContractList> =>
     (args: GetAllContractsByCodeHashArgs): Promise<ContractList> => {

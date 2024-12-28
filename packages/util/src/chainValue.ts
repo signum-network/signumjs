@@ -10,7 +10,8 @@ BigNumber.config({
 
 /**
  * Structure to determine the representation format of [ChainValue] string
- * @module util
+ *
+ * @category value-objects
  */
 export interface ChainValueFormat {
     /**
@@ -46,7 +47,7 @@ export interface ChainValueFormat {
 
 /**
  * Amount formatting preset for dot decimal formatting '1,000,000.123456'
- * @module util
+ * 
  */
 const FormatDotDecimal: ChainValueFormat = {
     decimalSeparator: '.',
@@ -60,7 +61,7 @@ const FormatDotDecimal: ChainValueFormat = {
 
 /**
  * Amount formatting preset for comma decimal formatting '1.000.000,123456'
- * @module util
+ * 
  */
 const FormatCommaDecimal: ChainValueFormat = {
     decimalSeparator: ',',
@@ -73,8 +74,9 @@ const FormatCommaDecimal: ChainValueFormat = {
 };
 
 /**
- * Amount formatting presets, see [[ChainValue.toFormat]]
- * @module util
+ * Amount formatting presets, see {@link ChainValue.toFormat}
+ *
+ * @category value-objects
  */
 export const ChainValueFormats = {
     /**
@@ -108,7 +110,7 @@ function assureValidValue(v: string): void {
  * Note: This class uses a big number representation (ES5 compatible) under the hood, so
  * number limits and numeric calculations are much more precise than JS number type
  *
- * @module util
+ * @category value-objects
  */
 export class ChainValue {
 
@@ -292,9 +294,9 @@ export class ChainValue {
     }
 
     /**
-     * Gets a string representation according to [[ChainValueFormat]]
+     * Gets a string representation according to {@link ChainValueFormat}
      * @param prefix The prefix for value
-     * @param format The format object, Default: [[ChainValueFormats.DotDecimal]]
+     * @param format The format object, Default: {@link ChainValueFormats.DotDecimal}
      * @return The formatted string
      */
     public toFormat(prefix: string, format: ChainValueFormat = ChainValueFormats.DotDecimal): string {

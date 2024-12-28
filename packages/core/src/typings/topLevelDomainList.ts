@@ -7,7 +7,7 @@ import {TopLevelDomain} from './topLevelDomain';
 /**
  * Top Level Domain List
  *
- * @module core
+ * @category entities
  */
 export interface TopLevelDomainList {
     tlds: TopLevelDomain[];

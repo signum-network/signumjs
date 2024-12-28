@@ -12,7 +12,8 @@
  *
  * @param hexString The hex string to be converted
  * @return The converted string as hex string
- * @module util
+ *
+ * @category conversion
  */
 export const convertHexEndianess = (hexString): string => {
     let result = '';

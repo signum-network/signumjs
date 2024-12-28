@@ -1,0 +1,23 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "bundle": {
+      "dependsOn": ["^compile","^bundle"],
+      "outputs": ["dist/**"]
+    },
+    "compile": {
+      "dependsOn": ["^compile"],
+      "outputs": ["out/**"]
+    },
+    "test": {
+      "dependsOn": ["^compile", "^test"]
+    },
+    "test:ci": {
+      "dependsOn": ["^compile","^test:ci"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}

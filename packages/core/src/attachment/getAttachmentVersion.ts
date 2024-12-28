@@ -7,7 +7,7 @@ import {Transaction} from '../typings/transaction';
  *
  * @param transaction The transaction to be checked
  * @return return _Identifier_, if exists, otherwise `undefined`
- * @module core
+ *
  */
 export function getAttachmentVersion(transaction: Transaction): string {
     const {attachment} = transaction;

@@ -20,7 +20,7 @@ import {ContractMapValueList} from '../contractMapValueList';
  *
  * This module provides methods about the smart contracts
  *
- * @module core.api
+ * @category api
  */
 export interface ContractApi {
     /**

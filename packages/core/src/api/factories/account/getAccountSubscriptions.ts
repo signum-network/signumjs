@@ -5,11 +5,12 @@ import {ChainService} from '../../../service/chainService';
 import {SubscriptionList} from '../../../typings/subscriptionList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.getAccountSubscriptions]]
- * @module core.api.factories
- */
+ * See details at {@link AccountApi.getAccountSubscriptions}
+*
+* @category factories
+*/
 export const getAccountSubscriptions = (service: ChainService):
     (accountId: string) => Promise<SubscriptionList> =>
     (accountId: string): Promise<SubscriptionList> => {

@@ -9,12 +9,13 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {DefaultDeadline} from '../../../constants';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AccountApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AccountApi}.
  *
- * See details at [[AccountApi.setAlias]]
+ * See details at {@link AccountApi.setAlias}
  *
- * @module core.api.factories
- */
+*
+* @category factories
+*/
 export const setAlias = (service: ChainService) =>
     (args: SetAliasArgs) =>
         signIfPrivateKey(service, args, async (a: SetAliasArgs) => {

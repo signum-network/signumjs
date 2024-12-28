@@ -1,0 +1,15 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/**/src/index.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "out": "docs",
+  "tsconfig": "./tsconfig.json",
+  "suppressCommentWarningsInDeclarationFiles": true,
+  "navigation": {
+    "includeCategories": true
+  }
+}

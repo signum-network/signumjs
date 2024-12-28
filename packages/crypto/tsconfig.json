@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./out",
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["node", "vitest/globals"]
   },
   "typeRoots": [
     "src/typings",

@@ -23,7 +23,7 @@ import {GetAliasesArgs} from '../args/getAliasesArgs';
 /**
  * Account API
  *
- * @module core.api
+ * @category api
  */
 export interface AccountApi {
 
@@ -158,7 +158,7 @@ export interface AccountApi {
      *
      * So you can see, if an account is bound to a pool.
      *
-     * @param {string} account The account Id
+     * @param {string} accountId The account Id
      * @return The Reward Recipient
      */
     getRewardRecipient: ( accountId: string ) => Promise<RewardRecipient>;
@@ -171,7 +171,7 @@ export interface AccountApi {
      *
      * @param {CommitmentArgs} args The args
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
-     * @see [[AccountApi.removeCommitment]]
+     * @see {@link AccountApi.removeCommitment}
      */
     addCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 
@@ -183,7 +183,7 @@ export interface AccountApi {
      *
      * @param {CommitmentArgs} args The args
      * @return The Transaction Id or Unsigned Bytes as Hex String if no private key was sent
-     * @see [[AccountApi.addCommitment]]
+     * @see {@link AccountApi.addCommitment}
      */
     removeCommitment: (args: CommitmentArgs) => Promise<TransactionId | UnsignedTransaction>;
 
@@ -193,7 +193,7 @@ export interface AccountApi {
      *
      * @param {GetTradeHistoryPerAccountArgs} args The args object
      *
-     * @param The trade history
+     * @return The trade history
      */
     getTradeHistoryPerAccount: (args: GetTradeHistoryPerAccountArgs) => Promise<TradeHistory>;
 }

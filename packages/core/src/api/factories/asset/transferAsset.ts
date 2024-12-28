@@ -11,12 +11,13 @@ import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
 /**
  *
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.transferAsset]]
- * @module core.api.factories
- *
- */
+ * See details at {@link AssetApi.transferAsset}
+ * 
+*
+* @category factories
+*/
 export const transferAsset = (service: ChainService) =>
     (args: TransferAssetArgs) => signIfPrivateKey(service, args, async (a: TransferAssetArgs) => {
             let parameters = {

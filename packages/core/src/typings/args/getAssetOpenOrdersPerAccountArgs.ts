@@ -1,9 +1,10 @@
 
 /**
- * The argument object for [[AssetApi.getOpenAskOrdersPerAccount]] and [[AssetApi.getOpenBidOrdersPerAccount]]
+ * The argument object for {@link AssetApi.getOpenAskOrdersPerAccount} and {@link AssetApi.getOpenBidOrdersPerAccount}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetOpenOrdersPerAccountArgs {
     /**
      * The Account Identifier

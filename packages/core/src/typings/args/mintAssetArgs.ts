@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AssetApi.issueAsset]]
+ * The argument object for {@link AssetApi.issueAsset}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface MintAssetArgs extends DefaultSendArgs {
     /**
      * The asset/token id to be minted. Note: Asset must be mintable

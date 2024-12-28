@@ -2,10 +2,11 @@ import {DefaultSendArgs} from './defaultSendArgs';
 
 
 /**
- * The argument object for [[AccountApi.setAccountInfo]]
+ * The argument object for {@link AccountApi.setAccountInfo}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface SetAccountInfoArgs extends DefaultSendArgs {
     /**
      * The accounts name

@@ -10,11 +10,12 @@ import {DefaultDeadline} from '../../../constants';
 
 
 /**
- * Use with [[ApiComposer]] and belongs to [[TransactionApi]].
+ * Use with {@link ApiComposer} and belongs to {@link TransactionApi}.
  *
- * See details at [[TransactionApi.sendSameAmountToMultipleRecipients]]
- * @module core.api.factories
- */
+ * See details at {@link TransactionApi.sendSameAmountToMultipleRecipients}
+*
+* @category factories
+*/
 export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
     (args: SendSameAmountToMultipleRecipientsArgs) =>
         signIfPrivateKey(service, args,

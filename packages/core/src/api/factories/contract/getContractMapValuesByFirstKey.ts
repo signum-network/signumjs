@@ -6,11 +6,12 @@ import {GetContractMapValuesByFirstKeyArgs } from '../../../typings/args';
 import {ContractMapValueList} from '../../../typings/contractMapValueList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[ContractApi]].
+ * Use with {@link ApiComposer} and belongs to {@link ContractApi}.
  *
- * See details at [[ContractApi.getContractMapValuesByFirstKey]]
- * @module core.api.factories
- */
+ * See details at {@link ContractApi.getContractMapValuesByFirstKey}
+*
+* @category factories
+*/
 export const getContractMapValuesByFirstKey = (service: ChainService):
     (args: GetContractMapValuesByFirstKeyArgs) => Promise<ContractMapValueList> =>
     (args: GetContractMapValuesByFirstKeyArgs): Promise<ContractMapValueList> => {

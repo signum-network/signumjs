@@ -4,8 +4,8 @@
 
 /**
  * ChainTime Interface
- * @see [[util.ChainTime]] to convert between chains timestamp and Date
- * @module core
+ * @see {@link util.ChainTime} to convert between chains timestamp and Date
+ * @category entities
  * */
 export interface ChainTimestamp {
     /**

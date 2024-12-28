@@ -5,7 +5,7 @@
 /**
  * Account Balance
  *
- * @module core
+ * @category entities
  */
 export interface Balance {
     readonly unconfirmedBalanceNQT: string;

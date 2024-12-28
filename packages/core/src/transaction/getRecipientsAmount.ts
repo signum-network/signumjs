@@ -9,7 +9,7 @@ import {isMultiOutSameTransaction} from './isMultiOutSameTransaction';
  * @param recipientId The numeric id of the recipient
  * @param transaction The payment transaction
  * @return the amount value object
- * @module core
+ *
  */
 export function getRecipientsAmount(recipientId: string, transaction: Transaction): Amount {
 

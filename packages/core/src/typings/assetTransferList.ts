@@ -7,7 +7,8 @@ import {Indexable} from './indexable';
 
 /**
  * Asset Transfer List
- * @module core
+ *
+ * @category entities
  */
 export interface AssetTransferList extends Indexable{
     transfers: AssetTransfer[];

@@ -1,10 +1,11 @@
 import {GetAllAssetsArgs} from './getAllAssetsArgs';
 
 /**
- * The argument object for [[AssetApi.getAssetsByIssuer]]
+ * The argument object for {@link AssetApi.getAssetsByIssuer}
  *
- * @module core
- */
+*
+* @category args
+*/
 export interface GetAssetsByIssuerArgs extends GetAllAssetsArgs {
     accountId: string;
 }

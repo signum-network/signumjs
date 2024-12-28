@@ -6,11 +6,12 @@ import {GetAssetTradesArgs} from '../../../typings/args';
 import {AssetTradeList} from '../../../typings/assetTradeList';
 
 /**
- * Use with [[ApiComposer]] and belongs to [[AssetApi]].
+ * Use with {@link ApiComposer} and belongs to {@link AssetApi}.
  *
- * See details at [[AssetApi.getAssetTrades]]
- * @module core.api.factories
- */
+ * See details at {@link AssetApi.getAssetTrades}
+*
+* @category factories
+*/
 export const getAssetTrades = (service: ChainService):
     (args: GetAssetTradesArgs) => Promise<AssetTradeList> =>
     async (args: GetAssetTradesArgs): Promise<AssetTradeList> => {
