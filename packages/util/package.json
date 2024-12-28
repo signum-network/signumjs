@@ -36,8 +36,7 @@
     "test": "vitest run",
     "test:ci": "vitest run --coverage",
     "compile": "tsc",
-    "bundle": "node bundle.js",
-    "readme": "jsdoc2md  --files ./src/*.ts --template ./README.md.hbs --configure ../../jsdoc2md.json > ./README.md"
+    "bundle": "node bundle.js"
   },
   "husky": {
     "hooks": {
