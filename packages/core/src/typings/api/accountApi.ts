@@ -2,7 +2,6 @@ import {TransactionList} from '../transactionList';
 import {SubscriptionList} from '../subscriptionList';
 import {UnconfirmedTransactionList} from '../unconfirmedTransactionList';
 import {Balance} from '../balance';
-import {AliasList} from '../aliasList';
 import {Account} from '../account';
 import {TransactionId} from '../transactionId';
 import {
@@ -18,7 +17,7 @@ import {RewardRecipient} from '../rewardRecipient';
 import {BlockList} from '../blockList';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {TradeHistory} from '../tradeHistory';
-import {GetAliasesArgs} from '../args/getAliasesArgs';
+import {GetAccountTransactionsSenderRecipientArgs} from '../args/getAccountTransactionsSenderRecipientArgs';
 
 /**
  * Account API
@@ -33,6 +32,47 @@ export interface AccountApi {
      * @return {Promise<TransactionList>} List of transactions
      */
     getAccountTransactions: (args: GetAccountTransactionsArgs) => Promise<TransactionList>;
+
+    /**
+     * Get all transactions from sender to recipient
+     *
+     * @note This method __does not resolve__ amount of distributions to token holders
+     *
+     * @param {GetAccountTransactionsSenderRecipientArgs} args The arguments
+     * @return {Promise<TransactionList>} List of transactions
+     */
+    getAccountTransactionsFromSenderToRecipient: (args: GetAccountTransactionsSenderRecipientArgs) => Promise<TransactionList>;
+
+
+    /**
+     * Get all transactions from specific sender
+     *
+     * @note This method __does not resolve__ amount of distributions to token holders
+     *
+     * @param {Omit<GetAccountTransactionsSenderRecipientArgs, 'recipientId'>} args The arguments
+     * @return {Promise<TransactionList>} List of transactions
+     */
+    getAccountTransactionsFromSender: (args: Omit<GetAccountTransactionsSenderRecipientArgs, 'recipientId'>) => Promise<TransactionList>;
+
+    /**
+     * Get all transactions to specific recipient
+     *
+     * @note This method __does not resolve__ amount of distributions to token holders
+     *
+     * @param {Omit<GetAccountTransactionsSenderRecipientArgs, 'senderId'>} args The arguments
+     * @return {Promise<TransactionList>} List of transactions
+     */
+    getAccountTransactionsToRecipient: (args: Omit<GetAccountTransactionsSenderRecipientArgs, 'senderId'>) => Promise<TransactionList>;
+
+    /**
+     * Get all transactions between sender and recipient (in both transfer directions)
+     *
+     * @note This method __does not resolve__ amount of distributions to token holders
+     *
+     * @param {Omit<GetAccountTransactionsArgs, 'accountId'>} args The arguments
+     * @return {Promise<TransactionList>} List of transactions
+     */
+    getAccountTransactionsBetweenSenderAndRecipient: (args: GetAccountTransactionsSenderRecipientArgs) => Promise<TransactionList>;
 
     /**
      * Get _unconfirmed_ transactions of given account

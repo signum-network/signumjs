@@ -1,6 +1,6 @@
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
- * Modified work Copyright (c) 2022 Signum Network
+ * Modified work Copyright (c) 2022,2024 Signum Network
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionList} from '../../../typings/transactionList';
@@ -19,15 +19,30 @@ export const getAccountTransactions = (service: ChainService):
     (args: GetAccountTransactionsArgs) => Promise<TransactionList> =>
     async (args: GetAccountTransactionsArgs): Promise<TransactionList> => {
 
+        if(args.senderId || args.recipientId) {
+            if(args.accountId){
+                throw new Error("Using accountId with recipientId and/or senderId is not allowed")
+            }
+
+            if(args.resolveDistributions){
+                throw new Error("Using resolveDistributions with recipientId and/or senderId is not allowed")
+            }
+        }
+
         const parameters = {
             ...args,
-            account: args.accountId,
+            account: args.accountId || undefined,
+            sender: args.senderId,
+            recipient: args.recipientId,
+            bidirectional: args.bidirectional,
         };
 
         if (args.resolveDistributions) {
             parameters.includeIndirect = true;
         }
 
+        delete parameters.senderId;
+        delete parameters.recipientId;
         delete parameters.accountId;
         delete parameters.resolveDistributions;
 

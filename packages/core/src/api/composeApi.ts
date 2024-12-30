@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2021,2022,2023 Signum Network
+ * Modified (c) 2021,2022,2023,2024 Signum Network
  */
 import {ChainService, ChainServiceSettings} from '../service';
 import {Api} from '../typings/api';
@@ -41,7 +41,13 @@ import {
     setAccountInfo,
     setAlias,
     setRewardRecipient,
-    getRewardRecipient, addCommitment, removeCommitment,
+    getRewardRecipient,
+    addCommitment,
+    removeCommitment,
+    getAccountTransactionsBetweenSenderAndRecipient,
+    getAccountTransactionsFromSenderToRecipient,
+    getAccountTransactionsToRecipient,
+    getAccountTransactionsFromSender,
 } from './factories/account';
 import {
     getAliasById,
@@ -114,6 +120,7 @@ import {
     calculateDistributionFee, getAssetsByOwner
 } from './factories/asset';
 import {Http} from '@signumjs/http';
+
 /**
  * Settings for API used in {@link composeApi}
  *
@@ -202,6 +209,10 @@ export function composeApi(settings: ApiSettings): Api {
             addCommitment,
             removeCommitment,
             getAccountTransactions,
+            getAccountTransactionsFromSenderToRecipient,
+            getAccountTransactionsBetweenSenderAndRecipient,
+            getAccountTransactionsFromSender,
+            getAccountTransactionsToRecipient,
             getUnconfirmedAccountTransactions,
             getAccountBalance,
             generateSendTransactionQRCode,

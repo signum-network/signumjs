@@ -1,4 +1,4 @@
-import {describe, afterEach, it, expect, vi, beforeEach } from 'vitest';
+import {describe, afterEach, it, expect, vi, beforeEach} from 'vitest';
 import {Http, HttpMockBuilder} from '@signumjs/http';
 import {
     getUnconfirmedAccountTransactions,
@@ -11,26 +11,33 @@ import {
     setAccountInfo,
     setRewardRecipient,
     getSubscriptionsToAccount,
-    getAccountSubscriptions, getRewardRecipient, addCommitment, removeCommitment
+    getAccountSubscriptions,
+    getRewardRecipient,
+    addCommitment,
+    removeCommitment,
+    getAccountTransactionsBetweenSenderAndRecipient,
+    getAccountTransactionsFromSenderToRecipient, getAccountTransactionsFromSender, getAccountTransactionsToRecipient
 } from '../factories/account';
 import {createChainService} from '../../__tests__/helpers/createChainService';
 import {Amount} from '@signumjs/util';
 
 // mocking
-import {signAndBroadcastTransaction} from "../../api/factories/transaction/signAndBroadcastTransaction"
+import {signAndBroadcastTransaction} from '../../api/factories/transaction/signAndBroadcastTransaction';
+
 vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
     return {
         signAndBroadcastTransaction: vi.fn().mockImplementation(() =>
-            () => Promise.resolve({ transaction: 'transactionId' })
+            () => Promise.resolve({transaction: 'transactionId'})
         ),
     };
 });
 
 import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
+
 vi.mock('@signumjs/crypto', () => {
     return {
         generateSignature: vi.fn().mockImplementation(() => 'signature'),
-        generateSignedTransactionBytes: vi.fn().mockImplementation(() => "signedTransactionBytes"),
+        generateSignedTransactionBytes: vi.fn().mockImplementation(() => 'signedTransactionBytes'),
         verifySignature: vi.fn().mockImplementation(() => true)
     };
 });
@@ -127,7 +134,7 @@ describe('AccountApi', () => {
             try {
                 const args = {accountId: 'accountId'};
                 await getAccountTransactions(service)(args);
-            } catch (e:any) {
+            } catch (e: any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -154,6 +161,95 @@ describe('AccountApi', () => {
             expect(transactions.transactions[0].height).toBe(20);
             expect(transactions.transactions[1].height).toBe(30);
         });
+
+        it('should getAccountTransactions use correctly with senderId and recipientid', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&bidirectional=true&sender=senderId&recipient=recipientId').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            await getAccountTransactions(service)({
+                accountId: null,
+                recipientId: 'recipientId',
+                senderId: 'senderId',
+                bidirectional: true,
+            });
+        });
+
+        it('should throw when getAccountTransactions use incorrectly with senderId and recipientid', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&bidirectional=true&sender=senderId&recipient=recipientId').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            await expect(() =>
+                getAccountTransactions(service)({
+                    accountId: 'accountId',
+                    recipientId: 'recipientId',
+                    senderId: 'senderId',
+                    bidirectional: true,
+                })).rejects.toThrowError('Using accountId with recipientId and/or senderId is not allowed');
+        });
+
+        it('should throw when getAccountTransactions use incorrectly with senderId and recipientid - no resolve allowed', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&bidirectional=true&sender=senderId&recipient=recipientId').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            await expect(() =>
+                getAccountTransactions(service)({
+                    accountId: null,
+                    resolveDistributions: true,
+                    recipientId: 'recipientId',
+                    senderId: 'senderId',
+                    bidirectional: true,
+                })).rejects.toThrowError('Using resolveDistributions with recipientId and/or senderId is not allowed');
+        });
+
+    });
+
+
+    describe('getAccountTransactionsBetweenSenderAndRecipient()', () => {
+
+        it('should GetAccountTransactionsFromSenderToRecipient', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&sender=senderId&recipient=recipientId&bidirectional=true').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const args = {senderId: 'senderId', recipientId: 'recipientId'};
+            await getAccountTransactionsBetweenSenderAndRecipient(service)(args);
+        });
+
+    });
+
+    describe('getAccountTransactionsFromSenderToRecipient()', () => {
+
+        it('should getAccountTransactionsFromSenderToRecipient', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&sender=senderId&recipient=recipientId&bidirectional=false').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const args = {senderId: 'senderId', recipientId: 'recipientId'};
+            await getAccountTransactionsFromSenderToRecipient(service)(args);
+        });
+
+    });
+
+    describe('getAccountTransactionsFromSender()', () => {
+
+        it('should getAccountTransactionsFromSender', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&sender=senderId').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const args = {senderId: 'senderId'};
+            await getAccountTransactionsFromSender(service)(args);
+        });
+
+    });
+
+    describe('getAccountTransactionsToRecipient()', () => {
+
+        it('should getAccountTransactionsToRecipient', async () => {
+            httpMock = HttpMockBuilder.create().onGetReply(200, [], 'relPath?requestType=getAccountTransactions&recipient=recipientId').build();
+
+            const service = createChainService(httpMock, 'relPath');
+            const args = {recipientId: 'recipientId'};
+            await getAccountTransactionsToRecipient(service)(args);
+        });
+
     });
 
     describe('GetUnconfirmedAccountTransactions()', () => {
@@ -204,7 +300,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await getUnconfirmedAccountTransactions(service)('accountId');
-            } catch (e:any) {
+            } catch (e: any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -239,7 +335,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await getAccountBalance(service)('accountId');
-            } catch (e:any) {
+            } catch (e: any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -270,7 +366,7 @@ describe('AccountApi', () => {
             const service = createChainService(httpMock);
             try {
                 await generateSendTransactionQRCode(service)(mockAddress);
-            } catch (e:any) {
+            } catch (e: any) {
                 expect(e.status).toBe(404);
                 expect(e.message).toBe('Test Error');
             }
@@ -310,7 +406,7 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
                 senderPrivateKey: 'senderPrivateKey'
             });
-            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(status).toEqual({transaction: 'transactionId'});
             expect(signAndBroadcastTransaction).toBeCalledTimes(1);
         });
     });
@@ -349,7 +445,7 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
             });
 
-            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(status).toEqual({transaction: 'transactionId'});
             expect(signAndBroadcastTransaction).toBeCalledTimes(1);
         });
 
@@ -366,7 +462,7 @@ describe('AccountApi', () => {
                         senderPublicKey: 'senderPublicKey',
                     }
                 );
-            } catch (e:any) {
+            } catch (e: any) {
                 expect(e.message).toBe('error');
                 expect(generateSignature).toBeCalledTimes(0);
                 expect(verifySignature).toBeCalledTimes(0);
@@ -517,7 +613,7 @@ describe('AccountApi', () => {
                 senderPublicKey: 'senderPublicKey',
             });
 
-            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(status).toEqual({transaction: 'transactionId'});
         });
 
         it('should remove commitment', async () => {
@@ -529,7 +625,7 @@ describe('AccountApi', () => {
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
             });
-            expect(status).toEqual({ transaction: 'transactionId'});
+            expect(status).toEqual({transaction: 'transactionId'});
         });
 
     });
