@@ -38,7 +38,6 @@
     "compile": "turbo run compile",
     "bundle": "turbo run bundle",
     "doc": "typedoc",
-    // call this like npm run publish 2.0 --otp 123456
     "publish": "turbo run compile test bundle && changeset publish --tag",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",

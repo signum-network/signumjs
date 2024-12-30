@@ -259,4 +259,10 @@ This monorepo uses [changeset](https://github.com/changesets/changesets) to mana
 2. Bump version: `npx changeset version`
 3. Publish `npx changeset publish --tag <VERSION> --otp <NPM_OTP>`
 
+The latter can be run as 
+
+```bash
+npm run publish v2.0 --otp 123456
+```
+
 > Note: Only with a valid npm OTP token
