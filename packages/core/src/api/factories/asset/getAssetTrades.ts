@@ -16,12 +16,12 @@ export const getAssetTrades = (service: ChainService):
     (args: GetAssetTradesArgs) => Promise<AssetTradeList> =>
     async (args: GetAssetTradesArgs): Promise<AssetTradeList> => {
 
-        const {assetId, accountId, firstIndex, lastIndex} = args;
+        const {assetId, accountId, firstIndex, lastIndex, includeAssetInfo = true} = args;
 
         const params = {
             asset: assetId,
             account: accountId,
-            includeAssetInfo: true,
+            includeAssetInfo,
             firstIndex,
             lastIndex
         };
