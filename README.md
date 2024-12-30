@@ -32,7 +32,7 @@ technology.
 - [ ] EXAMPLES
 
 Version 2 is now live. There are some major changes especially for the crypto package. Check more details [here](./packages/crypto/README.md)
-Consider this version as not stable yet.
+Consider this version as not fully stable yet.
 
 ----------------------------
 
