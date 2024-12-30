@@ -37,7 +37,7 @@ export enum TransactionType {
      */
     Mining = 20,
     /**
-     * {@link TransactionEscrowSubtype}
+     * {@link TransactionAdvancedPaymentSubtype}
      */
     AdvancedPayment = 21,
     /**

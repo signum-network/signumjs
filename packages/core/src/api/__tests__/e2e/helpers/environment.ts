@@ -4,7 +4,8 @@ import * as path from 'path';
 /**
  * Loads Environment Variables
  *
- * @note The variables are stored in an .env file which is not commited to repository
+ * > The variables are stored in an .env file which is not commited to repository
+ *
  * Use .env.template as reference
  */
 export const loadEnvironment = () => {

@@ -36,7 +36,7 @@ export interface AccountApi {
     /**
      * Get all transactions from sender to recipient
      *
-     * @note This method __does not resolve__ amount of distributions to token holders
+     * > This method __does not resolve__ amount of distributions to token holders
      *
      * @param {GetAccountTransactionsSenderRecipientArgs} args The arguments
      * @return {Promise<TransactionList>} List of transactions
@@ -47,7 +47,7 @@ export interface AccountApi {
     /**
      * Get all transactions from specific sender
      *
-     * @note This method __does not resolve__ amount of distributions to token holders
+     * > This method __does not resolve__ amount of distributions to token holders
      *
      * @param {Omit<GetAccountTransactionsSenderRecipientArgs, 'recipientId'>} args The arguments
      * @return {Promise<TransactionList>} List of transactions
@@ -57,7 +57,7 @@ export interface AccountApi {
     /**
      * Get all transactions to specific recipient
      *
-     * @note This method __does not resolve__ amount of distributions to token holders
+     * > This method __does not resolve__ amount of distributions to token holders
      *
      * @param {Omit<GetAccountTransactionsSenderRecipientArgs, 'senderId'>} args The arguments
      * @return {Promise<TransactionList>} List of transactions
@@ -67,7 +67,7 @@ export interface AccountApi {
     /**
      * Get all transactions between sender and recipient (in both transfer directions)
      *
-     * @note This method __does not resolve__ amount of distributions to token holders
+     * > This method __does not resolve__ amount of distributions to token holders
      *
      * @param {Omit<GetAccountTransactionsArgs, 'accountId'>} args The arguments
      * @return {Promise<TransactionList>} List of transactions
