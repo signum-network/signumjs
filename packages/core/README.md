@@ -65,4 +65,4 @@ Just import the package using the HTML `<script>` tag.
 
 
 See more here:
-[@signumjs/core Online Documentation](https://signum-network.github.io/signumjs/module/core)
+[@signumjs/core Online Documentation](https://signum-network.github.io/signumjs/modules/core.html)

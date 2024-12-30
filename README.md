@@ -29,7 +29,7 @@ technology.
 - [X] STANDARDS
 - [X] WALLET
 - [X] DOCUMENTATION
-- [ ] EXAMPLES
+- [ ] MORE EXAMPLES
 
 Version 2 is now live. There are some major changes especially for the crypto package. Check more details [here](./packages/crypto/README.md)
 Consider this version as not fully stable yet.
@@ -120,7 +120,7 @@ Examples:
 ```js
 // using core
 const ledger = sig$.LedgerClientFactory.create({
-    nodeHost: "http://testnet.signum.network",
+    nodeHost: "https://europe3.testnet.signum.network",
 });
 
 ledger.network.getBlockchainStatus().then(console.log);
@@ -162,7 +162,7 @@ subscription.unlisten()
 ```ts
 // using standards - depends on ledger 
 const ledger = sig$.LedgerClientFactory.create({
-    nodeHost: "http://europe3.testnet.signum.network",
+    nodeHost: "https://europe3.testnet.signum.network",
 });
 
 // create Descriptor data object
@@ -237,7 +237,7 @@ That's it!
 
 ## Building the packages
 
-The SDK is using [Lerna](https://lerna.js.org/) to manage all subpackages in a developer friendlier way:
+The SDK is using [Turborepo](https://turbo.build/) to manage all subpackages in a developer friendlier way:
 
 ```bash
 npm run build
@@ -246,8 +246,7 @@ npm run build
 ## Running Tests
 
 1. Single test run `npm run test`
-2. Run in watch mode `npm run test:watch`
-3. Run end-to-end test `npm run test:e2e`
+2Run end-to-end test `npm run test:e2e`
    | Keep in mind that these tests are slow as they run against true servers. And therefore, it cannot be guaranteed
    that all E2E tests always work
 

@@ -48,7 +48,7 @@ console.log(sig$crypto.sha256AsHex('test'))
 ```
 
 See more here:
-[@signumjs/crypto Online Documentation](https://signum-network.github.io/signumjs/module/crypto)
+[@signumjs/crypto Online Documentation](https://signum-network.github.io/signumjs/modules/crypto.html)
 
 
 ## Crossplatform Usage
