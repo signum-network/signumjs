@@ -262,7 +262,7 @@ This monorepo uses [changeset](https://github.com/changesets/changesets) to mana
 The latter can be run as 
 
 ```bash
-npm run publish v2.0 --otp 123456
+npm run publish v2.0.1 --otp 123456
 ```
 
 > Note: Only with a valid npm OTP token
