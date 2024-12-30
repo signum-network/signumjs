@@ -38,8 +38,8 @@
     "compile": "turbo run compile",
     "bundle": "turbo run bundle",
     "doc": "typedoc",
-    "publish:old": "npm run test && lerna exec npm run bundle && lerna publish --force-publish",
-    "publish": "turbo run compile test bundle && echo 'TODO: run publisher' ",
+    // call this like npm run publish 2.0 --otp 123456
+    "publish": "turbo run compile test bundle && changeset publish --tag",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "posttest:ci": "./generate-coverage-report.sh",
