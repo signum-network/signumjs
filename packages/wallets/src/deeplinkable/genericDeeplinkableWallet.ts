@@ -68,6 +68,6 @@ export class GenericDeeplinkableWallet implements Wallet {
     }
 
     sendEncryptedMessage(_args: SendEncryptedMessageArgs): Promise<string> {
-        return Promise.reject('Not supported yet');
+        return Promise.reject(new Error('Not supported yet'));
     }
 }
