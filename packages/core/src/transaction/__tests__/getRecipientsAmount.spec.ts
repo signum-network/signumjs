@@ -1,5 +1,5 @@
 import {
-    TransactionEscrowSubtype,
+    TransactionAdvancedPaymentSubtype,
     TransactionPaymentSubtype,
     TransactionType
 } from '../../constants';
@@ -30,8 +30,8 @@ describe('getRecipientsAmount', () => {
         const transaction = {
             transaction: '1',
             amountNQT: Amount.fromSigna(100).getPlanck(),
-            type: TransactionType.Escrow,
-            subtype: TransactionEscrowSubtype.EscrowCreation,
+            type: TransactionType.AdvancedPayment,
+            subtype: TransactionAdvancedPaymentSubtype.EscrowCreation,
         };
 
         // @ts-ignore

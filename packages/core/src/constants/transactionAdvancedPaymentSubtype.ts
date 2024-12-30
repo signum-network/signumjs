@@ -1,13 +1,14 @@
 /**
  * Original work Copyright (c) 2019 Burst Apps Team
+ * Modified 2024, Signum Network
  */
 
 /**
- * Constants for escrow subtypes
+ * Constants for advanced payment subtypes
  *
  * @category transaction-types
  */
-export enum TransactionEscrowSubtype {
+export enum TransactionAdvancedPaymentSubtype {
     EscrowCreation = 0,
     EscrowSigning,
     EscrowResult,

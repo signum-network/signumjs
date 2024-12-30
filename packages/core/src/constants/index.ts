@@ -6,7 +6,7 @@ import {TransactionLeasingSubtype} from './transactionLeasingSubtype';
 import {TransactionMarketplaceSubtype} from './transactionMarketplaceSubtype';
 import {TransactionPaymentSubtype} from './transactionPaymentSubtype';
 import {TransactionMiningSubtype} from './transactionMiningSubtype';
-import {TransactionEscrowSubtype} from './transactionEscrowSubtype';
+import {TransactionAdvancedPaymentSubtype} from './transactionAdvancedPaymentSubtype';
 import {TransactionSmartContractSubtype} from './transactionSmartContractSubtype';
 
 /**
@@ -44,6 +44,6 @@ export {
     TransactionAssetSubtype,
     TransactionArbitrarySubtype,
     TransactionMiningSubtype,
-    TransactionEscrowSubtype,
+    TransactionAdvancedPaymentSubtype,
     TransactionSmartContractSubtype
 };

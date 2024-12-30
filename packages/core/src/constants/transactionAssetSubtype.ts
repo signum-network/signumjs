@@ -4,7 +4,7 @@
  */
 
 /**
- * Constants for asset subtypes
+ * Constants for asset/token subtypes
  * 
  * @category transaction-types
  */
