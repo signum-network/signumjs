@@ -17,7 +17,7 @@ import { parseIpfsMedia } from './parseIpfsMedia';
  */
 export class DescriptorData {
 
-    private constructor(private data: SRC44Descriptor, private strict: boolean) {
+    private constructor(private data: SRC44Descriptor, private readonly strict: boolean) {
         this.validate();
     }
 

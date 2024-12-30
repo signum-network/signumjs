@@ -73,7 +73,7 @@ interface URI {
  * 
  */
 export class URIResolver {
-    constructor(private ledger: Ledger) {
+    constructor(private readonly ledger: Ledger) {
     }
 
     /**
@@ -88,12 +88,10 @@ export class URIResolver {
         const regex = /^(?<schema>http|https):\/\/(?<body>\$?[\w.]+?)(@(?<tld>\w+)?)?(\/(?<path>[\w-]+)?)?$/gm;
         const result = regex.exec(uri.toLowerCase());
 
-        // @ts-ignore
-        if (!result || !result.groups) {
+        if (!result?.groups) {
             throw new Error(`Invalid SRC47 URI: ${uri}`);
         }
 
-        // @ts-ignore
         const {schema, body, tld = 'signum', path} = result.groups;
 
         const domains = body.replace('$', '').split('.');

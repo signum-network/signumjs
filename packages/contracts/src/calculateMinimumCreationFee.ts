@@ -20,7 +20,7 @@ export function calculateMinimumCreationFee(args: CalculateMinimumCreationFeeArg
     const {dataHex, codeHex} = args;
 
     const codePagesCount = codeHex ? countCodePages(codeHex) : 0;
-    const dataPagesCount = dataHex && dataHex.length ? countDataPages(dataHex) : 1;
+    const dataPagesCount = dataHex?.length ? countDataPages(dataHex) : 1;
 
     return Amount.fromPlanck(FeeQuantPlanck * 10 * (2 + codePagesCount + dataPagesCount));
 }
