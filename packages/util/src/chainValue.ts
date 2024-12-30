@@ -115,7 +115,7 @@ function assureValidValue(v: string): void {
 export class ChainValue {
 
     private _big: BigNumber;
-    private _decimals: number;
+    private readonly _decimals: number;
 
     /**
      * Constructs a value object instance for calculations. The initial value is 0;

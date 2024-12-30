@@ -14,7 +14,7 @@ const DefaultAxiosOptions = {};
  */
 export class HttpAdapterAxios implements Http {
 
-    private _clientImpl: AxiosInstance;
+    private readonly _clientImpl: AxiosInstance;
 
     /**
      * Creates your Http client

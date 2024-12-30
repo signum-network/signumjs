@@ -38,14 +38,14 @@ import {SetContractBrandingArgs} from './typings/args/setContractBrandingArgs';
  * 
  */
 export class DescriptorDataClient {
-    private static SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
+    private static readonly SmartContractPublicKey = '0000000000000000000000000000000000000000000000000000000000000000';
 
     /**
      * Instantiates the client.
      * Mind the dependency of the ledger client.
      * @param ledger
      */
-    constructor(private ledger: Ledger) {
+    constructor(private readonly ledger: Ledger) {
     }
 
     /**

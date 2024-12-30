@@ -19,19 +19,19 @@ export enum TransactionType {
     /**
      * @see TransactionArbitrarySubtype
      */
-    Arbitrary,
+    Arbitrary = 1,
     /**
      * @see TransactionAssetSubtype
      */
-    Asset,
+    Asset = 2,
     /**
      * @see TransactionMarketplaceSubtype
      */
-    Marketplace,
+    Marketplace= 3,
     /**
      * @see TransactionLeasingSubtype
      */
-    Leasing,
+    Leasing = 4,
     /**
      * @see TransactionMiningSubtype
      */

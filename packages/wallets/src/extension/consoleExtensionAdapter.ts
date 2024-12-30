@@ -15,7 +15,7 @@ import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessag
 export class ConsoleExtensionAdapter implements ExtensionAdapter {
 
     private static notAvailable() {
-        return Promise.reject('Not available');
+        return Promise.reject(new Error('Not available'));
     }
 
     onNotification(callback: (message: any, listener: ExtensionListener) => void): ExtensionListener {

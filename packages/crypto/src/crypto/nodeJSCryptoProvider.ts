@@ -3,7 +3,7 @@ import {CryptoParams} from './cryptoParams';
 import {CryptoError} from '../typings/cryptoError';
 
 export class NodeJSCryptoProvider implements CryptoProvider {
-    private crypto: any;
+    private readonly crypto: any;
 
     constructor() {
         this.crypto = require('crypto');

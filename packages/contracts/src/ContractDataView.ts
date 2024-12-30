@@ -49,7 +49,7 @@ export class ContractDataView {
      */
     public static VariableLength = 16;
 
-    constructor(private _contract: Contract) {
+    constructor(private readonly _contract: Contract) {
     }
 
     /**
