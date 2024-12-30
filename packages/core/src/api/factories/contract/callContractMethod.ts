@@ -23,7 +23,7 @@ export const callContractMethod = (service: ChainService) =>
     async (args: CallContractMethodArgs): Promise<TransactionId | UnsignedTransaction> => {
 
         const callMessage = generateMethodCall({
-            methodHash: args.methodId,
+            methodId: args.methodId,
             methodArgs: args.methodArgs,
         });
 
