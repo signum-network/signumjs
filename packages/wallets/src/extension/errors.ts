@@ -50,7 +50,7 @@ export class InvalidNetworkError extends ExtensionWalletError {
  * @internal
  * @ignore
  */
-export function createError(payload: any) {
+export function createError(payload: ExtensionErrorType): ExtensionWalletError {
     switch (payload) {
         case ExtensionErrorType.NotGranted:
             return new NotGrantedWalletError();

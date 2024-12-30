@@ -3,7 +3,6 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {Contract} from '@signumjs/contracts';
-// import {Contract} from '../../../typings/contract';
 
 /**
  * Use with {@link ApiComposer} and belongs to {@link ContractApi}.

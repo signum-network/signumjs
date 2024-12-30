@@ -106,7 +106,7 @@ export const AmountFormats = {
  * @category value-objects
  */
 export class Amount {
-    private _value: ChainValue;
+    private readonly _value: ChainValue;
 
     private constructor(planck: number | string) {
         this._value = new ChainValue(8).setAtomic(planck);

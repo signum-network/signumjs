@@ -17,11 +17,8 @@ import {
 
 class ApiImpl implements Api {
 
-    constructor(service: ChainService) {
-        this.service = service;
-    }
+    constructor(readonly service: ChainService) {}
 
-    service: ChainService;
     alias: AliasApi;
     account: AccountApi;
     asset: AssetApi;
@@ -78,7 +75,7 @@ export class ApiComposer {
         return new ApiComposer(service);
     }
 
-    private constructor(private service: ChainService) {
+    private constructor(private readonly service: ChainService) {
         this.api = new ApiImpl(service);
     }
 

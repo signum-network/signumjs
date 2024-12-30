@@ -65,7 +65,7 @@ export class GenericExtensionWallet implements Wallet {
      * @param adapter The adapter according your environment. See {@link ExtensionAdapterFactory}.
      * It uses the default {@link ExtensionAdapterFactory} to determine the correct adapter.
      */
-    constructor(private adapter = ExtensionAdapterFactory.getAdapter()) {
+    constructor(private readonly adapter = ExtensionAdapterFactory.getAdapter()) {
     }
 
     private assertConnection() {

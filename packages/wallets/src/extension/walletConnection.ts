@@ -33,7 +33,7 @@ export class WalletConnection {
         public watchOnly: boolean,
         public availableNodeHosts: string[],
         public currentNodeHost: string,
-        private adapter: ExtensionAdapter,
+        private readonly adapter: ExtensionAdapter,
     ) {
     }
 

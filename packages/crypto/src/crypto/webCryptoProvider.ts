@@ -3,7 +3,7 @@ import {CryptoParams} from './cryptoParams';
 import {sha256 as sha256JS} from 'js-sha256'
 
 export class WebCryptoProvider implements CryptoProvider {
-    private crypto: Crypto;
+    private readonly crypto: Crypto;
 
     constructor() {
         if (typeof window !== 'undefined') {
