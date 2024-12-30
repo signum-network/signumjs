@@ -5,8 +5,6 @@
 import {ChainService} from '../../../service/chainService';
 import {TransactionList} from '../../../typings/transactionList';
 import {GetAccountTransactionsSenderRecipientArgs} from '../../../typings/args/getAccountTransactionsSenderRecipientArgs';
-import {TransactionAssetSubtype, TransactionType} from '../../../constants';
-import {getDistributionAmountsFromTransaction} from '../transaction';
 
 /**
  * Use with {@link ApiComposer} and belongs to {@link AccountApi}.

@@ -4,9 +4,6 @@
  */
 import {ChainService} from '../../../service/chainService';
 import {TransactionList} from '../../../typings/transactionList';
-import {GetAccountTransactionsArgs} from '../../../typings/args';
-import {TransactionAssetSubtype, TransactionType} from '../../../constants';
-import {getDistributionAmountsFromTransaction} from '../transaction';
 import {GetAccountTransactionsSenderRecipientArgs} from '../../../typings/args/getAccountTransactionsSenderRecipientArgs';
 
 /**
