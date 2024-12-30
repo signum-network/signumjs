@@ -55,4 +55,13 @@ export interface Account {
      * The currently available balance in Planck, without commitment and open orders
      */
     unconfirmedBalanceNQT: string;
+    /**
+     * Determines whether the account is a smart contract (aka AT) or not
+     */
+    isAT: boolean;
+
+    /**
+     * Determines whether the account is secured, i.e. has public key assigned, or not
+     */
+    isSecured: boolean;
 }
