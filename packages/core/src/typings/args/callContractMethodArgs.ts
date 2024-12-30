@@ -9,7 +9,9 @@ import {DefaultSendArgs} from './defaultSendArgs';
 */
 export interface CallContractMethodArgs extends DefaultSendArgs {
     amountPlanck: string;
+    assetId?: string;
+    assetQuantity?: string;
     contractId: string;
     methodArgs?: ContractData[];
-    methodHash: string;
+    methodId: string;
 }

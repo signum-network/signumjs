@@ -17,7 +17,7 @@ import {convertContractData} from './internal/convertContractData';
  * @return A hex string that can be used as contracts transaction message
  */
 export const generateMethodCall = (args: GenerateMethodCallArgs): string => {
-    const argArray = args.methodArgs ? [args.methodHash, ...args.methodArgs] : [args.methodHash];
+    const argArray = args.methodArgs ? [args.methodId, ...args.methodArgs] : [args.methodId];
     return argArray
         .map(convertContractData)
         .map(long => convertDecStringToHexString(long, 16))
