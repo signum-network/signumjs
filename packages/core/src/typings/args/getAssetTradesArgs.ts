@@ -10,4 +10,5 @@ export interface GetAssetTradesArgs {
     accountId?: string;
     firstIndex?: number;
     lastIndex?: number;
+    includeAssetInfo?: boolean;
 }
