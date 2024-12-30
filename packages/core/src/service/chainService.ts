@@ -24,6 +24,7 @@ export interface SendArgs {
      *
      */
     skipAdditionalSecurityCheck?: boolean;
+
     [key: string]: any;
 }
 
@@ -46,6 +47,13 @@ class SettingsImpl implements ChainServiceSettings {
     readonly httpClient: Http;
     readonly nodeHost: string;
     readonly reliableNodeHosts: string[];
+}
+
+
+interface HostSelectionOptions {
+    reconfigure?: boolean;
+    checkMethod?: string;
+    timeout?: number;
 }
 
 /**
@@ -135,7 +143,7 @@ export class ChainService {
      * @return {Promise<T>} The response data of success
      * @throws HttpError in case of failure
      */
-    public async send<T>(method: string, args: SendArgs = {}, body?: object , options?: any): Promise<T> {
+    public async send<T>(method: string, args: SendArgs = {}, body?: object, options?: any): Promise<T> {
         const endpoint = this.toApiEndpoint(method, args);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.post(endpoint, body, options));
@@ -168,51 +176,80 @@ export class ChainService {
     }
 
     /**
-     * Automatically selects the best host, according to its response time,
-     * i.e. the fastest node host will be returned (and set as nodeHost internally)
+     * Selects the fastest responding host from the configured reliable node hosts.
      * @param reconfigure An optional flag to set automatic reconfiguration. Default is `false`
      * Attention: Reconfiguration works only, if you use the default http client. Otherwise, you need to reconfigure manually!
      * @param checkMethod The optional API method to be called. This applies only for GET methods. Default is `getBlockchainStatus`
-     * @throws Error If `reliableNodeHosts` is empty, or if all requests to the reliableNodeHosts fail
+     * @param timeout The optional amount of time in milliseconds to check. Default is 10_000
+     * @returns Promise resolving to the selected host
+     * @throws Error if no reliable hosts are configured or if all hosts fail
      */
-    public async selectBestHost(reconfigure = false, checkMethod = 'getBlockchainStatus'): Promise<string> {
-        if (!this.settings.reliableNodeHosts.length) {
-            throw new Error('No reliableNodeHosts configured');
-        }
-        const checkEndpoint = this.toApiEndpoint(checkMethod);
-        let timeout = null;
-        const requests = this.settings.reliableNodeHosts.map(host => {
-            const absoluteUrl = `${host}${checkEndpoint}`;
-            return new Promise<string>(async (resolve, reject) => {
-                try {
-                    await this.settings.httpClient.get(absoluteUrl);
-                    resolve(host);
-                } catch (e) {
-                    if (timeout) {
-                        // @ts-ignore
-                        clearTimeout(timeout);
-                    }
-                    // @ts-ignore
-                    timeout = setTimeout(() => {
-                        reject(null);
-                    }, 10 * 1000);
-                }
-            });
-        });
+    public async selectBestHost(
+                                      reconfigure = false,
+                                      timeout = 10_000,
+                                      checkMethod = 'getBlockchainStatus'
+                                  ): Promise<string> {
+        const {reliableNodeHosts} = this.settings;
 
-        const bestHost = await Promise.race(requests);
-        // @ts-ignore
-        clearTimeout(timeout);
-        if (!bestHost) {
-            throw new Error('All reliableNodeHosts failed');
+        if (!reliableNodeHosts.length) {
+            throw new Error('No reliable node hosts configured');
         }
-        if (reconfigure) {
-            this.settings = new SettingsImpl({
-                ...this.settings,
-                httpClient: HttpClientFactory.createHttpClient(bestHost, this.settings.httpClientOptions),
-                nodeHost: bestHost,
-            });
+
+        const checkEndpoint = this.toApiEndpoint(checkMethod);
+
+        // Create a function to check a single host with timeout
+        const checkHost = async (host: string): Promise<{ host: string; responseTime: number }> => {
+            const start = Date.now();
+            const absoluteUrl = `${host}${checkEndpoint}`;
+
+            try {
+                await Promise.race([
+                    this.settings.httpClient.get(absoluteUrl),
+                    new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Timeout')), timeout)
+                    )
+                ]);
+
+                return {
+                    host,
+                    responseTime: Date.now() - start
+                };
+            } catch (error) {
+                throw error;
+            }
+        };
+
+        try {
+            // Check all hosts concurrently and get the fastest responding one
+            const results = await Promise.allSettled(
+                reliableNodeHosts.map(host => checkHost(host))
+            );
+
+            const successfulHosts = results
+                .filter((result): result is PromiseFulfilledResult<{ host: string; responseTime: number }> =>
+                    result.status === 'fulfilled'
+                )
+                .map(result => result.value)
+                .sort((a, b) => a.responseTime - b.responseTime);
+
+            if (!successfulHosts.length) {
+                throw new Error('All reliable node hosts failed to respond');
+            }
+
+            const bestHost = successfulHosts[0].host;
+
+            if (reconfigure) {
+                this.settings = new SettingsImpl({
+                    ...this.settings,
+                    httpClient: HttpClientFactory.createHttpClient(bestHost, this.settings.httpClientOptions),
+                    nodeHost: bestHost,
+                });
+            }
+
+            return bestHost;
+
+        } catch (error: any) {
+            throw new Error(`Failed to select best host: ${error.message}`);
         }
-        return bestHost;
     }
 }
