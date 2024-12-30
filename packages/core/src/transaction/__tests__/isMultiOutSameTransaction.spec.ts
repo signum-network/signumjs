@@ -25,7 +25,7 @@ describe('isMultiOutSameTransaction', () => {
     it('returns false on wrong type', () => {
 
         const transaction = {
-            type: TransactionType.Escrow,
+            type: TransactionType.AdvancedPayment,
             subtype: TransactionPaymentSubtype.Ordinary
         };
 

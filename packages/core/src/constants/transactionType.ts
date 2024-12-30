@@ -13,30 +13,36 @@
  */
 export enum TransactionType {
     /**
-     * @see TransactionPaymentSubtype
+     * {@link TransactionPaymentSubtype}
      */
     Payment = 0,
     /**
-     * @see TransactionArbitrarySubtype
+     * {@link TransactionArbitrarySubtype}
      */
     Arbitrary,
     /**
-     * @see TransactionAssetSubtype
+     * {@link TransactionAssetSubtype}
      */
     Asset,
     /**
-     * @see TransactionMarketplaceSubtype
+     * {@link TransactionMarketplaceSubtype}
      */
     Marketplace,
     /**
-     * @see TransactionLeasingSubtype
+     * {@link TransactionLeasingSubtype}
      */
     Leasing,
     /**
-     * @see TransactionMiningSubtype
+     * {@link TransactionMiningSubtype}
      */
     Mining = 20,
-    Escrow = 21,
-    AT = 22,
+    /**
+     * {@link TransactionEscrowSubtype}
+     */
+    AdvancedPayment = 21,
+    /**
+     * {@link TransactionSmartContractSubtype}
+     */
+    SmartContract = 22,
 }
 
