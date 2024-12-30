@@ -7,7 +7,7 @@ import {
     getContract,
     getContractsByAccount,
     publishContract,
-    getSingleContractMapValue, getContractMapValuesByFirstKey, getAllContractsByCodeHash
+    getSingleContractMapValue, getContractMapValuesByFirstKey, getAllContractsByCodeHash, callContractMethod
 } from '../factories/contract';
 import {TransactionId} from '../../typings/transactionId';
 
@@ -146,7 +146,6 @@ describe('Contract Api', () => {
             vi.resetAllMocks();
         });
 
-
         it('should publish contract', async () => {
 
             // @ts-ignore
@@ -230,6 +229,57 @@ describe('Contract Api', () => {
                 lastIndex: 600
             });
             expect(contractList.ats).toHaveLength(0);
+        });
+    });
+
+    describe('callContractMethod', () => {
+
+        const mockResponse = {
+            transaction: 'transaction',
+            requestProcessingTime: 1
+        };
+
+        it('should getAllContracts using signa only', async () => {
+
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, mockResponse,
+                    'relPath?requestType=sendMoney&message=640000000000000001000000000000000200000000000000&messageIsText=false&amountNQT=2000&publicKey=senderPublicKey&recipient=contractId&feeNQT=feePlanck&deadline=1440'
+                )
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contractList = await callContractMethod(service)({
+                contractId: 'contractId',
+                feePlanck: 'feePlanck',
+                methodId: '100',
+                methodArgs: ['1','2'],
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+                amountPlanck: '2000',
+                skipAdditionalSecurityCheck: true
+            }) as TransactionId;
+            expect(contractList.transaction).toMatch('transaction');
+        });
+
+        it('should getAllContracts using tokens', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, mockResponse,
+                    'relPath?requestType=transferAsset&message=640000000000000001000000000000000200000000000000&messageIsText=false&asset=assetId&quantityQNT=1000000&publicKey=senderPublicKey&recipient=contractId&feeNQT=feePlanck&amountNQT=assetId&deadline=1440',
+                )
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contractList = await callContractMethod(service)({
+                contractId: 'contractId',
+                feePlanck: 'feePlanck',
+                methodId: '100',
+                methodArgs: ['1','2'],
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+                amountPlanck: '2000',
+                assetId: 'assetId',
+                assetQuantity: '1000000',
+                skipAdditionalSecurityCheck: true
+            }) as TransactionId;
+            expect(contractList.transaction).toMatch('transaction');
         });
     });
 });

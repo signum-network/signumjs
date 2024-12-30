@@ -29,7 +29,8 @@ export const transferAsset = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 amountNQT: a.amountPlanck || undefined,
                 deadline: a.deadline || DefaultDeadline,
-                referencedTransactionFullHash: a.referencedTransactionFullHash
+                referencedTransactionFullHash: a.referencedTransactionFullHash,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {
