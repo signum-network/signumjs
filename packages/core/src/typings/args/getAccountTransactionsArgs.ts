@@ -1,8 +1,12 @@
 /**
  * The argument object for {@link AccountApi.getAccountTransactions}
  *
- * @param {string} accountId The numeric accountId
- * @param {string?} timestamp The timestamp (block time) you are looking for
+ * @param {string|null} accountId The numeric accountId (set it explicitly null when using senderId and/or recipientId)
+ * @param {string?} senderId If using this then you get the transactions only for this sending account (can be used with recipientId)
+ * @param {string?} recipientId If using this then you get the transactions only for this receiving account (can be used with senderId)
+ * @param {boolean?} bidirectional Only for senderId and recipientId - If true then all transfers between (back and forth) senderId and recipientId are returned
+ * @param {string?} timestamp The timestamp (block time) you are looking for. This is cool for incremental transaction loading
+ * and speeds up fetching significantly
  * @param {number?} firstIndex The first index of the transaction list, beginning at 0
  * @param {number?} lastIndex The last index of the transaction list (BRS does not return more than 500)
  * @param {number?} numberOfConfirmations The minimum required number of confirmations per transaction
@@ -14,7 +18,7 @@
 * @category args
 */
 export interface GetAccountTransactionsArgs {
-    accountId: string;
+    accountId: string | null; // explicit null
     timestamp?: string;
     firstIndex?: number;
     includeIndirect?: boolean;
@@ -23,4 +27,7 @@ export interface GetAccountTransactionsArgs {
     numberOfConfirmations?: number;
     subtype?: number;
     type?: number;
+    recipientId?: string;
+    senderId?: string;
+    bidirectional?: boolean;
 }
