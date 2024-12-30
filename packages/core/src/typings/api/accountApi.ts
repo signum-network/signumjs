@@ -2,7 +2,6 @@ import {TransactionList} from '../transactionList';
 import {SubscriptionList} from '../subscriptionList';
 import {UnconfirmedTransactionList} from '../unconfirmedTransactionList';
 import {Balance} from '../balance';
-import {AliasList} from '../aliasList';
 import {Account} from '../account';
 import {TransactionId} from '../transactionId';
 import {
@@ -18,8 +17,6 @@ import {RewardRecipient} from '../rewardRecipient';
 import {BlockList} from '../blockList';
 import {UnsignedTransaction} from '../unsignedTransaction';
 import {TradeHistory} from '../tradeHistory';
-import {GetAliasesArgs} from '../args/getAliasesArgs';
-import {getAccountTransactionsFromSenderToRecipient} from '../../api/factories/account/getAccountTransactionsFromSenderToRecipient';
 import {GetAccountTransactionsSenderRecipientArgs} from '../args/getAccountTransactionsSenderRecipientArgs';
 
 /**
