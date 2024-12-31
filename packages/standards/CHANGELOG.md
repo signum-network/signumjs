@@ -1,5 +1,14 @@
 # Change Log
 
+## 2.0.1
+
+### Patch Changes
+
+- Added IIFE bundles
+- Updated dependencies
+  - @signumjs/core@2.0.1
+  - @signumjs/util@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
