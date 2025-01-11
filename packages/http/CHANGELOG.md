@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- Crypto: Custom Crypto Provider on getInstance
+
 ## 2.0.1
 
 ### Patch Changes

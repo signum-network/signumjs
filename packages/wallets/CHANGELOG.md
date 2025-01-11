@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- Crypto: Custom Crypto Provider on getInstance
+- Updated dependencies
+  - @signumjs/core@2.0.2
+  - @signumjs/crypto@2.0.2
+  - @signumjs/standards@2.0.2
+  - @signumjs/util@2.0.2
+
 ## 2.0.1
 
 ### Patch Changes
