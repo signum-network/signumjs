@@ -16,10 +16,8 @@ import {WebCryptoProvider} from './webCryptoProvider';
 export class Crypto {
 
     private static instance: Crypto;
-    private cryptoProvider: CryptoProvider;
 
-    private constructor() {
-        this.cryptoProvider = Crypto.isNode() ? new NodeJSCryptoProvider() : new WebCryptoProvider();
+    private constructor(private cryptoProvider: CryptoProvider) {
     }
 
     /**
@@ -32,10 +30,12 @@ export class Crypto {
 
     /**
      * Singleton instance accessor
+     * @param customProvider The implementation of a CryptoProvider for non-Web or NodeJS environments
      */
-    static getInstance(): Crypto {
+    static getInstance(customProvider?: CryptoProvider): Crypto {
         if (!Crypto.instance) {
-            Crypto.instance = new Crypto();
+            const provider = !customProvider ? Crypto.isNode() ? new NodeJSCryptoProvider() : new WebCryptoProvider() : customProvider;
+            Crypto.instance = new Crypto(provider);
         }
         return Crypto.instance;
     }
@@ -47,13 +47,5 @@ export class Crypto {
         return typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
     }
 
-    /**
-     * Allows to set a custom crypto provider.
-     * This may be useful/necessary when using non-NodeJs or non-Web environments, e.g. React Native
-     * @param customProvider The implementation of a CryptoProvider
-     */
-    setCustomProvider(customProvider: CryptoProvider): void {
-        this.cryptoProvider = customProvider;
-    }
 }
 

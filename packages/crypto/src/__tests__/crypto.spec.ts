@@ -22,13 +22,11 @@ class TestCryptoProvider implements CryptoProvider {
 
 describe('Crypto', () => {
     test('should use custom crypto provider', () => {
-        const crypto = Crypto.getInstance();
-        crypto.setCustomProvider(new TestCryptoProvider());
+        const crypto = Crypto.getInstance(new TestCryptoProvider());
         const testHash = crypto.provider.sha256(new Uint8Array([12, 23, 54, 46]));
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
     test('should use custom crypto provider', () => {
-        Crypto.getInstance().setCustomProvider(new TestCryptoProvider());
         const testHash = sha256AsBytes('foo', 'utf8');
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
