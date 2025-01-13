@@ -38,7 +38,7 @@
     "compile": "turbo run compile",
     "bundle": "turbo run bundle",
     "doc": "typedoc",
-    "publish": "turbo run compile test bundle && changeset publish --tag",
+    "publish": "./publish.sh",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "posttest:ci": "./generate-coverage-report.sh",

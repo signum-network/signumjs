@@ -1,15 +1,15 @@
-import {CryptoProvider} from '../typings/cryptoProvider';
-import {CryptoParams} from './cryptoParams';
+import {CryptoAdapter} from '../typings/cryptoAdapter';
+import {CryptoParams} from '../base';
 import {sha256 as sha256JS} from 'js-sha256'
 
-export class WebCryptoProvider implements CryptoProvider {
+export class WebCryptoAdapter implements CryptoAdapter {
     private readonly crypto: Crypto;
 
     constructor() {
         if (typeof window !== 'undefined') {
             this.crypto = window.crypto;
         } else {
-            throw new Error('WebCryptoProvider: Looks like you are not in a web environment...');
+            throw new Error('WebCryptoAdapter: Looks like you are not in a web environment...');
         }
     }
 

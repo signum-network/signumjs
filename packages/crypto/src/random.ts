@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2024 Signum Network
  */
 
-import {Crypto, Buffer} from './crypto';
+import {Crypto, Buffer} from './base';
 
 /**
  * Gets am Array of random bytes
@@ -21,7 +21,7 @@ import {Crypto, Buffer} from './crypto';
  * @category random
  */
 export function getRandomBytes(length: number): Uint8Array {
-    return Crypto.getInstance().provider.getRandomValues(new Uint8Array(length));
+    return Crypto.adapter.getRandomValues(new Uint8Array(length));
 }
 
 /**
@@ -47,7 +47,7 @@ export function getRandomWords(count: number, dictionary: string[]): string[] {
 
     const indices = new Set<number>();
     const randomBytes = new Uint8Array(4);
-    const cp = Crypto.getInstance().provider;
+    const cp = Crypto.adapter;
     while (indices.size < count) {
         cp.getRandomValues(randomBytes);
         const randomUint32 = ((randomBytes[0] << 24) | (randomBytes[1] << 16) | (randomBytes[2] << 8) | randomBytes[3]) >>> 0;
@@ -83,6 +83,6 @@ export function getRandomString(length: number, alphabet: string = DefaultAlphab
     if (alphabet.length >= 2 ** 16) { // just supporting UInt16
         throw new Error('Alphabet is too large.');
     }
-    const indices = Crypto.getInstance().provider.getRandomValues(new Uint8Array(length * 2));
+    const indices = Crypto.adapter.getRandomValues(new Uint8Array(length * 2));
     return Buffer.from(new Uint16Array(indices.buffer)).reduce((str, i) => str + alphabet[i % alphabet.length], '');
 }

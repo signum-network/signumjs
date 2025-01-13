@@ -3,7 +3,7 @@ const esbuild = require('esbuild');
 
 function createBuildSettings(options) {
     return {
-        entryPoints: ['./src/index.ts'],
+        entryPoints: ['./src/web-bundle.ts'],
         outfile: './dist/signumjs.crypto.min.js',
         globalName: 'sig$crypto',
         external: ["crypto"],

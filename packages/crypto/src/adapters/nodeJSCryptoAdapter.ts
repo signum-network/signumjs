@@ -1,8 +1,8 @@
-import {CryptoProvider} from '../typings/cryptoProvider';
-import {CryptoParams} from './cryptoParams';
+import {CryptoParams} from '../base';
+import {CryptoAdapter} from '../typings/cryptoAdapter';
 import {CryptoError} from '../typings/cryptoError';
 
-export class NodeJSCryptoProvider implements CryptoProvider {
+export class NodeJSCryptoAdapter implements CryptoAdapter {
     private readonly crypto: any;
 
     constructor() {

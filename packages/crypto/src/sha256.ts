@@ -2,7 +2,7 @@
  * Original work Copyright (c) 2024 Signum Network
  */
 
-import {Crypto, Buffer} from './crypto';
+import {Crypto, Buffer} from './base';
 
 export type InputEncoding = 'utf8' | 'hex' | 'base64';
 /**
@@ -14,7 +14,7 @@ export type InputEncoding = 'utf8' | 'hex' | 'base64';
  * @category sha256
  */
 export function sha256Raw(input: string, encoding: InputEncoding ): ArrayBuffer {
-    return Crypto.getInstance().provider.sha256(Buffer.from(input, encoding));
+    return Crypto.adapter.sha256(Buffer.from(input, encoding));
 }
 
 
@@ -64,5 +64,5 @@ export function sha256AsBase64(input: string, encoding: InputEncoding = 'utf8'):
  */
 export function sha256Binary(data: string | Uint8Array): Uint8Array {
     const b: Uint8Array = typeof data === 'string' ? Buffer.from(data, 'hex') : data;
-    return Crypto.getInstance().provider.sha256(b);
+    return Crypto.adapter.sha256(b);
 }

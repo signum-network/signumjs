@@ -1,10 +1,10 @@
 import {describe, test, expect} from 'vitest';
 
-import {CryptoProvider} from '../typings/cryptoProvider';
-import {Crypto} from '../crypto';
+import {CryptoAdapter} from '../typings/cryptoAdapter';
+import {Crypto} from '../base';
 import {sha256AsBytes} from '../sha256';
 
-class TestCryptoProvider implements CryptoProvider {
+class TestCryptoAdapter implements CryptoAdapter {
     encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
         return Promise.resolve(new Uint8Array([1, 2, 3, 4, 5]));
     }
@@ -20,14 +20,19 @@ class TestCryptoProvider implements CryptoProvider {
 
 }
 
+Crypto.init(new TestCryptoAdapter());
+
 describe('Crypto', () => {
     test('should use custom crypto provider', () => {
-        const crypto = Crypto.getInstance(new TestCryptoProvider());
-        const testHash = crypto.provider.sha256(new Uint8Array([12, 23, 54, 46]));
+        const testHash = Crypto.adapter.sha256(new Uint8Array([12, 23, 54, 46]));
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
     test('should use custom crypto provider', () => {
         const testHash = sha256AsBytes('foo', 'utf8');
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
+    test('should throw error when no crypto provider available', () => {
+        Crypto.init(undefined);
+        expect(() => Crypto.adapter.sha256(new Uint8Array([11, 12, 13, 14, 15]))).toThrow('No Crypto Adapter provided - Use [Crypto.init()] first');
+    })
 });

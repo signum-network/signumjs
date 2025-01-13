@@ -1,5 +1,4 @@
-// @ts-ignore
-import { describe, it, expect, test } from 'vitest';
+import {describe, expect, test} from 'vitest';
 import {getRandomBytes, getRandomString, getRandomWords} from '../random';
 
 describe('random', () => {

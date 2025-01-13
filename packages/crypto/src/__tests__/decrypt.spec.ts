@@ -1,8 +1,9 @@
-import { describe, it, expect } from 'vitest';
+import {describe, it, expect} from 'vitest';
 import {generateSignKeys} from '../sign';
 import {encryptData, encryptMessage} from '../encrypt';
 import {decryptData, decryptMessage} from '../decrypt';
 import {CryptoError} from '../typings/cryptoError';
+
 
 describe('Encrypt and Decrypt - No Crypto-JS', () => {
 

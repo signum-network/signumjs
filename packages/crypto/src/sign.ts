@@ -4,7 +4,7 @@
 
 import {sha256AsBytes, sha256Binary} from './sha256';
 import {SignKeys} from './typings/signKeys';
-import {ECKCDSA} from './crypto';
+import {ECKCDSA} from './base';
 
 function hexToDec(s: string): string {
     const digits = [0];

@@ -1,8 +1,9 @@
-import { describe, it, expect, test } from 'vitest';
+import {describe, expect, test} from 'vitest';
 
-import {sha256AsBase64, sha256AsBytes, sha256AsHex, sha256Binary} from '../sha256';
+import {sha256AsBase64, sha256AsHex} from '../sha256';
 
 describe('sha256', () => {
+
     // implicitely tests sha256Raw and sha256Byte
     test('Should be able to generate sha256AsHex', () => {
         const hash = sha256AsHex('Some Text');

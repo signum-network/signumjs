@@ -1,5 +1,43 @@
 # Change Log
 
+## 2.0.3
+
+### Patch Changes
+
+- Decoupled Crypto Provider. Breaking Change as this requires the developer to define the platform specific crypto provider before using the sdk
+
+  Breaking Change:
+
+  If you see the following error:
+
+  ```ts
+  "No Crypto Provider provided - Use [Crypto.init()] first";
+  ```
+
+  You need to initialize the crypto module with the platform specific CryptoProvider.
+
+  **NodeJS**
+
+  ```ts
+  import { Crypto, NodeJSCryptoProvider } from "@signumjs/crypto";
+  Crypto.init(new NodeJSCryptoProvider());
+  ```
+
+  **Web/Browser**
+
+  ```ts
+  import { Crypto, WebCryptoProvider } from "@signumjs/crypto";
+  Crypto.init(new WebCryptoProvider());
+  ```
+
+  > Further implementations will be provided as external modules/packages, i.e. React Native Expo
+
+- Updated dependencies
+  - @signumjs/crypto@2.0.3
+  - @signumjs/contracts@2.0.3
+  - @signumjs/http@2.0.3
+  - @signumjs/util@2.0.3
+
 ## 2.0.2
 
 ### Patch Changes

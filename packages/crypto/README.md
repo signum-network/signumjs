@@ -25,7 +25,9 @@ yarn add @signumjs/crypto
 #### Example
 
 ```js
-import {sha256AsHex} from '@signumjs/crypto'
+import {sha256AsHex, Crypto, NodeJSCryptoProvider} from '@signumjs/crypto'
+
+Crypto.init(new NodeJSCryptoProvider()); // or WebCryptoProvider
 console.log(sha256AsHex('test'))
 ```
 
@@ -44,6 +46,7 @@ Just import the package using the HTML `<script>` tag.
 #### Example
 
 ```js
+sig$crypto.Crypto.init(new sig$crypto.WebCryptoProvider())
 console.log(sig$crypto.sha256AsHex('test'))
 ```
 
@@ -53,10 +56,28 @@ See more here:
 
 ## Crossplatform Usage
 
-The crypto package is built to be used out of the box in modern web browsers and NodeJS (and alike backends).
-Depending on the runtime environment the correct `CryptoProvider`-implementation is being used for cryptographic routines.
+As there are different crypto implementations for different platforms available the underlying crypto contexts need to be initialized. 
+The crypto package provides used out of the box implementations for modern web browsers and NodeJS (and alike backends, i.e. deno and bun).
+Depending on the runtime environment the correct `CryptoAdapter`-implementation needs to be set for cryptographic routines.
 In a web browser the [Crypto Web API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) is used, i.e. a secure (https) environment is required.
 In NodeJS the [NodeJS Crypto API](https://nodejs.org/api/crypto.html) is used.
+
+Run the following before any usage of crypto functions
+
+__Web__
+
+```ts
+import {Crypto, WebCryptoAdapter} from "@signumjs/crypto"
+Crypto.init(new WebCryptoAdapter());
+```
+
+__NodeJS__ (Deno, Bun)
+
+```ts
+import {Crypto, NodeJSCryptoAdapter} from "@signumjs/crypto"
+Crypto.init(new NodeJSCryptoAdapter());
+```
+
 
 > For web `localhost` is considered a secure context
 
@@ -112,7 +133,7 @@ Then use the custom crypto provider like this:
 ```ts
 import {Crypto, sha256AsHex} from '@signumjs/crypto'
 
-Crypto.getInstance().setCustomProvider(new CustomCryptoProvider());
+Crypto.init(new CustomCryptoProvider());
 
 (async ()=> {
     // internally uses the custom crypto provider
