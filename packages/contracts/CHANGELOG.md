@@ -1,5 +1,17 @@
 # Change Log
 
+## 2.0.4
+
+### Patch Changes
+
+- [Breaking Change] CryptoProvider renamed to CryptoAdapter
+
+  - Crypto Adapters `NodeJsCryptoAdapter` and `WebCryptoAdapter` are dedicate path `@signumjs/crypto/adapters`
+  - `generateMnemonic` has changed API to better support partial settings.
+
+- Updated dependencies
+  - @signumjs/util@2.0.4
+
 ## 2.0.3
 
 ### Patch Changes

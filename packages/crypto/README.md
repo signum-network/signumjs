@@ -81,14 +81,16 @@ Crypto.init(new NodeJSCryptoAdapter());
 
 > For web `localhost` is considered a secure context
 
+> If using `signumjs.crypto.min.js` the initialization is not required. It is automatically set to `WebCryptoAdapter`
 
-### Implementing CryptoProvider-Interface
 
-If needed in other environments, e.g. React Native, a custom implementation of the `CryptoProvider` interface is required.
+### Implementing CryptoAdapter-Interface
+
+If needed in other environments, e.g. React Native, a custom implementation of the `CryptoAdapter` interface is required.
 The interface implements the bare minimum crypto functions needed for Signum:
 
 ```ts
-export interface CryptoProvider {
+export interface CryptoAdapter {
     encryptAes256Cbc(plaintext: Uint8Array, key: Uint8Array): Promise<Uint8Array>;
 
     decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array>;
@@ -102,9 +104,9 @@ export interface CryptoProvider {
 Like this:
 
 ```ts
-import {CryptoProvider} from '@signumjs/crypto'
+import {type CryptoAdapter} from '@signumjs/crypto'
 
-class CustomCryptoProvider implements CryptoProvider {
+class CustomCryptoAdapter implements CryptoAdapter {
     decryptAes256Cbc(ciphertext: Uint8Array, key: Uint8Array): Promise<Uint8Array> {
         // Do your platforms implementation here
         return Promise.resolve(undefined);
@@ -133,7 +135,7 @@ Then use the custom crypto provider like this:
 ```ts
 import {Crypto, sha256AsHex} from '@signumjs/crypto'
 
-Crypto.init(new CustomCryptoProvider());
+Crypto.init(new CustomCryptoAdapter());
 
 (async ()=> {
     // internally uses the custom crypto provider
