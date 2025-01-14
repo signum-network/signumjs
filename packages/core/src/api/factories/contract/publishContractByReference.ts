@@ -6,7 +6,7 @@ import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {PublishContractByReferenceArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
-import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
+import {generateDataStack} from '@signumjs/contracts';
 import {calculateMinimumCreationFee} from '@signumjs/contracts';
 
 

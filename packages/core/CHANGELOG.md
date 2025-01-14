@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.5
+
+### Patch Changes
+
+- Uses exports in package.json and minor fixes
+- Updated dependencies
+  - @signumjs/contracts@2.0.5
+  - @signumjs/crypto@2.0.5
+  - @signumjs/http@2.0.5
+  - @signumjs/util@2.0.5
+
 ## 2.0.4
 
 ### Patch Changes

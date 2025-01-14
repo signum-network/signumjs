@@ -8,7 +8,7 @@ import {PublishContractArgs} from '../../../typings/args';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
-import {generateDataStack} from '@signumjs/contracts/out/generateDataStack';
+import {generateDataStack} from '@signumjs/contracts';
 
 
 /**

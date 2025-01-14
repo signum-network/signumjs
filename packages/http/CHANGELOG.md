@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.5
+
+### Patch Changes
+
+- Uses exports in package.json and minor fixes
+
 ## 2.0.4
 
 ### Patch Changes

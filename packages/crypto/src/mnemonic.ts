@@ -4,7 +4,6 @@
 
 import {words} from './dictionaries/en';
 import {getRandomWords} from './random';
-import {a} from 'vitest/dist/chunks/suite.CcK46U-P';
 
 /**
  * The Strength of the generated mnemonic

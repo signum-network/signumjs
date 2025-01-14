@@ -15,4 +15,5 @@ export * from './countCodePages';
 export * from './countDataPages';
 export * from './calculateMinimumCreationFee';
 export * from './generateMethodCall';
+export * from './generateDataStack';
 export * from './typings';
