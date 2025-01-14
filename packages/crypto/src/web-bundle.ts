@@ -21,7 +21,7 @@ export {Buffer, Crypto} from './base'; // export as very useful!
 
 // init web adapter
 import {Crypto} from './base';
-import {WebCryptoAdapter} from './adapters/webCryptoAdapter';
+import {WebCryptoAdapter} from './adapters';
 
 (() => {
     Crypto.init(new WebCryptoAdapter());
