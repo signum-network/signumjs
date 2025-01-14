@@ -32,7 +32,8 @@
     "turbo": "^2.0.14",
     "typedoc": "0.26.6",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "husky": "^9.1.7"
   },
   "scripts": {
     "compile": "turbo run compile",
@@ -42,7 +43,8 @@
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "posttest:ci": "./generate-coverage-report.sh",
-    "test:e2e": "TEST_ENV=e2e turbo run test"
+    "test:e2e": "TEST_ENV=e2e turbo run test",
+    "prepare": "husky"
   },
   "workspaces": [
     "packages/*"
