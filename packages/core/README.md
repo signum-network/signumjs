@@ -4,7 +4,8 @@ Core module to build cool apps for the Signum blockchain platform
 
 ## Installation
 
-SignumJS can be used with NodeJS or Web. Two formats are available
+SignumJS is an isomorphic SDK and can be used with NodeJS, Web Browser, and even React Native. 
+For non-pure Javascript Apps, e.g. PHP, .Net, it is possible to use a bundled/minified version.  
 
 ### Using with NodeJS and/or modern web frameworks
 
@@ -43,10 +44,12 @@ const ledger = LedgerClientFactory.createClient({
 ```
 
 
-### Using in classic `<script>`
+### Using in classic `<script>` 
+
+> This is useful for plain html, js, css and also for PHP, .Net etc
 
 Each package is available as bundled standalone library using IIFE.
-This way _signumJS_ can be used also within `<script>`-Tags.
+This way _SignumJS_ can be used also within `<script>`-Tags.
 This might be useful for Wordpress and/or other PHP applications.
 
 Just import the package using the HTML `<script>` tag.
@@ -58,7 +61,7 @@ Just import the package using the HTML `<script>` tag.
 
 ```js
 (() => {
-    const ledger = sig$. LedgerClientFactory.createClient( {nodeHost: "https://europe3.testnet.network"});
+    const ledger = sig$.LedgerClientFactory.createClient( {nodeHost: "https://europe3.testnet.network"});
     ledger.network.getBlockchainStatus().then(console.log).catch(console.error);
 })()
 ```

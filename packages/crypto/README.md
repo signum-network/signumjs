@@ -46,9 +46,10 @@ Just import the package using the HTML `<script>` tag.
 #### Example
 
 ```js
-sig$crypto.Crypto.init(new sig$crypto.WebCryptoProvider())
 console.log(sig$crypto.sha256AsHex('test'))
 ```
+
+> The "legacy" web bundle initializes the Crypto module automatically with the WebCryptoAdapter. So, no initialization is necessary.
 
 See more here:
 [@signumjs/crypto Online Documentation](https://signum-network.github.io/signumjs/modules/crypto.html)
@@ -122,9 +123,9 @@ class CustomCryptoAdapter implements CryptoAdapter {
         return undefined;
     }
 
-    sha256(data: ArrayBuffer): Promise<Uint8Array> {
+    sha256(data: ArrayBuffer): Uint8Array {
         // Do your platforms implementation here
-        return Promise.resolve(undefined);
+        return undefined;
     }
 
 }
