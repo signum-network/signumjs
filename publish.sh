@@ -25,6 +25,9 @@ if ! npx turbo run compile test bundle; then
     exit 1
 fi
 
+cp "./packages/core/CHANGELOG.md" "./CHANGELOG.md"
+git commit -am "chore: Updated root changelog"
+
 # Create git tag
 echo "🏷️ Creating git tag: $VERSION"
 git tag "$VERSION"
@@ -39,3 +42,4 @@ npx changeset publish --no-git-tag --otp="$OTP"
 
 git push origin "$VERSION"
 echo "🎉 Successfully published $VERSION"
+
