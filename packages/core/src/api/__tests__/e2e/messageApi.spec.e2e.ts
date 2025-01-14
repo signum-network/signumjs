@@ -1,11 +1,13 @@
+import {describe, it, beforeAll, expect} from  "vitest"
 import {loadEnvironment} from './helpers/environment';
 import {ChainService} from '../../../service/chainService';
-import {decryptMessage, generateMasterKeys, getAccountIdFromPublicKey, SignKeys} from '@signumjs/crypto';
+import {decryptMessage, generateSignKeys, getAccountIdFromPublicKey, SignKeys} from '@signumjs/crypto';
 import {getTransaction} from '../../factories/transaction/getTransaction';
-import {isAttachmentVersion} from '../../../attachment';
+import {getAttachmentVersion} from '../../../attachment';
 import {sendEncryptedMessage, sendMessage} from '../../factories/message';
 import {FeeQuantPlanck} from '@signumjs/util';
 import {TransactionId} from '../../../typings/transactionId';
+
 
 
 describe('[E2E] Message Api', () => {
@@ -22,10 +24,9 @@ describe('[E2E] Message Api', () => {
             nodeHost: environment.testNetHost,
             apiRootUrl: environment.testNetApiPath
         });
-        vi.setTimeout(environment.timeout);
 
-        senderKeys = generateMasterKeys(environment.testPassphrase);
-        recipientKeys = generateMasterKeys(environment.testRecipientPassphrase);
+        senderKeys = generateSignKeys(environment.testPassphrase);
+        recipientKeys = generateSignKeys(environment.testRecipientPassphrase);
         recipientId = getAccountIdFromPublicKey(recipientKeys.publicKey);
     });
 
@@ -45,7 +46,7 @@ describe('[E2E] Message Api', () => {
         expect(transactionId).not.toBeUndefined();
 
         const transaction = await getTransaction(service)(transactionId.transaction);
-        expect(isAttachmentVersion(transaction, 'PublicKeyAnnouncement')).toBeTruthy();
+        expect(getAttachmentVersion(transaction, 'PublicKeyAnnouncement')).toBeTruthy();
 
     });
 
@@ -65,7 +66,7 @@ describe('[E2E] Message Api', () => {
         expect(transactionId).not.toBeUndefined();
 
         const transaction = await getTransaction(service)(transactionId.transaction);
-        expect(isAttachmentVersion(transaction, 'PublicKeyAnnouncement')).toBeTruthy();
+        expect(getAttachmentVersion(transaction, 'PublicKeyAnnouncement')).toBe(1);
 
     });
 
@@ -88,11 +89,11 @@ describe('[E2E] Message Api', () => {
     it('should get a transaction from BRS with encrypted message and decrypt successfully', async () => {
         const transaction = await getTransaction(service)(environment.testEncryptedMessageTransactionId);
         expect(transaction).not.toBeUndefined();
-        isAttachmentVersion(transaction, 'EncryptedMessage');
         const {encryptedMessage} = transaction.attachment;
-
         const recipientsMessage = decryptMessage(encryptedMessage, transaction.senderPublicKey, recipientKeys.agreementPrivateKey);
+
         const sendersMessage = decryptMessage(encryptedMessage, recipientKeys.publicKey, senderKeys.agreementPrivateKey);
+        expect(getAttachmentVersion(transaction, 'EncryptedMessage')).toBe(1);
         expect(recipientsMessage).toEqual('[E2E] sendEncryptedTextMessage TEST (encrypted)');
         expect(recipientsMessage).toEqual(sendersMessage);
 

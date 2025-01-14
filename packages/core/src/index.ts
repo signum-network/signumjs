@@ -33,6 +33,7 @@ export * from './typings/assetAccount';
 export * from './typings/assetAccountList';
 export * from './typings/assetBalance';
 export * from './typings/attachment';
+export * from './typings/attachmentVersionIdentifier';
 export * from './typings/balance';
 export * from './typings/block';
 export * from './typings/blockId';

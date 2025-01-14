@@ -1,5 +1,5 @@
 const {
-    isAttachmentVersion,
+    hasAttachment,
     TransactionType,
     TransactionArbitrarySubtype, Address
 } = require('@signumjs/core');
@@ -8,7 +8,7 @@ const {api, askAccount, handleError } = require('../helper');
 
 // here we check for a certain attachment type, and get the text message if not encrypted
 const getMessageText = transaction =>
-    isAttachmentVersion(transaction, 'EncryptedMessage')
+    hasAttachment(transaction, 'EncryptedMessage')
         ? '<encrypted>'
         : transaction.attachment.message;
 
