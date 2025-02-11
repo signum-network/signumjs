@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/wallets",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Wallets communication package for DApps in the Signum Network",
   "keywords": [
     "signum",
@@ -23,9 +23,10 @@
     "url": "https://github.com/signum-network/signumjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "license": "Apache-2.0",
+  "main": "./out/index.js",
   "exports": {
     ".": {
       "types": "./out/index.d.ts",
@@ -34,7 +35,7 @@
   },
   "private": false,
   "devDependencies": {
-    "@types/node": "^20.16.0",
+    "@types/node": "^18.19.75",
     "@signumjs/core": "*",
     "@signumjs/crypto": "*"
   },
@@ -59,7 +60,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@signumjs/core": "^2.0.5",
-    "@signumjs/crypto": "^2.0.5"
+    "@signumjs/core": "^2.0.6",
+    "@signumjs/crypto": "^2.0.6"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/util",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Useful utilities and tools for building Signum Network applications",
   "keywords": [
     "signum",
@@ -19,9 +19,10 @@
     "url": "https://github.com/signum-network/signumjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "license": "Apache-2.0",
+  "main": "./out/index.js",
   "exports": {
     ".": {
       "types": "./out/index.d.ts",

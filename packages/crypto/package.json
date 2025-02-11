@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/crypto",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Cryptographic functions for building Signum Network apps.",
   "keywords": [
     "signum",
@@ -20,9 +20,10 @@
     "url": "https://github.com/signum-network/signumjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "license": "Apache-2.0",
+  "main": "./out/index.js",
   "exports": {
     ".": {
       "types": "./out/index.d.ts",

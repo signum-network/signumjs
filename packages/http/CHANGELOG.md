@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.0.6
+
+### Patch Changes
+
+- Breaking Change: renamed isAttachmentVersion to getAttachmentVersion and typed the version identifier
+- Added main field in package.json to fix resolution issues
+
 ## 2.0.5
 
 ### Patch Changes
