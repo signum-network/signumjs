@@ -1,5 +1,18 @@
 # Change Log
 
+## 2.0.6
+
+### Patch Changes
+
+- Breaking Change: renamed isAttachmentVersion to getAttachmentVersion and typed the version identifier
+- Added main field in package.json to fix resolution issues
+- Updated dependencies
+- Updated dependencies
+  - @signumjs/contracts@2.0.6
+  - @signumjs/crypto@2.0.6
+  - @signumjs/http@2.0.6
+  - @signumjs/util@2.0.6
+
 ## 2.0.5
 
 ### Patch Changes
