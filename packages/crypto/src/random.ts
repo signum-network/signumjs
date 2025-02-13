@@ -46,13 +46,17 @@ export function getRandomWords(count: number, dictionary: string[]): string[] {
     }
 
     const indices = new Set<number>();
+    const mask = 2 ** 32 - (2 ** 32 % dictionary.length);
     const randomBytes = new Uint8Array(4);
     const cp = Crypto.adapter;
     while (indices.size < count) {
         cp.getRandomValues(randomBytes);
         const randomUint32 = ((randomBytes[0] << 24) | (randomBytes[1] << 16) | (randomBytes[2] << 8) | randomBytes[3]) >>> 0;
         const randomIndex = randomUint32 % dictionary.length;
-        indices.add(randomIndex);
+        // avoid random bias
+        if (randomUint32 < mask) {
+            indices.add(randomUint32 % dictionary.length);
+        }
     }
     return Array.from(indices).map(index => dictionary[index]);
 }
@@ -80,9 +84,23 @@ export function getRandomString(length: number, alphabet: string = DefaultAlphab
     if (alphabet.length === 0) {
         throw new Error('Alphabet must not be empty.');
     }
-    if (alphabet.length >= 2 ** 16) { // just supporting UInt16
-        throw new Error('Alphabet is too large.');
+    const MaxLength = 65536; // 2**16
+    if (alphabet.length >= MaxLength) { // just supporting UInt16
+        throw new Error(`Alphabet is too large. Alphabet must be less than ${MaxLength} characters long.`);
     }
+    const maxNonBiasedValue = Math.floor(MaxLength / alphabet.length) * alphabet.length;
+
     const indices = Crypto.adapter.getRandomValues(new Uint8Array(length * 2));
-    return Buffer.from(new Uint16Array(indices.buffer)).reduce((str, i) => str + alphabet[i % alphabet.length], '');
+    const uint16View = new Uint16Array(indices.buffer);
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        let value = uint16View[i];
+        // Reject values that would create bias
+        while (value >= maxNonBiasedValue) {
+            const newBytes = Crypto.adapter.getRandomValues(new Uint8Array(2));
+            value = new Uint16Array(newBytes.buffer)[0];
+        }
+        result += alphabet[value % alphabet.length];
+    }
+    return result;
 }
