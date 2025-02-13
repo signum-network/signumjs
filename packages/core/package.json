@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/core",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Principal package with functions and models for building Signum Network applications.",
   "keywords": [
     "signum",

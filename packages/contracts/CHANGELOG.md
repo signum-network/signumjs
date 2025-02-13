@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.0.7
+
+### Patch Changes
+
+- 1a64657: improved crypto randomness for word and string generators
+- Updated dependencies [1a64657]
+  - @signumjs/util@2.0.7
+
 ## 2.0.6
 
 ### Patch Changes

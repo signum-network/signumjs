@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.7
+
+### Patch Changes
+
+- 1a64657: improved crypto randomness for word and string generators
+
 ## 2.0.6
 
 ### Patch Changes

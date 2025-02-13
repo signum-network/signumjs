@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/util",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Useful utilities and tools for building Signum Network applications",
   "keywords": [
     "signum",
