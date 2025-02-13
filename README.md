@@ -254,7 +254,7 @@ npm run build
 
 This monorepo uses [changeset](https://github.com/changesets/changesets) to manage the versions and publish the package. We use one version for all packages.
 
-1. Create a changeset: `npx changeset`
+1. Create a changeset: `npx changeset` (always include all packages)
 2. Bump version: `npx changeset version`
 3. Create git tag: `git tag <VERSION>` (starting with `v`, e.g. `v2.0.2`)
 3. Publish `npx changeset publish --no-git-tag --otp=<NPM_OTP>`

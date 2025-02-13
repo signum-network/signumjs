@@ -10,8 +10,9 @@ describe('random', () => {
             expect(bytes.length).toBe(length);
         });
 
+        // run this test "manually" - as it _may_ fail occasionally
         test.skip('distribution of bytes should be roughly uniform (this test may fail occasionally - rerun then)', () => {
-            const Iterations = 500_000;
+            const Iterations = 1_000_000;
             const ByteRange = 256;
             const byteCount = new Array(ByteRange).fill(0);
             const length = 1; // Test one byte at a time to count occurrences of each byte value
@@ -96,7 +97,7 @@ describe('random', () => {
             const alphabet = new Array<string>(2 ** 16 + 10).fill('a').join('');
             expect(() => {
                 getRandomString(length, alphabet);
-            }).toThrow('Alphabet is too large');
+            }).toThrow('Alphabet is too large. Alphabet must be less than 65536 characters long.');
         });
     });
 });
