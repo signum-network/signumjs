@@ -1,15 +1,15 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
         "outDir": "./out",
-        "types": ["vitest/globals"]
+        "types": ["vitest/globals"],
     },
-    "typeRoots": [ 
-        "typings", 
+    "typeRoots": [
+        "typings",
         "node_modules/@types"
     ],
     "include": [
         "./src",
         "README.md"
     ],
-    "extends": "../../tsconfig.json"
 }

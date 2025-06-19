@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./out",
     "types": ["vitest/globals"]
@@ -16,6 +17,5 @@
       "./src/**/*.ts"
     ],
     "template": "./README.md.hbs"
-  },
-  "extends": "../../tsconfig.json"
+  }
 }

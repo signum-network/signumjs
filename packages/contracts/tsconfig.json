@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./out",
     "types": [
@@ -18,6 +19,5 @@
       "./src/**/*.ts"
     ],
     "template": "./README.md.hbs"
-  },
-  "extends": "../../tsconfig.json"
+  }
 }

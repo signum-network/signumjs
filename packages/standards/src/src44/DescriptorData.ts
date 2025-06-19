@@ -7,6 +7,7 @@ import {SRC44ParseException, SRC44ValidationException} from './exceptions';
 import {sanitizeUrl} from '@braintree/sanitize-url';
 import {validateSRC44} from './validateSRC44';
 import { parseIpfsMedia } from './parseIpfsMedia';
+import {Amount} from '@signumjs/util';
 
 /**
  * Descriptor Data
@@ -204,5 +205,9 @@ export class DescriptorData {
      */
     public estimateFeePlanck(baseFee = 2000_0000): string {
         return String(Math.ceil(this.stringify().length / 184) * baseFee);
+    }
+
+    public estimateFee(text:string, baseFee: Amount): Amount {
+        return baseFee.clone().multiply(Math.ceil(text.length / 184));
     }
 }
