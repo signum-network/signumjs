@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/wallets",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Wallets communication package for DApps in the Signum Network",
   "keywords": [
     "signum",
@@ -60,7 +60,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@signumjs/core": "^2.0.7",
-    "@signumjs/crypto": "^2.0.7"
+    "@signumjs/core": "^2.0.8",
+    "@signumjs/crypto": "^2.0.8"
   }
 }

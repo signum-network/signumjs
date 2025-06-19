@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.8
+
+### Patch Changes
+
+- 8176d1c: Bringing comments back to compiled packages - they were accidentally omitted on compilation
+
 ## 2.0.7
 
 ### Patch Changes

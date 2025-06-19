@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.8
+
+### Patch Changes
+
+- 8176d1c: Bringing comments back to compiled packages - they were accidentally omitted on compilation
+- Updated dependencies [8176d1c]
+  - @signumjs/core@2.0.8
+  - @signumjs/crypto@2.0.8
+  - @signumjs/standards@2.0.8
+  - @signumjs/util@2.0.8
+
 ## 2.0.7
 
 ### Patch Changes
