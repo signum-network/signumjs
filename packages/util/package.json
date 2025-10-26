@@ -22,7 +22,10 @@
     "node": ">=18"
   },
   "license": "Apache-2.0",
-  "sideEffects": false,
+  "sideEffects": [
+    "src/internal/padStartPolyfill.ts",
+    "out/internal/padStartPolyfill.js"
+  ],
   "main": "./out/index.js",
   "exports": {
     ".": {
