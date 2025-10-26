@@ -1,5 +1,14 @@
 # Change Log
 
+## 2.0.9
+
+### Patch Changes
+
+- Improved tree shakeability
+- Updated dependencies
+  - @signumjs/core@2.0.9
+  - @signumjs/util@2.0.9
+
 ## 2.0.8
 
 ### Patch Changes

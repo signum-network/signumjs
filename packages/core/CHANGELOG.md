@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.0.9
+
+### Patch Changes
+
+- Improved tree shakeability
+- Updated dependencies
+  - @signumjs/contracts@2.0.9
+  - @signumjs/crypto@2.0.9
+  - @signumjs/http@2.0.9
+  - @signumjs/util@2.0.9
+
 ## 2.0.8
 
 ### Patch Changes

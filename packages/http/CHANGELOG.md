@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.9
+
+### Patch Changes
+
+- Improved tree shakeability
+
 ## 2.0.8
 
 ### Patch Changes
