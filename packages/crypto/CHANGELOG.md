@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.10
+
+### Patch Changes
+
+- Improved exports for encryption
+
 ## 2.0.9
 
 ### Patch Changes

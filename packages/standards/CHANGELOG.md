@@ -1,5 +1,14 @@
 # Change Log
 
+## 2.0.10
+
+### Patch Changes
+
+- Improved exports for encryption
+- Updated dependencies
+  - @signumjs/core@2.0.10
+  - @signumjs/util@2.0.10
+
 ## 2.0.9
 
 ### Patch Changes
