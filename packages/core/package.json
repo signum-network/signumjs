@@ -30,6 +30,50 @@
     ".": {
       "types": "./out/index.d.ts",
       "default": "./out/index.js"
+    },
+    "./api/account": {
+      "types": "./out/api/factories/index.account.d.ts",
+      "default": "./out/api/factories/index.account.js"
+    },
+    "./api/transaction": {
+      "types": "./out/api/factories/index.transaction.d.ts",
+      "default": "./out/api/factories/index.transaction.js"
+    },
+    "./api/message": {
+      "types": "./out/api/factories/index.message.d.ts",
+      "default": "./out/api/factories/index.message.js"
+    },
+    "./api/asset": {
+      "types": "./out/api/factories/index.asset.d.ts",
+      "default": "./out/api/factories/index.asset.js"
+    },
+    "./api/contract": {
+      "types": "./out/api/factories/index.contract.d.ts",
+      "default": "./out/api/factories/index.contract.js"
+    },
+    "./api/alias": {
+      "types": "./out/api/factories/index.alias.d.ts",
+      "default": "./out/api/factories/index.alias.js"
+    },
+    "./api/block": {
+      "types": "./out/api/factories/index.block.d.ts",
+      "default": "./out/api/factories/index.block.js"
+    },
+    "./api/network": {
+      "types": "./out/api/factories/index.network.d.ts",
+      "default": "./out/api/factories/index.network.js"
+    },
+    "./createReadOnlyClient": {
+      "types": "./out/ledgerClient/createReadOnlyClient.d.ts",
+      "default": "./out/ledgerClient/createReadOnlyClient.js"
+    },
+    "./createClient": {
+      "types": "./out/ledgerClient/createClient.d.ts",
+      "default": "./out/ledgerClient/createClient.js"
+    },
+    "./createClientWithEncryptedMessaging": {
+      "types": "./out/ledgerClient/createClientWithEncryptedMessaging.d.ts",
+      "default": "./out/ledgerClient/createClientWithEncryptedMessaging.js"
     }
   },
   "private": false,

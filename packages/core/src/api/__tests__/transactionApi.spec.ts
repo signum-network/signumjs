@@ -21,8 +21,8 @@ import {
     getSubscriptionPayments,
 } from '../factories/transaction';
 
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
-vi.mock('@signumjs/crypto', () => {
+import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto/sign';
+vi.mock('@signumjs/crypto/sign', () => {
     return {
         generateSignature: vi.fn().mockImplementation(() => 'signature'),
         generateSignedTransactionBytes: vi.fn().mockImplementation(() => "signedTransactionBytes"),

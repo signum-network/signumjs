@@ -32,9 +32,9 @@ vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
     };
 });
 
-import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto';
+import {generateSignature, generateSignedTransactionBytes, verifySignature} from '@signumjs/crypto/sign';
 
-vi.mock('@signumjs/crypto', () => {
+vi.mock('@signumjs/crypto/sign', () => {
     return {
         generateSignature: vi.fn().mockImplementation(() => 'signature'),
         generateSignedTransactionBytes: vi.fn().mockImplementation(() => 'signedTransactionBytes'),
