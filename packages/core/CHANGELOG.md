@@ -1,5 +1,19 @@
 # Change Log
 
+## 3.0.0
+
+### Minor Changes
+
+- Slight restructuring to improve/simplify tree shakability
+
+### Patch Changes
+
+- Updated dependencies
+  - @signumjs/contracts@3.0.0
+  - @signumjs/crypto@3.0.0
+  - @signumjs/http@3.0.0
+  - @signumjs/util@3.0.0
+
 ## 2.0.10
 
 ### Patch Changes

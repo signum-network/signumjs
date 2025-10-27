@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.0
+
+### Minor Changes
+
+- Slight restructuring to improve/simplify tree shakability
+
+### Patch Changes
+
+- Updated dependencies
+  - @signumjs/util@3.0.0
+
 ## 2.0.10
 
 ### Patch Changes
