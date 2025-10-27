@@ -1,7 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import {generateSignKeys} from '../sign';
-import {encryptData, encryptMessage} from '../encrypt';
-import {decryptData, decryptMessage} from '../decrypt';
+import {encryptData, encryptMessage, decryptMessage, decryptData} from '../encryption';
 import {CryptoError} from '../typings/cryptoError';
 
 
