@@ -4,12 +4,12 @@
  * Modified work Copyright (c) 2024 Signum Network
  */
 
-import {ECKCDSA, Crypto, Buffer,CryptoParams} from './base';
-import {EncryptedData} from './typings/encryptedData';
+import {ECKCDSA, Crypto, Buffer,CryptoParams} from '../base';
+import {EncryptedData} from '../typings/encryptedData';
 import {deflate} from 'pako/lib/deflate';
-import {getRandomBytes} from './random';
-import {EncryptedMessage} from './typings/encryptedMessage';
-import {CryptoError} from './typings/cryptoError';
+import {getRandomBytes} from '../random';
+import {EncryptedMessage} from '../typings/encryptedMessage';
+import {CryptoError} from '../typings/cryptoError';
 
 /**
  *

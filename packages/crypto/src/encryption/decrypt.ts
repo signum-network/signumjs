@@ -5,10 +5,10 @@
  */
 
 import {inflate} from 'pako/lib/inflate';
-import {ECKCDSA, Crypto, Buffer, CryptoParams} from './base';
-import {EncryptedData} from './typings/encryptedData';
-import {EncryptedMessage} from './typings/encryptedMessage';
-import {CryptoError} from './typings/cryptoError';
+import {ECKCDSA, Crypto, Buffer, CryptoParams} from '../base';
+import {EncryptedData} from '../typings/encryptedData';
+import {EncryptedMessage} from '../typings/encryptedMessage';
+import {CryptoError} from '../typings/cryptoError';
 
 /**
  *

@@ -55,6 +55,7 @@ export function generateSignKeys(passPhrase: string): SignKeys {
  * Computes the Account ID from Public Key
  * @param publicKey The public Key generated with {@link generateSignKeys}
  * @return A numeric string - The Account ID
+ * @deprecated This function has been moved to @signumjs/core. Import from '@signumjs/core' instead. This re-export will be removed in a future version.
  */
 export function getAccountIdFromPublicKey(publicKey: string): string {
     const hashedArray = sha256Binary(publicKey);

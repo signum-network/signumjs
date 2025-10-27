@@ -1,8 +1,8 @@
 /**
  * Original work Copyright (c) 2021 Burst Apps Team
- * Modified work Copyright (c) 2021 Signum Network
+ * Modified work Copyright (c) 2025 Signum Network
  */
-import {getAccountIdFromPublicKey} from '@signumjs/crypto';
+import {getAccountIdFromPublicKey} from './getAccountIdFromPublicKey';
 import {
     convertBase36StringToHexString,
     convertHexStringToBase36String,
