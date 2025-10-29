@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.1
+
+### Patch Changes
+
+- improved imports for better tree-shaking
+- Updated dependencies
+  - @signumjs/util@3.0.1
+
 ## 3.0.0
 
 ### Minor Changes

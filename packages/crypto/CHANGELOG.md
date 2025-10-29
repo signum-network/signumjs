@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.1
+
+### Patch Changes
+
+- improved imports for better tree-shaking
+
 ## 3.0.0
 
 ### Minor Changes
