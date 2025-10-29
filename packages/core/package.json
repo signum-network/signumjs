@@ -74,6 +74,22 @@
     "./createClientWithEncryptedMessaging": {
       "types": "./out/ledgerClient/createClientWithEncryptedMessaging.d.ts",
       "default": "./out/ledgerClient/createClientWithEncryptedMessaging.js"
+    },
+    "./address": {
+      "types": "./out/address/index.d.ts",
+      "default": "./out/address/index.js"
+    },
+    "./attachment": {
+      "types": "./out/attachment/index.d.ts",
+      "default": "./out/attachment/index.js"
+    },
+    "./transaction": {
+      "types": "./out/transaction/index.d.ts",
+      "default": "./out/transaction/index.js"
+    },
+    "./constants": {
+      "types": "./out/constants/index.d.ts",
+      "default": "./out/constants/index.js"
     }
   },
   "private": false,

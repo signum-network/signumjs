@@ -18,7 +18,8 @@ import * as contractFactories from '../api/factories/contract';
 import * as aliasFactories from '../api/factories/alias';
 
 // Import only sendMessage (NOT sendEncryptedMessage)
-import {sendMessage} from '../api/factories/message';
+// Direct import to avoid loading sendEncryptedMessage from message/index
+import {sendMessage} from '../api/factories/message/sendMessage';
 
 /**
  * Creates a standard ledger client (without encrypted messaging)
