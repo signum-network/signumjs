@@ -1,18 +1,13 @@
 /**
- * Copyright (c) 2022 Signum Network
- * @see {@link EasyWallet.pay}
+ * Copyright (c) 2025 Signum Network
+ * @see {@link EasyWallet.sendMessage}
  * @module wallets
  */
-export interface EasyWalletPayArgs {
+export interface EasyWalletSendMessageArgs {
     /**
      * The recipients address/account Id
      */
     to: string;
-
-    /**
-     * The amount in Signa to be paid
-     */
-    amount?: number;
 
     /**
      * The fee to be paid in Signa
@@ -35,10 +30,4 @@ export interface EasyWalletPayArgs {
      * Default is `false`
      */
     encrypt?: boolean;
-
-    /**
-     * The deadline in minutes until the payment will be removed from mem pool, if it is not processed yet
-     * Defaults to 1440 (maximum)
-     */
-    deadline?: number;
 }

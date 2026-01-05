@@ -3,6 +3,7 @@
  */
 
 import {EasyWalletPayArgs} from './args';
+import type {FullLedger} from '@signumjs/core';
 
 /**
  * A more specific Wallet interface for easier usage.
@@ -25,12 +26,16 @@ import {EasyWalletPayArgs} from './args';
  */
 export interface EasyWallet {
 
+    ledger: FullLedger
+
     /**
      * Requests a simple payment
      * @param args The payment args
      * @return
      */
     pay(args: EasyWalletPayArgs): Promise<string|void>;
+
+    sendMessage(args: EasyWalletSendMessageArgs)
 
     // more common actions like message, callContractMethod etc
 }

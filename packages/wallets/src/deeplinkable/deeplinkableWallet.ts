@@ -50,4 +50,10 @@ export class DeeplinkableWallet extends GenericDeeplinkableWallet implements Eas
 
         return this.eventuallyOpenInBrowser(this.mountDeeplink('pay', payload));
     }
+
+    sign(unsignedTransactionBytes: string){
+        const payload = { unsignedTransactionBytes }
+        return this.eventuallyOpenInBrowser(this.mountDeeplink('sign', payload));
+    }
+
 }

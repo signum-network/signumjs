@@ -3,7 +3,7 @@
  * @module core
  */
 
-import {
+import type {
     AccountApi,
     AliasApi,
     AssetApi,
@@ -13,7 +13,7 @@ import {
     NetworkApi,
     TransactionApi,
 } from './api';
-import {ChainService} from '../service';
+import type {ChainService} from '../service';
 
 /**
  * Read-only Ledger client

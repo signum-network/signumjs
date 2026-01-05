@@ -63,8 +63,8 @@ export class GenericDeeplinkableWallet implements Wallet {
         return this.redirectProxy + encodeURIComponent(link);
     }
 
-    confirm(unsignedTransaction: string): Promise<string> {
-        return this.eventuallyOpenInBrowser(this.mountDeeplink('confirm', {unsignedTransaction}));
+    confirm(unsignedTransactionBytes: string): Promise<string> {
+        return this.eventuallyOpenInBrowser(this.mountDeeplink('sign', {unsignedTransactionBytes}));
     }
 
     sendEncryptedMessage(_args: SendEncryptedMessageArgs): Promise<string> {

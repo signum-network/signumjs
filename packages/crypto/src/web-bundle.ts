@@ -24,5 +24,4 @@ import {WebCryptoAdapter} from './adapters';
 
 (() => {
     Crypto.init(new WebCryptoAdapter());
-
 })();
