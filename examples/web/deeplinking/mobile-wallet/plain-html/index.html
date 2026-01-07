@@ -220,6 +220,66 @@
             background: #d1ecf1;
             color: #0c5460;
         }
+
+        .tx-status {
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tx-status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .tx-status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .tx-status.cancelled {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .tx-info {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .tx-info div {
+            margin-bottom: 8px;
+        }
+
+        .tx-info div:last-child {
+            margin-bottom: 0;
+        }
+
+        .tx-info strong {
+            color: #667eea;
+        }
+
+        .tx-info code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .tx-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .tx-info a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -297,6 +357,14 @@
         </div>
     </div>
 
+    <!-- Transaction Status -->
+    <div class="card" id="txStatusCard" style="display: none;">
+        <h2>📝 Transaction Status</h2>
+        <div id="txStatusContent">
+            <!-- Will be populated after sign callback -->
+        </div>
+    </div>
+
     <!-- Activity Log -->
     <div class="card">
         <h2>📋 Activity Log</h2>
@@ -314,8 +382,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/core/dist/signumjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/wallets@3.0.2/dist/signumjs.wallets.min.js"></script>
 <script defer>
 
     const {LedgerClientFactory, Address, AttachmentMessage} = sig$;
@@ -359,20 +426,10 @@
 
     function connectWallet() {
         const deeplink = new MobileWallet().connect({
-            appName: "",
+            appName: "SignumJS Demo",
             callbackUrl: window.location.href + '?action=connected',
             network: "testnet"
         })
-
-        // const deeplink = src22.createDeeplink({
-        //     version: 'v1',
-        //     action: 'connect',
-        //     payload: {
-        //         appName: 'Example dApp',
-        //         callbackUrl,
-        //         network: currentNetwork
-        //     }
-        // });
 
         log('Generated connect deep link', 'info');
         document.getElementById('connectDeeplink').style.display = 'block';
@@ -432,7 +489,7 @@
             log('Transaction bytes: ' + unsignedTx.unsignedTransactionBytes.substring(0, 40) + '...', 'info');
 
             // Create sign deep link
-            const deeplink = new Wallet().sign({
+            const deeplink = new MobileWallet().sign({
                 unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
                 network: "testnet",
                 callbackUrl: window.location.href + '?action=signed'
@@ -458,7 +515,7 @@
         // only connected callback us necessary
         if (action === 'connected') {
             // Handle connect callback
-            const publicKey = MobileWallet.parseConnectCallback()
+            const {publicKey} = MobileWallet.parseConnectCallback()
             if (publicKey) {
                 localStorage.setItem('publicKey', publicKey);
                 updateUI();
@@ -466,11 +523,67 @@
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
         }
-        else if( action === 'sign'){
-            const signResult = MobileWallet.parseSignCallback();
-            console.log("Sign Result:", signResult)
-            // implement ui update
+        else if (action === 'signed') {
+            try {
+                const {status, transactionId} = MobileWallet.parseSignCallback();
+                updateTransactionStatus(status, transactionId);
+                log('Sign callback received - Status: ' + status, status === 'success' ? 'success' : 'error');
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (error) {
+                log('Error parsing sign callback: ' + error.message, 'error');
+            }
         }
+    }
+
+    function updateTransactionStatus(status, transactionId) {
+        const txStatusCard = document.getElementById('txStatusCard');
+        const txStatusContent = document.getElementById('txStatusContent');
+
+        // Show the card
+        txStatusCard.style.display = 'block';
+
+        let statusClass = '';
+        let statusIcon = '';
+        let statusMessage = '';
+
+        if (status === 'success') {
+            statusClass = 'success';
+            statusIcon = '✅';
+            statusMessage = 'Transaction Signed Successfully';
+        } else if (status === 'cancelled') {
+            statusClass = 'cancelled';
+            statusIcon = '⚠️';
+            statusMessage = 'Transaction Cancelled';
+        } else {
+            statusClass = 'error';
+            statusIcon = '❌';
+            statusMessage = 'Transaction Failed';
+        }
+
+        let html = `<div class="tx-status ${statusClass}">
+            <strong>${statusIcon} ${statusMessage}</strong>
+        </div>`;
+
+        // Only show transaction ID if status is success and transactionId exists
+        if (status === 'success' && transactionId) {
+            const explorerUrl = currentNetwork === 'testnet'
+                ? `https://explorer.testnet.signum.network/transaction/${transactionId}`
+                : `https://explorer.signum.network/transaction/${transactionId}`;
+
+            html += `<div class="tx-info">
+                <div><strong>Transaction ID:</strong></div>
+                <div><code>${transactionId}</code></div>
+                <div style="margin-top: 12px;">
+                    <a href="${explorerUrl}" target="_blank">View in Explorer →</a>
+                </div>
+            </div>`;
+        }
+
+        txStatusContent.innerHTML = html;
+
+        // Scroll to the status card
+        txStatusCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function updateUI() {

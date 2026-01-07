@@ -119,7 +119,7 @@ Examples:
 
 ```js
 // using core
-const ledger = sig$.LedgerClientFactory.create({
+const ledger = sig$.createClient({
     nodeHost: "https://europe3.testnet.signum.network",
 });
 
@@ -160,8 +160,8 @@ subscription.unlisten()
 ```
 
 ```ts
-// using standards - depends on ledger 
-const ledger = sig$.LedgerClientFactory.create({
+// using standards - depends on ledger
+const ledger = sig$.createClient({
     nodeHost: "https://europe3.testnet.signum.network",
 });
 
@@ -194,13 +194,13 @@ The following example shows how to interact with the blockchain, i.e. getting th
 In a separate file, preferably `index.js` or `main.js` write your entry point like this:
 
 ```js
-import {LedgerClientFactory, ApiSettings} from '@signumjs/core'
+import {createClient} from '@signumjs/core/createClient'
 import {Amount} from '@signumjs/util'
 
 // this self-executing file makes turns this file into a starting point of your app
 (async () => {
     try {
-        const ledger = LedgerClientFactory.createClient({nodeHost: 'https://europe3.testnet.signum.network'});
+        const ledger = createClient({nodeHost: 'https://europe3.testnet.signum.network'});
         const {balanceNQT} = await ledger.account.getAccountBalance('13036514135565182944')
         console.log(`Account Balance: ${Amount.fromPlanck(balanceNQT).toString()}`)
     } catch (e) { // e is of type HttpError (as part of @signumjs/http)
@@ -213,7 +213,7 @@ import {Amount} from '@signumjs/util'
 ### `<script>` style
 
 ```js
-const ledger = sig$.LedgerClientFactory.create({nodeHost: 'https://europe3.testnet.signum.network'});
+const ledger = sig$.createClient({nodeHost: 'https://europe3.testnet.signum.network'});
 ledger.account.getAccountBalance('13036514135565182944')
     .then(balance => {
         console.log(`Account Balance: ${sig$util.Amount.fromPlanck(balance.balanceNQT).toString()}`)

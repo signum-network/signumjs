@@ -8,7 +8,6 @@ import {BrowserExtensionAdapter} from './browserExtensionAdapter';
 
 /**
  * Arguments for {@link ExtensionWallet.sendEncryptedMessage}
- * @module wallets
  */
 export interface SendEncryptedMessageArgs {
     /**
@@ -31,7 +30,6 @@ export interface SendEncryptedMessageArgs {
 
 /**
  * Object returned from {@link ExtensionWallet.confirm}
- * @module wallets
  */
 export interface ConfirmedTransaction {
     /**
@@ -91,8 +89,6 @@ export interface ExtensionWalletConnectArgs {
  * ```
  *
  * > At this time, this wallet does only work in the browser
- *
- * @module wallets
  */
 export class ExtensionWallet {
 

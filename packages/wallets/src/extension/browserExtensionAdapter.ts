@@ -25,8 +25,6 @@ import {RequestSendEncryptedMessageArgs} from './args/requestSendEncryptedMessag
  * Extension Adapter for Browser based wallet access, to use with {@link GenericExtensionWallet}
  *
  * This adapter is automatically chosen in browser environments - Usually, you won't use this adapter directly.
- *
- * @module wallets
  */
 export class BrowserExtensionAdapter implements ExtensionAdapter {
 

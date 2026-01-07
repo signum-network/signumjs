@@ -58,11 +58,13 @@ Create `/wallet-connected.html`:
 ### 4. Sign transactions
 
 ```typescript
+import { createClient } from '@signumjs/core/createClient';
+
 // Get stored public key
 const publicKey = wallet.getPublicKey('signum-wallet-publicKey');
 
 // Create unsigned transaction
-const ledger = LedgerClientFactory.createStandardClient({
+const ledger = createClient({
     nodeHost: "https://brazil.signum.network"
 });
 

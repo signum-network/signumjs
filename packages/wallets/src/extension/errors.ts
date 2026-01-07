@@ -2,7 +2,6 @@ import {ExtensionErrorType} from './messaging';
 
 /**
  * A generic and unknown/unexpected error with the extension
- * @module wallets
  */
 export class ExtensionWalletError implements Error {
     name = 'ExtensionWalletError';
@@ -11,7 +10,6 @@ export class ExtensionWalletError implements Error {
 
 /**
  * Error for rejected permissions, or similar permission errors
- * @module wallets
  */
 export class NotGrantedWalletError extends ExtensionWalletError {
     name = 'NotGrantedWalletError';
@@ -20,7 +18,6 @@ export class NotGrantedWalletError extends ExtensionWalletError {
 
 /**
  * Error if no compatible extension wallet was found
- * @module wallets
  */
 export class NotFoundWalletError extends ExtensionWalletError {
     name = 'NotFoundWalletError';
@@ -29,7 +26,6 @@ export class NotFoundWalletError extends ExtensionWalletError {
 
 /**
  * Error if request parameters do not match expectation of the wallet
- * @module wallets
  */
 export class InvalidParamsWalletError extends ExtensionWalletError {
     name = 'InvalidParamsWalletError';
@@ -39,7 +35,6 @@ export class InvalidParamsWalletError extends ExtensionWalletError {
 /**
  * Error if the network is not allowed for the requesting application, i.e. requested network does not exist, or the currently selected node is not
  * of requested network.
- * @module wallets
  */
 export class InvalidNetworkError extends ExtensionWalletError {
     name = 'InvalidNetworkError';

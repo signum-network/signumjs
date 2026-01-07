@@ -2,6 +2,10 @@
  * Original work Copyright (c) 2026 Signum Network
  */
 
+/**
+ *
+ */
+
 /* globals window */
 
 import {src22} from '@signumjs/standards';
@@ -9,7 +13,6 @@ import {isNodeJS} from '../isNodeJS';
 
 /**
  * Callback data for 'connect'  command
- * @module wallets
  */
 export interface ConnectCallbackData {
     /**
@@ -24,7 +27,6 @@ export interface ConnectCallbackData {
 
 /**
  * Callback data for 'sign' command
- * @module wallets
  */
 export interface SignCallbackData {
     /**
@@ -39,7 +41,6 @@ export interface SignCallbackData {
 
 /**
  * The options for the Mobile Wallet
- * @module wallets
  */
 export interface MobileWalletOpts {
     /**
@@ -53,7 +54,6 @@ export interface MobileWalletOpts {
 /**
  * Arguments for the connect method
  * {@link MobileWallet.connect}
- * @module wallets
  */
 export interface MobileWalletConnectArgs {
     /**
@@ -74,7 +74,6 @@ export interface MobileWalletConnectArgs {
 /**
  * Arguments for the sign method
  * {@link MobileWallet.sign}
- * @module wallets
  */
 export interface MobileWalletSignArgs {
     /**
@@ -98,8 +97,6 @@ export interface MobileWalletSignArgs {
  *
  * Unlike the DesktopWallet, the MobileWallet uses direct deeplinks (signum://)
  * supports the versatile sign command, and callback URLs for receiving responses from the mobile wallet app.
- *
- * @module wallets
  */
 export class MobileWallet {
     private readonly openInBrowser: boolean;
@@ -122,6 +119,8 @@ export class MobileWallet {
      * In the callback page you can use {@link MobileWallet.parseConnectCallback} to extract the public key
      *
      * @param callbackUrl - The URL the mobile wallet should redirect to after connection
+     * @param appName - The name of the dApp
+     * @param network - The network to connect to (mainnet or testnet)
      * @returns The deeplink URL (for testing or custom handling)
      */
     connect({callbackUrl, appName, network} : MobileWalletConnectArgs ): string {

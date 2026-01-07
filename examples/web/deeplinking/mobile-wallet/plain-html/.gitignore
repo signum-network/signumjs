@@ -1,0 +1,9 @@
+# Demo dApp is for testing only, ignore any generated files
+*.log
+.DS_Store
+node_modules/
+.vscode/
+*.pem
+*.key
+dist/
+.vite/

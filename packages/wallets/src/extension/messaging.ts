@@ -155,7 +155,6 @@ export enum ExtensionErrorType {
 
 /**
  * The permission object for a connection
- * @module wallets
  */
 export type ExtensionPermission = {
     /**
@@ -182,7 +181,6 @@ export type ExtensionPermission = {
 
 /**
  * The response object for successfully signed transactions
- * @module wallets
  */
 export type ExtensionSigned = {
     /**
@@ -197,7 +195,6 @@ export type ExtensionSigned = {
 
 /**
  * The response object for successfully sent encrypted messages
- * @module wallets
  */
 export type ExtensionSentEncryptedMessage = {
     /**
@@ -265,7 +262,6 @@ interface ExtensionNotificationBase {
 
 /**
  * The notification types
- * @module wallets
  */
 export type ExtensionNotification =
     | ExtensionNotificationNetworkChanged
@@ -276,7 +272,6 @@ export type ExtensionNotification =
 
 /**
  * The notification message structure for `onNetworkChanged` event
- * @module wallets
  */
 export interface ExtensionNotificationNetworkChanged
     extends ExtensionNotificationBase {
@@ -294,7 +289,6 @@ export interface ExtensionNotificationNetworkChanged
 
 /**
  * The notification message structure for `onPermissionRemoved` event
- * @module wallets
  */
 export interface ExtensionNotificationPermissionRemoved
     extends ExtensionNotificationBase {
@@ -308,7 +302,6 @@ export interface ExtensionNotificationPermissionRemoved
 
 /**
  * The notification message structure for `onPermissionRemoved` event
- * @module wallets
  */
 export interface ExtensionNotificationAccountRemoved
     extends ExtensionNotificationBase {
@@ -321,7 +314,6 @@ export interface ExtensionNotificationAccountRemoved
 
 /**
  * The notification message structure for `onPermissionRemoved` event
- * @module wallets
  */
 export interface ExtensionNotificationAccountChanged
     extends ExtensionNotificationBase {

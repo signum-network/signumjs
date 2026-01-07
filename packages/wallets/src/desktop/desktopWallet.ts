@@ -12,7 +12,6 @@ import {Address} from '@signumjs/core';
 
 /**
  * The options for the Desktop Wallet (Phoenix)
- * @module wallets
  */
 export interface DesktopWalletOpts {
     /**
@@ -32,7 +31,6 @@ export interface DesktopWalletOpts {
 /**
  * Arguments for the pay method
  * {@link DesktopWallet.pay}
- * @module wallets
  */
 export interface DesktopWalletPayArgs {
     /**
@@ -75,8 +73,6 @@ export interface DesktopWalletPayArgs {
 
 /**
  * This wallet (proxy) allows interacting with SIP22 compatible deep linkable desktop wallets (Phoenix Wallet).
- *
- * @module wallets
  */
 export class DesktopWallet {
     public readonly redirectProxy: string;

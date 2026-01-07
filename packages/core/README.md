@@ -23,11 +23,19 @@ yarn add @signumjs/core
 
 #### Example
 
+SignumJS provides three client types optimized for different use cases:
+
+1. **Read-Only Client** (~5-10 KB) - For dashboards, explorers, monitoring (no crypto dependencies)
+2. **Standard Client** (~40-50 KB) - For most apps - wallets, payments, asset trading (includes signing)
+3. **Full Client** (~170-180 KB) - Only needed for encrypted messaging (includes Pako compression)
+
+**Using the Standard Client (recommended for most apps):**
+
 ```js
-import {LedgerClientFactory} from '@signumjs/core'
+import {createClient} from '@signumjs/core/createClient'
 import {Amount} from '@signumjs/util'
 
-const ledger = LedgerClientFactory.createClient({
+const ledger = createClient({
     nodeHost: "https://europe3.testnet.network"
 });
 
@@ -42,6 +50,32 @@ const ledger = LedgerClientFactory.createClient({
     }
 })()
 ```
+
+**Using the Read-Only Client (smallest bundle):**
+
+```js
+import {createReadOnlyClient} from '@signumjs/core/createReadOnlyClient'
+
+const ledger = createReadOnlyClient({
+    nodeHost: "https://europe3.testnet.network"
+});
+
+// Only read operations available, no transaction signing
+```
+
+**Using the Full Client (for encrypted messaging):**
+
+```js
+import {createClientWithEncryptedMessaging} from '@signumjs/core/createClientWithEncryptedMessaging'
+
+const ledger = createClientWithEncryptedMessaging({
+    nodeHost: "https://europe3.testnet.network"
+});
+
+// All features including encrypted message support
+```
+
+> **Note:** The old `LedgerClientFactory` is deprecated as it bundles all client types together, preventing tree-shaking optimization.
 
 
 ### Using in classic `<script>` 
