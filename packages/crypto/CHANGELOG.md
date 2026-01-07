@@ -1,5 +1,41 @@
 # Change Log
 
+## 3.0.3
+
+### Patch Changes
+
+- Updated Docs
+
+## 3.0.2
+
+### Patch Changes
+
+- Mobile Wallet deeplinks added - wallets package refactored
+
+## 3.0.1
+
+### Patch Changes
+
+- improved imports for better tree-shaking
+
+## 3.0.0
+
+### Minor Changes
+
+- Slight restructuring to improve/simplify tree shakability
+
+## 2.0.10
+
+### Patch Changes
+
+- Improved exports for encryption
+
+## 2.0.9
+
+### Patch Changes
+
+- Improved tree shakeability
+
 ## 2.0.8
 
 ### Patch Changes

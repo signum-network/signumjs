@@ -5,6 +5,7 @@ async function convertToAddress(event) {
     const addressKeyOrId = event.target.value;
 
     try {
+        console.log(`Converting ${addressKeyOrId} to address...`)
         const address = sig$.Address.create(addressKeyOrId)
         document.getElementById('address-output-error').textContent = "";
         document.getElementById('address-output-pk').textContent = address.getPublicKey();

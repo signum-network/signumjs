@@ -15,6 +15,7 @@ export * from './constants';
 export * from './ledgerClient';
 export * from './service';
 export * from './transaction';
+export * from './typings/ledgerClientTypes';
 export * from './typings/account';
 export * from './typings/alias';
 export * from './typings/aliasList';

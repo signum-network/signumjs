@@ -42,13 +42,12 @@ This might be useful for Wordpress and/or other PHP applications.
 
 Just import the package using the HTML `<script>` tag.
 
-`<script src='https://cdn.jsdelivr.net/npm/@signumjs/http/dist/signumjs.wallets.min.js'></script>`
+`<script src='https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js'></script>`
 
 #### Example
 
-```js
-// TO DO
-```
+See the [examples folder](https://github.com/signum-network/signumjs/tree/main/examples) 
+
 
 See more here:
 

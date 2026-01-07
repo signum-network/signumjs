@@ -1,4 +1,4 @@
-import {describe, test, expect} from 'vitest';
+import {describe, test, expect, beforeEach} from 'vitest';
 
 import {CryptoAdapter} from '../typings/cryptoAdapter';
 import {Crypto} from '../base';
@@ -20,14 +20,15 @@ class TestCryptoAdapter implements CryptoAdapter {
 
 }
 
-Crypto.init(new TestCryptoAdapter());
-
 describe('Crypto', () => {
+
     test('should use custom crypto provider', () => {
+        Crypto.init(new TestCryptoAdapter());
         const testHash = Crypto.adapter.sha256(new Uint8Array([12, 23, 54, 46]));
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });
     test('should use custom crypto provider', () => {
+        Crypto.init(new TestCryptoAdapter());
         const testHash = sha256AsBytes('foo', 'utf8');
         expect(testHash).toEqual(new Uint8Array([11, 12, 13, 14, 15]));
     });

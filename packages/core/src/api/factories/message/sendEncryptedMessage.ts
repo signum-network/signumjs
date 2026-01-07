@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
  */
-import {encryptMessage} from '@signumjs/crypto';
+import {encryptMessage} from '@signumjs/crypto/encryption';
 import {ChainService} from '../../../service/chainService';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
 import {DefaultDeadline} from '../../../constants';

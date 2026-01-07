@@ -6,7 +6,8 @@ import {ChainService} from '../../../service/chainService';
 import {TransactionList} from '../../../typings/transactionList';
 import {GetAccountTransactionsArgs} from '../../../typings/args';
 import {TransactionAssetSubtype, TransactionType} from '../../../constants';
-import {getDistributionAmountsFromTransaction} from '../transaction';
+// Direct import to avoid loading transaction barrel with write operations
+import {getDistributionAmountsFromTransaction} from '../transaction/getDistributionAmountsFromTransaction';
 
 /**
  * Use with {@link ApiComposer} and belongs to {@link AccountApi}.

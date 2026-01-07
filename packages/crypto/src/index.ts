@@ -4,8 +4,7 @@
  *
  * @module crypto
  * */
-export * from './decrypt';
-export * from './encrypt';
+export * from './encryption';
 export * from './random';
 export * from './mnemonic';
 export * from './sha256';

@@ -1,5 +1,74 @@
 # Change Log
 
+## 3.0.3
+
+### Patch Changes
+
+- Updated Docs
+- Updated dependencies
+  - @signumjs/standards@3.0.3
+  - @signumjs/crypto@3.0.3
+  - @signumjs/core@3.0.3
+  - @signumjs/util@3.0.3
+
+## 3.0.2
+
+### Patch Changes
+
+- Mobile Wallet deeplinks added - wallets package refactored
+- Updated dependencies
+  - @signumjs/standards@3.0.2
+  - @signumjs/crypto@3.0.2
+  - @signumjs/core@3.0.2
+  - @signumjs/util@3.0.2
+
+## 3.0.1
+
+### Patch Changes
+
+- improved imports for better tree-shaking
+- Updated dependencies
+  - @signumjs/standards@3.0.1
+  - @signumjs/crypto@3.0.1
+  - @signumjs/core@3.0.1
+  - @signumjs/util@3.0.1
+
+## 3.0.0
+
+### Minor Changes
+
+- Slight restructuring to improve/simplify tree shakability
+
+### Patch Changes
+
+- Updated dependencies
+  - @signumjs/standards@3.0.0
+  - @signumjs/crypto@3.0.0
+  - @signumjs/core@3.0.0
+  - @signumjs/util@3.0.0
+
+## 2.0.10
+
+### Patch Changes
+
+- Improved exports for encryption
+- Updated dependencies
+  - @signumjs/standards@2.0.10
+  - @signumjs/crypto@2.0.10
+  - @signumjs/core@2.0.10
+  - @signumjs/util@2.0.10
+
+## 2.0.9
+
+### Patch Changes
+
+- Improved tree shakeability
+- Updated dependencies
+  - @signumjs/standards@2.0.9
+  - @signumjs/crypto@2.0.9
+  - @signumjs/core@2.0.9
+  - @signumjs/util@2.0.9
+
 ## 2.0.8
 
 ### Patch Changes

@@ -4,7 +4,6 @@
 
 /**
  * Interface for running subscriptions, i.e. returned by {@link WalletConnection.listen}
- * @module wallets
  */
 export interface ExtensionListener {
     /**

@@ -1,6 +1,5 @@
 /**
  * The notification handler for events in the extension wallet
- * @module wallets
  */
 export interface ExtensionNotificationHandler {
     /**

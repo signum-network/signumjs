@@ -1,7 +1,6 @@
 /* globals process */
 /** @ignore */
 /** @internal */
-/** @module wallets */
 
 /**
  * Checks if the runtime environment is NodeJS

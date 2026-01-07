@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/crypto",
-  "version": "2.0.8",
+  "version": "3.0.3",
   "description": "Cryptographic functions for building Signum Network apps.",
   "keywords": [
     "signum",
@@ -23,6 +23,7 @@
     "node": ">=18"
   },
   "license": "Apache-2.0",
+  "sideEffects": false,
   "main": "./out/index.js",
   "exports": {
     ".": {
@@ -32,6 +33,26 @@
     "./adapters": {
       "types": "./out/adapters/index.d.ts",
       "default": "./out/adapters/index.js"
+    },
+    "./sha256": {
+      "types": "./out/sha256.d.ts",
+      "default": "./out/sha256.js"
+    },
+    "./sign": {
+      "types": "./out/sign.d.ts",
+      "default": "./out/sign.js"
+    },
+    "./encryption": {
+      "types": "./out/encryption/index.d.ts",
+      "default": "./out/encryption/index.js"
+    },
+    "./random": {
+      "types": "./out/random.d.ts",
+      "default": "./out/random.js"
+    },
+    "./mnemonic": {
+      "types": "./out/mnemonic.d.ts",
+      "default": "./out/mnemonic.js"
     }
   },
   "private": false,

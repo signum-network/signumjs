@@ -1,2 +1,2 @@
-export * from './sendMessage';
-export * from './sendEncryptedMessage';
+export {sendMessage} from './sendMessage';
+export {sendEncryptedMessage} from './sendEncryptedMessage';

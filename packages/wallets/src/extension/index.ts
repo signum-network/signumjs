@@ -1,3 +1,3 @@
-export * from './genericExtensionWallet';
-export * from './walletConnection';
+export * from './extensionWallet';
+export * from './extensionWalletConnection';
 export * from './errors';

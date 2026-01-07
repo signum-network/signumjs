@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/util",
-  "version": "2.0.8",
+  "version": "3.0.3",
   "description": "Useful utilities and tools for building Signum Network applications",
   "keywords": [
     "signum",
@@ -22,6 +22,10 @@
     "node": ">=18"
   },
   "license": "Apache-2.0",
+  "sideEffects": [
+    "src/internal/padStartPolyfill.ts",
+    "out/internal/padStartPolyfill.js"
+  ],
   "main": "./out/index.js",
   "exports": {
     ".": {

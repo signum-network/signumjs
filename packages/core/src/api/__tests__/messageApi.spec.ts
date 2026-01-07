@@ -18,8 +18,8 @@ vi.mock('../../api/factories/transaction/signAndBroadcastTransaction', () => {
     };
 });
 
-import {encryptMessage} from '@signumjs/crypto';
-vi.mock('@signumjs/crypto', () => {
+import {encryptMessage} from '@signumjs/crypto/encryption';
+vi.mock('@signumjs/crypto/encryption', () => {
     return {
         encryptMessage: vi.fn().mockImplementation(() => Promise.resolve(
             ({

@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/core",
-  "version": "2.0.8",
+  "version": "3.0.3",
   "description": "Principal package with functions and models for building Signum Network applications.",
   "keywords": [
     "signum",
@@ -24,11 +24,72 @@
     "node": ">=18"
   },
   "license": "Apache-2.0",
+  "sideEffects": false,
   "main": "./out/index.js",
   "exports": {
     ".": {
       "types": "./out/index.d.ts",
       "default": "./out/index.js"
+    },
+    "./api/account": {
+      "types": "./out/api/factories/index.account.d.ts",
+      "default": "./out/api/factories/index.account.js"
+    },
+    "./api/transaction": {
+      "types": "./out/api/factories/index.transaction.d.ts",
+      "default": "./out/api/factories/index.transaction.js"
+    },
+    "./api/message": {
+      "types": "./out/api/factories/index.message.d.ts",
+      "default": "./out/api/factories/index.message.js"
+    },
+    "./api/asset": {
+      "types": "./out/api/factories/index.asset.d.ts",
+      "default": "./out/api/factories/index.asset.js"
+    },
+    "./api/contract": {
+      "types": "./out/api/factories/index.contract.d.ts",
+      "default": "./out/api/factories/index.contract.js"
+    },
+    "./api/alias": {
+      "types": "./out/api/factories/index.alias.d.ts",
+      "default": "./out/api/factories/index.alias.js"
+    },
+    "./api/block": {
+      "types": "./out/api/factories/index.block.d.ts",
+      "default": "./out/api/factories/index.block.js"
+    },
+    "./api/network": {
+      "types": "./out/api/factories/index.network.d.ts",
+      "default": "./out/api/factories/index.network.js"
+    },
+    "./createReadOnlyClient": {
+      "types": "./out/ledgerClient/createReadOnlyClient.d.ts",
+      "default": "./out/ledgerClient/createReadOnlyClient.js"
+    },
+    "./createClient": {
+      "types": "./out/ledgerClient/createClient.d.ts",
+      "default": "./out/ledgerClient/createClient.js"
+    },
+    "./createClientWithEncryptedMessaging": {
+      "types": "./out/ledgerClient/createClientWithEncryptedMessaging.d.ts",
+      "default": "./out/ledgerClient/createClientWithEncryptedMessaging.js"
+    },
+    "./address": {
+      "types": "./out/address/index.d.ts",
+      "default": "./out/address/index.js"
+    },
+    "./attachment": {
+      "types": "./out/attachment/index.d.ts",
+      "default": "./out/attachment/index.js"
+    },
+    "./transaction": {
+      "types": "./out/transaction/index.d.ts",
+      "default": "./out/transaction/index.js"
+    },
+    "./constants": {
+      "types": "./out/constants/index.d.ts",
+      "default": "./out/constants/index.js"
     }
   },
   "private": false,

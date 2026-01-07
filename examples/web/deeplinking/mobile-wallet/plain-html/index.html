@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Signum Mobile Wallet - Demo dApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .status.disconnected {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .status.connected {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+
+        .wallet-info {
+            background: #f5f5f5;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .wallet-info div {
+            margin-bottom: 8px;
+        }
+
+        .wallet-info strong {
+            color: #667eea;
+        }
+
+        .wallet-info code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        button.secondary {
+            background: #6c757d;
+        }
+
+        button.secondary:hover {
+            background: #5a6268;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .log {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 12px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 4px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .log-timestamp {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .log-success {
+            color: #4ec9b0;
+        }
+
+        .log-error {
+            color: #f48771;
+        }
+
+        .log-info {
+            color: #569cd6;
+        }
+
+        .deeplink-preview {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge.testnet {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.mainnet {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .tx-status {
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tx-status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .tx-status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .tx-status.cancelled {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .tx-info {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .tx-info div {
+            margin-bottom: 8px;
+        }
+
+        .tx-info div:last-child {
+            margin-bottom: 0;
+        }
+
+        .tx-info strong {
+            color: #667eea;
+        }
+
+        .tx-info code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .tx-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .tx-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="card">
+        <h1>🚀 Signum Mobile Wallet</h1>
+        <p class="subtitle">Demo dApp - Test Deep Link Integration</p>
+
+        <div id="connectionStatus" class="status disconnected">
+            ❌ Not Connected
+        </div>
+
+        <div id="walletInfo" style="display: none;" class="wallet-info">
+            <!-- Will be populated after connection -->
+        </div>
+    </div>
+
+    <!-- Network Selection -->
+    <div class="card">
+        <h2>⚙️ Configuration</h2>
+
+        <div class="input-group">
+            <label for="networkSelect">Network:</label>
+            <select id="networkSelect" onchange="updateNetwork()">
+                <option value="testnet">Testnet</option>
+                <option value="mainnet">Mainnet</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="nodeHost">Node URL:</label>
+            <input type="text" id="nodeHost" value="https://europe3.testnet.signum.network">
+        </div>
+    </div>
+
+    <!-- Connect Action -->
+    <div class="card">
+        <h2>🔗 Step 1: Connect Wallet</h2>
+        <p class="subtitle">Request user's public key to generate transactions</p>
+
+        <button onclick="connectWallet()">Connect Wallet</button>
+        <button onclick="disconnectWallet()" class="secondary" id="disconnectBtn" disabled>Disconnect</button>
+
+        <div id="connectDeeplink" class="deeplink-preview" style="display: none;">
+            <!-- Will show deep link -->
+        </div>
+    </div>
+
+    <!-- Sign Transaction -->
+    <div class="card">
+        <h2>✍️ Step 2: Send Transaction</h2>
+        <p class="subtitle">Create and sign a transaction</p>
+
+        <div class="input-group">
+            <label for="recipientInput">Recipient Address:</label>
+            <input type="text" id="recipientInput" placeholder="TS-QAJA-QW5Y-SWVP-4RVP4"
+                   value="TS-QAJA-QW5Y-SWVP-4RVP4">
+        </div>
+
+        <div class="input-group">
+            <label for="amountInput">Amount (SIGNA):</label>
+            <input type="number" id="amountInput" placeholder="1.0" value="1.0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="messageInput">Message (optional):</label>
+            <input type="text" id="messageInput" placeholder="Test payment from demo dApp">
+        </div>
+
+        <button onclick="sendTransaction()" id="sendBtn" disabled>Send Transaction</button>
+
+        <div id="signDeeplink" class="deeplink-preview" style="display: none;">
+            <!-- Will show deep link -->
+        </div>
+    </div>
+
+    <!-- Transaction Status -->
+    <div class="card" id="txStatusCard" style="display: none;">
+        <h2>📝 Transaction Status</h2>
+        <div id="txStatusContent">
+            <!-- Will be populated after sign callback -->
+        </div>
+    </div>
+
+    <!-- Activity Log -->
+    <div class="card">
+        <h2>📋 Activity Log</h2>
+        <button onclick="clearLog()" class="secondary">Clear Log</button>
+        <div id="activityLog" class="log">
+            <div class="log-entry log-info">
+                <span class="log-timestamp">[Ready]</span> Demo dApp loaded. Click "Connect Wallet" to begin.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load SignumJS from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/crypto/dist/signumjs.crypto.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/core/dist/signumjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/wallets@3.0.2/dist/signumjs.wallets.min.js"></script>
+<script defer>
+
+    const {LedgerClientFactory, Address, AttachmentMessage} = sig$;
+    const {Amount} = sig$util;
+    const {src22} = sig$standards;
+    const {getAccountIdFromPublicKey} = sig$crypto;
+    const {MobileWallet} = sig$wallets;
+
+    // State
+    let connectedWallet = null;
+    let currentNetwork = 'testnet';
+    let ledgerService = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeLedger();
+        updateUI();
+        handleCallback();
+    });
+
+    function initializeLedger() {
+        const nodeHost = document.getElementById('nodeHost').value;
+        ledgerService = LedgerClientFactory.createClient({
+            nodeHost: nodeHost
+        });
+        log('Ledger service initialized: ' + nodeHost, 'info');
+    }
+
+    function updateNetwork() {
+        currentNetwork = document.getElementById('networkSelect').value;
+
+        if (currentNetwork === 'testnet') {
+            document.getElementById('nodeHost').value = 'https://europe3.testnet.signum.network';
+        } else {
+            document.getElementById('nodeHost').value = 'https://europe.signum.network';
+        }
+
+        initializeLedger();
+        log('Switched to ' + currentNetwork, 'info');
+    }
+
+    function connectWallet() {
+        const deeplink = new MobileWallet().connect({
+            appName: "SignumJS Demo",
+            callbackUrl: window.location.href + '?action=connected',
+            network: "testnet"
+        })
+
+        log('Generated connect deep link', 'info');
+        document.getElementById('connectDeeplink').style.display = 'block';
+        document.getElementById('connectDeeplink').textContent = deeplink;
+        // Open deep link
+        window.location.href = deeplink;
+    }
+
+    function disconnectWallet() {
+        connectedWallet = null;
+        localStorage.clear()
+        updateUI();
+        log('Disconnected from wallet', 'info');
+    }
+
+    async function sendTransaction() {
+        if (!connectedWallet) {
+            alert('Please connect wallet first');
+            return;
+        }
+
+        try {
+            const recipient = document.getElementById('recipientInput').value;
+            const amount = parseFloat(document.getElementById('amountInput').value);
+            const message = document.getElementById('messageInput').value;
+
+            if (!recipient) {
+                alert('Please enter recipient address');
+                return;
+            }
+
+            log('Creating unsigned transaction...', 'info');
+
+            // Convert amount to planck (1 SIGNA = 100,000,000 planck)
+            const amountPlanck = Amount.fromSigna(amount).getPlanck();
+            const feePlanck = Amount.fromSigna(0.02).getPlanck();
+            const recipientId = Address.fromReedSolomonAddress(recipient).getNumericId();
+
+            const attachment = message
+                ? new AttachmentMessage({
+                    message,
+                    messageIsText: true
+                }) : undefined;
+
+            // Create unsigned transaction
+            const params = {
+                recipientId,
+                amountPlanck,
+                feePlanck,
+                senderPublicKey: connectedWallet.publicKey,
+                attachment
+            };
+
+            const unsignedTx = await ledgerService.transaction.sendAmountToSingleRecipient(params);
+
+            log('Unsigned transaction created', 'success');
+            log('Transaction bytes: ' + unsignedTx.unsignedTransactionBytes.substring(0, 40) + '...', 'info');
+
+            // Create sign deep link
+            const deeplink = new MobileWallet().sign({
+                unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
+                network: "testnet",
+                callbackUrl: window.location.href + '?action=signed'
+            })
+
+            log('Generated sign deep link', 'info');
+            document.getElementById('signDeeplink').style.display = 'block';
+            document.getElementById('signDeeplink').textContent = deeplink;
+
+            // Open deep link
+            window.location.href = deeplink;
+
+        } catch (error) {
+            log('Error creating transaction: ' + error.message, 'error');
+            console.error(error);
+        }
+    }
+
+    function handleCallback() {
+        const params = new URLSearchParams(window.location.search);
+        const action = params.get('action');
+
+        // only connected callback us necessary
+        if (action === 'connected') {
+            // Handle connect callback
+            const {publicKey} = MobileWallet.parseConnectCallback()
+            if (publicKey) {
+                localStorage.setItem('publicKey', publicKey);
+                updateUI();
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+        else if (action === 'signed') {
+            try {
+                const {status, transactionId} = MobileWallet.parseSignCallback();
+                updateTransactionStatus(status, transactionId);
+                log('Sign callback received - Status: ' + status, status === 'success' ? 'success' : 'error');
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (error) {
+                log('Error parsing sign callback: ' + error.message, 'error');
+            }
+        }
+    }
+
+    function updateTransactionStatus(status, transactionId) {
+        const txStatusCard = document.getElementById('txStatusCard');
+        const txStatusContent = document.getElementById('txStatusContent');
+
+        // Show the card
+        txStatusCard.style.display = 'block';
+
+        let statusClass = '';
+        let statusIcon = '';
+        let statusMessage = '';
+
+        if (status === 'success') {
+            statusClass = 'success';
+            statusIcon = '✅';
+            statusMessage = 'Transaction Signed Successfully';
+        } else if (status === 'cancelled') {
+            statusClass = 'cancelled';
+            statusIcon = '⚠️';
+            statusMessage = 'Transaction Cancelled';
+        } else {
+            statusClass = 'error';
+            statusIcon = '❌';
+            statusMessage = 'Transaction Failed';
+        }
+
+        let html = `<div class="tx-status ${statusClass}">
+            <strong>${statusIcon} ${statusMessage}</strong>
+        </div>`;
+
+        // Only show transaction ID if status is success and transactionId exists
+        if (status === 'success' && transactionId) {
+            const explorerUrl = currentNetwork === 'testnet'
+                ? `https://explorer.testnet.signum.network/transaction/${transactionId}`
+                : `https://explorer.signum.network/transaction/${transactionId}`;
+
+            html += `<div class="tx-info">
+                <div><strong>Transaction ID:</strong></div>
+                <div><code>${transactionId}</code></div>
+                <div style="margin-top: 12px;">
+                    <a href="${explorerUrl}" target="_blank">View in Explorer →</a>
+                </div>
+            </div>`;
+        }
+
+        txStatusContent.innerHTML = html;
+
+        // Scroll to the status card
+        txStatusCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function updateUI() {
+
+        const publicKey = localStorage.getItem('publicKey');
+        if (publicKey) {
+            const accountId = getAccountIdFromPublicKey(publicKey);
+            const accountRS = Address.fromNumericId(accountId).getReedSolomonAddress();
+            connectedWallet = {publicKey, accountId, accountRS};
+        }
+
+        const statusEl = document.getElementById('connectionStatus');
+        const walletInfoEl = document.getElementById('walletInfo');
+        const sendBtn = document.getElementById('sendBtn');
+        const disconnectBtn = document.getElementById('disconnectBtn');
+
+        if (connectedWallet) {
+            statusEl.className = 'status connected';
+            statusEl.innerHTML = '✅ Connected to Wallet';
+
+            walletInfoEl.style.display = 'block';
+            walletInfoEl.innerHTML = `
+                    <div><strong>Address:</strong> <code>${connectedWallet.accountRS}</code></div>
+                    <div><strong>Account ID:</strong> <code>${connectedWallet.accountId}</code></div>
+                    <div><strong>Public Key:</strong> <code>${connectedWallet.publicKey}</code></div>
+                `;
+
+            sendBtn.disabled = false;
+            disconnectBtn.disabled = false;
+        } else {
+            statusEl.className = 'status disconnected';
+            statusEl.innerHTML = '❌ Not Connected';
+            walletInfoEl.style.display = 'none';
+            sendBtn.disabled = true;
+            disconnectBtn.disabled = true;
+        }
+    }
+
+    function log(message, type = 'info') {
+        const logEl = document.getElementById('activityLog');
+        const timestamp = new Date().toLocaleTimeString();
+
+        const entry = document.createElement('div');
+        entry.className = 'log-entry log-' + type;
+        entry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span> ${message}`;
+
+        logEl.appendChild(entry);
+        logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    function clearLog() {
+        document.getElementById('activityLog').innerHTML = '';
+        log('Log cleared', 'info');
+    }
+</script>
+</body>
+</html>

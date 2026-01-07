@@ -1,7 +1,7 @@
 {
   "name": "@signumjs/http",
   "description": "SignumJS Generic Http Module",
-  "version": "2.0.8",
+  "version": "3.0.3",
   "keywords": [
     "signum",
     "signum-network",
@@ -22,6 +22,7 @@
     "node": ">=18"
   },
   "license": "Apache-2.0",
+  "sideEffects": false,
   "main": "./out/index.js",
   "exports": {
     ".": {
