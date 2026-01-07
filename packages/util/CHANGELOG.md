@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- Mobile Wallet deeplinks added - wallets package refactored
+
 ## 3.0.1
 
 ### Patch Changes

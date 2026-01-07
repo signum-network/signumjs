@@ -314,6 +314,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/core/dist/signumjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/standards/dist/signumjs.standards.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@signumjs/util/dist/signumjs.util.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@signumjs/wallets/dist/signumjs.wallets.min.js"></script>
 
 <script defer>
 
@@ -321,6 +322,7 @@
     const {Amount} = sig$util;
     const {src22} = sig$standards;
     const {getAccountIdFromPublicKey} = sig$crypto;
+    const {MobileWallet} = sig$wallets;
 
     // State
     let connectedWallet = null;
@@ -356,17 +358,21 @@
     }
 
     function connectWallet() {
-        const callbackUrl = window.location.origin + window.location.pathname + '?action=connected';
+        const deeplink = new MobileWallet().connect({
+            appName: "",
+            callbackUrl: window.location.href + '?action=connected',
+            network: "testnet"
+        })
 
-        const deeplink = src22.createDeeplink({
-            version: 'v1',
-            action: 'connect',
-            payload: {
-                appName: 'Example dApp',
-                callbackUrl,
-                network: currentNetwork
-            }
-        });
+        // const deeplink = src22.createDeeplink({
+        //     version: 'v1',
+        //     action: 'connect',
+        //     payload: {
+        //         appName: 'Example dApp',
+        //         callbackUrl,
+        //         network: currentNetwork
+        //     }
+        // });
 
         log('Generated connect deep link', 'info');
         document.getElementById('connectDeeplink').style.display = 'block';
@@ -426,16 +432,11 @@
             log('Transaction bytes: ' + unsignedTx.unsignedTransactionBytes.substring(0, 40) + '...', 'info');
 
             // Create sign deep link
-            const callbackUrl = window.location.origin + window.location.pathname + '?action=signed';
-            const deeplink = src22.createDeeplink({
-                version: 'v1',
-                action: 'sign',
-                payload: {
-                    unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
-                    network: currentNetwork,
-                    callbackUrl
-                }
-            });
+            const deeplink = new Wallet().sign({
+                unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
+                network: "testnet",
+                callbackUrl: window.location.href + '?action=signed'
+            })
 
             log('Generated sign deep link', 'info');
             document.getElementById('signDeeplink').style.display = 'block';
@@ -457,13 +458,18 @@
         // only connected callback us necessary
         if (action === 'connected') {
             // Handle connect callback
-            const publicKey = params.get('publicKey').toLowerCase();
+            const publicKey = MobileWallet.parseConnectCallback()
             if (publicKey) {
                 localStorage.setItem('publicKey', publicKey);
                 updateUI();
                 // Clean URL
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
+        }
+        else if( action === 'sign'){
+            const signResult = MobileWallet.parseSignCallback();
+            console.log("Sign Result:", signResult)
+            // implement ui update
         }
     }
 

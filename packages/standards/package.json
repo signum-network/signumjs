@@ -1,7 +1,7 @@
 {
   "name": "@signumjs/standards",
   "description": "SignumJS Standards (SRC) tooling package",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "keywords": [
     "signum",
     "signum-network",
@@ -49,7 +49,7 @@
     "@braintree/sanitize-url": "^7.1.0"
   },
   "peerDependencies": {
-    "@signumjs/core": "^3.0.1"
+    "@signumjs/core": "^3.0.2"
   },
   "husky": {
     "hooks": {

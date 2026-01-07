@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- Mobile Wallet deeplinks added - wallets package refactored
+- Updated dependencies
+  - @signumjs/core@3.0.2
+  - @signumjs/util@3.0.2
+
 ## 3.0.1
 
 ### Patch Changes
