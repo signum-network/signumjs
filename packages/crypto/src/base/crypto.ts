@@ -35,9 +35,7 @@ export class Crypto {
      * @param cryptoAdapter The platform specific adapter, e.g. {@link NodeJSCryptoAdapter}, {@link WebCryptoAdapter}, or any other provider
      */
     static init(cryptoAdapter: CryptoAdapter) {
-        if(!Crypto.cryptoAdapter) {
-            Crypto.cryptoAdapter = cryptoAdapter;
-        }
+        Crypto.cryptoAdapter = cryptoAdapter;
     }
 
 }
