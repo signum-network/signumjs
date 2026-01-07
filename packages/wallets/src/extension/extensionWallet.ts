@@ -1,16 +1,54 @@
 /**
- * Original work Copyright (c) 2022 Signum Network
+ * Original work Copyright (c) 2022, 2026 Signum Network
  */
 
 /* globals window */
-import {ConfirmedTransaction, SendEncryptedMessageArgs, Wallet} from '../typings';
-import {ExtensionAdapterFactory} from './extensionAdapterFactory';
-import {WalletConnection} from './walletConnection';
+import {ExtensionWalletConnection} from './extensionWalletConnection';
+import {BrowserExtensionAdapter} from './browserExtensionAdapter';
 
 /**
- * Connection parameters for {@link GenericExtensionWallet.connect}
+ * Arguments for {@link ExtensionWallet.sendEncryptedMessage}
+ * @module wallets
  */
-interface GenericExtensionWalletConnectArgs {
+export interface SendEncryptedMessageArgs {
+    /**
+     * The fee in signa.
+     */
+    feeSigna: number | string,
+    /**
+     * The public key of the recipient.
+     */
+    recipientPublicKey: string,
+    /**
+     * The message to be sent.
+     */
+    message?: string,
+    /**
+     * The hex message to be sent - as alternative to `message`.
+     */
+    hexMessage?: string,
+}
+
+/**
+ * Object returned from {@link ExtensionWallet.confirm}
+ * @module wallets
+ */
+export interface ConfirmedTransaction {
+    /**
+     * The transaction id
+     */
+    transactionId: string;
+    /**
+     * The hash of the transaction
+     */
+    fullHash: string;
+}
+
+
+/**
+ * Connection parameters for {@link ExtensionWallet.connect}
+ */
+export interface ExtensionWalletConnectArgs {
     /**
      * The name of the app to be connected.
      */
@@ -30,7 +68,7 @@ interface GenericExtensionWalletConnectArgs {
  * @example
  *
  * ```js
- *  const wallet = new GenericExtensionWallet()
+ *  const wallet = new ExtensionWallet()
  *  wallet
  *  .connect({appName: 'MySuperDApp', networkName: NetworkName.SignumMainnet})
  *  .then( connection => {
@@ -56,17 +94,10 @@ interface GenericExtensionWalletConnectArgs {
  *
  * @module wallets
  */
-export class GenericExtensionWallet implements Wallet {
+export class ExtensionWallet {
 
-    private _connection: WalletConnection | null = null;
-
-    /**
-     * Instantiates the extension wallet proxy.
-     * @param adapter The adapter according your environment. See {@link ExtensionAdapterFactory}.
-     * It uses the default {@link ExtensionAdapterFactory} to determine the correct adapter.
-     */
-    constructor(private readonly adapter = ExtensionAdapterFactory.getAdapter()) {
-    }
+    private _connection: ExtensionWalletConnection | null = null;
+    private adapter = new BrowserExtensionAdapter();
 
     private assertConnection() {
         if (!this.connection) {
@@ -74,7 +105,7 @@ export class GenericExtensionWallet implements Wallet {
         }
     }
 
-    private async fetchPermission(network: string, appName: string): Promise<WalletConnection> {
+    private async fetchPermission(network: string, appName: string): Promise<ExtensionWalletConnection> {
         try {
             const {availableNodeHosts, accountId, publicKey, currentNodeHost, watchOnly} = await this.adapter.requestPermission({
                 network: network,
@@ -83,7 +114,7 @@ export class GenericExtensionWallet implements Wallet {
                 },
             });
 
-            return new WalletConnection(
+            return new ExtensionWalletConnection(
                 accountId,
                 publicKey,
                 watchOnly,
@@ -99,7 +130,7 @@ export class GenericExtensionWallet implements Wallet {
     /**
      * @return the current connection, iff exists
      */
-    get connection(): WalletConnection | null {
+    get connection(): ExtensionWalletConnection | null {
         return this._connection;
     }
 
@@ -109,7 +140,7 @@ export class GenericExtensionWallet implements Wallet {
      * @return The connection if successful, or null, if not available
      * @throws Errors on unavailability, wrong networks or permission issues
      */
-    async connect(args: GenericExtensionWalletConnectArgs): Promise<WalletConnection> {
+    async connect(args: ExtensionWalletConnectArgs): Promise<ExtensionWalletConnection> {
         this._connection = null;
         await this.adapter.assertWalletAvailable();
         const {appName, networkName} = args;

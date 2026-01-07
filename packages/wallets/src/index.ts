@@ -5,6 +5,6 @@
  *
  * @module wallets
  * */
-export * from './typings';
-export * from './deeplinkable';
+export * from './desktop';
+export * from './mobile';
 export * from './extension';

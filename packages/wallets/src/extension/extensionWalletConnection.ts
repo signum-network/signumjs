@@ -12,11 +12,11 @@ import {ExtensionNotificationHandler} from './extensionNotificationHandler';
 
 
 /**
- * Wallet Connection object returned from {@link GenericExtensionWallet.connect}
+ * Wallet Connection object returned from {@link ExtensionWallet.connect}
  * You can use this to listen to events in the wallet, i.e. network changes, or permission removals
  * @module wallets
  */
-export class WalletConnection {
+export class ExtensionWalletConnection {
     private notificationListener: ExtensionListener;
 
     /**

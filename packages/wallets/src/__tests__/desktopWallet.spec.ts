@@ -1,13 +1,16 @@
-import {DeeplinkableWallet} from '../deeplinkable';
+import {describe, it, expect} from "vitest"
+
+import {DesktopWallet} from '../desktop';
 import {Amount} from '@signumjs/util';
 import {src22} from '@signumjs/standards';
+import {Address} from '@signumjs/core';
 
-describe('DeeplinkableWallet', () => {
+describe('DesktopWallet', () => {
     describe('pay', () => {
         it('should return the deeplink as expected with default values', async () => {
-            const wallet = new DeeplinkableWallet();
-            const link = await wallet.pay({to: '16107620026796983538'});
-            const decodedLink = decodeURIComponent(link.replace(wallet.redirectProxy, ''));
+            const wallet = new DesktopWallet();
+            const link = await wallet.pay({recipient: Address.create('16107620026796983538')});
+            const decodedLink = decodeURIComponent(link);
             const parsed = src22.parseDeeplink(decodedLink);
             expect(parsed.action).toEqual('pay');
             expect(parsed.decodedPayload).toEqual({
@@ -21,11 +24,11 @@ describe('DeeplinkableWallet', () => {
             });
         });
         it('should return the deeplink as expected with text message', async () => {
-            const wallet = new DeeplinkableWallet();
+            const wallet = new DesktopWallet();
             const link = await wallet.pay({
-                to: '16107620026796983538',
-                amount: 1,
-                fee: 0.01,
+                recipient: Address.create('16107620026796983538'),
+                amount: Amount.fromSigna(1),
+                fee: Amount.fromSigna(0.01),
                 encrypt: true,
                 readonly: true,
                 message: 'Some Text Message',
@@ -46,11 +49,11 @@ describe('DeeplinkableWallet', () => {
             });
         });
         it('should return the deeplink as expected with binary message', async () => {
-            const wallet = new DeeplinkableWallet();
+            const wallet = new DesktopWallet();
             const link = await wallet.pay({
-                to: '16107620026796983538',
-                amount: 1,
-                fee: 0.01,
+                recipient: Address.create('16107620026796983538'),
+                amount: Amount.fromSigna(1),
+                fee: Amount.fromSigna(0.01),
                 encrypt: false,
                 readonly: true,
                 hexMessage: 'DEADBEEF',
@@ -69,27 +72,6 @@ describe('DeeplinkableWallet', () => {
                 deadline: 100,
                 encrypt: false
             });
-        });
-        it('should reject on wrong address', async () => {
-            const wallet = new DeeplinkableWallet();
-            let hasThrown = false;
-            try {
-                await wallet.pay({
-                    to: 'invalidaddress'
-                });
-            } catch (e) {
-                hasThrown = true;
-            }
-            expect(hasThrown).toBeTruthy();
-        });
-        it('should use an custom redirect proxy', async () => {
-            const wallet = new DeeplinkableWallet({
-                redirectProxy: 'https://redirect.io?url=',
-            });
-            const link = await wallet.pay({
-                to: '16107620026796983538'
-            });
-            expect(link.startsWith('https://redirect.io?url=signum')).toBeTruthy();
         });
     });
 });
