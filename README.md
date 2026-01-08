@@ -17,23 +17,21 @@
 interact with the [Signum Network blockchain](https://signum.network/), an advanced community-driven blockchain
 technology.
 
+
 ---------------------------------------
 
-👷‍♂️👷‍♂️👷‍♂️ 🏗️🏗️🏗️ MODERNIZATION IN PROGRESS 🏗️🏗️🏗️ 👷‍♂️👷‍♂️👷‍♂️
+🏁🏁 MODERNIZATION COMPLETED 
 
-- [X] CONTRACTS
-- [X] CORE
-- [x] CRYPTO
-- [X] HTTP
-- [X] UTILS
-- [X] STANDARDS
-- [X] WALLET
-- [X] DOCUMENTATION
-- [ ] MORE EXAMPLES
+- Version 2: Changed from lerna and jest to turbo and vitest.
+- Version 2: Refactored crypto package (removed crypto-js dependency, using CryptoAdapter pattern)
 
-Version 2 is now live. There are some major changes especially for the crypto package. Check more details [here](./packages/crypto/README.md)
-Consider this version as not fully stable yet.
+> 💡Due to the removal of crypto-js the crypto adapter must be initialized
 
+Breaking changes:
+- Version 3: Deprecated `LedgerClientFactory` (use `createClient` instead) 
+- Version 3: Has improved tree-shaking capabilities, such that bundles can be significantly smaller.
+- Version 3: Got the new mobile wallet deeplinking support.
+- 
 ----------------------------
 
 Best way to start is with the extensive [Online Documentation](https://docs.signum.network/signum/signumjs)
@@ -224,6 +222,42 @@ ledger.account.getAccountBalance('13036514135565182944')
     })
 
 ```
+
+
+## Crypto Adapters
+
+The SignumJS SDK uses a crypto adapter pattern to allow for different platform crypto implementations (Web, NodeJS).
+For NodeJS and Web/Browser signumjs provides the adapters already.
+
+> ℹ️crypto-js is deprecated and has security vulnerabilities in the random number generation. Since version 2.0.0, crypto-js is no longer used
+> and for web and nodejs the native crypto implementation is used. This is why the crypto module needs to be initialized.
+
+_Note: For React Native/Expo a [custom adapter](https://github.com/signum-network/signumjs-react-native-crypto-adapter) is available._
+
+### WebCryptoAdapter
+
+```ts
+// somewhere on your apps entry point
+import {WebCryptoAdapter} from '@signumjs/crypto/adapters'
+import {Crypto} from '@signumjs/crypto'
+
+Crypto.init(new WebCryptoAdapter())
+```
+
+> Web bundles (signumjs.min.js) are automatically initialized with the WebAdapter - so, no need to initialize
+
+
+### NodeJSCryptoAdapter
+
+```ts
+// somewhere on your apps entry point
+import {NodeJSCryptoAdapter} from '@signumjs/crypto/adapters'
+import {Crypto} from '@signumjs/crypto'
+
+Crypto.init(new NodeJSCryptoAdapter())
+```
+
+
 
 ## Development
 
