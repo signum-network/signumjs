@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.4
+
+### Patch Changes
+
+- Exported missing Contract types
+- Updated dependencies
+  - @signumjs/contracts@3.0.4
+  - @signumjs/crypto@3.0.4
+  - @signumjs/http@3.0.4
+  - @signumjs/util@3.0.4
+
 ## 3.0.3
 
 ### Patch Changes
