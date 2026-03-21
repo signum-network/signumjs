@@ -40,6 +40,7 @@
     "bundle": "turbo run bundle",
     "doc": "typedoc",
     "publish": "./publish.sh",
+    "new-version": "./publish.sh",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "posttest:ci": "./generate-coverage-report.sh",

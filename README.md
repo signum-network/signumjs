@@ -286,17 +286,22 @@ npm run compile
 
 ## Versioning and Publishing
 
-This monorepo uses [changeset](https://github.com/changesets/changesets) to manage the versions and publish the package. We use one version for all packages.
-
-1. Create a changeset: `npx changeset` (always include all packages)
-2. Bump version: `npx changeset version`
-3. Create git tag: `git tag <VERSION>` (starting with `v`, e.g. `v2.0.2`)
-3. Publish `npx changeset publish --no-git-tag --otp=<NPM_OTP>`
-
-The latter can be run as 
+All packages share a single version and are published together.
 
 ```bash
-npm run publish v2.0.1 --otp=123456
+npm run new-version -- patch   # e.g. 3.0.5 → 3.0.6
+npm run new-version -- minor   # e.g. 3.0.5 → 3.1.0
+npm run new-version -- major   # e.g. 3.0.5 → 4.0.0
 ```
 
-> Note: Only with a valid npm OTP token
+The script will:
+1. Generate per-package changelogs from git history (commits filtered by package directory)
+2. Show a preview and ask for confirmation (with an option to edit changelogs first)
+3. Bump all `package.json` versions and internal dependency ranges
+4. Run `turbo compile test bundle`
+5. Commit, tag, and push
+
+Pushing the tag triggers the [Publish workflow](.github/workflows/publish.yml) on GitHub Actions, which builds, tests, publishes all packages to npm, and creates a GitHub Release.
+
+> **Setup:** Add an npm automation token as the `NPM_TOKEN` secret in your repository settings
+> (Settings → Secrets and variables → Actions → New repository secret)
