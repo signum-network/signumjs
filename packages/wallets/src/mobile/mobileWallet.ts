@@ -2,14 +2,21 @@
  * Original work Copyright (c) 2026 Signum Network
  */
 
-/**
- *
- */
 
 /* globals window */
 
 import {src22} from '@signumjs/standards';
 import {isNodeJS} from '../isNodeJS';
+import {MobileWalletError} from './errors';
+
+/**
+ * Represents the various status types that can be assigned to an operation or process.
+ *
+ * 'success'  - Indicates that the operation was completed successfully.
+ * 'rejected' - Indicates that the operation was explicitly declined or denied.
+ * 'failed'   - Indicates that the operation encountered an error or was unsuccessful.
+ */
+export type StatusType = 'success' | 'rejected' | 'failed';
 
 /**
  * Callback data for 'connect'  command
@@ -18,11 +25,11 @@ export interface ConnectCallbackData {
     /**
      * Public key returned from connect callback
      */
-    publicKey?: string;
+    publicKey: string;
     /**
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
-    status?: string;
+    status: StatusType;
 }
 
 /**
@@ -32,7 +39,7 @@ export interface SignCallbackData {
     /**
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
-    status?: string;
+    status: StatusType;
     /**
      * Transaction ID returned on _successful_ sign
      */
@@ -186,12 +193,27 @@ export class MobileWallet {
      */
     static parseConnectCallback(): ConnectCallbackData {
         if (typeof window === 'undefined') {
-            return {};
+            throw new MobileWalletError("window is undefined - Looks like you're not running in a browser environment");
         }
 
         const params = new URLSearchParams(window.location.search);
+
+        if(!params.has('publicKey')) {
+            throw new MobileWalletError("No public key found in callback URL");
+        }
+
+        if(!params.has('status')) {
+            throw new MobileWalletError("No status found in callback URL");
+        }
+
+        const status = params.get('status');
+        if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
+            throw new MobileWalletError("Invalid status found in callback URL");
+        }
+
         return {
-            publicKey: params.get('publicKey') || undefined,
+            publicKey: params.get('publicKey'),
+            status: status as StatusType
         };
     }
 
@@ -201,12 +223,22 @@ export class MobileWallet {
      */
     static parseSignCallback(): SignCallbackData {
         if (typeof window === 'undefined') {
-            return {};
+            throw new MobileWalletError("window is undefined - Looks like you're not running in a browser environment");
         }
 
         const params = new URLSearchParams(window.location.search);
+
+        if(!params.has('status')) {
+            throw new MobileWalletError("No status found in callback URL");
+        }
+
+        const status = params.get('status');
+        if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
+            throw new MobileWalletError("Invalid status found in callback URL");
+        }
+
         return {
-            status: params.get('status') || undefined,
+            status: status as StatusType,
             transactionId: params.get('transactionId') || undefined
         };
     }

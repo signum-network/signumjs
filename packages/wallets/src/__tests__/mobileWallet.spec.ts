@@ -1,5 +1,5 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
-import {MobileWallet} from '../mobile';
+import {MobileWallet, MobileWalletError} from '../mobile';
 import {src22} from '@signumjs/standards';
 
 describe('MobileWallet', () => {
@@ -255,40 +255,64 @@ describe('MobileWallet', () => {
     });
 
     describe('parseConnectCallback', () => {
-        it('should parse publicKey from URL parameters', () => {
-            global.window.location.search = '?publicKey=abc123def456';
+        it('should parse publicKey and status from URL parameters', () => {
+            global.window.location.search = '?publicKey=abc123def456&status=success';
             const data = MobileWallet.parseConnectCallback();
 
             expect(data.publicKey).toEqual('abc123def456');
+            expect(data.status).toEqual('success');
         });
 
-        it('should return empty object when no parameters present', () => {
+        it('should throw when no parameters present', () => {
             global.window.location.search = '';
-            const data = MobileWallet.parseConnectCallback();
 
-            expect(data).toEqual({});
+            expect(() => MobileWallet.parseConnectCallback()).toThrow(MobileWalletError);
         });
 
-        it('should return undefined for publicKey when not in parameters', () => {
+        it('should throw when publicKey is missing', () => {
             global.window.location.search = '?status=success';
-            const data = MobileWallet.parseConnectCallback();
 
-            expect(data.publicKey).toBeUndefined();
+            expect(() => MobileWallet.parseConnectCallback()).toThrow('No public key found');
+        });
+
+        it('should throw when status is missing', () => {
+            global.window.location.search = '?publicKey=abc123';
+
+            expect(() => MobileWallet.parseConnectCallback()).toThrow('No status found');
+        });
+
+        it('should throw when status is invalid', () => {
+            global.window.location.search = '?publicKey=abc123&status=invalid';
+
+            expect(() => MobileWallet.parseConnectCallback()).toThrow('Invalid status');
         });
 
         it('should handle multiple URL parameters and extract publicKey', () => {
-            global.window.location.search = '?foo=bar&publicKey=abc123&baz=qux';
+            global.window.location.search = '?foo=bar&publicKey=abc123&status=success&baz=qux';
             const data = MobileWallet.parseConnectCallback();
 
             expect(data.publicKey).toEqual('abc123');
+            expect(data.status).toEqual('success');
         });
 
-        it('should return empty object when window is undefined (NodeJS)', () => {
-            delete (global as any).window;
-
+        it('should parse rejected status', () => {
+            global.window.location.search = '?publicKey=abc123&status=rejected';
             const data = MobileWallet.parseConnectCallback();
 
-            expect(data).toEqual({});
+            expect(data.status).toEqual('rejected');
+        });
+
+        it('should parse failed status', () => {
+            global.window.location.search = '?publicKey=abc123&status=failed';
+            const data = MobileWallet.parseConnectCallback();
+
+            expect(data.status).toEqual('failed');
+        });
+
+        it('should throw when window is undefined (NodeJS)', () => {
+            delete (global as any).window;
+
+            expect(() => MobileWallet.parseConnectCallback()).toThrow('window is undefined');
         });
     });
 
@@ -317,11 +341,22 @@ describe('MobileWallet', () => {
             expect(data.transactionId).toBeUndefined();
         });
 
-        it('should return empty object when no parameters present', () => {
+        it('should throw when no parameters present', () => {
             global.window.location.search = '';
-            const data = MobileWallet.parseSignCallback();
 
-            expect(data).toEqual({});
+            expect(() => MobileWallet.parseSignCallback()).toThrow(MobileWalletError);
+        });
+
+        it('should throw when status is missing', () => {
+            global.window.location.search = '?foo=bar';
+
+            expect(() => MobileWallet.parseSignCallback()).toThrow('No status found');
+        });
+
+        it('should throw when status is invalid', () => {
+            global.window.location.search = '?status=invalid';
+
+            expect(() => MobileWallet.parseSignCallback()).toThrow('Invalid status');
         });
 
         it('should handle multiple URL parameters', () => {
@@ -332,20 +367,10 @@ describe('MobileWallet', () => {
             expect(data.transactionId).toEqual('abc123');
         });
 
-        it('should return undefined for missing parameters', () => {
-            global.window.location.search = '?foo=bar';
-            const data = MobileWallet.parseSignCallback();
-
-            expect(data.status).toBeUndefined();
-            expect(data.transactionId).toBeUndefined();
-        });
-
-        it('should return empty object when window is undefined (NodeJS)', () => {
+        it('should throw when window is undefined (NodeJS)', () => {
             delete (global as any).window;
 
-            const data = MobileWallet.parseSignCallback();
-
-            expect(data).toEqual({});
+            expect(() => MobileWallet.parseSignCallback()).toThrow('window is undefined');
         });
     });
 });
