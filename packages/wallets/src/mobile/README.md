@@ -61,7 +61,8 @@ if (MobileConnection.isConnected()) {
     const unsignedTx = await ledger.transaction.sendAmountToSingleRecipient({
         senderPublicKey: publicKey,
         recipientId: recipientAddress,
-        amountPlanck: amount
+        amountPlanck: amount,
+        feePlanck: fee,
     });
 
     // Open mobile wallet to sign
