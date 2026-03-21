@@ -11,5 +11,7 @@
   "suppressCommentWarningsInDeclarationFiles": true,
   "navigation": {
     "includeCategories": true
-  }
+  },
+  "treatWarningsAsErrors": false,
+  "excludeNotDocumented": false
 }

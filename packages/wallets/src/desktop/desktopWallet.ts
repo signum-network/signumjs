@@ -114,16 +114,8 @@ export class DesktopWallet {
     /**
      * Initiates a payment operation with the specified parameters.
      *
-     * @param {DesktopWalletPayArgs} args - An object containing the parameters for the payment.
-     * @param {Amount} [args.amount=Amount.Zero()] - The amount to be paid, defaulting to zero if not specified.
-     * @param {boolean} [args.encrypt=false] - A flag indicating whether the message should be encrypted, defaulting to false.
-     * @param {Amount} [args.fee=Amount.fromPlanck(FeeQuantPlanck)] - The transaction fee, defaulting to the defined FeeQuantPlanck.
-     * @param {string} [args.message] - An optional plain text message to include with the payment.
-     * @param {string} [args.hexMessage] - An optional hexadecimal message to include with the payment if `message` is not provided.
-     * @param {Recipient} args.recipient - The recipient of the payment, provided as an object containing their numeric ID.
-     * @param {number} [args.deadline=1440] - The deadline for the payment transaction, defaulting to 1440.
-     * @param {boolean} [args.readonly=false] - A flag indicating whether the payment should be immutable, defaulting to false.
-     * @return {Promise<string>} A promise that resolves to a string representing the final payment deeplink.
+     * @param args - An object containing the parameters for the payment. See {@link DesktopWalletPayArgs}.
+     * @return A promise that resolves to a string representing the final payment deeplink.
      */
     pay(args: DesktopWalletPayArgs): Promise<string> {
         const {

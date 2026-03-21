@@ -1,0 +1,45 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    name: Build, Test & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile, test, and bundle
+        run: npx turbo run compile test bundle
+
+      - name: Publish packages to npm
+        run: |
+          for PKG_DIR in packages/*/; do
+            PKG_NAME=$(node -p "require('./${PKG_DIR}package.json').name")
+            PKG_VERSION=$(node -p "require('./${PKG_DIR}package.json').version")
+            echo "Publishing $PKG_NAME@$PKG_VERSION..."
+            (cd "$PKG_DIR" && npm publish --access public --provenance)
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: CHANGELOG.md
+          generate_release_notes: false

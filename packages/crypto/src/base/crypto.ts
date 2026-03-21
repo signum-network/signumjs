@@ -32,7 +32,7 @@ export class Crypto {
      *
      * This must be called, before any of the crypto functions is being used
      *
-     * @param cryptoAdapter The platform specific adapter, e.g. {@link NodeJSCryptoAdapter}, {@link WebCryptoAdapter}, or any other provider
+     * @param cryptoAdapter The platform specific adapter, e.g. `NodeJSCryptoAdapter`, `WebCryptoAdapter`, or any other provider
      */
     static init(cryptoAdapter: CryptoAdapter) {
         Crypto.cryptoAdapter = cryptoAdapter;

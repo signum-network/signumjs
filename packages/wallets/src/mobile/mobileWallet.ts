@@ -125,9 +125,7 @@ export class MobileWallet {
      *
      * In the callback page you can use {@link MobileWallet.parseConnectCallback} to extract the public key
      *
-     * @param callbackUrl - The URL the mobile wallet should redirect to after connection
-     * @param appName - The name of the dApp
-     * @param network - The network to connect to (mainnet or testnet)
+     * @param args - The connection arguments. See {@link MobileWalletConnectArgs}.
      * @returns The deeplink URL (for testing or custom handling)
      */
     connect({callbackUrl, appName, network} : MobileWalletConnectArgs ): string {

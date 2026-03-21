@@ -70,7 +70,7 @@ npm install @signumjs/standards (optional)
 
 or using [yarn](https://yarnpkg.com/):
 
-``` yarn
+```bash
 yarn add @signumjs/core
 yarn add @signumjs/contracts (optional)
 yarn add @signumjs/crypto (optional)
