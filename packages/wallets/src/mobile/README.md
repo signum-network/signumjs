@@ -6,15 +6,16 @@ Integration with Signum mobile wallets via deep linking (SIP22 protocol).
 
 - Direct deeplink integration (`signum://` protocol)
 - Simple callback-based communication
+- Persistent connection management via `MobileConnection`
+- Pluggable storage (defaults to `localStorage`, swap for React Native, etc.)
 - No polling or complex async flows
-- Full developer control over state management
 
 ## Basic Usage
 
 ### 1. Create a MobileWallet instance
 
 ```typescript
-import { MobileWallet } from '@signumjs/wallets';
+import { MobileWallet, MobileConnection } from '@signumjs/wallets';
 
 const wallet = new MobileWallet();
 ```
@@ -23,135 +24,136 @@ const wallet = new MobileWallet();
 
 ```typescript
 // Opens mobile wallet with connect deeplink
-const callbackUrl = `${window.location.origin}/wallet-connected.html`;
-wallet.connect(callbackUrl);
+wallet.connect({
+    callbackUrl: `${window.location.origin}/wallet-connected`,
+    appName: 'MyDApp',
+    network: 'mainnet'
+});
 
-// Mobile wallet will redirect to: /wallet-connected.html?publicKey=abc123...
+// Mobile wallet will redirect to: /wallet-connected?publicKey=abc123...&status=success
 ```
 
-### 3. Create callback page
+### 3. Handle connect callback
 
-Create `/wallet-connected.html`:
+On your callback page, parse the response and persist the connection:
 
-```html
-<!DOCTYPE html>
-<html>
-<body>
-    <script type="module">
-        import { MobileWallet } from '@signumjs/wallets';
+```typescript
+import { MobileWallet, MobileConnection } from '@signumjs/wallets';
 
-        // Parse callback data
-        const data = MobileWallet.parseCallback();
+// Parse and persist in one step
+const data = MobileWallet.parseConnectCallback();
+MobileConnection.save(data);
 
-        if (data.publicKey) {
-            // Store public key
-            localStorage.setItem('signum-wallet-publicKey', data.publicKey);
-
-            // Redirect back to app
-            window.location.href = '/';
-        }
-    </script>
-</body>
-</html>
+// Redirect back to app
+window.location.href = '/';
 ```
 
 ### 4. Sign transactions
 
 ```typescript
-import { createClient } from '@signumjs/core/createClient';
+import { MobileConnection } from '@signumjs/wallets';
 
-// Get stored public key
-const publicKey = wallet.getPublicKey('signum-wallet-publicKey');
+// Check connection and get public key
+if (MobileConnection.isConnected()) {
+    const publicKey = MobileConnection.getPublicKey();
 
-// Create unsigned transaction
-const ledger = createClient({
-    nodeHost: "https://brazil.signum.network"
-});
+    // Create unsigned transaction using the public key
+    const unsignedTx = await ledger.transaction.sendAmountToSingleRecipient({
+        senderPublicKey: publicKey,
+        recipientId: recipientAddress,
+        amountPlanck: amount,
+        feePlanck: fee,
+    });
 
-const unsignedTx = await ledger.transaction.sendAmountToSingleRecipient({
-    senderPublicKey: publicKey,
-    recipientId: recipientAddress,
-    amountPlanck: amount
-});
-
-// Open mobile wallet to sign
-const callbackUrl = `${window.location.origin}/wallet-signed.html`;
-wallet.sign(unsignedTx.unsignedTransactionBytes, callbackUrl);
-
-// Mobile wallet will redirect to: /wallet-signed.html?status=success&transactionId=xyz789
+    // Open mobile wallet to sign
+    wallet.sign({
+        unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
+        callbackUrl: `${window.location.origin}/wallet-signed`,
+        network: 'mainnet'
+    });
+}
 ```
 
 ### 5. Handle signing response
 
-Create `/wallet-signed.html`:
+```typescript
+import { MobileWallet } from '@signumjs/wallets';
 
-```html
-<!DOCTYPE html>
-<html>
-<body>
-    <script type="module">
-        import { MobileWallet } from '@signumjs/wallets';
+const data = MobileWallet.parseSignCallback();
 
-        const data = MobileWallet.parseCallback();
-
-        if (data.status === 'success' && data.transactionId) {
-            // Transaction successful
-            console.log('Transaction ID:', data.transactionId);
-            localStorage.setItem('last-tx-id', data.transactionId);
-            window.location.href = '/';
-
-        } else if (data.status === 'rejected') {
-            // User cancelled
-            alert('Transaction cancelled');
-            window.location.href = '/';
-
-        } else if (data.status === 'failed') {
-            // Transaction failed
-            alert('Transaction failed');
-            window.location.href = '/';
-        }
-    </script>
-</body>
-</html>
+if (data.status === 'success') {
+    console.log('Transaction ID:', data.transactionId);
+} else if (data.status === 'rejected') {
+    console.log('User cancelled');
+} else if (data.status === 'failed') {
+    console.log('Transaction failed');
+}
 ```
 
-## API Reference
+## MobileConnection
 
-### `connect(callbackUrl: string): string`
+`MobileConnection` manages persistence of the wallet connection across page navigations. Since mobile wallet interaction happens via deep link redirects, the `MobileWallet` instance doesn't survive page transitions. `MobileConnection` solves this.
+
+### API
+
+#### `MobileConnection.save(data: ConnectCallbackData): void`
+
+Persists the public key from the connect callback.
+
+#### `MobileConnection.isConnected(): boolean`
+
+Returns `true` if a public key is stored.
+
+#### `MobileConnection.getPublicKey(): string | null`
+
+Returns the stored public key, or `null` if not connected.
+
+#### `MobileConnection.disconnect(): void`
+
+Clears the stored connection data.
+
+#### `MobileConnection.useStorage(storage: MobileConnectionStorage): void`
+
+Sets a custom storage backend. Defaults to `localStorage`.
+
+```typescript
+// Example: React Native with AsyncStorage adapter
+const asyncStorageAdapter = {
+    getItem: (key) => AsyncStorage.getItemSync(key),
+    setItem: (key, value) => AsyncStorage.setItemSync(key, value),
+    removeItem: (key) => AsyncStorage.removeItemSync(key),
+};
+
+MobileConnection.useStorage(asyncStorageAdapter);
+```
+
+## MobileWallet API Reference
+
+### `connect(args: MobileWalletConnectArgs): string`
 
 Opens the mobile wallet to request connection and public key.
 
 **Parameters:**
 - `callbackUrl` - URL the mobile wallet should redirect to after connection
+- `appName` - Name of the dApp
+- `network` - `'mainnet'` or `'testnet'`
 
-**Returns:** The deeplink URL (for testing or custom handling)
+**Returns:** The deeplink URL
 
-**Callback format:** `callbackUrl?publicKey=abc123...`
-
----
-
-### `getPublicKey(storageKey?: string): string`
-
-Retrieves the public key from localStorage.
-
-**Parameters:**
-- `storageKey` - localStorage key (default: `'signum-wallet-publicKey'`)
-
-**Returns:** The public key string
-
-**Throws:** Error if public key not found
+**Callback format:** `callbackUrl?publicKey=abc123...&status=success`
 
 ---
 
-### `sign(unsignedTransactionBytes: string, callbackUrl: string): string`
+### `sign(args: MobileWalletSignArgs): string`
 
 Opens the mobile wallet to sign an unsigned transaction.
 
 **Parameters:**
 - `unsignedTransactionBytes` - The unsigned transaction bytes to sign
 - `callbackUrl` - URL the mobile wallet should redirect to after signing
+- `network` - `'mainnet'` or `'testnet'`
 
-**Returns:** The deeplink URL (for testing or custom handling)
+**Returns:** The deeplink URL
 
 **Callback formats:**
 - Success: `callbackUrl?status=success&transactionId=xyz789`
@@ -160,33 +162,16 @@ Opens the mobile wallet to sign an unsigned transaction.
 
 ---
 
-### `static parseCallback(): CallbackData`
+### `static parseConnectCallback(): ConnectCallbackData`
 
-Static helper to parse callback data from URL parameters.
+Parses the connect callback URL parameters. Returns `{ publicKey, status }`.
 
-**Returns:** Object with optional properties:
-```typescript
-{
-    publicKey?: string;
-    status?: string;
-    transactionId?: string;
-}
-```
+**Throws:** `MobileWalletError` if required parameters are missing or invalid.
 
-## Design Philosophy
+---
 
-The MobileWallet is intentionally **low-level and unopinionated**:
+### `static parseSignCallback(): SignCallbackData`
 
-- **No polling** - Direct callback-based communication
-- **No promises** - Developer controls async flow
-- **No state management** - Developer chooses localStorage, React state, etc.
-- **No assumptions** - Works with any framework or vanilla JS
+Parses the sign callback URL parameters. Returns `{ status, transactionId? }`.
 
-This gives you maximum flexibility to integrate the wallet into your specific dApp architecture.
-
-## Examples
-
-See the example files:
-- `test.html` - Complete working example
-- `wallet-connected.html` - Connect callback example
-- `wallet-signed.html` - Sign callback example
+**Throws:** `MobileWalletError` if required parameters are missing or invalid.
