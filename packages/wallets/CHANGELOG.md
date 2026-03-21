@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.5
+
+### Patch Changes
+
+- Improved Mobile Wallets package
+- Updated dependencies
+  - @signumjs/core@3.0.5
+  - @signumjs/crypto@3.0.5
+  - @signumjs/standards@3.0.5
+  - @signumjs/util@3.0.5
+
 ## 3.0.4
 
 ### Patch Changes

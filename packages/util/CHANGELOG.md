@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.5
+
+### Patch Changes
+
+- Improved Mobile Wallets package
+
 ## 3.0.4
 
 ### Patch Changes
