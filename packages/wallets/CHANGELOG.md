@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.0.6
+
+### Patch Changes
+
+- Merge remote-tracking branch 'origin/main'
+- feat: refined the mobile wallet package (#89)
+- Updated dependencies
+  - @signumjs/util@3.0.6
+  - @signumjs/standards@3.0.6
+  - @signumjs/core@3.0.6
+  - @signumjs/crypto@3.0.6
+
 ## 3.0.5
 
 ### Patch Changes
