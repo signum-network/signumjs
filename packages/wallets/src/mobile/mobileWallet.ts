@@ -29,7 +29,8 @@ export interface ConnectCallbackData {
     /**
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
-    status: StatusType;
+    // TODO: this is temporary, as we need to add the status in the wallet
+    status?: StatusType;
 }
 
 /**
@@ -200,13 +201,13 @@ export class MobileWallet {
             throw new MobileWalletError("No public key found in callback URL");
         }
 
-        if(!params.has('status')) {
-            throw new MobileWalletError("No status found in callback URL");
-        }
-
+        // TODO: this is optional at the moment, as we need to add the status in the wallet
         const status = params.get('status');
-        if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
-            throw new MobileWalletError("Invalid status found in callback URL");
+        if(status) {
+            // throw new MobileWalletError("No status found in callback URL");
+            if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
+                throw new MobileWalletError("Invalid status found in callback URL");
+            }
         }
 
         return {
