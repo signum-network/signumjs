@@ -51,6 +51,13 @@ LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
 echo "Next version: $NEXT (from tag: ${LAST_TAG:-<none>})"
 echo ""
 
+
+# --- Build and test first
+echo "Building and testing..."
+npm run test
+npm run compile
+
+
 # --- Generate changelogs ---
 
 BUMP_LABEL="Patch Changes"
@@ -162,9 +169,7 @@ fs.writeFileSync('$PKG', JSON.stringify(pkg, null, 2) + '\n');
 done
 echo "All packages bumped to $NEXT"
 
-# Build and test
-echo "Building and testing..."
-npx turbo run compile test bundle
+
 
 # Generate docs
 echo "Generating docs..."
