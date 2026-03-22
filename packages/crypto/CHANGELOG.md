@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.7
+
+### Patch Changes
+
+- docs: updated docs
+
 ## 3.0.6
 
 ### Patch Changes

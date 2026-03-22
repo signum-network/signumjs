@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.0.7
+
+### Patch Changes
+
+- fix: made status in mobile wallet optional
+- docs: updated docs
+- Updated dependencies
+  - @signumjs/util@3.0.7
+  - @signumjs/standards@3.0.7
+  - @signumjs/core@3.0.7
+  - @signumjs/crypto@3.0.7
+
 ## 3.0.6
 
 ### Patch Changes
