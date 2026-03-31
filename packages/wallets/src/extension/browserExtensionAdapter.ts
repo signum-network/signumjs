@@ -3,7 +3,7 @@
  * Modified work Copyright (c) 2022 Signum Network
  */
 
-import {v4 as uuid} from 'uuid';
+import {nanoid} from 'nanoid';
 import {ExtensionAdapter} from './extensionAdapter';
 import {
     ExtensionErrorType,
@@ -121,7 +121,7 @@ export class BrowserExtensionAdapter implements ExtensionAdapter {
      */
     request(payload: ExtensionRequestArgs): Promise<ExtensionResponse> {
         return new Promise<ExtensionResponse>((resolve, reject) => {
-            const reqId = uuid();
+            const reqId = nanoid();
             const handleMessage = (evt: MessageEvent) => {
                 const res = evt.data as PageMessage;
                 if (evt.source !== window || res?.reqId !== reqId) {

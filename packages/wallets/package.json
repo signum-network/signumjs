@@ -49,7 +49,7 @@
   "dependencies": {
     "@signumjs/standards": "*",
     "@signumjs/util": "*",
-    "uuid": "^13.0.0"
+    "nanoid": "^3.3.11"
   },
   "husky": {
     "hooks": {
