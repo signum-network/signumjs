@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.0.9
+
+### Patch Changes
+
+- chore: removed uuid and put nanoid
+- chore: added missing dep
+- Updated dependencies
+  - @signumjs/standards@3.0.9
+  - @signumjs/util@3.0.9
+  - @signumjs/core@3.0.9
+  - @signumjs/crypto@3.0.9
+
 ## 3.0.8
 
 ### Patch Changes
