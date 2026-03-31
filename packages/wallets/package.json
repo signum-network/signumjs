@@ -36,9 +36,9 @@
   },
   "private": false,
   "devDependencies": {
-    "@types/node": "^18.19.75",
     "@signumjs/core": "*",
-    "@signumjs/crypto": "*"
+    "@signumjs/crypto": "*",
+    "@types/node": "^18.19.75"
   },
   "scripts": {
     "test": "vitest run",
@@ -47,8 +47,9 @@
     "bundle": "node bundle.js"
   },
   "dependencies": {
+    "@signumjs/standards": "*",
     "@signumjs/util": "*",
-    "@signumjs/standards": "*"
+    "uuid": "^13.0.0"
   },
   "husky": {
     "hooks": {
