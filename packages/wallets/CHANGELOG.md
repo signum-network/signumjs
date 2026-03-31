@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.8
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @signumjs/util@3.0.8
+  - @signumjs/standards@3.0.8
+  - @signumjs/core@3.0.8
+  - @signumjs/crypto@3.0.8
+
 ## 3.0.7
 
 ### Patch Changes
