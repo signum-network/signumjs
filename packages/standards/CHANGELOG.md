@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.10
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @signumjs/util@3.0.10
+  - @signumjs/core@3.0.10
+
 ## 3.0.9
 
 ### Patch Changes

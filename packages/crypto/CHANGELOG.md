@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.10
+
+### Patch Changes
+
+- crypto/fix: fixes singleton issue with crypto adapter
+
 ## 3.0.9
 
 ### Patch Changes
