@@ -1,6 +1,8 @@
 import {CryptoAdapter} from '../typings/cryptoAdapter';
 import {CryptoError} from '../typings/cryptoError';
 
+const GLOBAL_KEY = '__signumjs_crypto_adapter__';
+
 /**
  * Unified Low-Level Crypto Class for common crypto operations needed for Signum.
  *
@@ -15,16 +17,15 @@ import {CryptoError} from '../typings/cryptoError';
  */
 export class Crypto {
 
-    private static cryptoAdapter: CryptoAdapter;
-
     /**
      * The adapter gives access to required crypto methods
      */
     static get adapter(): CryptoAdapter {
-        if(!Crypto.cryptoAdapter) {
+        const adapter = (globalThis as any)[GLOBAL_KEY] as CryptoAdapter;
+        if(!adapter) {
             throw new CryptoError('No Crypto Adapter provided - Use [Crypto.init()] first');
         }
-        return Crypto.cryptoAdapter;
+        return adapter;
     }
 
     /**
@@ -35,7 +36,7 @@ export class Crypto {
      * @param cryptoAdapter The platform specific adapter, e.g. `NodeJSCryptoAdapter`, `WebCryptoAdapter`, or any other provider
      */
     static init(cryptoAdapter: CryptoAdapter) {
-        Crypto.cryptoAdapter = cryptoAdapter;
+        (globalThis as any)[GLOBAL_KEY] = cryptoAdapter;
     }
 
 }
