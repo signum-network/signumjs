@@ -1,5 +1,6 @@
 import {Http} from './http';
-import {HttpAdapterAxios} from './httpAdapterAxios';
+import {HttpAdapterFetch} from './httpAdapterFetch';
+import {HttpClientOptions} from './httpClientOptions';
 
 /**
  * Factory for clients of {@link Http}
@@ -8,15 +9,14 @@ import {HttpAdapterAxios} from './httpAdapterAxios';
  */
 export class HttpClientFactory {
     /**
-     * Creates an Http instance
+     * Creates an Http instance backed by the platform's native `fetch`.
      *
-     * The current default implementation uses https://github.com/axios/axios
+     * Works in browsers, Node.js >= 18, Deno, Bun and Cloudflare Workers.
      *
      * @param baseUrl The base/root host url for the adapter, i.e. https://contoso.com
-     * @param options An arbitrary options object, depending on the implementation.
-     * As the default implementation uses axios the available options are here: https://axios-http.com/docs/req_config
+     * @param options Optional {@link HttpClientOptions} applied to every request.
      */
-    static createHttpClient(baseUrl: string, options?: any): Http {
-        return new HttpAdapterAxios(baseUrl, options);
+    static createHttpClient(baseUrl: string, options?: HttpClientOptions): Http {
+        return new HttpAdapterFetch(baseUrl, options);
     }
 }

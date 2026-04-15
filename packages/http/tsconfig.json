@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
       "outDir": "./out",
-      "types": ["axios","vitest/globals"]
+      "types": ["node","vitest/globals"]
     },
   "typeRoots": [
       "typings",

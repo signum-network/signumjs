@@ -1,3 +1,4 @@
+import {describe,it,expect, vi} from "vitest"
 import {loadEnvironment} from './helpers/environment';
 import {ChainService} from '../../../service/chainService';
 import {getBlockByTimestamp} from '../../factories/block/getBlockByTimestamp';
@@ -8,7 +9,7 @@ import {HttpError} from '@signumjs/http';
 
 const environment = loadEnvironment();
 
-vi.setTimeout(environment.timeout);
+//vi.setTimeout(environment.timeout);
 
 describe(`[E2E] Block Api`, () => {
 
