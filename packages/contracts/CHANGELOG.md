@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- chore: claenups
+- Updated dependencies
+  - @signumjs/util@3.1.0
+
 ## 3.0.10
 
 ### Patch Changes

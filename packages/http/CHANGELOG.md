@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- chore: claenups
+- feat: replaces axios by native fetch
+
 ## 3.0.10
 
 ### Patch Changes
