@@ -8,32 +8,19 @@
 import {convertDecStringToHexString, convertHexEndianess} from '@signumjs/util';
 import {ContractData} from './typings/contractData';
 import {convertContractData} from './internal/convertContractData';
-import {countDataPages} from './countDataPages';
 
-interface DataStack {
-    dataHex: string;
-    dataPageCount: number;
-}
 
 /**
  * Generates a data stack message of a contracts, which can be used as initialization. The message can be used on a contract's creation with
  * {@link core.ContractApi.publishContract} or {@link core.ContractApi.publishContractByReference}
  * @param data A list of variables forming the data stack
- * @return The data stack
- * 
+ * @return The data as hex string
+ *
  */
-export const generateDataStack = (data: ContractData[]): DataStack => {
-
-    const dataHex = data
+export const generateDataStack = (data: ContractData[]): string => {
+    return data
         .map(convertContractData)
         .map(long => convertDecStringToHexString(long, 16))
         .map(convertHexEndianess)
         .join('');
-
-    const dataPageCount = countDataPages(dataHex);
-
-    return {
-        dataHex,
-        dataPageCount
-    };
 };

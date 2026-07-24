@@ -122,7 +122,7 @@ describe('Contract Api', () => {
             };
 
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=40000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&cspages=1&uspages=1&broadcast=true').build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=40000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&cspages=2&uspages=3&broadcast=true').build();
 
 
             const service = createChainService(httpMock, 'relPath');
@@ -133,7 +133,10 @@ describe('Contract Api', () => {
                 name: 'testContract',
                 senderPublicKey: 'publickey',
                 senderPrivateKey: 'privateKey',
-                feePlanck: ''
+                feePlanck: '40000000',
+                dataPages: 1,
+                callStackPages: 2,
+                userStackPages: 3,
             }) as TransactionId;
             expect(transaction).toEqual('transactionId');
         });
@@ -161,7 +164,7 @@ describe('Contract Api', () => {
 
             const service = createChainService(httpMock, 'relPath');
             const {transaction} = await publishContractByReference(service)({
-                referencedTransactionHash: 'referencedTransactionId',
+                referencedTransactionFullHash: 'referencedTransactionId',
                 feePlanck: 'feePlanck',
                 description: 'description',
                 name: 'testContract',

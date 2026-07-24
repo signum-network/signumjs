@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021,2022 Signum Network
+ * Copyright (c) 2021,2022,206 Signum Network
  */
 import {ChainService} from '../../../service';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
@@ -7,7 +7,6 @@ import {DefaultDeadline} from '../../../constants';
 import {PublishContractByReferenceArgs} from '../../../typings/args';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 import {generateDataStack} from '@signumjs/contracts';
-import {calculateMinimumCreationFee} from '@signumjs/contracts';
 
 
 /**
@@ -21,16 +20,13 @@ export const publishContractByReference = (service: ChainService) =>
     (args: PublishContractByReferenceArgs) =>
         signIfPrivateKey(service, args, async (a: PublishContractByReferenceArgs) => {
 
-            const {dataHex} = generateDataStack(a.data || []);
-            const feeNQT = a.feePlanck || calculateMinimumCreationFee({
-                dataHex,
-            }).getPlanck();
+            const dataHex = generateDataStack(a.data || []);
 
             const parameters = {
                 deadline: a.deadline || DefaultDeadline,
                 description: a.description,
-                feeNQT,
-                referencedTransactionFullHash: a.referencedTransactionHash,
+                feeNQT: a.feePlanck,
+                referencedTransactionFullHash: a.referencedTransactionFullHash,
                 name: a.name,
                 publicKey: a.senderPublicKey,
                 data: dataHex || undefined,

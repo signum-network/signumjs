@@ -12,8 +12,6 @@ export * from './convertShortStringToContractData';
 export * from './ContractDataView';
 export * from './constants';
 export * from './countCodePages';
-export * from './countDataPages';
-export * from './calculateMinimumCreationFee';
 export * from './generateMethodCall';
 export * from './generateDataStack';
 export * from './typings';

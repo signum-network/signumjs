@@ -61,6 +61,9 @@ describe('[E2E] Contract Api', () => {
                 senderPublicKey: senderKeys.publicKey,
                 description: '[E2E] SignumJS publishContract Test',
                 name: 'Echo',
+                userStackPages: 1,
+                callStackPages: 1,
+                dataPages: 1,
             });
             expect(response.unsignedTransactionBytes).toBeDefined();
         });
@@ -124,7 +127,7 @@ describe('[E2E] Contract Api', () => {
             ];
 
             const transactionId = await publishContractByReference(service)({
-                referencedTransactionHash: '874E9938B0B42192EAFD98CE069BAE96E6D6C2F2AFA0221614F926795520FE4A',
+                referencedTransactionFullHash: '874E9938B0B42192EAFD98CE069BAE96E6D6C2F2AFA0221614F926795520FE4A',
                 feePlanck: '',
                 senderPublicKey: senderKeys.publicKey,
                 description: '[E2E] SignumJS publishContractByReference Test with initial datastack',

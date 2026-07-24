@@ -4,7 +4,7 @@ import {ContractData} from '@signumjs/contracts';
 /**
  * The argument object for {@link ContractApi.publishContractByReference}
  *
- * @param referencedTransactionHash {string} Reference, i.e. Transactions Full Hash {@link TransactionId.fullHash},
+ * @param referencedTransactionFullHash {string} Reference, i.e. Transactions Full Hash {@link TransactionId.fullHash},
  * to the already deployed contract
  * @param description {string} The description of your contract (max. 1000 chars)
  * @param name {string} The name for the contract
@@ -18,6 +18,6 @@ import {ContractData} from '@signumjs/contracts';
 export interface PublishContractByReferenceArgs extends DefaultSendArgs {
     description: string;
     name: string;
-    referencedTransactionHash: string;
+    referencedTransactionFullHash: string;
     data?: ContractData[];
 }

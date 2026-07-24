@@ -14,7 +14,7 @@ describe('generateDataStack', () => {
         ];
 
         const stack = generateDataStack(args);
-        expect(stack.dataHex).toBe(
+        expect(stack).toBe(
             'd204000000000000' +
             '2e16000000000000' +
             '0100000000000000' +
@@ -31,14 +31,12 @@ describe('generateDataStack', () => {
             '0800000000000000' +
             '0900000000000000' +
             '0a00000000000000');
-        expect(stack.dataPageCount).toBe(1);
     });
     it('generates an empty  data stack', () => {
 
         const args = [];
 
         const stack = generateDataStack(args);
-        expect(stack.dataHex).toBe('');
-        expect(stack.dataPageCount).toBe(1);
+        expect(stack).toBe('');
     });
 });
