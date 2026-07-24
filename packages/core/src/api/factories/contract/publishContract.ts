@@ -31,9 +31,9 @@ export const publishContract = (service: ChainService) =>
             name: a.name,
             publicKey: a.senderPublicKey,
             data: dataHex || undefined,
-            dpages: a.dataPages || undefined,
-            cspages: a.callStackPages || undefined,
-            uspages: a.userStackPages || undefined,
+            dpages: a.dataPages,
+            cspages: a.callStackPages,
+            uspages: a.userStackPages,
             broadcast: true,
             skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
         };

@@ -141,7 +141,7 @@ describe('Contract Api', () => {
             expect(transaction).toEqual('transactionId');
         });
 
-        it('should publishContract omitting zero-valued pages', async () => {
+        it('should publishContract sending zero-valued pages explicitly', async () => {
 
             // @ts-ignore
             signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
@@ -151,10 +151,11 @@ describe('Contract Api', () => {
                 unsignedTransactionBytes: 'unsignedHexMessage'
             };
 
-            // zero-valued pages must not be sent, so they stay symmetric with the
-            // verification rebuild, which drops zero pages from the creation bytes
+            // zero-valued pages must still be sent - the node rejects a
+            // createATProgram request with a missing page param
+            // ("Invalid or not specified parameters")
             httpMock = HttpMockBuilder.create()
-                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=40000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&broadcast=true').build();
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=40000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&cspages=0&uspages=0&broadcast=true').build();
 
 
             const service = createChainService(httpMock, 'relPath');

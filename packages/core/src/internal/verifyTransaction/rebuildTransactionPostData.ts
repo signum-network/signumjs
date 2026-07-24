@@ -266,15 +266,11 @@ function parseCreationBytes(trBytes: ByteBuffer) {
     if (retObj.data === '') {
         delete retObj.data;
     }
-    if (retObj.dpages === '0') {
-        delete retObj.dpages;
-    }
-    if (retObj.cspages === '0') {
-        delete retObj.cspages;
-    }
-    if (retObj.uspages === '0') {
-        delete retObj.uspages;
-    }
+    // Note: dpages/cspages/uspages are kept even when '0'. The node requires all
+    // three page params to be present on 'createATProgram' (a missing one is
+    // rejected with "Invalid or not specified parameters"), so the sent params
+    // always include them - the rebuilt data must too, or verification of a
+    // zero-valued page (e.g. uspages: 0) would fail with a phantom mismatch.
     return retObj;
 }
 
