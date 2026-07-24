@@ -25,7 +25,8 @@ export const addAssetTreasuryAccount = (service: ChainService) =>
                 recipientPublicKey: a.recipientPublicKey || undefined,
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
                 feeNQT: a.feePlanck,
-                deadline: a.deadline || DefaultDeadline
+                deadline: a.deadline || DefaultDeadline,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {

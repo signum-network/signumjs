@@ -42,7 +42,8 @@ export const sendSameAmountToMultipleRecipients = (service: ChainService) =>
                     feeNQT: feePlanck,
                     amountNQT: amountPlanck,
                     deadline,
-                    referencedTransactionFullHash
+                    referencedTransactionFullHash,
+                    skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
                 };
 
                 return service.send<UnsignedTransaction>('sendMoneyMultiSame', parameters);

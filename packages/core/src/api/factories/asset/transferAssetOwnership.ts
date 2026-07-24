@@ -25,7 +25,8 @@ export const transferAssetOwnership = (service: ChainService) =>
                 recipientPublicKey: a.recipientPublicKey || undefined,
                 feeNQT: a.feePlanck,
                 deadline: a.deadline || DefaultDeadline,
-                referencedTransactionFullHash: a.referencedTransactionFullHash
+                referencedTransactionFullHash: a.referencedTransactionFullHash,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {

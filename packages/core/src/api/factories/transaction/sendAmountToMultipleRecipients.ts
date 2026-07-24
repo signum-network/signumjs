@@ -47,7 +47,8 @@ export const sendAmountToMultipleRecipients = (service: ChainService) =>
                     recipients: mountRecipientsString(recipientAmounts),
                     feeNQT: feePlanck,
                     deadline,
-                    referencedTransactionFullHash
+                    referencedTransactionFullHash,
+                    skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
                 };
 
                 return service.send<UnsignedTransaction>('sendMoneyMulti', parameters);

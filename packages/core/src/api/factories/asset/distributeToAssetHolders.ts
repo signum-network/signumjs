@@ -34,7 +34,8 @@ export const distributeToAssetHolders = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 deadline: a.deadline || DefaultDeadline,
                 publicKey: a.senderPublicKey,
-                referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
+                referencedTransactionFullHash: a.referencedTransactionFullHash || undefined,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {

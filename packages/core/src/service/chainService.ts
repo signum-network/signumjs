@@ -144,7 +144,8 @@ export class ChainService {
      * @throws HttpError in case of failure
      */
     public async send<T>(method: string, args: SendArgs = {}, body?: object, options?: any): Promise<T> {
-        const endpoint = this.toApiEndpoint(method, args);
+        const {skipAdditionalSecurityCheck, ...params} = args;
+        const endpoint = this.toApiEndpoint(method, params);
 
         const {response} = await this.faultTolerantRequest(() => this.settings.httpClient.post(endpoint, body, options));
 
@@ -152,9 +153,8 @@ export class ChainService {
             ChainService.throwAsHttpError(endpoint, response);
         }
 
-
-        if (!args.skipAdditionalSecurityCheck) {
-            verifyTransaction(method, args, response);
+        if (!skipAdditionalSecurityCheck) {
+            verifyTransaction(method, params, response);
         }
 
         return response;

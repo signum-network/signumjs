@@ -23,7 +23,8 @@ export const setRewardRecipient = (service: ChainService) =>
                     recipient: a.recipientId,
                     feeNQT: a.feePlanck,
                     deadline: a.deadline || DefaultDeadline,
-                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
+                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined,
+                    skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
                 };
                 return service.send<UnsignedTransaction>('setRewardRecipient', parameters);
             }

@@ -140,6 +140,38 @@ describe('Contract Api', () => {
             }) as TransactionId;
             expect(transaction).toEqual('transactionId');
         });
+
+        it('should publishContract omitting zero-valued pages', async () => {
+
+            // @ts-ignore
+            signAndBroadcastTransaction = vi.fn().mockImplementation(() => () => Promise.resolve({transaction: 'transactionId'}));
+
+            const testResponse = {
+                broadcasted: true,
+                unsignedTransactionBytes: 'unsignedHexMessage'
+            };
+
+            // zero-valued pages must not be sent, so they stay symmetric with the
+            // verification rebuild, which drops zero pages from the creation bytes
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, testResponse, 'relPath?requestType=createATProgram&code=creationBytes&deadline=1440&description=description&feeNQT=40000000&minActivationAmountNQT=20000000&name=testContract&publicKey=publickey&dpages=1&broadcast=true').build();
+
+
+            const service = createChainService(httpMock, 'relPath');
+            const {transaction} = await publishContract(service)({
+                activationAmountPlanck: '20000000',
+                codeHex: 'creationBytes',
+                description: 'description',
+                name: 'testContract',
+                senderPublicKey: 'publickey',
+                senderPrivateKey: 'privateKey',
+                feePlanck: '40000000',
+                dataPages: 1,
+                callStackPages: 0,
+                userStackPages: 0,
+            }) as TransactionId;
+            expect(transaction).toEqual('transactionId');
+        });
     });
 
 

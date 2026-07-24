@@ -27,7 +27,8 @@ export const sendMessage = (service: ChainService) =>
                     deadline: a.deadline || DefaultDeadline,
                     messageIsText: a.messageIsText !== false,
                     broadcast: true,
-                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
+                    referencedTransactionFullHash: a.referencedTransactionFullHash || undefined,
+                    skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
                 };
                 return service.send<UnsignedTransaction>('sendMessage', parameters);
             }

@@ -29,6 +29,7 @@ export const issueAsset = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 mintable: a.mintable,
                 deadline: a.deadline || DefaultDeadline,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {

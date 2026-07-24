@@ -24,7 +24,8 @@ export const setAccountInfo = (service: ChainService) =>
                 description: a.description,
                 deadline: DefaultDeadline,
                 feeNQT: a.feePlanck,
-                publicKey: a.senderPublicKey
+                publicKey: a.senderPublicKey,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
             return service.send<UnsignedTransaction>('setAccountInfo', parameters);
 

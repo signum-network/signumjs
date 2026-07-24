@@ -28,6 +28,7 @@ export const setAlias = (service: ChainService) =>
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
                 // omit default tld
                 tld: !args.tld || args.tld === 'signum' ?  undefined : args.tld,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
             return service.send<UnsignedTransaction>('setAlias', parameters);
         });

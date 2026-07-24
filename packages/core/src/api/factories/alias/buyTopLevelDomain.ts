@@ -26,6 +26,7 @@ export const buyTopLevelDomain = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 publicKey: a.senderPublicKey,
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (args.attachment) {

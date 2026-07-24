@@ -31,6 +31,7 @@ export const publishContractByReference = (service: ChainService) =>
                 publicKey: a.senderPublicKey,
                 data: dataHex || undefined,
                 broadcast: true,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             return service.send<UnsignedTransaction>('createATProgram', parameters);

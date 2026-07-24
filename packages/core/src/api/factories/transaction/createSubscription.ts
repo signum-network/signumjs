@@ -29,6 +29,7 @@ export const createSubscription = (service: ChainService) =>
                 feeNQT: a.feePlanck,
                 deadline: a.deadline || DefaultDeadline,
                 referencedTransactionFullHash: a.referencedTransactionFullHash,
+                skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
             };
 
             if (a.attachment) {

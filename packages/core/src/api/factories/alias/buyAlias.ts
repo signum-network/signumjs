@@ -26,6 +26,7 @@ export const buyAlias = (service: ChainService) =>  (args: BuyAliasArgs) => sign
             amountNQT: a.amountPlanck,
             publicKey: a.senderPublicKey,
             referencedTransactionFullHash: a.referencedTransactionFullHash,
+            skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
         };
         return  service.send<UnsignedTransaction>('buyAlias', parameters);
 

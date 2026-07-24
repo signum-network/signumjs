@@ -31,10 +31,11 @@ export const publishContract = (service: ChainService) =>
             name: a.name,
             publicKey: a.senderPublicKey,
             data: dataHex || undefined,
-            dpages: a.dataPages,
-            cspages: a.callStackPages,
-            uspages: a.userStackPages,
+            dpages: a.dataPages || undefined,
+            cspages: a.callStackPages || undefined,
+            uspages: a.userStackPages || undefined,
             broadcast: true,
+            skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
         };
 
         return service.send<UnsignedTransaction>('createATProgram', parameters);

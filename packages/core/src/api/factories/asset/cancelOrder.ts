@@ -28,7 +28,8 @@ export const cancelOrder = (service: ChainService) =>
             publicKey: a.senderPublicKey,
             feeNQT: a.feePlanck,
             deadline: a.deadline || DefaultDeadline,
-            referencedTransactionFullHash: a.referencedTransactionFullHash || undefined
+            referencedTransactionFullHash: a.referencedTransactionFullHash || undefined,
+            skipAdditionalSecurityCheck: a.skipAdditionalSecurityCheck
         };
 
         if (a.attachment) {
