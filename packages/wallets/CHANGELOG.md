@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @signumjs/standards@3.2.0
+  - @signumjs/util@3.2.0
+  - @signumjs/core@3.2.0
+  - @signumjs/crypto@3.2.0
+
 ## 3.1.0
 
 ### Minor Changes

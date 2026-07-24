@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- docs: regenerated docs
+- fix: pages issue for smart contract publishing
+- Updated dependencies
+  - @signumjs/util@3.2.0
+
 ## 3.1.0
 
 ### Minor Changes

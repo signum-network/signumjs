@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- fix: pages issue for smart contract publishing
+- Updated dependencies
+  - @signumjs/contracts@3.2.0
+  - @signumjs/crypto@3.2.0
+  - @signumjs/http@3.2.0
+  - @signumjs/util@3.2.0
+
 ## 3.1.0
 
 ### Minor Changes
