@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.2.1
+
+### Patch Changes
+
+- fix: passthrough optional tx validation skip parameter, fixes 0 bug in publish contract
+- Updated dependencies
+  - @signumjs/contracts@3.2.1
+  - @signumjs/crypto@3.2.1
+  - @signumjs/http@3.2.1
+  - @signumjs/util@3.2.1
+
 ## 3.2.0
 
 ### Minor Changes
