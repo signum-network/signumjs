@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.2.2
+
+### Patch Changes
+
+- fix: publishContract param fix
+- Updated dependencies
+  - @signumjs/contracts@3.2.2
+  - @signumjs/crypto@3.2.2
+  - @signumjs/http@3.2.2
+  - @signumjs/util@3.2.2
+
 ## 3.2.1
 
 ### Patch Changes
