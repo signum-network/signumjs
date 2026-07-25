@@ -296,10 +296,10 @@ describe('Contract Api', () => {
             expect(contractList.transaction).toMatch('transaction');
         });
 
-        it('should getAllContracts using tokens', async () => {
+        it('should getAllContracts using a single token', async () => {
             httpMock = HttpMockBuilder.create()
                 .onPostReply(200, mockResponse,
-                    'relPath?requestType=transferAsset&message=640000000000000001000000000000000200000000000000&messageIsText=false&asset=assetId&quantityQNT=1000000&publicKey=senderPublicKey&recipient=contractId&feeNQT=feePlanck&amountNQT=assetId&deadline=1440',
+                    'relPath?requestType=transferAsset&message=640000000000000001000000000000000200000000000000&messageIsText=false&asset=assetId&quantityQNT=1000000&publicKey=senderPublicKey&recipient=contractId&feeNQT=feePlanck&amountNQT=2000&deadline=1440',
                 )
                 .build();
             const service = createChainService(httpMock, 'relPath');
@@ -311,8 +311,33 @@ describe('Contract Api', () => {
                 senderPrivateKey: 'senderPrivateKey',
                 senderPublicKey: 'senderPublicKey',
                 amountPlanck: '2000',
-                assetId: 'assetId',
-                assetQuantity: '1000000',
+                assetQuantities: [
+                    {assetId: 'assetId', quantity: '1000000'}
+                ],
+                skipAdditionalSecurityCheck: true
+            }) as TransactionId;
+            expect(contractList.transaction).toMatch('transaction');
+        });
+
+        it('should getAllContracts using multiple tokens', async () => {
+            httpMock = HttpMockBuilder.create()
+                .onPostReply(200, mockResponse,
+                    'relPath?requestType=transferAssetMulti&message=640000000000000001000000000000000200000000000000&messageIsText=false&assetIdsAndQuantities=asset1%3A100%3Basset2%3A200&amountNQT=2000&publicKey=senderPublicKey&recipient=contractId&feeNQT=feePlanck&deadline=1440',
+                )
+                .build();
+            const service = createChainService(httpMock, 'relPath');
+            const contractList = await callContractMethod(service)({
+                contractId: 'contractId',
+                feePlanck: 'feePlanck',
+                methodId: '100',
+                methodArgs: ['1','2'],
+                senderPrivateKey: 'senderPrivateKey',
+                senderPublicKey: 'senderPublicKey',
+                amountPlanck: '2000',
+                assetQuantities: [
+                    {assetId: 'asset1', quantity: '100'},
+                    {assetId: 'asset2', quantity: '200'}
+                ],
                 skipAdditionalSecurityCheck: true
             }) as TransactionId;
             expect(contractList.transaction).toMatch('transaction');

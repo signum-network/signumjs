@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2019 Burst Apps Team
- * Modified (c) 2022 Signum Network
+ * Modified (c) 2022, 2026 Signum Network
  */
 import {ChainService} from '../../../service';
 import {CallContractMethodArgs} from '../../../typings/args';
@@ -9,7 +9,8 @@ import {AttachmentMessage} from '../../../typings/attachment';
 import {sendAmountToSingleRecipient} from '../transaction';
 import {generateMethodCall} from '@signumjs/contracts';
 import {UnsignedTransaction} from '../../../typings/unsignedTransaction';
-import {transferAsset} from '../asset';
+import {transferAsset, transferMultipleAssets} from '../asset';
+import {DefaultSendArgs} from '../../../typings/args/defaultSendArgs';
 
 
 /**
@@ -32,32 +33,40 @@ export const callContractMethod = (service: ChainService) =>
             messageIsText: false,
         });
 
-        if (args.assetId && args.assetQuantity) {
+        const commonParameters: DefaultSendArgs = {
+            deadline: args.deadline,
+            senderPublicKey: args.senderPublicKey,
+            referencedTransactionFullHash: args.referencedTransactionFullHash,
+            feePlanck: args.feePlanck,
+            senderPrivateKey: args.senderPrivateKey,
+            skipAdditionalSecurityCheck: args.skipAdditionalSecurityCheck
+        }
+
+        if(args.assetQuantities?.length === 1){
             return transferAsset(service)({
-                amountPlanck: args.assetId,
-                assetId: args.assetId,
-                quantity: args.assetQuantity,
-                attachment,
-                deadline: args.deadline,
-                senderPublicKey: args.senderPublicKey,
-                referencedTransactionFullHash: args.referencedTransactionFullHash,
-                feePlanck: args.feePlanck,
+                amountPlanck: args.amountPlanck,
+                assetId: args.assetQuantities[0].assetId,
+                quantity: args.assetQuantities[0].quantity,
                 recipientId: args.contractId,
-                senderPrivateKey: args.senderPrivateKey,
-                skipAdditionalSecurityCheck: args.skipAdditionalSecurityCheck
+                attachment,
+                ...commonParameters
             });
+        }
+        else if(args.assetQuantities?.length > 1 && args.assetQuantities.length <= 4){
+            return transferMultipleAssets(service)({
+                amountPlanck: args.amountPlanck,
+                assetQuantities: args.assetQuantities,
+                recipientId: args.contractId,
+                attachment,
+                ...commonParameters,
+            })
         }
 
         return sendAmountToSingleRecipient(service)({
             amountPlanck: args.amountPlanck,
             attachment,
-            deadline: args.deadline,
-            feePlanck: args.feePlanck,
             recipientId: args.contractId,
-            senderPrivateKey: args.senderPrivateKey,
-            senderPublicKey: args.senderPublicKey,
-            referencedTransactionFullHash: args.referencedTransactionFullHash,
-            skipAdditionalSecurityCheck: args.skipAdditionalSecurityCheck
+            ...commonParameters,
         });
 
     };
