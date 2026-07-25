@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.0
+
+### Minor Changes
+
+- Updated dependencies
+
 ## 3.2.2
 
 ### Patch Changes

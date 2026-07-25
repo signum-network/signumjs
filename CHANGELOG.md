@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.0
+
+### Minor Changes
+
+- fix: asset transfer issue in callContractMethod
+- Updated dependencies
+  - @signumjs/contracts@3.3.0
+  - @signumjs/crypto@3.3.0
+  - @signumjs/http@3.3.0
+  - @signumjs/util@3.3.0
+
 ## 3.2.2
 
 ### Patch Changes
