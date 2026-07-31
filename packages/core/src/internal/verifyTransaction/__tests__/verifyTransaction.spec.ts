@@ -328,6 +328,69 @@ describe('verifyTransaction', function () {
             }).not.toThrow();
         });
     });
+    describe('cashBackId is ignored on verification', function () {
+        // Real mainnet sendMoney response. Its unsignedTransactionBytes carry a
+        // cashBackId (last 8 bytes) = 15346065480176948044. The cashBackId only
+        // redirects a share of the fee to a node operator and does not affect
+        // recipient/amount/fee - so it must never cause verification to fail,
+        // regardless of what (if anything) the request specified for it.
+        const baseFormData = {
+            recipient: '14764935608250252082',
+            amountNQT: '100000000',
+            feeNQT: '1000000',
+            publicKey: 'c366f9695ad43315eefd075db91bc540e484035045e93bd0334b014688b5bf6e',
+            deadline: 60
+        };
+        // cashBackId bytes = ...4cd3d44d3f2df8d4 -> 15346065480176948044
+        const bytesWithCashBackIdA = '002051fa84163c00c366f9695ad43315eefd075db91bc540e484035045e93bd0334b014688b5bf6e32bb452db596e7cc00e1f5050000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b6e917005c4a4c156c05a1c44cd3d44d3f2df8d4';
+        // Identical transaction, but the node chose a DIFFERENT cashBackId
+        // (last 8 bytes = 0102030405060708 -> 578437695752307201).
+        const bytesWithCashBackIdB = '002051fa84163c00c366f9695ad43315eefd075db91bc540e484035045e93bd0334b014688b5bf6e32bb452db596e7cc00e1f5050000000040420f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b6e917005c4a4c156c05a1c40102030405060708';
+
+        it('should pass when the request omits cashBackId (node added its own)', () => {
+            expect(() => {
+                verifyTransaction('sendMoney', baseFormData, {
+                    broadcasted: false,
+                    unsignedTransactionBytes: bytesWithCashBackIdA
+                });
+            }).not.toThrow();
+        });
+
+        it('should pass for two responses that differ only in the cashBackId bytes', () => {
+            expect(() => {
+                verifyTransaction('sendMoney', baseFormData, {
+                    broadcasted: false,
+                    unsignedTransactionBytes: bytesWithCashBackIdA
+                });
+            }).not.toThrow();
+            expect(() => {
+                verifyTransaction('sendMoney', baseFormData, {
+                    broadcasted: false,
+                    unsignedTransactionBytes: bytesWithCashBackIdB
+                });
+            }).not.toThrow();
+        });
+
+        it('should pass when the request specifies a cashBackId matching the response', () => {
+            expect(() => {
+                verifyTransaction('sendMoney', {...baseFormData, cashBackId: '15346065480176948044'}, {
+                    broadcasted: false,
+                    unsignedTransactionBytes: bytesWithCashBackIdA
+                });
+            }).not.toThrow();
+        });
+
+        it('should pass when the request specifies a cashBackId DIFFERENT from the response', () => {
+            // This is the "on use" case that previously failed: the request asked
+            // for one cashBackId, the node built the tx with a different one.
+            expect(() => {
+                verifyTransaction('sendMoney', {...baseFormData, cashBackId: '999999999999999999'}, {
+                    broadcasted: false,
+                    unsignedTransactionBytes: bytesWithCashBackIdA
+                });
+            }).not.toThrow();
+        });
+    });
     describe('setTLD', function () {
         it('should pass verification as expected', () => {
             const requestType = 'setTLD';

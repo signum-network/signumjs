@@ -51,6 +51,11 @@ export function verifyTransaction(method: string, parameters: any, response: any
     for (const prop in parameters) {
         switch (prop) {
             case 'broadcast':
+                // cashBackId only redirects a share of the fee to a node operator and
+                // does not affect recipient/amount/fee. It is intentionally NOT verified:
+                // the node may build the tx with a different cashBackId than requested,
+                // which is harmless and must not fail verification (degrades UX on use).
+            case 'cashBackId':
                 // properties to ignore
                 continue;
             case 'tld':
