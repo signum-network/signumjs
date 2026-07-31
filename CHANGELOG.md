@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.2
+
+### Patch Changes
+
+- fix: patched the cashback id stuff again - was still causing issues
+- Updated dependencies
+  - @signumjs/contracts@3.3.2
+  - @signumjs/crypto@3.3.2
+  - @signumjs/http@3.3.2
+  - @signumjs/util@3.3.2
+
 ## 3.3.1
 
 ### Patch Changes
