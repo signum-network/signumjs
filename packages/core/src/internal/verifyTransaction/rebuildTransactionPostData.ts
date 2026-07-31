@@ -137,6 +137,11 @@ function parseBaseTransaction(trByteBuffer: ByteBuffer): BaseTransaction {
     transactionJSON.ecBlockHeight = trByteBuffer.readInt();
     transactionJSON.ecBlockId = trByteBuffer.readLong().toString();
     transactionJSON.cashBackId = trByteBuffer.readLong().toString();
+    // cashBackId is intentionally NOT verified: it only redirects 25% of the fee
+    // cashback to a node operator and does not affect recipient/amount/fee. Verifying
+    // it would force signing on the same node that built the unsigned tx (UX issue).
+    // The 8 bytes must still be consumed to keep the buffer aligned for the appendages.
+    delete transactionJSON.cashBackId;
     return transactionJSON;
 }
 
