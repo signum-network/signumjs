@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.1
+
+### Patch Changes
+
+- fix: remove cashbackId check on signature verification - not security relevant and even degrades UX on use
+- Updated dependencies
+  - @signumjs/contracts@3.3.1
+  - @signumjs/crypto@3.3.1
+  - @signumjs/http@3.3.1
+  - @signumjs/util@3.3.1
+
 ## 3.3.0
 
 ### Minor Changes
