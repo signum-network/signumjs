@@ -238,10 +238,10 @@ describe('Contract Api', () => {
 
         it('should getContractMapValuesByFirstKey', async () => {
             httpMock = HttpMockBuilder.create()
-                .onGetReply(200, mockResponse, 'relPath?requestType=getATMapValues&at=contractId&key1=key1')
+                .onGetReply(200, mockResponse, 'relPath?requestType=getATMapValues&at=contractId&key1=key1&firstIndex=120&lastIndex=140')
                 .build();
             const service = createChainService(httpMock, 'relPath');
-            const mapValues = await getContractMapValuesByFirstKey(service)({ contractId: 'contractId', key1: 'key1'});
+            const mapValues = await getContractMapValuesByFirstKey(service)({ contractId: 'contractId', key1: 'key1', firstIndex: 120, lastIndex: 140});
             expect(mapValues.keyValues[0].value).toEqual('42');
         });
     });

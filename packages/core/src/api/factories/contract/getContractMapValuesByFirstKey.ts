@@ -18,6 +18,9 @@ export const getContractMapValuesByFirstKey = (service: ChainService):
         const params = {
             at: args.contractId,
             key1: args.key1,
+            value: args.value,
+            firstIndex: args.firstIndex,
+            lastIndex: args.lastIndex,
         };
 
         return service.query('getATMapValues', params);

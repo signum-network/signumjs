@@ -8,7 +8,7 @@ import {GetContractMapValuesByFirstKeyArgs} from './getContractMapValuesByFirstK
 */
 export interface GetSingleContractMapValueArgs extends GetContractMapValuesByFirstKeyArgs {
     /**
-     * The second key of the mapping tuple.
+     * The second key of the mapping tuple. Mind this is signed long!
      */
     key2: string;
 }
