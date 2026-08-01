@@ -52,6 +52,11 @@ window.location.href = '/';
 
 ```typescript
 import { MobileConnection } from '@signumjs/wallets';
+import { createClient } from '@signumjs/core/createClient';
+
+const ledger = createClient({
+    nodeHost: "https://europe.signum.network" // or any other reachable node
+});
 
 // Check connection and get public key
 if (MobileConnection.isConnected()) {
@@ -69,7 +74,8 @@ if (MobileConnection.isConnected()) {
     wallet.sign({
         unsignedTransactionBytes: unsignedTx.unsignedTransactionBytes,
         callbackUrl: `${window.location.origin}/wallet-signed`,
-        network: 'mainnet'
+        network: 'mainnet',
+        nodeHost: ledger.service.settings.nodeHost,
     });
 }
 ```
@@ -86,7 +92,7 @@ if (data.status === 'success') {
 } else if (data.status === 'rejected') {
     console.log('User cancelled');
 } else if (data.status === 'failed') {
-    console.log('Transaction failed');
+    console.error('Transaction failed', data.error);
 }
 ```
 
@@ -152,6 +158,7 @@ Opens the mobile wallet to sign an unsigned transaction.
 - `unsignedTransactionBytes` - The unsigned transaction bytes to sign
 - `callbackUrl` - URL the mobile wallet should redirect to after signing
 - `network` - `'mainnet'` or `'testnet'`
+- `nodeHost` - the host url used for generating the unsigned transaction bytes`
 
 **Returns:** The deeplink URL
 

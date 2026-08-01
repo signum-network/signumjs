@@ -173,7 +173,8 @@ describe('MobileWallet', () => {
             const deeplink = wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
 
             const parsed = src22.parseDeeplink(deeplink);
@@ -181,7 +182,8 @@ describe('MobileWallet', () => {
             expect(parsed.decodedPayload).toEqual({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
         });
 
@@ -191,7 +193,8 @@ describe('MobileWallet', () => {
             const deeplink = wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'testnet'
+                network: 'testnet',
+                nodeHost: "https://europe3.testnet.signum.network"
             });
 
             const parsed = src22.parseDeeplink(deeplink);
@@ -199,7 +202,8 @@ describe('MobileWallet', () => {
             expect(parsed.decodedPayload).toEqual({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'testnet'
+                network: 'testnet',
+                nodeHost: "https://europe3.testnet.signum.network"
             });
         });
 
@@ -209,7 +213,8 @@ describe('MobileWallet', () => {
             const deeplink = wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
 
             expect(windowOpenSpy).toHaveBeenCalledWith(deeplink, '_self');
@@ -221,7 +226,8 @@ describe('MobileWallet', () => {
             wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
 
             expect(windowOpenSpy).not.toHaveBeenCalled();
@@ -233,7 +239,8 @@ describe('MobileWallet', () => {
             const deeplink = wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
 
             expect(deeplink).toContain('signum://');
@@ -245,7 +252,8 @@ describe('MobileWallet', () => {
             const deeplink = wallet.sign({
                 unsignedTransactionBytes: unsignedTx,
                 callbackUrl: 'https://myapp.com/signed?action=signed&foo=bar',
-                network: 'mainnet'
+                network: 'mainnet',
+                nodeHost: "https://europe.signum.network"
             });
 
             const parsed = src22.parseDeeplink(deeplink);

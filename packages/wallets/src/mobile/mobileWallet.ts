@@ -25,12 +25,16 @@ export interface ConnectCallbackData {
     /**
      * Public key returned from connect callback
      */
-    publicKey: string;
+    publicKey?: string;
     /**
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
-    // TODO: this is temporary, as we need to add the status in the wallet
-    status?: StatusType;
+    status: StatusType;
+
+    /**
+     * If `status` is 'failed', this field contains the error message.
+     */
+    error?: string;
 }
 
 /**
@@ -41,6 +45,10 @@ export interface SignCallbackData {
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
     status: StatusType;
+    /**
+     * If `status` is 'failed', this field contains the error message.
+     */
+    error?: string;
     /**
      * Transaction ID returned on _successful_ sign
      */
@@ -98,6 +106,11 @@ export interface MobileWalletSignArgs {
      * The network to connect to (mainnet or testnet)
      */
     network: 'mainnet' | 'testnet';
+
+    /**
+     * The node host to connect to - must be a valid url
+     */
+    nodeHost: string;
 }
 
 /**
@@ -129,7 +142,7 @@ export class MobileWallet {
      * @param args - The connection arguments. See {@link MobileWalletConnectArgs}.
      * @returns The deeplink URL (for testing or custom handling)
      */
-    connect({callbackUrl, appName, network} : MobileWalletConnectArgs ): string {
+    connect({callbackUrl, appName, network}: MobileWalletConnectArgs): string {
         const deeplink = src22.createDeeplink({
             action: 'connect',
             payload: {
@@ -155,13 +168,18 @@ export class MobileWallet {
      *
      * @returns The deeplink URL (for testing or custom handling)
      */
-    sign({network, callbackUrl, unsignedTransactionBytes} : MobileWalletSignArgs): string {
+    sign({network, callbackUrl, unsignedTransactionBytes, nodeHost}: MobileWalletSignArgs): string {
+
+        // assert url format
+        const nodeHostUrl = new URL(nodeHost);
+
         const deeplink = src22.createDeeplink({
             action: 'sign',
             payload: {
                 unsignedTransactionBytes,
                 callbackUrl,
-                network
+                network,
+                nodeHost
             }
         });
 
@@ -192,27 +210,28 @@ export class MobileWallet {
      */
     static parseConnectCallback(): ConnectCallbackData {
         if (typeof window === 'undefined') {
-            throw new MobileWalletError("window is undefined - Looks like you're not running in a browser environment");
+            throw new MobileWalletError('window is undefined - Looks like you\'re not running in a browser environment');
         }
 
         const params = new URLSearchParams(window.location.search);
 
-        if(!params.has('publicKey')) {
-            throw new MobileWalletError("No public key found in callback URL");
+        if (!params.has('publicKey')) {
+            throw new MobileWalletError('No public key found in callback URL');
         }
 
-        // TODO: this is optional at the moment, as we need to add the status in the wallet
         const status = params.get('status');
-        if(status) {
-            // throw new MobileWalletError("No status found in callback URL");
-            if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
-                throw new MobileWalletError("Invalid status found in callback URL");
+        if (status) {
+            if (status !== 'success' && status !== 'rejected' && status !== 'failed') {
+                throw new MobileWalletError('Invalid status found in callback URL');
             }
         }
 
+        const error = params.get('error')?.trim() || undefined;
+
         return {
             publicKey: params.get('publicKey'),
-            status: status as StatusType
+            status: status as StatusType,
+            error
         };
     }
 
@@ -222,23 +241,26 @@ export class MobileWallet {
      */
     static parseSignCallback(): SignCallbackData {
         if (typeof window === 'undefined') {
-            throw new MobileWalletError("window is undefined - Looks like you're not running in a browser environment");
+            throw new MobileWalletError('window is undefined - Looks like you\'re not running in a browser environment');
         }
 
         const params = new URLSearchParams(window.location.search);
 
-        if(!params.has('status')) {
-            throw new MobileWalletError("No status found in callback URL");
+        if (!params.has('status')) {
+            throw new MobileWalletError('No status found in callback URL');
         }
 
         const status = params.get('status');
-        if(status !== 'success' && status !== 'rejected' && status !== 'failed') {
-            throw new MobileWalletError("Invalid status found in callback URL");
+        if (status !== 'success' && status !== 'rejected' && status !== 'failed') {
+            throw new MobileWalletError('Invalid status found in callback URL');
         }
+
+        const error = params.get('error')?.trim() || undefined;
 
         return {
             status: status as StatusType,
-            transactionId: params.get('transactionId') || undefined
+            transactionId: params.get('transactionId') || undefined,
+            error
         };
     }
 
