@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.3
+
+### Patch Changes
+
+- feat: added new params for mobile deeplinking
+- Updated dependencies
+  - @signumjs/standards@3.3.3
+  - @signumjs/util@3.3.3
+  - @signumjs/core@3.3.3
+  - @signumjs/crypto@3.3.3
+
 ## 3.3.2
 
 ### Patch Changes

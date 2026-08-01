@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.3
+
+### Patch Changes
+
+- feat: added pagination support for at map values
+- Updated dependencies
+  - @signumjs/contracts@3.3.3
+  - @signumjs/crypto@3.3.3
+  - @signumjs/http@3.3.3
+  - @signumjs/util@3.3.3
+
 ## 3.3.2
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.3.3
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @signumjs/util@3.3.3
+
 ## 3.3.2
 
 ### Patch Changes
