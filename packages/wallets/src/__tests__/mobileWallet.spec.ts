@@ -264,10 +264,11 @@ describe('MobileWallet', () => {
 
     describe('parseConnectCallback', () => {
         it('should parse publicKey and status from URL parameters', () => {
-            global.window.location.search = '?publicKey=abc123def456&status=success';
+            global.window.location.search = '?publicKey=abc123def456&status=success&nodeHost=https://europe3.testnet.signum.network';
             const data = MobileWallet.parseConnectCallback();
 
             expect(data.publicKey).toEqual('abc123def456');
+            expect(data.nodeHost).toEqual('https://europe3.testnet.signum.network');
             expect(data.status).toEqual('success');
         });
 

@@ -27,6 +27,10 @@ export interface ConnectCallbackData {
      */
     publicKey?: string;
     /**
+     * The wallet's currently selected node host url.
+     */
+    nodeHost?: string;
+    /**
      * Status from sign callback: 'success' | 'rejected' | 'failed'
      */
     status: StatusType;
@@ -230,6 +234,7 @@ export class MobileWallet {
 
         return {
             publicKey: params.get('publicKey'),
+            nodeHost: params.get('nodeHost'),
             status: status as StatusType,
             error
         };
