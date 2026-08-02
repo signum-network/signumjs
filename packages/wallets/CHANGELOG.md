@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.4
+
+### Patch Changes
+
+- feat: mobile wallet connect callback now with nodeHost
+- Updated dependencies
+  - @signumjs/standards@3.3.4
+  - @signumjs/util@3.3.4
+  - @signumjs/core@3.3.4
+  - @signumjs/crypto@3.3.4
+
 ## 3.3.3
 
 ### Patch Changes

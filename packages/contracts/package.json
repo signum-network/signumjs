@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/contracts",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Smart Contracts package for Signum Network",
   "keywords": [
     "signum",
