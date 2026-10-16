@@ -120,6 +120,27 @@ describe('Message Api', () => {
         });
 
 
+        it('should not reject encrypted messages above 512 bytes on the client side - the node enforces the limit', async () => {
+            const encryptedHexOf800Bytes = 'ab'.repeat(800);
+            (encryptMessage as Mock).mockImplementationOnce(() => Promise.resolve({
+                data: encryptedHexOf800Bytes,
+                nonce: 'nonce'
+            }));
+
+            await sendEncryptedMessage(service)({
+                message: 'Message Text',
+                feePlanck: '' + FeeQuantPlanck,
+                recipientId: 'recipientId',
+                recipientPublicKey: 'recipientPublicKey',
+                senderAgreementKey: 'senderAgreementKey',
+                senderPublicKey: 'senderPublicKey'
+            });
+
+            expect(service.send).toBeCalledWith('sendMessage', expect.objectContaining({
+                encryptedMessageData: encryptedHexOf800Bytes,
+            }));
+        });
+
         it('should return unsigneBytes when sendEncryptedMessage is called without private key', async () => {
             const unsignedTx = await sendEncryptedMessage(service)({
                 message: 'Message Text',

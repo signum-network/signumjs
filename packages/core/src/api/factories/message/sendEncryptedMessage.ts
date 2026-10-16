@@ -8,8 +8,6 @@ import {DefaultDeadline} from '../../../constants';
 import {SendEncryptedMessageArgs} from '../../../typings/args/sendEncryptedMessageArgs';
 import {signIfPrivateKey} from '../../../internal/signIfPrivateKey';
 
-const MAX_MESSAGE_LENGTH = 1024;
-
 /**
  * Use with {@link ApiComposer} and belongs to {@link MessageApi}.
  *
@@ -21,11 +19,9 @@ export const sendEncryptedMessage = (service: ChainService) =>
     (args: SendEncryptedMessageArgs) =>
         signIfPrivateKey(service, args, async (a: SendEncryptedMessageArgs) => {
 
+                // The size limit is enforced by the node (see `maxArbitraryMessageLength` in `getConstants`).
+                // `encryptedMessage.data` is hex, so a client-side length check on it would be off by factor two.
                 const encryptedMessage = await encryptMessage(a.message, a.recipientPublicKey, a.senderAgreementKey);
-
-                if (encryptedMessage.data.length > MAX_MESSAGE_LENGTH) {
-                    throw new Error(`The encrypted message exceeds allowed limit of ${MAX_MESSAGE_LENGTH} bytes`);
-                }
 
                 const parameters = {
                     deadline: a.deadline || DefaultDeadline,
