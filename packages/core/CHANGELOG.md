@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.5
+
+### Patch Changes
+
+- fix: remove client-side length check in sendEncryptedMessage (#90)
+- Updated dependencies
+  - @signumjs/contracts@3.3.5
+  - @signumjs/crypto@3.3.5
+  - @signumjs/http@3.3.5
+  - @signumjs/util@3.3.5
+
 ## 3.3.4
 
 ### Patch Changes
