@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.7
+
+### Patch Changes
+
+- fix: bump nanoid, align @types/node with node >=18, npm audit fix
+
 ## 3.3.6
 
 ### Patch Changes

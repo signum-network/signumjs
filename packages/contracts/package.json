@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/contracts",
-  "version": "3.3.6",
+  "version": "3.3.7",
   "description": "Smart Contracts package for Signum Network",
   "keywords": [
     "signum",
@@ -45,7 +45,7 @@
     "bundle": "node bundle.js"
   },
   "dependencies": {
-    "@signumjs/util": "^3.3.6"
+    "@signumjs/util": "^3.3.7"
   },
   "husky": {
     "hooks": {

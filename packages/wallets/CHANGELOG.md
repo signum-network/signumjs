@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.3.7
+
+### Patch Changes
+
+- fix: bump nanoid, align @types/node with node >=18, npm audit fix
+- fix: use ^ ranges for internal dependencies (#92)
+- Updated dependencies
+  - @signumjs/standards@3.3.7
+  - @signumjs/util@3.3.7
+  - @signumjs/core@3.3.7
+  - @signumjs/crypto@3.3.7
+
 ## 3.3.6
 
 ### Patch Changes

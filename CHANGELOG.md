@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.7
+
+### Patch Changes
+
+- fix: use ^ ranges for internal dependencies (#92)
+- Updated dependencies
+  - @signumjs/contracts@3.3.7
+  - @signumjs/crypto@3.3.7
+  - @signumjs/http@3.3.7
+  - @signumjs/util@3.3.7
+
 ## 3.3.6
 
 ### Patch Changes

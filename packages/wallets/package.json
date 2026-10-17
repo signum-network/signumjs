@@ -1,6 +1,6 @@
 {
   "name": "@signumjs/wallets",
-  "version": "3.3.6",
+  "version": "3.3.7",
   "description": "Wallets communication package for DApps in the Signum Network",
   "keywords": [
     "signum",
@@ -36,8 +36,8 @@
   },
   "private": false,
   "devDependencies": {
-    "@signumjs/core": "^3.3.6",
-    "@signumjs/crypto": "^3.3.6",
+    "@signumjs/core": "^3.3.7",
+    "@signumjs/crypto": "^3.3.7",
     "@types/node": "^18.19.130"
   },
   "scripts": {
@@ -47,8 +47,8 @@
     "bundle": "node bundle.js"
   },
   "dependencies": {
-    "@signumjs/standards": "^3.3.6",
-    "@signumjs/util": "^3.3.6",
+    "@signumjs/standards": "^3.3.7",
+    "@signumjs/util": "^3.3.7",
     "nanoid": "^3.3.20"
   },
   "husky": {
@@ -61,7 +61,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@signumjs/core": "^3.3.6",
-    "@signumjs/crypto": "^3.3.6"
+    "@signumjs/core": "^3.3.7",
+    "@signumjs/crypto": "^3.3.7"
   }
 }
