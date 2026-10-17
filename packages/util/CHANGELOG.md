@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.6
+
+### Patch Changes
+
+- fix: make reliableNodeHosts failover work (#91)
+
 ## 3.3.5
 
 ### Patch Changes

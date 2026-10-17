@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.3.6
+
+### Patch Changes
+
+- fix: make reliableNodeHosts failover work (#91)
+- Updated dependencies
+  - @signumjs/contracts@3.3.6
+  - @signumjs/crypto@3.3.6
+  - @signumjs/http@3.3.6
+  - @signumjs/util@3.3.6
+
 ## 3.3.5
 
 ### Patch Changes
