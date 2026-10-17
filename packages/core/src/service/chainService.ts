@@ -162,7 +162,8 @@ export class ChainService {
 
     private async faultTolerantRequest(requestFn: () => Promise<HttpResponse>): Promise<HttpResponse> {
         const onFailureAsync = async (e, retrialCount): Promise<boolean> => {
-            const shouldRetry = this.settings.reliableNodeHosts.length && retrialCount < this.settings.reliableNodeHosts.length;
+            // one retry per reliable host (retrialCount starts at 1)
+            const shouldRetry = retrialCount <= this.settings.reliableNodeHosts.length;
             if (shouldRetry) {
                 await this.selectBestHost(true);
             }

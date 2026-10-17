@@ -23,6 +23,17 @@ describe('asyncRetry', () => {
         expect(onFailureAsync).toHaveBeenCalledTimes(1);
     });
 
+    it('should return the result of a successful retry', async () => {
+        const asyncFn = vi.fn()
+            .mockRejectedValueOnce('First Run Error')
+            .mockResolvedValueOnce('All fine');
+        const onFailureAsync = vi.fn().mockResolvedValue(true);
+
+        const result = await asyncRetry<string>({asyncFn, onFailureAsync});
+        expect(result).toBe('All fine');
+        expect(asyncFn).toHaveBeenCalledTimes(2);
+    });
+
     it('should stop on max retrials reached', async () => {
         const asyncFn = vi.fn().mockRejectedValue('AsyncFn Error');
         const onFailureAsync = vi.fn().mockResolvedValue(true); // would retry infinitely
