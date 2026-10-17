@@ -169,6 +169,9 @@ fs.writeFileSync('$PKG', JSON.stringify(pkg, null, 2) + '\n');
 done
 echo "All packages bumped to $NEXT"
 
+# Sync lockfile with the bumped workspace versions
+npm install --package-lock-only
+
 
 
 # Generate docs
@@ -176,7 +179,7 @@ echo "Generating docs..."
 npm run doc
 
 # Commit, tag, and push — GitHub Actions handles npm publish
-git add packages/*/package.json packages/*/CHANGELOG.md CHANGELOG.md docs/
+git add package-lock.json packages/*/package.json packages/*/CHANGELOG.md CHANGELOG.md docs/
 git commit -m "chore: version bump v$NEXT"
 git tag "v$NEXT"
 
