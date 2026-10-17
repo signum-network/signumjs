@@ -108,10 +108,10 @@
     "bundle": "node bundle.js"
   },
   "dependencies": {
-    "@signumjs/contracts": "*",
-    "@signumjs/crypto": "*",
-    "@signumjs/http": "*",
-    "@signumjs/util": "*",
+    "@signumjs/contracts": "^3.3.6",
+    "@signumjs/crypto": "^3.3.6",
+    "@signumjs/http": "^3.3.6",
+    "@signumjs/util": "^3.3.6",
     "bignumber.js": "^9.1.2"
   },
   "husky": {

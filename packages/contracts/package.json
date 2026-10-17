@@ -45,7 +45,7 @@
     "bundle": "node bundle.js"
   },
   "dependencies": {
-    "@signumjs/util": "*"
+    "@signumjs/util": "^3.3.6"
   },
   "husky": {
     "hooks": {
