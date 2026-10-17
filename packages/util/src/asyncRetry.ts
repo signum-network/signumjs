@@ -20,7 +20,7 @@ export async function asyncRetry<T>(args: AsyncRetryArgs<T>): Promise<T> {
         }
         const shouldRetry = await onFailureAsync(e, retryCount);
         if (shouldRetry) {
-            await asyncRetry({asyncFn, onFailureAsync, retryCount: retryCount + 1});
+            return asyncRetry({asyncFn, onFailureAsync, retryCount: retryCount + 1, maxRetrials});
         } else {
             throw e; // rethrow most recent error
         }

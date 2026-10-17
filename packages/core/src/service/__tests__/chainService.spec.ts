@@ -1,6 +1,6 @@
 import {vi, it, describe, expect, afterEach} from 'vitest';
 import {ChainService} from '../chainService';
-import {HttpError, HttpMockBuilder, HttpResponse, Http} from '@signumjs/http';
+import {HttpError, HttpMockBuilder, HttpResponse, Http, HttpClientFactory} from '@signumjs/http';
 import {ChainServiceSettings} from '../chainServiceSettings';
 import {DefaultApiEndpoint} from '../../constants';
 import {createChainService} from '../../__tests__/helpers';
@@ -256,6 +256,36 @@ describe('ChainService', () => {
         });
     });
 
+
+    describe('failover with reliableNodeHosts', () => {
+        afterEach(() => {
+            vi.restoreAllMocks();
+        });
+
+        const createFailingService = (reliableNodeHosts: string[]) => {
+            const failingClient = new TestHttpClient();
+            // relative endpoint = the actual request (fails), absolute url = selectBestHost check (succeeds)
+            failingClient.get = vi.fn().mockImplementation((url: string) =>
+                url.startsWith('fallback') ? Promise.resolve(new HttpResponse(200, {})) : Promise.reject(new HttpError(url, 0, 'Request failed', null))
+            );
+            const fallbackClient = new TestHttpClient();
+            fallbackClient.get = vi.fn().mockResolvedValue(new HttpResponse(200, {foo: 'fromFallback'}));
+            vi.spyOn(HttpClientFactory, 'createHttpClient').mockReturnValue(fallbackClient);
+            return new ChainService({nodeHost: 'deadHost', reliableNodeHosts, httpClient: failingClient});
+        };
+
+        it('should return the response of the fallback host with a single reliable host', async () => {
+            const service = createFailingService(['fallbackHost']);
+            const result = await service.query('someMethod');
+            expect(result).toEqual({foo: 'fromFallback'});
+            expect(service.settings.nodeHost).toBe('fallbackHost');
+        });
+
+        it('should not retry without reliable hosts', async () => {
+            const service = createFailingService([]);
+            await expect(service.query('someMethod')).rejects.toThrow('Request failed');
+        });
+    });
 
     describe('selectBestHost()', () => {
         it('should return some host', async () => {
