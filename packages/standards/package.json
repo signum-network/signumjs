@@ -37,16 +37,16 @@
     "bundle": "node bundle.js"
   },
   "devDependencies": {
-    "@types/node": "^20.16.0",
+    "@signumjs/core": "^3.3.6",
+    "@types/node": "^18.19.130",
     "esbuild": "^0.23.1",
     "esbuild-plugin-tsc": "^0.4.0",
-    "typescript": "^5.5.4",
-    "@signumjs/core": "^3.3.6"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@braintree/sanitize-url": "^7.1.0",
     "@signumjs/util": "^3.3.6",
-    "js-base64": "^3.7.7",
-    "@braintree/sanitize-url": "^7.1.0"
+    "js-base64": "^3.7.7"
   },
   "peerDependencies": {
     "@signumjs/core": "^3.3.6"
