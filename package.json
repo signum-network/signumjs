@@ -21,7 +21,8 @@
     "url": "https://github.com/signum-network/signumjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20",
+    "npm": ">=11"
   },
   "license": "Apache-2.0",
   "private": false,
@@ -50,5 +51,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "npm@10.0.0"
+  "packageManager": "npm@11.20.0"
 }

@@ -41,10 +41,10 @@
     "esbuild": "^0.23.1",
     "esbuild-plugin-tsc": "^0.4.0",
     "typescript": "^5.5.4",
-    "@signumjs/core": "*"
+    "@signumjs/core": "^3.3.6"
   },
   "dependencies": {
-    "@signumjs/util": "*",
+    "@signumjs/util": "^3.3.6",
     "js-base64": "^3.7.7",
     "@braintree/sanitize-url": "^7.1.0"
   },
